@@ -192,6 +192,11 @@ function operationalSnapshot() {
     // Never expose raw operational errors publicly.
   }
 
+  const checkout =
+    env.PUBLIC_CHECKOUT_ENABLED
+      ? "open"
+      : "closed";
+
   const payments =
     paymentMode();
 
@@ -240,6 +245,8 @@ function operationalSnapshot() {
         ? "ok"
         : "degraded",
 
+    checkout,
+
     payments,
 
     coreReady,
@@ -273,6 +280,9 @@ healthRouter.get(
 
       operations:
         snapshot.operations,
+
+      checkout:
+        snapshot.checkout,
 
       payments:
         snapshot.payments,

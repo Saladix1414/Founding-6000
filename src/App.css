@@ -4761,3 +4761,17 @@
     flex-direction: column;
   }
 }
+
+/* =========================================================
+   D2-B — SAFE PUBLIC PRELAUNCH
+   ========================================================= */
+
+.checkout-progress--prelaunch {
+  display: none;
+}
+
+.checkout-main-button:disabled,
+.checkout-field input:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}

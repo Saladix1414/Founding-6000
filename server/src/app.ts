@@ -1,3 +1,12 @@
+import {
+  existsSync,
+} from "node:fs";
+
+import {
+  resolve,
+  sep,
+} from "node:path";
+
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -248,6 +257,133 @@ export function createApp() {
         });
     },
   );
+
+  /*
+   * -------------------------------------------------------
+   * Production frontend
+   * -------------------------------------------------------
+   *
+   * Express serves the compiled React application and API
+   * from the same origin in production.
+   *
+   * /api has already reached its authoritative 404 boundary
+   * above, so unknown API routes can never fall through to
+   * React HTML.
+   */
+  if (
+    env.NODE_ENV ===
+    "production"
+  ) {
+    const frontendDist =
+      resolve(
+        process.cwd(),
+        "dist",
+      );
+
+    const frontendIndex =
+      resolve(
+        frontendDist,
+        "index.html",
+      );
+
+    if (
+      existsSync(
+        frontendIndex,
+      )
+    ) {
+      app.use(
+        express.static(
+          frontendDist,
+          {
+            index:
+              false,
+
+            etag:
+              true,
+
+            setHeaders(
+              response,
+              filePath,
+            ) {
+              const segments =
+                filePath.split(
+                  sep,
+                );
+
+              if (
+                segments.includes(
+                  "assets",
+                )
+              ) {
+                response.setHeader(
+                  "Cache-Control",
+                  "public, max-age=31536000, immutable",
+                );
+
+                return;
+              }
+
+              if (
+                filePath.endsWith(
+                  ".html",
+                )
+              ) {
+                response.setHeader(
+                  "Cache-Control",
+                  "no-cache",
+                );
+
+                return;
+              }
+
+              response.setHeader(
+                "Cache-Control",
+                "public, max-age=3600",
+              );
+            },
+          },
+        ),
+      );
+
+      /*
+       * SPA fallback for client-side routes.
+       */
+      app.use(
+        (
+          request,
+          response,
+          next,
+        ) => {
+          if (
+            request.method !==
+              "GET" ||
+            !request.accepts(
+              "html",
+            )
+          ) {
+            next();
+            return;
+          }
+
+          response.setHeader(
+            "Cache-Control",
+            "no-cache",
+          );
+
+          response.sendFile(
+            frontendIndex,
+            (error) => {
+              if (error) {
+                next(
+                  error,
+                );
+              }
+            },
+          );
+        },
+      );
+    }
+  }
 
   app.use(
     errorHandler,

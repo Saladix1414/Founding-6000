@@ -1,5 +1,18 @@
-import { env } from "./config/env.js";
-import { createApp } from "./app.js";
+import {
+  env,
+} from "./config/env.js";
+
+import {
+  assertProductionRuntime,
+} from "./config/productionRuntime.js";
+
+import {
+  createApp,
+} from "./app.js";
+
+assertProductionRuntime(
+  env,
+);
 
 const app =
   createApp();
@@ -15,7 +28,7 @@ const server =
       );
 
       console.log(
-        " Founding 6000 API",
+        " Founding 6000",
       );
 
       console.log(
@@ -23,7 +36,15 @@ const server =
       );
 
       console.log(
-        `http://${env.API_HOST}:${env.API_PORT}`,
+        `Listening on ${env.API_HOST}:${env.API_PORT}`,
+      );
+
+      console.log(
+        `Environment: ${env.NODE_ENV}`,
+      );
+
+      console.log(
+        `Public checkout: ${env.PUBLIC_CHECKOUT_ENABLED}`,
       );
 
       console.log(
@@ -39,23 +60,34 @@ const server =
   );
 
 function shutdown(
-  signal: string,
+  signal:
+    string,
 ) {
   console.log(
     `Received ${signal}. Shutting down.`,
   );
 
-  server.close(() => {
-    process.exit(0);
-  });
+  server.close(
+    () => {
+      process.exit(
+        0,
+      );
+    },
+  );
 }
 
 process.on(
   "SIGTERM",
-  () => shutdown("SIGTERM"),
+  () =>
+    shutdown(
+      "SIGTERM",
+    ),
 );
 
 process.on(
   "SIGINT",
-  () => shutdown("SIGINT"),
+  () =>
+    shutdown(
+      "SIGINT",
+    ),
 );

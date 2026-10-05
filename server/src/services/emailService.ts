@@ -2,11 +2,17 @@ import {
   randomUUID,
 } from "node:crypto";
 
-import { db } from "../db/database.js";
+import {
+  db,
+} from "../db/database.js";
 
 import {
   createAuditEvent,
 } from "../repositories/auditRepository.js";
+
+export type EmailRegistrationSource =
+  | "FOUNDING_6000_CHECKOUT"
+  | "FOUNDING_6000_PRELAUNCH";
 
 export function normalizeEmail(
   email: string,
@@ -16,17 +22,22 @@ export function normalizeEmail(
     .toLowerCase();
 }
 
-export function registerEmail(
+function createEmailRegistration(
   email: string,
+  source:
+    EmailRegistrationSource,
 ) {
   const normalizedEmail =
-    normalizeEmail(email);
+    normalizeEmail(
+      email,
+    );
 
   const id =
     randomUUID();
 
   const createdAt =
-    new Date().toISOString();
+    new Date()
+      .toISOString();
 
   db.prepare(`
     INSERT INTO email_registrations (
@@ -41,7 +52,7 @@ export function registerEmail(
     id,
     email.trim(),
     normalizedEmail,
-    "FOUNDING_6000_CHECKOUT",
+    source,
     createdAt,
   );
 
@@ -56,15 +67,48 @@ export function registerEmail(
       id,
 
     payload: {
-      source:
-        "FOUNDING_6000_CHECKOUT",
+      source,
     },
   });
 
   return {
     id,
+
     email:
       email.trim(),
+
     createdAt,
   };
+}
+
+/*
+ * Existing checkout-oriented registration API.
+ * Kept for backwards compatibility.
+ */
+export function registerEmail(
+  email: string,
+) {
+  return createEmailRegistration(
+    email,
+    "FOUNDING_6000_CHECKOUT",
+  );
+}
+
+/*
+ * Public prelaunch interest registration.
+ *
+ * This does NOT create:
+ * - an order
+ * - a payment
+ * - inventory
+ * - a Founding serial
+ * - a membership
+ */
+export function registerPrelaunchEmail(
+  email: string,
+) {
+  return createEmailRegistration(
+    email,
+    "FOUNDING_6000_PRELAUNCH",
+  );
 }

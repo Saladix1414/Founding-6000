@@ -155,6 +155,8 @@ const requiredTables = [
   "payment_settlements",
   "founding_memberships",
   "email_outbox",
+  "database_migrations",
+  "worker_health",
 ];
 
 const source =

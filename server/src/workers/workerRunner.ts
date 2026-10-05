@@ -1,4 +1,12 @@
 import {
+  env,
+} from "../config/env.js";
+
+import {
+  assertProductionRuntime,
+} from "../config/productionRuntime.js";
+
+import {
   initializeDatabase,
 } from "../db/database.js";
 
@@ -281,6 +289,10 @@ async function shutdown(
 }
 
 async function main() {
+  assertProductionRuntime(
+    env,
+  );
+
   initializeDatabase();
   ensureMembershipSchema();
   ensureEmailOutboxSchema();

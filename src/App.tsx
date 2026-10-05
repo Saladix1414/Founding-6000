@@ -5,9 +5,19 @@ import {
   useState,
 } from "react";
 import UsdtPaymentPanel from "./components/UsdtPaymentPanel";
+
+import {
+  registerPrelaunchEmail,
+} from "./lib/foundingApi";
+
 import "./App.css";
 
 const TARGET_DATE = new Date("2027-01-05T00:00:00-03:00");
+
+const PUBLIC_CHECKOUT_ENABLED =
+  import.meta.env
+    .VITE_PUBLIC_CHECKOUT_ENABLED ===
+  "true";
 
 type Countdown = {
   days: number;
@@ -139,6 +149,12 @@ function App() {
   const [emailError, setEmailError] =
     useState("");
 
+  const [
+    emailSubmitting,
+    setEmailSubmitting,
+  ] =
+    useState(false);
+
   const [paymentMethod, setPaymentMethod] =
     useState<PaymentMethod>(null);
 
@@ -163,6 +179,11 @@ function App() {
     [sold],
   );
 
+  const primaryCtaLabel =
+    PUBLIC_CHECKOUT_ENABLED
+      ? "{primaryCtaLabel}"
+      : "Join Prelaunch";
+
   useEffect(() => {
     if (!checkoutOpen) {
       return;
@@ -178,6 +199,11 @@ function App() {
     ) => {
       if (event.key === "Escape") {
         setCheckoutOpen(false);
+
+        window.setTimeout(() => {
+          previousFocusRef.current?.focus();
+        }, 0);
+
         return;
       }
 
@@ -264,6 +290,7 @@ function App() {
     setCheckoutOpen(true);
     setCheckoutStep("email");
     setEmailError("");
+    setEmailSubmitting(false);
     setPaymentMethod(null);
   };
 
@@ -275,8 +302,13 @@ function App() {
     }, 0);
   };
 
-  const submitEmail = () => {
-    const normalizedEmail = email.trim();
+  const submitEmail = async () => {
+    if (emailSubmitting) {
+      return;
+    }
+
+    const normalizedEmail =
+      email.trim();
 
     const validEmail =
       /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(
@@ -287,12 +319,58 @@ function App() {
       setEmailError(
         "Enter a valid email address to continue.",
       );
+
       return;
     }
 
-    setEmail(normalizedEmail);
+    setEmail(
+      normalizedEmail,
+    );
+
     setEmailError("");
-    setCheckoutStep("confirm");
+
+    /*
+     * Public prelaunch mode:
+     *
+     * Register interest only.
+     * Do not create an order and do not initialize
+     * any payment method.
+     */
+    if (
+      !PUBLIC_CHECKOUT_ENABLED
+    ) {
+      setEmailSubmitting(
+        true,
+      );
+
+      try {
+        await registerPrelaunchEmail(
+          normalizedEmail,
+        );
+
+        setPaymentMethod(
+          null,
+        );
+
+        setCheckoutStep(
+          "complete",
+        );
+      } catch {
+        setEmailError(
+          "We could not register your email right now. Please try again.",
+        );
+      } finally {
+        setEmailSubmitting(
+          false,
+        );
+      }
+
+      return;
+    }
+
+    setCheckoutStep(
+      "confirm",
+    );
   };
 
   const choosePaymentMethod = (
@@ -306,6 +384,7 @@ function App() {
     setCheckoutStep("email");
     setEmail("");
     setEmailError("");
+    setEmailSubmitting(false);
     setPaymentMethod(null);
   };
 
@@ -364,7 +443,7 @@ function App() {
             type="button"
             onClick={openCheckout}
           >
-            Purchase Now
+            {primaryCtaLabel}
           </button>
 
           <button
@@ -419,7 +498,7 @@ function App() {
                 className="db-button db-button--primary"
                 onClick={openCheckout}
               >
-                Purchase Now
+                {primaryCtaLabel}
               </button>
             </div>
           </nav>
@@ -483,7 +562,7 @@ function App() {
                   type="button"
                   onClick={openCheckout}
                 >
-                  Purchase Now
+                  {primaryCtaLabel}
                   <span aria-hidden="true">→</span>
                 </button>
 
@@ -1102,16 +1181,16 @@ function App() {
               </div>
 
               <p className="db-copy">
-                Payment and membership state will become
-                authoritative only after the secure backend
-                is implemented.
+                Payment and membership state is
+                authoritative only after server-side
+                verification and settlement.
               </p>
             </div>
 
             <div className="workflow">
               <div className="workflow-step">
                 <span>01</span>
-                <strong>Purchase Now</strong>
+                <strong>{primaryCtaLabel}</strong>
                 <p>
                   Begin the Founding 6000 reservation flow.
                 </p>
@@ -1341,14 +1420,26 @@ function App() {
                   type="button"
                   onClick={openCheckout}
                 >
-                  Purchase Now
+                  {primaryCtaLabel}
                   <span aria-hidden="true">→</span>
                 </button>
 
                 <span className="purchase-panel__note">
-                  Checkout currently runs in prototype mode.
-                  No real payment, reservation or membership
-                  is created at this stage.
+                  {PUBLIC_CHECKOUT_ENABLED
+                    ? (
+                      <>
+                        Checkout availability is controlled by
+                        server-side readiness and payment
+                        authority.
+                      </>
+                    )
+                    : (
+                      <>
+                        Public reservations are not open yet.
+                        Join prelaunch updates without creating
+                        an order or payment.
+                      </>
+                    )}
                 </span>
               </div>
             </div>
@@ -1417,11 +1508,15 @@ function App() {
             <header className="checkout-header">
               <div>
                 <span className="checkout-header__eyebrow">
-                  FOUNDING 6000 · PROTOTYPE
+                  {PUBLIC_CHECKOUT_ENABLED
+                    ? "FOUNDING 6000 · CHECKOUT"
+                    : "FOUNDING 6000 · PRELAUNCH"}
                 </span>
 
                 <strong id="checkout-title">
-                  Purchase reservation
+                  {PUBLIC_CHECKOUT_ENABLED
+                    ? "Purchase reservation"
+                    : "Join launch updates"}
                 </strong>
               </div>
 
@@ -1439,12 +1534,18 @@ function App() {
               id="checkout-prototype-note"
               className="sr-only"
             >
-              This is a frontend checkout prototype.
-              No real payment, reservation or membership
-              is created.
+              {PUBLIC_CHECKOUT_ENABLED
+                ? "Founding 6000 checkout."
+                : "Public reservations and payments are not open yet."}
             </p>
 
-            <div className="checkout-progress">
+            <div
+              className={
+                PUBLIC_CHECKOUT_ENABLED
+                  ? "checkout-progress"
+                  : "checkout-progress checkout-progress--prelaunch"
+              }
+            >
               {[
                 "email",
                 "confirm",
@@ -1479,19 +1580,36 @@ function App() {
               {checkoutStep === "email" && (
                 <div className="checkout-step">
                   <span className="checkout-step__number">
-                    STEP 01 / 04
+                    {PUBLIC_CHECKOUT_ENABLED
+                      ? "STEP 01 / 04"
+                      : "PRELAUNCH ACCESS"}
                   </span>
 
                   <h2>
-                    Start with your email.
+                    {PUBLIC_CHECKOUT_ENABLED
+                      ? "Start with your email."
+                      : "Be notified when reservations open."}
                   </h2>
 
                   <p>
-                    Email is required before beginning a
-                    Founding 6000 reservation. It will later
-                    be used for reservation contact,
-                    confirmation, launch notifications and
-                    account activation.
+                    {PUBLIC_CHECKOUT_ENABLED
+                      ? (
+                        <>
+                          Email is required before beginning a
+                          Founding 6000 reservation. It will be
+                          used for reservation contact,
+                          confirmation, launch notifications and
+                          account activation.
+                        </>
+                      )
+                      : (
+                        <>
+                          Register your email for Founding 6000
+                          launch updates. This does not create a
+                          reservation, membership or payment
+                          obligation.
+                        </>
+                      )}
                   </p>
 
                   <label className="checkout-field">
@@ -1504,6 +1622,7 @@ function App() {
                       autoFocus
                       placeholder="you@example.com"
                       value={email}
+                      disabled={emailSubmitting}
                       onChange={(event) => {
                         setEmail(event.target.value);
                         setEmailError("");
@@ -1529,24 +1648,44 @@ function App() {
                     <span aria-hidden="true">i</span>
 
                     <p>
-                      Email is a contact identifier for this
-                      prototype. It is not canonical user
-                      identity and does not prove payment.
+                      {PUBLIC_CHECKOUT_ENABLED
+                        ? (
+                          <>
+                            Email is a contact identifier. It is
+                            not canonical user identity and does
+                            not prove payment.
+                          </>
+                        )
+                        : (
+                          <>
+                            Email registration records interest
+                            only. Inventory and Founding serials
+                            are not reserved during prelaunch.
+                          </>
+                        )}
                     </p>
                   </div>
 
                   <button
                     className="db-button db-button--primary checkout-main-button"
                     type="button"
+                    disabled={emailSubmitting}
                     onClick={submitEmail}
                   >
-                    Continue
-                    <span aria-hidden="true">→</span>
+                    {emailSubmitting
+                      ? "Registering…"
+                      : PUBLIC_CHECKOUT_ENABLED
+                        ? "Continue"
+                        : "Join launch updates"}
+
+                    <span aria-hidden="true">
+                      →
+                    </span>
                   </button>
                 </div>
               )}
 
-              {checkoutStep === "confirm" && (
+              {PUBLIC_CHECKOUT_ENABLED && checkoutStep === "confirm" && (
                 <div className="checkout-step">
                   <span className="checkout-step__number">
                     STEP 02 / 04
@@ -1630,7 +1769,7 @@ function App() {
                 </div>
               )}
 
-              {checkoutStep === "method" && (
+              {PUBLIC_CHECKOUT_ENABLED && checkoutStep === "method" && (
                 <div className="checkout-step">
                   <span className="checkout-step__number">
                     STEP 03 / 04
@@ -1743,7 +1882,7 @@ function App() {
                 </div>
               )}
 
-              {checkoutStep === "details" && (
+              {PUBLIC_CHECKOUT_ENABLED && checkoutStep === "details" && (
                 <div className="checkout-step">
                   <span className="checkout-step__number">
                     STEP 04 / 04
@@ -1893,19 +2032,31 @@ function App() {
                   </span>
 
                   <span className="checkout-step__number">
-                    PROTOTYPE COMPLETE
+                    {PUBLIC_CHECKOUT_ENABLED
+                      ? "CHECKOUT FLOW COMPLETE"
+                      : "PRELAUNCH REGISTERED"}
                   </span>
 
                   <h2>
-                    The checkout UX works.
+                    {PUBLIC_CHECKOUT_ENABLED
+                      ? "Checkout flow complete."
+                      : "You’re on the Founding 6000 prelaunch list."}
                   </h2>
 
-                  <p>
-                    No payment was made and no Founding 6000
-                    membership was created. This screen only
-                    confirms that the F3 frontend prototype
-                    flow has been completed.
-                  </p>
+                  {PUBLIC_CHECKOUT_ENABLED ? (
+                    <p>
+                      The checkout interface completed its
+                      current flow. Payment and membership
+                      authority remain server-side.
+                    </p>
+                  ) : (
+                    <p>
+                      We registered your email for launch
+                      updates. No order, payment, membership,
+                      inventory allocation or Founding serial
+                      was created.
+                    </p>
+                  )}
 
                   <div className="checkout-summary">
                     <div>
@@ -1914,26 +2065,32 @@ function App() {
                     </div>
 
                     <div>
-                      <span>Payment method</span>
+                      <span>Status</span>
                       <strong>
-                        {paymentMethodLabel()}
+                        {PUBLIC_CHECKOUT_ENABLED
+                          ? "CHECKOUT FLOW"
+                          : "PRELAUNCH ONLY"}
                       </strong>
                     </div>
 
                     <div>
                       <span>Payment state</span>
-                      <strong>NOT PROCESSED</strong>
+                      <strong>
+                        NOT PROCESSED
+                      </strong>
                     </div>
                   </div>
 
                   <div className="checkout-actions">
-                    <button
-                      className="db-button db-button--secondary"
-                      type="button"
-                      onClick={resetCheckout}
-                    >
-                      Restart prototype
-                    </button>
+                    {PUBLIC_CHECKOUT_ENABLED && (
+                      <button
+                        className="db-button db-button--secondary"
+                        type="button"
+                        onClick={resetCheckout}
+                      >
+                        Restart checkout
+                      </button>
+                    )}
 
                     <button
                       className="db-button db-button--primary"
@@ -1949,11 +2106,15 @@ function App() {
 
             <footer className="checkout-footer">
               <span>
-                Frontend prototype
+                {PUBLIC_CHECKOUT_ENABLED
+                  ? "Checkout"
+                  : "Prelaunch registration"}
               </span>
 
               <span>
-                Payment authority: disabled
+                {PUBLIC_CHECKOUT_ENABLED
+                  ? "Server-side payment authority"
+                  : "Reservations and payments closed"}
               </span>
             </footer>
           </section>

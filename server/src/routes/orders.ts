@@ -9,6 +9,10 @@ import {
   getOrderByPublicId,
 } from "../services/orderService.js";
 
+import {
+  requirePublicCheckoutEnabled,
+} from "../middleware/publicCommerceGate.js";
+
 export const ordersRouter =
   Router();
 
@@ -23,6 +27,7 @@ const createOrderSchema =
 
 ordersRouter.post(
   "/",
+  requirePublicCheckoutEnabled,
   (request, response) => {
     const parsed =
       createOrderSchema.safeParse(

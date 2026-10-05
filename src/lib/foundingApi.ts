@@ -1,6 +1,24 @@
+/*
+ * Production defaults to same-origin.
+ *
+ * Example:
+ *   https://founding.example/api/...
+ *
+ * Development uses the Vite /api proxy.
+ *
+ * VITE_API_URL remains available only when an explicit
+ * external API origin is intentionally required.
+ */
 const API_BASE =
-  import.meta.env.VITE_API_URL ??
-  "http://127.0.0.1:8787";
+  (
+    import.meta.env.VITE_API_URL ??
+    ""
+  )
+    .trim()
+    .replace(
+      /\/+$/,
+      "",
+    );
 
 type ApiErrorPayload = {
   error?: string;
@@ -181,6 +199,43 @@ export async function submitUsdtTxHash(
 
     message:
       string;
+  }>(
+    response,
+  );
+}
+
+
+export type PrelaunchEmailRegistration = {
+  id: string;
+  email: string;
+  createdAt: string;
+};
+
+export async function registerPrelaunchEmail(
+  email: string,
+) {
+  const response =
+    await fetch(
+      `${API_BASE}/api/email-registrations`,
+      {
+        method:
+          "POST",
+
+        headers: {
+          "Content-Type":
+            "application/json",
+        },
+
+        body:
+          JSON.stringify({
+            email,
+          }),
+      },
+    );
+
+  return parseResponse<{
+    registration:
+      PrelaunchEmailRegistration;
   }>(
     response,
   );

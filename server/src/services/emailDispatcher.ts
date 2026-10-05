@@ -8,6 +8,7 @@ import {
 
 import {
   claimPendingEmails,
+  hasDispatchableEmails,
   markEmailDeliveryFailure,
   markEmailSent,
 } from "./emailOutboxService.js";
@@ -89,6 +90,21 @@ export async function dispatchEmailOutbox(
     env.NODE_ENV ===
       "production"
   ) {
+    /*
+     * Safe public prelaunch can run without an external
+     * mail provider while there is no transactional mail
+     * waiting to be delivered.
+     *
+     * The moment dispatchable work exists, production still
+     * fails closed. Nothing is claimed and no attempt counter
+     * is consumed.
+     */
+    if (
+      !hasDispatchableEmails()
+    ) {
+      return [];
+    }
+
     throw new Error(
       "EMAIL_TRANSPORT_NOT_CONFIGURED_FOR_PRODUCTION",
     );

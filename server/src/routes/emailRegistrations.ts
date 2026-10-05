@@ -2,14 +2,46 @@ import {
   Router,
 } from "express";
 
-import { z } from "zod";
+import {
+  rateLimit,
+} from "express-rate-limit";
 
 import {
-  registerEmail,
+  z,
+} from "zod";
+
+import {
+  registerPrelaunchEmail,
 } from "../services/emailService.js";
 
 export const emailRegistrationsRouter =
   Router();
+
+/*
+ * Public prelaunch interest form.
+ *
+ * Keep significantly below the global API limit so
+ * automated submission abuse cannot flood the database.
+ */
+const registrationLimiter =
+  rateLimit({
+    windowMs:
+      60_000,
+
+    limit:
+      10,
+
+    standardHeaders:
+      "draft-8",
+
+    legacyHeaders:
+      false,
+
+    message: {
+      error:
+        "EMAIL_REGISTRATION_RATE_LIMITED",
+    },
+  });
 
 const bodySchema =
   z.object({
@@ -18,11 +50,16 @@ const bodySchema =
         .trim()
         .email()
         .max(320),
-  });
+  })
+    .strict();
 
 emailRegistrationsRouter.post(
   "/",
-  (request, response) => {
+  registrationLimiter,
+  (
+    request,
+    response,
+  ) => {
     const parsed =
       bodySchema.safeParse(
         request.body,
@@ -34,14 +71,11 @@ emailRegistrationsRouter.post(
         .json({
           error:
             "INVALID_EMAIL",
-
-          details:
-            parsed.error.flatten(),
         });
     }
 
     const registration =
-      registerEmail(
+      registerPrelaunchEmail(
         parsed.data.email,
       );
 

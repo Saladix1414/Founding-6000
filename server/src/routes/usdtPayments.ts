@@ -18,8 +18,16 @@ import {
   submitUsdtTransactionHash,
 } from "../services/usdtPaymentService.js";
 
+import {
+  requirePublicPaymentsEnabled,
+} from "../middleware/publicCommerceGate.js";
+
 export const usdtPaymentsRouter =
   Router();
+
+usdtPaymentsRouter.use(
+  requirePublicPaymentsEnabled,
+);
 
 /*
  * Canonical public identifiers.

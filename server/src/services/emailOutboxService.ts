@@ -336,6 +336,33 @@ export function listPendingEmails(
  * but only one conditional UPDATE can move it
  * from PENDING -> PROCESSING.
  */
+export function hasDispatchableEmails(
+  now:
+    Date =
+      new Date(),
+) {
+  ensureEmailOutboxSchema();
+
+  /*
+   * Keep recovery behavior consistent with claimPendingEmails,
+   * but do not claim or increment attempts.
+   */
+  recoverLegacyRetryableFailures(
+    now,
+  );
+
+  recoverStaleProcessingEmails(
+    now,
+  );
+
+  return (
+    listPendingEmails(
+      1,
+      now,
+    ).length > 0
+  );
+}
+
 export function claimPendingEmails(
   limit = 25,
   now:

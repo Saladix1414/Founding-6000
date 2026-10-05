@@ -23,7 +23,22 @@
     "db:restore-test": "tsx server/src/scripts/testDatabaseRestore.ts",
     "db:migrations:status": "tsx server/src/scripts/checkDatabaseMigrations.ts",
     "test:d1e-serial": "tsx server/src/tests/d1eHistoricalSerialTest.ts",
-    "test:d1f-health": "tsx server/src/tests/d1fOperationalHealthTest.ts"
+    "test:d1f-health": "tsx server/src/tests/d1fOperationalHealthTest.ts",
+    "test:d2a-prelaunch": "tsx server/src/tests/d2aPublicPrelaunchGateTest.ts",
+    "test:d2b-prelaunch": "tsx server/src/tests/d2bSafePublicPrelaunchTest.ts",
+    "test:d3b-serving": "tsx server/src/tests/d3bProductionServingTest.ts",
+    "runtime:check": "tsx server/src/scripts/checkProductionRuntime.ts",
+    "test:d3c-runtime": "tsx server/src/tests/d3cProductionRuntimeTest.ts",
+    "prod:prepare": "node server/dist/scripts/prepareProductionRuntime.js",
+    "prod:runtime:check": "node server/dist/scripts/checkProductionRuntime.js",
+    "prod:web": "node server/dist/index.js",
+    "prod:worker": "node server/dist/workers/workerRunner.js",
+    "prod:migrate": "node server/dist/scripts/migrateDatabase.js",
+    "prod:migrations:status": "node server/dist/scripts/checkDatabaseMigrations.js",
+    "prod:backup": "node server/dist/scripts/backupDatabase.js",
+    "prod:restore-test": "node server/dist/scripts/testDatabaseRestore.js",
+    "test:d3de-storage": "tsx server/src/tests/d3deRuntimeStorageTest.ts",
+    "deploy:preflight": "bash deploy/prelaunch-preflight.sh"
   },
   "dependencies": {
     "cors": "^2.8.6",

@@ -619,7 +619,7 @@ try {
 
   console.log("");
   console.log(
-    "[TEST 9] Production default transport fails closed",
+    "[TEST 9] Production email transport boundary",
   );
 
   const originalNodeEnv =
@@ -627,6 +627,37 @@ try {
 
   env.NODE_ENV =
     "production";
+
+  /*
+   * Empty queue is healthy during safe public prelaunch.
+   */
+  const idleResult =
+    await dispatchEmailOutbox({
+      limit:
+        25,
+    });
+
+  if (
+    idleResult.length !==
+      0
+  ) {
+    throw new Error(
+      "PRODUCTION_IDLE_EMAIL_DISPATCH_INVALID",
+    );
+  }
+
+  console.log(
+    "[PASS] Production may idle safely with empty queue",
+  );
+
+  /*
+   * Once real transactional work exists, missing
+   * transport must still fail closed.
+   */
+  const productionMail =
+    queue(
+      "production-transport",
+    );
 
   let productionBlocked =
     false;
@@ -654,8 +685,28 @@ try {
     );
   }
 
+  const productionRow =
+    getRow(
+      productionMail.publicId,
+    );
+
+  if (
+    productionRow?.status !==
+      "PENDING" ||
+    productionRow.attempts !==
+      0
+  ) {
+    throw new Error(
+      "PRODUCTION_TRANSPORT_FAILURE_CONSUMED_EMAIL_ATTEMPT",
+    );
+  }
+
   console.log(
     "[PASS] Production cannot silently use LOG_ONLY",
+  );
+
+  console.log(
+    "[PASS] Missing transport leaves queued email untouched",
   );
 
   console.log("");

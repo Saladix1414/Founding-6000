@@ -166,13 +166,17 @@ function verifyDatabase(
     const requiredTables = [
       "campaigns",
       "campaign_phases",
+      "email_registrations",
       "founding_orders",
+      "audit_events",
       "inventory_allocations",
+      "payment_quotes",
       "payment_attempts",
       "payment_settlements",
       "founding_memberships",
       "email_outbox",
-      "audit_events",
+      "database_migrations",
+      "worker_health",
     ];
 
     const missing =
