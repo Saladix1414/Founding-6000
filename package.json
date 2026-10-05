@@ -1,0 +1,45 @@
+{
+  "name": "founding-6000",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "server:dev": "tsx watch server/src/index.ts",
+    "server:start": "node server/dist/index.js",
+    "server:build": "tsc -p tsconfig.server.json",
+    "build:all": "npm run build && npm run server:build",
+    "web3:verify-mainnet": "tsx server/src/scripts/verifyEthereumMainnet.ts",
+    "web3:verify-real-usdt": "tsx server/src/scripts/verifyRealUsdtTransfer.ts",
+    "usdt:verify-pending": "tsx server/src/scripts/processUsdtQueue.ts",
+    "payments:readiness": "tsx server/src/scripts/checkPaymentReadiness.ts",
+    "email:process": "tsx server/src/scripts/processEmailOutbox.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "decimal.js": "^10.6.0",
+    "dotenv": "^18.0.5",
+    "ethers": "^6.17.0",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "helmet": "^8.3.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.19.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxlint": "^1.81.0",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  }
+}

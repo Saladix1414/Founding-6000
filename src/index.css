@@ -1,0 +1,398 @@
+@import "./styles/tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  background: var(--db-bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  font-family: var(--db-font-sans);
+  color: var(--db-text);
+  background:
+    radial-gradient(
+      circle at 14% 8%,
+      rgba(22, 140, 255, 0.08),
+      transparent 27rem
+    ),
+    radial-gradient(
+      circle at 92% 20%,
+      rgba(20, 201, 231, 0.055),
+      transparent 25rem
+    ),
+    var(--db-bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    );
+
+  background-size: 48px 48px;
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent 78%
+    );
+}
+
+::selection {
+  color: var(--db-white);
+  background: rgba(22, 140, 255, 0.4);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--db-cyan-400);
+  outline-offset: 3px;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.db-container {
+  width: min(
+    calc(100% - 32px),
+    var(--db-container)
+  );
+
+  margin-inline: auto;
+}
+
+.db-container--narrow {
+  max-width: var(--db-container-narrow);
+}
+
+.db-section {
+  padding-block: var(--db-space-20);
+}
+
+.db-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--db-space-2);
+
+  margin-bottom: var(--db-space-4);
+
+  color: var(--db-cyan-400);
+  font-family: var(--db-font-mono);
+  font-size: var(--db-text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.db-eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  background: currentColor;
+
+  box-shadow:
+    0 0 14px currentColor;
+}
+
+.db-title {
+  max-width: 850px;
+
+  margin-bottom: var(--db-space-5);
+
+  color: var(--db-text);
+  font-size: var(--db-text-3xl);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.db-copy {
+  max-width: 700px;
+
+  color: var(--db-text-muted);
+  font-size: var(--db-text-md);
+  line-height: 1.75;
+}
+
+.db-button {
+  min-height: 48px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--db-space-2);
+
+  padding:
+    0.8rem
+    1.15rem;
+
+  border: 1px solid transparent;
+  border-radius: var(--db-radius-md);
+
+  font-weight: 760;
+  letter-spacing: -0.015em;
+
+  cursor: pointer;
+
+  transition:
+    transform var(--db-transition-fast),
+    border-color var(--db-transition-fast),
+    background var(--db-transition-fast),
+    color var(--db-transition-fast),
+    box-shadow var(--db-transition-fast);
+}
+
+.db-button:hover {
+  transform: translateY(-1px);
+}
+
+.db-button:active {
+  transform: translateY(0);
+}
+
+.db-button--primary {
+  color: #02111f;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--db-blue-400),
+      var(--db-cyan-400)
+    );
+
+  box-shadow:
+    0 12px 34px rgba(22, 140, 255, 0.18);
+}
+
+.db-button--primary:hover {
+  box-shadow:
+    0 16px 40px rgba(22, 140, 255, 0.26);
+}
+
+.db-button--secondary {
+  color: var(--db-text-soft);
+  border-color: var(--db-border-strong);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.db-button--secondary:hover {
+  border-color: rgba(101, 232, 247, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.db-card {
+  position: relative;
+  overflow: hidden;
+
+  padding: var(--db-space-6);
+
+  border: 1px solid var(--db-border);
+  border-radius: var(--db-radius-lg);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.008)
+    ),
+    var(--db-surface-1);
+
+  box-shadow: var(--db-shadow-soft);
+}
+
+.db-card::after {
+  content: "";
+  position: absolute;
+  inset:
+    0
+    auto
+    auto
+    0;
+
+  width: 100%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(101, 232, 247, 0.22),
+      transparent
+    );
+}
+
+.db-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  padding:
+    0.35rem
+    0.6rem;
+
+  border: 1px solid var(--db-border);
+  border-radius: var(--db-radius-pill);
+
+  color: var(--db-text-muted);
+
+  font-family: var(--db-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.db-status__dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+  background: var(--db-success);
+
+  box-shadow:
+    0 0 12px rgba(65, 214, 154, 0.6);
+}
+
+@media (max-width: 720px) {
+  .db-container {
+    width: min(
+      calc(100% - 24px),
+      var(--db-container)
+    );
+  }
+
+  .db-section {
+    padding-block: var(--db-space-16);
+  }
+
+  .db-button {
+    width: 100%;
+  }
+
+  .db-card {
+    padding: var(--db-space-5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* =========================================================
+   F4 — ACCESSIBILITY HARDENING
+   ========================================================= */
+
+.sr-only {
+  position: absolute !important;
+
+  width: 1px !important;
+  height: 1px !important;
+
+  padding: 0 !important;
+  margin: -1px !important;
+
+  overflow: hidden !important;
+
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+
+  border: 0 !important;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+button,
+a,
+input,
+summary {
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+button,
+a {
+  touch-action:
+    manipulation;
+}
+
+@supports (
+  padding-top:
+    env(safe-area-inset-top)
+) {
+  body {
+    padding-left:
+      env(safe-area-inset-left);
+
+    padding-right:
+      env(safe-area-inset-right);
+  }
+}

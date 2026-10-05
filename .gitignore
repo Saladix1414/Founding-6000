@@ -1,0 +1,90 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.env
+server/data/*.sqlite
+server/data/*.sqlite-shm
+server/data/*.sqlite-wal
+server/dist
+.env.local
+
+# ==========================================================
+# Founding 6000 — local / sensitive / generated
+# ==========================================================
+
+# Secrets and runtime environment
+.env.*
+!.env.example
+
+# Databases
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite-journal
+
+# Local backups created during development
+_backups/
+*.bak
+*.backup
+
+# Temporary runtime files
+tmp/
+.temp/
+.cache/
+
+# Server build/runtime data
+server/dist/
+server/data/
+
+# Founding 6000 local backups / development artifacts
+*-backup
+*-backup-path
+.*-backup
+.*-backup-path
+
+# Secrets
+
+# SQLite/runtime data
+
+# Local development backup artifacts
+_backups/
+*.bak
+*-backup
+*-backup-path
+
+# Runtime databases
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite-journal
+
+# Local environment / secrets
+.env
+.env.local
+.env.production
+.env.development.local
+.env.test.local
+
+# Safe template that IS allowed in Git
+!.env.example
