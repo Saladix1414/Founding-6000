@@ -78,6 +78,57 @@ export function countAllocatedForPhase(
   );
 }
 
+/*
+ * Historical issuance counters.
+ *
+ * RELEASED allocations remain part of the permanent
+ * Founding serial history and must never make a serial
+ * number available for reuse.
+ */
+export function countIssuedForPhase(
+  phaseId: string,
+) {
+  const result =
+    db.prepare(`
+      SELECT
+        COUNT(*) AS count
+      FROM inventory_allocations
+      WHERE phase_id = ?
+    `).get(
+      phaseId,
+    ) as {
+      count: number;
+    };
+
+  return Number(
+    result.count,
+  );
+}
+
+export function getHighestIssuedSerialForPhase(
+  phaseId: string,
+) {
+  const result =
+    db.prepare(`
+      SELECT
+        MAX(serial_number) AS highest
+      FROM inventory_allocations
+      WHERE phase_id = ?
+    `).get(
+      phaseId,
+    ) as {
+      highest:
+        | number
+        | null;
+    };
+
+  return result.highest === null
+    ? null
+    : Number(
+        result.highest,
+      );
+}
+
 export function countAllocatedForCampaign(
   campaignId: string,
 ) {

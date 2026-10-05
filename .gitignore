@@ -88,3 +88,6 @@ _backups/
 
 # Safe template that IS allowed in Git
 !.env.example
+
+# Runtime database backups
+server/backups/

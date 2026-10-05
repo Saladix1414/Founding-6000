@@ -9,7 +9,8 @@ import {
 } from "../repositories/auditRepository.js";
 
 import {
-  countAllocatedForPhase,
+  countIssuedForPhase,
+  getHighestIssuedSerialForPhase,
   getAllocationByOrderId,
   getAllocationBySettlementReference,
 } from "../repositories/inventoryRepository.js";
@@ -228,13 +229,20 @@ export function allocateInventoryWithinTransaction(
     );
   }
 
-  const allocated =
-    countAllocatedForPhase(
+  /*
+   * Capacity is based on historical issuance, not only
+   * currently ALLOCATED rows.
+   *
+   * A RELEASED Founding serial remains permanently
+   * consumed and can never be reissued.
+   */
+  const issued =
+    countIssuedForPhase(
       context.phaseId,
     );
 
   if (
-    allocated >=
+    issued >=
     context.capacity
   ) {
     throw new Error(
@@ -242,13 +250,23 @@ export function allocateInventoryWithinTransaction(
     );
   }
 
+  const highestHistoricalSerial =
+    getHighestIssuedSerialForPhase(
+      context.phaseId,
+    );
+
   const serialNumber =
-    context.serialStart +
-    allocated;
+    highestHistoricalSerial ===
+    null
+      ? context.serialStart
+      : highestHistoricalSerial +
+        1;
 
   if (
+    serialNumber <
+      context.serialStart ||
     serialNumber >
-    context.serialEnd
+      context.serialEnd
   ) {
     throw new Error(
       "PHASE_SERIAL_RANGE_EXHAUSTED",
@@ -286,14 +304,14 @@ export function allocateInventoryWithinTransaction(
     now,
   );
 
-  const newAllocatedCount =
-    allocated + 1;
+  const newIssuedCount =
+    issued + 1;
 
   let phaseTransitioned =
     false;
 
   if (
-    newAllocatedCount ===
+    newIssuedCount ===
     context.capacity
   ) {
     phaseTransitioned =

@@ -16,7 +16,14 @@
     "web3:verify-real-usdt": "tsx server/src/scripts/verifyRealUsdtTransfer.ts",
     "usdt:verify-pending": "tsx server/src/scripts/processUsdtQueue.ts",
     "payments:readiness": "tsx server/src/scripts/checkPaymentReadiness.ts",
-    "email:process": "tsx server/src/scripts/processEmailOutbox.ts"
+    "email:process": "tsx server/src/scripts/processEmailOutbox.ts",
+    "workers:run": "tsx server/src/workers/workerRunner.ts",
+    "db:backup": "tsx server/src/scripts/backupDatabase.ts",
+    "db:migrate": "tsx server/src/scripts/migrateDatabase.ts",
+    "db:restore-test": "tsx server/src/scripts/testDatabaseRestore.ts",
+    "db:migrations:status": "tsx server/src/scripts/checkDatabaseMigrations.ts",
+    "test:d1e-serial": "tsx server/src/tests/d1eHistoricalSerialTest.ts",
+    "test:d1f-health": "tsx server/src/tests/d1fOperationalHealthTest.ts"
   },
   "dependencies": {
     "cors": "^2.8.6",

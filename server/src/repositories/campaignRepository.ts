@@ -43,9 +43,14 @@ export function getCampaignReadModel() {
         (
           SELECT COUNT(*)
           FROM inventory_allocations ia
+          /*
+           * Public capacity consumption follows permanent
+           * historical serial issuance.
+           *
+           * RELEASED serials are not made available again.
+           */
           WHERE
             ia.phase_id = p.id
-            AND ia.status = 'ALLOCATED'
         ) AS sold
 
       FROM campaign_phases p
