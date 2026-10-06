@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://founding-6000-prelaunch.digitalboostlaunch.workers.dev/sitemap.xml
