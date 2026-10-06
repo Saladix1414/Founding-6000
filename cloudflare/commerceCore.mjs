@@ -1023,11 +1023,117 @@ export class CommerceCore {
       );
     }
 
+    const normalizedAttempt =
+      this.normalizeAttempt(
+        attempt,
+      );
+
+    if (
+      normalizedAttempt.status !==
+        "VERIFIED"
+    ) {
+      return {
+        attempt:
+          normalizedAttempt,
+      };
+    }
+
+    const result =
+      this.sql.exec(
+        `
+          SELECT
+            o.public_id AS orderPublicId,
+            o.status AS orderStatus,
+
+            p.code AS phaseCode,
+
+            ia.serial_number AS serialNumber,
+
+            fm.public_id AS membershipPublicId,
+            fm.status AS membershipStatus,
+            fm.founding_member AS foundingMember,
+            fm.genesis_member AS genesisMember
+
+          FROM payment_attempts pa
+
+          JOIN founding_orders o
+            ON o.id = pa.order_id
+
+          JOIN campaign_phases p
+            ON p.id = o.phase_id
+
+          LEFT JOIN inventory_allocations ia
+            ON ia.order_id = o.id
+
+          LEFT JOIN founding_memberships fm
+            ON fm.order_id = o.id
+
+          WHERE pa.public_id = ?
+
+          LIMIT 1
+        `,
+        publicId,
+      )
+        .toArray()[0];
+
+    if (
+      !result ||
+      result.serialNumber ===
+        null ||
+      !result.membershipPublicId
+    ) {
+      throw new Error(
+        "VERIFIED_PAYMENT_RESULT_INCOMPLETE",
+      );
+    }
+
     return {
       attempt:
-        this.normalizeAttempt(
-          attempt,
-        ),
+        normalizedAttempt,
+
+      order: {
+        publicId:
+          result.orderPublicId,
+
+        status:
+          result.orderStatus,
+      },
+
+      allocation: {
+        serialNumber:
+          Number(
+            result.serialNumber,
+          ),
+
+        phaseCode:
+          result.phaseCode,
+
+        phaseTransitioned:
+          false,
+      },
+
+      membership: {
+        publicId:
+          result.membershipPublicId,
+
+        serialNumber:
+          Number(
+            result.serialNumber,
+          ),
+
+        foundingMember:
+          Boolean(
+            result.foundingMember,
+          ),
+
+        genesisMember:
+          Boolean(
+            result.genesisMember,
+          ),
+
+        status:
+          result.membershipStatus,
+      },
     };
   }
 
@@ -1254,10 +1360,9 @@ export class CommerceCore {
             shouldVerify:
               false,
 
-            attempt:
-              this.normalizeAttempt(
-                attempt,
-              ),
+            ...this.getUsdtAttempt(
+              publicId,
+            ),
           };
         }
 

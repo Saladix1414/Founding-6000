@@ -1,4 +1,5 @@
 import {
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -7,12 +8,26 @@ import {
 import {
   createFoundingOrder,
   createUsdtAttempt,
+  getUsdtPaymentAttempt,
   submitUsdtTxHash,
+  type FoundingPaymentResult,
   type UsdtPaymentAttempt,
 } from "../lib/foundingApi";
 
+type Language =
+  | "en"
+  | "es";
+
 type Props = {
   email: string;
+
+  language:
+    Language;
+
+  onVerified: (
+    result:
+      FoundingPaymentResult,
+  ) => void;
 };
 
 type SetupState =
@@ -21,23 +36,63 @@ type SetupState =
   | "ready"
   | "error";
 
+const SESSION_KEY =
+  "founding6000-usdt-attempt";
+
 function formatNetwork(
   network: string,
 ) {
-  if (
-    network ===
+  return network ===
     "ethereum-mainnet"
-  ) {
-    return "Ethereum Mainnet";
-  }
+    ? "Ethereum Mainnet"
+    : network;
+}
 
-  return network;
+function saveAttemptToSession(
+  email: string,
+  publicId: string,
+) {
+  try {
+    window.sessionStorage
+      .setItem(
+        SESSION_KEY,
+        JSON.stringify({
+          email:
+            email
+              .trim()
+              .toLowerCase(),
+
+          publicId,
+        }),
+      );
+  } catch {
+    // Checkout still works without session recovery.
+  }
+}
+
+function clearAttemptFromSession() {
+  try {
+    window.sessionStorage
+      .removeItem(
+        SESSION_KEY,
+      );
+  } catch {
+    // Best effort.
+  }
 }
 
 export default function UsdtPaymentPanel({
   email,
+  language,
+  onVerified,
 }: Props) {
   const initialized =
+    useRef(false);
+
+  const onVerifiedRef =
+    useRef(onVerified);
+
+  const verifiedNotified =
     useRef(false);
 
   const [
@@ -72,6 +127,14 @@ export default function UsdtPaymentPanel({
     >(null);
 
   const [
+    verificationNote,
+    setVerificationNote,
+  ] =
+    useState<
+      string | null
+    >(null);
+
+  const [
     copied,
     setCopied,
   ] =
@@ -82,6 +145,41 @@ export default function UsdtPaymentPanel({
     setSubmitting,
   ] =
     useState(false);
+
+  useEffect(() => {
+    onVerifiedRef.current =
+      onVerified;
+  }, [onVerified]);
+
+  const notifyVerified =
+    useCallback((
+      result:
+        FoundingPaymentResult,
+    ) => {
+    if (
+      verifiedNotified.current
+    ) {
+      return;
+    }
+
+    if (
+      !result.paymentVerified ||
+      result.verificationStatus !==
+        "VERIFIED" ||
+      !result.order ||
+      !result.allocation ||
+      !result.membership
+    ) {
+      return;
+    }
+
+    verifiedNotified.current =
+      true;
+
+    onVerifiedRef.current(
+      result,
+    );
+  }, []);
 
   useEffect(() => {
     if (
@@ -101,6 +199,92 @@ export default function UsdtPaymentPanel({
       setError(null);
 
       try {
+        /*
+         * Recover an existing payment attempt after a
+         * browser refresh in the same tab/session.
+         */
+        let saved:
+          | {
+              email:
+                string;
+
+              publicId:
+                string;
+            }
+          | null =
+          null;
+
+        try {
+          const raw =
+            window.sessionStorage
+              .getItem(
+                SESSION_KEY,
+              );
+
+          if (raw) {
+            saved =
+              JSON.parse(raw);
+          }
+        } catch {
+          saved = null;
+        }
+
+        if (
+          saved &&
+          saved.email ===
+            email
+              .trim()
+              .toLowerCase() &&
+          /^PAY-USDT-[A-F0-9]{12}$/
+            .test(
+              saved.publicId,
+            )
+        ) {
+          try {
+            const recovered =
+              await getUsdtPaymentAttempt(
+                saved.publicId,
+              );
+
+            setAttempt(
+              recovered.attempt,
+            );
+
+            if (
+              recovered.attempt
+                .txHash
+            ) {
+              setTxHash(
+                recovered.attempt
+                  .txHash,
+              );
+            }
+
+            if (
+              recovered
+                .verificationStatus ===
+                "REJECTED" ||
+              recovered.attempt
+                .status ===
+                "REJECTED"
+            ) {
+              clearAttemptFromSession();
+            }
+
+            setSetupState(
+              "ready",
+            );
+
+            notifyVerified(
+              recovered,
+            );
+
+            return;
+          } catch {
+            clearAttemptFromSession();
+          }
+        }
+
         const orderResult =
           await createFoundingOrder(
             email,
@@ -108,11 +292,18 @@ export default function UsdtPaymentPanel({
 
         const attemptResult =
           await createUsdtAttempt(
-            orderResult.order.publicId,
+            orderResult
+              .order.publicId,
           );
 
         setAttempt(
           attemptResult.attempt,
+        );
+
+        saveAttemptToSession(
+          email,
+          attemptResult
+            .attempt.publicId,
         );
 
         setSetupState(
@@ -132,7 +323,157 @@ export default function UsdtPaymentPanel({
     }
 
     void initialize();
-  }, [email]);
+  }, [
+    email,
+    notifyVerified,
+  ]);
+
+  const pollingAttemptPublicId =
+    attempt?.publicId ??
+    null;
+
+  const pollingAttemptStatus =
+    attempt?.status ??
+    null;
+
+  /*
+   * Polling starts only after a tx hash was submitted.
+   *
+   * GET is authoritative and drives the server-side
+   * Ethereum verification pipeline.
+   */
+  useEffect(() => {
+    const paymentAttemptPublicId =
+      pollingAttemptPublicId;
+
+    if (
+      !paymentAttemptPublicId ||
+      !pollingAttemptStatus ||
+      ![
+        "SUBMITTED",
+        "VERIFYING",
+      ].includes(
+        pollingAttemptStatus,
+      )
+    ) {
+      return;
+    }
+
+    const activePaymentAttemptPublicId:
+      string =
+      paymentAttemptPublicId;
+
+    let cancelled =
+      false;
+
+    let timer:
+      number |
+      undefined;
+
+    async function poll() {
+      try {
+        const result =
+          await getUsdtPaymentAttempt(
+            activePaymentAttemptPublicId,
+          );
+
+        if (cancelled) {
+          return;
+        }
+
+        setAttempt(
+          result.attempt,
+        );
+
+        if (
+          result.paymentVerified &&
+          result.verificationStatus ===
+            "VERIFIED"
+        ) {
+          setVerificationNote(
+            null,
+          );
+
+          notifyVerified(
+            result,
+          );
+
+          return;
+        }
+
+        if (
+          result
+            .verificationStatus ===
+            "REJECTED" ||
+          result.attempt
+            .status ===
+            "REJECTED"
+        ) {
+          clearAttemptFromSession();
+
+          setError(
+            language === "es"
+              ? "La transacción no coincide con los requisitos de este pago. No se creó ninguna membresía."
+              : "The transaction does not match this payment's requirements. No membership was created.",
+          );
+
+          return;
+        }
+
+        setVerificationNote(
+          language === "es"
+            ? "Verificando la transacción en Ethereum. Se requieren 12 confirmaciones."
+            : "Verifying the transaction on Ethereum. 12 confirmations are required.",
+        );
+      } catch {
+        if (cancelled) {
+          return;
+        }
+
+        /*
+         * Infrastructure/RPC interruptions do not reject
+         * the buyer. Keep polling.
+         */
+        setVerificationNote(
+          language === "es"
+            ? "La verificación continúa. Hubo una demora temporal al consultar Ethereum."
+            : "Verification is still pending. Ethereum lookup is temporarily delayed.",
+        );
+      }
+
+      if (!cancelled) {
+        timer =
+          window.setTimeout(
+            poll,
+            5000,
+          );
+      }
+    }
+
+    timer =
+      window.setTimeout(
+        poll,
+        1200,
+      );
+
+    return () => {
+      cancelled =
+        true;
+
+      if (
+        timer !== undefined
+      ) {
+        window.clearTimeout(
+          timer,
+        );
+      }
+    };
+  }, [
+    pollingAttemptPublicId,
+    pollingAttemptStatus,
+    language,
+    notifyVerified,
+  ]);
 
   async function copyWallet() {
     if (!attempt) {
@@ -155,7 +496,9 @@ export default function UsdtPaymentPanel({
       );
     } catch {
       setError(
-        "No pudimos copiar automáticamente. Mantén presionada la dirección para copiarla.",
+        language === "es"
+          ? "No pudimos copiar automáticamente. Mantené presionada la dirección para copiarla."
+          : "We could not copy automatically. Press and hold the address to copy it.",
       );
     }
   }
@@ -169,12 +512,15 @@ export default function UsdtPaymentPanel({
       txHash.trim();
 
     if (
-      !/^0x[a-fA-F0-9]{64}$/.test(
-        normalized,
-      )
+      !/^0x[a-fA-F0-9]{64}$/
+        .test(
+          normalized,
+        )
     ) {
       setError(
-        "El hash debe comenzar con 0x y contener 64 caracteres hexadecimales.",
+        language === "es"
+          ? "El hash debe comenzar con 0x y contener 64 caracteres hexadecimales."
+          : "The hash must begin with 0x and contain 64 hexadecimal characters.",
       );
 
       return;
@@ -182,6 +528,7 @@ export default function UsdtPaymentPanel({
 
     setSubmitting(true);
     setError(null);
+    setVerificationNote(null);
 
     try {
       const result =
@@ -197,6 +544,12 @@ export default function UsdtPaymentPanel({
       setTxHash(
         normalized,
       );
+
+      setVerificationNote(
+        language === "es"
+          ? "Hash recibido. Iniciando verificación en Ethereum."
+          : "Transaction hash received. Starting Ethereum verification.",
+      );
     } catch (cause) {
       setError(
         cause instanceof Error
@@ -210,9 +563,9 @@ export default function UsdtPaymentPanel({
 
   if (
     setupState ===
-    "loading" ||
+      "loading" ||
     setupState ===
-    "idle"
+      "idle"
   ) {
     return (
       <div className="usdt-payment-panel">
@@ -224,13 +577,15 @@ export default function UsdtPaymentPanel({
 
           <div>
             <strong>
-              Preparing secure
-              USDT instructions
+              {language === "es"
+                ? "Preparando instrucciones USDT seguras"
+                : "Preparing secure USDT instructions"}
             </strong>
 
             <p>
-              Creating your
-              payment attempt…
+              {language === "es"
+                ? "Creando tu intento de pago…"
+                : "Creating your payment attempt…"}
             </p>
           </div>
         </div>
@@ -239,8 +594,7 @@ export default function UsdtPaymentPanel({
   }
 
   if (
-    setupState ===
-      "error" ||
+    setupState === "error" ||
     !attempt
   ) {
     return (
@@ -250,27 +604,75 @@ export default function UsdtPaymentPanel({
           role="alert"
         >
           <strong>
-            Could not prepare
-            USDT checkout
+            {language === "es"
+              ? "No pudimos preparar el checkout USDT"
+              : "Could not prepare USDT checkout"}
           </strong>
 
           <p>
             {error ??
-              "Unknown setup error"}
+              "CHECKOUT_SETUP_FAILED"}
           </p>
 
           <p>
-            No payment was
-            processed.
+            {language === "es"
+              ? "No se procesó ningún pago."
+              : "No payment was processed."}
           </p>
         </div>
       </div>
     );
   }
 
+  const statusLabel = (() => {
+    switch (
+      attempt.status
+    ) {
+      case "SUBMITTED":
+        return language === "es"
+          ? "Enviado"
+          : "Submitted";
+
+      case "VERIFYING":
+        return language === "es"
+          ? "Verificando"
+          : "Verifying";
+
+      case "VERIFIED":
+        return language === "es"
+          ? "Verificado"
+          : "Verified";
+
+      case "REJECTED":
+        return language === "es"
+          ? "No verificado"
+          : "Not verified";
+
+      case "EXPIRED":
+        return language === "es"
+          ? "Expirado"
+          : "Expired";
+
+      default:
+        return language === "es"
+          ? "Esperando transferencia"
+          : "Awaiting transfer";
+    }
+  })();
+
+  const awaiting =
+    attempt.status ===
+    "AWAITING_TRANSFER";
+
   const submitted =
     attempt.status ===
-    "SUBMITTED";
+      "SUBMITTED" ||
+    attempt.status ===
+      "VERIFYING";
+
+  const rejected =
+    attempt.status ===
+    "REJECTED";
 
   return (
     <div className="usdt-payment-panel">
@@ -281,27 +683,34 @@ export default function UsdtPaymentPanel({
           </span>
 
           <h4>
-            Send on Ethereum
-            Mainnet
+            {language === "es"
+              ? "Enviar por Ethereum Mainnet"
+              : "Send on Ethereum Mainnet"}
           </h4>
         </div>
 
         <span
           className={`usdt-status ${
-            submitted
-              ? "is-submitted"
-              : ""
+            attempt.status ===
+              "VERIFIED"
+              ? "is-verified"
+              : attempt.status ===
+                    "REJECTED"
+                ? "is-rejected"
+                : submitted
+                  ? "is-submitted"
+                  : ""
           }`}
         >
-          {submitted
-            ? "Submitted"
-            : "Awaiting transfer"}
+          {statusLabel}
         </span>
       </div>
 
       <div className="usdt-amount-card">
         <span>
-          Amount due
+          {language === "es"
+            ? "Monto exacto"
+            : "Exact amount due"}
         </span>
 
         <strong>
@@ -313,15 +722,18 @@ export default function UsdtPaymentPanel({
         </strong>
 
         <small>
-          Network fee is not
-          included.
+          {language === "es"
+            ? "La comisión de red no está incluida."
+            : "Network gas is not included."}
         </small>
       </div>
 
       <div className="usdt-payment-grid">
         <div className="usdt-field">
           <span>
-            Network
+            {language === "es"
+              ? "Red"
+              : "Network"}
           </span>
 
           <strong>
@@ -342,13 +754,8 @@ export default function UsdtPaymentPanel({
         </div>
 
         <div className="usdt-field">
-          <span>
-            Token
-          </span>
-
-          <strong>
-            USDT
-          </strong>
+          <span>Token</span>
+          <strong>USDT</strong>
         </div>
 
         <div className="usdt-field">
@@ -364,8 +771,9 @@ export default function UsdtPaymentPanel({
 
       <div className="usdt-address-block">
         <span>
-          Send only to this
-          Ethereum address
+          {language === "es"
+            ? "Enviar únicamente a esta dirección Ethereum"
+            : "Send only to this Ethereum address"}
         </span>
 
         <code>
@@ -380,14 +788,20 @@ export default function UsdtPaymentPanel({
           }
         >
           {copied
-            ? "Copied ✓"
-            : "Copy wallet"}
+            ? language === "es"
+              ? "Copiada ✓"
+              : "Copied ✓"
+            : language === "es"
+              ? "Copiar wallet"
+              : "Copy wallet"}
         </button>
       </div>
 
       <div className="usdt-token-contract">
         <span>
-          USDT contract
+          {language === "es"
+            ? "Contrato oficial USDT"
+            : "Official USDT contract"}
         </span>
 
         <code>
@@ -401,40 +815,38 @@ export default function UsdtPaymentPanel({
         </strong>
 
         <p>
-          The sender needs ETH
-          to pay the Ethereum
-          network fee. Gas is
-          separate from the
-          USDT amount above.
+          {language === "es"
+            ? "La wallet que envía necesita ETH para pagar el gas de Ethereum. El gas es independiente del monto USDT."
+            : "The sending wallet needs ETH for Ethereum gas. Gas is separate from the USDT amount."}
         </p>
       </div>
 
       <div className="usdt-notice usdt-notice-warning">
         <strong>
-          Ethereum Mainnet only
+          {language === "es"
+            ? "Solo Ethereum Mainnet"
+            : "Ethereum Mainnet only"}
         </strong>
 
         <p>
-          Do not send through
-          Polygon, Base,
-          Arbitrum, BNB Chain
-          or any other network.
+          {language === "es"
+            ? "No envíes por Polygon, Base, Arbitrum, BNB Chain ni ninguna otra red."
+            : "Do not send through Polygon, Base, Arbitrum, BNB Chain or any other network."}
         </p>
       </div>
 
-      {!submitted ? (
+      {awaiting && (
         <div className="usdt-tx-section">
-          <label
-            htmlFor="usdt-tx-hash"
-          >
-            Transaction hash
+          <label htmlFor="usdt-tx-hash">
+            {language === "es"
+              ? "Hash de transacción"
+              : "Transaction hash"}
           </label>
 
           <p>
-            After sending USDT,
-            paste the Ethereum
-            transaction hash
-            here.
+            {language === "es"
+              ? "Después de enviar USDT, pegá aquí el hash de la transacción Ethereum."
+              : "After sending USDT, paste the Ethereum transaction hash here."}
           </p>
 
           <input
@@ -466,35 +878,42 @@ export default function UsdtPaymentPanel({
           <button
             type="button"
             className="db-button db-button-primary usdt-submit-button"
-            disabled={
-              submitting
-            }
+            disabled={submitting}
             onClick={
               submitEvidence
             }
           >
             {submitting
-              ? "Submitting…"
-              : "Submit transaction hash"}
+              ? language === "es"
+                ? "Enviando…"
+                : "Submitting…"
+              : language === "es"
+                ? "Verificar transacción"
+                : "Verify transaction"}
           </button>
         </div>
-      ) : (
+      )}
+
+      {submitted && (
         <div className="usdt-submitted-card">
           <span className="usdt-submitted-mark">
-            ✓
+            …
           </span>
 
           <div>
             <strong>
-              Transaction
-              evidence received
+              {language === "es"
+                ? "Verificación en curso"
+                : "Verification in progress"}
             </strong>
 
             <p>
-              Your transaction
-              has not been
-              confirmed as a
-              payment yet.
+              {verificationNote ??
+                (
+                  language === "es"
+                    ? "Esperando confirmaciones de Ethereum."
+                    : "Waiting for Ethereum confirmations."
+                )}
             </p>
 
             <code>
@@ -504,9 +923,33 @@ export default function UsdtPaymentPanel({
         </div>
       )}
 
+      {rejected && (
+        <div
+          className="usdt-notice usdt-notice-error"
+          role="alert"
+        >
+          <strong>
+            {language === "es"
+              ? "Pago no verificado"
+              : "Payment not verified"}
+          </strong>
+
+          <p>
+            {error ??
+              (
+                language === "es"
+                  ? "La evidencia blockchain no coincide con este intento de pago."
+                  : "The blockchain evidence does not match this payment attempt."
+              )}
+          </p>
+        </div>
+      )}
+
       <div className="usdt-legal-links">
         <span>
-          By continuing, you can review:
+          {language === "es"
+            ? "Antes de pagar podés revisar:"
+            : "Before paying, review:"}
         </span>
 
         <div className="usdt-legal-link-row">
@@ -515,7 +958,9 @@ export default function UsdtPaymentPanel({
             target="_blank"
             rel="noreferrer"
           >
-            Terms
+            {language === "es"
+              ? "Términos"
+              : "Terms"}
           </a>
 
           <a
@@ -523,7 +968,9 @@ export default function UsdtPaymentPanel({
             target="_blank"
             rel="noreferrer"
           >
-            Privacy
+            {language === "es"
+              ? "Privacidad"
+              : "Privacy"}
           </a>
 
           <a
@@ -531,26 +978,24 @@ export default function UsdtPaymentPanel({
             target="_blank"
             rel="noreferrer"
           >
-            Refunds
+            {language === "es"
+              ? "Reembolsos"
+              : "Refunds"}
           </a>
         </div>
       </div>
 
       <div className="usdt-authority-note">
         <strong>
-          Verification required
+          {language === "es"
+            ? "Verificación blockchain obligatoria"
+            : "Blockchain verification required"}
         </strong>
 
         <p>
-          Submitting a
-          transaction hash does
-          not create a
-          membership, mark the
-          order as paid, or
-          reserve inventory.
-          Server-side Ethereum
-          verification is
-          required first.
+          {language === "es"
+            ? "Enviar un hash no marca el pedido como pagado. La membresía y el serial se crean únicamente después de la verificación server-side en Ethereum."
+            : "Submitting a hash does not mark the order paid. Membership and serial are created only after server-side Ethereum verification."}
         </p>
       </div>
     </div>

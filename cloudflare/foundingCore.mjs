@@ -8,6 +8,13 @@ import {
 const PRELAUNCH_RATE_LIMIT = 10;
 const RATE_WINDOW_MS = 60_000;
 
+const COMMERCE_RATE_LIMITS = {
+  ORDER_CREATE: 5,
+  USDT_ATTEMPT_CREATE: 5,
+  USDT_HASH_SUBMIT: 5,
+  USDT_VERIFY_POLL: 20,
+};
+
 function json(payload, status = 200) {
   return Response.json(payload, {
     status,
@@ -105,6 +112,20 @@ export class FoundingCore extends DurableObject {
 
         PRIMARY KEY (
           actor_hash,
+          bucket_start
+        )
+      );
+
+      CREATE TABLE IF NOT EXISTS commerce_rate_limits (
+        actor_hash TEXT NOT NULL,
+        action TEXT NOT NULL,
+        bucket_start INTEGER NOT NULL,
+        request_count INTEGER NOT NULL,
+        updated_at TEXT NOT NULL,
+
+        PRIMARY KEY (
+          actor_hash,
+          action,
           bucket_start
         )
       );
@@ -383,9 +404,178 @@ export class FoundingCore extends DurableObject {
       });
   }
 
+  consumeCommerceRateLimit(payload) {
+    const actorHash =
+      payload?.actorHash;
+
+    const action =
+      payload?.action;
+
+    if (
+      typeof actorHash !== "string" ||
+      actorHash.length < 32 ||
+      actorHash.length > 128
+    ) {
+      return {
+        status: 400,
+        body: {
+          error: "INVALID_ACTOR",
+        },
+      };
+    }
+
+    if (
+      typeof action !== "string" ||
+      !Object.prototype.hasOwnProperty.call(
+        COMMERCE_RATE_LIMITS,
+        action,
+      )
+    ) {
+      return {
+        status: 400,
+        body: {
+          error: "INVALID_RATE_LIMIT_ACTION",
+        },
+      };
+    }
+
+    const limit =
+      COMMERCE_RATE_LIMITS[action];
+
+    const now =
+      new Date();
+
+    const bucketStart =
+      Math.floor(
+        now.getTime() /
+        RATE_WINDOW_MS,
+      ) *
+      RATE_WINDOW_MS;
+
+    return this.state.storage
+      .transactionSync(() => {
+        this.sql.exec(
+          `
+            DELETE FROM commerce_rate_limits
+            WHERE bucket_start < ?
+          `,
+          bucketStart -
+            5 * RATE_WINDOW_MS,
+        );
+
+        const row =
+          this.sql.exec(
+            `
+              SELECT request_count AS count
+              FROM commerce_rate_limits
+              WHERE
+                actor_hash = ?
+                AND action = ?
+                AND bucket_start = ?
+            `,
+            actorHash,
+            action,
+            bucketStart,
+          )
+            .toArray()[0];
+
+        const count =
+          Number(
+            row?.count ?? 0,
+          );
+
+        if (count >= limit) {
+          return {
+            status: 429,
+            body: {
+              error:
+                "COMMERCE_RATE_LIMITED",
+
+              retryAfterSeconds:
+                Math.max(
+                  1,
+                  Math.ceil(
+                    (
+                      bucketStart +
+                      RATE_WINDOW_MS -
+                      now.getTime()
+                    ) / 1000,
+                  ),
+                ),
+            },
+          };
+        }
+
+        this.sql.exec(
+          `
+            INSERT INTO commerce_rate_limits (
+              actor_hash,
+              action,
+              bucket_start,
+              request_count,
+              updated_at
+            )
+            VALUES (?, ?, ?, 1, ?)
+
+            ON CONFLICT(
+              actor_hash,
+              action,
+              bucket_start
+            )
+            DO UPDATE SET
+              request_count =
+                request_count + 1,
+              updated_at =
+                excluded.updated_at
+          `,
+          actorHash,
+          action,
+          bucketStart,
+          now.toISOString(),
+        );
+
+        return {
+          status: 200,
+          body: {
+            allowed: true,
+          },
+        };
+      });
+  }
+
   async fetch(request) {
     const url =
       new URL(request.url);
+
+    if (
+      request.method === "POST" &&
+      url.pathname ===
+        "/internal/commerce-rate-limit"
+    ) {
+      let payload;
+
+      try {
+        payload =
+          await request.json();
+      } catch {
+        return json(
+          {
+            error: "INVALID_JSON",
+          },
+          400,
+        );
+      }
+
+      const result =
+        this.consumeCommerceRateLimit(
+          payload,
+        );
+
+      return json(
+        result.body,
+        result.status,
+      );
+    }
 
     if (
       request.method === "GET" &&

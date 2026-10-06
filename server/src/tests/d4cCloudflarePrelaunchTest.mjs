@@ -1312,6 +1312,51 @@ try {
     console.log(
       "VERIFIED_MEMBERSHIP=PASS",
     );
+
+
+    /*
+     * A later GET must recover the authoritative result,
+     * not only the VERIFIED status.
+     */
+    const reread =
+      await callCommerce(
+        `/api/payments/usdt/attempts/${publicAttemptBody.attempt.publicId}`,
+      );
+
+    assert(
+      reread.status === 200,
+      "VERIFIED_REREAD_FAILED",
+    );
+
+    const rereadBody =
+      await reread.json();
+
+    assert(
+      rereadBody
+        .paymentVerified ===
+        true,
+      "VERIFIED_REREAD_PAYMENT_FALSE",
+    );
+
+    assert(
+      rereadBody
+        .allocation
+        ?.serialNumber ===
+        1,
+      "VERIFIED_REREAD_SERIAL_MISSING",
+    );
+
+    assert(
+      rereadBody
+        .membership
+        ?.status ===
+        "ACTIVATION_PENDING",
+      "VERIFIED_REREAD_MEMBERSHIP_MISSING",
+    );
+
+    console.log(
+      "VERIFIED_RESULT_REREAD=PASS",
+    );
   } finally {
     globalThis.fetch =
       originalFetch;

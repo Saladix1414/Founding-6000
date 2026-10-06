@@ -549,6 +549,66 @@ async function callCommerceCore(
   };
 }
 
+function commerceRateAction(
+  request,
+  url,
+) {
+  if (
+    request.method === "POST" &&
+    url.pathname === "/api/orders"
+  ) {
+    return "ORDER_CREATE";
+  }
+
+  if (
+    request.method === "POST" &&
+    url.pathname ===
+      "/api/payments/usdt/attempts"
+  ) {
+    return "USDT_ATTEMPT_CREATE";
+  }
+
+  if (
+    request.method === "POST" &&
+    /^\/api\/payments\/usdt\/attempts\/PAY-USDT-[A-F0-9]{12}\/submit$/
+      .test(url.pathname)
+  ) {
+    return "USDT_HASH_SUBMIT";
+  }
+
+  if (
+    request.method === "GET" &&
+    /^\/api\/payments\/usdt\/attempts\/PAY-USDT-[A-F0-9]{12}$/
+      .test(url.pathname)
+  ) {
+    return "USDT_VERIFY_POLL";
+  }
+
+  return null;
+}
+
+async function enforceCommerceRateLimit(
+  env,
+  request,
+  action,
+) {
+  const hash =
+    await actorHash(request);
+
+  return callCommerceCore(
+    env,
+    "/internal/commerce-rate-limit",
+    {
+      method: "POST",
+
+      body: {
+        actorHash: hash,
+        action,
+      },
+    },
+  );
+}
+
 const PENDING_VERIFICATION_ERRORS =
   new Set([
     "TRANSACTION_NOT_FOUND",
@@ -627,6 +687,29 @@ async function verifyPublicUsdtAttempt(
         attempt:
           begin.payload
             ?.attempt,
+
+        ...(begin.payload?.order
+          ? {
+              order:
+                begin.payload.order,
+            }
+          : {}),
+
+        ...(begin.payload?.allocation
+          ? {
+              allocation:
+                begin.payload
+                  .allocation,
+            }
+          : {}),
+
+        ...(begin.payload?.membership
+          ? {
+              membership:
+                begin.payload
+                  .membership,
+            }
+          : {}),
 
         paymentVerified:
           status ===
@@ -1061,6 +1144,47 @@ export default {
           503,
           requestId,
         );
+      }
+    }
+
+    if (
+      publicUsdtApiEnabled(env)
+    ) {
+      const rateAction =
+        commerceRateAction(
+          request,
+          url,
+        );
+
+      if (rateAction) {
+        const rate =
+          await enforceCommerceRateLimit(
+            env,
+            request,
+            rateAction,
+          );
+
+        if (rate.status === 429) {
+          return json(
+            rate.payload,
+            429,
+            requestId,
+          );
+        }
+
+        if (
+          rate.status < 200 ||
+          rate.status >= 300
+        ) {
+          return json(
+            {
+              error:
+                "RATE_LIMIT_UNAVAILABLE",
+            },
+            503,
+            requestId,
+          );
+        }
       }
     }
 
