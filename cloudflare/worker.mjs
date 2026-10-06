@@ -9,6 +9,63 @@ export {
 const MAX_JSON_BYTES =
   32 * 1024;
 
+const SECURITY_HEADERS = {
+  "Content-Security-Policy":
+    "default-src 'self'; " +
+    "base-uri 'self'; " +
+    "object-src 'none'; " +
+    "frame-ancestors 'none'; " +
+    "form-action 'self'; " +
+    "script-src 'self'; " +
+    "style-src 'self' 'unsafe-inline'; " +
+    "img-src 'self' data:; " +
+    "font-src 'self'; " +
+    "connect-src 'self'; " +
+    "worker-src 'self'; " +
+    "manifest-src 'self';",
+
+  "Strict-Transport-Security":
+    "max-age=31536000",
+
+  "X-Content-Type-Options":
+    "nosniff",
+
+  "X-Frame-Options":
+    "DENY",
+
+  "Referrer-Policy":
+    "strict-origin-when-cross-origin",
+
+  "Permissions-Policy":
+    "camera=(), microphone=(), geolocation=(), payment=()",
+};
+
+function secureResponse(
+  response,
+) {
+  const secured =
+    new Response(
+      response.body,
+      response,
+    );
+
+  for (
+    const [
+      name,
+      value,
+    ] of Object.entries(
+      SECURITY_HEADERS,
+    )
+  ) {
+    secured.headers.set(
+      name,
+      value,
+    );
+  }
+
+  return secured;
+}
+
 function json(
   payload,
   status = 200,
@@ -20,6 +77,8 @@ function json(
       status,
 
       headers: {
+        ...SECURITY_HEADERS,
+
         "Cache-Control":
           "no-store",
 
@@ -469,8 +528,13 @@ export default {
       );
     }
 
-    return env.ASSETS.fetch(
-      request,
+    const assetResponse =
+      await env.ASSETS.fetch(
+        request,
+      );
+
+    return secureResponse(
+      assetResponse,
     );
   },
 };
