@@ -1036,23 +1036,35 @@ export default {
               email:
                 "not_required",
               usdt:
-                "disabled",
+                publicUsdtApiEnabled(env)
+                  ? "enabled"
+                  : "disabled",
             },
 
             operations:
               "ok",
 
             checkout:
-              "closed",
+              publicUsdtApiEnabled(env)
+                ? "open"
+                : "closed",
 
             payments:
-              "disabled",
+              publicUsdtApiEnabled(env)
+                ? "enabled"
+                : "disabled",
 
             paymentReadiness:
-              false,
+              runtimeFlagEnabled(
+                env,
+                "PAYMENT_READINESS",
+              ),
 
             realPaymentsEnabled:
-              false,
+              runtimeFlagEnabled(
+                env,
+                "REAL_PAYMENTS_ENABLED",
+              ),
 
             timestamp:
               new Date()
