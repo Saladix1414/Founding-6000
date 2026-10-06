@@ -311,7 +311,7 @@ function App() {
       email.trim();
 
     const validEmail =
-      /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
         normalizedEmail,
       );
 
