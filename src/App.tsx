@@ -11,6 +11,7 @@ import {
 } from "./lib/foundingApi";
 
 import "./App.css";
+import { DigitalBoostWhitepaper } from "./whitepaper/DigitalBoostWhitepaper";
 
 const TARGET_DATE = new Date("2027-01-05T00:00:00-03:00");
 
@@ -154,6 +155,9 @@ function App() {
     useState(false);
 
   const [galleryOpen, setGalleryOpen] =
+    useState(false);
+
+  const [whitepaperOpen, setWhitepaperOpen] =
     useState(false);
 
   const [galleryPreview, setGalleryPreview] =
@@ -345,6 +349,32 @@ function App() {
       );
     };
   }, [galleryOpen, galleryPreview]);
+
+  useEffect(() => {
+    if (!whitepaperOpen) {
+      return;
+    }
+
+    const handleWhitepaperKeyDown = (
+      event: KeyboardEvent,
+    ) => {
+      if (event.key === "Escape") {
+        setWhitepaperOpen(false);
+      }
+    };
+
+    document.addEventListener(
+      "keydown",
+      handleWhitepaperKeyDown,
+    );
+
+    return () => {
+      document.removeEventListener(
+        "keydown",
+        handleWhitepaperKeyDown,
+      );
+    };
+  }, [whitepaperOpen]);
 
   const closeMenu = () => {
     setMobileMenuOpen(false);
@@ -717,6 +747,30 @@ function App() {
         </div>
       )}
 
+      {whitepaperOpen && (
+        <div
+          className="project-whitepaper-layer"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (
+              event.target ===
+              event.currentTarget
+            ) {
+              setWhitepaperOpen(false);
+            }
+          }}
+        >
+          <div className="db-container project-whitepaper-layer__inner">
+            <DigitalBoostWhitepaper
+              language={language}
+              onClose={() =>
+                setWhitepaperOpen(false)
+              }
+            />
+          </div>
+        </div>
+      )}
+
       <main id="top">
         <section
           className="campaign-hero"
@@ -736,11 +790,12 @@ function App() {
                   }
                   aria-expanded={galleryOpen}
                   aria-controls="project-gallery-panel"
-                  onClick={() =>
+                  onClick={() => {
+                    setWhitepaperOpen(false);
                     setGalleryOpen(
                       (current) => !current,
-                    )
-                  }
+                    );
+                  }}
                 >
                   <span
                     className="project-dock__icon"
@@ -753,6 +808,42 @@ function App() {
                     {language === "es"
                       ? "GALERÍA"
                       : "GALLERY"}
+                  </span>
+
+                  <span
+                    className="project-dock__arrow"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  className={
+                    whitepaperOpen
+                      ? "project-dock__button is-active"
+                      : "project-dock__button"
+                  }
+                  aria-expanded={whitepaperOpen}
+                  aria-controls="project-whitepaper-panel"
+                  onClick={() => {
+                    setGalleryPreview(null);
+                    setGalleryOpen(false);
+                    setWhitepaperOpen(
+                      (current) => !current,
+                    );
+                  }}
+                >
+                  <span
+                    className="project-dock__icon"
+                    aria-hidden="true"
+                  >
+                    ◫
+                  </span>
+
+                  <span>
+                    WHITEPAPER
                   </span>
 
                   <span
