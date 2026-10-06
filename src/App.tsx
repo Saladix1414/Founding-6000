@@ -153,6 +153,15 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] =
     useState(false);
 
+  const [galleryOpen, setGalleryOpen] =
+    useState(false);
+
+  const [galleryPreview, setGalleryPreview] =
+    useState<{
+      name: string;
+      src: string;
+    } | null>(null);
+
   const [checkoutOpen, setCheckoutOpen] =
     useState(false);
 
@@ -305,6 +314,37 @@ function App() {
       );
     };
   }, [checkoutOpen]);
+
+  useEffect(() => {
+    if (!galleryOpen) {
+      return;
+    }
+
+    const handleGalleryKeyDown = (
+      event: KeyboardEvent,
+    ) => {
+      if (event.key === "Escape") {
+        if (galleryPreview) {
+          setGalleryPreview(null);
+          return;
+        }
+
+        setGalleryOpen(false);
+      }
+    };
+
+    document.addEventListener(
+      "keydown",
+      handleGalleryKeyDown,
+    );
+
+    return () => {
+      document.removeEventListener(
+        "keydown",
+        handleGalleryKeyDown,
+      );
+    };
+  }, [galleryOpen, galleryPreview]);
 
   const closeMenu = () => {
     setMobileMenuOpen(false);
@@ -637,6 +677,192 @@ function App() {
           id="campaign"
         >
           <div className="campaign-hero__signal" />
+
+          <div className="db-container project-dock">
+            <div className="project-dock__rail">
+              <div className="project-dock__buttons">
+                <button
+                  type="button"
+                  className={
+                    galleryOpen
+                      ? "project-dock__button is-active"
+                      : "project-dock__button"
+                  }
+                  aria-expanded={galleryOpen}
+                  aria-controls="project-gallery-panel"
+                  onClick={() =>
+                    setGalleryOpen(
+                      (current) => !current,
+                    )
+                  }
+                >
+                  <span
+                    className="project-dock__icon"
+                    aria-hidden="true"
+                  >
+                    ▦
+                  </span>
+
+                  <span>
+                    {language === "es"
+                      ? "GALERÍA"
+                      : "GALLERY"}
+                  </span>
+
+                  <span
+                    className="project-dock__arrow"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </button>
+              </div>
+
+              {galleryOpen && (
+                <aside
+                  id="project-gallery-panel"
+                  className="project-gallery-panel"
+                  aria-label={
+                    language === "es"
+                      ? "Galería del proyecto"
+                      : "Project gallery"
+                  }
+                >
+                  <header className="project-gallery-panel__header">
+                    <div>
+                      <span>
+                        DIGITALBOOST
+                      </span>
+
+                      <strong>
+                        {language === "es"
+                          ? "Galería del proyecto"
+                          : "Project Gallery"}
+                      </strong>
+                    </div>
+
+                    <button
+                      type="button"
+                      className="project-gallery-panel__close"
+                      aria-label={
+                        language === "es"
+                          ? "Cerrar galería"
+                          : "Close gallery"
+                      }
+                      onClick={() =>
+                        setGalleryOpen(false)
+                      }
+                    >
+                      ×
+                    </button>
+                  </header>
+
+                  <p className="project-gallery-panel__intro">
+                    {language === "es"
+                      ? "Una vista rápida de las principales áreas que forman el ecosistema DigitalBoost."
+                      : "A quick view of the core areas that make up the DigitalBoost ecosystem."}
+                  </p>
+
+                  <div className="project-gallery-grid">
+                    {[
+                      [
+                        "Commerce OS",
+                        "/project-gallery/commerce-os.svg",
+                      ],
+                      [
+                        "Web Builder",
+                        "/project-gallery/web-builder.svg",
+                      ],
+                      [
+                        "AI Forge",
+                        "/project-gallery/ai-forge.svg",
+                      ],
+                      [
+                        "Trading Islands",
+                        "/project-gallery/trading-islands.svg",
+                      ],
+                      [
+                        "Store Builder",
+                        "/project-gallery/store-builder.svg",
+                      ],
+                      [
+                        "DigitalBoost Origin",
+                        "/project-gallery/digitalboost-origin.svg",
+                      ],
+                    ].map(([name, src]) => (
+                      <button
+                        className="project-gallery-card"
+                        key={name}
+                        type="button"
+                        onClick={() =>
+                          setGalleryPreview({
+                            name,
+                            src,
+                          })
+                        }
+                      >
+                        <img
+                          src={src}
+                          alt={name}
+                          loading="lazy"
+                        />
+
+                        <span className="project-gallery-card__caption">
+                          {name}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+
+                  {galleryPreview && (
+                    <div
+                      className="project-gallery-preview"
+                      role="presentation"
+                      onMouseDown={(event) => {
+                        if (
+                          event.target ===
+                          event.currentTarget
+                        ) {
+                          setGalleryPreview(null);
+                        }
+                      }}
+                    >
+                      <div
+                        className="project-gallery-preview__dialog"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label={galleryPreview.name}
+                      >
+                        <button
+                          type="button"
+                          className="project-gallery-preview__close"
+                          aria-label={
+                            language === "es"
+                              ? "Cerrar imagen"
+                              : "Close image"
+                          }
+                          onClick={() =>
+                            setGalleryPreview(null)
+                          }
+                        >
+                          ×
+                        </button>
+
+                        <img
+                          src={galleryPreview.src}
+                          alt={galleryPreview.name}
+                        />
+
+                        <strong>
+                          {galleryPreview.name}
+                        </strong>
+                      </div>
+                    </div>
+                  )}
+                </aside>
+              )}
+            </div>
+          </div>
 
           <div className="db-container campaign-hero__grid">
             <div className="campaign-hero__content">

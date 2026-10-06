@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101923"/>
+      <stop offset="1" stop-color="#05080c"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#168cff"/>
+      <stop offset="1" stop-color="#65e8f7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+
+  <circle
+    cx="980"
+    cy="100"
+    r="290"
+    fill="#168cff"
+    opacity=".08"
+  />
+
+  <path
+    d="M0 520 L1200 360"
+    stroke="#65e8f7"
+    stroke-opacity=".07"
+  />
+
+  <rect
+    x="64"
+    y="64"
+    width="1072"
+    height="547"
+    rx="34"
+    fill="none"
+    stroke="#65e8f7"
+    stroke-opacity=".18"
+  />
+
+  <text
+    x="98"
+    y="135"
+    fill="#65e8f7"
+    font-family="monospace"
+    font-size="24"
+    letter-spacing="5"
+  >DIGITALBOOST / PROJECT PREVIEW</text>
+
+  <text
+    x="98"
+    y="385"
+    fill="#f4f8fb"
+    font-family="Arial, sans-serif"
+    font-size="72"
+    font-weight="800"
+  >COMMERCE OS</text>
+
+  <text
+    x="98"
+    y="455"
+    fill="#8394a8"
+    font-family="monospace"
+    font-size="24"
+    letter-spacing="3"
+  >FOUNDING 6000</text>
+
+  <rect
+    x="98"
+    y="520"
+    width="260"
+    height="4"
+    rx="2"
+    fill="url(#accent)"
+  />
+
+  <text
+    x="1050"
+    y="555"
+    text-anchor="end"
+    fill="#65e8f7"
+    font-family="monospace"
+    font-size="32"
+  >01</text>
+</svg>
