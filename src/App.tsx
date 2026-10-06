@@ -19,6 +19,10 @@ const PUBLIC_CHECKOUT_ENABLED =
     .VITE_PUBLIC_CHECKOUT_ENABLED ===
   "true";
 
+type Language =
+  | "en"
+  | "es";
+
 type Countdown = {
   days: number;
   hours: number;
@@ -131,6 +135,18 @@ function CountdownUnit({
 }
 
 function App() {
+  const [language, setLanguage] =
+    useState<Language>(() => {
+      const saved =
+        window.localStorage.getItem(
+          "founding6000-language",
+        );
+
+      return saved === "es"
+        ? "es"
+        : "en";
+    });
+
   const [countdown, setCountdown] =
     useState<Countdown>(getCountdown);
 
@@ -162,6 +178,16 @@ function App() {
     useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    window.localStorage.setItem(
+      "founding6000-language",
+      language,
+    );
+
+    document.documentElement.lang =
+      language;
+  }, [language]);
+
+  useEffect(() => {
     const interval = window.setInterval(() => {
       setCountdown(getCountdown());
     }, 1000);
@@ -181,8 +207,12 @@ function App() {
 
   const primaryCtaLabel =
     PUBLIC_CHECKOUT_ENABLED
-      ? "{primaryCtaLabel}"
-      : "Join Prelaunch";
+      ? language === "es"
+        ? "Comprar ahora"
+        : "Purchase Now"
+      : language === "es"
+        ? "Unirme al prelaunch"
+        : "Join Prelaunch";
 
   useEffect(() => {
     if (!checkoutOpen) {
@@ -317,7 +347,9 @@ function App() {
 
     if (!validEmail) {
       setEmailError(
-        "Enter a valid email address to continue.",
+        language === "es"
+          ? "Ingresá un email válido para continuar."
+          : "Enter a valid email address to continue.",
       );
 
       return;
@@ -357,7 +389,9 @@ function App() {
         );
       } catch {
         setEmailError(
-          "We could not register your email right now. Please try again.",
+          language === "es"
+            ? "No pudimos registrar tu email en este momento. Intentá nuevamente."
+            : "We could not register your email right now. Please try again.",
         );
       } finally {
         setEmailSubmitting(
@@ -429,14 +463,62 @@ function App() {
 
           <nav
             className="campaign-nav__desktop"
-            aria-label="Primary navigation"
+            aria-label={
+              language === "es"
+                ? "Navegación principal"
+                : "Primary navigation"
+            }
           >
-            <a href="#campaign">Campaign</a>
-            <a href="#phases">Phases</a>
-            <a href="#benefits">Benefits</a>
-            <a href="#product">Product</a>
+            <a href="#campaign">
+              {language === "es" ? "Campaña" : "Campaign"}
+            </a>
+            <a href="#phases">
+              {language === "es" ? "Fases" : "Phases"}
+            </a>
+            <a href="#benefits">
+              {language === "es" ? "Beneficios" : "Benefits"}
+            </a>
+            <a href="#product">
+              {language === "es" ? "Producto" : "Product"}
+            </a>
             <a href="#faq">FAQ</a>
           </nav>
+
+          <div
+            className="language-switcher language-switcher--desktop"
+            role="group"
+            aria-label="Language"
+          >
+            <button
+              type="button"
+              className={
+                language === "en"
+                  ? "language-switcher__button is-active"
+                  : "language-switcher__button"
+              }
+              aria-pressed={language === "en"}
+              onClick={() => setLanguage("en")}
+            >
+              EN
+            </button>
+
+            <span aria-hidden="true">
+              /
+            </span>
+
+            <button
+              type="button"
+              className={
+                language === "es"
+                  ? "language-switcher__button is-active"
+                  : "language-switcher__button"
+              }
+              aria-pressed={language === "es"}
+              onClick={() => setLanguage("es")}
+            >
+              ES
+            </button>
+          </div>
 
           <button
             className="db-button db-button--primary campaign-nav__cta"
@@ -450,9 +532,13 @@ function App() {
             className="mobile-menu-button"
             type="button"
             aria-label={
-              mobileMenuOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
+              language === "es"
+                ? mobileMenuOpen
+                  ? "Cerrar menú de navegación"
+                  : "Abrir menú de navegación"
+                : mobileMenuOpen
+                  ? "Close navigation menu"
+                  : "Open navigation menu"
             }
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
@@ -470,28 +556,68 @@ function App() {
           <nav
             id="mobile-navigation"
             className="mobile-nav"
-            aria-label="Mobile navigation"
+            aria-label={
+              language === "es"
+                ? "Navegación móvil"
+                : "Mobile navigation"
+            }
           >
             <div className="db-container mobile-nav__inner">
               <a href="#campaign" onClick={closeMenu}>
-                Campaign
+                {language === "es" ? "Campaña" : "Campaign"}
               </a>
 
               <a href="#phases" onClick={closeMenu}>
-                Phases
+                {language === "es" ? "Fases" : "Phases"}
               </a>
 
               <a href="#benefits" onClick={closeMenu}>
-                Benefits
+                {language === "es" ? "Beneficios" : "Benefits"}
               </a>
 
               <a href="#product" onClick={closeMenu}>
-                Product
+                {language === "es" ? "Producto" : "Product"}
               </a>
 
               <a href="#faq" onClick={closeMenu}>
                 FAQ
               </a>
+
+              <div
+                className="language-switcher language-switcher--mobile"
+                role="group"
+                aria-label="Language"
+              >
+                <button
+                  type="button"
+                  className={
+                    language === "en"
+                      ? "language-switcher__button is-active"
+                      : "language-switcher__button"
+                  }
+                  aria-pressed={language === "en"}
+                  onClick={() => setLanguage("en")}
+                >
+                  EN
+                </button>
+
+                <span aria-hidden="true">
+                  /
+                </span>
+
+                <button
+                  type="button"
+                  className={
+                    language === "es"
+                      ? "language-switcher__button is-active"
+                      : "language-switcher__button"
+                  }
+                  aria-pressed={language === "es"}
+                  onClick={() => setLanguage("es")}
+                >
+                  ES
+                </button>
+              </div>
 
               <button
                 type="button"
@@ -520,7 +646,9 @@ function App() {
                 <span className="campaign-kicker__divider">
                   /
                 </span>
-                PRE-LAUNCH
+                {language === "es"
+                  ? "PRELANZAMIENTO"
+                  : "PRE-LAUNCH"}
               </div>
 
               <h1 className="campaign-hero__title">
@@ -529,29 +657,42 @@ function App() {
               </h1>
 
               <p className="campaign-hero__headline">
-                Become part of the first 6,000.
+                {language === "es"
+                  ? "Formá parte de los primeros 6.000."
+                  : "Become part of the first 6,000."}
               </p>
 
               <p className="campaign-hero__description">
-                12 months of Focus Founding Access
-                plus permanent Founding Member status
-                when your membership is verified and
-                activated.
+                {language === "es"
+                  ? "12 meses de Focus Founding Access más estatus permanente de Founding Member cuando tu membresía sea verificada y activada."
+                  : "12 months of Focus Founding Access plus permanent Founding Member status when your membership is verified and activated."}
               </p>
 
               <div className="campaign-hero__meta">
                 <div>
-                  <span>Current phase</span>
+                  <span>
+                    {language === "es"
+                      ? "Fase actual"
+                      : "Current phase"}
+                  </span>
                   <strong>Genesis</strong>
                 </div>
 
                 <div>
-                  <span>Reference price</span>
+                  <span>
+                    {language === "es"
+                      ? "Precio de referencia"
+                      : "Reference price"}
+                  </span>
                   <strong>US$50</strong>
                 </div>
 
                 <div>
-                  <span>Genesis range</span>
+                  <span>
+                    {language === "es"
+                      ? "Rango Genesis"
+                      : "Genesis range"}
+                  </span>
                   <strong>#0001–#1000</strong>
                 </div>
               </div>
@@ -570,15 +711,16 @@ function App() {
                   className="db-button db-button--secondary"
                   href="#phases"
                 >
-                  Explore the campaign
+                  {language === "es"
+                    ? "Explorar la campaña"
+                    : "Explore the campaign"}
                 </a>
               </div>
 
               <p className="campaign-hero__disclosure">
-                Product pre-order / reservation.
-                Founding 6000 is not an investment,
-                equity offering, security or revenue-share
-                program.
+                {language === "es"
+                  ? "Preorden / reserva de producto. Founding 6000 no es una inversión, oferta de capital, valor financiero ni programa de participación en ingresos."
+                  : "Product pre-order / reservation. Founding 6000 is not an investment, equity offering, security or revenue-share program."}
               </p>
             </div>
 
@@ -586,56 +728,70 @@ function App() {
               <div className="launch-panel__top">
                 <div>
                   <span className="launch-panel__eyebrow">
-                    TARGET LAUNCH
+                    {language === "es"
+                      ? "LANZAMIENTO OBJETIVO"
+                      : "TARGET LAUNCH"}
                   </span>
 
                   <strong>JAN 05 · 2027</strong>
                 </div>
 
                 <span className="launch-panel__status">
-                  Target
+                  {language === "es"
+                    ? "Objetivo"
+                    : "Target"}
                 </span>
               </div>
 
               {countdown.reached ? (
                 <div className="launch-window">
-                  <span>Launch window reached</span>
+                  <span>
+                    {language === "es"
+                      ? "Ventana de lanzamiento alcanzada"
+                      : "Launch window reached"}
+                  </span>
 
                   <p>
-                    Follow DigitalBoost Origin updates for
-                    current product availability.
+                    {language === "es"
+                      ? "Seguí las novedades de DigitalBoost Origin para conocer la disponibilidad actual del producto."
+                      : "Follow DigitalBoost Origin updates for current product availability."}
                   </p>
                 </div>
               ) : (
                 <>
                   <div
                     className="countdown"
-                    aria-label="Countdown to target launch"
+                    aria-label={
+                      language === "es"
+                        ? "Cuenta regresiva al lanzamiento objetivo"
+                        : "Countdown to target launch"
+                    }
                   >
                     <CountdownUnit
                       value={countdown.days}
-                      label="Days"
+                      label={language === "es" ? "Días" : "Days"}
                     />
 
                     <CountdownUnit
                       value={countdown.hours}
-                      label="Hours"
+                      label={language === "es" ? "Horas" : "Hours"}
                     />
 
                     <CountdownUnit
                       value={countdown.minutes}
-                      label="Min"
+                      label={language === "es" ? "Min" : "Min"}
                     />
 
                     <CountdownUnit
                       value={countdown.seconds}
-                      label="Sec"
+                      label={language === "es" ? "Seg" : "Sec"}
                     />
                   </div>
 
                   <p className="launch-panel__note">
-                    This is a target launch date, not a
-                    guaranteed delivery date.
+                    {language === "es"
+                      ? "Esta es una fecha objetivo de lanzamiento, no una fecha de entrega garantizada."
+                      : "This is a target launch date, not a guaranteed delivery date."}
                   </p>
                 </>
               )}
@@ -644,11 +800,19 @@ function App() {
 
               <div className="launch-panel__phase">
                 <div>
-                  <span>ACTIVE PHASE</span>
+                  <span>
+                    {language === "es"
+                      ? "FASE ACTIVA"
+                      : "ACTIVE PHASE"}
+                  </span>
                   <strong>01 · Genesis</strong>
                 </div>
 
-                <span>1,000 max</span>
+                <span>
+                  {language === "es"
+                    ? "máx. 1.000"
+                    : "1,000 max"}
+                </span>
               </div>
             </aside>
           </div>
@@ -660,11 +824,15 @@ function App() {
               <div className="campaign-progress__header">
                 <div>
                   <span className="campaign-progress__eyebrow">
-                    GLOBAL CAMPAIGN
+                    {language === "es"
+                      ? "CAMPAÑA GLOBAL"
+                      : "GLOBAL CAMPAIGN"}
                   </span>
 
                   <h2>
-                    Founding membership allocation
+                    {language === "es"
+                      ? "Asignación de membresías Founding"
+                      : "Founding membership allocation"}
                   </h2>
                 </div>
 
@@ -713,22 +881,30 @@ function App() {
             <div className="section-heading">
               <div>
                 <div className="db-eyebrow">
-                  Campaign structure
+                  {language === "es"
+                    ? "Estructura de campaña"
+                    : "Campaign structure"}
                 </div>
 
                 <h2 className="db-title">
-                  Three phases. One founding cohort.
+                  {language === "es"
+                    ? "Tres fases. Una sola cohorte fundadora."
+                    : "Three phases. One founding cohort."}
                 </h2>
 
                 <p className="db-copy">
-                  Only one phase is active at a time.
-                  Each phase has a fixed capacity and
-                  reference price.
+                  {language === "es"
+                    ? "Solo una fase está activa a la vez. Cada fase tiene una capacidad fija y un precio de referencia."
+                    : "Only one phase is active at a time. Each phase has a fixed capacity and reference price."}
                 </p>
               </div>
 
               <div className="section-heading__total">
-                <span>Total capacity</span>
+                <span>
+                  {language === "es"
+                    ? "Capacidad total"
+                    : "Total capacity"}
+                </span>
                 <strong>6,000</strong>
               </div>
             </div>
@@ -750,42 +926,64 @@ function App() {
 
                     {phase.active ? (
                       <span className="phase-card__active">
-                        Active
+                        {language === "es"
+                          ? "Activa"
+                          : "Active"}
                       </span>
                     ) : (
                       <span className="phase-card__future">
-                        Upcoming
+                        {language === "es"
+                          ? "Próxima"
+                          : "Upcoming"}
                       </span>
                     )}
                   </div>
 
                   <div className="phase-card__body">
                     <span className="phase-card__label">
-                      Phase {phase.number}
+                      {language === "es"
+                        ? `Fase ${phase.number}`
+                        : `Phase ${phase.number}`}
                     </span>
 
                     <h3>{phase.name}</h3>
 
                     <div className="phase-card__price">
-                      <small>Reference</small>
+                      <small>
+                        {language === "es"
+                          ? "Referencia"
+                          : "Reference"}
+                      </small>
                       <strong>US${phase.price}</strong>
                     </div>
 
                     <dl className="phase-card__details">
                       <div>
-                        <dt>Capacity</dt>
+                        <dt>
+                          {language === "es"
+                            ? "Capacidad"
+                            : "Capacity"}
+                        </dt>
                         <dd>
                           {phase.capacity.toLocaleString()}
                         </dd>
                       </div>
 
                       <div>
-                        <dt>Serial range</dt>
+                        <dt>
+                          {language === "es"
+                            ? "Rango de serie"
+                            : "Serial range"}
+                        </dt>
                         <dd>{phase.range}</dd>
                       </div>
 
                       <div>
-                        <dt>Status</dt>
+                        <dt>
+                          {language === "es"
+                            ? "Estado"
+                            : "Status"}
+                        </dt>
                         <dd>{phase.status}</dd>
                       </div>
                     </dl>
@@ -793,8 +991,12 @@ function App() {
 
                   <div className="phase-card__bottom">
                     {phase.active
-                      ? "Current campaign phase"
-                      : "Opens after prior phase allocation"}
+                      ? language === "es"
+                        ? "Fase actual de la campaña"
+                        : "Current campaign phase"
+                      : language === "es"
+                        ? "Abre después de completar la fase anterior"
+                        : "Opens after prior phase allocation"}
                   </div>
                 </article>
               ))}
@@ -822,18 +1024,21 @@ function App() {
             <div className="section-heading section-heading--wide">
               <div>
                 <div className="db-eyebrow">
-                  Founding access
+                  {language === "es"
+                    ? "Acceso Founding"
+                    : "Founding access"}
                 </div>
 
                 <h2 className="db-title">
-                  More than early access.
+                  {language === "es"
+                    ? "Más que acceso anticipado."
+                    : "More than early access."}
                 </h2>
 
                 <p className="db-copy">
-                  Every verified Founding 6000 membership is
-                  designed to include 12 months of Focus
-                  Founding Access beginning when the user's
-                  Founding Access account is activated.
+                  {language === "es"
+                    ? "Cada membresía verificada de Founding 6000 está diseñada para incluir 12 meses de Focus Founding Access desde la activación de la cuenta Founding Access del usuario."
+                    : "Every verified Founding 6000 membership is designed to include 12 months of Focus Founding Access beginning when the user's Founding Access account is activated."}
                 </p>
               </div>
             </div>
@@ -846,17 +1051,21 @@ function App() {
 
                 <div>
                   <span className="benefit-card__eyebrow">
-                    CORE ACCESS
+                    {language === "es"
+                      ? "ACCESO PRINCIPAL"
+                      : "CORE ACCESS"}
                   </span>
 
                   <h3>
-                    12 months of Focus
+                    {language === "es"
+                      ? "12 meses de Focus"
+                      : "12 months of Focus"}
                   </h3>
 
                   <p>
-                    Founding Access begins on account
-                    activation — not automatically on the
-                    purchase date.
+                    {language === "es"
+                      ? "Founding Access comienza con la activación de la cuenta, no automáticamente en la fecha de compra."
+                      : "Founding Access begins on account activation — not automatically on the purchase date."}
                   </p>
                 </div>
 
@@ -875,9 +1084,9 @@ function App() {
                 </h3>
 
                 <p>
-                  Permanent recognition as one of the first
-                  6,000 verified DigitalBoost Origin
-                  members.
+                  {language === "es"
+                    ? "Reconocimiento permanente como uno de los primeros 6.000 miembros verificados de DigitalBoost Origin."
+                    : "Permanent recognition as one of the first 6,000 verified DigitalBoost Origin members."}
                 </p>
               </article>
 
@@ -887,13 +1096,15 @@ function App() {
                 </span>
 
                 <h3>
-                  Priority beta access
+                  {language === "es"
+                    ? "Acceso beta prioritario"
+                    : "Priority beta access"}
                 </h3>
 
                 <p>
-                  Earlier opportunities to access eligible
-                  product capabilities as they become
-                  available.
+                  {language === "es"
+                    ? "Oportunidades anticipadas para acceder a funciones elegibles del producto a medida que estén disponibles."
+                    : "Earlier opportunities to access eligible product capabilities as they become available."}
                 </p>
               </article>
 
@@ -903,13 +1114,15 @@ function App() {
                 </span>
 
                 <h3>
-                  Product feedback
+                  {language === "es"
+                    ? "Feedback de producto"
+                    : "Product feedback"}
                 </h3>
 
                 <p>
-                  Opportunities to help shape product
-                  decisions through structured founding
-                  feedback programs.
+                  {language === "es"
+                    ? "Oportunidades para ayudar a orientar decisiones de producto mediante programas estructurados de feedback Founding."
+                    : "Opportunities to help shape product decisions through structured founding feedback programs."}
                 </p>
               </article>
 
@@ -919,13 +1132,15 @@ function App() {
                 </span>
 
                 <h3>
-                  Connected ecosystem
+                  {language === "es"
+                    ? "Ecosistema conectado"
+                    : "Connected ecosystem"}
                 </h3>
 
                 <p>
-                  Founding recognition may later surface
-                  across eligible DigitalBoost experiences
-                  and community spaces.
+                  {language === "es"
+                    ? "El reconocimiento Founding podrá reflejarse más adelante en experiencias elegibles de DigitalBoost y espacios de comunidad."
+                    : "Founding recognition may later surface across eligible DigitalBoost experiences and community spaces."}
                 </p>
               </article>
             </div>
@@ -937,15 +1152,15 @@ function App() {
 
               <div>
                 <strong>
-                  Founding Focus does not mean unlimited
-                  infrastructure.
+                  {language === "es"
+                    ? "Founding Focus no significa infraestructura ilimitada."
+                    : "Founding Focus does not mean unlimited infrastructure."}
                 </strong>
 
                 <p>
-                  DBX allowance, fair-use, AI inference,
-                  compute, storage, hosting, runtime,
-                  Sentinel and other technical or legal
-                  limits may apply.
+                  {language === "es"
+                    ? "Pueden aplicar límites de DBX, uso razonable, inferencia de IA, cómputo, almacenamiento, hosting, runtime, Sentinel y otras restricciones técnicas o legales."
+                    : "DBX allowance, fair-use, AI inference, compute, storage, hosting, runtime, Sentinel and other technical or legal limits may apply."}
                 </p>
               </div>
             </div>
@@ -956,7 +1171,9 @@ function App() {
           <div className="db-container genesis-layout">
             <div className="genesis-visual">
               <span className="genesis-visual__eyebrow">
-                FIRST 1,000
+                {language === "es"
+                  ? "PRIMEROS 1.000"
+                  : "FIRST 1,000"}
               </span>
 
               <strong className="genesis-visual__number">
@@ -968,7 +1185,9 @@ function App() {
               <div className="genesis-visual__line" />
 
               <span className="genesis-visual__footer">
-                Genesis distinction
+                {language === "es"
+                  ? "Distinción Genesis"
+                  : "Genesis distinction"}
               </span>
             </div>
 
@@ -978,13 +1197,15 @@ function App() {
               </div>
 
               <h2 className="db-title">
-                The first thousand carry a distinct mark.
+                {language === "es"
+                  ? "Los primeros mil llevan una distinción única."
+                  : "The first thousand carry a distinct mark."}
               </h2>
 
               <p className="db-copy">
-                The first 1,000 verified memberships receive
-                Genesis Member distinction in addition to
-                Founding Member status.
+                {language === "es"
+                  ? "Las primeras 1.000 membresías verificadas reciben la distinción Genesis Member además del estatus Founding Member."
+                  : "The first 1,000 verified memberships receive Genesis Member distinction in addition to Founding Member status."}
               </p>
 
               <div className="genesis-points">
@@ -992,8 +1213,9 @@ function App() {
                   <span>01</span>
 
                   <p>
-                    Permanent Genesis distinction attached to
-                    the founding membership record.
+                    {language === "es"
+                      ? "Distinción Genesis permanente asociada al registro de membresía Founding."
+                      : "Permanent Genesis distinction attached to the founding membership record."}
                   </p>
                 </div>
 
@@ -1001,8 +1223,9 @@ function App() {
                   <span>02</span>
 
                   <p>
-                    Potential future recognition across
-                    profile, Nexus and community surfaces.
+                    {language === "es"
+                      ? "Posible reconocimiento futuro en perfiles, Nexus y espacios de comunidad."
+                      : "Potential future recognition across profile, Nexus and community surfaces."}
                   </p>
                 </div>
 
@@ -1010,9 +1233,9 @@ function App() {
                   <span>03</span>
 
                   <p>
-                    Genesis status does not imply equity,
-                    company founder status, governance or
-                    financial rights.
+                    {language === "es"
+                      ? "El estatus Genesis no implica participación accionaria, condición de fundador de la empresa, gobernanza ni derechos financieros."
+                      : "Genesis status does not imply equity, company founder status, governance or financial rights."}
                   </p>
                 </div>
               </div>
@@ -1028,23 +1251,28 @@ function App() {
             <div className="section-heading">
               <div>
                 <div className="db-eyebrow">
-                  Product truth
+                  {language === "es"
+                    ? "Estado real del producto"
+                    : "Product truth"}
                 </div>
 
                 <h2 className="db-title">
-                  Building the DigitalBoost ecosystem.
+                  {language === "es"
+                    ? "Construyendo el ecosistema DigitalBoost."
+                    : "Building the DigitalBoost ecosystem."}
                 </h2>
 
                 <p className="db-copy">
-                  Founding 6000 is a pre-launch campaign.
-                  Product maturity is shown explicitly so
-                  planned capabilities are not represented
-                  as already available.
+                  {language === "es"
+                    ? "Founding 6000 es una campaña de prelanzamiento. La madurez de cada producto se muestra explícitamente para que las capacidades planificadas no se presenten como disponibles."
+                    : "Founding 6000 is a pre-launch campaign. Product maturity is shown explicitly so planned capabilities are not represented as already available."}
                 </p>
               </div>
 
               <span className="truth-badge">
-                CURRENT STATE
+                {language === "es"
+                  ? "ESTADO ACTUAL"
+                  : "CURRENT STATE"}
               </span>
             </div>
 
@@ -1053,16 +1281,18 @@ function App() {
                 <div className="product-card__top">
                   <span>01</span>
                   <span className="product-status product-status--active">
-                    Functional / In development
+                    {language === "es"
+                      ? "Funcional / En desarrollo"
+                      : "Functional / In development"}
                   </span>
                 </div>
 
                 <h3>Commerce OS</h3>
 
                 <p>
-                  Commerce workflows and operational
-                  foundations currently under active
-                  development.
+                  {language === "es"
+                    ? "Flujos de comercio y bases operativas actualmente en desarrollo activo."
+                    : "Commerce workflows and operational foundations currently under active development."}
                 </p>
               </article>
 
@@ -1077,8 +1307,9 @@ function App() {
                 <h3>Web Builder</h3>
 
                 <p>
-                  Visual website creation environment being
-                  developed as part of DigitalBoost Studio.
+                  {language === "es"
+                    ? "Entorno visual de creación de sitios web desarrollado como parte de DigitalBoost Studio."
+                    : "Visual website creation environment being developed as part of DigitalBoost Studio."}
                 </p>
               </article>
 
@@ -1086,15 +1317,18 @@ function App() {
                 <div className="product-card__top">
                   <span>03</span>
                   <span className="product-status product-status--building">
-                    In development
+                    {language === "es"
+                      ? "En desarrollo"
+                      : "In development"}
                   </span>
                 </div>
 
                 <h3>PULSE</h3>
 
                 <p>
-                  Commerce orchestration capability currently
-                  belonging inside Commerce OS.
+                  {language === "es"
+                    ? "Capacidad de orquestación comercial que actualmente forma parte de Commerce OS."
+                    : "Commerce orchestration capability currently belonging inside Commerce OS."}
                 </p>
               </article>
 
@@ -1102,16 +1336,18 @@ function App() {
                 <div className="product-card__top">
                   <span>04</span>
                   <span className="product-status product-status--active">
-                    Advanced / In development
+                    {language === "es"
+                      ? "Avanzado / En desarrollo"
+                      : "Advanced / In development"}
                   </span>
                 </div>
 
                 <h3>Trading Islands</h3>
 
                 <p>
-                  Advanced trading, automation, bot and
-                  digital asset systems under active
-                  development.
+                  {language === "es"
+                    ? "Sistemas avanzados de trading, automatización, bots y activos digitales en desarrollo activo."
+                    : "Advanced trading, automation, bot and digital asset systems under active development."}
                 </p>
               </article>
 
@@ -1119,16 +1355,18 @@ function App() {
                 <div className="product-card__top">
                   <span>05</span>
                   <span className="product-status product-status--building">
-                    Foundation / In development
+                    {language === "es"
+                      ? "Base / En desarrollo"
+                      : "Foundation / In development"}
                   </span>
                 </div>
 
                 <h3>AI Forge</h3>
 
                 <p>
-                  Foundation for AI creation, agents,
-                  automation, tools and deployable
-                  intelligence.
+                  {language === "es"
+                    ? "Base para creación de IA, agentes, automatización, herramientas e inteligencia desplegable."
+                    : "Foundation for AI creation, agents, automation, tools and deployable intelligence."}
                 </p>
               </article>
 
@@ -1136,15 +1374,18 @@ function App() {
                 <div className="product-card__top">
                   <span>06</span>
                   <span className="product-status">
-                    Planned
+                    {language === "es"
+                      ? "Planificado"
+                      : "Planned"}
                   </span>
                 </div>
 
                 <h3>Sentinel</h3>
 
                 <p>
-                  Planned DigitalBoost capability. It is not
-                  currently represented as available.
+                  {language === "es"
+                    ? "Capacidad planificada de DigitalBoost. Actualmente no se presenta como disponible."
+                    : "Planned DigitalBoost capability. It is not currently represented as available."}
                 </p>
               </article>
 
@@ -1159,8 +1400,9 @@ function App() {
                 <h3>Nexus</h3>
 
                 <p>
-                  Planned ecosystem surface for future
-                  connected DigitalBoost experiences.
+                  {language === "es"
+                    ? "Superficie de ecosistema planificada para futuras experiencias conectadas de DigitalBoost."
+                    : "Planned ecosystem surface for future connected DigitalBoost experiences."}
                 </p>
               </article>
             </div>
@@ -1172,18 +1414,22 @@ function App() {
             <div className="workflow-heading">
               <div>
                 <div className="db-eyebrow">
-                  How it works
+                  {language === "es"
+                    ? "Cómo funciona"
+                    : "How it works"}
                 </div>
 
                 <h2 className="db-title">
-                  From interest to verified membership.
+                  {language === "es"
+                    ? "Del interés a la membresía verificada."
+                    : "From interest to verified membership."}
                 </h2>
               </div>
 
               <p className="db-copy">
-                Payment and membership state is
-                authoritative only after server-side
-                verification and settlement.
+                {language === "es"
+                  ? "El estado del pago y de la membresía solo es autoritativo después de la verificación y liquidación del lado del servidor."
+                  : "Payment and membership state is authoritative only after server-side verification and settlement."}
               </p>
             </div>
 
@@ -1192,7 +1438,9 @@ function App() {
                 <span>01</span>
                 <strong>{primaryCtaLabel}</strong>
                 <p>
-                  Begin the Founding 6000 reservation flow.
+                  {language === "es"
+                    ? "Iniciá el flujo de reserva de Founding 6000."
+                    : "Begin the Founding 6000 reservation flow."}
                 </p>
               </div>
 
@@ -1204,7 +1452,9 @@ function App() {
                 <span>02</span>
                 <strong>Email</strong>
                 <p>
-                  Register a valid contact email first.
+                  {language === "es"
+                    ? "Registrá primero un email de contacto válido."
+                    : "Register a valid contact email first."}
                 </p>
               </div>
 
@@ -1214,9 +1464,15 @@ function App() {
 
               <div className="workflow-step">
                 <span>03</span>
-                <strong>Confirm</strong>
+                <strong>
+                  {language === "es"
+                    ? "Confirmar"
+                    : "Confirm"}
+                </strong>
                 <p>
-                  Review phase, reference price and terms.
+                  {language === "es"
+                    ? "Revisá la fase, el precio de referencia y los términos."
+                    : "Review phase, reference price and terms."}
                 </p>
               </div>
 
@@ -1226,9 +1482,15 @@ function App() {
 
               <div className="workflow-step">
                 <span>04</span>
-                <strong>Payment</strong>
+                <strong>
+                  {language === "es"
+                    ? "Pago"
+                    : "Payment"}
+                </strong>
                 <p>
-                  Choose an available supported payment rail.
+                  {language === "es"
+                    ? "Elegí un medio de pago compatible y disponible."
+                    : "Choose an available supported payment rail."}
                 </p>
               </div>
 
@@ -1238,10 +1500,15 @@ function App() {
 
               <div className="workflow-step">
                 <span>05</span>
-                <strong>Verify</strong>
+                <strong>
+                  {language === "es"
+                    ? "Verificar"
+                    : "Verify"}
+                </strong>
                 <p>
-                  Server or blockchain verification confirms
-                  settlement.
+                  {language === "es"
+                    ? "La verificación del servidor o blockchain confirma la liquidación."
+                    : "Server or blockchain verification confirms settlement."}
                 </p>
               </div>
 
@@ -1253,8 +1520,9 @@ function App() {
                 <span>06</span>
                 <strong>Membership</strong>
                 <p>
-                  Verified settlement creates the canonical
-                  membership.
+                  {language === "es"
+                    ? "La liquidación verificada crea la membresía canónica."
+                    : "Verified settlement creates the canonical membership."}
                 </p>
               </div>
             </div>
@@ -1272,83 +1540,94 @@ function App() {
               </div>
 
               <h2 className="db-title">
-                Clear before you commit.
+                {language === "es"
+                  ? "Todo claro antes de avanzar."
+                  : "Clear before you commit."}
               </h2>
 
               <p className="db-copy">
-                Important information about the pre-sale,
-                access period, product status and campaign.
+                {language === "es"
+                  ? "Información importante sobre la preventa, el período de acceso, el estado del producto y la campaña."
+                  : "Important information about the pre-sale, access period, product status and campaign."}
               </p>
             </div>
 
             <div className="faq-list">
               <details>
                 <summary>
-                  What exactly am I purchasing?
+                  {language === "es"
+                    ? "¿Qué estoy comprando exactamente?"
+                    : "What exactly am I purchasing?"}
                 </summary>
 
                 <p>
-                  A DigitalBoost Origin Founding 6000 product
-                  pre-order / reservation intended to provide
-                  12 months of Focus Founding Access after
-                  account activation, subject to the final
-                  published terms and technical limits.
+                  {language === "es"
+                    ? "Una preorden / reserva de producto DigitalBoost Origin Founding 6000 destinada a brindar 12 meses de Focus Founding Access después de la activación de la cuenta, sujeta a los términos finales publicados y a límites técnicos."
+                    : "A DigitalBoost Origin Founding 6000 product pre-order / reservation intended to provide 12 months of Focus Founding Access after account activation, subject to the final published terms and technical limits."}
                 </p>
               </details>
 
               <details>
                 <summary>
-                  Is Founding 6000 an investment?
+                  {language === "es"
+                    ? "¿Founding 6000 es una inversión?"
+                    : "Is Founding 6000 an investment?"}
                 </summary>
 
                 <p>
-                  No. It is not equity, a security, company
-                  ownership, revenue sharing, financial return
-                  or corporate governance.
+                  {language === "es"
+                    ? "No. No representa acciones, valores financieros, propiedad de la empresa, participación en ingresos, retorno financiero ni gobernanza corporativa."
+                    : "No. It is not equity, a security, company ownership, revenue sharing, financial return or corporate governance."}
                 </p>
               </details>
 
               <details>
                 <summary>
-                  When do my 12 months begin?
+                  {language === "es"
+                    ? "¿Cuándo comienzan mis 12 meses?"
+                    : "When do my 12 months begin?"}
                 </summary>
 
                 <p>
-                  The 12-month Founding Access period begins
-                  when your Founding Access account is
-                  activated, not automatically on purchase
-                  date.
+                  {language === "es"
+                    ? "El período de 12 meses de Founding Access comienza cuando se activa tu cuenta Founding Access, no automáticamente en la fecha de compra."
+                    : "The 12-month Founding Access period begins when your Founding Access account is activated, not automatically on purchase date."}
                 </p>
               </details>
 
               <details>
                 <summary>
-                  Is January 5, 2027 guaranteed?
+                  {language === "es"
+                    ? "¿El 5 de enero de 2027 está garantizado?"
+                    : "Is January 5, 2027 guaranteed?"}
                 </summary>
 
                 <p>
-                  No. January 5, 2027 is the current target
-                  launch date. It is explicitly not presented
-                  as a guaranteed delivery date.
+                  {language === "es"
+                    ? "No. El 5 de enero de 2027 es la fecha objetivo actual de lanzamiento. No se presenta como una fecha de entrega garantizada."
+                    : "No. January 5, 2027 is the current target launch date. It is explicitly not presented as a guaranteed delivery date."}
                 </p>
               </details>
 
               <details>
                 <summary>
-                  Does Focus include unlimited usage?
+                  {language === "es"
+                    ? "¿Focus incluye uso ilimitado?"
+                    : "Does Focus include unlimited usage?"}
                 </summary>
 
                 <p>
-                  No. DBX allowance, fair-use, compute,
-                  infrastructure, AI inference, storage,
-                  hosting, bot/runtime and other technical or
-                  legal limits may apply.
+                  {language === "es"
+                    ? "No. Pueden aplicar límites de DBX, uso razonable, cómputo, infraestructura, inferencia de IA, almacenamiento, hosting, bot/runtime y otras restricciones técnicas o legales."
+                    : "No. DBX allowance, fair-use, compute, infrastructure, AI inference, storage, hosting, bot/runtime and other technical or legal limits may apply."}
                 </p>
               </details>
 
               <details>
                 <summary>
-                  Which payment methods are planned?
+                  {language === "es"
+                    ? "¿Qué métodos de pago están planificados?"
+                    : "Which payment methods are planned?"}
                 </summary>
 
                 <p>
@@ -1362,13 +1641,15 @@ function App() {
 
               <details>
                 <summary>
-                  What happens if the product is delayed?
+                  {language === "es"
+                    ? "¿Qué sucede si el producto se retrasa?"
+                    : "What happens if the product is delayed?"}
                 </summary>
 
                 <p>
-                  Delay handling, refund, cancellation and
-                  delivery terms must be finalized and
-                  published before real payments are enabled.
+                  {language === "es"
+                    ? "Las condiciones de retrasos, reembolsos, cancelaciones y entrega deberán estar finalizadas y publicadas antes de habilitar pagos reales."
+                    : "Delay handling, refund, cancellation and delivery terms must be finalized and published before real payments are enabled."}
                 </p>
               </details>
             </div>
@@ -1389,28 +1670,40 @@ function App() {
                 </div>
 
                 <h2>
-                  Be part of the first 6,000.
+                  {language === "es"
+                    ? "Formá parte de los primeros 6.000."
+                    : "Be part of the first 6,000."}
                 </h2>
 
                 <p>
-                  Genesis is the first campaign phase with a
-                  reference price of US$50 and a maximum
-                  capacity of 1,000 verified memberships.
+                  {language === "es"
+                    ? "Genesis es la primera fase de la campaña, con un precio de referencia de US$50 y una capacidad máxima de 1.000 membresías verificadas."
+                    : "Genesis is the first campaign phase with a reference price of US$50 and a maximum capacity of 1,000 verified memberships."}
                 </p>
 
                 <div className="purchase-panel__meta">
                   <div>
-                    <span>Phase</span>
+                    <span>
+                      {language === "es" ? "Fase" : "Phase"}
+                    </span>
                     <strong>Genesis</strong>
                   </div>
 
                   <div>
-                    <span>Reference</span>
+                    <span>
+                      {language === "es"
+                        ? "Referencia"
+                        : "Reference"}
+                    </span>
                     <strong>US$50</strong>
                   </div>
 
                   <div>
-                    <span>Capacity</span>
+                    <span>
+                      {language === "es"
+                        ? "Capacidad"
+                        : "Capacity"}
+                    </span>
                     <strong>1,000</strong>
                   </div>
                 </div>
@@ -1435,9 +1728,9 @@ function App() {
                     )
                     : (
                       <>
-                        Public reservations are not open yet.
-                        Join prelaunch updates without creating
-                        an order or payment.
+                        {language === "es"
+                          ? "Las reservas públicas todavía no están abiertas. Unite a las novedades del prelanzamiento sin crear una orden ni un pago."
+                          : "Public reservations are not open yet. Join prelaunch updates without creating an order or payment."}
                       </>
                     )}
                 </span>
@@ -1452,7 +1745,9 @@ function App() {
           <div>
             <strong>DigitalBoost Origin</strong>
             <p>
-              Founding 6000 · Pre-order / reservation program.
+              {language === "es"
+                ? "Founding 6000 · Programa de preorden / reserva."
+                : "Founding 6000 · Pre-order / reservation program."}
             </p>
           </div>
 
@@ -1465,7 +1760,7 @@ function App() {
               target="_blank"
               rel="noreferrer"
             >
-              Terms
+              {language === "es" ? "Términos" : "Terms"}
             </a>
 
             <a
@@ -1473,7 +1768,7 @@ function App() {
               target="_blank"
               rel="noreferrer"
             >
-              Privacy
+              {language === "es" ? "Privacidad" : "Privacy"}
             </a>
 
             <a
@@ -1481,7 +1776,7 @@ function App() {
               target="_blank"
               rel="noreferrer"
             >
-              Refunds
+              {language === "es" ? "Reembolsos" : "Refunds"}
             </a>
           </nav>
         </div>
@@ -1509,21 +1804,33 @@ function App() {
               <div>
                 <span className="checkout-header__eyebrow">
                   {PUBLIC_CHECKOUT_ENABLED
-                    ? "FOUNDING 6000 · CHECKOUT"
-                    : "FOUNDING 6000 · PRELAUNCH"}
+                    ? language === "es"
+                      ? "FOUNDING 6000 · COMPRA"
+                      : "FOUNDING 6000 · CHECKOUT"
+                    : language === "es"
+                      ? "FOUNDING 6000 · PRELANZAMIENTO"
+                      : "FOUNDING 6000 · PRELAUNCH"}
                 </span>
 
                 <strong id="checkout-title">
                   {PUBLIC_CHECKOUT_ENABLED
-                    ? "Purchase reservation"
-                    : "Join launch updates"}
+                    ? language === "es"
+                      ? "Comprar reserva"
+                      : "Purchase reservation"
+                    : language === "es"
+                      ? "Unite a las novedades del lanzamiento"
+                      : "Join launch updates"}
                 </strong>
               </div>
 
               <button
                 className="checkout-close"
                 type="button"
-                aria-label="Close checkout"
+                aria-label={
+                  language === "es"
+                    ? "Cerrar ventana"
+                    : "Close checkout"
+                }
                 onClick={closeCheckout}
               >
                 ×
@@ -1535,8 +1842,12 @@ function App() {
               className="sr-only"
             >
               {PUBLIC_CHECKOUT_ENABLED
-                ? "Founding 6000 checkout."
-                : "Public reservations and payments are not open yet."}
+                ? language === "es"
+                  ? "Proceso de compra de Founding 6000."
+                  : "Founding 6000 checkout."
+                : language === "es"
+                  ? "Las reservas públicas y los pagos todavía no están habilitados."
+                  : "Public reservations and payments are not open yet."}
             </p>
 
             <div
