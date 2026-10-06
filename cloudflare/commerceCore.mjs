@@ -250,6 +250,9 @@ export class CommerceCore {
           NOT NULL
           DEFAULT 0,
 
+        verification_started_at TEXT,
+        next_verification_at TEXT,
+
         last_verification_error TEXT,
 
         created_at TEXT NOT NULL,
@@ -1207,6 +1210,331 @@ export class CommerceCore {
 
   /*
    * -------------------------------------------------------
+   * P6-B3 — USDT VERIFICATION STATE
+   * -------------------------------------------------------
+   */
+
+  beginUsdtVerification(
+    publicId,
+  ) {
+    if (
+      typeof publicId !== "string" ||
+      !/^PAY-USDT-[A-F0-9]{12}$/
+        .test(publicId)
+    ) {
+      throw new Error(
+        "INVALID_PAYMENT_ATTEMPT_ID",
+      );
+    }
+
+    return this.storage
+      .transactionSync(() => {
+        const attempt =
+          this.getAttemptByPublicId(
+            publicId,
+          );
+
+        if (!attempt) {
+          throw new Error(
+            "PAYMENT_ATTEMPT_NOT_FOUND",
+          );
+        }
+
+        if (
+          [
+            "AWAITING_TRANSFER",
+            "VERIFIED",
+            "REJECTED",
+            "EXPIRED",
+          ].includes(
+            attempt.status,
+          )
+        ) {
+          return {
+            shouldVerify:
+              false,
+
+            attempt:
+              this.normalizeAttempt(
+                attempt,
+              ),
+          };
+        }
+
+        const meta =
+          this.sql.exec(
+            `
+              SELECT
+                verification_started_at
+                  AS verificationStartedAt,
+
+                next_verification_at
+                  AS nextVerificationAt
+
+              FROM payment_attempts
+
+              WHERE id = ?
+
+              LIMIT 1
+            `,
+            attempt.id,
+          )
+            .toArray()[0];
+
+        const now =
+          new Date();
+
+        /*
+         * Verification lock:
+         * another Worker may already be querying Ethereum.
+         */
+        if (
+          attempt.status === "VERIFYING" &&
+          meta?.verificationStartedAt
+        ) {
+          const started =
+            Date.parse(
+              meta.verificationStartedAt,
+            );
+
+          if (
+            Number.isFinite(started) &&
+            now.getTime() - started <
+              60_000
+          ) {
+            return {
+              shouldVerify:
+                false,
+
+              attempt:
+                this.normalizeAttempt(
+                  attempt,
+                ),
+            };
+          }
+        }
+
+        /*
+         * Backoff between RPC attempts.
+         */
+        if (
+          meta?.nextVerificationAt
+        ) {
+          const next =
+            Date.parse(
+              meta.nextVerificationAt,
+            );
+
+          if (
+            Number.isFinite(next) &&
+            now.getTime() < next
+          ) {
+            return {
+              shouldVerify:
+                false,
+
+              attempt:
+                this.normalizeAttempt(
+                  attempt,
+                ),
+            };
+          }
+        }
+
+        if (!attempt.txHash) {
+          return {
+            shouldVerify:
+              false,
+
+            attempt:
+              this.normalizeAttempt(
+                attempt,
+              ),
+          };
+        }
+
+        const nowIso =
+          now.toISOString();
+
+        this.sql.exec(
+          `
+            UPDATE payment_attempts
+
+            SET
+              status = 'VERIFYING',
+
+              verification_attempts =
+                verification_attempts + 1,
+
+              verification_started_at = ?,
+              next_verification_at = NULL,
+              last_verification_error = NULL,
+              updated_at = ?
+
+            WHERE id = ?
+          `,
+          nowIso,
+          nowIso,
+          attempt.id,
+        );
+
+        const updated =
+          this.getAttemptByPublicId(
+            publicId,
+          );
+
+        return {
+          shouldVerify:
+            true,
+
+          attempt:
+            this.normalizeAttempt(
+              updated,
+            ),
+
+          verification: {
+            txHash:
+              updated.txHash,
+
+            receiverAddress:
+              updated.receiverAddress,
+
+            expectedAmountMinor:
+              Number(
+                updated.expectedAmountMinor,
+              ),
+          },
+        };
+      });
+  }
+
+  recordUsdtVerificationFailure(
+    payload,
+  ) {
+    const publicId =
+      payload
+        ?.paymentAttemptPublicId;
+
+    const errorCode =
+      payload?.errorCode;
+
+    const terminal =
+      payload?.terminal === true;
+
+    if (
+      typeof publicId !== "string" ||
+      !/^PAY-USDT-[A-F0-9]{12}$/
+        .test(publicId)
+    ) {
+      throw new Error(
+        "INVALID_PAYMENT_ATTEMPT_ID",
+      );
+    }
+
+    if (
+      typeof errorCode !== "string" ||
+      errorCode.length < 1 ||
+      errorCode.length > 128
+    ) {
+      throw new Error(
+        "INVALID_VERIFICATION_ERROR",
+      );
+    }
+
+    return this.storage
+      .transactionSync(() => {
+        const attempt =
+          this.getAttemptByPublicId(
+            publicId,
+          );
+
+        if (!attempt) {
+          throw new Error(
+            "PAYMENT_ATTEMPT_NOT_FOUND",
+          );
+        }
+
+        /*
+         * Never downgrade authoritative success.
+         */
+        if (
+          attempt.status === "VERIFIED"
+        ) {
+          return {
+            attempt:
+              this.normalizeAttempt(
+                attempt,
+              ),
+          };
+        }
+
+        const now =
+          new Date();
+
+        const nowIso =
+          now.toISOString();
+
+        const nextVerificationAt =
+          terminal
+            ? null
+            : new Date(
+                now.getTime() +
+                15_000,
+              ).toISOString();
+
+        this.sql.exec(
+          `
+            UPDATE payment_attempts
+
+            SET
+              status = ?,
+              verification_started_at = NULL,
+              next_verification_at = ?,
+              last_verification_error = ?,
+              updated_at = ?
+
+            WHERE id = ?
+          `,
+          terminal
+            ? "REJECTED"
+            : "SUBMITTED",
+
+          nextVerificationAt,
+          errorCode,
+          nowIso,
+          attempt.id,
+        );
+
+        this.audit(
+          terminal
+            ? "USDT_VERIFICATION_REJECTED"
+            : "USDT_VERIFICATION_PENDING",
+
+          "PAYMENT_ATTEMPT",
+          attempt.id,
+
+          {
+            paymentPublicId:
+              publicId,
+
+            errorCode,
+            terminal,
+          },
+        );
+
+        return {
+          attempt:
+            this.normalizeAttempt(
+              this.getAttemptByPublicId(
+                publicId,
+              ),
+            ),
+        };
+      });
+  }
+
+  /*
+   * -------------------------------------------------------
    * P6-B2 — AUTHORITATIVE USDT SETTLEMENT
    * -------------------------------------------------------
    *
@@ -1758,6 +2086,9 @@ export class CommerceCore {
 
             SET
               status = 'VERIFIED',
+              verification_started_at = NULL,
+              next_verification_at = NULL,
+              last_verification_error = NULL,
               updated_at = ?
 
             WHERE id = ?

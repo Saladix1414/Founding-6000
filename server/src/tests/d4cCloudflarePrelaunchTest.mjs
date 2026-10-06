@@ -256,6 +256,18 @@ class DurableObject {
 }
 
 async function loadWorker() {
+  let verifierSource =
+    readFileSync(
+      "cloudflare/usdtRpcVerifier.mjs",
+      "utf8",
+    );
+
+  verifierSource =
+    verifierSource.replace(
+      "export async function verifyUsdtOnEthereum(",
+      "async function verifyUsdtOnEthereum(",
+    );
+
   let source =
     readFileSync(
       "cloudflare/worker.mjs",
@@ -268,13 +280,34 @@ async function loadWorker() {
   FoundingCore,
 } from "./foundingCore.mjs";
 
-export {
+`,
+      "",
+    );
+
+  source =
+    source.replace(
+      `export {
   FoundingCore,
 };
 
 `,
       "",
     );
+
+  source =
+    source.replace(
+      `import {
+  verifyUsdtOnEthereum,
+} from "./usdtRpcVerifier.mjs";
+
+`,
+      "",
+    );
+
+  source =
+    `${verifierSource}
+
+${source}`;
 
   const encoded =
     Buffer
@@ -1036,6 +1069,253 @@ try {
   console.log(
     "PUBLIC_UNVERIFIED_AUTHORITY=BLOCKED",
   );
+
+
+  /*
+   * -------------------------------------------------------
+   * P6-B3 deterministic Ethereum verification
+   * -------------------------------------------------------
+   *
+   * No public RPC or real blockchain transaction is used.
+   */
+
+  commerceEnv.ETHEREUM_RPC_URL =
+    "https://rpc.example.test";
+
+  const originalFetch =
+    globalThis.fetch;
+
+  globalThis.fetch =
+    async (
+      rpcUrl,
+      init,
+    ) => {
+      assert(
+        rpcUrl ===
+          "https://rpc.example.test",
+        "RPC_SECRET_TARGET_INVALID",
+      );
+
+      const rpcRequest =
+        JSON.parse(
+          init.body,
+        );
+
+      let result;
+
+      if (
+        rpcRequest.method ===
+          "eth_chainId"
+      ) {
+        result =
+          "0x1";
+      } else if (
+        rpcRequest.method ===
+          "eth_getTransactionReceipt"
+      ) {
+        const receiver =
+          publicAttemptBody
+            .attempt
+            .receiverAddress
+            .slice(2)
+            .toLowerCase()
+            .padStart(
+              64,
+              "0",
+            );
+
+        const sender =
+          "1"
+            .repeat(40)
+            .padStart(
+              64,
+              "0",
+            );
+
+        const amount =
+          BigInt(
+            50_000_000,
+          )
+            .toString(16)
+            .padStart(
+              64,
+              "0",
+            );
+
+        result = {
+          transactionHash:
+            dummyHash,
+
+          status:
+            "0x1",
+
+          blockNumber:
+            "0x64",
+
+          transactionIndex:
+            "0x0",
+
+          logs: [
+            {
+              address:
+                "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+
+              topics: [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+
+                `0x${sender}`,
+
+                `0x${receiver}`,
+              ],
+
+              data:
+                `0x${amount}`,
+            },
+          ],
+        };
+      } else if (
+        rpcRequest.method ===
+          "eth_blockNumber"
+      ) {
+        /*
+         * Receipt block 100 → current block 111 =
+         * exactly 12 confirmations.
+         */
+        result =
+          "0x6f";
+      } else {
+        throw new Error(
+          `UNEXPECTED_RPC_METHOD_${rpcRequest.method}`,
+        );
+      }
+
+      return new Response(
+        JSON.stringify({
+          jsonrpc:
+            "2.0",
+
+          id:
+            1,
+
+          result,
+        }),
+        {
+          status:
+            200,
+
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
+        },
+      );
+    };
+
+  try {
+    const verification =
+      await callCommerce(
+        `/api/payments/usdt/attempts/${publicAttemptBody.attempt.publicId}`,
+      );
+
+    assert(
+      verification.status ===
+        200,
+      "PUBLIC_ETHEREUM_VERIFICATION_FAILED",
+    );
+
+    const verifiedBody =
+      await verification.json();
+
+    assert(
+      verifiedBody
+        .paymentVerified ===
+        true,
+      "PAYMENT_NOT_VERIFIED",
+    );
+
+    assert(
+      verifiedBody
+        .verificationStatus ===
+        "VERIFIED",
+      "VERIFICATION_STATUS_INVALID",
+    );
+
+    assert(
+      verifiedBody
+        .order
+        ?.status ===
+        "PAID",
+      "ORDER_NOT_PAID_AFTER_VERIFICATION",
+    );
+
+    assert(
+      verifiedBody
+        .allocation
+        ?.serialNumber ===
+        1,
+      "VERIFIED_SERIAL_INVALID",
+    );
+
+    assert(
+      verifiedBody
+        .membership
+        ?.status ===
+        "ACTIVATION_PENDING",
+      "VERIFIED_MEMBERSHIP_INVALID",
+    );
+
+    const verifiedSettlements =
+      db.prepare(`
+        SELECT COUNT(*) AS count
+        FROM payment_settlements
+      `).get().count;
+
+    const verifiedAllocations =
+      db.prepare(`
+        SELECT COUNT(*) AS count
+        FROM inventory_allocations
+      `).get().count;
+
+    const verifiedMemberships =
+      db.prepare(`
+        SELECT COUNT(*) AS count
+        FROM founding_memberships
+      `).get().count;
+
+    assert(
+      verifiedSettlements === 1,
+      "VERIFIED_SETTLEMENT_NOT_PERSISTED",
+    );
+
+    assert(
+      verifiedAllocations === 1,
+      "VERIFIED_SERIAL_NOT_PERSISTED",
+    );
+
+    assert(
+      verifiedMemberships === 1,
+      "VERIFIED_MEMBERSHIP_NOT_PERSISTED",
+    );
+
+    console.log(
+      "ETHEREUM_RPC_PIPELINE=PASS",
+    );
+
+    console.log(
+      "VERIFIED_ORDER_PAID=PASS",
+    );
+
+    console.log(
+      "VERIFIED_SERIAL_1=PASS",
+    );
+
+    console.log(
+      "VERIFIED_MEMBERSHIP=PASS",
+    );
+  } finally {
+    globalThis.fetch =
+      originalFetch;
+  }
 
   const asset =
     await call(

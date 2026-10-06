@@ -2,6 +2,10 @@ import {
   FoundingCore,
 } from "./foundingCore.mjs";
 
+import {
+  verifyUsdtOnEthereum,
+} from "./usdtRpcVerifier.mjs";
+
 export {
   FoundingCore,
 };
@@ -545,6 +549,342 @@ async function callCommerceCore(
   };
 }
 
+const PENDING_VERIFICATION_ERRORS =
+  new Set([
+    "TRANSACTION_NOT_FOUND",
+    "INSUFFICIENT_CONFIRMATIONS",
+  ]);
+
+const TERMINAL_VERIFICATION_ERRORS =
+  new Set([
+    "TRANSACTION_FAILED",
+    "TRANSACTION_HASH_MISMATCH",
+    "EXPECTED_USDT_TRANSFER_NOT_FOUND",
+    "AMBIGUOUS_USDT_TRANSFER",
+  ]);
+
+async function recordVerificationFailure(
+  env,
+  paymentPublicId,
+  errorCode,
+  terminal,
+) {
+  return callCommerceCore(
+    env,
+    `/internal/payments/usdt/attempts/${paymentPublicId}/verification-failure`,
+    {
+      method:
+        "POST",
+
+      body: {
+        errorCode,
+        terminal,
+      },
+    },
+  );
+}
+
+async function verifyPublicUsdtAttempt(
+  env,
+  paymentPublicId,
+) {
+  /*
+   * Durable Object decides whether this verification
+   * should actually run. This gives us locking/backoff
+   * across distributed Worker requests.
+   */
+  const begin =
+    await callCommerceCore(
+      env,
+      `/internal/payments/usdt/attempts/${paymentPublicId}/begin-verification`,
+      {
+        method:
+          "POST",
+      },
+    );
+
+  if (
+    begin.status < 200 ||
+    begin.status >= 300
+  ) {
+    return begin;
+  }
+
+  if (
+    begin.payload
+      ?.shouldVerify !== true
+  ) {
+    const status =
+      begin.payload
+        ?.attempt
+        ?.status;
+
+    return {
+      status:
+        200,
+
+      payload: {
+        attempt:
+          begin.payload
+            ?.attempt,
+
+        paymentVerified:
+          status ===
+          "VERIFIED",
+
+        settlementCreated:
+          false,
+
+        verificationStatus:
+          status === "VERIFIED"
+            ? "VERIFIED"
+            : status === "REJECTED"
+              ? "REJECTED"
+              : status === "VERIFYING"
+                ? "VERIFYING"
+                : "PENDING",
+      },
+    };
+  }
+
+  const verification =
+    begin.payload
+      ?.verification;
+
+  /*
+   * ETHEREUM_RPC_URL must be a Cloudflare secret.
+   * Never place it in wrangler.jsonc or in the response.
+   */
+  const rpcUrl =
+    typeof env
+      ?.ETHEREUM_RPC_URL ===
+      "string"
+      ? env.ETHEREUM_RPC_URL
+          .trim()
+      : "";
+
+  if (
+    !rpcUrl.startsWith(
+      "https://",
+    )
+  ) {
+    await recordVerificationFailure(
+      env,
+      paymentPublicId,
+      "ETHEREUM_RPC_NOT_CONFIGURED",
+      false,
+    );
+
+    return {
+      status:
+        503,
+
+      payload: {
+        error:
+          "PAYMENT_VERIFICATION_UNAVAILABLE",
+      },
+    };
+  }
+
+  try {
+    const transfer =
+      await verifyUsdtOnEthereum({
+        rpcUrl,
+
+        txHash:
+          verification.txHash,
+
+        expectedReceiver:
+          verification
+            .receiverAddress,
+
+        expectedAmountMinor:
+          verification
+            .expectedAmountMinor,
+
+        confirmationsRequired:
+          12,
+      });
+
+    const settled =
+      await callCommerceCore(
+        env,
+        `/internal/payments/usdt/attempts/${paymentPublicId}/settle`,
+        {
+          method:
+            "POST",
+
+          body: {
+            transfer,
+          },
+        },
+      );
+
+    if (
+      settled.status < 200 ||
+      settled.status >= 300
+    ) {
+      /*
+       * Settlement errors are never converted into
+       * fake payment success.
+       */
+      await recordVerificationFailure(
+        env,
+        paymentPublicId,
+        "SETTLEMENT_FAILED",
+        false,
+      );
+
+      return {
+        status:
+          503,
+
+        payload: {
+          error:
+            "PAYMENT_SETTLEMENT_UNAVAILABLE",
+        },
+      };
+    }
+
+    return {
+      status:
+        200,
+
+      payload: {
+        ...settled.payload,
+
+        attempt: {
+          ...begin.payload
+            .attempt,
+
+          status:
+            "VERIFIED",
+        },
+
+        paymentVerified:
+          true,
+
+        settlementCreated:
+          settled.payload
+            ?.idempotentReplay !==
+          true,
+
+        verificationStatus:
+          "VERIFIED",
+      },
+    };
+  } catch (error) {
+    const code =
+      error instanceof Error
+        ? error.message
+        : "UNKNOWN_VERIFICATION_ERROR";
+
+    /*
+     * Blockchain state that can legitimately change:
+     *
+     * - tx not propagated yet;
+     * - not enough confirmations yet.
+     *
+     * These remain retryable.
+     */
+    if (
+      PENDING_VERIFICATION_ERRORS
+        .has(code)
+    ) {
+      const failure =
+        await recordVerificationFailure(
+          env,
+          paymentPublicId,
+          code,
+          false,
+        );
+
+      return {
+        status:
+          200,
+
+        payload: {
+          attempt:
+            failure.payload
+              ?.attempt,
+
+          paymentVerified:
+            false,
+
+          settlementCreated:
+            false,
+
+          verificationStatus:
+            "PENDING",
+
+          verificationCode:
+            code,
+        },
+      };
+    }
+
+    /*
+     * Definitive blockchain evidence mismatch.
+     */
+    if (
+      TERMINAL_VERIFICATION_ERRORS
+        .has(code)
+    ) {
+      const failure =
+        await recordVerificationFailure(
+          env,
+          paymentPublicId,
+          code,
+          true,
+        );
+
+      return {
+        status:
+          200,
+
+        payload: {
+          attempt:
+            failure.payload
+              ?.attempt,
+
+          paymentVerified:
+            false,
+
+          settlementCreated:
+            false,
+
+          verificationStatus:
+            "REJECTED",
+
+          verificationCode:
+            code,
+        },
+      };
+    }
+
+    /*
+     * RPC/provider/malformed-response errors are
+     * infrastructure failures, NOT buyer rejection.
+     */
+    await recordVerificationFailure(
+      env,
+      paymentPublicId,
+      code,
+      false,
+    );
+
+    return {
+      status:
+        503,
+
+      payload: {
+        error:
+          "PAYMENT_VERIFICATION_UNAVAILABLE",
+      },
+    };
+  }
+}
+
 async function coreHealth(env) {
   const core =
     canonicalCore(env);
@@ -919,9 +1259,9 @@ export default {
       }
 
       const result =
-        await callCommerceCore(
+        await verifyPublicUsdtAttempt(
           env,
-          `/internal/payments/usdt/attempts/${publicReadAttemptMatch[1]}`,
+          publicReadAttemptMatch[1],
         );
 
       return json(

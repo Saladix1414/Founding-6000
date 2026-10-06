@@ -590,6 +590,125 @@ export class FoundingCore extends DurableObject {
       }
     }
 
+    const beginVerificationMatch =
+      url.pathname.match(
+        /^\/internal\/payments\/usdt\/attempts\/(PAY-USDT-[A-F0-9]{12})\/begin-verification$/,
+      );
+
+    if (
+      request.method === "POST" &&
+      beginVerificationMatch
+    ) {
+      try {
+        return json(
+          this.commerce
+            .beginUsdtVerification(
+              beginVerificationMatch[1],
+            ),
+        );
+      } catch (error) {
+        const code =
+          error instanceof Error
+            ? error.message
+            : "COMMERCE_INTERNAL_ERROR";
+
+        return json(
+          {
+            error:
+              code,
+          },
+          commerceErrorStatus(
+            code,
+          ),
+        );
+      }
+    }
+
+    const failureMatch =
+      url.pathname.match(
+        /^\/internal\/payments\/usdt\/attempts\/(PAY-USDT-[A-F0-9]{12})\/verification-failure$/,
+      );
+
+    if (
+      request.method === "POST" &&
+      failureMatch
+    ) {
+      try {
+        const payload =
+          await request.json();
+
+        return json(
+          this.commerce
+            .recordUsdtVerificationFailure({
+              paymentAttemptPublicId:
+                failureMatch[1],
+
+              errorCode:
+                payload?.errorCode,
+
+              terminal:
+                payload?.terminal,
+            }),
+        );
+      } catch (error) {
+        const code =
+          error instanceof Error
+            ? error.message
+            : "COMMERCE_INTERNAL_ERROR";
+
+        return json(
+          {
+            error:
+              code,
+          },
+          commerceErrorStatus(
+            code,
+          ),
+        );
+      }
+    }
+
+    const settlementMatch =
+      url.pathname.match(
+        /^\/internal\/payments\/usdt\/attempts\/(PAY-USDT-[A-F0-9]{12})\/settle$/,
+      );
+
+    if (
+      request.method === "POST" &&
+      settlementMatch
+    ) {
+      try {
+        const payload =
+          await request.json();
+
+        return json(
+          this.commerce
+            .settleVerifiedUsdt({
+              paymentAttemptPublicId:
+                settlementMatch[1],
+
+              transfer:
+                payload?.transfer,
+            }),
+        );
+      } catch (error) {
+        const code =
+          error instanceof Error
+            ? error.message
+            : "COMMERCE_INTERNAL_ERROR";
+
+        return json(
+          {
+            error:
+              code,
+          },
+          commerceErrorStatus(
+            code,
+          ),
+        );
+      }
+    }
+
     return json(
       {
         error:
