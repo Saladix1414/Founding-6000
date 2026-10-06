@@ -41,6 +41,7 @@ const SECURITY_HEADERS = {
 };
 
 function secureResponse(
+  request,
   response,
 ) {
   const secured =
@@ -60,6 +61,22 @@ function secureResponse(
     secured.headers.set(
       name,
       value,
+    );
+  }
+
+  const pathname =
+    new URL(
+      request.url,
+    ).pathname;
+
+  if (
+    pathname.startsWith(
+      "/assets/",
+    )
+  ) {
+    secured.headers.set(
+      "Cache-Control",
+      "public, max-age=31536000, immutable",
     );
   }
 
@@ -534,6 +551,7 @@ export default {
       );
 
     return secureResponse(
+      request,
       assetResponse,
     );
   },
