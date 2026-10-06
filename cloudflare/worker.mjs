@@ -1127,7 +1127,9 @@ export default {
                 : "degraded",
 
             payments:
-              "disabled",
+              publicUsdtApiEnabled(env)
+                ? "enabled"
+                : "disabled",
 
             timestamp:
               new Date()
