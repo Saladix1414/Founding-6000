@@ -17,10 +17,10 @@
     ]
   },
   "vars": {
-    "PUBLIC_CHECKOUT_ENABLED": "false",
-    "PAYMENT_READINESS": "false",
-    "REAL_PAYMENTS_ENABLED": "false",
-    "CLOUDFLARE_USDT_API_ENABLED": "false"
+    "PUBLIC_CHECKOUT_ENABLED": "true",
+    "PAYMENT_READINESS": "true",
+    "REAL_PAYMENTS_ENABLED": "true",
+    "CLOUDFLARE_USDT_API_ENABLED": "true"
   },
   "exports": {
     "FoundingCore": {
