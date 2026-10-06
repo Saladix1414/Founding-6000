@@ -671,6 +671,52 @@ function App() {
         )}
       </header>
 
+      {galleryPreview && (
+        <div
+          className="project-gallery-preview"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (
+              event.target ===
+              event.currentTarget
+            ) {
+              setGalleryPreview(null);
+            }
+          }}
+        >
+          <div
+            className="project-gallery-preview__dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-label={galleryPreview.name}
+          >
+            <button
+              type="button"
+              className="project-gallery-preview__close"
+              aria-label={
+                language === "es"
+                  ? "Cerrar imagen"
+                  : "Close image"
+              }
+              onClick={() =>
+                setGalleryPreview(null)
+              }
+            >
+              ×
+            </button>
+
+            <img
+              src={galleryPreview.src}
+              alt={galleryPreview.name}
+            />
+
+            <strong>
+              {galleryPreview.name}
+            </strong>
+          </div>
+        </div>
+      )}
+
       <main id="top">
         <section
           className="campaign-hero"
@@ -766,28 +812,28 @@ function App() {
                   <div className="project-gallery-grid">
                     {[
                       [
-                        "Commerce OS",
-                        "/project-gallery/commerce-os.svg",
+                        "NFT Forge",
+                        "/project-gallery/nft-forge.jpg",
                       ],
                       [
                         "Web Builder",
-                        "/project-gallery/web-builder.svg",
+                        "/project-gallery/web-builder.jpg",
                       ],
                       [
                         "AI Forge",
-                        "/project-gallery/ai-forge.svg",
+                        "/project-gallery/ai-forge.jpg",
                       ],
                       [
                         "Trading Islands",
-                        "/project-gallery/trading-islands.svg",
+                        "/project-gallery/trading-islands.jpg",
                       ],
                       [
                         "Store Builder",
-                        "/project-gallery/store-builder.svg",
+                        "/project-gallery/store-builder.jpg",
                       ],
                       [
                         "DigitalBoost Origin",
-                        "/project-gallery/digitalboost-origin.svg",
+                        "/project-gallery/digitalboost-origin.jpg",
                       ],
                     ].map(([name, src]) => (
                       <button
@@ -814,51 +860,6 @@ function App() {
                     ))}
                   </div>
 
-                  {galleryPreview && (
-                    <div
-                      className="project-gallery-preview"
-                      role="presentation"
-                      onMouseDown={(event) => {
-                        if (
-                          event.target ===
-                          event.currentTarget
-                        ) {
-                          setGalleryPreview(null);
-                        }
-                      }}
-                    >
-                      <div
-                        className="project-gallery-preview__dialog"
-                        role="dialog"
-                        aria-modal="true"
-                        aria-label={galleryPreview.name}
-                      >
-                        <button
-                          type="button"
-                          className="project-gallery-preview__close"
-                          aria-label={
-                            language === "es"
-                              ? "Cerrar imagen"
-                              : "Close image"
-                          }
-                          onClick={() =>
-                            setGalleryPreview(null)
-                          }
-                        >
-                          ×
-                        </button>
-
-                        <img
-                          src={galleryPreview.src}
-                          alt={galleryPreview.name}
-                        />
-
-                        <strong>
-                          {galleryPreview.name}
-                        </strong>
-                      </div>
-                    </div>
-                  )}
                 </aside>
               )}
             </div>

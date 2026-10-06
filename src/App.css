@@ -5457,45 +5457,99 @@
   }
 }
 
-/* D6-D1 — ensure gallery preview close button is always visible */
-
+/* D6-D1 — gallery close button desktop/mobile */
 .project-gallery-preview__close {
   position: fixed;
-
   top: 20px;
   right: 20px;
-
   z-index: 260;
-
-  width: 42px;
-  height: 42px;
-
-  display: grid;
-  place-items: center;
-
-  border:
-    1px solid
-    rgba(101, 232, 247, 0.35);
-
-  border-radius: 11px;
-
-  color:
-    var(--db-white);
-
-  background:
-    rgba(5, 8, 13, 0.9);
-
-  box-shadow:
-    0 10px 30px
-    rgba(0, 0, 0, 0.45);
-
-  backdrop-filter:
-    blur(12px);
 }
 
 @media (max-width: 700px) {
   .project-gallery-preview__close {
     top: 14px;
     right: 14px;
+  }
+}
+
+/* =========================================================
+   D6-D1 — DESKTOP GALLERY — CANONICAL
+   ========================================================= */
+
+@media (min-width: 701px) {
+
+  /*
+   * Approved desktop thumbnails:
+   * same width, slightly more vertical image visible.
+   */
+  .project-gallery-card img {
+    display: block;
+
+    width: 100% !important;
+    height: auto !important;
+
+    aspect-ratio: 16 / 10 !important;
+
+    object-fit: cover !important;
+    object-position: center top !important;
+  }
+
+  /*
+   * Preview now lives outside the transformed Project Dock,
+   * so this height is genuinely relative to the viewport.
+   */
+  .project-gallery-preview {
+    position: fixed !important;
+    inset: 0 !important;
+
+    display: grid !important;
+    place-items: center !important;
+
+    padding: 20px !important;
+
+    overflow: hidden !important;
+  }
+
+  /*
+   * Keep the width you approved, but make the viewer
+   * genuinely tall.
+   */
+  .project-gallery-preview__dialog {
+    width: min(760px, calc(100vw - 160px)) !important;
+
+    height: calc(100dvh - 40px) !important;
+    max-height: calc(100dvh - 40px) !important;
+
+    box-sizing: border-box !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    padding: 0.75rem !important;
+
+    overflow: hidden !important;
+  }
+
+  /*
+   * Image gets the available viewer area without cropping.
+   */
+  .project-gallery-preview__dialog img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-height: 0 !important;
+
+    flex: 1 1 auto !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+
+    border-radius: 11px;
+  }
+
+  .project-gallery-preview__dialog strong {
+    flex: 0 0 auto !important;
   }
 }
