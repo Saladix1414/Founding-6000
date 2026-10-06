@@ -191,6 +191,24 @@ class NodeStorage {
 }
 
 async function loadFoundingCore() {
+  const commerceSource =
+    readFileSync(
+      "cloudflare/commerceCore.mjs",
+      "utf8",
+    );
+
+  const commerceEncoded =
+    Buffer
+      .from(
+        commerceSource,
+      )
+      .toString(
+        "base64",
+      );
+
+  const commerceUrl =
+    `data:text/javascript;base64,${commerceEncoded}`;
+
   let source =
     readFileSync(
       "cloudflare/foundingCore.mjs",
@@ -208,6 +226,18 @@ class DurableObject {
   }
 }
 `,
+    );
+
+  source =
+    source.replace(
+      `import {
+  CommerceCore,
+  commerceErrorStatus,
+} from "./commerceCore.mjs";`,
+      `import {
+  CommerceCore,
+  commerceErrorStatus,
+} from "${commerceUrl}";`,
     );
 
   const encoded =
@@ -750,27 +780,261 @@ try {
           row.name,
       );
 
-  const forbiddenTables = [
+  const expectedCommerceTables = [
+    "campaign_phases",
     "founding_orders",
+    "payment_attempts",
+    "payment_settlements",
     "inventory_allocations",
     "founding_memberships",
-    "usdt_payment_attempts",
   ];
 
   for (
     const table of
-      forbiddenTables
+      expectedCommerceTables
   ) {
     assert(
-      !tables.includes(
+      tables.includes(
         table,
       ),
-      `FORBIDDEN_TABLE_PRESENT_${table}`,
+      `EXPECTED_COMMERCE_TABLE_MISSING_${table}`,
     );
   }
 
   console.log(
-    "COMMERCE_TABLES_MIGRATED=NO",
+    "COMMERCE_TABLES_MIGRATED=YES",
+  );
+
+  console.log(
+    "PUBLIC_COMMERCE_GATE=CLOSED",
+  );
+
+  /*
+   * -------------------------------------------------------
+   * P6-A3 bridge simulation
+   * -------------------------------------------------------
+   *
+   * This does NOT change Wrangler production flags.
+   * We enable the gates only inside this in-memory test.
+   */
+
+  const commerceEnv = {
+    ...env,
+
+    PUBLIC_CHECKOUT_ENABLED:
+      "true",
+
+    PAYMENT_READINESS:
+      "true",
+
+    REAL_PAYMENTS_ENABLED:
+      "true",
+
+    CLOUDFLARE_USDT_API_ENABLED:
+      "true",
+  };
+
+  async function callCommerce(
+    path,
+    options = {},
+  ) {
+    const request =
+      new Request(
+        `https://founding.test${path}`,
+        options,
+      );
+
+    return worker.fetch(
+      request,
+      commerceEnv,
+    );
+  }
+
+  const publicOrder =
+    await callCommerce(
+      "/api/orders",
+      {
+        method:
+          "POST",
+
+        headers: {
+          "Content-Type":
+            "application/json",
+
+          "Idempotency-Key":
+            "p6a3-public-order-001",
+        },
+
+        body:
+          JSON.stringify({
+            email:
+              "p6a3@example.com",
+          }),
+      },
+    );
+
+  assert(
+    publicOrder.status === 201,
+    "PUBLIC_ORDER_BRIDGE_FAILED",
+  );
+
+  const publicOrderBody =
+    await publicOrder.json();
+
+  assert(
+    publicOrderBody.order
+      ?.referencePriceUsd === 50,
+    "PUBLIC_ORDER_PRICE_INVALID",
+  );
+
+  console.log(
+    "PUBLIC_ORDER_BRIDGE=PASS",
+  );
+
+  const publicAttempt =
+    await callCommerce(
+      "/api/payments/usdt/attempts",
+      {
+        method:
+          "POST",
+
+        headers: {
+          "Content-Type":
+            "application/json",
+
+          "Idempotency-Key":
+            "p6a3-public-attempt-001",
+        },
+
+        body:
+          JSON.stringify({
+            orderPublicId:
+              publicOrderBody
+                .order.publicId,
+          }),
+      },
+    );
+
+  assert(
+    publicAttempt.status ===
+      201,
+    "PUBLIC_USDT_ATTEMPT_BRIDGE_FAILED",
+  );
+
+  const publicAttemptBody =
+    await publicAttempt.json();
+
+  assert(
+    publicAttemptBody.attempt
+      ?.expectedAmountUsdt ===
+      "50.000000",
+    "PUBLIC_USDT_AMOUNT_INVALID",
+  );
+
+  assert(
+    publicAttemptBody.attempt
+      ?.receiverAddress
+      ?.toLowerCase() ===
+      "0xe695bc03a11d5de3f5e38b4acb66d13aede3b840",
+    "PUBLIC_USDT_RECEIVER_INVALID",
+  );
+
+  console.log(
+    "PUBLIC_USDT_ATTEMPT_BRIDGE=PASS",
+  );
+
+  const dummyHash =
+    `0x${"c".repeat(64)}`;
+
+  const publicSubmission =
+    await callCommerce(
+      `/api/payments/usdt/attempts/${publicAttemptBody.attempt.publicId}/submit`,
+      {
+        method:
+          "POST",
+
+        headers: {
+          "Content-Type":
+            "application/json",
+        },
+
+        body:
+          JSON.stringify({
+            txHash:
+              dummyHash,
+          }),
+      },
+    );
+
+  assert(
+    publicSubmission.status ===
+      200,
+    "PUBLIC_TX_SUBMISSION_BRIDGE_FAILED",
+  );
+
+  const submissionBody =
+    await publicSubmission.json();
+
+  assert(
+    submissionBody.attempt
+      ?.status ===
+      "SUBMITTED",
+    "PUBLIC_TX_STATUS_INVALID",
+  );
+
+  assert(
+    submissionBody
+      .paymentVerified ===
+      false,
+    "PUBLIC_HASH_FALSELY_VERIFIED",
+  );
+
+  assert(
+    submissionBody
+      .settlementCreated ===
+      false,
+    "PUBLIC_HASH_CREATED_SETTLEMENT",
+  );
+
+  const settlementCount =
+    db.prepare(`
+      SELECT COUNT(*) AS count
+      FROM payment_settlements
+    `).get().count;
+
+  const allocationCount =
+    db.prepare(`
+      SELECT COUNT(*) AS count
+      FROM inventory_allocations
+    `).get().count;
+
+  const membershipCount =
+    db.prepare(`
+      SELECT COUNT(*) AS count
+      FROM founding_memberships
+    `).get().count;
+
+  assert(
+    settlementCount === 0,
+    "BRIDGE_UNVERIFIED_SETTLEMENT_CREATED",
+  );
+
+  assert(
+    allocationCount === 0,
+    "BRIDGE_UNVERIFIED_SERIAL_CREATED",
+  );
+
+  assert(
+    membershipCount === 0,
+    "BRIDGE_UNVERIFIED_MEMBERSHIP_CREATED",
+  );
+
+  console.log(
+    "PUBLIC_TX_SUBMISSION_BRIDGE=PASS",
+  );
+
+  console.log(
+    "PUBLIC_UNVERIFIED_AUTHORITY=BLOCKED",
   );
 
   const asset =

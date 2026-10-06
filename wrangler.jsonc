@@ -19,7 +19,8 @@
   "vars": {
     "PUBLIC_CHECKOUT_ENABLED": "false",
     "PAYMENT_READINESS": "false",
-    "REAL_PAYMENTS_ENABLED": "false"
+    "REAL_PAYMENTS_ENABLED": "false",
+    "CLOUDFLARE_USDT_API_ENABLED": "false"
   },
   "exports": {
     "FoundingCore": {

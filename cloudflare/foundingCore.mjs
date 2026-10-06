@@ -1,5 +1,10 @@
 import { DurableObject } from "cloudflare:workers";
 
+import {
+  CommerceCore,
+  commerceErrorStatus,
+} from "./commerceCore.mjs";
+
 const PRELAUNCH_RATE_LIMIT = 10;
 const RATE_WINDOW_MS = 60_000;
 
@@ -44,6 +49,14 @@ export class FoundingCore extends DurableObject {
     this.sql = state.storage.sql;
 
     this.initializeSchema();
+
+    this.commerce =
+      new CommerceCore(
+        state.storage,
+      );
+
+    this.commerce
+      .initializeSchema();
   }
 
   initializeSchema() {
@@ -413,6 +426,168 @@ export class FoundingCore extends DurableObject {
         result.body,
         result.status,
       );
+    }
+
+    /*
+     * -----------------------------------------------------
+     * P6 — internal commerce / USDT boundary
+     * -----------------------------------------------------
+     *
+     * These routes are reachable only through the Worker.
+     * Public exposure remains closed until the Worker
+     * migration and Ethereum verification phases pass.
+     */
+
+    if (
+      request.method === "POST" &&
+      url.pathname ===
+        "/internal/orders"
+    ) {
+      try {
+        const payload =
+          await request.json();
+
+        const result =
+          this.commerce
+            .createOrder(
+              payload,
+            );
+
+        return json(
+          result,
+          result.idempotentReplay
+            ? 200
+            : 201,
+        );
+      } catch (error) {
+        const code =
+          error instanceof Error
+            ? error.message
+            : "COMMERCE_INTERNAL_ERROR";
+
+        return json(
+          {
+            error: code,
+          },
+          commerceErrorStatus(
+            code,
+          ),
+        );
+      }
+    }
+
+    if (
+      request.method === "POST" &&
+      url.pathname ===
+        "/internal/payments/usdt/attempts"
+    ) {
+      try {
+        const payload =
+          await request.json();
+
+        const result =
+          this.commerce
+            .createUsdtAttempt(
+              payload,
+            );
+
+        return json(
+          result,
+          result.idempotentReplay
+            ? 200
+            : 201,
+        );
+      } catch (error) {
+        const code =
+          error instanceof Error
+            ? error.message
+            : "COMMERCE_INTERNAL_ERROR";
+
+        return json(
+          {
+            error: code,
+          },
+          commerceErrorStatus(
+            code,
+          ),
+        );
+      }
+    }
+
+    const readAttemptMatch =
+      url.pathname.match(
+        /^\/internal\/payments\/usdt\/attempts\/(PAY-USDT-[A-F0-9]{12})$/,
+      );
+
+    if (
+      request.method === "GET" &&
+      readAttemptMatch
+    ) {
+      try {
+        return json(
+          this.commerce
+            .getUsdtAttempt(
+              readAttemptMatch[1],
+            ),
+        );
+      } catch (error) {
+        const code =
+          error instanceof Error
+            ? error.message
+            : "COMMERCE_INTERNAL_ERROR";
+
+        return json(
+          {
+            error: code,
+          },
+          commerceErrorStatus(
+            code,
+          ),
+        );
+      }
+    }
+
+    const submitAttemptMatch =
+      url.pathname.match(
+        /^\/internal\/payments\/usdt\/attempts\/(PAY-USDT-[A-F0-9]{12})\/submit$/,
+      );
+
+    if (
+      request.method === "POST" &&
+      submitAttemptMatch
+    ) {
+      try {
+        const payload =
+          await request.json();
+
+        const result =
+          this.commerce
+            .submitUsdtHash({
+              paymentAttemptPublicId:
+                submitAttemptMatch[1],
+
+              txHash:
+                payload?.txHash,
+            });
+
+        return json(
+          result,
+        );
+      } catch (error) {
+        const code =
+          error instanceof Error
+            ? error.message
+            : "COMMERCE_INTERNAL_ERROR";
+
+        return json(
+          {
+            error: code,
+          },
+          commerceErrorStatus(
+            code,
+          ),
+        );
+      }
     }
 
     return json(

@@ -287,6 +287,264 @@ async function parseEmailBody(
   };
 }
 
+function runtimeFlagEnabled(
+  env,
+  name,
+) {
+  return (
+    String(
+      env?.[name] ?? "",
+    ).toLowerCase() ===
+    "true"
+  );
+}
+
+/*
+ * Fourth production gate.
+ *
+ * Even if the legacy checkout/payment flags are enabled,
+ * Cloudflare commerce remains closed until this explicit
+ * migration gate is also enabled.
+ */
+function publicUsdtApiEnabled(
+  env,
+) {
+  return (
+    runtimeFlagEnabled(
+      env,
+      "PUBLIC_CHECKOUT_ENABLED",
+    ) &&
+    runtimeFlagEnabled(
+      env,
+      "PAYMENT_READINESS",
+    ) &&
+    runtimeFlagEnabled(
+      env,
+      "REAL_PAYMENTS_ENABLED",
+    ) &&
+    runtimeFlagEnabled(
+      env,
+      "CLOUDFLARE_USDT_API_ENABLED",
+    )
+  );
+}
+
+function readIdempotencyKey(
+  request,
+) {
+  const value =
+    request.headers
+      .get(
+        "Idempotency-Key",
+      )
+      ?.trim() ?? "";
+
+  if (!value) {
+    return {
+      error:
+        "IDEMPOTENCY_KEY_REQUIRED",
+      status:
+        400,
+    };
+  }
+
+  if (
+    value.length < 8 ||
+    value.length > 128 ||
+    !/^[A-Za-z0-9._:-]+$/
+      .test(value)
+  ) {
+    return {
+      error:
+        "INVALID_IDEMPOTENCY_KEY",
+      status:
+        400,
+    };
+  }
+
+  return {
+    value,
+  };
+}
+
+async function parseStrictJsonBody(
+  request,
+  allowedKeys,
+) {
+  const contentType =
+    request.headers.get(
+      "Content-Type",
+    ) ?? "";
+
+  if (
+    !contentType
+      .toLowerCase()
+      .startsWith(
+        "application/json",
+      )
+  ) {
+    return {
+      error:
+        "UNSUPPORTED_MEDIA_TYPE",
+      status:
+        415,
+    };
+  }
+
+  const declaredLength =
+    Number(
+      request.headers.get(
+        "Content-Length",
+      ) ?? "0",
+    );
+
+  if (
+    Number.isFinite(
+      declaredLength,
+    ) &&
+    declaredLength >
+      MAX_JSON_BYTES
+  ) {
+    return {
+      error:
+        "REQUEST_BODY_TOO_LARGE",
+      status:
+        413,
+    };
+  }
+
+  const text =
+    await request.text();
+
+  if (
+    new TextEncoder()
+      .encode(text)
+      .byteLength >
+    MAX_JSON_BYTES
+  ) {
+    return {
+      error:
+        "REQUEST_BODY_TOO_LARGE",
+      status:
+        413,
+    };
+  }
+
+  let body;
+
+  try {
+    body =
+      JSON.parse(text);
+  } catch {
+    return {
+      error:
+        "INVALID_JSON",
+      status:
+        400,
+    };
+  }
+
+  if (
+    !body ||
+    typeof body !==
+      "object" ||
+    Array.isArray(body)
+  ) {
+    return {
+      error:
+        "INVALID_REQUEST_BODY",
+      status:
+        400,
+    };
+  }
+
+  const keys =
+    Object.keys(body)
+      .sort();
+
+  const expected =
+    [...allowedKeys]
+      .sort();
+
+  if (
+    keys.length !==
+      expected.length ||
+    keys.some(
+      (key, index) =>
+        key !==
+        expected[index],
+    )
+  ) {
+    return {
+      error:
+        "INVALID_REQUEST_BODY",
+      status:
+        400,
+    };
+  }
+
+  return {
+    body,
+  };
+}
+
+async function callCommerceCore(
+  env,
+  path,
+  options = {},
+) {
+  const core =
+    canonicalCore(env);
+
+  const requestOptions = {
+    method:
+      options.method ??
+      "GET",
+  };
+
+  if (
+    options.body !==
+    undefined
+  ) {
+    requestOptions.headers = {
+      "Content-Type":
+        "application/json",
+    };
+
+    requestOptions.body =
+      JSON.stringify(
+        options.body,
+      );
+  }
+
+  const response =
+    await core.fetch(
+      new Request(
+        `https://founding-core.internal${path}`,
+        requestOptions,
+      ),
+    );
+
+  let payload;
+
+  try {
+    payload =
+      await response.json();
+  } catch {
+    payload = {
+      error:
+        "INVALID_CORE_RESPONSE",
+    };
+  }
+
+  return {
+    status:
+      response.status,
+
+    payload,
+  };
+}
+
 async function coreHealth(env) {
   const core =
     canonicalCore(env);
@@ -464,6 +722,278 @@ export default {
           requestId,
         );
       }
+    }
+
+    /*
+     * -----------------------------------------------------
+     * P6-A3 — Cloudflare Commerce / USDT bridge
+     * -----------------------------------------------------
+     *
+     * Route code is migrated, but remains fail-closed
+     * unless ALL production gates are explicitly enabled.
+     */
+
+    if (
+      request.method === "POST" &&
+      url.pathname ===
+        "/api/orders"
+    ) {
+      if (
+        !publicUsdtApiEnabled(
+          env,
+        )
+      ) {
+        return json(
+          {
+            error:
+              "PUBLIC_COMMERCE_DISABLED",
+          },
+          503,
+          requestId,
+        );
+      }
+
+      const key =
+        readIdempotencyKey(
+          request,
+        );
+
+      if (key.error) {
+        return json(
+          {
+            error:
+              key.error,
+          },
+          key.status,
+          requestId,
+        );
+      }
+
+      const parsed =
+        await parseStrictJsonBody(
+          request,
+          [
+            "email",
+          ],
+        );
+
+      if (parsed.error) {
+        return json(
+          {
+            error:
+              parsed.error,
+          },
+          parsed.status,
+          requestId,
+        );
+      }
+
+      const result =
+        await callCommerceCore(
+          env,
+          "/internal/orders",
+          {
+            method:
+              "POST",
+
+            body: {
+              email:
+                parsed.body.email,
+
+              idempotencyKey:
+                key.value,
+            },
+          },
+        );
+
+      return json(
+        result.payload,
+        result.status,
+        requestId,
+      );
+    }
+
+    if (
+      request.method === "POST" &&
+      url.pathname ===
+        "/api/payments/usdt/attempts"
+    ) {
+      if (
+        !publicUsdtApiEnabled(
+          env,
+        )
+      ) {
+        return json(
+          {
+            error:
+              "PUBLIC_COMMERCE_DISABLED",
+          },
+          503,
+          requestId,
+        );
+      }
+
+      const key =
+        readIdempotencyKey(
+          request,
+        );
+
+      if (key.error) {
+        return json(
+          {
+            error:
+              key.error,
+          },
+          key.status,
+          requestId,
+        );
+      }
+
+      const parsed =
+        await parseStrictJsonBody(
+          request,
+          [
+            "orderPublicId",
+          ],
+        );
+
+      if (parsed.error) {
+        return json(
+          {
+            error:
+              parsed.error,
+          },
+          parsed.status,
+          requestId,
+        );
+      }
+
+      const result =
+        await callCommerceCore(
+          env,
+          "/internal/payments/usdt/attempts",
+          {
+            method:
+              "POST",
+
+            body: {
+              orderPublicId:
+                parsed.body
+                  .orderPublicId,
+
+              idempotencyKey:
+                key.value,
+            },
+          },
+        );
+
+      return json(
+        result.payload,
+        result.status,
+        requestId,
+      );
+    }
+
+    const publicReadAttemptMatch =
+      url.pathname.match(
+        /^\/api\/payments\/usdt\/attempts\/(PAY-USDT-[A-F0-9]{12})$/,
+      );
+
+    if (
+      request.method === "GET" &&
+      publicReadAttemptMatch
+    ) {
+      if (
+        !publicUsdtApiEnabled(
+          env,
+        )
+      ) {
+        return json(
+          {
+            error:
+              "PUBLIC_COMMERCE_DISABLED",
+          },
+          503,
+          requestId,
+        );
+      }
+
+      const result =
+        await callCommerceCore(
+          env,
+          `/internal/payments/usdt/attempts/${publicReadAttemptMatch[1]}`,
+        );
+
+      return json(
+        result.payload,
+        result.status,
+        requestId,
+      );
+    }
+
+    const publicSubmitAttemptMatch =
+      url.pathname.match(
+        /^\/api\/payments\/usdt\/attempts\/(PAY-USDT-[A-F0-9]{12})\/submit$/,
+      );
+
+    if (
+      request.method === "POST" &&
+      publicSubmitAttemptMatch
+    ) {
+      if (
+        !publicUsdtApiEnabled(
+          env,
+        )
+      ) {
+        return json(
+          {
+            error:
+              "PUBLIC_COMMERCE_DISABLED",
+          },
+          503,
+          requestId,
+        );
+      }
+
+      const parsed =
+        await parseStrictJsonBody(
+          request,
+          [
+            "txHash",
+          ],
+        );
+
+      if (parsed.error) {
+        return json(
+          {
+            error:
+              parsed.error,
+          },
+          parsed.status,
+          requestId,
+        );
+      }
+
+      const result =
+        await callCommerceCore(
+          env,
+          `/internal/payments/usdt/attempts/${publicSubmitAttemptMatch[1]}/submit`,
+          {
+            method:
+              "POST",
+
+            body: {
+              txHash:
+                parsed.body.txHash,
+            },
+          },
+        );
+
+      return json(
+        result.payload,
+        result.status,
+        requestId,
+      );
     }
 
     if (
