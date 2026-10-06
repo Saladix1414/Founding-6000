@@ -1,5 +1,5 @@
 {
-  "name": "founding-6000-prelaunch",
+  "name": "founding6000",
   "main": "cloudflare/worker.mjs",
   "compatibility_date": "2026-10-06",
   "assets": {
