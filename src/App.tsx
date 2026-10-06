@@ -8,6 +8,7 @@ import UsdtPaymentPanel from "./components/UsdtPaymentPanel";
 
 import {
   registerPrelaunchEmail,
+  type FoundingPaymentResult,
 } from "./lib/foundingApi";
 
 import "./App.css";
@@ -186,6 +187,15 @@ function App() {
 
   const [paymentMethod, setPaymentMethod] =
     useState<PaymentMethod>(null);
+
+  const [
+    verifiedPurchase,
+    setVerifiedPurchase,
+  ] =
+    useState<
+      FoundingPaymentResult |
+      null
+    >(null);
 
   const previousFocusRef =
     useRef<HTMLElement | null>(null);
@@ -392,6 +402,7 @@ function App() {
     setEmailError("");
     setEmailSubmitting(false);
     setPaymentMethod(null);
+    setVerifiedPurchase(null);
   };
 
   const closeCheckout = () => {
@@ -490,23 +501,10 @@ function App() {
     setEmailError("");
     setEmailSubmitting(false);
     setPaymentMethod(null);
+    setVerifiedPurchase(null);
   };
 
-  const paymentMethodLabel = () => {
-    if (paymentMethod === "mercado-pago") {
-      return "Mercado Pago";
-    }
 
-    if (paymentMethod === "naranja-x") {
-      return "Naranja X";
-    }
-
-    if (paymentMethod === "usdt") {
-      return "USDT";
-    }
-
-    return "";
-  };
 
   return (
     <div className="campaign">
@@ -2393,78 +2391,25 @@ function App() {
                   </span>
 
                   <h2>
-                    Choose a payment method.
+                    {language === "es"
+                      ? "Elegí un método de pago."
+                      : "Choose a payment method."}
                   </h2>
 
                   <p>
-                    These payment methods are visual
-                    prototypes only. No provider session,
-                    blockchain payment or charge is created.
+                    {language === "es"
+                      ? "USDT en Ethereum Mainnet está disponible. Los métodos en pesos se incorporarán próximamente."
+                      : "USDT on Ethereum Mainnet is available. Peso payment methods will be added soon."}
                   </p>
 
                   <div className="payment-methods">
                     <button
-                      className="payment-method"
+                      className="payment-method payment-method--available"
                       type="button"
                       onClick={() =>
                         choosePaymentMethod(
-                          "mercado-pago",
+                          "usdt",
                         )
-                      }
-                    >
-                      <span className="payment-method__icon">
-                        MP
-                      </span>
-
-                      <span className="payment-method__copy">
-                        <strong>Mercado Pago</strong>
-                        <small>
-                          Planned ARS payment
-                        </small>
-                      </span>
-
-                      <span
-                        className="payment-method__arrow"
-                        aria-hidden="true"
-                      >
-                        →
-                      </span>
-                    </button>
-
-                    <button
-                      className="payment-method"
-                      type="button"
-                      onClick={() =>
-                        choosePaymentMethod(
-                          "naranja-x",
-                        )
-                      }
-                    >
-                      <span className="payment-method__icon">
-                        NX
-                      </span>
-
-                      <span className="payment-method__copy">
-                        <strong>Naranja X</strong>
-                        <small>
-                          Pending official integration
-                          verification
-                        </small>
-                      </span>
-
-                      <span
-                        className="payment-method__arrow"
-                        aria-hidden="true"
-                      >
-                        →
-                      </span>
-                    </button>
-
-                    <button
-                      className="payment-method"
-                      type="button"
-                      onClick={() =>
-                        choosePaymentMethod("usdt")
                       }
                     >
                       <span className="payment-method__icon">
@@ -2472,10 +2417,19 @@ function App() {
                       </span>
 
                       <span className="payment-method__copy">
-                        <strong>USDT</strong>
+                        <strong>
+                          USDT
+                        </strong>
+
                         <small>
-                          Network not selected yet
+                          Ethereum Mainnet · ERC-20
                         </small>
+                      </span>
+
+                      <span className="payment-method__badge payment-method__badge--available">
+                        {language === "es"
+                          ? "DISPONIBLE"
+                          : "AVAILABLE"}
                       </span>
 
                       <span
@@ -2483,6 +2437,64 @@ function App() {
                         aria-hidden="true"
                       >
                         →
+                      </span>
+                    </button>
+
+                    <button
+                      className="payment-method payment-method--coming-soon"
+                      type="button"
+                      disabled
+                      aria-disabled="true"
+                    >
+                      <span className="payment-method__icon">
+                        MP
+                      </span>
+
+                      <span className="payment-method__copy">
+                        <strong>
+                          Mercado Pago
+                        </strong>
+
+                        <small>
+                          {language === "es"
+                            ? "Pago en pesos argentinos"
+                            : "Argentine peso payment"}
+                        </small>
+                      </span>
+
+                      <span className="payment-method__badge">
+                        {language === "es"
+                          ? "PRÓXIMAMENTE"
+                          : "COMING SOON"}
+                      </span>
+                    </button>
+
+                    <button
+                      className="payment-method payment-method--coming-soon"
+                      type="button"
+                      disabled
+                      aria-disabled="true"
+                    >
+                      <span className="payment-method__icon">
+                        NX
+                      </span>
+
+                      <span className="payment-method__copy">
+                        <strong>
+                          Naranja X
+                        </strong>
+
+                        <small>
+                          {language === "es"
+                            ? "Pago en pesos argentinos"
+                            : "Argentine peso payment"}
+                        </small>
+                      </span>
+
+                      <span className="payment-method__badge">
+                        {language === "es"
+                          ? "PRÓXIMAMENTE"
+                          : "COMING SOON"}
                       </span>
                     </button>
                   </div>
@@ -2491,10 +2503,14 @@ function App() {
                     className="checkout-back-link"
                     type="button"
                     onClick={() =>
-                      setCheckoutStep("confirm")
+                      setCheckoutStep(
+                        "confirm",
+                      )
                     }
                   >
-                    ← Back to reservation
+                    {language === "es"
+                      ? "← Volver a la reserva"
+                      : "← Back to reservation"}
                   </button>
                 </div>
               )}
@@ -2506,139 +2522,46 @@ function App() {
                   </span>
 
                   <h2>
-                    {paymentMethodLabel()}
+                    USDT · Ethereum Mainnet
                   </h2>
 
-                  {paymentMethod === "mercado-pago" && (
-                    <>
-                      <p>
-                        The production flow will convert the
-                        US$50 reference price into an
-                        auditable ARS quote with a defined FX
-                        source and expiration.
-                      </p>
-
-                      <div className="prototype-payment-card">
-                        <span>REFERENCE PRICE</span>
-                        <strong>US$50</strong>
-
-                        <div>
-                          <span>ARS quote</span>
-                          <strong>
-                            Not generated in prototype
-                          </strong>
-                        </div>
-
-                        <div>
-                          <span>Provider</span>
-                          <strong>Mercado Pago</strong>
-                        </div>
-                      </div>
-                    </>
-                  )}
-
-                  {paymentMethod === "naranja-x" && (
-                    <>
-                      <p>
-                        Naranja X remains conditional until
-                        its official merchant integration
-                        capabilities are researched and
-                        verified.
-                      </p>
-
-                      <div className="prototype-payment-card">
-                        <span>INTEGRATION STATUS</span>
-                        <strong>
-                          Research required
-                        </strong>
-
-                        <div>
-                          <span>Real checkout</span>
-                          <strong>Disabled</strong>
-                        </div>
-
-                        <div>
-                          <span>Payment authority</span>
-                          <strong>
-                            Not configured
-                          </strong>
-                        </div>
-                      </div>
-                    </>
-                  )}
+                  <p>
+                    {language === "es"
+                      ? "La información de red, contrato, monto y wallet que aparece debajo proviene del intento de pago creado por el servidor."
+                      : "The network, contract, amount and wallet below come from the server-created payment attempt."}
+                  </p>
 
                   {paymentMethod === "usdt" && (
-                    <>
-                      <p>
-                        Production USDT payment requires one
-                        explicit network, official token
-                        contract verification, destination
-                        wallet validation and server-side
-                        transaction verification.
-                      </p>
+                    <UsdtPaymentPanel
+                      email={email}
+                      language={language}
+                      onVerified={(
+                        result,
+                      ) => {
+                        setVerifiedPurchase(
+                          result,
+                        );
 
-                      <div className="prototype-payment-card">
-                        <span>USDT PAYMENT</span>
-                        <strong>
-                          Network not selected
-                        </strong>
-
-                        <div>
-                          <span>Wallet</span>
-                          <strong>
-                            Not published
-                          </strong>
-                        </div>
-
-                        <div>
-                          <span>Token contract</span>
-                          <strong>
-                            Not configured
-                          </strong>
-                        </div>
-                      </div>
-                    </>
+                        setCheckoutStep(
+                          "complete",
+                        );
+                      }}
+                    />
                   )}
 
-                  {paymentMethod === "usdt" && (
-                  <UsdtPaymentPanel
-                    email={email}
-                  />
-                )}
-
-                <div className="checkout-warning">
-                    <strong>
-                      Prototype only
-                    </strong>
-
-                    <p>
-                      This button will not charge you,
-                      redirect to a provider or verify a
-                      blockchain transaction.
-                    </p>
-                  </div>
-
-                  <div className="checkout-actions">
-                    <button
-                      className="db-button db-button--secondary"
-                      type="button"
-                      onClick={() =>
-                        setCheckoutStep("method")
-                      }
-                    >
-                      Change method
-                    </button>
-
-                    <button
-                      className="db-button db-button--primary"
-                      type="button"
-                      onClick={() =>
-                        setCheckoutStep("complete")
-                      }
-                    >
-                      Complete prototype
-                    </button>
-                  </div>
+                  <button
+                    className="checkout-back-link"
+                    type="button"
+                    onClick={() =>
+                      setCheckoutStep(
+                        "method",
+                      )
+                    }
+                  >
+                    {language === "es"
+                      ? "← Cambiar método"
+                      : "← Change method"}
+                  </button>
                 </div>
               )}
 
@@ -2650,52 +2573,138 @@ function App() {
 
                   <span className="checkout-step__number">
                     {PUBLIC_CHECKOUT_ENABLED
-                      ? "CHECKOUT FLOW COMPLETE"
-                      : "PRELAUNCH REGISTERED"}
+                      ? language === "es"
+                        ? "PAGO VERIFICADO"
+                        : "PAYMENT VERIFIED"
+                      : language === "es"
+                        ? "PRELAUNCH REGISTRADO"
+                        : "PRELAUNCH REGISTERED"}
                   </span>
 
                   <h2>
                     {PUBLIC_CHECKOUT_ENABLED
-                      ? "Checkout flow complete."
-                      : "You’re on the Founding 6000 prelaunch list."}
+                      ? language === "es"
+                        ? "Tu pago fue verificado en Ethereum."
+                        : "Your payment was verified on Ethereum."
+                      : language === "es"
+                        ? "Ya estás en la lista de prelaunch de Founding 6000."
+                        : "You’re on the Founding 6000 prelaunch list."}
                   </h2>
 
                   {PUBLIC_CHECKOUT_ENABLED ? (
                     <p>
-                      The checkout interface completed its
-                      current flow. Payment and membership
-                      authority remain server-side.
+                      {language === "es"
+                        ? "El servidor verificó la transferencia USDT y creó de forma atómica tu asignación Founding y tu membresía."
+                        : "The server verified the USDT transfer and atomically created your Founding allocation and membership."}
                     </p>
                   ) : (
                     <p>
-                      We registered your email for launch
-                      updates. No order, payment, membership,
-                      inventory allocation or Founding serial
-                      was created.
+                      {language === "es"
+                        ? "Registramos tu email para novedades del lanzamiento. No se creó ningún pedido, pago, membresía ni serial Founding."
+                        : "We registered your email for launch updates. No order, payment, membership or Founding serial was created."}
                     </p>
                   )}
 
                   <div className="checkout-summary">
                     <div>
                       <span>Email</span>
-                      <strong>{email}</strong>
+                      <strong>
+                        {email}
+                      </strong>
                     </div>
 
                     <div>
-                      <span>Status</span>
+                      <span>
+                        {language === "es"
+                          ? "Estado"
+                          : "Status"}
+                      </span>
+
                       <strong>
                         {PUBLIC_CHECKOUT_ENABLED
-                          ? "CHECKOUT FLOW"
+                          ? verifiedPurchase
+                            ? "PAID"
+                            : "PENDING"
                           : "PRELAUNCH ONLY"}
                       </strong>
                     </div>
 
                     <div>
-                      <span>Payment state</span>
+                      <span>
+                        {language === "es"
+                          ? "Pago"
+                          : "Payment"}
+                      </span>
+
                       <strong>
-                        NOT PROCESSED
+                        {PUBLIC_CHECKOUT_ENABLED
+                          ? verifiedPurchase
+                            ? "USDT · VERIFIED"
+                            : "NOT VERIFIED"
+                          : "NOT PROCESSED"}
                       </strong>
                     </div>
+
+                    {PUBLIC_CHECKOUT_ENABLED &&
+                      verifiedPurchase
+                        ?.allocation && (
+                        <div>
+                          <span>
+                            {language === "es"
+                              ? "Serial Founding"
+                              : "Founding serial"}
+                          </span>
+
+                          <strong>
+                            #{String(
+                              verifiedPurchase
+                                .allocation
+                                .serialNumber,
+                            ).padStart(
+                              4,
+                              "0",
+                            )}
+                          </strong>
+                        </div>
+                      )}
+
+                    {PUBLIC_CHECKOUT_ENABLED &&
+                      verifiedPurchase
+                        ?.membership && (
+                        <div>
+                          <span>
+                            {language === "es"
+                              ? "Membresía"
+                              : "Membership"}
+                          </span>
+
+                          <strong>
+                            {verifiedPurchase
+                              .membership
+                              .genesisMember
+                              ? "Genesis Member"
+                              : "Founding Member"}
+                          </strong>
+                        </div>
+                      )}
+
+                    {PUBLIC_CHECKOUT_ENABLED &&
+                      verifiedPurchase
+                        ?.membership && (
+                        <div>
+                          <span>
+                            {language === "es"
+                              ? "Acceso"
+                              : "Access"}
+                          </span>
+
+                          <strong>
+                            {language === "es"
+                              ? "Activación pendiente"
+                              : "Activation pending"}
+                          </strong>
+                        </div>
+                      )}
                   </div>
 
                   <div className="checkout-actions">
@@ -2703,22 +2712,31 @@ function App() {
                       <button
                         className="db-button db-button--secondary"
                         type="button"
-                        onClick={resetCheckout}
+                        onClick={
+                          resetCheckout
+                        }
                       >
-                        Restart checkout
+                        {language === "es"
+                          ? "Nuevo checkout"
+                          : "New checkout"}
                       </button>
                     )}
 
                     <button
                       className="db-button db-button--primary"
                       type="button"
-                      onClick={closeCheckout}
+                      onClick={
+                        closeCheckout
+                      }
                     >
-                      Return to campaign
+                      {language === "es"
+                        ? "Volver a la campaña"
+                        : "Return to campaign"}
                     </button>
                   </div>
                 </div>
               )}
+
             </div>
 
             <footer className="checkout-footer">

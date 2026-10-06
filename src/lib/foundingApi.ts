@@ -89,6 +89,62 @@ export type UsdtPaymentAttempt = {
   createdAt: string;
 };
 
+export type FoundingPaymentResult = {
+  attempt:
+    UsdtPaymentAttempt;
+
+  paymentVerified:
+    boolean;
+
+  settlementCreated:
+    boolean;
+
+  verificationStatus?:
+    | "PENDING"
+    | "VERIFYING"
+    | "VERIFIED"
+    | "REJECTED";
+
+  verificationCode?:
+    string;
+
+  order?: {
+    publicId:
+      string;
+
+    status:
+      string;
+  };
+
+  allocation?: {
+    serialNumber:
+      number;
+
+    phaseCode:
+      string;
+
+    phaseTransitioned:
+      boolean;
+  };
+
+  membership?: {
+    publicId:
+      string;
+
+    serialNumber:
+      number;
+
+    foundingMember:
+      boolean;
+
+    genesisMember:
+      boolean;
+
+    status:
+      string;
+  };
+};
+
 export async function createFoundingOrder(
   email: string,
 ) {
@@ -200,6 +256,31 @@ export async function submitUsdtTxHash(
     message:
       string;
   }>(
+    response,
+  );
+}
+
+
+export async function getUsdtPaymentAttempt(
+  paymentAttemptPublicId: string,
+) {
+  const response =
+    await fetch(
+      `${API_BASE}/api/payments/usdt/attempts/${paymentAttemptPublicId}`,
+      {
+        method:
+          "GET",
+
+        headers: {
+          "Accept":
+            "application/json",
+        },
+      },
+    );
+
+  return parseResponse<
+    FoundingPaymentResult
+  >(
     response,
   );
 }

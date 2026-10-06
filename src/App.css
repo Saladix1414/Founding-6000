@@ -6889,3 +6889,42 @@
     display: none;
   }
 }
+
+/* =========================================================
+   P6-C1 — PAYMENT METHOD AVAILABILITY
+   ========================================================= */
+
+.payment-method--coming-soon {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.payment-method--coming-soon:hover {
+  transform: none;
+}
+
+.payment-method__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 3px 8px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.payment-method__badge--available {
+  opacity: 1;
+}
+
+.usdt-status.is-verified {
+  font-weight: 800;
+}
+
+.usdt-status.is-rejected {
+  font-weight: 800;
+}

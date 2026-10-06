@@ -2,6 +2,10 @@ import {
   FoundingCore,
 } from "./foundingCore.mjs";
 
+import {
+  verifyUsdtOnEthereum,
+} from "./usdtRpcVerifier.mjs";
+
 export {
   FoundingCore,
 };
@@ -287,6 +291,683 @@ async function parseEmailBody(
   };
 }
 
+function runtimeFlagEnabled(
+  env,
+  name,
+) {
+  return (
+    String(
+      env?.[name] ?? "",
+    ).toLowerCase() ===
+    "true"
+  );
+}
+
+/*
+ * Fourth production gate.
+ *
+ * Even if the legacy checkout/payment flags are enabled,
+ * Cloudflare commerce remains closed until this explicit
+ * migration gate is also enabled.
+ */
+function publicUsdtApiEnabled(
+  env,
+) {
+  return (
+    runtimeFlagEnabled(
+      env,
+      "PUBLIC_CHECKOUT_ENABLED",
+    ) &&
+    runtimeFlagEnabled(
+      env,
+      "PAYMENT_READINESS",
+    ) &&
+    runtimeFlagEnabled(
+      env,
+      "REAL_PAYMENTS_ENABLED",
+    ) &&
+    runtimeFlagEnabled(
+      env,
+      "CLOUDFLARE_USDT_API_ENABLED",
+    )
+  );
+}
+
+function readIdempotencyKey(
+  request,
+) {
+  const value =
+    request.headers
+      .get(
+        "Idempotency-Key",
+      )
+      ?.trim() ?? "";
+
+  if (!value) {
+    return {
+      error:
+        "IDEMPOTENCY_KEY_REQUIRED",
+      status:
+        400,
+    };
+  }
+
+  if (
+    value.length < 8 ||
+    value.length > 128 ||
+    !/^[A-Za-z0-9._:-]+$/
+      .test(value)
+  ) {
+    return {
+      error:
+        "INVALID_IDEMPOTENCY_KEY",
+      status:
+        400,
+    };
+  }
+
+  return {
+    value,
+  };
+}
+
+async function parseStrictJsonBody(
+  request,
+  allowedKeys,
+) {
+  const contentType =
+    request.headers.get(
+      "Content-Type",
+    ) ?? "";
+
+  if (
+    !contentType
+      .toLowerCase()
+      .startsWith(
+        "application/json",
+      )
+  ) {
+    return {
+      error:
+        "UNSUPPORTED_MEDIA_TYPE",
+      status:
+        415,
+    };
+  }
+
+  const declaredLength =
+    Number(
+      request.headers.get(
+        "Content-Length",
+      ) ?? "0",
+    );
+
+  if (
+    Number.isFinite(
+      declaredLength,
+    ) &&
+    declaredLength >
+      MAX_JSON_BYTES
+  ) {
+    return {
+      error:
+        "REQUEST_BODY_TOO_LARGE",
+      status:
+        413,
+    };
+  }
+
+  const text =
+    await request.text();
+
+  if (
+    new TextEncoder()
+      .encode(text)
+      .byteLength >
+    MAX_JSON_BYTES
+  ) {
+    return {
+      error:
+        "REQUEST_BODY_TOO_LARGE",
+      status:
+        413,
+    };
+  }
+
+  let body;
+
+  try {
+    body =
+      JSON.parse(text);
+  } catch {
+    return {
+      error:
+        "INVALID_JSON",
+      status:
+        400,
+    };
+  }
+
+  if (
+    !body ||
+    typeof body !==
+      "object" ||
+    Array.isArray(body)
+  ) {
+    return {
+      error:
+        "INVALID_REQUEST_BODY",
+      status:
+        400,
+    };
+  }
+
+  const keys =
+    Object.keys(body)
+      .sort();
+
+  const expected =
+    [...allowedKeys]
+      .sort();
+
+  if (
+    keys.length !==
+      expected.length ||
+    keys.some(
+      (key, index) =>
+        key !==
+        expected[index],
+    )
+  ) {
+    return {
+      error:
+        "INVALID_REQUEST_BODY",
+      status:
+        400,
+    };
+  }
+
+  return {
+    body,
+  };
+}
+
+async function callCommerceCore(
+  env,
+  path,
+  options = {},
+) {
+  const core =
+    canonicalCore(env);
+
+  const requestOptions = {
+    method:
+      options.method ??
+      "GET",
+  };
+
+  if (
+    options.body !==
+    undefined
+  ) {
+    requestOptions.headers = {
+      "Content-Type":
+        "application/json",
+    };
+
+    requestOptions.body =
+      JSON.stringify(
+        options.body,
+      );
+  }
+
+  const response =
+    await core.fetch(
+      new Request(
+        `https://founding-core.internal${path}`,
+        requestOptions,
+      ),
+    );
+
+  let payload;
+
+  try {
+    payload =
+      await response.json();
+  } catch {
+    payload = {
+      error:
+        "INVALID_CORE_RESPONSE",
+    };
+  }
+
+  return {
+    status:
+      response.status,
+
+    payload,
+  };
+}
+
+function commerceRateAction(
+  request,
+  url,
+) {
+  if (
+    request.method === "POST" &&
+    url.pathname === "/api/orders"
+  ) {
+    return "ORDER_CREATE";
+  }
+
+  if (
+    request.method === "POST" &&
+    url.pathname ===
+      "/api/payments/usdt/attempts"
+  ) {
+    return "USDT_ATTEMPT_CREATE";
+  }
+
+  if (
+    request.method === "POST" &&
+    /^\/api\/payments\/usdt\/attempts\/PAY-USDT-[A-F0-9]{12}\/submit$/
+      .test(url.pathname)
+  ) {
+    return "USDT_HASH_SUBMIT";
+  }
+
+  if (
+    request.method === "GET" &&
+    /^\/api\/payments\/usdt\/attempts\/PAY-USDT-[A-F0-9]{12}$/
+      .test(url.pathname)
+  ) {
+    return "USDT_VERIFY_POLL";
+  }
+
+  return null;
+}
+
+async function enforceCommerceRateLimit(
+  env,
+  request,
+  action,
+) {
+  const hash =
+    await actorHash(request);
+
+  return callCommerceCore(
+    env,
+    "/internal/commerce-rate-limit",
+    {
+      method: "POST",
+
+      body: {
+        actorHash: hash,
+        action,
+      },
+    },
+  );
+}
+
+const PENDING_VERIFICATION_ERRORS =
+  new Set([
+    "TRANSACTION_NOT_FOUND",
+    "INSUFFICIENT_CONFIRMATIONS",
+  ]);
+
+const TERMINAL_VERIFICATION_ERRORS =
+  new Set([
+    "TRANSACTION_FAILED",
+    "TRANSACTION_HASH_MISMATCH",
+    "EXPECTED_USDT_TRANSFER_NOT_FOUND",
+    "AMBIGUOUS_USDT_TRANSFER",
+  ]);
+
+async function recordVerificationFailure(
+  env,
+  paymentPublicId,
+  errorCode,
+  terminal,
+) {
+  return callCommerceCore(
+    env,
+    `/internal/payments/usdt/attempts/${paymentPublicId}/verification-failure`,
+    {
+      method:
+        "POST",
+
+      body: {
+        errorCode,
+        terminal,
+      },
+    },
+  );
+}
+
+async function verifyPublicUsdtAttempt(
+  env,
+  paymentPublicId,
+) {
+  /*
+   * Durable Object decides whether this verification
+   * should actually run. This gives us locking/backoff
+   * across distributed Worker requests.
+   */
+  const begin =
+    await callCommerceCore(
+      env,
+      `/internal/payments/usdt/attempts/${paymentPublicId}/begin-verification`,
+      {
+        method:
+          "POST",
+      },
+    );
+
+  if (
+    begin.status < 200 ||
+    begin.status >= 300
+  ) {
+    return begin;
+  }
+
+  if (
+    begin.payload
+      ?.shouldVerify !== true
+  ) {
+    const status =
+      begin.payload
+        ?.attempt
+        ?.status;
+
+    return {
+      status:
+        200,
+
+      payload: {
+        attempt:
+          begin.payload
+            ?.attempt,
+
+        ...(begin.payload?.order
+          ? {
+              order:
+                begin.payload.order,
+            }
+          : {}),
+
+        ...(begin.payload?.allocation
+          ? {
+              allocation:
+                begin.payload
+                  .allocation,
+            }
+          : {}),
+
+        ...(begin.payload?.membership
+          ? {
+              membership:
+                begin.payload
+                  .membership,
+            }
+          : {}),
+
+        paymentVerified:
+          status ===
+          "VERIFIED",
+
+        settlementCreated:
+          false,
+
+        verificationStatus:
+          status === "VERIFIED"
+            ? "VERIFIED"
+            : status === "REJECTED"
+              ? "REJECTED"
+              : status === "VERIFYING"
+                ? "VERIFYING"
+                : "PENDING",
+      },
+    };
+  }
+
+  const verification =
+    begin.payload
+      ?.verification;
+
+  /*
+   * ETHEREUM_RPC_URL must be a Cloudflare secret.
+   * Never place it in wrangler.jsonc or in the response.
+   */
+  const rpcUrl =
+    typeof env
+      ?.ETHEREUM_RPC_URL ===
+      "string"
+      ? env.ETHEREUM_RPC_URL
+          .trim()
+      : "";
+
+  if (
+    !rpcUrl.startsWith(
+      "https://",
+    )
+  ) {
+    await recordVerificationFailure(
+      env,
+      paymentPublicId,
+      "ETHEREUM_RPC_NOT_CONFIGURED",
+      false,
+    );
+
+    return {
+      status:
+        503,
+
+      payload: {
+        error:
+          "PAYMENT_VERIFICATION_UNAVAILABLE",
+      },
+    };
+  }
+
+  try {
+    const transfer =
+      await verifyUsdtOnEthereum({
+        rpcUrl,
+
+        txHash:
+          verification.txHash,
+
+        expectedReceiver:
+          verification
+            .receiverAddress,
+
+        expectedAmountMinor:
+          verification
+            .expectedAmountMinor,
+
+        confirmationsRequired:
+          12,
+      });
+
+    const settled =
+      await callCommerceCore(
+        env,
+        `/internal/payments/usdt/attempts/${paymentPublicId}/settle`,
+        {
+          method:
+            "POST",
+
+          body: {
+            transfer,
+          },
+        },
+      );
+
+    if (
+      settled.status < 200 ||
+      settled.status >= 300
+    ) {
+      /*
+       * Settlement errors are never converted into
+       * fake payment success.
+       */
+      await recordVerificationFailure(
+        env,
+        paymentPublicId,
+        "SETTLEMENT_FAILED",
+        false,
+      );
+
+      return {
+        status:
+          503,
+
+        payload: {
+          error:
+            "PAYMENT_SETTLEMENT_UNAVAILABLE",
+        },
+      };
+    }
+
+    return {
+      status:
+        200,
+
+      payload: {
+        ...settled.payload,
+
+        attempt: {
+          ...begin.payload
+            .attempt,
+
+          status:
+            "VERIFIED",
+        },
+
+        paymentVerified:
+          true,
+
+        settlementCreated:
+          settled.payload
+            ?.idempotentReplay !==
+          true,
+
+        verificationStatus:
+          "VERIFIED",
+      },
+    };
+  } catch (error) {
+    const code =
+      error instanceof Error
+        ? error.message
+        : "UNKNOWN_VERIFICATION_ERROR";
+
+    /*
+     * Blockchain state that can legitimately change:
+     *
+     * - tx not propagated yet;
+     * - not enough confirmations yet.
+     *
+     * These remain retryable.
+     */
+    if (
+      PENDING_VERIFICATION_ERRORS
+        .has(code)
+    ) {
+      const failure =
+        await recordVerificationFailure(
+          env,
+          paymentPublicId,
+          code,
+          false,
+        );
+
+      return {
+        status:
+          200,
+
+        payload: {
+          attempt:
+            failure.payload
+              ?.attempt,
+
+          paymentVerified:
+            false,
+
+          settlementCreated:
+            false,
+
+          verificationStatus:
+            "PENDING",
+
+          verificationCode:
+            code,
+        },
+      };
+    }
+
+    /*
+     * Definitive blockchain evidence mismatch.
+     */
+    if (
+      TERMINAL_VERIFICATION_ERRORS
+        .has(code)
+    ) {
+      const failure =
+        await recordVerificationFailure(
+          env,
+          paymentPublicId,
+          code,
+          true,
+        );
+
+      return {
+        status:
+          200,
+
+        payload: {
+          attempt:
+            failure.payload
+              ?.attempt,
+
+          paymentVerified:
+            false,
+
+          settlementCreated:
+            false,
+
+          verificationStatus:
+            "REJECTED",
+
+          verificationCode:
+            code,
+        },
+      };
+    }
+
+    /*
+     * RPC/provider/malformed-response errors are
+     * infrastructure failures, NOT buyer rejection.
+     */
+    await recordVerificationFailure(
+      env,
+      paymentPublicId,
+      code,
+      false,
+    );
+
+    return {
+      status:
+        503,
+
+      payload: {
+        error:
+          "PAYMENT_VERIFICATION_UNAVAILABLE",
+      },
+    };
+  }
+}
+
 async function coreHealth(env) {
   const core =
     canonicalCore(env);
@@ -464,6 +1145,319 @@ export default {
           requestId,
         );
       }
+    }
+
+    if (
+      publicUsdtApiEnabled(env)
+    ) {
+      const rateAction =
+        commerceRateAction(
+          request,
+          url,
+        );
+
+      if (rateAction) {
+        const rate =
+          await enforceCommerceRateLimit(
+            env,
+            request,
+            rateAction,
+          );
+
+        if (rate.status === 429) {
+          return json(
+            rate.payload,
+            429,
+            requestId,
+          );
+        }
+
+        if (
+          rate.status < 200 ||
+          rate.status >= 300
+        ) {
+          return json(
+            {
+              error:
+                "RATE_LIMIT_UNAVAILABLE",
+            },
+            503,
+            requestId,
+          );
+        }
+      }
+    }
+
+    /*
+     * -----------------------------------------------------
+     * P6-A3 — Cloudflare Commerce / USDT bridge
+     * -----------------------------------------------------
+     *
+     * Route code is migrated, but remains fail-closed
+     * unless ALL production gates are explicitly enabled.
+     */
+
+    if (
+      request.method === "POST" &&
+      url.pathname ===
+        "/api/orders"
+    ) {
+      if (
+        !publicUsdtApiEnabled(
+          env,
+        )
+      ) {
+        return json(
+          {
+            error:
+              "PUBLIC_COMMERCE_DISABLED",
+          },
+          503,
+          requestId,
+        );
+      }
+
+      const key =
+        readIdempotencyKey(
+          request,
+        );
+
+      if (key.error) {
+        return json(
+          {
+            error:
+              key.error,
+          },
+          key.status,
+          requestId,
+        );
+      }
+
+      const parsed =
+        await parseStrictJsonBody(
+          request,
+          [
+            "email",
+          ],
+        );
+
+      if (parsed.error) {
+        return json(
+          {
+            error:
+              parsed.error,
+          },
+          parsed.status,
+          requestId,
+        );
+      }
+
+      const result =
+        await callCommerceCore(
+          env,
+          "/internal/orders",
+          {
+            method:
+              "POST",
+
+            body: {
+              email:
+                parsed.body.email,
+
+              idempotencyKey:
+                key.value,
+            },
+          },
+        );
+
+      return json(
+        result.payload,
+        result.status,
+        requestId,
+      );
+    }
+
+    if (
+      request.method === "POST" &&
+      url.pathname ===
+        "/api/payments/usdt/attempts"
+    ) {
+      if (
+        !publicUsdtApiEnabled(
+          env,
+        )
+      ) {
+        return json(
+          {
+            error:
+              "PUBLIC_COMMERCE_DISABLED",
+          },
+          503,
+          requestId,
+        );
+      }
+
+      const key =
+        readIdempotencyKey(
+          request,
+        );
+
+      if (key.error) {
+        return json(
+          {
+            error:
+              key.error,
+          },
+          key.status,
+          requestId,
+        );
+      }
+
+      const parsed =
+        await parseStrictJsonBody(
+          request,
+          [
+            "orderPublicId",
+          ],
+        );
+
+      if (parsed.error) {
+        return json(
+          {
+            error:
+              parsed.error,
+          },
+          parsed.status,
+          requestId,
+        );
+      }
+
+      const result =
+        await callCommerceCore(
+          env,
+          "/internal/payments/usdt/attempts",
+          {
+            method:
+              "POST",
+
+            body: {
+              orderPublicId:
+                parsed.body
+                  .orderPublicId,
+
+              idempotencyKey:
+                key.value,
+            },
+          },
+        );
+
+      return json(
+        result.payload,
+        result.status,
+        requestId,
+      );
+    }
+
+    const publicReadAttemptMatch =
+      url.pathname.match(
+        /^\/api\/payments\/usdt\/attempts\/(PAY-USDT-[A-F0-9]{12})$/,
+      );
+
+    if (
+      request.method === "GET" &&
+      publicReadAttemptMatch
+    ) {
+      if (
+        !publicUsdtApiEnabled(
+          env,
+        )
+      ) {
+        return json(
+          {
+            error:
+              "PUBLIC_COMMERCE_DISABLED",
+          },
+          503,
+          requestId,
+        );
+      }
+
+      const result =
+        await verifyPublicUsdtAttempt(
+          env,
+          publicReadAttemptMatch[1],
+        );
+
+      return json(
+        result.payload,
+        result.status,
+        requestId,
+      );
+    }
+
+    const publicSubmitAttemptMatch =
+      url.pathname.match(
+        /^\/api\/payments\/usdt\/attempts\/(PAY-USDT-[A-F0-9]{12})\/submit$/,
+      );
+
+    if (
+      request.method === "POST" &&
+      publicSubmitAttemptMatch
+    ) {
+      if (
+        !publicUsdtApiEnabled(
+          env,
+        )
+      ) {
+        return json(
+          {
+            error:
+              "PUBLIC_COMMERCE_DISABLED",
+          },
+          503,
+          requestId,
+        );
+      }
+
+      const parsed =
+        await parseStrictJsonBody(
+          request,
+          [
+            "txHash",
+          ],
+        );
+
+      if (parsed.error) {
+        return json(
+          {
+            error:
+              parsed.error,
+          },
+          parsed.status,
+          requestId,
+        );
+      }
+
+      const result =
+        await callCommerceCore(
+          env,
+          `/internal/payments/usdt/attempts/${publicSubmitAttemptMatch[1]}/submit`,
+          {
+            method:
+              "POST",
+
+            body: {
+              txHash:
+                parsed.body.txHash,
+            },
+          },
+        );
+
+      return json(
+        result.payload,
+        result.status,
+        requestId,
+      );
     }
 
     if (
