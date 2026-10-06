@@ -1001,18 +1001,6 @@ function App() {
                 </article>
               ))}
             </div>
-
-            <div className="capacity-note">
-              <span aria-hidden="true">i</span>
-
-              <p>
-                Maximum mathematical gross receipts across
-                all 6,000 memberships are US$460,000.
-                This represents campaign capacity
-                mathematics only — not a forecast,
-                current revenue or guaranteed sales.
-              </p>
-            </div>
           </div>
         </section>
 
