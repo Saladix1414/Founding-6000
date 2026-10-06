@@ -16,11 +16,6 @@ import { DigitalBoostWhitepaper } from "./whitepaper/DigitalBoostWhitepaper";
 
 const TARGET_DATE = new Date("2027-01-05T00:00:00-03:00");
 
-const PUBLIC_CHECKOUT_ENABLED =
-  import.meta.env
-    .VITE_PUBLIC_CHECKOUT_ENABLED ===
-  "true";
-
 type Language =
   | "en"
   | "es";
@@ -137,6 +132,11 @@ function CountdownUnit({
 }
 
 function App() {
+  const [
+    publicCheckoutEnabled,
+    setPublicCheckoutEnabled,
+  ] = useState(false);
+
   const [language, setLanguage] =
     useState<Language>(() => {
       const saved =
@@ -201,6 +201,53 @@ function App() {
     useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
+
+    async function resolveCheckout() {
+      try {
+        const response =
+          await fetch(
+            "/api/health",
+            {
+              headers: {
+                Accept:
+                  "application/json",
+              },
+            },
+          );
+
+        if (!response.ok) {
+          return;
+        }
+
+        const health =
+          await response.json();
+
+        if (cancelled) {
+          return;
+        }
+
+        setPublicCheckoutEnabled(
+          health?.checkout === "open" &&
+          health?.payments === "enabled" &&
+          health?.paymentReadiness === true &&
+          health?.realPaymentsEnabled === true,
+        );
+      } catch {
+        /*
+         * Fail closed.
+         */
+      }
+    }
+
+    void resolveCheckout();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
     window.localStorage.setItem(
       "founding6000-language",
       language,
@@ -229,7 +276,7 @@ function App() {
   );
 
   const primaryCtaLabel =
-    PUBLIC_CHECKOUT_ENABLED
+    publicCheckoutEnabled
       ? language === "es"
         ? "Comprar ahora"
         : "Purchase Now"
@@ -450,7 +497,7 @@ function App() {
      * any payment method.
      */
     if (
-      !PUBLIC_CHECKOUT_ENABLED
+      !publicCheckoutEnabled
     ) {
       setEmailSubmitting(
         true,
@@ -2022,7 +2069,7 @@ function App() {
                 </button>
 
                 <span className="purchase-panel__note">
-                  {PUBLIC_CHECKOUT_ENABLED
+                  {publicCheckoutEnabled
                     ? (
                       <>
                         Checkout availability is controlled by
@@ -2107,7 +2154,7 @@ function App() {
             <header className="checkout-header">
               <div>
                 <span className="checkout-header__eyebrow">
-                  {PUBLIC_CHECKOUT_ENABLED
+                  {publicCheckoutEnabled
                     ? language === "es"
                       ? "FOUNDING 6000 · COMPRA"
                       : "FOUNDING 6000 · CHECKOUT"
@@ -2117,7 +2164,7 @@ function App() {
                 </span>
 
                 <strong id="checkout-title">
-                  {PUBLIC_CHECKOUT_ENABLED
+                  {publicCheckoutEnabled
                     ? language === "es"
                       ? "Comprar reserva"
                       : "Purchase reservation"
@@ -2145,7 +2192,7 @@ function App() {
               id="checkout-prototype-note"
               className="sr-only"
             >
-              {PUBLIC_CHECKOUT_ENABLED
+              {publicCheckoutEnabled
                 ? language === "es"
                   ? "Proceso de compra de Founding 6000."
                   : "Founding 6000 checkout."
@@ -2156,7 +2203,7 @@ function App() {
 
             <div
               className={
-                PUBLIC_CHECKOUT_ENABLED
+                publicCheckoutEnabled
                   ? "checkout-progress"
                   : "checkout-progress checkout-progress--prelaunch"
               }
@@ -2195,19 +2242,19 @@ function App() {
               {checkoutStep === "email" && (
                 <div className="checkout-step">
                   <span className="checkout-step__number">
-                    {PUBLIC_CHECKOUT_ENABLED
+                    {publicCheckoutEnabled
                       ? "STEP 01 / 04"
                       : "PRELAUNCH ACCESS"}
                   </span>
 
                   <h2>
-                    {PUBLIC_CHECKOUT_ENABLED
+                    {publicCheckoutEnabled
                       ? "Start with your email."
                       : "Be notified when reservations open."}
                   </h2>
 
                   <p>
-                    {PUBLIC_CHECKOUT_ENABLED
+                    {publicCheckoutEnabled
                       ? (
                         <>
                           Email is required before beginning a
@@ -2263,7 +2310,7 @@ function App() {
                     <span aria-hidden="true">i</span>
 
                     <p>
-                      {PUBLIC_CHECKOUT_ENABLED
+                      {publicCheckoutEnabled
                         ? (
                           <>
                             Email is a contact identifier. It is
@@ -2289,7 +2336,7 @@ function App() {
                   >
                     {emailSubmitting
                       ? "Registering…"
-                      : PUBLIC_CHECKOUT_ENABLED
+                      : publicCheckoutEnabled
                         ? "Continue"
                         : "Join launch updates"}
 
@@ -2300,7 +2347,7 @@ function App() {
                 </div>
               )}
 
-              {PUBLIC_CHECKOUT_ENABLED && checkoutStep === "confirm" && (
+              {publicCheckoutEnabled && checkoutStep === "confirm" && (
                 <div className="checkout-step">
                   <span className="checkout-step__number">
                     STEP 02 / 04
@@ -2384,7 +2431,7 @@ function App() {
                 </div>
               )}
 
-              {PUBLIC_CHECKOUT_ENABLED && checkoutStep === "method" && (
+              {publicCheckoutEnabled && checkoutStep === "method" && (
                 <div className="checkout-step">
                   <span className="checkout-step__number">
                     STEP 03 / 04
@@ -2515,7 +2562,7 @@ function App() {
                 </div>
               )}
 
-              {PUBLIC_CHECKOUT_ENABLED && checkoutStep === "details" && (
+              {publicCheckoutEnabled && checkoutStep === "details" && (
                 <div className="checkout-step">
                   <span className="checkout-step__number">
                     STEP 04 / 04
@@ -2572,7 +2619,7 @@ function App() {
                   </span>
 
                   <span className="checkout-step__number">
-                    {PUBLIC_CHECKOUT_ENABLED
+                    {publicCheckoutEnabled
                       ? language === "es"
                         ? "PAGO VERIFICADO"
                         : "PAYMENT VERIFIED"
@@ -2582,7 +2629,7 @@ function App() {
                   </span>
 
                   <h2>
-                    {PUBLIC_CHECKOUT_ENABLED
+                    {publicCheckoutEnabled
                       ? language === "es"
                         ? "Tu pago fue verificado en Ethereum."
                         : "Your payment was verified on Ethereum."
@@ -2591,7 +2638,7 @@ function App() {
                         : "You’re on the Founding 6000 prelaunch list."}
                   </h2>
 
-                  {PUBLIC_CHECKOUT_ENABLED ? (
+                  {publicCheckoutEnabled ? (
                     <p>
                       {language === "es"
                         ? "El servidor verificó la transferencia USDT y creó de forma atómica tu asignación Founding y tu membresía."
@@ -2621,7 +2668,7 @@ function App() {
                       </span>
 
                       <strong>
-                        {PUBLIC_CHECKOUT_ENABLED
+                        {publicCheckoutEnabled
                           ? verifiedPurchase
                             ? "PAID"
                             : "PENDING"
@@ -2637,7 +2684,7 @@ function App() {
                       </span>
 
                       <strong>
-                        {PUBLIC_CHECKOUT_ENABLED
+                        {publicCheckoutEnabled
                           ? verifiedPurchase
                             ? "USDT · VERIFIED"
                             : "NOT VERIFIED"
@@ -2645,7 +2692,7 @@ function App() {
                       </strong>
                     </div>
 
-                    {PUBLIC_CHECKOUT_ENABLED &&
+                    {publicCheckoutEnabled &&
                       verifiedPurchase
                         ?.allocation && (
                         <div>
@@ -2668,7 +2715,7 @@ function App() {
                         </div>
                       )}
 
-                    {PUBLIC_CHECKOUT_ENABLED &&
+                    {publicCheckoutEnabled &&
                       verifiedPurchase
                         ?.membership && (
                         <div>
@@ -2688,7 +2735,7 @@ function App() {
                         </div>
                       )}
 
-                    {PUBLIC_CHECKOUT_ENABLED &&
+                    {publicCheckoutEnabled &&
                       verifiedPurchase
                         ?.membership && (
                         <div>
@@ -2708,7 +2755,7 @@ function App() {
                   </div>
 
                   <div className="checkout-actions">
-                    {PUBLIC_CHECKOUT_ENABLED && (
+                    {publicCheckoutEnabled && (
                       <button
                         className="db-button db-button--secondary"
                         type="button"
@@ -2741,13 +2788,13 @@ function App() {
 
             <footer className="checkout-footer">
               <span>
-                {PUBLIC_CHECKOUT_ENABLED
+                {publicCheckoutEnabled
                   ? "Checkout"
                   : "Prelaunch registration"}
               </span>
 
               <span>
-                {PUBLIC_CHECKOUT_ENABLED
+                {publicCheckoutEnabled
                   ? "Server-side payment authority"
                   : "Reservations and payments closed"}
               </span>
