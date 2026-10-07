@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "e3f8504570fbca7714fc6573f4c5fe725d690a8df751f1790654061f188f3237",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "b941b3c853bad1b47deb89e70f2fdebdad36bdb2ba7ab63cf74dabf24fa79098",
+  "serial": "#0032",
+  "tier": "RARE",
+  "tokenId": 32,
+  "traits": {
+    "ancientMarkings": "Tribal Sigils",
+    "armor": "Bone Fragments",
+    "atmosphere": "Moonlit Haze",
+    "aura": "Black Vapor",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Broad Skull",
+    "hornConfiguration": "Cathedral Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Scarred Scales",
+    "serialTreatment": "Runic Inscription",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "Ancient Chain",
+    "tail": "Stone Tail",
+    "weather": "Ashfall",
+    "wings": "Cathedral Wings"
+  }
+}

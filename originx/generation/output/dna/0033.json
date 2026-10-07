@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "313d19a75340b450585cfbdc16373c5f620650b38040e8f0e0ed30a9ea39b89b",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "5e04ef7b2a4919a86a4df26d5c9ed67923cc9c03aed6e81f5b6289af75b3099a",
+  "serial": "#0033",
+  "tier": "RARE",
+  "tokenId": 33,
+  "traits": {
+    "ancientMarkings": "War Etchings",
+    "armor": "Ancient Iron",
+    "atmosphere": "Cold Rain",
+    "aura": "Black Vapor",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Feral",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Controlled Crimson",
+    "foreground": "Cathedral Rails",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Cathedral Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Black Glass",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "None",
+    "tail": "Chain Tail",
+    "weather": "Ashfall",
+    "wings": "Ancient Leather Wings"
+  }
+}

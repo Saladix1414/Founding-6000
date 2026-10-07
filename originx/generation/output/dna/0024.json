@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "9e3c30dcf36e1fe21829bc12a6d9f1313b974dd4300046ccebb56d5eec3d53df",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "1c73e657202ea05f6d5a3180285fc58e36ce046460d249a51e84ee5b7a79bf46",
+  "serial": "#0024",
+  "tier": "RARE",
+  "tokenId": 24,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Primitive Chain Armor",
+    "atmosphere": "Ash Mist",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Heavy",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Iron Pillars",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Cathedral Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Runic Inscription",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Battle Scar",
+    "tail": "Chain Tail",
+    "weather": "Ashfall",
+    "wings": "Ancient Leather Wings"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "086bb946606b431f72ba04f1d4919d34f5661e84020ddc1d81ac2de8f106a53b",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "92699f030ed2150ede7d31b22bc752aac58b31f31745d49f81a9569f66585308",
+  "serial": "#0078",
+  "tier": "RARE",
+  "tokenId": 78,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "Stone Plates",
+    "atmosphere": "Moonlit Haze",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Lean",
+    "chestCore": "Dormant",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Runic Inscription",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "None",
+    "tail": "Spiked Tail",
+    "weather": "Still Night",
+    "wings": "Ancient Leather Wings"
+  }
+}

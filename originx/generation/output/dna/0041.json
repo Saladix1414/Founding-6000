@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "6f40c9901d74a553f6932b042a7c9229f53ec7606cdd4d9bc508d9b3a86dcd62",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "711ad3d313ac9bdb9b39e59b93309b85060fc7381d46b5de875f5cc5f863a65c",
+  "serial": "#0041",
+  "tier": "RARE",
+  "tokenId": 41,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Ancient Iron",
+    "atmosphere": "Dense Fog",
+    "aura": "Black Vapor",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Lean",
+    "chestCore": "Cyan Relic",
+    "dragonArchetype": "Cathedral Drake",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Crown",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Broken Horn",
+    "tail": "Whip Tail",
+    "weather": "Ashfall",
+    "wings": "Stone Membrane Wings"
+  }
+}

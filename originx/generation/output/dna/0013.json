@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "d2265d956ee546b70ccee7986de4f641d3fae4283e582279ea682306464a51af",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "49a70ee8242335f981c8e4f5d8d2e816359b345bc854db74d61c10f28682346b",
+  "serial": "#0013",
+  "tier": "RARE",
+  "tokenId": 13,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Bone Fragments",
+    "atmosphere": "Cold Rain",
+    "aura": "Black Vapor",
+    "backgroundCity": "Ancient Citadel",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Cathedral Rails",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Twin Stone Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Cathedral Plaque",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Battle Scar",
+    "tail": "Chain Tail",
+    "weather": "Rain",
+    "wings": "Ancient Leather Wings"
+  }
+}

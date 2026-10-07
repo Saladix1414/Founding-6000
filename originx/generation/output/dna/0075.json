@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "61897834f59c6eb795ee435c2c82f5c78f925734aa218abc72e5af1ff25407a5",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "a1894b90ba34b2aaa3247610ad90b0e03a596e7799019113335fefbc25ea013b",
+  "serial": "#0075",
+  "tier": "RARE",
+  "tokenId": 75,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "Primitive Chain Armor",
+    "atmosphere": "Dense Fog",
+    "aura": "Moonlit Dust",
+    "backgroundCity": "Ancient Citadel",
+    "bodyStructure": "Armored",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Iron Pillars",
+    "headStructure": "Crowned Skull",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Crown",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Cathedral Plaque",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Broken Horn",
+    "tail": "Bladed Tail",
+    "weather": "Ashfall",
+    "wings": "Ribbed Wings"
+  }
+}

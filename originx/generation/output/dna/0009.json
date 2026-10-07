@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "2b8caee2b0a5ec23ae41d948aaaffd8284c0118f902a21c60c2f5d81b2f66e41",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "62bf5ed77f293e9619c0759223a5437806c72d483fa2cba061380c3000e34a4b",
+  "serial": "#0009",
+  "tier": "RARE",
+  "tokenId": 9,
+  "traits": {
+    "ancientMarkings": "War Etchings",
+    "armor": "Bone Fragments",
+    "atmosphere": "Dense Fog",
+    "aura": "Moonlit Dust",
+    "backgroundCity": "Ancient Citadel",
+    "bodyStructure": "Feral",
+    "chestCore": "Cyan Relic",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Twin Stone Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Sigil",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Battle Scar",
+    "tail": "Stone Tail",
+    "weather": "Still Night",
+    "wings": "Stone Membrane Wings"
+  }
+}

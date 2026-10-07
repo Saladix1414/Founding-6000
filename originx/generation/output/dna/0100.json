@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "fbb1d0ec9a4ff6c9f20dc34b675c78b79a77a38fc610e2cc9d553b07358dab25",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "2a124f5e1a541b9f50ab7bb58a5606812e5b724e064664b5fdf4d8e0f5f97a63",
+  "serial": "#0100",
+  "tier": "RARE",
+  "tokenId": 100,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "Bone Fragments",
+    "atmosphere": "Ash Mist",
+    "aura": "Black Vapor",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Lean",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Stone Chains",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Bone-Laced Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Broken Horn",
+    "tail": "Chain Tail",
+    "weather": "Rain",
+    "wings": "Cathedral Wings"
+  }
+}

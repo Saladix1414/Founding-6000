@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "d2b942a3baa2d3379f7cf7cefa7ffe9a1b740708e58d68b55d3dc1c741643453",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "78782a12e33f9e97b7a688091dffc3b57000453738d4ed0848d377fbb54618d7",
+  "serial": "#0030",
+  "tier": "RARE",
+  "tokenId": 30,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Ancient Iron",
+    "atmosphere": "Cold Rain",
+    "aura": "Crimson Pulse",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Lean",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Controlled Crimson",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Broad Skull",
+    "hornConfiguration": "Twin Stone Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Crown",
+    "scalePattern": "Scarred Scales",
+    "serialTreatment": "Cathedral Plaque",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Moon Crest",
+    "tail": "Chain Tail",
+    "weather": "Still Night",
+    "wings": "Ancient Leather Wings"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "e5f364e6fa5c0f256268a94eb4db44e04baaf75eaabf075fffc888d209c309bf",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "50c8bffaa02b2c70e479889cbebfa7f4a156062959b7d48c29993c86b9ca26c5",
+  "serial": "#0035",
+  "tier": "RARE",
+  "tokenId": 35,
+  "traits": {
+    "ancientMarkings": "War Etchings",
+    "armor": "Ancient Iron",
+    "atmosphere": "Cold Rain",
+    "aura": "None",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Heavy",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Cathedral Rails",
+    "headStructure": "Broad Skull",
+    "hornConfiguration": "Cathedral Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Runic Inscription",
+    "skylineArchitecture": "Cathedral Towers",
+    "specialVariation": "Broken Horn",
+    "tail": "Whip Tail",
+    "weather": "Rain",
+    "wings": "Stone Membrane Wings"
+  }
+}

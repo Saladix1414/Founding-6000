@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "9327052722e69a915f5fbdb25caf22710e846a1910ee2725f9e46795a91cb302",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "dc489e17745cd43ce3f0fdbc4c0203c4c374c98d7699a8071c016a4c6d3c0320",
+  "serial": "#0080",
+  "tier": "RARE",
+  "tokenId": 80,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "None",
+    "atmosphere": "Dense Fog",
+    "aura": "Moonlit Dust",
+    "backgroundCity": "Ancient Citadel",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Cathedral Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Black Glass",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Battle Scar",
+    "tail": "Spiked Tail",
+    "weather": "Still Night",
+    "wings": "Stone Membrane Wings"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "0766a7f30800dc639230f58ef84e52c1b96c4df3e3c9c244223af42a70f889ef",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "ee60c963ba02d729f59ee632050b3ba9df4b9c525b878dceea91206a2c3ea27e",
+  "serial": "#0019",
+  "tier": "RARE",
+  "tokenId": 19,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "Ancient Iron",
+    "atmosphere": "Ash Mist",
+    "aura": "Black Vapor",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Cathedral Drake",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Embedded Metal",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "None",
+    "tail": "Spiked Tail",
+    "weather": "Rain",
+    "wings": "Ribbed Wings"
+  }
+}

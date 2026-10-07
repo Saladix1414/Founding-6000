@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "c730f41b1bce5f216a2de5452c0077e8ab4082c26fb5f64c334c067d03d6aaa2",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "870bdc5938e8b0ec0bedad4965f0c429f6d0cf9e825e2d3e65bf97071f3ded72",
+  "serial": "#0067",
+  "tier": "RARE",
+  "tokenId": 67,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "None",
+    "atmosphere": "Cold Rain",
+    "aura": "Black Vapor",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Lean",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Cathedral Drake",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Stone Chains",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Broken Horn",
+    "tail": "Stone Tail",
+    "weather": "Ashfall",
+    "wings": "Ancient Leather Wings"
+  }
+}

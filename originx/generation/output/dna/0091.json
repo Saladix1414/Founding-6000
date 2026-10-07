@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "37722adb0a5dc8df60166fd399985665db7eae6aa6a8d9d1dd38090df0f18fd6",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "296b633e177835b5a3d941ad31283bd489f650a9006ac6d65d14bd232600fda9",
+  "serial": "#0091",
+  "tier": "RARE",
+  "tokenId": 91,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "Primitive Chain Armor",
+    "atmosphere": "Moonlit Haze",
+    "aura": "Crimson Pulse",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Dormant",
+    "dragonArchetype": "Cathedral Drake",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Cathedral Rails",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Scarred Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Ancient Chain",
+    "tail": "Stone Tail",
+    "weather": "Still Night",
+    "wings": "Ribbed Wings"
+  }
+}

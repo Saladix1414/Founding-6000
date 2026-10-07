@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "57714778ff5321c6c1d21018dc6a5afdce6de9dcaefe20a99c0af80c66077fc2",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "8214c1370340cadad2725cffebd580328143aff879e83b50ae3d23e56417de27",
+  "serial": "#0068",
+  "tier": "RARE",
+  "tokenId": 68,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "Ancient Iron",
+    "atmosphere": "Ash Mist",
+    "aura": "Crimson Pulse",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Cyan Relic",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Iron Pillars",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Crown",
+    "scalePattern": "Scarred Scales",
+    "serialTreatment": "Runic Inscription",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "None",
+    "tail": "Stone Tail",
+    "weather": "Still Night",
+    "wings": "Cathedral Wings"
+  }
+}

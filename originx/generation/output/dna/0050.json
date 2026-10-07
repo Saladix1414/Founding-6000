@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "8961e38c25818ce34ba1f1513b9d21e438d2942e0bf588df37ab17cef8014203",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "bc03e9ea626db5f889626e465988d294f5434145f1b5d92210e59c4cd0756e85",
+  "serial": "#0050",
+  "tier": "RARE",
+  "tokenId": 50,
+  "traits": {
+    "ancientMarkings": "War Etchings",
+    "armor": "Bone Fragments",
+    "atmosphere": "Dense Fog",
+    "aura": "Crimson Pulse",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Lean",
+    "chestCore": "Dormant",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Twin Stone Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Runic Inscription",
+    "skylineArchitecture": "Cathedral Towers",
+    "specialVariation": "None",
+    "tail": "Stone Tail",
+    "weather": "Rain",
+    "wings": "Stone Membrane Wings"
+  }
+}

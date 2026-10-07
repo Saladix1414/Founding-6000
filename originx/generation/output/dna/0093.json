@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "69d9eb93b7b7c071e4ad994c88dfabdd7b39f98a0e439334cb242fc16f4b6d0d",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "bf4f1a633231f9c14086e59714dd3676f10bed68841d1e57c5f446d3d193307d",
+  "serial": "#0093",
+  "tier": "RARE",
+  "tokenId": 93,
+  "traits": {
+    "ancientMarkings": "Tribal Sigils",
+    "armor": "Primitive Chain Armor",
+    "atmosphere": "Dense Fog",
+    "aura": "None",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Controlled Crimson",
+    "foreground": "Stone Chains",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Twin Stone Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Bone-Laced Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Moon Crest",
+    "tail": "Bladed Tail",
+    "weather": "Ashfall",
+    "wings": "Cathedral Wings"
+  }
+}

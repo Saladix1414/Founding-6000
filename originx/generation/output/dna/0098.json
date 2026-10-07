@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "5b3beabf74d22f0257d338c947db16572953f56152286d5034437b500047fb96",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "756a3bad271a1b28d22d0f5776fe700346120c92c852f3aaa94d494458571efb",
+  "serial": "#0098",
+  "tier": "RARE",
+  "tokenId": 98,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Ancient Iron",
+    "atmosphere": "Moonlit Haze",
+    "aura": "Crimson Pulse",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Feral",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Cathedral Rails",
+    "headStructure": "Broad Skull",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Bone-Laced Scales",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Cathedral Towers",
+    "specialVariation": "Moon Crest",
+    "tail": "Chain Tail",
+    "weather": "Storm",
+    "wings": "Ancient Leather Wings"
+  }
+}

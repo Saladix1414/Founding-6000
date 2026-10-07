@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "41734554ce2c45e3a20b8126e98bb535ff654b0a8ac3f9675578763461085895",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "243be533ff6ed8c3c1defb5dd06fc31a84b0844c228f84f0b1be5090ef3d944d",
+  "serial": "#0061",
+  "tier": "RARE",
+  "tokenId": 61,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "Primitive Chain Armor",
+    "atmosphere": "Storm Veil",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Lean",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Controlled Crimson",
+    "foreground": "Iron Pillars",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Cathedral Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Runic Inscription",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "None",
+    "tail": "Spiked Tail",
+    "weather": "Rain",
+    "wings": "Torn Gothic Wings"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "3b15310b7c312cc0e88565acd16a4f9e23580863e6b5dd4b2c019d7a1fd32491",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "0956c6b8e490cc1dccd2d08eef14083579594d19e8c4c2ee3a8034f6d847b91d",
+  "serial": "#0023",
+  "tier": "RARE",
+  "tokenId": 23,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "Bone Fragments",
+    "atmosphere": "Dense Fog",
+    "aura": "Black Vapor",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Heavy",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Cathedral Rails",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Cathedral Horns",
+    "mechanicalAugmentation": "Embedded Metal",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Scarred Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "None",
+    "tail": "Stone Tail",
+    "weather": "Storm",
+    "wings": "Stone Membrane Wings"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "6ac12c71f3c158008792fca5a07255f733f4a04413f18794189f8979b63f5da6",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "604421b33dd0b26b64defeef09e37eee3c591675af69ba3b7f49abd2748fcd32",
+  "serial": "#0051",
+  "tier": "RARE",
+  "tokenId": 51,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Stone Plates",
+    "atmosphere": "Dense Fog",
+    "aura": "Black Vapor",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Feral",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Bone-Laced Scales",
+    "serialTreatment": "Cathedral Plaque",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Ancient Chain",
+    "tail": "Bladed Tail",
+    "weather": "Ashfall",
+    "wings": "Stone Membrane Wings"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "1d064871475ae96da015b7bab3d627bcc66e5b9d629805d0a979612b6182a81d",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "4f461416d139272052294fabe328554c5fc31eca9f193405e1b9c565416f0334",
+  "serial": "#0099",
+  "tier": "RARE",
+  "tokenId": 99,
+  "traits": {
+    "ancientMarkings": "Tribal Sigils",
+    "armor": "Bone Fragments",
+    "atmosphere": "Cold Rain",
+    "aura": "None",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Heavy",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Cathedral Drake",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Crowned Skull",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Cathedral Plaque",
+    "skylineArchitecture": "Cathedral Towers",
+    "specialVariation": "Moon Crest",
+    "tail": "Chain Tail",
+    "weather": "Fog",
+    "wings": "Ribbed Wings"
+  }
+}

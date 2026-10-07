@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "a2c21c9ab7342e84aafe51372d7d65b48f5499178b79f4bc63f460dec934f24e",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "1bf36d64aebe504407a01fbfdb0f95a2586d74b18c8c35d525d495995a3f50e6",
+  "serial": "#0062",
+  "tier": "RARE",
+  "tokenId": 62,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Primitive Chain Armor",
+    "atmosphere": "Ash Mist",
+    "aura": "Crimson Pulse",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Heavy",
+    "chestCore": "Cyan Relic",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Stone Chains",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Sigil",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Cathedral Plaque",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Moon Crest",
+    "tail": "Whip Tail",
+    "weather": "Fog",
+    "wings": "Torn Gothic Wings"
+  }
+}

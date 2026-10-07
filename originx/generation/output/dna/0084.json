@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "3d968358ea3ffb821c90b22f100a66462b5b28dba17f5528d408755fe4c1c177",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "d8013daba1b265a7d148e9912b2860478edb16b3044d595311852454862f43b8",
+  "serial": "#0084",
+  "tier": "RARE",
+  "tokenId": 84,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "Bone Fragments",
+    "atmosphere": "Moonlit Haze",
+    "aura": "None",
+    "backgroundCity": "Ancient Citadel",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Controlled Crimson",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Sigil",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Ancient Chain",
+    "tail": "Stone Tail",
+    "weather": "Still Night",
+    "wings": "Torn Gothic Wings"
+  }
+}

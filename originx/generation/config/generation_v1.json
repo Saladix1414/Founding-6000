@@ -1,0 +1,178 @@
+{
+  "collection": "OriginX — DigitalBoost Origin Founding 6000",
+  "generationVersion": "OX-GEN-1",
+  "seedNamespace": "ORIGINX",
+  "maxSupply": 6000,
+  "tiers": [
+    {
+      "name": "RARE",
+      "campaignPhase": "Genesis",
+      "serialStart": 1,
+      "serialEnd": 1000,
+      "generationTheme": "Primitive Origin"
+    },
+    {
+      "name": "EPIC",
+      "campaignPhase": "Early Access",
+      "serialStart": 1001,
+      "serialEnd": 3000,
+      "generationTheme": "Evolved Origin"
+    },
+    {
+      "name": "LEGENDARY",
+      "campaignPhase": "Founding Access",
+      "serialStart": 3001,
+      "serialEnd": 6000,
+      "generationTheme": "Ascended Origin"
+    }
+  ],
+  "traits": {
+    "backgroundCity": [
+      "Black Cathedral District",
+      "Obsidian Spires",
+      "Ancient Citadel",
+      "Iron Basilica",
+      "Ruined Megalith Ward"
+    ],
+    "skylineArchitecture": [
+      "Cathedral Towers",
+      "Fortress Silhouette",
+      "Gargoyle Skyline",
+      "Stone Megastructure",
+      "Industrial Arches"
+    ],
+    "atmosphere": [
+      "Dense Fog",
+      "Cold Rain",
+      "Ash Mist",
+      "Moonlit Haze",
+      "Storm Veil"
+    ],
+    "dragonArchetype": [
+      "Stone Wyrm",
+      "Cathedral Drake",
+      "Obsidian Wyvern",
+      "Iron Serpent",
+      "Ancient Ravager"
+    ],
+    "bodyStructure": [
+      "Heavy",
+      "Lean",
+      "Monolithic",
+      "Feral",
+      "Armored"
+    ],
+    "scalePattern": [
+      "Basalt Plates",
+      "Scarred Scales",
+      "Ridge Scales",
+      "Obsidian Scales",
+      "Bone-Laced Scales"
+    ],
+    "headStructure": [
+      "Long Skull",
+      "Broad Skull",
+      "Crowned Skull",
+      "Razor Jaw",
+      "Fortress Jaw"
+    ],
+    "hornConfiguration": [
+      "Twin Stone Horns",
+      "Broken Crown Horns",
+      "Backward Bone Horns",
+      "Cathedral Horns",
+      "Asymmetric Horns"
+    ],
+    "eyeConfiguration": [
+      "Cold Cyan",
+      "Controlled Crimson",
+      "Moon White",
+      "Deep Blue",
+      "Ember Red"
+    ],
+    "wings": [
+      "Torn Gothic Wings",
+      "Stone Membrane Wings",
+      "Ribbed Wings",
+      "Cathedral Wings",
+      "Ancient Leather Wings"
+    ],
+    "tail": [
+      "Bladed Tail",
+      "Chain Tail",
+      "Spiked Tail",
+      "Stone Tail",
+      "Whip Tail"
+    ],
+    "armor": [
+      "None",
+      "Bone Fragments",
+      "Ancient Iron",
+      "Stone Plates",
+      "Primitive Chain Armor"
+    ],
+    "chestCore": [
+      "Dormant",
+      "Ancient Ember",
+      "Cyan Relic",
+      "Crimson Relic",
+      "Obsidian Seal"
+    ],
+    "mechanicalAugmentation": [
+      "None",
+      "Ancient Prosthetic",
+      "Iron Spine",
+      "Primitive Gearwork",
+      "Embedded Metal"
+    ],
+    "ancientMarkings": [
+      "Runic Scars",
+      "Tribal Sigils",
+      "Cathedral Marks",
+      "War Etchings",
+      "Origin Runes"
+    ],
+    "originxGlyph": [
+      "OX-Alpha",
+      "OX-Sigil",
+      "OX-Crown",
+      "OX-Prime",
+      "OX-Vault"
+    ],
+    "aura": [
+      "None",
+      "Cold Cyan",
+      "Crimson Pulse",
+      "Black Vapor",
+      "Moonlit Dust"
+    ],
+    "weather": [
+      "Rain",
+      "Fog",
+      "Storm",
+      "Ashfall",
+      "Still Night"
+    ],
+    "foreground": [
+      "Broken Gargoyles",
+      "Cathedral Rails",
+      "Stone Chains",
+      "Black Glass Ruins",
+      "Iron Pillars"
+    ],
+    "serialTreatment": [
+      "Engraved Stone",
+      "Ancient Steel",
+      "Black Glass",
+      "Cathedral Plaque",
+      "Runic Inscription"
+    ],
+    "specialVariation": [
+      "None",
+      "Battle Scar",
+      "Broken Horn",
+      "Ancient Chain",
+      "Moon Crest"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "835d6f074c21ee3b58798fef18b1b046baa94c8f380797fd342aab8c6c925e94",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "534a39ec813171221bbb9d9ab29cfc6663ea2d62c6a6bd2264d4e4f4779ca6b3",
+  "serial": "#0034",
+  "tier": "RARE",
+  "tokenId": 34,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "Stone Plates",
+    "atmosphere": "Cold Rain",
+    "aura": "None",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Lean",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Cathedral Rails",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Scarred Scales",
+    "serialTreatment": "Cathedral Plaque",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Ancient Chain",
+    "tail": "Stone Tail",
+    "weather": "Rain",
+    "wings": "Stone Membrane Wings"
+  }
+}

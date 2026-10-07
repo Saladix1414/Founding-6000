@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "a0b7cff0a38829f4a8949dc5d363b9b27bb86b65f38a04d1d587039c4a507c9c",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "84678ecef8d2602211adb3936e916b38754c3b44b01dec5d98ec32b405b47e81",
+  "serial": "#0044",
+  "tier": "RARE",
+  "tokenId": 44,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "None",
+    "atmosphere": "Ash Mist",
+    "aura": "Moonlit Dust",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Feral",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Twin Stone Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Cathedral Towers",
+    "specialVariation": "Ancient Chain",
+    "tail": "Chain Tail",
+    "weather": "Rain",
+    "wings": "Stone Membrane Wings"
+  }
+}

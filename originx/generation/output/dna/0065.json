@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "068cd7fee4288292807cab9780a5a2971fe17666f117e8ed30ae02e0121cb07b",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "0c28d344f213afd44adc9eb2216bf026ca0f997609d2a451ba0e65c1011a70c4",
+  "serial": "#0065",
+  "tier": "RARE",
+  "tokenId": 65,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "None",
+    "atmosphere": "Ash Mist",
+    "aura": "Black Vapor",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Feral",
+    "chestCore": "Cyan Relic",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Cathedral Horns",
+    "mechanicalAugmentation": "Embedded Metal",
+    "originxGlyph": "OX-Crown",
+    "scalePattern": "Scarred Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "None",
+    "tail": "Whip Tail",
+    "weather": "Fog",
+    "wings": "Ancient Leather Wings"
+  }
+}

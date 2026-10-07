@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "741d3d54999ed0fcbfd419510768a7924ce20ae8e5df8f558d8f0cecc9482ccb",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "b5beecbc33bb6dea19b9fc25d9251a9155da63b24a1ce2549184c2572ecb8c86",
+  "serial": "#0083",
+  "tier": "RARE",
+  "tokenId": 83,
+  "traits": {
+    "ancientMarkings": "Tribal Sigils",
+    "armor": "None",
+    "atmosphere": "Dense Fog",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Lean",
+    "chestCore": "Cyan Relic",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Broad Skull",
+    "hornConfiguration": "Cathedral Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Bone-Laced Scales",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "Broken Horn",
+    "tail": "Stone Tail",
+    "weather": "Rain",
+    "wings": "Torn Gothic Wings"
+  }
+}

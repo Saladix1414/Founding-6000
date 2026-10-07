@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "3beb7eb5eb7ac0ad6f6142bcf7b9f46c2e947ab9573794ddec21ea2862dc792a",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "7e1a9ef5e281900d57174ad123cf04e2481cf47ffa9f311894bb24ac0c8b9935",
+  "serial": "#0059",
+  "tier": "RARE",
+  "tokenId": 59,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "Bone Fragments",
+    "atmosphere": "Moonlit Haze",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Lean",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Iron Pillars",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Crown",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Ancient Chain",
+    "tail": "Whip Tail",
+    "weather": "Rain",
+    "wings": "Cathedral Wings"
+  }
+}

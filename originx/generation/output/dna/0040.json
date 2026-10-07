@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "bf7b0a89db5fe1eed1db38a13d2c2c448aa4e8bfcacd94df265d7400ba64e0cb",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "16e96b2012967cc0d98c543fc96562ec4833a305d56b448b0dee329cad3ed0d5",
+  "serial": "#0040",
+  "tier": "RARE",
+  "tokenId": 40,
+  "traits": {
+    "ancientMarkings": "War Etchings",
+    "armor": "Stone Plates",
+    "atmosphere": "Storm Veil",
+    "aura": "None",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Armored",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Cathedral Drake",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Crown",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Moon Crest",
+    "tail": "Stone Tail",
+    "weather": "Still Night",
+    "wings": "Ribbed Wings"
+  }
+}

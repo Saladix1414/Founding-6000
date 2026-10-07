@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "2f9fcc469705751a7858ba997c37dab989c7c387c542aec1456ce25a889b923b",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "a51b1d932311af3540cb77901e921f86a19ca667a3cbd01017ee0d5a037fad9d",
+  "serial": "#0056",
+  "tier": "RARE",
+  "tokenId": 56,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "Ancient Iron",
+    "atmosphere": "Moonlit Haze",
+    "aura": "Moonlit Dust",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Iron Pillars",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Twin Stone Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Runic Inscription",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Battle Scar",
+    "tail": "Chain Tail",
+    "weather": "Storm",
+    "wings": "Torn Gothic Wings"
+  }
+}

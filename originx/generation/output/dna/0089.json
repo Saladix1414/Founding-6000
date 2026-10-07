@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "fde48c4bf69c4c698053dc565805dbc7dcf9fca023dbc3cd03f69b23c7d1cdae",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "8ee71fbf8fe827440b6643924bcce5fa3bfc6dd1e27baf6515d4ae8e5f9512c0",
+  "serial": "#0089",
+  "tier": "RARE",
+  "tokenId": 89,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Bone Fragments",
+    "atmosphere": "Cold Rain",
+    "aura": "None",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Armored",
+    "chestCore": "Dormant",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Battle Scar",
+    "tail": "Stone Tail",
+    "weather": "Storm",
+    "wings": "Stone Membrane Wings"
+  }
+}

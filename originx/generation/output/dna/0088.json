@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "962c0b755bf072a41655ca9174e0b672dfb3285d1c83e15e39fac181402e1c5e",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "2e63c64bf7baee0bcfd4d757b97d6386feec87324ad61acbbaedbe5fa218a79e",
+  "serial": "#0088",
+  "tier": "RARE",
+  "tokenId": 88,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "Stone Plates",
+    "atmosphere": "Storm Veil",
+    "aura": "Black Vapor",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Armored",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Broken Horn",
+    "tail": "Stone Tail",
+    "weather": "Ashfall",
+    "wings": "Torn Gothic Wings"
+  }
+}

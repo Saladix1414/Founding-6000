@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "6003ba7703113314eca85987c73b86d7dafa0abfe8815101e4f29c2e6b05cde4",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "2124a882f75091d97246edfd5814aaae618a3130589c12c04f4fb75b58de0abc",
+  "serial": "#0046",
+  "tier": "RARE",
+  "tokenId": 46,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "Ancient Iron",
+    "atmosphere": "Dense Fog",
+    "aura": "Crimson Pulse",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Feral",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Stone Chains",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Sigil",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Black Glass",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Moon Crest",
+    "tail": "Chain Tail",
+    "weather": "Still Night",
+    "wings": "Ancient Leather Wings"
+  }
+}

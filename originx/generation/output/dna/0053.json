@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "8f87aba24cfcbad7e50b2bbc3801d5c69d5cfabddea7343b04e896d44f397fe8",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "86f6df915f51cc1bd7fbd6338eebfa709b924c8f7da44c2194e8fa9cdf2eadff",
+  "serial": "#0053",
+  "tier": "RARE",
+  "tokenId": 53,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Stone Plates",
+    "atmosphere": "Storm Veil",
+    "aura": "Crimson Pulse",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Cathedral Drake",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Broad Skull",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "Embedded Metal",
+    "originxGlyph": "OX-Sigil",
+    "scalePattern": "Scarred Scales",
+    "serialTreatment": "Runic Inscription",
+    "skylineArchitecture": "Cathedral Towers",
+    "specialVariation": "Moon Crest",
+    "tail": "Stone Tail",
+    "weather": "Ashfall",
+    "wings": "Ribbed Wings"
+  }
+}

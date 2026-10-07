@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "009919a56ba40e9f2f2ab5eedfa26f5cb3eb84fa80c5b55d71aefe9f3157840b",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "54e7bc6c628589f098e860cac36ff02368c20d8ce92fde88be691d219fa6d6ed",
+  "serial": "#0042",
+  "tier": "RARE",
+  "tokenId": 42,
+  "traits": {
+    "ancientMarkings": "War Etchings",
+    "armor": "Bone Fragments",
+    "atmosphere": "Moonlit Haze",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Feral",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Embedded Metal",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Battle Scar",
+    "tail": "Whip Tail",
+    "weather": "Fog",
+    "wings": "Stone Membrane Wings"
+  }
+}

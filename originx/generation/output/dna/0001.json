@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "01a0f242a884b2a5b89d3fbc8e0dd1f9b282025503a92545b33ee78564674722",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "9d099c8efd5fa6d0ebf9dafecd2fdb553065641850f044ef74452e1001f7cdac",
+  "serial": "#0001",
+  "tier": "RARE",
+  "tokenId": 1,
+  "traits": {
+    "ancientMarkings": "Tribal Sigils",
+    "armor": "Primitive Chain Armor",
+    "atmosphere": "Cold Rain",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Heavy",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Stone Chains",
+    "headStructure": "Broad Skull",
+    "hornConfiguration": "Cathedral Horns",
+    "mechanicalAugmentation": "Embedded Metal",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Bone-Laced Scales",
+    "serialTreatment": "Runic Inscription",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Broken Horn",
+    "tail": "Spiked Tail",
+    "weather": "Ashfall",
+    "wings": "Ancient Leather Wings"
+  }
+}

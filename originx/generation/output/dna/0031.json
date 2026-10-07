@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "e6ac9cc74ad69c7a4bfe5215d138884ee892dff55c7798ae8bba7f737204c907",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "f0c536b0a6c478fc40a2c37c77a4abd9c568eac7a13c8426b4b0342e7991485d",
+  "serial": "#0031",
+  "tier": "RARE",
+  "tokenId": 31,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "None",
+    "atmosphere": "Dense Fog",
+    "aura": "Crimson Pulse",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Armored",
+    "chestCore": "Dormant",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Cathedral Rails",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Sigil",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "Moon Crest",
+    "tail": "Stone Tail",
+    "weather": "Fog",
+    "wings": "Stone Membrane Wings"
+  }
+}

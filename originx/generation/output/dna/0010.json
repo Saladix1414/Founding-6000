@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "acf65113ca3c6ca5a60aa6251513d239bb2301e2403dbd137738d12fcd94936b",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "e3887abde73bd6c70e753825dc8b982c7372d96b601729c0c423c6d99e694230",
+  "serial": "#0010",
+  "tier": "RARE",
+  "tokenId": 10,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "None",
+    "atmosphere": "Storm Veil",
+    "aura": "Moonlit Dust",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Heavy",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Sigil",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "Battle Scar",
+    "tail": "Whip Tail",
+    "weather": "Fog",
+    "wings": "Cathedral Wings"
+  }
+}

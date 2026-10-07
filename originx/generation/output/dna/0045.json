@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "57080fa9d0aa2fbacefb1db2ec16456912a889994431033211f38ea122323384",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "7ac89dab386b14266bd985af70f22a72f425212fc3d53e405fd26d6d7a13731d",
+  "serial": "#0045",
+  "tier": "RARE",
+  "tokenId": 45,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "Stone Plates",
+    "atmosphere": "Moonlit Haze",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Armored",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Controlled Crimson",
+    "foreground": "Cathedral Rails",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "Embedded Metal",
+    "originxGlyph": "OX-Sigil",
+    "scalePattern": "Scarred Scales",
+    "serialTreatment": "Cathedral Plaque",
+    "skylineArchitecture": "Cathedral Towers",
+    "specialVariation": "Battle Scar",
+    "tail": "Stone Tail",
+    "weather": "Still Night",
+    "wings": "Ribbed Wings"
+  }
+}

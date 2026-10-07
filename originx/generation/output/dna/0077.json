@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "b7a4cc4a79471e479f4fd06e89afefbeefad258a30b0480cd287d62e986f1d20",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "96f054c2b43d4bcf5cd960c8624c3751de9d1ef7dec05603cd7456ab6e37debf",
+  "serial": "#0077",
+  "tier": "RARE",
+  "tokenId": 77,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Primitive Chain Armor",
+    "atmosphere": "Moonlit Haze",
+    "aura": "Crimson Pulse",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Black Glass",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Ancient Chain",
+    "tail": "Stone Tail",
+    "weather": "Fog",
+    "wings": "Stone Membrane Wings"
+  }
+}

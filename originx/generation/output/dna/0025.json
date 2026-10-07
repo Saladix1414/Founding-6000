@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "dd7cf974bfd54d327a8e2cc3101b222cb4cccc14856c052003c551acc94bceab",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "17aba4a84ab295882a8be2c90c7fd099f793095f1f9cc2c96355c7bf1b2f03d8",
+  "serial": "#0025",
+  "tier": "RARE",
+  "tokenId": 25,
+  "traits": {
+    "ancientMarkings": "Tribal Sigils",
+    "armor": "Bone Fragments",
+    "atmosphere": "Moonlit Haze",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Lean",
+    "chestCore": "Dormant",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Crown",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Cathedral Plaque",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Ancient Chain",
+    "tail": "Whip Tail",
+    "weather": "Rain",
+    "wings": "Ancient Leather Wings"
+  }
+}

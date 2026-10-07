@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "fff66f871d12ce8a566ee4a14a476e1b04c64a5f13ba7a9ed0a4ebe734aa3346",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "b5ee4da8368b9e33a82673bd2285d3bb6d4fb1d7fb61c887624f8a6d37b4e122",
+  "serial": "#0026",
+  "tier": "RARE",
+  "tokenId": 26,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Ancient Iron",
+    "atmosphere": "Storm Veil",
+    "aura": "None",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Lean",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Cathedral Rails",
+    "headStructure": "Crowned Skull",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "Battle Scar",
+    "tail": "Stone Tail",
+    "weather": "Rain",
+    "wings": "Stone Membrane Wings"
+  }
+}

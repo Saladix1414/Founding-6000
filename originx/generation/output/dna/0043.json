@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "37ec8615d212e665e6898196941ef8c13e38e125d43f29dc4cdf9a60e0239e13",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "1396da591859bb2b351fd54809c336b17c5fdda49d56f061fb19507c075712a5",
+  "serial": "#0043",
+  "tier": "RARE",
+  "tokenId": 43,
+  "traits": {
+    "ancientMarkings": "War Etchings",
+    "armor": "Primitive Chain Armor",
+    "atmosphere": "Dense Fog",
+    "aura": "Black Vapor",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Controlled Crimson",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Crowned Skull",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Moon Crest",
+    "tail": "Bladed Tail",
+    "weather": "Storm",
+    "wings": "Torn Gothic Wings"
+  }
+}

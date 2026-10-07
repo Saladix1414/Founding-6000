@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "164e0d2c4f873d7bf5a6c92a8412cfc07a6bb21183163e50de03b6d2e3fb980b",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "05558b2167ee30accc9e51ed8a466e30fa8cfd17bdd9545e89763b32b64dee1a",
+  "serial": "#0007",
+  "tier": "RARE",
+  "tokenId": 7,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "Stone Plates",
+    "atmosphere": "Cold Rain",
+    "aura": "None",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Controlled Crimson",
+    "foreground": "Iron Pillars",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Cathedral Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Bone-Laced Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Broken Horn",
+    "tail": "Stone Tail",
+    "weather": "Ashfall",
+    "wings": "Cathedral Wings"
+  }
+}

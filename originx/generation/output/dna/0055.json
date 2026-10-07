@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "5467b65d268e412ab0982ab0a24c7fb1f767ecd09b893edad4c6f49182fcb946",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "ebf105edbafe82a7702ebf1331ec3a204929674a8266f1454f1681b9ce6c85ed",
+  "serial": "#0055",
+  "tier": "RARE",
+  "tokenId": 55,
+  "traits": {
+    "ancientMarkings": "Tribal Sigils",
+    "armor": "Stone Plates",
+    "atmosphere": "Storm Veil",
+    "aura": "None",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Feral",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Twin Stone Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Broken Horn",
+    "tail": "Stone Tail",
+    "weather": "Still Night",
+    "wings": "Stone Membrane Wings"
+  }
+}

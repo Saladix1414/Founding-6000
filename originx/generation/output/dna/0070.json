@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "c881f13307fa9351e9a4dff808c445da48daae720e806a0c5f07a9395a6ea3a2",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "fc11248fa36eb07d71db9ab497251a61776989788db8a0b289c41044853ffd24",
+  "serial": "#0070",
+  "tier": "RARE",
+  "tokenId": 70,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Primitive Chain Armor",
+    "atmosphere": "Moonlit Haze",
+    "aura": "Black Vapor",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Heavy",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Cathedral Rails",
+    "headStructure": "Broad Skull",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Moon Crest",
+    "tail": "Whip Tail",
+    "weather": "Fog",
+    "wings": "Stone Membrane Wings"
+  }
+}

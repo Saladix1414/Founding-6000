@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "e95075a670470f3fa5f52952631ba9cd3852a378fa3ffd281944477d1809feb2",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "255e3c65d3c569424b39d0989b2359cf146d58a37eee25356b75923afe099acb",
+  "serial": "#0014",
+  "tier": "RARE",
+  "tokenId": 14,
+  "traits": {
+    "ancientMarkings": "War Etchings",
+    "armor": "None",
+    "atmosphere": "Storm Veil",
+    "aura": "None",
+    "backgroundCity": "Ancient Citadel",
+    "bodyStructure": "Feral",
+    "chestCore": "Cyan Relic",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Broad Skull",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Black Glass",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "None",
+    "tail": "Whip Tail",
+    "weather": "Storm",
+    "wings": "Cathedral Wings"
+  }
+}

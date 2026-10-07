@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "21a1ba64295b08d7f9792d64f4db8b063b437f0fb6fa1a46d4ad8fc7e0eb0de9",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "10a1d0d8bd676752e029e65d406af1080f9976d0b03af39c37655ad013e3c9aa",
+  "serial": "#0012",
+  "tier": "RARE",
+  "tokenId": 12,
+  "traits": {
+    "ancientMarkings": "Tribal Sigils",
+    "armor": "Stone Plates",
+    "atmosphere": "Storm Veil",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Ancient Citadel",
+    "bodyStructure": "Lean",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Iron Pillars",
+    "headStructure": "Crowned Skull",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Bone-Laced Scales",
+    "serialTreatment": "Black Glass",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "Broken Horn",
+    "tail": "Stone Tail",
+    "weather": "Still Night",
+    "wings": "Torn Gothic Wings"
+  }
+}

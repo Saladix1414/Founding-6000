@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "269cf038e1a678f5dafda0a581a33479c4a4084d1cd0ebd4ee869cd65a6fdaa3",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "6d0f13c52a1c98d17df94fbdd3434c128b9670e3ec17f7d846043ca1ef413cf8",
+  "serial": "#0087",
+  "tier": "RARE",
+  "tokenId": 87,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "Bone Fragments",
+    "atmosphere": "Cold Rain",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Lean",
+    "chestCore": "Cyan Relic",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Crown",
+    "scalePattern": "Scarred Scales",
+    "serialTreatment": "Black Glass",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "Moon Crest",
+    "tail": "Whip Tail",
+    "weather": "Storm",
+    "wings": "Torn Gothic Wings"
+  }
+}

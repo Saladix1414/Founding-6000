@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "29ffc689469178f5431f9569fbdb3cffa8c6d3b8ec1c577699f8549a773db36a",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "ab864b5dda6a4857b52b45d12fc343a9c32e6045ff197a72457cd54942289942",
+  "serial": "#0057",
+  "tier": "RARE",
+  "tokenId": 57,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "Ancient Iron",
+    "atmosphere": "Cold Rain",
+    "aura": "Moonlit Dust",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Cathedral Rails",
+    "headStructure": "Crowned Skull",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Moon Crest",
+    "tail": "Chain Tail",
+    "weather": "Fog",
+    "wings": "Cathedral Wings"
+  }
+}

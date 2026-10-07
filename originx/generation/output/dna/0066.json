@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "c55934b43cbcd0281387a098d7967fa01d23a4710bb8df230d083518a51e6cb3",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "b0162c20de8896c6f0041834e719a634a14d00e0cc00a75bebacc3f98aba63fc",
+  "serial": "#0066",
+  "tier": "RARE",
+  "tokenId": 66,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "Stone Plates",
+    "atmosphere": "Cold Rain",
+    "aura": "Crimson Pulse",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Cyan Relic",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Controlled Crimson",
+    "foreground": "Iron Pillars",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Bone-Laced Scales",
+    "serialTreatment": "Black Glass",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "Battle Scar",
+    "tail": "Bladed Tail",
+    "weather": "Storm",
+    "wings": "Cathedral Wings"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "a1ef4869d72d6aef1af2c8d18d31b72ef1ea7397f02d7ae9a247db7a9519653d",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "5dc8ff6743820aaa64ee2839a4311ae7a5594869e8131cef1d443fd425545723",
+  "serial": "#0095",
+  "tier": "RARE",
+  "tokenId": 95,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "Stone Plates",
+    "atmosphere": "Ash Mist",
+    "aura": "None",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Armored",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Sigil",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Moon Crest",
+    "tail": "Spiked Tail",
+    "weather": "Ashfall",
+    "wings": "Cathedral Wings"
+  }
+}

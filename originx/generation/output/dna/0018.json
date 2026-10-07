@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "67ad348f7eee0746430875c9adf20d69af1fb2c6c15b61ae7a6e443fa3b9e49f",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "f226cd3f8fda4c9f963a96bf4328cf757dcab51f05345782d6b4e2be5b625b4d",
+  "serial": "#0018",
+  "tier": "RARE",
+  "tokenId": 18,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "None",
+    "atmosphere": "Storm Veil",
+    "aura": "Moonlit Dust",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Lean",
+    "chestCore": "Cyan Relic",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Bone-Laced Scales",
+    "serialTreatment": "Cathedral Plaque",
+    "skylineArchitecture": "Cathedral Towers",
+    "specialVariation": "Battle Scar",
+    "tail": "Chain Tail",
+    "weather": "Ashfall",
+    "wings": "Torn Gothic Wings"
+  }
+}

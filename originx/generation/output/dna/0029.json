@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "f79e57fb02be0261239c7b3b68cb7b6186f45d410eac9b56629f671902b5de32",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "31baf00b93433f2df26f487135ff745b221fa4416a7ad8a6af6665def9fd5095",
+  "serial": "#0029",
+  "tier": "RARE",
+  "tokenId": 29,
+  "traits": {
+    "ancientMarkings": "War Etchings",
+    "armor": "Stone Plates",
+    "atmosphere": "Storm Veil",
+    "aura": "None",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Heavy",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Twin Stone Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Black Glass",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Battle Scar",
+    "tail": "Bladed Tail",
+    "weather": "Rain",
+    "wings": "Ribbed Wings"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "41732c31974a5348112094a07c9663e5b18de45a510e030bd0053b894f5bcfeb",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "63aa0c63d12493412e40fb76efc37bf8965c116a992c05fede311c48adaf7a48",
+  "serial": "#0085",
+  "tier": "RARE",
+  "tokenId": 85,
+  "traits": {
+    "ancientMarkings": "Tribal Sigils",
+    "armor": "Primitive Chain Armor",
+    "atmosphere": "Ash Mist",
+    "aura": "Black Vapor",
+    "backgroundCity": "Ancient Citadel",
+    "bodyStructure": "Feral",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Crowned Skull",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Moon Crest",
+    "tail": "Whip Tail",
+    "weather": "Rain",
+    "wings": "Torn Gothic Wings"
+  }
+}

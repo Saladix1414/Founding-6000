@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "7ba4d45bda62083c28c42605a07d5b24f30048b32523b8cf155a091a36ddb117",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "d4dfe59e2ff092a578524fd1b3e2258aa10a3c50cbad9898d4a680699e50bb9c",
+  "serial": "#0021",
+  "tier": "RARE",
+  "tokenId": 21,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "Bone Fragments",
+    "atmosphere": "Storm Veil",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Lean",
+    "chestCore": "Dormant",
+    "dragonArchetype": "Cathedral Drake",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Bone-Laced Scales",
+    "serialTreatment": "Runic Inscription",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Moon Crest",
+    "tail": "Chain Tail",
+    "weather": "Ashfall",
+    "wings": "Cathedral Wings"
+  }
+}

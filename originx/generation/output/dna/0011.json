@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "6070dbcec13d528d5690644f32fdbc3cfbfde4debe7c588c67b7d7265d9b7421",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "46f2c76cd780ae16c739bc5fe89d3996e4072ea36b436da76d1f2bfc8d66adc7",
+  "serial": "#0011",
+  "tier": "RARE",
+  "tokenId": 11,
+  "traits": {
+    "ancientMarkings": "Tribal Sigils",
+    "armor": "Ancient Iron",
+    "atmosphere": "Cold Rain",
+    "aura": "None",
+    "backgroundCity": "Ancient Citadel",
+    "bodyStructure": "Armored",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Crown",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "None",
+    "tail": "Stone Tail",
+    "weather": "Ashfall",
+    "wings": "Torn Gothic Wings"
+  }
+}

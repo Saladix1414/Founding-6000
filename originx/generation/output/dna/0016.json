@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "53ab9d296e79715a545c46b92c923e8b9a0678082487a730be42ec157d090506",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "64c5d48b3c13a2a9fb46918f414f64ad3ac99151e15a4214862c96c2051344c5",
+  "serial": "#0016",
+  "tier": "RARE",
+  "tokenId": 16,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "Ancient Iron",
+    "atmosphere": "Ash Mist",
+    "aura": "Crimson Pulse",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Dormant",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Broad Skull",
+    "hornConfiguration": "Twin Stone Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Scarred Scales",
+    "serialTreatment": "Runic Inscription",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Moon Crest",
+    "tail": "Bladed Tail",
+    "weather": "Fog",
+    "wings": "Cathedral Wings"
+  }
+}

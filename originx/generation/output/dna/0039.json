@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "d78e6367ba02fd12e86e302d79edd919654da181d3bf8cb57144566bd386d3ed",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "7f287ab8b4095a1ae28dd12a65fd375a0131be82338fca3d187cf3a0557ee584",
+  "serial": "#0039",
+  "tier": "RARE",
+  "tokenId": 39,
+  "traits": {
+    "ancientMarkings": "Tribal Sigils",
+    "armor": "Stone Plates",
+    "atmosphere": "Storm Veil",
+    "aura": "Moonlit Dust",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Stone Chains",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Runic Inscription",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Broken Horn",
+    "tail": "Spiked Tail",
+    "weather": "Still Night",
+    "wings": "Ancient Leather Wings"
+  }
+}

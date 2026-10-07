@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "2f210b0b97db6458aff6214402e4210ddd8ee65f0eb99b5e61786eedfc773ad6",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "c9dc6d2588e9f626685ab43e74d363abee6c5aacbf4cdae50cb73ff6e34a01bd",
+  "serial": "#0054",
+  "tier": "RARE",
+  "tokenId": 54,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Stone Plates",
+    "atmosphere": "Dense Fog",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Ancient Citadel",
+    "bodyStructure": "Armored",
+    "chestCore": "Obsidian Seal",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Controlled Crimson",
+    "foreground": "Cathedral Rails",
+    "headStructure": "Broad Skull",
+    "hornConfiguration": "Cathedral Horns",
+    "mechanicalAugmentation": "Embedded Metal",
+    "originxGlyph": "OX-Sigil",
+    "scalePattern": "Scarred Scales",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Moon Crest",
+    "tail": "Spiked Tail",
+    "weather": "Fog",
+    "wings": "Cathedral Wings"
+  }
+}

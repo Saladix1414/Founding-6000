@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "3fc1d3d7319c810b36f89a1e5fe00c1bfd1d953501d79b0a3b2797499485131e",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "e082d8cc9674557a14b87bb12e60e80a0cf812990cced604464e818fe8aeb182",
+  "serial": "#0097",
+  "tier": "RARE",
+  "tokenId": 97,
+  "traits": {
+    "ancientMarkings": "Tribal Sigils",
+    "armor": "Primitive Chain Armor",
+    "atmosphere": "Moonlit Haze",
+    "aura": "Black Vapor",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Armored",
+    "chestCore": "Dormant",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Embedded Metal",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Cathedral Plaque",
+    "skylineArchitecture": "Fortress Silhouette",
+    "specialVariation": "Moon Crest",
+    "tail": "Spiked Tail",
+    "weather": "Ashfall",
+    "wings": "Cathedral Wings"
+  }
+}

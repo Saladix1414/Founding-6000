@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "d03cb99b7535e74aa48c8972b2b6d30be98d7b51b92cfcf3cfefa53724885f05",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "148972859fd97565ed849cdc0aa0f178a7d4be2f0bdf1fe628483bcdd815616c",
+  "serial": "#0008",
+  "tier": "RARE",
+  "tokenId": 8,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "Ancient Iron",
+    "atmosphere": "Dense Fog",
+    "aura": "None",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Armored",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Crown",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "Broken Horn",
+    "tail": "Bladed Tail",
+    "weather": "Rain",
+    "wings": "Ribbed Wings"
+  }
+}

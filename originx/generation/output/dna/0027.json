@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "5b00b2cdbc3ec90d50f521d70b6b682c96ff726ae90f0b37045035a382cbe0b6",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "c66b644ce33d69c926b11305e6cdc64f89d2c23d29b3dd672a2ab27abb3f3676",
+  "serial": "#0027",
+  "tier": "RARE",
+  "tokenId": 27,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "Stone Plates",
+    "atmosphere": "Ash Mist",
+    "aura": "Crimson Pulse",
+    "backgroundCity": "Ancient Citadel",
+    "bodyStructure": "Heavy",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Long Skull",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Bone-Laced Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Cathedral Towers",
+    "specialVariation": "Battle Scar",
+    "tail": "Chain Tail",
+    "weather": "Ashfall",
+    "wings": "Ribbed Wings"
+  }
+}

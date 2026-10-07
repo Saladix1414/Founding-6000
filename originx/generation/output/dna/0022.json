@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "ff923417b731238c8ce663bfbc7eb10890bdd189778827d9161e49c11bfa1967",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "8ada55fe5a6aaa7e4548fd32f64854a6bc8e68f9e5e6ba359ade7d4f8c9587d3",
+  "serial": "#0022",
+  "tier": "RARE",
+  "tokenId": 22,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "None",
+    "atmosphere": "Moonlit Haze",
+    "aura": "None",
+    "backgroundCity": "Ancient Citadel",
+    "bodyStructure": "Armored",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Cathedral Drake",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Stone Chains",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Iron Spine",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Moon Crest",
+    "tail": "Spiked Tail",
+    "weather": "Ashfall",
+    "wings": "Ancient Leather Wings"
+  }
+}

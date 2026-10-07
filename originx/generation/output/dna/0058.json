@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "35070049c6a75bd5f879bd3f94752d824ae35194750dfbd1cc65464b0cb84d1d",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "1db159e3cc1263ec974d7a0b754b57a6ff478f5a5b3158d98f8c5cbe85428dc3",
+  "serial": "#0058",
+  "tier": "RARE",
+  "tokenId": 58,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "None",
+    "atmosphere": "Ash Mist",
+    "aura": "Moonlit Dust",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Lean",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Obsidian Wyvern",
+    "eyeConfiguration": "Controlled Crimson",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Crowned Skull",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Scarred Scales",
+    "serialTreatment": "Cathedral Plaque",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Broken Horn",
+    "tail": "Spiked Tail",
+    "weather": "Ashfall",
+    "wings": "Cathedral Wings"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "campaignPhase": "Genesis",
+  "dnaHash": "70e8ad72d5fa75af496bde59c53c3f56c98e2d1a644eadcfa92524cba826d853",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "seedHash": "be7bc0a1386b91713dbdec537dab9494a98142e1ebdcdf1fe86466640009d009",
+  "serial": "#0052",
+  "tier": "RARE",
+  "tokenId": 52,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "None",
+    "atmosphere": "Storm Veil",
+    "aura": "Moonlit Dust",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Feral",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Moon White",
+    "foreground": "Iron Pillars",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Alpha",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "Moon Crest",
+    "tail": "Bladed Tail",
+    "weather": "Still Night",
+    "wings": "Ribbed Wings"
+  }
+}
