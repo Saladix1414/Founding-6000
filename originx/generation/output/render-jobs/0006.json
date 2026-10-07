@@ -1,0 +1,42 @@
+{
+  "camera": "Low-angle side three-quarter portrait",
+  "candidateCount": 1,
+  "displayName": "Vaerkaeth — Wyrm of the Black Cathedral District",
+  "dnaHash": "c5b668fe3aff0fc1d0e5b774d68694352ca22d8a098081e010e35cd1562c7026",
+  "dragonName": "Vaerkaeth",
+  "dragonTitle": "Wyrm of the Black Cathedral District",
+  "framing": "Dragon occupies 60-70 percent of frame",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "model": "UNASSIGNED",
+  "negativePrompt": "cartoon, anime imitation, cute mascot, rainbow fantasy, generic stock dragon, modern skyscraper, cyberpunk advertisement, existing franchise creature, superhero costume, watermark, signature, visible prompt text, clean futuristic exosuit, modern robotics, spaceship technology, neon cyberpunk armor, holographic city advertising, modern firearms",
+  "outputPolicy": {
+    "manualReviewRequired": true,
+    "masterFormat": "PNG",
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "postGenerationUpscaleAllowed": true,
+    "textFreeArtwork": true,
+    "watermarkAllowed": false
+  },
+  "pose": "Perched sentinel",
+  "positivePrompt": "Original OriginX dark gothic dragon artwork. Primitive Origin era. one dominant dragon only. Low-angle side three-quarter portrait. Perched sentinel. Dragon occupies 60-70 percent of frame. dragon archetype Stone Wyrm. body structure Lean. scale pattern Obsidian Scales. head structure Fortress Jaw. horn configuration Asymmetric Horns. eyes Ember Red. wings Stone Membrane Wings. tail Chain Tail. armor Ancient Iron. chest core Dormant. mechanical augmentation Ancient Prosthetic. ancient markings Runic Scars. OriginX glyph treatment OX-Prime. aura Black Vapor. environment Black Cathedral District. architecture Cathedral Towers. atmosphere Cold Rain. weather Still Night. foreground Iron Pillars. special variation Moon Crest. cinematic low-key lighting. volumetric atmospheric depth. ancient basalt and weathered metal material realism. monumental scale. high detail. text-free master artwork. square collectible composition. No rain streaks. No ashfall particles. Subtle lunar crest motif allowed. Must not become a modern logo.",
+  "provider": "UNASSIGNED",
+  "render": {
+    "aspectRatio": "1:1",
+    "colorSpace": "sRGB",
+    "dragonCount": 1,
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "preferredFormat": "PNG",
+    "visibleTypography": false
+  },
+  "renderJobId": "oxr-0006-313d27cbc0902c10",
+  "renderRequestHash": "313d27cbc0902c1046110c3d6620eafa6d559d568dd7299eb4a7f81db48fbda6",
+  "seedHash": "bae85245a9f0e582e8a7774d4cacfca78c84581ddde5f641ef6d7d470861d23a",
+  "serial": "#0006",
+  "status": "READY_FOR_RENDER",
+  "tier": "RARE",
+  "tokenId": 6,
+  "visualGrammarVersion": "OX-RARE-VISUAL-1"
+}

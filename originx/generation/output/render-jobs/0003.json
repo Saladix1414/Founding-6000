@@ -1,0 +1,42 @@
+{
+  "camera": "Low-angle three-quarter portrait",
+  "candidateCount": 1,
+  "displayName": "Vaerkaor — Serpent of the Black Cathedral District",
+  "dnaHash": "6ed04b60b16fcc2d3331457b8772b206e74673f794ccc74d9d35b3a7e2931885",
+  "dragonName": "Vaerkaor",
+  "dragonTitle": "Serpent of the Black Cathedral District",
+  "framing": "Dragon occupies 65-75 percent with compressed skyline",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "model": "UNASSIGNED",
+  "negativePrompt": "cartoon, anime imitation, cute mascot, rainbow fantasy, generic stock dragon, modern skyscraper, cyberpunk advertisement, existing franchise creature, superhero costume, watermark, signature, visible prompt text, clean futuristic exosuit, modern robotics, spaceship technology, neon cyberpunk armor, holographic city advertising, modern firearms",
+  "outputPolicy": {
+    "manualReviewRequired": true,
+    "masterFormat": "PNG",
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "postGenerationUpscaleAllowed": true,
+    "textFreeArtwork": true,
+    "watermarkAllowed": false
+  },
+  "pose": "Perched sentinel",
+  "positivePrompt": "Original OriginX dark gothic dragon artwork. Primitive Origin era. one dominant dragon only. Low-angle three-quarter portrait. Perched sentinel. Dragon occupies 65-75 percent with compressed skyline. dragon archetype Iron Serpent. body structure Lean. scale pattern Ridge Scales. head structure Razor Jaw. horn configuration Asymmetric Horns. eyes Deep Blue. wings Ancient Leather Wings. tail Stone Tail. armor None. chest core Ancient Ember. mechanical augmentation Primitive Gearwork. ancient markings Cathedral Marks. OriginX glyph treatment OX-Prime. aura Moonlit Dust. environment Black Cathedral District. architecture Cathedral Towers. atmosphere Cold Rain. weather Storm. foreground Iron Pillars. special variation Ancient Chain. cinematic low-key lighting. volumetric atmospheric depth. ancient basalt and weathered metal material realism. monumental scale. high detail. text-free master artwork. square collectible composition. Do not invent plate armor. Natural scales remain visible. Ancient chain may appear as integrated environmental or body detail.",
+  "provider": "UNASSIGNED",
+  "render": {
+    "aspectRatio": "1:1",
+    "colorSpace": "sRGB",
+    "dragonCount": 1,
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "preferredFormat": "PNG",
+    "visibleTypography": false
+  },
+  "renderJobId": "oxr-0003-bb85928ff3a451f9",
+  "renderRequestHash": "bb85928ff3a451f986a47e1a2a602efd9f9c4702a19bb24507c681279f7bbdf8",
+  "seedHash": "6ec35126c347eb6e1ab138873698f0ec340ae477074fde6a12923c33c46369da",
+  "serial": "#0003",
+  "status": "READY_FOR_RENDER",
+  "tier": "RARE",
+  "tokenId": 3,
+  "visualGrammarVersion": "OX-RARE-VISUAL-1"
+}

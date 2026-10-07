@@ -1,0 +1,104 @@
+{
+  "count": 10,
+  "endToken": 10,
+  "generationTheme": "Primitive Origin",
+  "jobs": [
+    {
+      "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
+      "dnaHash": "9402ff0d1d8f692c339069115eef26531ca73856e5123d0579168cfbaaca3f4e",
+      "dragonName": "Vaerkaion",
+      "renderJobId": "oxr-0001-d8463d7ee91fad61",
+      "renderRequestHash": "d8463d7ee91fad617867740270c78de36a446992f39dfb9103d8e67b1ecf5564",
+      "serial": "#0001",
+      "tokenId": 1
+    },
+    {
+      "displayName": "Vaerkaath — Ravager of the Obsidian Spires",
+      "dnaHash": "fdfae087aa26e617328af8b617b934ee468da457c183be419e12e781941b785a",
+      "dragonName": "Vaerkaath",
+      "renderJobId": "oxr-0002-14b94e59acf43cf9",
+      "renderRequestHash": "14b94e59acf43cf9b0fe3c6322dc29493533861ad927dfbd94744112a0acf35d",
+      "serial": "#0002",
+      "tokenId": 2
+    },
+    {
+      "displayName": "Vaerkaor — Serpent of the Black Cathedral District",
+      "dnaHash": "6ed04b60b16fcc2d3331457b8772b206e74673f794ccc74d9d35b3a7e2931885",
+      "dragonName": "Vaerkaor",
+      "renderJobId": "oxr-0003-bb85928ff3a451f9",
+      "renderRequestHash": "bb85928ff3a451f986a47e1a2a602efd9f9c4702a19bb24507c681279f7bbdf8",
+      "serial": "#0003",
+      "tokenId": 3
+    },
+    {
+      "displayName": "Vaerkayx — Wyvern of the Ancient Citadel",
+      "dnaHash": "99c1a712433b5dd7dcbc1b314c60c8ce7a1d3a9131a65592605f0e8e4942505d",
+      "dragonName": "Vaerkayx",
+      "renderJobId": "oxr-0004-8279c15a74ecd640",
+      "renderRequestHash": "8279c15a74ecd64056eccff7c0f939ed90a4775a1778e328afca0441f6e08a9e",
+      "serial": "#0004",
+      "tokenId": 4
+    },
+    {
+      "displayName": "Vaerkaar — Serpent of the Obsidian Spires",
+      "dnaHash": "d6a9b43d565cad6bbe43b78a4fdaa44f4dc39186abdd77b8a1dbf85db3c8d551",
+      "dragonName": "Vaerkaar",
+      "renderJobId": "oxr-0005-26fbf406fdf6032d",
+      "renderRequestHash": "26fbf406fdf6032dd807322d4e51ed64941dcb7446bbb053a1cd4df13db80fac",
+      "serial": "#0005",
+      "tokenId": 5
+    },
+    {
+      "displayName": "Vaerkaeth — Wyrm of the Black Cathedral District",
+      "dnaHash": "c5b668fe3aff0fc1d0e5b774d68694352ca22d8a098081e010e35cd1562c7026",
+      "dragonName": "Vaerkaeth",
+      "renderJobId": "oxr-0006-313d27cbc0902c10",
+      "renderRequestHash": "313d27cbc0902c1046110c3d6620eafa6d559d568dd7299eb4a7f81db48fbda6",
+      "serial": "#0006",
+      "tokenId": 6
+    },
+    {
+      "displayName": "Vaerkaon — Serpent of the Iron Basilica",
+      "dnaHash": "7f02b008b8dfab71cbebcf27c8caf4d706783a8bfac15fd19a2e975bf21eb642",
+      "dragonName": "Vaerkaon",
+      "renderJobId": "oxr-0007-7fd30af48dfd5d63",
+      "renderRequestHash": "7fd30af48dfd5d634bd0cc7b8e0dfb0280fa61cd47037e0eecf20f8f79b74b11",
+      "serial": "#0007",
+      "tokenId": 7
+    },
+    {
+      "displayName": "Vaerkais — Ravager of the Ruined Megalith Ward",
+      "dnaHash": "a9a705927cf3deb0b031a2c919b7ad7fb42d2793154d6ae9d69295bdd60ca75e",
+      "dragonName": "Vaerkais",
+      "renderJobId": "oxr-0008-a562a477c6024b9f",
+      "renderRequestHash": "a562a477c6024b9fec2cf85394b7a3efee0d628a060592dce7d5f050b3d72a28",
+      "serial": "#0008",
+      "tokenId": 8
+    },
+    {
+      "displayName": "Vaerkaek — Wyrm of the Ancient Citadel",
+      "dnaHash": "10cd9bc671ef3c5b339791568c9373e3913f6d0fc2a0a99ec857018690a049e2",
+      "dragonName": "Vaerkaek",
+      "renderJobId": "oxr-0009-45906c7945474066",
+      "renderRequestHash": "45906c7945474066fce74f509bd27ffb0ace0fb3b7e077aac75934ba7a465fef",
+      "serial": "#0009",
+      "tokenId": 9
+    },
+    {
+      "displayName": "Vaerkaum — Serpent of the Iron Basilica",
+      "dnaHash": "a94ae2a49505b113c6a1b84076c02e54c6cb61a7e481327cf74360217c84f215",
+      "dragonName": "Vaerkaum",
+      "renderJobId": "oxr-0010-23a5ee204c5990d7",
+      "renderRequestHash": "23a5ee204c5990d7fa0f2142bc433bfc73393bf674146f98796b1dfaca3fa8f5",
+      "serial": "#0010",
+      "tokenId": 10
+    }
+  ],
+  "model": "UNASSIGNED",
+  "packHash": "9b607f5f7846e133a9378567d363d2d42458b72f5f062343110bea80e8ae630c",
+  "packVersion": "OX-RARE-RENDER-PACK-1",
+  "provider": "UNASSIGNED",
+  "startToken": 1,
+  "status": "READY_FOR_RENDER",
+  "tier": "RARE"
+}

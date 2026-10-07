@@ -1,0 +1,42 @@
+{
+  "camera": "Low-angle side three-quarter portrait",
+  "candidateCount": 1,
+  "displayName": "Vaerkayx — Wyvern of the Ancient Citadel",
+  "dnaHash": "99c1a712433b5dd7dcbc1b314c60c8ce7a1d3a9131a65592605f0e8e4942505d",
+  "dragonName": "Vaerkayx",
+  "dragonTitle": "Wyvern of the Ancient Citadel",
+  "framing": "Dragon occupies 60-70 percent of frame",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "model": "UNASSIGNED",
+  "negativePrompt": "cartoon, anime imitation, cute mascot, rainbow fantasy, generic stock dragon, modern skyscraper, cyberpunk advertisement, existing franchise creature, superhero costume, watermark, signature, visible prompt text, clean futuristic exosuit, modern robotics, spaceship technology, neon cyberpunk armor, holographic city advertising, modern firearms",
+  "outputPolicy": {
+    "manualReviewRequired": true,
+    "masterFormat": "PNG",
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "postGenerationUpscaleAllowed": true,
+    "textFreeArtwork": true,
+    "watermarkAllowed": false
+  },
+  "pose": "Wing-partially-open dominance",
+  "positivePrompt": "Original OriginX dark gothic dragon artwork. Primitive Origin era. one dominant dragon only. Low-angle side three-quarter portrait. Wing-partially-open dominance. Dragon occupies 60-70 percent of frame. dragon archetype Obsidian Wyvern. body structure Monolithic. scale pattern Bone-Laced Scales. head structure Broad Skull. horn configuration Backward Bone Horns. eyes Deep Blue. wings Cathedral Wings. tail Stone Tail. armor Ancient Iron. chest core Obsidian Seal. mechanical augmentation Primitive Gearwork. ancient markings Origin Runes. OriginX glyph treatment OX-Alpha. aura Moonlit Dust. environment Ancient Citadel. architecture Fortress Silhouette. atmosphere Storm Veil. weather Storm. foreground Cathedral Rails. special variation None. cinematic low-key lighting. volumetric atmospheric depth. ancient basalt and weathered metal material realism. monumental scale. high detail. text-free master artwork. square collectible composition.",
+  "provider": "UNASSIGNED",
+  "render": {
+    "aspectRatio": "1:1",
+    "colorSpace": "sRGB",
+    "dragonCount": 1,
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "preferredFormat": "PNG",
+    "visibleTypography": false
+  },
+  "renderJobId": "oxr-0004-8279c15a74ecd640",
+  "renderRequestHash": "8279c15a74ecd64056eccff7c0f939ed90a4775a1778e328afca0441f6e08a9e",
+  "seedHash": "f81a38b6c16c6c0c700ed2b710eef6d01840d45326f4d00e73eae566cf53ad9d",
+  "serial": "#0004",
+  "status": "READY_FOR_RENDER",
+  "tier": "RARE",
+  "tokenId": 4,
+  "visualGrammarVersion": "OX-RARE-VISUAL-1"
+}

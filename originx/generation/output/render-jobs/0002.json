@@ -1,0 +1,42 @@
+{
+  "camera": "Elevated three-quarter environmental portrait",
+  "candidateCount": 1,
+  "displayName": "Vaerkaath — Ravager of the Obsidian Spires",
+  "dnaHash": "fdfae087aa26e617328af8b617b934ee468da457c183be419e12e781941b785a",
+  "dragonName": "Vaerkaath",
+  "dragonTitle": "Ravager of the Obsidian Spires",
+  "framing": "Dragon occupies 65-75 percent with compressed skyline",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "model": "UNASSIGNED",
+  "negativePrompt": "cartoon, anime imitation, cute mascot, rainbow fantasy, generic stock dragon, modern skyscraper, cyberpunk advertisement, existing franchise creature, superhero costume, watermark, signature, visible prompt text, clean futuristic exosuit, modern robotics, spaceship technology, neon cyberpunk armor, holographic city advertising, modern firearms",
+  "outputPolicy": {
+    "manualReviewRequired": true,
+    "masterFormat": "PNG",
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "postGenerationUpscaleAllowed": true,
+    "textFreeArtwork": true,
+    "watermarkAllowed": false
+  },
+  "pose": "Forward stalking",
+  "positivePrompt": "Original OriginX dark gothic dragon artwork. Primitive Origin era. one dominant dragon only. Elevated three-quarter environmental portrait. Forward stalking. Dragon occupies 65-75 percent with compressed skyline. dragon archetype Ancient Ravager. body structure Armored. scale pattern Ridge Scales. head structure Crowned Skull. horn configuration Broken Crown Horns. eyes Cold Cyan. wings Cathedral Wings. tail Bladed Tail. armor Ancient Iron. chest core Cyan Relic. mechanical augmentation None. ancient markings War Etchings. OriginX glyph treatment OX-Crown. aura Cold Cyan. environment Obsidian Spires. architecture Gargoyle Skyline. atmosphere Ash Mist. weather Rain. foreground Stone Chains. special variation Broken Horn. cinematic low-key lighting. volumetric atmospheric depth. ancient basalt and weathered metal material realism. monumental scale. high detail. text-free master artwork. square collectible composition. Do not invent mechanical prosthetics. Keep anatomy organic. At least one primary horn must visibly show old structural damage.",
+  "provider": "UNASSIGNED",
+  "render": {
+    "aspectRatio": "1:1",
+    "colorSpace": "sRGB",
+    "dragonCount": 1,
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "preferredFormat": "PNG",
+    "visibleTypography": false
+  },
+  "renderJobId": "oxr-0002-14b94e59acf43cf9",
+  "renderRequestHash": "14b94e59acf43cf9b0fe3c6322dc29493533861ad927dfbd94744112a0acf35d",
+  "seedHash": "86a50a165042f1fed0cd3ee1399a88c388b1d525c7a049dfcabe6848f3490d4d",
+  "serial": "#0002",
+  "status": "READY_FOR_RENDER",
+  "tier": "RARE",
+  "tokenId": 2,
+  "visualGrammarVersion": "OX-RARE-VISUAL-1"
+}

@@ -1,0 +1,42 @@
+{
+  "camera": "Low-angle side three-quarter portrait",
+  "candidateCount": 1,
+  "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
+  "dnaHash": "9402ff0d1d8f692c339069115eef26531ca73856e5123d0579168cfbaaca3f4e",
+  "dragonName": "Vaerkaion",
+  "dragonTitle": "Ravager of the Obsidian Spires",
+  "framing": "Dragon occupies 60-70 percent of frame",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "model": "UNASSIGNED",
+  "negativePrompt": "cartoon, anime imitation, cute mascot, rainbow fantasy, generic stock dragon, modern skyscraper, cyberpunk advertisement, existing franchise creature, superhero costume, watermark, signature, visible prompt text, clean futuristic exosuit, modern robotics, spaceship technology, neon cyberpunk armor, holographic city advertising, modern firearms",
+  "outputPolicy": {
+    "manualReviewRequired": true,
+    "masterFormat": "PNG",
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "postGenerationUpscaleAllowed": true,
+    "textFreeArtwork": true,
+    "watermarkAllowed": false
+  },
+  "pose": "Standing guardian",
+  "positivePrompt": "Original OriginX dark gothic dragon artwork. Primitive Origin era. one dominant dragon only. Low-angle side three-quarter portrait. Standing guardian. Dragon occupies 60-70 percent of frame. dragon archetype Ancient Ravager. body structure Heavy. scale pattern Bone-Laced Scales. head structure Broad Skull. horn configuration Cathedral Horns. eyes Moon White. wings Ancient Leather Wings. tail Spiked Tail. armor Primitive Chain Armor. chest core Ancient Ember. mechanical augmentation Embedded Metal. ancient markings Tribal Sigils. OriginX glyph treatment OX-Prime. aura Cold Cyan. environment Obsidian Spires. architecture Stone Megastructure. atmosphere Cold Rain. weather Ashfall. foreground Stone Chains. special variation Broken Horn. cinematic low-key lighting. volumetric atmospheric depth. ancient basalt and weathered metal material realism. monumental scale. high detail. text-free master artwork. square collectible composition. At least one primary horn must visibly show old structural damage.",
+  "provider": "UNASSIGNED",
+  "render": {
+    "aspectRatio": "1:1",
+    "colorSpace": "sRGB",
+    "dragonCount": 1,
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "preferredFormat": "PNG",
+    "visibleTypography": false
+  },
+  "renderJobId": "oxr-0001-d8463d7ee91fad61",
+  "renderRequestHash": "d8463d7ee91fad617867740270c78de36a446992f39dfb9103d8e67b1ecf5564",
+  "seedHash": "9d099c8efd5fa6d0ebf9dafecd2fdb553065641850f044ef74452e1001f7cdac",
+  "serial": "#0001",
+  "status": "READY_FOR_RENDER",
+  "tier": "RARE",
+  "tokenId": 1,
+  "visualGrammarVersion": "OX-RARE-VISUAL-1"
+}
