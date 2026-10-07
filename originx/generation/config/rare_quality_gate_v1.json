@@ -1,0 +1,34 @@
+{
+  "version": "OX-RARE-QC-1",
+  "tier": "RARE",
+  "generationTheme": "Primitive Origin",
+  "required": {
+    "width": 2048,
+    "height": 2048,
+    "format": "PNG",
+    "aspectRatio": "1:1"
+  },
+  "manualCriteria": [
+    "Exactly one dominant dragon",
+    "Dragon silhouette remains readable",
+    "Head and eyes are identifiable",
+    "DNA traits are visually represented",
+    "Environment matches Primitive Origin",
+    "Architecture supports scale",
+    "No franchise-derived design",
+    "No visible watermark",
+    "No visible prompt text",
+    "No accidental extra dragon",
+    "No severe anatomical corruption",
+    "No contemporary city elements"
+  ],
+  "automaticRejectReasons": [
+    "FILE_MISSING",
+    "INVALID_PNG_SIGNATURE",
+    "INVALID_DIMENSIONS",
+    "EMPTY_FILE",
+    "DNA_RECORD_MISSING",
+    "RENDER_BRIEF_MISSING",
+    "IDENTITY_MISMATCH"
+  ]
+}
