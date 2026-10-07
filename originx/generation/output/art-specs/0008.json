@@ -1,0 +1,70 @@
+{
+  "artDirectionVersion": "OX-ART-1",
+  "canvas": {
+    "aspectRatio": "1:1",
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "preferredFormat": "PNG"
+  },
+  "displayName": "Vaerkais — Ravager of the Ruined Megalith Ward",
+  "dnaHash": "a9a705927cf3deb0b031a2c919b7ad7fb42d2793154d6ae9d69295bdd60ca75e",
+  "dragonName": "Vaerkais",
+  "dragonTitle": "Ravager of the Ruined Megalith Ward",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "materials": [
+    "basalt",
+    "weathered iron",
+    "ancient stone",
+    "bone",
+    "blackened steel"
+  ],
+  "nameSystemVersion": "OX-NAME-1",
+  "negativeConcepts": [
+    "cartoon style",
+    "cute dragon",
+    "bright rainbow palette",
+    "existing franchise character",
+    "copyrighted character imitation",
+    "logo plagiarism",
+    "text-heavy composition",
+    "modern city skyline",
+    "generic medieval fantasy illustration"
+  ],
+  "palette": [
+    "obsidian black",
+    "graphite",
+    "stone gray",
+    "cold steel",
+    "restrained cyan",
+    "restrained crimson"
+  ],
+  "prompt": "dark gothic dragon universe, monumental architecture, ancient civilization, primitive technology, atmospheric depth, cinematic realism, original fantasy creature design. ancient primitive OriginX civilization before complete technological ascension. character: Vaerkais — Ravager of the Ruined Megalith Ward. dragon archetype: Ancient Ravager. body: Armored. scales: Basalt Plates. head: Razor Jaw. horns: Asymmetric Horns. eyes: Ember Red. wings: Ribbed Wings. tail: Bladed Tail. armor: Ancient Iron. chest core: Crimson Relic. mechanical augmentation: None. markings: Cathedral Marks. OriginX glyph: OX-Crown. aura: None. location: Ruined Megalith Ward. architecture: Industrial Arches. atmosphere: Dense Fog. weather: Rain. foreground: Broken Gargoyles. cinematic low-key lighting with volumetric atmosphere and restrained luminous accents. single dominant dragon, monumental scale, strong silhouette, architectural depth, no crowded composition. square collectible master composition. no visible written prompt text. Avoid: cartoon style, cute dragon, bright rainbow palette, existing franchise character, copyrighted character imitation, logo plagiarism, text-heavy composition, modern city skyline, generic medieval fantasy illustration.",
+  "seedHash": "148972859fd97565ed849cdc0aa0f178a7d4be2f0bdf1fe628483bcdd815616c",
+  "serial": "#0008",
+  "tier": "RARE",
+  "tokenId": 8,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "Ancient Iron",
+    "atmosphere": "Dense Fog",
+    "aura": "None",
+    "backgroundCity": "Ruined Megalith Ward",
+    "bodyStructure": "Armored",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Crown",
+    "scalePattern": "Basalt Plates",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "Broken Horn",
+    "tail": "Bladed Tail",
+    "weather": "Rain",
+    "wings": "Ribbed Wings"
+  }
+}

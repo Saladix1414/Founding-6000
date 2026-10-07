@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "6584b50d51b12386f9ce9923f26a29148f44c812925766eac793dc8670e739bc",
+  "displayName": "Vaerkaeth — Wyrm of the Black Cathedral District",
+  "dnaHash": "c5b668fe3aff0fc1d0e5b774d68694352ca22d8a098081e010e35cd1562c7026",
+  "dragonName": "Vaerkaeth",
+  "dragonTitle": "Wyrm of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "bae85245a9f0e582e8a7774d4cacfca78c84581ddde5f641ef6d7d470861d23a",

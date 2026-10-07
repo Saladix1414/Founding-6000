@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "021f829f2ebe5b036bf3c92964bdd7eb711b67a18344b1853e86f721f49e80ec",
+  "displayName": "Vaergathon — Serpent of the Ancient Citadel",
+  "dnaHash": "0f44d9b063adfaf1d2794516602d17c4baa9fe11c7a199112cbb73e9ef6e9251",
+  "dragonName": "Vaergathon",
+  "dragonTitle": "Serpent of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "cdcfc31cb895192d35ca07d03698f4db36369c0704b19d056da30e1b4994a278",

@@ -2,703 +2,903 @@
   "collection": "OriginX — DigitalBoost Origin Founding 6000",
   "count": 100,
   "generationVersion": "OX-GEN-1",
-  "provenanceRoot": "04aeea0fd0f95f69cc29750586c1bfce2d60c127cad62851e5c1db1a73e7b260",
+  "provenanceRoot": "b7672fc71f571b1102af945a2ea2be4a9298891dbd0ecff9302d87449b808cdd",
   "records": [
     {
-      "dnaHash": "01a0f242a884b2a5b89d3fbc8e0dd1f9b282025503a92545b33ee78564674722",
+      "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
+      "dnaHash": "9402ff0d1d8f692c339069115eef26531ca73856e5123d0579168cfbaaca3f4e",
+      "dragonName": "Vaerkaion",
       "seedHash": "9d099c8efd5fa6d0ebf9dafecd2fdb553065641850f044ef74452e1001f7cdac",
       "serial": "#0001",
       "tier": "RARE",
       "tokenId": 1
     },
     {
-      "dnaHash": "e80d1aba0d574be5400ecfa068887666f813af4890d382c7ff00b9818b6080de",
+      "displayName": "Vaerkaath — Ravager of the Obsidian Spires",
+      "dnaHash": "fdfae087aa26e617328af8b617b934ee468da457c183be419e12e781941b785a",
+      "dragonName": "Vaerkaath",
       "seedHash": "86a50a165042f1fed0cd3ee1399a88c388b1d525c7a049dfcabe6848f3490d4d",
       "serial": "#0002",
       "tier": "RARE",
       "tokenId": 2
     },
     {
-      "dnaHash": "8bd584d7a691a28f1bb7a11dc5c5e3e80a645592f95bbb410b8f8e4e14d0de97",
+      "displayName": "Vaerkaor — Serpent of the Black Cathedral District",
+      "dnaHash": "6ed04b60b16fcc2d3331457b8772b206e74673f794ccc74d9d35b3a7e2931885",
+      "dragonName": "Vaerkaor",
       "seedHash": "6ec35126c347eb6e1ab138873698f0ec340ae477074fde6a12923c33c46369da",
       "serial": "#0003",
       "tier": "RARE",
       "tokenId": 3
     },
     {
-      "dnaHash": "fd1d0413f87cf1b12553ac263786812b8865e43540dbc110f9af9232680b5a99",
+      "displayName": "Vaerkayx — Wyvern of the Ancient Citadel",
+      "dnaHash": "99c1a712433b5dd7dcbc1b314c60c8ce7a1d3a9131a65592605f0e8e4942505d",
+      "dragonName": "Vaerkayx",
       "seedHash": "f81a38b6c16c6c0c700ed2b710eef6d01840d45326f4d00e73eae566cf53ad9d",
       "serial": "#0004",
       "tier": "RARE",
       "tokenId": 4
     },
     {
-      "dnaHash": "e17f753a01dadab49a235658f2a7277d9e4e051304fb71f59203409562a50c37",
+      "displayName": "Vaerkaar — Serpent of the Obsidian Spires",
+      "dnaHash": "d6a9b43d565cad6bbe43b78a4fdaa44f4dc39186abdd77b8a1dbf85db3c8d551",
+      "dragonName": "Vaerkaar",
       "seedHash": "34cc734a433acd0cbecb910853d04f831916a97822dab80711d411565504349d",
       "serial": "#0005",
       "tier": "RARE",
       "tokenId": 5
     },
     {
-      "dnaHash": "6584b50d51b12386f9ce9923f26a29148f44c812925766eac793dc8670e739bc",
+      "displayName": "Vaerkaeth — Wyrm of the Black Cathedral District",
+      "dnaHash": "c5b668fe3aff0fc1d0e5b774d68694352ca22d8a098081e010e35cd1562c7026",
+      "dragonName": "Vaerkaeth",
       "seedHash": "bae85245a9f0e582e8a7774d4cacfca78c84581ddde5f641ef6d7d470861d23a",
       "serial": "#0006",
       "tier": "RARE",
       "tokenId": 6
     },
     {
-      "dnaHash": "164e0d2c4f873d7bf5a6c92a8412cfc07a6bb21183163e50de03b6d2e3fb980b",
+      "displayName": "Vaerkaon — Serpent of the Iron Basilica",
+      "dnaHash": "7f02b008b8dfab71cbebcf27c8caf4d706783a8bfac15fd19a2e975bf21eb642",
+      "dragonName": "Vaerkaon",
       "seedHash": "05558b2167ee30accc9e51ed8a466e30fa8cfd17bdd9545e89763b32b64dee1a",
       "serial": "#0007",
       "tier": "RARE",
       "tokenId": 7
     },
     {
-      "dnaHash": "d03cb99b7535e74aa48c8972b2b6d30be98d7b51b92cfcf3cfefa53724885f05",
+      "displayName": "Vaerkais — Ravager of the Ruined Megalith Ward",
+      "dnaHash": "a9a705927cf3deb0b031a2c919b7ad7fb42d2793154d6ae9d69295bdd60ca75e",
+      "dragonName": "Vaerkais",
       "seedHash": "148972859fd97565ed849cdc0aa0f178a7d4be2f0bdf1fe628483bcdd815616c",
       "serial": "#0008",
       "tier": "RARE",
       "tokenId": 8
     },
     {
-      "dnaHash": "2b8caee2b0a5ec23ae41d948aaaffd8284c0118f902a21c60c2f5d81b2f66e41",
+      "displayName": "Vaerkaek — Wyrm of the Ancient Citadel",
+      "dnaHash": "10cd9bc671ef3c5b339791568c9373e3913f6d0fc2a0a99ec857018690a049e2",
+      "dragonName": "Vaerkaek",
       "seedHash": "62bf5ed77f293e9619c0759223a5437806c72d483fa2cba061380c3000e34a4b",
       "serial": "#0009",
       "tier": "RARE",
       "tokenId": 9
     },
     {
-      "dnaHash": "acf65113ca3c6ca5a60aa6251513d239bb2301e2403dbd137738d12fcd94936b",
+      "displayName": "Vaerkaum — Serpent of the Iron Basilica",
+      "dnaHash": "a94ae2a49505b113c6a1b84076c02e54c6cb61a7e481327cf74360217c84f215",
+      "dragonName": "Vaerkaum",
       "seedHash": "e3887abde73bd6c70e753825dc8b982c7372d96b601729c0c423c6d99e694230",
       "serial": "#0010",
       "tier": "RARE",
       "tokenId": 10
     },
     {
-      "dnaHash": "6070dbcec13d528d5690644f32fdbc3cfbfde4debe7c588c67b7d7265d9b7421",
+      "displayName": "Vaerkaoth — Ravager of the Ancient Citadel",
+      "dnaHash": "f2695998fed1ffc6c2427657cecf67ab12044c95e0f5cfcfb18546b76011acb5",
+      "dragonName": "Vaerkaoth",
       "seedHash": "46f2c76cd780ae16c739bc5fe89d3996e4072ea36b436da76d1f2bfc8d66adc7",
       "serial": "#0011",
       "tier": "RARE",
       "tokenId": 11
     },
     {
-      "dnaHash": "21a1ba64295b08d7f9792d64f4db8b063b437f0fb6fa1a46d4ad8fc7e0eb0de9",
+      "displayName": "Vaerkair — Serpent of the Ancient Citadel",
+      "dnaHash": "e75689b6a8dd5fc2fcd47a16c48c4e707f01f57c8b01c9ff1fd0c05a2ad58651",
+      "dragonName": "Vaerkair",
       "seedHash": "10a1d0d8bd676752e029e65d406af1080f9976d0b03af39c37655ad013e3c9aa",
       "serial": "#0012",
       "tier": "RARE",
       "tokenId": 12
     },
     {
-      "dnaHash": "d2265d956ee546b70ccee7986de4f641d3fae4283e582279ea682306464a51af",
+      "displayName": "Vaerkaax — Serpent of the Ancient Citadel",
+      "dnaHash": "2aba95e6cc21c741ece4e20f8100a0c5aa39669d8031812b86b1c29da447db8f",
+      "dragonName": "Vaerkaax",
       "seedHash": "49a70ee8242335f981c8e4f5d8d2e816359b345bc854db74d61c10f28682346b",
       "serial": "#0013",
       "tier": "RARE",
       "tokenId": 13
     },
     {
-      "dnaHash": "e95075a670470f3fa5f52952631ba9cd3852a378fa3ffd281944477d1809feb2",
+      "displayName": "Vaerkaen — Serpent of the Ancient Citadel",
+      "dnaHash": "887bf9c2320615f6516fad67fb55f02a7defe77071a7404d8d67071b41250fe8",
+      "dragonName": "Vaerkaen",
       "seedHash": "255e3c65d3c569424b39d0989b2359cf146d58a37eee25356b75923afe099acb",
       "serial": "#0014",
       "tier": "RARE",
       "tokenId": 14
     },
     {
-      "dnaHash": "edf0917ed70d76b61cc831ca1691312074a1936900764ef17717df790f83c9b1",
+      "displayName": "Vaerkaul — Wyvern of the Iron Basilica",
+      "dnaHash": "fd18a93a9efb8e399627ac9e6d8bfadabcd25d63c74600f59837150867c7d4ad",
+      "dragonName": "Vaerkaul",
       "seedHash": "3dc9731af4f0575bdee7bbb4414d88b042aace52faa501cff7aa113a54936bf2",
       "serial": "#0015",
       "tier": "RARE",
       "tokenId": 15
     },
     {
-      "dnaHash": "53ab9d296e79715a545c46b92c923e8b9a0678082487a730be42ec157d090506",
+      "displayName": "Vaervorion — Wyvern of the Black Cathedral District",
+      "dnaHash": "d62623c4a05dbe3011b314dae6bb1297ff1e829b73762aea7b59a44ebff9ff69",
+      "dragonName": "Vaervorion",
       "seedHash": "64c5d48b3c13a2a9fb46918f414f64ad3ac99151e15a4214862c96c2051344c5",
       "serial": "#0016",
       "tier": "RARE",
       "tokenId": 16
     },
     {
-      "dnaHash": "03e049bd6623e347428559f37a672bc76043c3a20a5bf3e4f28e9f578e2d6730",
+      "displayName": "Vaervorath — Drake of the Ruined Megalith Ward",
+      "dnaHash": "a9bd609327cd691cc64fc3d44756397eb73e797910dd76a30762e668e5333be3",
+      "dragonName": "Vaervorath",
       "seedHash": "cec5631f8ee81ed410287fe9531bf751326ecfcc99452118752d9e133ab8727a",
       "serial": "#0017",
       "tier": "RARE",
       "tokenId": 17
     },
     {
-      "dnaHash": "67ad348f7eee0746430875c9adf20d69af1fb2c6c15b61ae7a6e443fa3b9e49f",
+      "displayName": "Vaervoror — Wyvern of the Ruined Megalith Ward",
+      "dnaHash": "6dcc164fc906966fad88523190660694962f0873add66fb9198f3c8b65e09ab5",
+      "dragonName": "Vaervoror",
       "seedHash": "f226cd3f8fda4c9f963a96bf4328cf757dcab51f05345782d6b4e2be5b625b4d",
       "serial": "#0018",
       "tier": "RARE",
       "tokenId": 18
     },
     {
-      "dnaHash": "0766a7f30800dc639230f58ef84e52c1b96c4df3e3c9c244223af42a70f889ef",
+      "displayName": "Vaervoryx — Drake of the Iron Basilica",
+      "dnaHash": "3800e20f029711d84687ec19d988a1eb8600eb8c164f00697b1e68bd2a81729f",
+      "dragonName": "Vaervoryx",
       "seedHash": "ee60c963ba02d729f59ee632050b3ba9df4b9c525b878dceea91206a2c3ea27e",
       "serial": "#0019",
       "tier": "RARE",
       "tokenId": 19
     },
     {
-      "dnaHash": "c9f73cf72b8a82a5d01be7250fb8db824c3a826f11fad88a4ec05c9fdb0c2f09",
+      "displayName": "Vaervorar — Ravager of the Obsidian Spires",
+      "dnaHash": "0d1a26d02cf6404f0659a73fe66590bf988c2d5634a86a0ca9715330a0bc49de",
+      "dragonName": "Vaervorar",
       "seedHash": "75bb1c4a36426cb3fdfa757f48207f8c24b2435bd754d6e995ed8b2b34872b35",
       "serial": "#0020",
       "tier": "RARE",
       "tokenId": 20
     },
     {
-      "dnaHash": "7ba4d45bda62083c28c42605a07d5b24f30048b32523b8cf155a091a36ddb117",
+      "displayName": "Vaervoreth — Drake of the Ruined Megalith Ward",
+      "dnaHash": "99684b83f35af983068cd3ac570a5692f4e22680f50bab0edbbedf5673a9ff24",
+      "dragonName": "Vaervoreth",
       "seedHash": "d4dfe59e2ff092a578524fd1b3e2258aa10a3c50cbad9898d4a680699e50bb9c",
       "serial": "#0021",
       "tier": "RARE",
       "tokenId": 21
     },
     {
-      "dnaHash": "ff923417b731238c8ce663bfbc7eb10890bdd189778827d9161e49c11bfa1967",
+      "displayName": "Vaervoron — Drake of the Ancient Citadel",
+      "dnaHash": "6a7fc3a878136a97229bb094e812ee73d9f3722b64084ccac3a8e4475085be35",
+      "dragonName": "Vaervoron",
       "seedHash": "8ada55fe5a6aaa7e4548fd32f64854a6bc8e68f9e5e6ba359ade7d4f8c9587d3",
       "serial": "#0022",
       "tier": "RARE",
       "tokenId": 22
     },
     {
-      "dnaHash": "3b15310b7c312cc0e88565acd16a4f9e23580863e6b5dd4b2c019d7a1fd32491",
+      "displayName": "Vaervoris — Wyvern of the Iron Basilica",
+      "dnaHash": "95435d663c76e3d32fc3e19a85a2d7516e6983082014d64d88c575149b5fc211",
+      "dragonName": "Vaervoris",
       "seedHash": "0956c6b8e490cc1dccd2d08eef14083579594d19e8c4c2ee3a8034f6d847b91d",
       "serial": "#0023",
       "tier": "RARE",
       "tokenId": 23
     },
     {
-      "dnaHash": "9e3c30dcf36e1fe21829bc12a6d9f1313b974dd4300046ccebb56d5eec3d53df",
+      "displayName": "Vaervorek — Ravager of the Black Cathedral District",
+      "dnaHash": "e44728a6740dd0162d44dfba14b3dc8d4a9f1e333eb65f4db3aec7019cdc3008",
+      "dragonName": "Vaervorek",
       "seedHash": "1c73e657202ea05f6d5a3180285fc58e36ce046460d249a51e84ee5b7a79bf46",
       "serial": "#0024",
       "tier": "RARE",
       "tokenId": 24
     },
     {
-      "dnaHash": "dd7cf974bfd54d327a8e2cc3101b222cb4cccc14856c052003c551acc94bceab",
+      "displayName": "Vaervorum — Wyrm of the Black Cathedral District",
+      "dnaHash": "ffe3e4f53310a494b0b066a46702d5765ec5036967b1e4405bb28a9383b1fa94",
+      "dragonName": "Vaervorum",
       "seedHash": "17aba4a84ab295882a8be2c90c7fd099f793095f1f9cc2c96355c7bf1b2f03d8",
       "serial": "#0025",
       "tier": "RARE",
       "tokenId": 25
     },
     {
-      "dnaHash": "fff66f871d12ce8a566ee4a14a476e1b04c64a5f13ba7a9ed0a4ebe734aa3346",
+      "displayName": "Vaervoroth — Ravager of the Iron Basilica",
+      "dnaHash": "9a9a1d491a2f9a288731c332463f759f3d23b78403e7aef6d7cf2933c2b93e9a",
+      "dragonName": "Vaervoroth",
       "seedHash": "b5ee4da8368b9e33a82673bd2285d3bb6d4fb1d7fb61c887624f8a6d37b4e122",
       "serial": "#0026",
       "tier": "RARE",
       "tokenId": 26
     },
     {
-      "dnaHash": "5b00b2cdbc3ec90d50f521d70b6b682c96ff726ae90f0b37045035a382cbe0b6",
+      "displayName": "Vaervorir — Wyrm of the Ancient Citadel",
+      "dnaHash": "efe9f7324882edb1b7b87f6885002bff3085f55695d88498cf49e7e2cb13be54",
+      "dragonName": "Vaervorir",
       "seedHash": "c66b644ce33d69c926b11305e6cdc64f89d2c23d29b3dd672a2ab27abb3f3676",
       "serial": "#0027",
       "tier": "RARE",
       "tokenId": 27
     },
     {
-      "dnaHash": "2af649c16a081ed76075b7d8dacbd926b3e71b44040b3aa2cc07d94036edcda3",
+      "displayName": "Vaervorax — Ravager of the Black Cathedral District",
+      "dnaHash": "58bd54e9d5794cfc3a1525847c7120802c69cef4a406edf1e3b7f5db5691062d",
+      "dragonName": "Vaervorax",
       "seedHash": "3672e54b52bf0c2dcf2cbd6f3a3181acfc62a709b0a2b965f44a0e9f22167727",
       "serial": "#0028",
       "tier": "RARE",
       "tokenId": 28
     },
     {
-      "dnaHash": "f79e57fb02be0261239c7b3b68cb7b6186f45d410eac9b56629f671902b5de32",
+      "displayName": "Vaervoren — Ravager of the Obsidian Spires",
+      "dnaHash": "d69184595d14e31038e3f7c79fb1e1cb7de4116e08d848a275c1a91b359d94ca",
+      "dragonName": "Vaervoren",
       "seedHash": "31baf00b93433f2df26f487135ff745b221fa4416a7ad8a6af6665def9fd5095",
       "serial": "#0029",
       "tier": "RARE",
       "tokenId": 29
     },
     {
-      "dnaHash": "d2b942a3baa2d3379f7cf7cefa7ffe9a1b740708e58d68b55d3dc1c741643453",
+      "displayName": "Vaervorul — Wyvern of the Obsidian Spires",
+      "dnaHash": "caec5ad364b1bb7846e69e011def8e96edc5d0886b4eb696d984d2155d4136d6",
+      "dragonName": "Vaervorul",
       "seedHash": "78782a12e33f9e97b7a688091dffc3b57000453738d4ed0848d377fbb54618d7",
       "serial": "#0030",
       "tier": "RARE",
       "tokenId": 30
     },
     {
-      "dnaHash": "e6ac9cc74ad69c7a4bfe5215d138884ee892dff55c7798ae8bba7f737204c907",
+      "displayName": "Vaertherion — Ravager of the Obsidian Spires",
+      "dnaHash": "0cd4f7231a05b226e177ec2f26a6aaeca809493cdbd867ce6a139eb2435ac00f",
+      "dragonName": "Vaertherion",
       "seedHash": "f0c536b0a6c478fc40a2c37c77a4abd9c568eac7a13c8426b4b0342e7991485d",
       "serial": "#0031",
       "tier": "RARE",
       "tokenId": 31
     },
     {
-      "dnaHash": "e3f8504570fbca7714fc6573f4c5fe725d690a8df751f1790654061f188f3237",
+      "displayName": "Vaertherath — Wyvern of the Iron Basilica",
+      "dnaHash": "e665c97203d3c23a6fa5a96c3d03057f72506ab7acde2ade0f2e3eafbd62e5f9",
+      "dragonName": "Vaertherath",
       "seedHash": "b941b3c853bad1b47deb89e70f2fdebdad36bdb2ba7ab63cf74dabf24fa79098",
       "serial": "#0032",
       "tier": "RARE",
       "tokenId": 32
     },
     {
-      "dnaHash": "313d19a75340b450585cfbdc16373c5f620650b38040e8f0e0ed30a9ea39b89b",
+      "displayName": "Vaertheror — Serpent of the Black Cathedral District",
+      "dnaHash": "2584a8c616f2429efb587187e6da616e35ca8745b583c7b232c587b7f7f1784d",
+      "dragonName": "Vaertheror",
       "seedHash": "5e04ef7b2a4919a86a4df26d5c9ed67923cc9c03aed6e81f5b6289af75b3099a",
       "serial": "#0033",
       "tier": "RARE",
       "tokenId": 33
     },
     {
-      "dnaHash": "835d6f074c21ee3b58798fef18b1b046baa94c8f380797fd342aab8c6c925e94",
+      "displayName": "Vaertheryx — Ravager of the Obsidian Spires",
+      "dnaHash": "b8e3f609520457cdbe24162a6cc0dfa928403832e9ccc94770a52ed1feff4c61",
+      "dragonName": "Vaertheryx",
       "seedHash": "534a39ec813171221bbb9d9ab29cfc6663ea2d62c6a6bd2264d4e4f4779ca6b3",
       "serial": "#0034",
       "tier": "RARE",
       "tokenId": 34
     },
     {
-      "dnaHash": "e5f364e6fa5c0f256268a94eb4db44e04baaf75eaabf075fffc888d209c309bf",
+      "displayName": "Vaertherar — Wyrm of the Black Cathedral District",
+      "dnaHash": "b51ad1bfb2f4e1b65b537326cd886aeda2941011f37a18485e5191c283f6b17a",
+      "dragonName": "Vaertherar",
       "seedHash": "50c8bffaa02b2c70e479889cbebfa7f4a156062959b7d48c29993c86b9ca26c5",
       "serial": "#0035",
       "tier": "RARE",
       "tokenId": 35
     },
     {
-      "dnaHash": "3aac50011003ae307e417e95ae4620971c7d8b87d14fe5dd0d4fb0531193d79d",
+      "displayName": "Vaerthereth — Ravager of the Ruined Megalith Ward",
+      "dnaHash": "bad1e635ee66d019092a03e6b006ccbe9d6c4e35544d5a8652e29f65f2d3ef89",
+      "dragonName": "Vaerthereth",
       "seedHash": "4a80eb1ee685d6c3e94159b6db1e7db7db01e7894ab59353f9e88e8f7ab7a232",
       "serial": "#0036",
       "tier": "RARE",
       "tokenId": 36
     },
     {
-      "dnaHash": "5cffb59281e2bdb3f4666880e97984215294e7a22242d29fbcedf6da3f63e5dd",
+      "displayName": "Vaertheron — Drake of the Ruined Megalith Ward",
+      "dnaHash": "efd65caa571623f0b0b81eb1ea12d68b351e69d9d3aba899705bb0b7a84818f1",
+      "dragonName": "Vaertheron",
       "seedHash": "029bea1e094a4d4a01b23368cb7e77c5057d68c979b1dcfac524e125ece458d2",
       "serial": "#0037",
       "tier": "RARE",
       "tokenId": 37
     },
     {
-      "dnaHash": "3993ff41b07a8ba983b80b564515746cf3dea0e99579b7176ef2267ef32635a1",
+      "displayName": "Vaertheris — Serpent of the Black Cathedral District",
+      "dnaHash": "b92f094ca1a38ca6e9309df4052c35bb4da19d428b68b6b708df07e396ae5346",
+      "dragonName": "Vaertheris",
       "seedHash": "f32742ebee6b1574d26a3f11af6d694317a0ff797a07187f70eb692397af097a",
       "serial": "#0038",
       "tier": "RARE",
       "tokenId": 38
     },
     {
-      "dnaHash": "d78e6367ba02fd12e86e302d79edd919654da181d3bf8cb57144566bd386d3ed",
+      "displayName": "Vaertherek — Wyrm of the Ruined Megalith Ward",
+      "dnaHash": "53d4e903ec25dccadc8b68c70dcf22969531dca7ec1a6c1feaa11f07f70d48ac",
+      "dragonName": "Vaertherek",
       "seedHash": "7f287ab8b4095a1ae28dd12a65fd375a0131be82338fca3d187cf3a0557ee584",
       "serial": "#0039",
       "tier": "RARE",
       "tokenId": 39
     },
     {
-      "dnaHash": "bf7b0a89db5fe1eed1db38a13d2c2c448aa4e8bfcacd94df265d7400ba64e0cb",
+      "displayName": "Vaertherum — Drake of the Obsidian Spires",
+      "dnaHash": "8401d28459912e7a25491d1fd29a416e92aefd06385bf0a8e4fd50e306a9f73d",
+      "dragonName": "Vaertherum",
       "seedHash": "16e96b2012967cc0d98c543fc96562ec4833a305d56b448b0dee329cad3ed0d5",
       "serial": "#0040",
       "tier": "RARE",
       "tokenId": 40
     },
     {
-      "dnaHash": "6f40c9901d74a553f6932b042a7c9229f53ec7606cdd4d9bc508d9b3a86dcd62",
+      "displayName": "Vaertheroth — Drake of the Ruined Megalith Ward",
+      "dnaHash": "db51d00ff3fcdd984b3d2ac912eb6da7c5c26513f6934b97ecebc8a154963a74",
+      "dragonName": "Vaertheroth",
       "seedHash": "711ad3d313ac9bdb9b39e59b93309b85060fc7381d46b5de875f5cc5f863a65c",
       "serial": "#0041",
       "tier": "RARE",
       "tokenId": 41
     },
     {
-      "dnaHash": "009919a56ba40e9f2f2ab5eedfa26f5cb3eb84fa80c5b55d71aefe9f3157840b",
+      "displayName": "Vaertherir — Ravager of the Ruined Megalith Ward",
+      "dnaHash": "66ee2f0c8a3c51b7fdf66fb1951403f6a5a6204f2e8ff7244e78eec3bfdce8ac",
+      "dragonName": "Vaertherir",
       "seedHash": "54e7bc6c628589f098e860cac36ff02368c20d8ce92fde88be691d219fa6d6ed",
       "serial": "#0042",
       "tier": "RARE",
       "tokenId": 42
     },
     {
-      "dnaHash": "37ec8615d212e665e6898196941ef8c13e38e125d43f29dc4cdf9a60e0239e13",
+      "displayName": "Vaertherax — Ravager of the Black Cathedral District",
+      "dnaHash": "fc2a65c70cd1c55a754f0ce6ab54b313841eaaefa61ed022092a3a209a946859",
+      "dragonName": "Vaertherax",
       "seedHash": "1396da591859bb2b351fd54809c336b17c5fdda49d56f061fb19507c075712a5",
       "serial": "#0043",
       "tier": "RARE",
       "tokenId": 43
     },
     {
-      "dnaHash": "a0b7cff0a38829f4a8949dc5d363b9b27bb86b65f38a04d1d587039c4a507c9c",
+      "displayName": "Vaertheren — Wyvern of the Ruined Megalith Ward",
+      "dnaHash": "c9bbd66bfabf9337ceb8b397ff36f65a8e11924725247ac26ec09b3a4603e14f",
+      "dragonName": "Vaertheren",
       "seedHash": "84678ecef8d2602211adb3936e916b38754c3b44b01dec5d98ec32b405b47e81",
       "serial": "#0044",
       "tier": "RARE",
       "tokenId": 44
     },
     {
-      "dnaHash": "57080fa9d0aa2fbacefb1db2ec16456912a889994431033211f38ea122323384",
+      "displayName": "Vaertherul — Wyvern of the Ruined Megalith Ward",
+      "dnaHash": "839400ae843a4dd5fa6067c19ac901559e4673a2afe2c32ad1c12758612f3d74",
+      "dragonName": "Vaertherul",
       "seedHash": "7ac89dab386b14266bd985af70f22a72f425212fc3d53e405fd26d6d7a13731d",
       "serial": "#0045",
       "tier": "RARE",
       "tokenId": 45
     },
     {
-      "dnaHash": "6003ba7703113314eca85987c73b86d7dafa0abfe8815101e4f29c2e6b05cde4",
+      "displayName": "Vaermorion — Wyrm of the Iron Basilica",
+      "dnaHash": "d2899b36a16f40b106ce4c956a3c549afab335b233f4b1e3e94c38e44e5521eb",
+      "dragonName": "Vaermorion",
       "seedHash": "2124a882f75091d97246edfd5814aaae618a3130589c12c04f4fb75b58de0abc",
       "serial": "#0046",
       "tier": "RARE",
       "tokenId": 46
     },
     {
-      "dnaHash": "980f272d4ea00a834a5529368e7a18a72774ee3a8a51e08ab4d8113d45df4876",
+      "displayName": "Vaermorath — Drake of the Iron Basilica",
+      "dnaHash": "3840967677fa615bdcdf5427cbe4b6fb1f0e1da33714746c55ddee159ce16aa4",
+      "dragonName": "Vaermorath",
       "seedHash": "9646cb492885c8970a0ff970eb9bd86bd11a361fbae8c0fb4e55fadde83cf021",
       "serial": "#0047",
       "tier": "RARE",
       "tokenId": 47
     },
     {
-      "dnaHash": "b4d92eecc16282a73ddd7fa62fccffdb215aa72bfac314f50135254e6a28fc65",
+      "displayName": "Vaermoror — Ravager of the Black Cathedral District",
+      "dnaHash": "328ce244fb1986097ec0371559f831ecb282e8bb14205849b32a82f0efcf9adf",
+      "dragonName": "Vaermoror",
       "seedHash": "76bfe8f89acafa7a404efdc29e76d23e9ba911082f92f3f0e4abed1a780a89a8",
       "serial": "#0048",
       "tier": "RARE",
       "tokenId": 48
     },
     {
-      "dnaHash": "44d0610f0887117c283e6ae5fabd32d62343b339ec61954bb8e002f1d0269830",
+      "displayName": "Vaermoryx — Wyvern of the Ancient Citadel",
+      "dnaHash": "ff00e13dee774c47a3550cb4399eb52aa87214f193383fd75ed7116dc6c13162",
+      "dragonName": "Vaermoryx",
       "seedHash": "5036032b605176d98a75a026e867e4d9869b186ce8d60d2e9b9e59132f2cd9cc",
       "serial": "#0049",
       "tier": "RARE",
       "tokenId": 49
     },
     {
-      "dnaHash": "8961e38c25818ce34ba1f1513b9d21e438d2942e0bf588df37ab17cef8014203",
+      "displayName": "Vaermorar — Ravager of the Ruined Megalith Ward",
+      "dnaHash": "aefd168c9400d110cceb828fbfd70c48d0a6f1f8f0bd83417c3f9f0c234b0dec",
+      "dragonName": "Vaermorar",
       "seedHash": "bc03e9ea626db5f889626e465988d294f5434145f1b5d92210e59c4cd0756e85",
       "serial": "#0050",
       "tier": "RARE",
       "tokenId": 50
     },
     {
-      "dnaHash": "6ac12c71f3c158008792fca5a07255f733f4a04413f18794189f8979b63f5da6",
+      "displayName": "Vaermoreth — Wyvern of the Black Cathedral District",
+      "dnaHash": "b1ff5fd01a4792a09240677b0e31e5b25286e175bb5b2ac0fce4e2553a70e7ac",
+      "dragonName": "Vaermoreth",
       "seedHash": "604421b33dd0b26b64defeef09e37eee3c591675af69ba3b7f49abd2748fcd32",
       "serial": "#0051",
       "tier": "RARE",
       "tokenId": 51
     },
     {
-      "dnaHash": "70e8ad72d5fa75af496bde59c53c3f56c98e2d1a644eadcfa92524cba826d853",
+      "displayName": "Vaermoron — Ravager of the Ruined Megalith Ward",
+      "dnaHash": "c5ec9141fff6ecaf574159e39d7a34e99fc07c06fda16893160ec5f5f075d979",
+      "dragonName": "Vaermoron",
       "seedHash": "be7bc0a1386b91713dbdec537dab9494a98142e1ebdcdf1fe86466640009d009",
       "serial": "#0052",
       "tier": "RARE",
       "tokenId": 52
     },
     {
-      "dnaHash": "8f87aba24cfcbad7e50b2bbc3801d5c69d5cfabddea7343b04e896d44f397fe8",
+      "displayName": "Vaermoris — Drake of the Obsidian Spires",
+      "dnaHash": "c5d007fb3753f1c6c9a31d5ee8f44b9ad2cb957f163e9768fbd24fbe913f852e",
+      "dragonName": "Vaermoris",
       "seedHash": "86f6df915f51cc1bd7fbd6338eebfa709b924c8f7da44c2194e8fa9cdf2eadff",
       "serial": "#0053",
       "tier": "RARE",
       "tokenId": 53
     },
     {
-      "dnaHash": "2f210b0b97db6458aff6214402e4210ddd8ee65f0eb99b5e61786eedfc773ad6",
+      "displayName": "Vaermorek — Wyrm of the Ancient Citadel",
+      "dnaHash": "0a0fab67455428e224ed6412a48f91d61c0eb889ea8d9474f48678354653ca59",
+      "dragonName": "Vaermorek",
       "seedHash": "c9dc6d2588e9f626685ab43e74d363abee6c5aacbf4cdae50cb73ff6e34a01bd",
       "serial": "#0054",
       "tier": "RARE",
       "tokenId": 54
     },
     {
-      "dnaHash": "5467b65d268e412ab0982ab0a24c7fb1f767ecd09b893edad4c6f49182fcb946",
+      "displayName": "Vaermorum — Wyrm of the Obsidian Spires",
+      "dnaHash": "70d11b2418eed4bb65e07c1f21df3bf5b77fad0265bd0bff11ac673c28d106e1",
+      "dragonName": "Vaermorum",
       "seedHash": "ebf105edbafe82a7702ebf1331ec3a204929674a8266f1454f1681b9ce6c85ed",
       "serial": "#0055",
       "tier": "RARE",
       "tokenId": 55
     },
     {
-      "dnaHash": "2f9fcc469705751a7858ba997c37dab989c7c387c542aec1456ce25a889b923b",
+      "displayName": "Vaermoroth — Serpent of the Obsidian Spires",
+      "dnaHash": "96ee5ed7d0e598337b29413adf88f2756d3f9695962b7ff55bb0937e9242b7ad",
+      "dragonName": "Vaermoroth",
       "seedHash": "a51b1d932311af3540cb77901e921f86a19ca667a3cbd01017ee0d5a037fad9d",
       "serial": "#0056",
       "tier": "RARE",
       "tokenId": 56
     },
     {
-      "dnaHash": "29ffc689469178f5431f9569fbdb3cffa8c6d3b8ec1c577699f8549a773db36a",
+      "displayName": "Vaermorir — Wyrm of the Obsidian Spires",
+      "dnaHash": "3c7c7a6da7316875b15087bcb5db6ca5888bb7df50a35679b0a17f3fbaf26de4",
+      "dragonName": "Vaermorir",
       "seedHash": "ab864b5dda6a4857b52b45d12fc343a9c32e6045ff197a72457cd54942289942",
       "serial": "#0057",
       "tier": "RARE",
       "tokenId": 57
     },
     {
-      "dnaHash": "35070049c6a75bd5f879bd3f94752d824ae35194750dfbd1cc65464b0cb84d1d",
+      "displayName": "Vaermorax — Wyvern of the Iron Basilica",
+      "dnaHash": "55327001f84e4f2a4b15614bc273d557315efdf89563f73617b257da393a7860",
+      "dragonName": "Vaermorax",
       "seedHash": "1db159e3cc1263ec974d7a0b754b57a6ff478f5a5b3158d98f8c5cbe85428dc3",
       "serial": "#0058",
       "tier": "RARE",
       "tokenId": 58
     },
     {
-      "dnaHash": "3beb7eb5eb7ac0ad6f6142bcf7b9f46c2e947ab9573794ddec21ea2862dc792a",
+      "displayName": "Vaermoren — Serpent of the Black Cathedral District",
+      "dnaHash": "795912996da43b51f77c3b93a5c068310a531a39c66b38cbe06254332411f5d1",
+      "dragonName": "Vaermoren",
       "seedHash": "7e1a9ef5e281900d57174ad123cf04e2481cf47ffa9f311894bb24ac0c8b9935",
       "serial": "#0059",
       "tier": "RARE",
       "tokenId": 59
     },
     {
-      "dnaHash": "8466e7b06fec6c02159018ba07e7689e70820676018db14e0a20a3bda7466874",
+      "displayName": "Vaermorul — Wyrm of the Ruined Megalith Ward",
+      "dnaHash": "917fbf541ada0ee454cf41df167ff2235736744ac3fcafd5010cafd393b180d4",
+      "dragonName": "Vaermorul",
       "seedHash": "b4bb51dd9c22af440edd07d939113f541f6502124265cbf990e31b16e650506a",
       "serial": "#0060",
       "tier": "RARE",
       "tokenId": 60
     },
     {
-      "dnaHash": "41734554ce2c45e3a20b8126e98bb535ff654b0a8ac3f9675578763461085895",
+      "displayName": "Vaerdranion — Wyvern of the Iron Basilica",
+      "dnaHash": "da540197e6186fd8df5481e547d5f4531cc910f51587126321977812fc179409",
+      "dragonName": "Vaerdranion",
       "seedHash": "243be533ff6ed8c3c1defb5dd06fc31a84b0844c228f84f0b1be5090ef3d944d",
       "serial": "#0061",
       "tier": "RARE",
       "tokenId": 61
     },
     {
-      "dnaHash": "a2c21c9ab7342e84aafe51372d7d65b48f5499178b79f4bc63f460dec934f24e",
+      "displayName": "Vaerdranath — Wyrm of the Ruined Megalith Ward",
+      "dnaHash": "bbb20278f266c57c56ba4505f71057efdfdb392631a223b2505f684dc6a68ede",
+      "dragonName": "Vaerdranath",
       "seedHash": "1bf36d64aebe504407a01fbfdb0f95a2586d74b18c8c35d525d495995a3f50e6",
       "serial": "#0062",
       "tier": "RARE",
       "tokenId": 62
     },
     {
-      "dnaHash": "71225a8ec88b390440f79c09b0275b4a034e7d5557d60d7cfdbc8827ac3b5501",
+      "displayName": "Vaerdranor — Drake of the Black Cathedral District",
+      "dnaHash": "5b1618936e1446cf02ac19baa0b32fc8053cb234771f5ec08d6100c53ac6b348",
+      "dragonName": "Vaerdranor",
       "seedHash": "5d8a267a51da02eb4aede223f95dbb5c95b7de4c5135614f835bc56d94dd4f51",
       "serial": "#0063",
       "tier": "RARE",
       "tokenId": 63
     },
     {
-      "dnaHash": "d496ba4ec32d82c61f15c2c2a8163a04ade61e607407fd51658f2d9e4d793496",
+      "displayName": "Vaerdranyx — Drake of the Iron Basilica",
+      "dnaHash": "d6024c40dab48a05c65a96f22f4570584e88fe3da77fe5f15c81201bf9b6263d",
+      "dragonName": "Vaerdranyx",
       "seedHash": "24bd567b956faf6ed0273ea2e57cf71fb5c6a410e2c389cffa48dadd900aa45d",
       "serial": "#0064",
       "tier": "RARE",
       "tokenId": 64
     },
     {
-      "dnaHash": "068cd7fee4288292807cab9780a5a2971fe17666f117e8ed30ae02e0121cb07b",
+      "displayName": "Vaerdranar — Ravager of the Iron Basilica",
+      "dnaHash": "a3e4d9ef10565115bee7d0b4d647f62815c476c9bcff1f39681878a0e8d577f4",
+      "dragonName": "Vaerdranar",
       "seedHash": "0c28d344f213afd44adc9eb2216bf026ca0f997609d2a451ba0e65c1011a70c4",
       "serial": "#0065",
       "tier": "RARE",
       "tokenId": 65
     },
     {
-      "dnaHash": "c55934b43cbcd0281387a098d7967fa01d23a4710bb8df230d083518a51e6cb3",
+      "displayName": "Vaerdraneth — Ravager of the Ruined Megalith Ward",
+      "dnaHash": "ab7a9657e99dbf96c86355e857b767ab2cb720528d28d85928c12399b1b4fe71",
+      "dragonName": "Vaerdraneth",
       "seedHash": "b0162c20de8896c6f0041834e719a634a14d00e0cc00a75bebacc3f98aba63fc",
       "serial": "#0066",
       "tier": "RARE",
       "tokenId": 66
     },
     {
-      "dnaHash": "c730f41b1bce5f216a2de5452c0077e8ab4082c26fb5f64c334c067d03d6aaa2",
+      "displayName": "Vaerdranon — Drake of the Black Cathedral District",
+      "dnaHash": "157698bb506fd449ee13f6ec251217ed0611d44f73d243585985fe7c3b71108f",
+      "dragonName": "Vaerdranon",
       "seedHash": "870bdc5938e8b0ec0bedad4965f0c429f6d0cf9e825e2d3e65bf97071f3ded72",
       "serial": "#0067",
       "tier": "RARE",
       "tokenId": 67
     },
     {
-      "dnaHash": "57714778ff5321c6c1d21018dc6a5afdce6de9dcaefe20a99c0af80c66077fc2",
+      "displayName": "Vaerdranis — Ravager of the Black Cathedral District",
+      "dnaHash": "d4850955e736a353ab3fa27aa13627ff116eb05c0c50984a6d45b98533eda99b",
+      "dragonName": "Vaerdranis",
       "seedHash": "8214c1370340cadad2725cffebd580328143aff879e83b50ae3d23e56417de27",
       "serial": "#0068",
       "tier": "RARE",
       "tokenId": 68
     },
     {
-      "dnaHash": "3169f35dee9a06f40557ee7d383539fdfd6dd952dc85fad0c9beae009f90cab5",
+      "displayName": "Vaerdranek — Ravager of the Obsidian Spires",
+      "dnaHash": "24d0e9763ee3ade400cbdd3190245884e1fa91da5565b382893e6c4588abd10c",
+      "dragonName": "Vaerdranek",
       "seedHash": "a908bae15ee1648f66b63be239f9777e02724798dadb3b28e6f572d028ad1ce2",
       "serial": "#0069",
       "tier": "RARE",
       "tokenId": 69
     },
     {
-      "dnaHash": "c881f13307fa9351e9a4dff808c445da48daae720e806a0c5f07a9395a6ea3a2",
+      "displayName": "Vaerdranum — Serpent of the Ruined Megalith Ward",
+      "dnaHash": "a91f6bffc1217fe89f0797db26ea88fb8b67f4f37822cd9f7585c30e00d53019",
+      "dragonName": "Vaerdranum",
       "seedHash": "fc11248fa36eb07d71db9ab497251a61776989788db8a0b289c41044853ffd24",
       "serial": "#0070",
       "tier": "RARE",
       "tokenId": 70
     },
     {
-      "dnaHash": "36c57c2db9f9ded8b122ca3b7b400a45becae7d29465e2524e9fb1784a863aa3",
+      "displayName": "Vaerdranoth — Ravager of the Iron Basilica",
+      "dnaHash": "4aa4f4bad6536075ad28fc6a5f26e8cf32bf170007d5cadfa0f1aa1093805c61",
+      "dragonName": "Vaerdranoth",
       "seedHash": "5008b7c3e35521a252376f301b4f5fbeaa9e814086f4497481241bb8cae33c6d",
       "serial": "#0071",
       "tier": "RARE",
       "tokenId": 71
     },
     {
-      "dnaHash": "b44ebf82b93c47e551769c3b626ccca7a933d82b17e915ff42e0b1f77751b313",
+      "displayName": "Vaerdranir — Ravager of the Black Cathedral District",
+      "dnaHash": "57f75611335352d71b317f92d0c65a348073b30e395ad71831522720dbf16133",
+      "dragonName": "Vaerdranir",
       "seedHash": "664ed255a441c897f41a68bdf1ceba594e703262f3ab418ba75b9c93a55fa912",
       "serial": "#0072",
       "tier": "RARE",
       "tokenId": 72
     },
     {
-      "dnaHash": "2f60e04a43f498eb23136986b0dcbd23c39ea308179775b7f4183e84b372d5f4",
+      "displayName": "Vaerdranax — Wyvern of the Obsidian Spires",
+      "dnaHash": "417a6b9c85a272549ed6f60c2bf502c7b8bceacd35be527d19fdc68fba03159d",
+      "dragonName": "Vaerdranax",
       "seedHash": "a0dbe248eb4b09ba1102bc0b5d2c51f648b2bdc4eb241dc75897be31dd13732b",
       "serial": "#0073",
       "tier": "RARE",
       "tokenId": 73
     },
     {
-      "dnaHash": "c1835eadd54bdbd3c2ffe5e5ad6ef0c011580587168253e572d9bab512dd347b",
+      "displayName": "Vaerdranen — Wyvern of the Ancient Citadel",
+      "dnaHash": "0138f5b75de5a0ccefc65ea460cbccc943a3e47493fd54957887f90a2415a199",
+      "dragonName": "Vaerdranen",
       "seedHash": "e90f6dcfe8921ba8892658ec788e015726a21a5323699ecaa945c810f93244bb",
       "serial": "#0074",
       "tier": "RARE",
       "tokenId": 74
     },
     {
-      "dnaHash": "61897834f59c6eb795ee435c2c82f5c78f925734aa218abc72e5af1ff25407a5",
+      "displayName": "Vaerdranul — Serpent of the Ancient Citadel",
+      "dnaHash": "17d267e79f766c227a3245c4566e4da20f3bcac571f68ea43f19c517b52919c4",
+      "dragonName": "Vaerdranul",
       "seedHash": "a1894b90ba34b2aaa3247610ad90b0e03a596e7799019113335fefbc25ea013b",
       "serial": "#0075",
       "tier": "RARE",
       "tokenId": 75
     },
     {
-      "dnaHash": "f73efc26e97cc755e133661047e701f1c524c5e21c265cff2ed2cf143740a437",
+      "displayName": "Vaergathion — Drake of the Ruined Megalith Ward",
+      "dnaHash": "e6659baa51ccd012976795d2b868fc7b94867ccac41067b8aae8843e3cdd0d50",
+      "dragonName": "Vaergathion",
       "seedHash": "1d0978d4f0de2ae9b3d2aed9284b7a5822f889c10b20d7a6fb57d81d4bbd7b4c",
       "serial": "#0076",
       "tier": "RARE",
       "tokenId": 76
     },
     {
-      "dnaHash": "b7a4cc4a79471e479f4fd06e89afefbeefad258a30b0480cd287d62e986f1d20",
+      "displayName": "Vaergathath — Wyrm of the Iron Basilica",
+      "dnaHash": "9aabb3e3187b882961f74dea71f6e8c34f2edb168e2bd36a0b74451a4fb905df",
+      "dragonName": "Vaergathath",
       "seedHash": "96f054c2b43d4bcf5cd960c8624c3751de9d1ef7dec05603cd7456ab6e37debf",
       "serial": "#0077",
       "tier": "RARE",
       "tokenId": 77
     },
     {
-      "dnaHash": "086bb946606b431f72ba04f1d4919d34f5661e84020ddc1d81ac2de8f106a53b",
+      "displayName": "Vaergathor — Wyvern of the Obsidian Spires",
+      "dnaHash": "47c42c893bc20b8286d7cd997413b7d13f6257b73ff8a04cdbc7acc8e5bc5343",
+      "dragonName": "Vaergathor",
       "seedHash": "92699f030ed2150ede7d31b22bc752aac58b31f31745d49f81a9569f66585308",
       "serial": "#0078",
       "tier": "RARE",
       "tokenId": 78
     },
     {
-      "dnaHash": "8589007cbd567075d0662b12550d1d9fda32d7832f130c54950b862e18d80195",
+      "displayName": "Vaergathyx — Drake of the Black Cathedral District",
+      "dnaHash": "eca54cf2c54805f65361a3e82e383999270b553df5ea885cbb31c272af027a95",
+      "dragonName": "Vaergathyx",
       "seedHash": "c8b18268cf9ba3d1e7c22501ce1c147c1d3870dc6c0cb687fa67c236e8621495",
       "serial": "#0079",
       "tier": "RARE",
       "tokenId": 79
     },
     {
-      "dnaHash": "9327052722e69a915f5fbdb25caf22710e846a1910ee2725f9e46795a91cb302",
+      "displayName": "Vaergathar — Serpent of the Ancient Citadel",
+      "dnaHash": "52983a9b0e919354736306bf1c6e7a504f418e49fbc9a9fb5a4e5d6a7e2c8b76",
+      "dragonName": "Vaergathar",
       "seedHash": "dc489e17745cd43ce3f0fdbc4c0203c4c374c98d7699a8071c016a4c6d3c0320",
       "serial": "#0080",
       "tier": "RARE",
       "tokenId": 80
     },
     {
-      "dnaHash": "8f1c32799eb244f839127f20748482504d6080d616dfb41e27f0ce19b86791ce",
+      "displayName": "Vaergatheth — Wyrm of the Ancient Citadel",
+      "dnaHash": "b7e0a716a71762f25a8d9bba73f10ca26b7605cc92a3d44bf5c9222a33a41092",
+      "dragonName": "Vaergatheth",
       "seedHash": "c0e7e7225864544be1e134fc6ed4ed7ce2bc19fd765aafa39413d1b2a2586395",
       "serial": "#0081",
       "tier": "RARE",
       "tokenId": 81
     },
     {
-      "dnaHash": "021f829f2ebe5b036bf3c92964bdd7eb711b67a18344b1853e86f721f49e80ec",
+      "displayName": "Vaergathon — Serpent of the Ancient Citadel",
+      "dnaHash": "0f44d9b063adfaf1d2794516602d17c4baa9fe11c7a199112cbb73e9ef6e9251",
+      "dragonName": "Vaergathon",
       "seedHash": "cdcfc31cb895192d35ca07d03698f4db36369c0704b19d056da30e1b4994a278",
       "serial": "#0082",
       "tier": "RARE",
       "tokenId": 82
     },
     {
-      "dnaHash": "741d3d54999ed0fcbfd419510768a7924ce20ae8e5df8f558d8f0cecc9482ccb",
+      "displayName": "Vaergathis — Wyrm of the Ruined Megalith Ward",
+      "dnaHash": "9bbcf4e9d80eb545b6574f4a6f04f52c62b7b49fd71472316c2961d586bb7054",
+      "dragonName": "Vaergathis",
       "seedHash": "b5beecbc33bb6dea19b9fc25d9251a9155da63b24a1ce2549184c2572ecb8c86",
       "serial": "#0083",
       "tier": "RARE",
       "tokenId": 83
     },
     {
-      "dnaHash": "3d968358ea3ffb821c90b22f100a66462b5b28dba17f5528d408755fe4c1c177",
+      "displayName": "Vaergathek — Wyrm of the Ancient Citadel",
+      "dnaHash": "82c7cc979d4d2325de9e187de26be4b121d32d9959965a2bdc4aa301e4757606",
+      "dragonName": "Vaergathek",
       "seedHash": "d8013daba1b265a7d148e9912b2860478edb16b3044d595311852454862f43b8",
       "serial": "#0084",
       "tier": "RARE",
       "tokenId": 84
     },
     {
-      "dnaHash": "41732c31974a5348112094a07c9663e5b18de45a510e030bd0053b894f5bcfeb",
+      "displayName": "Vaergathum — Ravager of the Ancient Citadel",
+      "dnaHash": "7465284db2de0ee6e4688ffd019819e891e31850c90ae92f595c15f8b02db804",
+      "dragonName": "Vaergathum",
       "seedHash": "63aa0c63d12493412e40fb76efc37bf8965c116a992c05fede311c48adaf7a48",
       "serial": "#0085",
       "tier": "RARE",
       "tokenId": 85
     },
     {
-      "dnaHash": "745b6a9b5be06deeefcd4be0df0e8879c4746aca73d8ac30bf27cc16945c6bd4",
+      "displayName": "Vaergathoth — Wyrm of the Ruined Megalith Ward",
+      "dnaHash": "0946fb4b5cc24017ecf969602607446ccb6992aa9747dad5d867f4d61b6b0892",
+      "dragonName": "Vaergathoth",
       "seedHash": "e3c75cbaff062dde89a7071218316c1c801f4abdeeeced3751d68d16befff091",
       "serial": "#0086",
       "tier": "RARE",
       "tokenId": 86
     },
     {
-      "dnaHash": "269cf038e1a678f5dafda0a581a33479c4a4084d1cd0ebd4ee869cd65a6fdaa3",
+      "displayName": "Vaergathir — Wyvern of the Obsidian Spires",
+      "dnaHash": "f4a840e8ea66a9447e419ad34135eb982bec37fd843e93dd6409a616944c099e",
+      "dragonName": "Vaergathir",
       "seedHash": "6d0f13c52a1c98d17df94fbdd3434c128b9670e3ec17f7d846043ca1ef413cf8",
       "serial": "#0087",
       "tier": "RARE",
       "tokenId": 87
     },
     {
-      "dnaHash": "962c0b755bf072a41655ca9174e0b672dfb3285d1c83e15e39fac181402e1c5e",
+      "displayName": "Vaergathax — Wyrm of the Black Cathedral District",
+      "dnaHash": "4c680858ff86910e2e303b57846a34209ed94b4928fafc0bd036e1c851366720",
+      "dragonName": "Vaergathax",
       "seedHash": "2e63c64bf7baee0bcfd4d757b97d6386feec87324ad61acbbaedbe5fa218a79e",
       "serial": "#0088",
       "tier": "RARE",
       "tokenId": 88
     },
     {
-      "dnaHash": "fde48c4bf69c4c698053dc565805dbc7dcf9fca023dbc3cd03f69b23c7d1cdae",
+      "displayName": "Vaergathen — Serpent of the Black Cathedral District",
+      "dnaHash": "612e3fb8789ccd2300cea25e6c50196b095eafbcff4826b24884ac368e47c8e8",
+      "dragonName": "Vaergathen",
       "seedHash": "8ee71fbf8fe827440b6643924bcce5fa3bfc6dd1e27baf6515d4ae8e5f9512c0",
       "serial": "#0089",
       "tier": "RARE",
       "tokenId": 89
     },
     {
-      "dnaHash": "e8ca0ab6d5d2cf724aba370011b445507ce5e0a3798556e0063d26e020a3ba3c",
+      "displayName": "Vaergathul — Drake of the Obsidian Spires",
+      "dnaHash": "86d583a3cebca9bf3837ed4c5ab52cdabd4433869a7d2cbf8373150956ac3e66",
+      "dragonName": "Vaergathul",
       "seedHash": "020e559b717864712fffe9c1b181e2ab407e87a6dd379b8e2787ae46c46f01c9",
       "serial": "#0090",
       "tier": "RARE",
       "tokenId": 90
     },
     {
-      "dnaHash": "37722adb0a5dc8df60166fd399985665db7eae6aa6a8d9d1dd38090df0f18fd6",
+      "displayName": "Vaerrakion — Drake of the Obsidian Spires",
+      "dnaHash": "555286cebf2d6320586e91256cd2e1646b9848896951cec0d5d42b9daa807e7a",
+      "dragonName": "Vaerrakion",
       "seedHash": "296b633e177835b5a3d941ad31283bd489f650a9006ac6d65d14bd232600fda9",
       "serial": "#0091",
       "tier": "RARE",
       "tokenId": 91
     },
     {
-      "dnaHash": "e6e35cd3cd7c192f4ce183355e87a381bce0268e7eb8106519de54ed3d38ffc6",
+      "displayName": "Vaerrakath — Drake of the Ancient Citadel",
+      "dnaHash": "38c98c0aa726bd1fd897429d0122bdf5ac7a4332a3e0cbea9884aeabba2a970f",
+      "dragonName": "Vaerrakath",
       "seedHash": "655d1ee00fe05268b6747d55be2d3a61f942eecd3c81cb90ea212aaca4da916c",
       "serial": "#0092",
       "tier": "RARE",
       "tokenId": 92
     },
     {
-      "dnaHash": "69d9eb93b7b7c071e4ad994c88dfabdd7b39f98a0e439334cb242fc16f4b6d0d",
+      "displayName": "Vaerrakor — Serpent of the Iron Basilica",
+      "dnaHash": "e6d36ba3fb4c7d92f03ae83d76c2067d122f9e0f7958a5b408f7c0438e8c9d12",
+      "dragonName": "Vaerrakor",
       "seedHash": "bf4f1a633231f9c14086e59714dd3676f10bed68841d1e57c5f446d3d193307d",
       "serial": "#0093",
       "tier": "RARE",
       "tokenId": 93
     },
     {
-      "dnaHash": "3a5aa3bfe5afe095c703a98d3839530145ddf6e195fa7406ac86334710f07014",
+      "displayName": "Vaerrakyx — Serpent of the Iron Basilica",
+      "dnaHash": "b38661756a2dc49701b7be3fa5994446ed8d511eed9b770fd410601819f1bf6e",
+      "dragonName": "Vaerrakyx",
       "seedHash": "fe70188e2573ecb46f341483591c75273f1f43de46e375ac7f89bbd9738c5a95",
       "serial": "#0094",
       "tier": "RARE",
       "tokenId": 94
     },
     {
-      "dnaHash": "a1ef4869d72d6aef1af2c8d18d31b72ef1ea7397f02d7ae9a247db7a9519653d",
+      "displayName": "Vaerrakar — Wyrm of the Black Cathedral District",
+      "dnaHash": "14cb42a78264cb04a29073a1861e8d9089c3959122763e1750371b25257fb4d6",
+      "dragonName": "Vaerrakar",
       "seedHash": "5dc8ff6743820aaa64ee2839a4311ae7a5594869e8131cef1d443fd425545723",
       "serial": "#0095",
       "tier": "RARE",
       "tokenId": 95
     },
     {
-      "dnaHash": "689f2568e721e300142ce3b8921aa749cba52558e251be8e118d1916897ebf66",
+      "displayName": "Vaerraketh — Drake of the Obsidian Spires",
+      "dnaHash": "7c69eec5206e9cb4c023b910081f51699ec70eb6bc182ba2f0908dbd0be1d3e7",
+      "dragonName": "Vaerraketh",
       "seedHash": "f995f6d68d73b7980f81474867f0555ec8a8259b047979da99f01e16f3dc809e",
       "serial": "#0096",
       "tier": "RARE",
       "tokenId": 96
     },
     {
-      "dnaHash": "3fc1d3d7319c810b36f89a1e5fe00c1bfd1d953501d79b0a3b2797499485131e",
+      "displayName": "Vaerrakon — Wyvern of the Ruined Megalith Ward",
+      "dnaHash": "e48b276172f08cd5b7007e923e142cdc97755ff56c8f99cff208a87660f18b74",
+      "dragonName": "Vaerrakon",
       "seedHash": "e082d8cc9674557a14b87bb12e60e80a0cf812990cced604464e818fe8aeb182",
       "serial": "#0097",
       "tier": "RARE",
       "tokenId": 97
     },
     {
-      "dnaHash": "5b3beabf74d22f0257d338c947db16572953f56152286d5034437b500047fb96",
+      "displayName": "Vaerrakis — Wyvern of the Black Cathedral District",
+      "dnaHash": "5e980ff34e575989d90580e666188220226fa9b2a870425541c8fdbc5946da1b",
+      "dragonName": "Vaerrakis",
       "seedHash": "756a3bad271a1b28d22d0f5776fe700346120c92c852f3aaa94d494458571efb",
       "serial": "#0098",
       "tier": "RARE",
       "tokenId": 98
     },
     {
-      "dnaHash": "1d064871475ae96da015b7bab3d627bcc66e5b9d629805d0a979612b6182a81d",
+      "displayName": "Vaerrakek — Drake of the Black Cathedral District",
+      "dnaHash": "58c5e04449fb76042e914680c5ebe319bc67e0af1b1d4a23e3b86063022a17e2",
+      "dragonName": "Vaerrakek",
       "seedHash": "4f461416d139272052294fabe328554c5fc31eca9f193405e1b9c565416f0334",
       "serial": "#0099",
       "tier": "RARE",
       "tokenId": 99
     },
     {
-      "dnaHash": "fbb1d0ec9a4ff6c9f20dc34b675c78b79a77a38fc610e2cc9d553b07358dab25",
+      "displayName": "Vaerrakum — Wyvern of the Obsidian Spires",
+      "dnaHash": "fa4bd0d26d66bdd89252c8a52a0cd39cbc73d2808ad16760a6f8f363f873ed08",
+      "dragonName": "Vaerrakum",
       "seedHash": "2a124f5e1a541b9f50ab7bb58a5606812e5b724e064664b5fdf4d8e0f5f97a63",
       "serial": "#0100",
       "tier": "RARE",

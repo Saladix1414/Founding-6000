@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "3b15310b7c312cc0e88565acd16a4f9e23580863e6b5dd4b2c019d7a1fd32491",
+  "displayName": "Vaervoris — Wyvern of the Iron Basilica",
+  "dnaHash": "95435d663c76e3d32fc3e19a85a2d7516e6983082014d64d88c575149b5fc211",
+  "dragonName": "Vaervoris",
+  "dragonTitle": "Wyvern of the Iron Basilica",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "0956c6b8e490cc1dccd2d08eef14083579594d19e8c4c2ee3a8034f6d847b91d",

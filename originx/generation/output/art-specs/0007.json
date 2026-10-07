@@ -1,0 +1,70 @@
+{
+  "artDirectionVersion": "OX-ART-1",
+  "canvas": {
+    "aspectRatio": "1:1",
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "preferredFormat": "PNG"
+  },
+  "displayName": "Vaerkaon — Serpent of the Iron Basilica",
+  "dnaHash": "7f02b008b8dfab71cbebcf27c8caf4d706783a8bfac15fd19a2e975bf21eb642",
+  "dragonName": "Vaerkaon",
+  "dragonTitle": "Serpent of the Iron Basilica",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "materials": [
+    "basalt",
+    "weathered iron",
+    "ancient stone",
+    "bone",
+    "blackened steel"
+  ],
+  "nameSystemVersion": "OX-NAME-1",
+  "negativeConcepts": [
+    "cartoon style",
+    "cute dragon",
+    "bright rainbow palette",
+    "existing franchise character",
+    "copyrighted character imitation",
+    "logo plagiarism",
+    "text-heavy composition",
+    "modern city skyline",
+    "generic medieval fantasy illustration"
+  ],
+  "palette": [
+    "obsidian black",
+    "graphite",
+    "stone gray",
+    "cold steel",
+    "restrained cyan",
+    "restrained crimson"
+  ],
+  "prompt": "dark gothic dragon universe, monumental architecture, ancient civilization, primitive technology, atmospheric depth, cinematic realism, original fantasy creature design. ancient primitive OriginX civilization before complete technological ascension. character: Vaerkaon — Serpent of the Iron Basilica. dragon archetype: Iron Serpent. body: Monolithic. scales: Bone-Laced Scales. head: Razor Jaw. horns: Cathedral Horns. eyes: Controlled Crimson. wings: Cathedral Wings. tail: Stone Tail. armor: Stone Plates. chest core: Ancient Ember. mechanical augmentation: Primitive Gearwork. markings: Origin Runes. OriginX glyph: OX-Prime. aura: None. location: Iron Basilica. architecture: Stone Megastructure. atmosphere: Cold Rain. weather: Ashfall. foreground: Iron Pillars. cinematic low-key lighting with volumetric atmosphere and restrained luminous accents. single dominant dragon, monumental scale, strong silhouette, architectural depth, no crowded composition. square collectible master composition. no visible written prompt text. Avoid: cartoon style, cute dragon, bright rainbow palette, existing franchise character, copyrighted character imitation, logo plagiarism, text-heavy composition, modern city skyline, generic medieval fantasy illustration.",
+  "seedHash": "05558b2167ee30accc9e51ed8a466e30fa8cfd17bdd9545e89763b32b64dee1a",
+  "serial": "#0007",
+  "tier": "RARE",
+  "tokenId": 7,
+  "traits": {
+    "ancientMarkings": "Origin Runes",
+    "armor": "Stone Plates",
+    "atmosphere": "Cold Rain",
+    "aura": "None",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Monolithic",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Controlled Crimson",
+    "foreground": "Iron Pillars",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Cathedral Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Bone-Laced Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Broken Horn",
+    "tail": "Stone Tail",
+    "weather": "Ashfall",
+    "wings": "Cathedral Wings"
+  }
+}

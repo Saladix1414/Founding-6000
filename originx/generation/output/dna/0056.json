@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "2f9fcc469705751a7858ba997c37dab989c7c387c542aec1456ce25a889b923b",
+  "displayName": "Vaermoroth — Serpent of the Obsidian Spires",
+  "dnaHash": "96ee5ed7d0e598337b29413adf88f2756d3f9695962b7ff55bb0937e9242b7ad",
+  "dragonName": "Vaermoroth",
+  "dragonTitle": "Serpent of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "a51b1d932311af3540cb77901e921f86a19ca667a3cbd01017ee0d5a037fad9d",

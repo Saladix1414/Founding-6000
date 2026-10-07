@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "d2b942a3baa2d3379f7cf7cefa7ffe9a1b740708e58d68b55d3dc1c741643453",
+  "displayName": "Vaervorul — Wyvern of the Obsidian Spires",
+  "dnaHash": "caec5ad364b1bb7846e69e011def8e96edc5d0886b4eb696d984d2155d4136d6",
+  "dragonName": "Vaervorul",
+  "dragonTitle": "Wyvern of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "78782a12e33f9e97b7a688091dffc3b57000453738d4ed0848d377fbb54618d7",

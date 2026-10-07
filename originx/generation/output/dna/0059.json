@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "3beb7eb5eb7ac0ad6f6142bcf7b9f46c2e947ab9573794ddec21ea2862dc792a",
+  "displayName": "Vaermoren — Serpent of the Black Cathedral District",
+  "dnaHash": "795912996da43b51f77c3b93a5c068310a531a39c66b38cbe06254332411f5d1",
+  "dragonName": "Vaermoren",
+  "dragonTitle": "Serpent of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "7e1a9ef5e281900d57174ad123cf04e2481cf47ffa9f311894bb24ac0c8b9935",

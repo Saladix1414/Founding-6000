@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "980f272d4ea00a834a5529368e7a18a72774ee3a8a51e08ab4d8113d45df4876",
+  "displayName": "Vaermorath — Drake of the Iron Basilica",
+  "dnaHash": "3840967677fa615bdcdf5427cbe4b6fb1f0e1da33714746c55ddee159ce16aa4",
+  "dragonName": "Vaermorath",
+  "dragonTitle": "Drake of the Iron Basilica",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "9646cb492885c8970a0ff970eb9bd86bd11a361fbae8c0fb4e55fadde83cf021",

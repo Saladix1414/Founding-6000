@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "6070dbcec13d528d5690644f32fdbc3cfbfde4debe7c588c67b7d7265d9b7421",
+  "displayName": "Vaerkaoth — Ravager of the Ancient Citadel",
+  "dnaHash": "f2695998fed1ffc6c2427657cecf67ab12044c95e0f5cfcfb18546b76011acb5",
+  "dragonName": "Vaerkaoth",
+  "dragonTitle": "Ravager of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "46f2c76cd780ae16c739bc5fe89d3996e4072ea36b436da76d1f2bfc8d66adc7",

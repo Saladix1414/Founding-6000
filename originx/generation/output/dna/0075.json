@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "61897834f59c6eb795ee435c2c82f5c78f925734aa218abc72e5af1ff25407a5",
+  "displayName": "Vaerdranul — Serpent of the Ancient Citadel",
+  "dnaHash": "17d267e79f766c227a3245c4566e4da20f3bcac571f68ea43f19c517b52919c4",
+  "dragonName": "Vaerdranul",
+  "dragonTitle": "Serpent of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "a1894b90ba34b2aaa3247610ad90b0e03a596e7799019113335fefbc25ea013b",

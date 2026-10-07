@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "29ffc689469178f5431f9569fbdb3cffa8c6d3b8ec1c577699f8549a773db36a",
+  "displayName": "Vaermorir — Wyrm of the Obsidian Spires",
+  "dnaHash": "3c7c7a6da7316875b15087bcb5db6ca5888bb7df50a35679b0a17f3fbaf26de4",
+  "dragonName": "Vaermorir",
+  "dragonTitle": "Wyrm of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "ab864b5dda6a4857b52b45d12fc343a9c32e6045ff197a72457cd54942289942",

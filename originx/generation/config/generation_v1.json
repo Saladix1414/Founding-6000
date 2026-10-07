@@ -174,5 +174,106 @@
       "Ancient Chain",
       "Moon Crest"
     ]
+  },
+  "nameSystem": {
+    "version": "OX-NAME-1",
+    "prefixes": [
+      "Vaer",
+      "Kor",
+      "Mor",
+      "Dra",
+      "Vel",
+      "Thar",
+      "Zor",
+      "Nyr",
+      "Mal",
+      "Rha",
+      "Vor",
+      "Kael",
+      "Xar",
+      "Oth",
+      "Gra",
+      "Ser",
+      "Vyr",
+      "Tor",
+      "Az",
+      "Khar"
+    ],
+    "cores": [
+      "ka",
+      "vor",
+      "ther",
+      "mor",
+      "dran",
+      "gath",
+      "rak",
+      "ven",
+      "zor",
+      "kyr",
+      "thal",
+      "grim",
+      "var",
+      "nok",
+      "ryn",
+      "dros",
+      "kar",
+      "vek",
+      "mir",
+      "rax"
+    ],
+    "suffixes": [
+      "ion",
+      "ath",
+      "or",
+      "yx",
+      "ar",
+      "eth",
+      "on",
+      "is",
+      "ek",
+      "um",
+      "oth",
+      "ir",
+      "ax",
+      "en",
+      "ul"
+    ]
+  },
+  "artDirection": {
+    "version": "OX-ART-1",
+    "collectionStyle": "dark gothic dragon universe, monumental architecture, ancient civilization, primitive technology, atmospheric depth, cinematic realism, original fantasy creature design",
+    "rare": {
+      "tier": "RARE",
+      "generationTheme": "Primitive Origin",
+      "visualEra": "ancient primitive OriginX civilization before complete technological ascension",
+      "materials": [
+        "basalt",
+        "weathered iron",
+        "ancient stone",
+        "bone",
+        "blackened steel"
+      ],
+      "palette": [
+        "obsidian black",
+        "graphite",
+        "stone gray",
+        "cold steel",
+        "restrained cyan",
+        "restrained crimson"
+      ],
+      "lighting": "cinematic low-key lighting with volumetric atmosphere and restrained luminous accents",
+      "composition": "single dominant dragon, monumental scale, strong silhouette, architectural depth, no crowded composition",
+      "prohibited": [
+        "cartoon style",
+        "cute dragon",
+        "bright rainbow palette",
+        "existing franchise character",
+        "copyrighted character imitation",
+        "logo plagiarism",
+        "text-heavy composition",
+        "modern city skyline",
+        "generic medieval fantasy illustration"
+      ]
+    }
   }
 }

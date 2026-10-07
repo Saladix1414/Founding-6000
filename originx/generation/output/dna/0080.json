@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "9327052722e69a915f5fbdb25caf22710e846a1910ee2725f9e46795a91cb302",
+  "displayName": "Vaergathar — Serpent of the Ancient Citadel",
+  "dnaHash": "52983a9b0e919354736306bf1c6e7a504f418e49fbc9a9fb5a4e5d6a7e2c8b76",
+  "dragonName": "Vaergathar",
+  "dragonTitle": "Serpent of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "dc489e17745cd43ce3f0fdbc4c0203c4c374c98d7699a8071c016a4c6d3c0320",

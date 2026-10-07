@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "edf0917ed70d76b61cc831ca1691312074a1936900764ef17717df790f83c9b1",
+  "displayName": "Vaerkaul — Wyvern of the Iron Basilica",
+  "dnaHash": "fd18a93a9efb8e399627ac9e6d8bfadabcd25d63c74600f59837150867c7d4ad",
+  "dragonName": "Vaerkaul",
+  "dragonTitle": "Wyvern of the Iron Basilica",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "3dc9731af4f0575bdee7bbb4414d88b042aace52faa501cff7aa113a54936bf2",

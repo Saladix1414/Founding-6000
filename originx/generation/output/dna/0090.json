@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "e8ca0ab6d5d2cf724aba370011b445507ce5e0a3798556e0063d26e020a3ba3c",
+  "displayName": "Vaergathul — Drake of the Obsidian Spires",
+  "dnaHash": "86d583a3cebca9bf3837ed4c5ab52cdabd4433869a7d2cbf8373150956ac3e66",
+  "dragonName": "Vaergathul",
+  "dragonTitle": "Drake of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "020e559b717864712fffe9c1b181e2ab407e87a6dd379b8e2787ae46c46f01c9",

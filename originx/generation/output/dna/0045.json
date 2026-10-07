@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "57080fa9d0aa2fbacefb1db2ec16456912a889994431033211f38ea122323384",
+  "displayName": "Vaertherul — Wyvern of the Ruined Megalith Ward",
+  "dnaHash": "839400ae843a4dd5fa6067c19ac901559e4673a2afe2c32ad1c12758612f3d74",
+  "dragonName": "Vaertherul",
+  "dragonTitle": "Wyvern of the Ruined Megalith Ward",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "7ac89dab386b14266bd985af70f22a72f425212fc3d53e405fd26d6d7a13731d",

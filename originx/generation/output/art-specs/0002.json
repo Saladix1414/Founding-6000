@@ -1,0 +1,70 @@
+{
+  "artDirectionVersion": "OX-ART-1",
+  "canvas": {
+    "aspectRatio": "1:1",
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "preferredFormat": "PNG"
+  },
+  "displayName": "Vaerkaath — Ravager of the Obsidian Spires",
+  "dnaHash": "fdfae087aa26e617328af8b617b934ee468da457c183be419e12e781941b785a",
+  "dragonName": "Vaerkaath",
+  "dragonTitle": "Ravager of the Obsidian Spires",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "materials": [
+    "basalt",
+    "weathered iron",
+    "ancient stone",
+    "bone",
+    "blackened steel"
+  ],
+  "nameSystemVersion": "OX-NAME-1",
+  "negativeConcepts": [
+    "cartoon style",
+    "cute dragon",
+    "bright rainbow palette",
+    "existing franchise character",
+    "copyrighted character imitation",
+    "logo plagiarism",
+    "text-heavy composition",
+    "modern city skyline",
+    "generic medieval fantasy illustration"
+  ],
+  "palette": [
+    "obsidian black",
+    "graphite",
+    "stone gray",
+    "cold steel",
+    "restrained cyan",
+    "restrained crimson"
+  ],
+  "prompt": "dark gothic dragon universe, monumental architecture, ancient civilization, primitive technology, atmospheric depth, cinematic realism, original fantasy creature design. ancient primitive OriginX civilization before complete technological ascension. character: Vaerkaath — Ravager of the Obsidian Spires. dragon archetype: Ancient Ravager. body: Armored. scales: Ridge Scales. head: Crowned Skull. horns: Broken Crown Horns. eyes: Cold Cyan. wings: Cathedral Wings. tail: Bladed Tail. armor: Ancient Iron. chest core: Cyan Relic. mechanical augmentation: None. markings: War Etchings. OriginX glyph: OX-Crown. aura: Cold Cyan. location: Obsidian Spires. architecture: Gargoyle Skyline. atmosphere: Ash Mist. weather: Rain. foreground: Stone Chains. cinematic low-key lighting with volumetric atmosphere and restrained luminous accents. single dominant dragon, monumental scale, strong silhouette, architectural depth, no crowded composition. square collectible master composition. no visible written prompt text. Avoid: cartoon style, cute dragon, bright rainbow palette, existing franchise character, copyrighted character imitation, logo plagiarism, text-heavy composition, modern city skyline, generic medieval fantasy illustration.",
+  "seedHash": "86a50a165042f1fed0cd3ee1399a88c388b1d525c7a049dfcabe6848f3490d4d",
+  "serial": "#0002",
+  "tier": "RARE",
+  "tokenId": 2,
+  "traits": {
+    "ancientMarkings": "War Etchings",
+    "armor": "Ancient Iron",
+    "atmosphere": "Ash Mist",
+    "aura": "Cold Cyan",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Armored",
+    "chestCore": "Cyan Relic",
+    "dragonArchetype": "Ancient Ravager",
+    "eyeConfiguration": "Cold Cyan",
+    "foreground": "Stone Chains",
+    "headStructure": "Crowned Skull",
+    "hornConfiguration": "Broken Crown Horns",
+    "mechanicalAugmentation": "None",
+    "originxGlyph": "OX-Crown",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Gargoyle Skyline",
+    "specialVariation": "Broken Horn",
+    "tail": "Bladed Tail",
+    "weather": "Rain",
+    "wings": "Cathedral Wings"
+  }
+}

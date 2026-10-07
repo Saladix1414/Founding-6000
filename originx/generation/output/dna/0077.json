@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "b7a4cc4a79471e479f4fd06e89afefbeefad258a30b0480cd287d62e986f1d20",
+  "displayName": "Vaergathath — Wyrm of the Iron Basilica",
+  "dnaHash": "9aabb3e3187b882961f74dea71f6e8c34f2edb168e2bd36a0b74451a4fb905df",
+  "dragonName": "Vaergathath",
+  "dragonTitle": "Wyrm of the Iron Basilica",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "96f054c2b43d4bcf5cd960c8624c3751de9d1ef7dec05603cd7456ab6e37debf",

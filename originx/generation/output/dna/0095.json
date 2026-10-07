@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "a1ef4869d72d6aef1af2c8d18d31b72ef1ea7397f02d7ae9a247db7a9519653d",
+  "displayName": "Vaerrakar — Wyrm of the Black Cathedral District",
+  "dnaHash": "14cb42a78264cb04a29073a1861e8d9089c3959122763e1750371b25257fb4d6",
+  "dragonName": "Vaerrakar",
+  "dragonTitle": "Wyrm of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "5dc8ff6743820aaa64ee2839a4311ae7a5594869e8131cef1d443fd425545723",

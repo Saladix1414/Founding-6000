@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "acf65113ca3c6ca5a60aa6251513d239bb2301e2403dbd137738d12fcd94936b",
+  "displayName": "Vaerkaum — Serpent of the Iron Basilica",
+  "dnaHash": "a94ae2a49505b113c6a1b84076c02e54c6cb61a7e481327cf74360217c84f215",
+  "dragonName": "Vaerkaum",
+  "dragonTitle": "Serpent of the Iron Basilica",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "e3887abde73bd6c70e753825dc8b982c7372d96b601729c0c423c6d99e694230",

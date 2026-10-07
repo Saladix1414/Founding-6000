@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "8466e7b06fec6c02159018ba07e7689e70820676018db14e0a20a3bda7466874",
+  "displayName": "Vaermorul — Wyrm of the Ruined Megalith Ward",
+  "dnaHash": "917fbf541ada0ee454cf41df167ff2235736744ac3fcafd5010cafd393b180d4",
+  "dragonName": "Vaermorul",
+  "dragonTitle": "Wyrm of the Ruined Megalith Ward",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "b4bb51dd9c22af440edd07d939113f541f6502124265cbf990e31b16e650506a",

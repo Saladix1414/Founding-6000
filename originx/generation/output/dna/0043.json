@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "37ec8615d212e665e6898196941ef8c13e38e125d43f29dc4cdf9a60e0239e13",
+  "displayName": "Vaertherax — Ravager of the Black Cathedral District",
+  "dnaHash": "fc2a65c70cd1c55a754f0ce6ab54b313841eaaefa61ed022092a3a209a946859",
+  "dragonName": "Vaertherax",
+  "dragonTitle": "Ravager of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "1396da591859bb2b351fd54809c336b17c5fdda49d56f061fb19507c075712a5",

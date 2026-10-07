@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "086bb946606b431f72ba04f1d4919d34f5661e84020ddc1d81ac2de8f106a53b",
+  "displayName": "Vaergathor — Wyvern of the Obsidian Spires",
+  "dnaHash": "47c42c893bc20b8286d7cd997413b7d13f6257b73ff8a04cdbc7acc8e5bc5343",
+  "dragonName": "Vaergathor",
+  "dragonTitle": "Wyvern of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "92699f030ed2150ede7d31b22bc752aac58b31f31745d49f81a9569f66585308",

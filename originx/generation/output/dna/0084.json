@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "3d968358ea3ffb821c90b22f100a66462b5b28dba17f5528d408755fe4c1c177",
+  "displayName": "Vaergathek — Wyrm of the Ancient Citadel",
+  "dnaHash": "82c7cc979d4d2325de9e187de26be4b121d32d9959965a2bdc4aa301e4757606",
+  "dragonName": "Vaergathek",
+  "dragonTitle": "Wyrm of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "d8013daba1b265a7d148e9912b2860478edb16b3044d595311852454862f43b8",

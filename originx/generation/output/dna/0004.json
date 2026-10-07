@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "fd1d0413f87cf1b12553ac263786812b8865e43540dbc110f9af9232680b5a99",
+  "displayName": "Vaerkayx — Wyvern of the Ancient Citadel",
+  "dnaHash": "99c1a712433b5dd7dcbc1b314c60c8ce7a1d3a9131a65592605f0e8e4942505d",
+  "dragonName": "Vaerkayx",
+  "dragonTitle": "Wyvern of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "f81a38b6c16c6c0c700ed2b710eef6d01840d45326f4d00e73eae566cf53ad9d",

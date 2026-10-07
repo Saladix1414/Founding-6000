@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "bf7b0a89db5fe1eed1db38a13d2c2c448aa4e8bfcacd94df265d7400ba64e0cb",
+  "displayName": "Vaertherum — Drake of the Obsidian Spires",
+  "dnaHash": "8401d28459912e7a25491d1fd29a416e92aefd06385bf0a8e4fd50e306a9f73d",
+  "dragonName": "Vaertherum",
+  "dragonTitle": "Drake of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "16e96b2012967cc0d98c543fc96562ec4833a305d56b448b0dee329cad3ed0d5",

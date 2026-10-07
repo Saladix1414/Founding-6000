@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "5b3beabf74d22f0257d338c947db16572953f56152286d5034437b500047fb96",
+  "displayName": "Vaerrakis — Wyvern of the Black Cathedral District",
+  "dnaHash": "5e980ff34e575989d90580e666188220226fa9b2a870425541c8fdbc5946da1b",
+  "dragonName": "Vaerrakis",
+  "dragonTitle": "Wyvern of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "756a3bad271a1b28d22d0f5776fe700346120c92c852f3aaa94d494458571efb",

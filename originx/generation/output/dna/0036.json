@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "3aac50011003ae307e417e95ae4620971c7d8b87d14fe5dd0d4fb0531193d79d",
+  "displayName": "Vaerthereth — Ravager of the Ruined Megalith Ward",
+  "dnaHash": "bad1e635ee66d019092a03e6b006ccbe9d6c4e35544d5a8652e29f65f2d3ef89",
+  "dragonName": "Vaerthereth",
+  "dragonTitle": "Ravager of the Ruined Megalith Ward",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "4a80eb1ee685d6c3e94159b6db1e7db7db01e7894ab59353f9e88e8f7ab7a232",

@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "c1835eadd54bdbd3c2ffe5e5ad6ef0c011580587168253e572d9bab512dd347b",
+  "displayName": "Vaerdranen — Wyvern of the Ancient Citadel",
+  "dnaHash": "0138f5b75de5a0ccefc65ea460cbccc943a3e47493fd54957887f90a2415a199",
+  "dragonName": "Vaerdranen",
+  "dragonTitle": "Wyvern of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "e90f6dcfe8921ba8892658ec788e015726a21a5323699ecaa945c810f93244bb",

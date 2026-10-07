@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "c881f13307fa9351e9a4dff808c445da48daae720e806a0c5f07a9395a6ea3a2",
+  "displayName": "Vaerdranum — Serpent of the Ruined Megalith Ward",
+  "dnaHash": "a91f6bffc1217fe89f0797db26ea88fb8b67f4f37822cd9f7585c30e00d53019",
+  "dragonName": "Vaerdranum",
+  "dragonTitle": "Serpent of the Ruined Megalith Ward",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "fc11248fa36eb07d71db9ab497251a61776989788db8a0b289c41044853ffd24",

@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "d78e6367ba02fd12e86e302d79edd919654da181d3bf8cb57144566bd386d3ed",
+  "displayName": "Vaertherek — Wyrm of the Ruined Megalith Ward",
+  "dnaHash": "53d4e903ec25dccadc8b68c70dcf22969531dca7ec1a6c1feaa11f07f70d48ac",
+  "dragonName": "Vaertherek",
+  "dragonTitle": "Wyrm of the Ruined Megalith Ward",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "7f287ab8b4095a1ae28dd12a65fd375a0131be82338fca3d187cf3a0557ee584",

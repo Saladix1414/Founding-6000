@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "e80d1aba0d574be5400ecfa068887666f813af4890d382c7ff00b9818b6080de",
+  "displayName": "Vaerkaath — Ravager of the Obsidian Spires",
+  "dnaHash": "fdfae087aa26e617328af8b617b934ee468da457c183be419e12e781941b785a",
+  "dragonName": "Vaerkaath",
+  "dragonTitle": "Ravager of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "86a50a165042f1fed0cd3ee1399a88c388b1d525c7a049dfcabe6848f3490d4d",

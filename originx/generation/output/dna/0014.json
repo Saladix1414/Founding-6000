@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "e95075a670470f3fa5f52952631ba9cd3852a378fa3ffd281944477d1809feb2",
+  "displayName": "Vaerkaen — Serpent of the Ancient Citadel",
+  "dnaHash": "887bf9c2320615f6516fad67fb55f02a7defe77071a7404d8d67071b41250fe8",
+  "dragonName": "Vaerkaen",
+  "dragonTitle": "Serpent of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "255e3c65d3c569424b39d0989b2359cf146d58a37eee25356b75923afe099acb",

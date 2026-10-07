@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "a2c21c9ab7342e84aafe51372d7d65b48f5499178b79f4bc63f460dec934f24e",
+  "displayName": "Vaerdranath — Wyrm of the Ruined Megalith Ward",
+  "dnaHash": "bbb20278f266c57c56ba4505f71057efdfdb392631a223b2505f684dc6a68ede",
+  "dragonName": "Vaerdranath",
+  "dragonTitle": "Wyrm of the Ruined Megalith Ward",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "1bf36d64aebe504407a01fbfdb0f95a2586d74b18c8c35d525d495995a3f50e6",

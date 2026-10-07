@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "0766a7f30800dc639230f58ef84e52c1b96c4df3e3c9c244223af42a70f889ef",
+  "displayName": "Vaervoryx — Drake of the Iron Basilica",
+  "dnaHash": "3800e20f029711d84687ec19d988a1eb8600eb8c164f00697b1e68bd2a81729f",
+  "dragonName": "Vaervoryx",
+  "dragonTitle": "Drake of the Iron Basilica",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "ee60c963ba02d729f59ee632050b3ba9df4b9c525b878dceea91206a2c3ea27e",

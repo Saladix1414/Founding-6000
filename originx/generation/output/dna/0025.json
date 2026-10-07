@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "dd7cf974bfd54d327a8e2cc3101b222cb4cccc14856c052003c551acc94bceab",
+  "displayName": "Vaervorum — Wyrm of the Black Cathedral District",
+  "dnaHash": "ffe3e4f53310a494b0b066a46702d5765ec5036967b1e4405bb28a9383b1fa94",
+  "dragonName": "Vaervorum",
+  "dragonTitle": "Wyrm of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "17aba4a84ab295882a8be2c90c7fd099f793095f1f9cc2c96355c7bf1b2f03d8",

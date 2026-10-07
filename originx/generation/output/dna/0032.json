@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "e3f8504570fbca7714fc6573f4c5fe725d690a8df751f1790654061f188f3237",
+  "displayName": "Vaertherath — Wyvern of the Iron Basilica",
+  "dnaHash": "e665c97203d3c23a6fa5a96c3d03057f72506ab7acde2ade0f2e3eafbd62e5f9",
+  "dragonName": "Vaertherath",
+  "dragonTitle": "Wyvern of the Iron Basilica",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "b941b3c853bad1b47deb89e70f2fdebdad36bdb2ba7ab63cf74dabf24fa79098",

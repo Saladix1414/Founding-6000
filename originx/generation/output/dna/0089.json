@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "fde48c4bf69c4c698053dc565805dbc7dcf9fca023dbc3cd03f69b23c7d1cdae",
+  "displayName": "Vaergathen — Serpent of the Black Cathedral District",
+  "dnaHash": "612e3fb8789ccd2300cea25e6c50196b095eafbcff4826b24884ac368e47c8e8",
+  "dragonName": "Vaergathen",
+  "dragonTitle": "Serpent of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "8ee71fbf8fe827440b6643924bcce5fa3bfc6dd1e27baf6515d4ae8e5f9512c0",

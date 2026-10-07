@@ -1,0 +1,147 @@
+{
+  "version": "OX-RARE-VISUAL-1",
+  "tier": "RARE",
+  "generationTheme": "Primitive Origin",
+  "purpose": "Canonical visual grammar for Genesis OriginX dragons",
+  "render": {
+    "masterWidth": 2048,
+    "masterHeight": 2048,
+    "aspectRatio": "1:1",
+    "preferredFormat": "PNG",
+    "colorSpace": "sRGB",
+    "dragonCount": 1,
+    "visibleTypography": false
+  },
+  "camera": [
+    "Low-angle three-quarter portrait",
+    "Monumental frontal portrait",
+    "Low-angle side three-quarter portrait",
+    "Elevated three-quarter environmental portrait",
+    "Close monumental three-quarter portrait"
+  ],
+  "pose": [
+    "Standing guardian",
+    "Perched sentinel",
+    "Forward stalking",
+    "Wing-partially-open dominance",
+    "Ancient resting vigilance"
+  ],
+  "framing": [
+    "Dragon occupies 60-70 percent of frame",
+    "Dragon occupies 55-65 percent with architecture visible",
+    "Dragon occupies 65-75 percent with compressed skyline",
+    "Dragon occupies 50-60 percent in monumental environment"
+  ],
+  "depthLayers": [
+    "foreground architectural fragments",
+    "primary dragon",
+    "midground monumental ruins",
+    "background OriginX city",
+    "atmospheric sky"
+  ],
+  "visualHierarchy": [
+    "dragon silhouette",
+    "head and eyes",
+    "chest core or markings",
+    "architecture",
+    "atmosphere"
+  ],
+  "materialPriority": [
+    "basalt",
+    "ancient stone",
+    "weathered iron",
+    "bone",
+    "blackened steel"
+  ],
+  "technologyLevel": {
+    "name": "Primitive Origin",
+    "allowed": [
+      "mechanical relics",
+      "primitive gearwork",
+      "ancient prosthetics",
+      "iron spine structures",
+      "embedded metal",
+      "rudimentary energy cores"
+    ],
+    "prohibited": [
+      "clean futuristic exosuit",
+      "modern robotics",
+      "spaceship technology",
+      "neon cyberpunk armor",
+      "holographic city advertising",
+      "modern firearms"
+    ]
+  },
+  "lightingRules": {
+    "style": "cinematic low-key",
+    "keyLight": "directional moonlight or architectural light",
+    "fill": "minimal atmospheric fill",
+    "rim": "restrained",
+    "volumetrics": true,
+    "maximumStrongAccentFamilies": 2
+  },
+  "compositionRules": [
+    "Exactly one dominant dragon",
+    "Dragon silhouette must remain readable",
+    "Head and eyes must remain visually identifiable",
+    "Architecture supports scale but never dominates the dragon",
+    "Foreground cannot obscure more than one quarter of the dragon",
+    "No visible textual labels inside the master artwork",
+    "No contemporary city elements",
+    "No franchise-derived character design",
+    "No cute or cartoon proportions",
+    "No random secondary creatures"
+  ],
+  "traitRules": {
+    "armor.None": [
+      "Do not invent plate armor",
+      "Natural scales remain visible"
+    ],
+    "mechanicalAugmentation.None": [
+      "Do not invent mechanical prosthetics",
+      "Keep anatomy organic"
+    ],
+    "aura.None": [
+      "Do not add magical halo",
+      "Atmospheric fog remains allowed"
+    ],
+    "weather.Still Night": [
+      "No rain streaks",
+      "No ashfall particles"
+    ],
+    "specialVariation.Broken Horn": [
+      "At least one primary horn must visibly show old structural damage"
+    ],
+    "specialVariation.Battle Scar": [
+      "Visible healed scar permitted on head, neck or torso"
+    ],
+    "specialVariation.Ancient Chain": [
+      "Ancient chain may appear as integrated environmental or body detail"
+    ],
+    "specialVariation.Moon Crest": [
+      "Subtle lunar crest motif allowed",
+      "Must not become a modern logo"
+    ]
+  },
+  "identityRules": [
+    "Canonical dragon name belongs to metadata identity",
+    "Serial belongs to metadata identity",
+    "Name and serial must not depend on image-model text rendering",
+    "Rendered master image remains text-free",
+    "DNA traits remain authoritative over artistic interpretation"
+  ],
+  "forbiddenConcepts": [
+    "cartoon",
+    "anime imitation",
+    "cute mascot",
+    "rainbow fantasy",
+    "generic stock dragon",
+    "modern skyscraper",
+    "cyberpunk advertisement",
+    "existing franchise creature",
+    "superhero costume",
+    "watermark",
+    "signature",
+    "visible prompt text"
+  ]
+}

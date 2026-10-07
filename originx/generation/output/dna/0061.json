@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "41734554ce2c45e3a20b8126e98bb535ff654b0a8ac3f9675578763461085895",
+  "displayName": "Vaerdranion — Wyvern of the Iron Basilica",
+  "dnaHash": "da540197e6186fd8df5481e547d5f4531cc910f51587126321977812fc179409",
+  "dragonName": "Vaerdranion",
+  "dragonTitle": "Wyvern of the Iron Basilica",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "243be533ff6ed8c3c1defb5dd06fc31a84b0844c228f84f0b1be5090ef3d944d",

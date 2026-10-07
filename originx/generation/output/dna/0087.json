@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "269cf038e1a678f5dafda0a581a33479c4a4084d1cd0ebd4ee869cd65a6fdaa3",
+  "displayName": "Vaergathir — Wyvern of the Obsidian Spires",
+  "dnaHash": "f4a840e8ea66a9447e419ad34135eb982bec37fd843e93dd6409a616944c099e",
+  "dragonName": "Vaergathir",
+  "dragonTitle": "Wyvern of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "6d0f13c52a1c98d17df94fbdd3434c128b9670e3ec17f7d846043ca1ef413cf8",

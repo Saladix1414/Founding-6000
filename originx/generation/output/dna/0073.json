@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "2f60e04a43f498eb23136986b0dcbd23c39ea308179775b7f4183e84b372d5f4",
+  "displayName": "Vaerdranax — Wyvern of the Obsidian Spires",
+  "dnaHash": "417a6b9c85a272549ed6f60c2bf502c7b8bceacd35be527d19fdc68fba03159d",
+  "dragonName": "Vaerdranax",
+  "dragonTitle": "Wyvern of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "a0dbe248eb4b09ba1102bc0b5d2c51f648b2bdc4eb241dc75897be31dd13732b",

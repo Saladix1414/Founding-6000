@@ -1,0 +1,70 @@
+{
+  "artDirectionVersion": "OX-ART-1",
+  "canvas": {
+    "aspectRatio": "1:1",
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "preferredFormat": "PNG"
+  },
+  "displayName": "Vaerkaar — Serpent of the Obsidian Spires",
+  "dnaHash": "d6a9b43d565cad6bbe43b78a4fdaa44f4dc39186abdd77b8a1dbf85db3c8d551",
+  "dragonName": "Vaerkaar",
+  "dragonTitle": "Serpent of the Obsidian Spires",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "materials": [
+    "basalt",
+    "weathered iron",
+    "ancient stone",
+    "bone",
+    "blackened steel"
+  ],
+  "nameSystemVersion": "OX-NAME-1",
+  "negativeConcepts": [
+    "cartoon style",
+    "cute dragon",
+    "bright rainbow palette",
+    "existing franchise character",
+    "copyrighted character imitation",
+    "logo plagiarism",
+    "text-heavy composition",
+    "modern city skyline",
+    "generic medieval fantasy illustration"
+  ],
+  "palette": [
+    "obsidian black",
+    "graphite",
+    "stone gray",
+    "cold steel",
+    "restrained cyan",
+    "restrained crimson"
+  ],
+  "prompt": "dark gothic dragon universe, monumental architecture, ancient civilization, primitive technology, atmospheric depth, cinematic realism, original fantasy creature design. ancient primitive OriginX civilization before complete technological ascension. character: Vaerkaar — Serpent of the Obsidian Spires. dragon archetype: Iron Serpent. body: Feral. scales: Obsidian Scales. head: Broad Skull. horns: Backward Bone Horns. eyes: Ember Red. wings: Stone Membrane Wings. tail: Whip Tail. armor: Primitive Chain Armor. chest core: Crimson Relic. mechanical augmentation: Embedded Metal. markings: War Etchings. OriginX glyph: OX-Vault. aura: None. location: Obsidian Spires. architecture: Stone Megastructure. atmosphere: Moonlit Haze. weather: Storm. foreground: Broken Gargoyles. cinematic low-key lighting with volumetric atmosphere and restrained luminous accents. single dominant dragon, monumental scale, strong silhouette, architectural depth, no crowded composition. square collectible master composition. no visible written prompt text. Avoid: cartoon style, cute dragon, bright rainbow palette, existing franchise character, copyrighted character imitation, logo plagiarism, text-heavy composition, modern city skyline, generic medieval fantasy illustration.",
+  "seedHash": "34cc734a433acd0cbecb910853d04f831916a97822dab80711d411565504349d",
+  "serial": "#0005",
+  "tier": "RARE",
+  "tokenId": 5,
+  "traits": {
+    "ancientMarkings": "War Etchings",
+    "armor": "Primitive Chain Armor",
+    "atmosphere": "Moonlit Haze",
+    "aura": "None",
+    "backgroundCity": "Obsidian Spires",
+    "bodyStructure": "Feral",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Broken Gargoyles",
+    "headStructure": "Broad Skull",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Embedded Metal",
+    "originxGlyph": "OX-Vault",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Stone Megastructure",
+    "specialVariation": "Moon Crest",
+    "tail": "Whip Tail",
+    "weather": "Storm",
+    "wings": "Stone Membrane Wings"
+  }
+}

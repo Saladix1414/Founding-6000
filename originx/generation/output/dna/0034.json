@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "835d6f074c21ee3b58798fef18b1b046baa94c8f380797fd342aab8c6c925e94",
+  "displayName": "Vaertheryx — Ravager of the Obsidian Spires",
+  "dnaHash": "b8e3f609520457cdbe24162a6cc0dfa928403832e9ccc94770a52ed1feff4c61",
+  "dragonName": "Vaertheryx",
+  "dragonTitle": "Ravager of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "534a39ec813171221bbb9d9ab29cfc6663ea2d62c6a6bd2264d4e4f4779ca6b3",

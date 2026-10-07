@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "8bd584d7a691a28f1bb7a11dc5c5e3e80a645592f95bbb410b8f8e4e14d0de97",
+  "displayName": "Vaerkaor — Serpent of the Black Cathedral District",
+  "dnaHash": "6ed04b60b16fcc2d3331457b8772b206e74673f794ccc74d9d35b3a7e2931885",
+  "dragonName": "Vaerkaor",
+  "dragonTitle": "Serpent of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "6ec35126c347eb6e1ab138873698f0ec340ae477074fde6a12923c33c46369da",

@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "b44ebf82b93c47e551769c3b626ccca7a933d82b17e915ff42e0b1f77751b313",
+  "displayName": "Vaerdranir — Ravager of the Black Cathedral District",
+  "dnaHash": "57f75611335352d71b317f92d0c65a348073b30e395ad71831522720dbf16133",
+  "dragonName": "Vaerdranir",
+  "dragonTitle": "Ravager of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "664ed255a441c897f41a68bdf1ceba594e703262f3ab418ba75b9c93a55fa912",

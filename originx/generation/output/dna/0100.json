@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "fbb1d0ec9a4ff6c9f20dc34b675c78b79a77a38fc610e2cc9d553b07358dab25",
+  "displayName": "Vaerrakum — Wyvern of the Obsidian Spires",
+  "dnaHash": "fa4bd0d26d66bdd89252c8a52a0cd39cbc73d2808ad16760a6f8f363f873ed08",
+  "dragonName": "Vaerrakum",
+  "dragonTitle": "Wyvern of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "2a124f5e1a541b9f50ab7bb58a5606812e5b724e064664b5fdf4d8e0f5f97a63",

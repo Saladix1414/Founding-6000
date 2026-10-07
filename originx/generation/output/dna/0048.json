@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "b4d92eecc16282a73ddd7fa62fccffdb215aa72bfac314f50135254e6a28fc65",
+  "displayName": "Vaermoror — Ravager of the Black Cathedral District",
+  "dnaHash": "328ce244fb1986097ec0371559f831ecb282e8bb14205849b32a82f0efcf9adf",
+  "dragonName": "Vaermoror",
+  "dragonTitle": "Ravager of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "76bfe8f89acafa7a404efdc29e76d23e9ba911082f92f3f0e4abed1a780a89a8",

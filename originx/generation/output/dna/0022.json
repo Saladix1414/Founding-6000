@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "ff923417b731238c8ce663bfbc7eb10890bdd189778827d9161e49c11bfa1967",
+  "displayName": "Vaervoron — Drake of the Ancient Citadel",
+  "dnaHash": "6a7fc3a878136a97229bb094e812ee73d9f3722b64084ccac3a8e4475085be35",
+  "dragonName": "Vaervoron",
+  "dragonTitle": "Drake of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "8ada55fe5a6aaa7e4548fd32f64854a6bc8e68f9e5e6ba359ade7d4f8c9587d3",

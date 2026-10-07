@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "e5f364e6fa5c0f256268a94eb4db44e04baaf75eaabf075fffc888d209c309bf",
+  "displayName": "Vaertherar — Wyrm of the Black Cathedral District",
+  "dnaHash": "b51ad1bfb2f4e1b65b537326cd886aeda2941011f37a18485e5191c283f6b17a",
+  "dragonName": "Vaertherar",
+  "dragonTitle": "Wyrm of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "50c8bffaa02b2c70e479889cbebfa7f4a156062959b7d48c29993c86b9ca26c5",

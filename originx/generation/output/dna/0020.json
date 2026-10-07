@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "c9f73cf72b8a82a5d01be7250fb8db824c3a826f11fad88a4ec05c9fdb0c2f09",
+  "displayName": "Vaervorar — Ravager of the Obsidian Spires",
+  "dnaHash": "0d1a26d02cf6404f0659a73fe66590bf988c2d5634a86a0ca9715330a0bc49de",
+  "dragonName": "Vaervorar",
+  "dragonTitle": "Ravager of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "75bb1c4a36426cb3fdfa757f48207f8c24b2435bd754d6e995ed8b2b34872b35",

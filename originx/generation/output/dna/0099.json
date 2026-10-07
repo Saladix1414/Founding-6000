@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "1d064871475ae96da015b7bab3d627bcc66e5b9d629805d0a979612b6182a81d",
+  "displayName": "Vaerrakek — Drake of the Black Cathedral District",
+  "dnaHash": "58c5e04449fb76042e914680c5ebe319bc67e0af1b1d4a23e3b86063022a17e2",
+  "dragonName": "Vaerrakek",
+  "dragonTitle": "Drake of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "4f461416d139272052294fabe328554c5fc31eca9f193405e1b9c565416f0334",

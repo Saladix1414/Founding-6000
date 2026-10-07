@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "35070049c6a75bd5f879bd3f94752d824ae35194750dfbd1cc65464b0cb84d1d",
+  "displayName": "Vaermorax — Wyvern of the Iron Basilica",
+  "dnaHash": "55327001f84e4f2a4b15614bc273d557315efdf89563f73617b257da393a7860",
+  "dragonName": "Vaermorax",
+  "dragonTitle": "Wyvern of the Iron Basilica",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "1db159e3cc1263ec974d7a0b754b57a6ff478f5a5b3158d98f8c5cbe85428dc3",

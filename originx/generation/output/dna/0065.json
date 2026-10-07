@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "068cd7fee4288292807cab9780a5a2971fe17666f117e8ed30ae02e0121cb07b",
+  "displayName": "Vaerdranar — Ravager of the Iron Basilica",
+  "dnaHash": "a3e4d9ef10565115bee7d0b4d647f62815c476c9bcff1f39681878a0e8d577f4",
+  "dragonName": "Vaerdranar",
+  "dragonTitle": "Ravager of the Iron Basilica",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "0c28d344f213afd44adc9eb2216bf026ca0f997609d2a451ba0e65c1011a70c4",

@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "70e8ad72d5fa75af496bde59c53c3f56c98e2d1a644eadcfa92524cba826d853",
+  "displayName": "Vaermoron — Ravager of the Ruined Megalith Ward",
+  "dnaHash": "c5ec9141fff6ecaf574159e39d7a34e99fc07c06fda16893160ec5f5f075d979",
+  "dragonName": "Vaermoron",
+  "dragonTitle": "Ravager of the Ruined Megalith Ward",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "be7bc0a1386b91713dbdec537dab9494a98142e1ebdcdf1fe86466640009d009",

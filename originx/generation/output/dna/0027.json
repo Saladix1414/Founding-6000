@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "5b00b2cdbc3ec90d50f521d70b6b682c96ff726ae90f0b37045035a382cbe0b6",
+  "displayName": "Vaervorir — Wyrm of the Ancient Citadel",
+  "dnaHash": "efe9f7324882edb1b7b87f6885002bff3085f55695d88498cf49e7e2cb13be54",
+  "dragonName": "Vaervorir",
+  "dragonTitle": "Wyrm of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "c66b644ce33d69c926b11305e6cdc64f89d2c23d29b3dd672a2ab27abb3f3676",

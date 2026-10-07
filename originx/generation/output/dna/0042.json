@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "009919a56ba40e9f2f2ab5eedfa26f5cb3eb84fa80c5b55d71aefe9f3157840b",
+  "displayName": "Vaertherir — Ravager of the Ruined Megalith Ward",
+  "dnaHash": "66ee2f0c8a3c51b7fdf66fb1951403f6a5a6204f2e8ff7244e78eec3bfdce8ac",
+  "dragonName": "Vaertherir",
+  "dragonTitle": "Ravager of the Ruined Megalith Ward",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "54e7bc6c628589f098e860cac36ff02368c20d8ce92fde88be691d219fa6d6ed",

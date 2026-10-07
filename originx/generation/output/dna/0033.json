@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "313d19a75340b450585cfbdc16373c5f620650b38040e8f0e0ed30a9ea39b89b",
+  "displayName": "Vaertheror — Serpent of the Black Cathedral District",
+  "dnaHash": "2584a8c616f2429efb587187e6da616e35ca8745b583c7b232c587b7f7f1784d",
+  "dragonName": "Vaertheror",
+  "dragonTitle": "Serpent of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "5e04ef7b2a4919a86a4df26d5c9ed67923cc9c03aed6e81f5b6289af75b3099a",

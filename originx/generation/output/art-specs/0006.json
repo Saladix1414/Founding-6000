@@ -1,0 +1,70 @@
+{
+  "artDirectionVersion": "OX-ART-1",
+  "canvas": {
+    "aspectRatio": "1:1",
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "preferredFormat": "PNG"
+  },
+  "displayName": "Vaerkaeth — Wyrm of the Black Cathedral District",
+  "dnaHash": "c5b668fe3aff0fc1d0e5b774d68694352ca22d8a098081e010e35cd1562c7026",
+  "dragonName": "Vaerkaeth",
+  "dragonTitle": "Wyrm of the Black Cathedral District",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "materials": [
+    "basalt",
+    "weathered iron",
+    "ancient stone",
+    "bone",
+    "blackened steel"
+  ],
+  "nameSystemVersion": "OX-NAME-1",
+  "negativeConcepts": [
+    "cartoon style",
+    "cute dragon",
+    "bright rainbow palette",
+    "existing franchise character",
+    "copyrighted character imitation",
+    "logo plagiarism",
+    "text-heavy composition",
+    "modern city skyline",
+    "generic medieval fantasy illustration"
+  ],
+  "palette": [
+    "obsidian black",
+    "graphite",
+    "stone gray",
+    "cold steel",
+    "restrained cyan",
+    "restrained crimson"
+  ],
+  "prompt": "dark gothic dragon universe, monumental architecture, ancient civilization, primitive technology, atmospheric depth, cinematic realism, original fantasy creature design. ancient primitive OriginX civilization before complete technological ascension. character: Vaerkaeth — Wyrm of the Black Cathedral District. dragon archetype: Stone Wyrm. body: Lean. scales: Obsidian Scales. head: Fortress Jaw. horns: Asymmetric Horns. eyes: Ember Red. wings: Stone Membrane Wings. tail: Chain Tail. armor: Ancient Iron. chest core: Dormant. mechanical augmentation: Ancient Prosthetic. markings: Runic Scars. OriginX glyph: OX-Prime. aura: Black Vapor. location: Black Cathedral District. architecture: Cathedral Towers. atmosphere: Cold Rain. weather: Still Night. foreground: Iron Pillars. cinematic low-key lighting with volumetric atmosphere and restrained luminous accents. single dominant dragon, monumental scale, strong silhouette, architectural depth, no crowded composition. square collectible master composition. no visible written prompt text. Avoid: cartoon style, cute dragon, bright rainbow palette, existing franchise character, copyrighted character imitation, logo plagiarism, text-heavy composition, modern city skyline, generic medieval fantasy illustration.",
+  "seedHash": "bae85245a9f0e582e8a7774d4cacfca78c84581ddde5f641ef6d7d470861d23a",
+  "serial": "#0006",
+  "tier": "RARE",
+  "tokenId": 6,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "Ancient Iron",
+    "atmosphere": "Cold Rain",
+    "aura": "Black Vapor",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Lean",
+    "chestCore": "Dormant",
+    "dragonArchetype": "Stone Wyrm",
+    "eyeConfiguration": "Ember Red",
+    "foreground": "Iron Pillars",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "Ancient Prosthetic",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Obsidian Scales",
+    "serialTreatment": "Engraved Stone",
+    "skylineArchitecture": "Cathedral Towers",
+    "specialVariation": "Moon Crest",
+    "tail": "Chain Tail",
+    "weather": "Still Night",
+    "wings": "Stone Membrane Wings"
+  }
+}

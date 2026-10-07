@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "e6ac9cc74ad69c7a4bfe5215d138884ee892dff55c7798ae8bba7f737204c907",
+  "displayName": "Vaertherion — Ravager of the Obsidian Spires",
+  "dnaHash": "0cd4f7231a05b226e177ec2f26a6aaeca809493cdbd867ce6a139eb2435ac00f",
+  "dragonName": "Vaertherion",
+  "dragonTitle": "Ravager of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "f0c536b0a6c478fc40a2c37c77a4abd9c568eac7a13c8426b4b0342e7991485d",

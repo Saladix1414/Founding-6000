@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "8589007cbd567075d0662b12550d1d9fda32d7832f130c54950b862e18d80195",
+  "displayName": "Vaergathyx — Drake of the Black Cathedral District",
+  "dnaHash": "eca54cf2c54805f65361a3e82e383999270b553df5ea885cbb31c272af027a95",
+  "dragonName": "Vaergathyx",
+  "dragonTitle": "Drake of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "c8b18268cf9ba3d1e7c22501ce1c147c1d3870dc6c0cb687fa67c236e8621495",

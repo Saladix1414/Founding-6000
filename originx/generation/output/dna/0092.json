@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "e6e35cd3cd7c192f4ce183355e87a381bce0268e7eb8106519de54ed3d38ffc6",
+  "displayName": "Vaerrakath — Drake of the Ancient Citadel",
+  "dnaHash": "38c98c0aa726bd1fd897429d0122bdf5ac7a4332a3e0cbea9884aeabba2a970f",
+  "dragonName": "Vaerrakath",
+  "dragonTitle": "Drake of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "655d1ee00fe05268b6747d55be2d3a61f942eecd3c81cb90ea212aaca4da916c",

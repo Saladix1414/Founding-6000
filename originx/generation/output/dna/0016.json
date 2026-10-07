@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "53ab9d296e79715a545c46b92c923e8b9a0678082487a730be42ec157d090506",
+  "displayName": "Vaervorion — Wyvern of the Black Cathedral District",
+  "dnaHash": "d62623c4a05dbe3011b314dae6bb1297ff1e829b73762aea7b59a44ebff9ff69",
+  "dragonName": "Vaervorion",
+  "dragonTitle": "Wyvern of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "64c5d48b3c13a2a9fb46918f414f64ad3ac99151e15a4214862c96c2051344c5",

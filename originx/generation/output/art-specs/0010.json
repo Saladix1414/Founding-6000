@@ -1,0 +1,70 @@
+{
+  "artDirectionVersion": "OX-ART-1",
+  "canvas": {
+    "aspectRatio": "1:1",
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "preferredFormat": "PNG"
+  },
+  "displayName": "Vaerkaum — Serpent of the Iron Basilica",
+  "dnaHash": "a94ae2a49505b113c6a1b84076c02e54c6cb61a7e481327cf74360217c84f215",
+  "dragonName": "Vaerkaum",
+  "dragonTitle": "Serpent of the Iron Basilica",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "materials": [
+    "basalt",
+    "weathered iron",
+    "ancient stone",
+    "bone",
+    "blackened steel"
+  ],
+  "nameSystemVersion": "OX-NAME-1",
+  "negativeConcepts": [
+    "cartoon style",
+    "cute dragon",
+    "bright rainbow palette",
+    "existing franchise character",
+    "copyrighted character imitation",
+    "logo plagiarism",
+    "text-heavy composition",
+    "modern city skyline",
+    "generic medieval fantasy illustration"
+  ],
+  "palette": [
+    "obsidian black",
+    "graphite",
+    "stone gray",
+    "cold steel",
+    "restrained cyan",
+    "restrained crimson"
+  ],
+  "prompt": "dark gothic dragon universe, monumental architecture, ancient civilization, primitive technology, atmospheric depth, cinematic realism, original fantasy creature design. ancient primitive OriginX civilization before complete technological ascension. character: Vaerkaum — Serpent of the Iron Basilica. dragon archetype: Iron Serpent. body: Heavy. scales: Ridge Scales. head: Fortress Jaw. horns: Backward Bone Horns. eyes: Deep Blue. wings: Cathedral Wings. tail: Whip Tail. armor: None. chest core: Crimson Relic. mechanical augmentation: Primitive Gearwork. markings: Runic Scars. OriginX glyph: OX-Sigil. aura: Moonlit Dust. location: Iron Basilica. architecture: Industrial Arches. atmosphere: Storm Veil. weather: Fog. foreground: Black Glass Ruins. cinematic low-key lighting with volumetric atmosphere and restrained luminous accents. single dominant dragon, monumental scale, strong silhouette, architectural depth, no crowded composition. square collectible master composition. no visible written prompt text. Avoid: cartoon style, cute dragon, bright rainbow palette, existing franchise character, copyrighted character imitation, logo plagiarism, text-heavy composition, modern city skyline, generic medieval fantasy illustration.",
+  "seedHash": "e3887abde73bd6c70e753825dc8b982c7372d96b601729c0c423c6d99e694230",
+  "serial": "#0010",
+  "tier": "RARE",
+  "tokenId": 10,
+  "traits": {
+    "ancientMarkings": "Runic Scars",
+    "armor": "None",
+    "atmosphere": "Storm Veil",
+    "aura": "Moonlit Dust",
+    "backgroundCity": "Iron Basilica",
+    "bodyStructure": "Heavy",
+    "chestCore": "Crimson Relic",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Black Glass Ruins",
+    "headStructure": "Fortress Jaw",
+    "hornConfiguration": "Backward Bone Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Sigil",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Ancient Steel",
+    "skylineArchitecture": "Industrial Arches",
+    "specialVariation": "Battle Scar",
+    "tail": "Whip Tail",
+    "weather": "Fog",
+    "wings": "Cathedral Wings"
+  }
+}

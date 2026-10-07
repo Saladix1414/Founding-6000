@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "6ac12c71f3c158008792fca5a07255f733f4a04413f18794189f8979b63f5da6",
+  "displayName": "Vaermoreth — Wyvern of the Black Cathedral District",
+  "dnaHash": "b1ff5fd01a4792a09240677b0e31e5b25286e175bb5b2ac0fce4e2553a70e7ac",
+  "dragonName": "Vaermoreth",
+  "dragonTitle": "Wyvern of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "604421b33dd0b26b64defeef09e37eee3c591675af69ba3b7f49abd2748fcd32",

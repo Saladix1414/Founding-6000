@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "2f210b0b97db6458aff6214402e4210ddd8ee65f0eb99b5e61786eedfc773ad6",
+  "displayName": "Vaermorek — Wyrm of the Ancient Citadel",
+  "dnaHash": "0a0fab67455428e224ed6412a48f91d61c0eb889ea8d9474f48678354653ca59",
+  "dragonName": "Vaermorek",
+  "dragonTitle": "Wyrm of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "c9dc6d2588e9f626685ab43e74d363abee6c5aacbf4cdae50cb73ff6e34a01bd",

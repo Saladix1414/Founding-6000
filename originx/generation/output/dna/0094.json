@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "3a5aa3bfe5afe095c703a98d3839530145ddf6e195fa7406ac86334710f07014",
+  "displayName": "Vaerrakyx — Serpent of the Iron Basilica",
+  "dnaHash": "b38661756a2dc49701b7be3fa5994446ed8d511eed9b770fd410601819f1bf6e",
+  "dragonName": "Vaerrakyx",
+  "dragonTitle": "Serpent of the Iron Basilica",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "fe70188e2573ecb46f341483591c75273f1f43de46e375ac7f89bbd9738c5a95",

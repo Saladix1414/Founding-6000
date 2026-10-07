@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "689f2568e721e300142ce3b8921aa749cba52558e251be8e118d1916897ebf66",
+  "displayName": "Vaerraketh — Drake of the Obsidian Spires",
+  "dnaHash": "7c69eec5206e9cb4c023b910081f51699ec70eb6bc182ba2f0908dbd0be1d3e7",
+  "dragonName": "Vaerraketh",
+  "dragonTitle": "Drake of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "f995f6d68d73b7980f81474867f0555ec8a8259b047979da99f01e16f3dc809e",

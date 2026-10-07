@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "03e049bd6623e347428559f37a672bc76043c3a20a5bf3e4f28e9f578e2d6730",
+  "displayName": "Vaervorath — Drake of the Ruined Megalith Ward",
+  "dnaHash": "a9bd609327cd691cc64fc3d44756397eb73e797910dd76a30762e668e5333be3",
+  "dragonName": "Vaervorath",
+  "dragonTitle": "Drake of the Ruined Megalith Ward",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "cec5631f8ee81ed410287fe9531bf751326ecfcc99452118752d9e133ab8727a",

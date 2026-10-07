@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "44d0610f0887117c283e6ae5fabd32d62343b339ec61954bb8e002f1d0269830",
+  "displayName": "Vaermoryx — Wyvern of the Ancient Citadel",
+  "dnaHash": "ff00e13dee774c47a3550cb4399eb52aa87214f193383fd75ed7116dc6c13162",
+  "dragonName": "Vaermoryx",
+  "dragonTitle": "Wyvern of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "5036032b605176d98a75a026e867e4d9869b186ce8d60d2e9b9e59132f2cd9cc",

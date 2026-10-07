@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "3fc1d3d7319c810b36f89a1e5fe00c1bfd1d953501d79b0a3b2797499485131e",
+  "displayName": "Vaerrakon — Wyvern of the Ruined Megalith Ward",
+  "dnaHash": "e48b276172f08cd5b7007e923e142cdc97755ff56c8f99cff208a87660f18b74",
+  "dragonName": "Vaerrakon",
+  "dragonTitle": "Wyvern of the Ruined Megalith Ward",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "e082d8cc9674557a14b87bb12e60e80a0cf812990cced604464e818fe8aeb182",

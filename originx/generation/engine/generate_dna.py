@@ -77,6 +77,85 @@ def derive_index(
     return int(digest, 16) % option_count
 
 
+def derive_canonical_name(
+    token_id: int,
+    config: dict[str, Any],
+) -> str:
+    """
+    Collision-free OriginX canonical dragon name.
+
+    The three lexical dimensions form exactly:
+
+        20 * 20 * 15 = 6000
+
+    possible names.
+
+    tokenId 1..6000 maps bijectively to those names.
+    """
+
+    name_config = config["nameSystem"]
+
+    prefixes = name_config["prefixes"]
+    cores = name_config["cores"]
+    suffixes = name_config["suffixes"]
+
+    capacity = (
+        len(prefixes)
+        * len(cores)
+        * len(suffixes)
+    )
+
+    if capacity != int(config["maxSupply"]):
+        raise ValueError(
+            "NAME_SYSTEM_CAPACITY_MISMATCH"
+        )
+
+    if token_id < 1 or token_id > capacity:
+        raise ValueError(
+            "TOKEN_ID_OUT_OF_RANGE"
+        )
+
+    value = token_id - 1
+
+    suffix_count = len(suffixes)
+    core_count = len(cores)
+
+    prefix_index = value // (
+        core_count * suffix_count
+    )
+
+    core_index = (
+        value // suffix_count
+    ) % core_count
+
+    suffix_index = value % suffix_count
+
+    return (
+        prefixes[prefix_index]
+        + cores[core_index]
+        + suffixes[suffix_index]
+    )
+
+
+def derive_dragon_title(
+    traits: dict[str, str],
+) -> str:
+    archetype = traits["dragonArchetype"]
+    location = traits["backgroundCity"]
+
+    archetype_title = {
+        "Stone Wyrm": "Wyrm",
+        "Cathedral Drake": "Drake",
+        "Obsidian Wyvern": "Wyvern",
+        "Iron Serpent": "Serpent",
+        "Ancient Ravager": "Ravager",
+    }[archetype]
+
+    return (
+        f"{archetype_title} of the {location}"
+    )
+
+
 def choose_traits(
     seed_hex: str,
     config: dict[str, Any],
@@ -120,8 +199,24 @@ def create_dna_record(
         config=config,
     )
 
+    dragon_name = derive_canonical_name(
+        token_id=token_id,
+        config=config,
+    )
+
+    dragon_title = derive_dragon_title(
+        traits=traits,
+    )
+
+    display_name = (
+        f"{dragon_name} — {dragon_title}"
+    )
+
     dna_payload = {
         "tokenId": token_id,
+        "dragonName": dragon_name,
+        "dragonTitle": dragon_title,
+        "displayName": display_name,
         "tier": tier.name,
         "campaignPhase": tier.campaign_phase,
         "generationTheme": tier.generation_theme,
@@ -136,6 +231,9 @@ def create_dna_record(
     return {
         "tokenId": token_id,
         "serial": f"#{token_id:04d}",
+        "dragonName": dragon_name,
+        "dragonTitle": dragon_title,
+        "displayName": display_name,
         "tier": tier.name,
         "campaignPhase": tier.campaign_phase,
         "generationTheme": tier.generation_theme,
@@ -216,6 +314,8 @@ def write_outputs(
         {
             "tokenId": record["tokenId"],
             "serial": record["serial"],
+            "dragonName": record["dragonName"],
+            "displayName": record["displayName"],
             "tier": record["tier"],
             "seedHash": record["seedHash"],
             "dnaHash": record["dnaHash"],

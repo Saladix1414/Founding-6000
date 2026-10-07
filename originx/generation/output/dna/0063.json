@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "71225a8ec88b390440f79c09b0275b4a034e7d5557d60d7cfdbc8827ac3b5501",
+  "displayName": "Vaerdranor — Drake of the Black Cathedral District",
+  "dnaHash": "5b1618936e1446cf02ac19baa0b32fc8053cb234771f5ec08d6100c53ac6b348",
+  "dragonName": "Vaerdranor",
+  "dragonTitle": "Drake of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "5d8a267a51da02eb4aede223f95dbb5c95b7de4c5135614f835bc56d94dd4f51",

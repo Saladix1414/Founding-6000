@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "9e3c30dcf36e1fe21829bc12a6d9f1313b974dd4300046ccebb56d5eec3d53df",
+  "displayName": "Vaervorek — Ravager of the Black Cathedral District",
+  "dnaHash": "e44728a6740dd0162d44dfba14b3dc8d4a9f1e333eb65f4db3aec7019cdc3008",
+  "dragonName": "Vaervorek",
+  "dragonTitle": "Ravager of the Black Cathedral District",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "1c73e657202ea05f6d5a3180285fc58e36ce046460d249a51e84ee5b7a79bf46",

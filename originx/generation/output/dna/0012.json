@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "21a1ba64295b08d7f9792d64f4db8b063b437f0fb6fa1a46d4ad8fc7e0eb0de9",
+  "displayName": "Vaerkair — Serpent of the Ancient Citadel",
+  "dnaHash": "e75689b6a8dd5fc2fcd47a16c48c4e707f01f57c8b01c9ff1fd0c05a2ad58651",
+  "dragonName": "Vaerkair",
+  "dragonTitle": "Serpent of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "10a1d0d8bd676752e029e65d406af1080f9976d0b03af39c37655ad013e3c9aa",

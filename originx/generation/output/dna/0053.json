@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "8f87aba24cfcbad7e50b2bbc3801d5c69d5cfabddea7343b04e896d44f397fe8",
+  "displayName": "Vaermoris — Drake of the Obsidian Spires",
+  "dnaHash": "c5d007fb3753f1c6c9a31d5ee8f44b9ad2cb957f163e9768fbd24fbe913f852e",
+  "dragonName": "Vaermoris",
+  "dragonTitle": "Drake of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "86f6df915f51cc1bd7fbd6338eebfa709b924c8f7da44c2194e8fa9cdf2eadff",

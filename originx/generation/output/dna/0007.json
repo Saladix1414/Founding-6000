@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "164e0d2c4f873d7bf5a6c92a8412cfc07a6bb21183163e50de03b6d2e3fb980b",
+  "displayName": "Vaerkaon — Serpent of the Iron Basilica",
+  "dnaHash": "7f02b008b8dfab71cbebcf27c8caf4d706783a8bfac15fd19a2e975bf21eb642",
+  "dragonName": "Vaerkaon",
+  "dragonTitle": "Serpent of the Iron Basilica",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "05558b2167ee30accc9e51ed8a466e30fa8cfd17bdd9545e89763b32b64dee1a",

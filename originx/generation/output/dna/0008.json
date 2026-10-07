@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "d03cb99b7535e74aa48c8972b2b6d30be98d7b51b92cfcf3cfefa53724885f05",
+  "displayName": "Vaerkais — Ravager of the Ruined Megalith Ward",
+  "dnaHash": "a9a705927cf3deb0b031a2c919b7ad7fb42d2793154d6ae9d69295bdd60ca75e",
+  "dragonName": "Vaerkais",
+  "dragonTitle": "Ravager of the Ruined Megalith Ward",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "148972859fd97565ed849cdc0aa0f178a7d4be2f0bdf1fe628483bcdd815616c",

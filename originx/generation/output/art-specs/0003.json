@@ -1,0 +1,70 @@
+{
+  "artDirectionVersion": "OX-ART-1",
+  "canvas": {
+    "aspectRatio": "1:1",
+    "masterHeight": 2048,
+    "masterWidth": 2048,
+    "preferredFormat": "PNG"
+  },
+  "displayName": "Vaerkaor — Serpent of the Black Cathedral District",
+  "dnaHash": "6ed04b60b16fcc2d3331457b8772b206e74673f794ccc74d9d35b3a7e2931885",
+  "dragonName": "Vaerkaor",
+  "dragonTitle": "Serpent of the Black Cathedral District",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "materials": [
+    "basalt",
+    "weathered iron",
+    "ancient stone",
+    "bone",
+    "blackened steel"
+  ],
+  "nameSystemVersion": "OX-NAME-1",
+  "negativeConcepts": [
+    "cartoon style",
+    "cute dragon",
+    "bright rainbow palette",
+    "existing franchise character",
+    "copyrighted character imitation",
+    "logo plagiarism",
+    "text-heavy composition",
+    "modern city skyline",
+    "generic medieval fantasy illustration"
+  ],
+  "palette": [
+    "obsidian black",
+    "graphite",
+    "stone gray",
+    "cold steel",
+    "restrained cyan",
+    "restrained crimson"
+  ],
+  "prompt": "dark gothic dragon universe, monumental architecture, ancient civilization, primitive technology, atmospheric depth, cinematic realism, original fantasy creature design. ancient primitive OriginX civilization before complete technological ascension. character: Vaerkaor — Serpent of the Black Cathedral District. dragon archetype: Iron Serpent. body: Lean. scales: Ridge Scales. head: Razor Jaw. horns: Asymmetric Horns. eyes: Deep Blue. wings: Ancient Leather Wings. tail: Stone Tail. armor: None. chest core: Ancient Ember. mechanical augmentation: Primitive Gearwork. markings: Cathedral Marks. OriginX glyph: OX-Prime. aura: Moonlit Dust. location: Black Cathedral District. architecture: Cathedral Towers. atmosphere: Cold Rain. weather: Storm. foreground: Iron Pillars. cinematic low-key lighting with volumetric atmosphere and restrained luminous accents. single dominant dragon, monumental scale, strong silhouette, architectural depth, no crowded composition. square collectible master composition. no visible written prompt text. Avoid: cartoon style, cute dragon, bright rainbow palette, existing franchise character, copyrighted character imitation, logo plagiarism, text-heavy composition, modern city skyline, generic medieval fantasy illustration.",
+  "seedHash": "6ec35126c347eb6e1ab138873698f0ec340ae477074fde6a12923c33c46369da",
+  "serial": "#0003",
+  "tier": "RARE",
+  "tokenId": 3,
+  "traits": {
+    "ancientMarkings": "Cathedral Marks",
+    "armor": "None",
+    "atmosphere": "Cold Rain",
+    "aura": "Moonlit Dust",
+    "backgroundCity": "Black Cathedral District",
+    "bodyStructure": "Lean",
+    "chestCore": "Ancient Ember",
+    "dragonArchetype": "Iron Serpent",
+    "eyeConfiguration": "Deep Blue",
+    "foreground": "Iron Pillars",
+    "headStructure": "Razor Jaw",
+    "hornConfiguration": "Asymmetric Horns",
+    "mechanicalAugmentation": "Primitive Gearwork",
+    "originxGlyph": "OX-Prime",
+    "scalePattern": "Ridge Scales",
+    "serialTreatment": "Black Glass",
+    "skylineArchitecture": "Cathedral Towers",
+    "specialVariation": "Ancient Chain",
+    "tail": "Stone Tail",
+    "weather": "Storm",
+    "wings": "Ancient Leather Wings"
+  }
+}

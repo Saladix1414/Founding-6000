@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "e17f753a01dadab49a235658f2a7277d9e4e051304fb71f59203409562a50c37",
+  "displayName": "Vaerkaar — Serpent of the Obsidian Spires",
+  "dnaHash": "d6a9b43d565cad6bbe43b78a4fdaa44f4dc39186abdd77b8a1dbf85db3c8d551",
+  "dragonName": "Vaerkaar",
+  "dragonTitle": "Serpent of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "34cc734a433acd0cbecb910853d04f831916a97822dab80711d411565504349d",

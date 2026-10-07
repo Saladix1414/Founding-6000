@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "41732c31974a5348112094a07c9663e5b18de45a510e030bd0053b894f5bcfeb",
+  "displayName": "Vaergathum — Ravager of the Ancient Citadel",
+  "dnaHash": "7465284db2de0ee6e4688ffd019819e891e31850c90ae92f595c15f8b02db804",
+  "dragonName": "Vaergathum",
+  "dragonTitle": "Ravager of the Ancient Citadel",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "63aa0c63d12493412e40fb76efc37bf8965c116a992c05fede311c48adaf7a48",

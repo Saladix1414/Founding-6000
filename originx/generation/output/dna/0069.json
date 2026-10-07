@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "3169f35dee9a06f40557ee7d383539fdfd6dd952dc85fad0c9beae009f90cab5",
+  "displayName": "Vaerdranek — Ravager of the Obsidian Spires",
+  "dnaHash": "24d0e9763ee3ade400cbdd3190245884e1fa91da5565b382893e6c4588abd10c",
+  "dragonName": "Vaerdranek",
+  "dragonTitle": "Ravager of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "a908bae15ee1648f66b63be239f9777e02724798dadb3b28e6f572d028ad1ce2",

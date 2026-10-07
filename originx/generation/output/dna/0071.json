@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "36c57c2db9f9ded8b122ca3b7b400a45becae7d29465e2524e9fb1784a863aa3",
+  "displayName": "Vaerdranoth — Ravager of the Iron Basilica",
+  "dnaHash": "4aa4f4bad6536075ad28fc6a5f26e8cf32bf170007d5cadfa0f1aa1093805c61",
+  "dragonName": "Vaerdranoth",
+  "dragonTitle": "Ravager of the Iron Basilica",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "5008b7c3e35521a252376f301b4f5fbeaa9e814086f4497481241bb8cae33c6d",

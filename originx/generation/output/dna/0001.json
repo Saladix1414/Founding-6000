@@ -1,6 +1,9 @@
 {
   "campaignPhase": "Genesis",
-  "dnaHash": "01a0f242a884b2a5b89d3fbc8e0dd1f9b282025503a92545b33ee78564674722",
+  "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
+  "dnaHash": "9402ff0d1d8f692c339069115eef26531ca73856e5123d0579168cfbaaca3f4e",
+  "dragonName": "Vaerkaion",
+  "dragonTitle": "Ravager of the Obsidian Spires",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "seedHash": "9d099c8efd5fa6d0ebf9dafecd2fdb553065641850f044ef74452e1001f7cdac",
