@@ -1,0 +1,86 @@
+{
+  "akashic": {
+    "akashicVersion": "OX-AKASHIC-1",
+    "eventCount": 3,
+    "firstEventHash": "972dbccee80d83ba8c6c482dc714fa166304922fc2343cba547fc70b269e4546",
+    "latestEventHash": "642595ce1c80286330fe8acf5aaffee1e1d592c906d7e8bf2ed5cfbb009f80f1"
+  },
+  "bundleHash": "ca501f9c153351528687049eac9056053c3cbbc583b4b695dee9f88fc4a357cd",
+  "bundleVersion": "OX-IDENTITY-BUNDLE-1",
+  "campaignPhase": "Genesis",
+  "displayName": "Vaerkais — Ravager of the Ruined Megalith Ward",
+  "dna": {
+    "dnaHash": "a9a705927cf3deb0b031a2c919b7ad7fb42d2793154d6ae9d69295bdd60ca75e",
+    "seedHash": "148972859fd97565ed849cdc0aa0f178a7d4be2f0bdf1fe628483bcdd815616c",
+    "traits": {
+      "ancientMarkings": "Cathedral Marks",
+      "armor": "Ancient Iron",
+      "atmosphere": "Dense Fog",
+      "aura": "None",
+      "backgroundCity": "Ruined Megalith Ward",
+      "bodyStructure": "Armored",
+      "chestCore": "Crimson Relic",
+      "dragonArchetype": "Ancient Ravager",
+      "eyeConfiguration": "Ember Red",
+      "foreground": "Broken Gargoyles",
+      "headStructure": "Razor Jaw",
+      "hornConfiguration": "Asymmetric Horns",
+      "mechanicalAugmentation": "None",
+      "originxGlyph": "OX-Crown",
+      "scalePattern": "Basalt Plates",
+      "serialTreatment": "Ancient Steel",
+      "skylineArchitecture": "Industrial Arches",
+      "specialVariation": "Broken Horn",
+      "tail": "Bladed Tail",
+      "weather": "Rain",
+      "wings": "Ribbed Wings"
+    }
+  },
+  "dragonName": "Vaerkais",
+  "dragonTitle": "Ravager of the Ruined Megalith Ward",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "resonance": {
+    "glyphSeed": "665acefbd052fbe34ff26d8f50044923343dcb893f8826703e87a94ccb921bd1",
+    "phaseDegrees": 236.59,
+    "primaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 351.93
+    },
+    "pulse": 6.43,
+    "resonanceClass": "CATALYST",
+    "resonanceId": "RX-39BB2C092DB1",
+    "resonanceSignature": "39bb2c092db163c37e51a58ea83d61d20159398b29f4f880fbd70cd6f357bb46",
+    "resonanceVersion": "OX-RESONANCE-1",
+    "secondaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 314.83
+    },
+    "spectrum": "Crimson-Graphite"
+  },
+  "serial": "#0008",
+  "tier": "RARE",
+  "tokenId": 8,
+  "visualIdentity": {
+    "artSpecAvailable": true,
+    "camera": "Low-angle three-quarter portrait",
+    "framing": "Dragon occupies 55-65 percent with architecture visible",
+    "pose": "Wing-partially-open dominance",
+    "render": {
+      "aspectRatio": "1:1",
+      "colorSpace": "sRGB",
+      "dragonCount": 1,
+      "masterHeight": 2048,
+      "masterWidth": 2048,
+      "preferredFormat": "PNG",
+      "visibleTypography": false
+    },
+    "visualGrammarVersion": "OX-RARE-VISUAL-1"
+  }
+}

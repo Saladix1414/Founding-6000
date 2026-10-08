@@ -1,0 +1,86 @@
+{
+  "akashic": {
+    "akashicVersion": "OX-AKASHIC-1",
+    "eventCount": 3,
+    "firstEventHash": "1b2649a64bffb7b7d0e7975fdb07d9512c28ab28e8c675a981cafa91a8bfe71e",
+    "latestEventHash": "79f04edc46ffe017c1331f2d9d08f8b14c5de41597a845f17d5e43a43ee67609"
+  },
+  "bundleHash": "1b4e688beadb8b69aa045b97cfada43835470cf0ba7abe48ed43b8d11d8d7938",
+  "bundleVersion": "OX-IDENTITY-BUNDLE-1",
+  "campaignPhase": "Genesis",
+  "displayName": "Vaerkaeth — Wyrm of the Black Cathedral District",
+  "dna": {
+    "dnaHash": "c5b668fe3aff0fc1d0e5b774d68694352ca22d8a098081e010e35cd1562c7026",
+    "seedHash": "bae85245a9f0e582e8a7774d4cacfca78c84581ddde5f641ef6d7d470861d23a",
+    "traits": {
+      "ancientMarkings": "Runic Scars",
+      "armor": "Ancient Iron",
+      "atmosphere": "Cold Rain",
+      "aura": "Black Vapor",
+      "backgroundCity": "Black Cathedral District",
+      "bodyStructure": "Lean",
+      "chestCore": "Dormant",
+      "dragonArchetype": "Stone Wyrm",
+      "eyeConfiguration": "Ember Red",
+      "foreground": "Iron Pillars",
+      "headStructure": "Fortress Jaw",
+      "hornConfiguration": "Asymmetric Horns",
+      "mechanicalAugmentation": "Ancient Prosthetic",
+      "originxGlyph": "OX-Prime",
+      "scalePattern": "Obsidian Scales",
+      "serialTreatment": "Engraved Stone",
+      "skylineArchitecture": "Cathedral Towers",
+      "specialVariation": "Moon Crest",
+      "tail": "Chain Tail",
+      "weather": "Still Night",
+      "wings": "Stone Membrane Wings"
+    }
+  },
+  "dragonName": "Vaerkaeth",
+  "dragonTitle": "Wyrm of the Black Cathedral District",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "resonance": {
+    "glyphSeed": "b0afaf79815a8f18463c7f63d3e22b098393f2af3ecca1f0f2b7eebdc19eedbf",
+    "phaseDegrees": 58.6,
+    "primaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 182.09
+    },
+    "pulse": 4.7,
+    "resonanceClass": "ASCENDANT",
+    "resonanceId": "RX-029FCCCEF6BB",
+    "resonanceSignature": "029fcccef6bb8d1d5614298129ab6f760daae54c14c7710282db138ab0bbd897",
+    "resonanceVersion": "OX-RESONANCE-1",
+    "secondaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 934.44
+    },
+    "spectrum": "Moonstone-Blue"
+  },
+  "serial": "#0006",
+  "tier": "RARE",
+  "tokenId": 6,
+  "visualIdentity": {
+    "artSpecAvailable": true,
+    "camera": "Low-angle side three-quarter portrait",
+    "framing": "Dragon occupies 60-70 percent of frame",
+    "pose": "Perched sentinel",
+    "render": {
+      "aspectRatio": "1:1",
+      "colorSpace": "sRGB",
+      "dragonCount": 1,
+      "masterHeight": 2048,
+      "masterWidth": 2048,
+      "preferredFormat": "PNG",
+      "visibleTypography": false
+    },
+    "visualGrammarVersion": "OX-RARE-VISUAL-1"
+  }
+}

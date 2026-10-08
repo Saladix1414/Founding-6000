@@ -1,0 +1,86 @@
+{
+  "akashic": {
+    "akashicVersion": "OX-AKASHIC-1",
+    "eventCount": 3,
+    "firstEventHash": "6f2a5882ea3366fe7c24027753fe335d6c5b4a0e3fb7b7c7f00d784c1456c3cc",
+    "latestEventHash": "598ce77ae3bd1ab5fac2ea24298d84c4e85bbf6d2a0488ae2ad737b27b5c2441"
+  },
+  "bundleHash": "6466a96c00775f004cd0ffe9549087b9380855d69d823f0116350b6d4db72a23",
+  "bundleVersion": "OX-IDENTITY-BUNDLE-1",
+  "campaignPhase": "Genesis",
+  "displayName": "Vaerkaor — Serpent of the Black Cathedral District",
+  "dna": {
+    "dnaHash": "6ed04b60b16fcc2d3331457b8772b206e74673f794ccc74d9d35b3a7e2931885",
+    "seedHash": "6ec35126c347eb6e1ab138873698f0ec340ae477074fde6a12923c33c46369da",
+    "traits": {
+      "ancientMarkings": "Cathedral Marks",
+      "armor": "None",
+      "atmosphere": "Cold Rain",
+      "aura": "Moonlit Dust",
+      "backgroundCity": "Black Cathedral District",
+      "bodyStructure": "Lean",
+      "chestCore": "Ancient Ember",
+      "dragonArchetype": "Iron Serpent",
+      "eyeConfiguration": "Deep Blue",
+      "foreground": "Iron Pillars",
+      "headStructure": "Razor Jaw",
+      "hornConfiguration": "Asymmetric Horns",
+      "mechanicalAugmentation": "Primitive Gearwork",
+      "originxGlyph": "OX-Prime",
+      "scalePattern": "Ridge Scales",
+      "serialTreatment": "Black Glass",
+      "skylineArchitecture": "Cathedral Towers",
+      "specialVariation": "Ancient Chain",
+      "tail": "Stone Tail",
+      "weather": "Storm",
+      "wings": "Ancient Leather Wings"
+    }
+  },
+  "dragonName": "Vaerkaor",
+  "dragonTitle": "Serpent of the Black Cathedral District",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "resonance": {
+    "glyphSeed": "0847db711db6a08674ec3b877270827d391b3e9cef93d133cb2112a124501608",
+    "phaseDegrees": 343.2,
+    "primaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 916.85
+    },
+    "pulse": 6.96,
+    "resonanceClass": "CATALYST",
+    "resonanceId": "RX-F106FBEBAB83",
+    "resonanceSignature": "f106fbebab838f318aa41b89f40d50c4d92bd4fb39d9a278411c0a04972c4fe9",
+    "resonanceVersion": "OX-RESONANCE-1",
+    "secondaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 702.61
+    },
+    "spectrum": "Basalt-Violet"
+  },
+  "serial": "#0003",
+  "tier": "RARE",
+  "tokenId": 3,
+  "visualIdentity": {
+    "artSpecAvailable": true,
+    "camera": "Low-angle three-quarter portrait",
+    "framing": "Dragon occupies 65-75 percent with compressed skyline",
+    "pose": "Perched sentinel",
+    "render": {
+      "aspectRatio": "1:1",
+      "colorSpace": "sRGB",
+      "dragonCount": 1,
+      "masterHeight": 2048,
+      "masterWidth": 2048,
+      "preferredFormat": "PNG",
+      "visibleTypography": false
+    },
+    "visualGrammarVersion": "OX-RARE-VISUAL-1"
+  }
+}

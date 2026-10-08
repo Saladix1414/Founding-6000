@@ -1,0 +1,86 @@
+{
+  "akashic": {
+    "akashicVersion": "OX-AKASHIC-1",
+    "eventCount": 3,
+    "firstEventHash": "238b17e8f02763b11cde306f1d9ec7be52d47bdb4454b54b87c4e4945556bee3",
+    "latestEventHash": "4954e40864340e164e75a30b9a66a88dc432e7d12c2219232c35da6e0842d066"
+  },
+  "bundleHash": "4aac5ca68ea0a72ffba0df0ce58cb4b1268a19afe38655fa3f10c9a9c28c7307",
+  "bundleVersion": "OX-IDENTITY-BUNDLE-1",
+  "campaignPhase": "Genesis",
+  "displayName": "Vaerkaek — Wyrm of the Ancient Citadel",
+  "dna": {
+    "dnaHash": "10cd9bc671ef3c5b339791568c9373e3913f6d0fc2a0a99ec857018690a049e2",
+    "seedHash": "62bf5ed77f293e9619c0759223a5437806c72d483fa2cba061380c3000e34a4b",
+    "traits": {
+      "ancientMarkings": "War Etchings",
+      "armor": "Bone Fragments",
+      "atmosphere": "Dense Fog",
+      "aura": "Moonlit Dust",
+      "backgroundCity": "Ancient Citadel",
+      "bodyStructure": "Feral",
+      "chestCore": "Cyan Relic",
+      "dragonArchetype": "Stone Wyrm",
+      "eyeConfiguration": "Ember Red",
+      "foreground": "Black Glass Ruins",
+      "headStructure": "Long Skull",
+      "hornConfiguration": "Twin Stone Horns",
+      "mechanicalAugmentation": "Primitive Gearwork",
+      "originxGlyph": "OX-Sigil",
+      "scalePattern": "Obsidian Scales",
+      "serialTreatment": "Engraved Stone",
+      "skylineArchitecture": "Fortress Silhouette",
+      "specialVariation": "Battle Scar",
+      "tail": "Stone Tail",
+      "weather": "Still Night",
+      "wings": "Stone Membrane Wings"
+    }
+  },
+  "dragonName": "Vaerkaek",
+  "dragonTitle": "Wyrm of the Ancient Citadel",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "resonance": {
+    "glyphSeed": "256542f69867ce4b78dcfabacf9d355cc5d37877b4b6a535ceace30c1b70cff1",
+    "phaseDegrees": 286.27,
+    "primaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 667.11
+    },
+    "pulse": 4.43,
+    "resonanceClass": "ECHO",
+    "resonanceId": "RX-9FFEA8499B2F",
+    "resonanceSignature": "9ffea8499b2f451b4fd7633acb92ae8a9b9de25aeea50c486d393d2951c0030c",
+    "resonanceVersion": "OX-RESONANCE-1",
+    "secondaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 652.28
+    },
+    "spectrum": "Void-Silver"
+  },
+  "serial": "#0009",
+  "tier": "RARE",
+  "tokenId": 9,
+  "visualIdentity": {
+    "artSpecAvailable": true,
+    "camera": "Low-angle side three-quarter portrait",
+    "framing": "Dragon occupies 60-70 percent of frame",
+    "pose": "Perched sentinel",
+    "render": {
+      "aspectRatio": "1:1",
+      "colorSpace": "sRGB",
+      "dragonCount": 1,
+      "masterHeight": 2048,
+      "masterWidth": 2048,
+      "preferredFormat": "PNG",
+      "visibleTypography": false
+    },
+    "visualGrammarVersion": "OX-RARE-VISUAL-1"
+  }
+}

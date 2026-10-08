@@ -1,0 +1,86 @@
+{
+  "akashic": {
+    "akashicVersion": "OX-AKASHIC-1",
+    "eventCount": 3,
+    "firstEventHash": "cf50cec1f8f94db417ce767cd1891607c8df8d8d446a1255bc807309f1ff8bf6",
+    "latestEventHash": "9c7a8c758ff2f6db489aa7b51aa2e419341c4a55205809449e26818ce6ec78c5"
+  },
+  "bundleHash": "f39daeb09546d1b8a88d08eef0d43799a9f89b7472e78439a69d1673f902e6e0",
+  "bundleVersion": "OX-IDENTITY-BUNDLE-1",
+  "campaignPhase": "Genesis",
+  "displayName": "Vaerkaum — Serpent of the Iron Basilica",
+  "dna": {
+    "dnaHash": "a94ae2a49505b113c6a1b84076c02e54c6cb61a7e481327cf74360217c84f215",
+    "seedHash": "e3887abde73bd6c70e753825dc8b982c7372d96b601729c0c423c6d99e694230",
+    "traits": {
+      "ancientMarkings": "Runic Scars",
+      "armor": "None",
+      "atmosphere": "Storm Veil",
+      "aura": "Moonlit Dust",
+      "backgroundCity": "Iron Basilica",
+      "bodyStructure": "Heavy",
+      "chestCore": "Crimson Relic",
+      "dragonArchetype": "Iron Serpent",
+      "eyeConfiguration": "Deep Blue",
+      "foreground": "Black Glass Ruins",
+      "headStructure": "Fortress Jaw",
+      "hornConfiguration": "Backward Bone Horns",
+      "mechanicalAugmentation": "Primitive Gearwork",
+      "originxGlyph": "OX-Sigil",
+      "scalePattern": "Ridge Scales",
+      "serialTreatment": "Ancient Steel",
+      "skylineArchitecture": "Industrial Arches",
+      "specialVariation": "Battle Scar",
+      "tail": "Whip Tail",
+      "weather": "Fog",
+      "wings": "Cathedral Wings"
+    }
+  },
+  "dragonName": "Vaerkaum",
+  "dragonTitle": "Serpent of the Iron Basilica",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "resonance": {
+    "glyphSeed": "d6fee98692e529566da4913b1d7f355fe6c9d095d2027de97437636ba296f574",
+    "phaseDegrees": 316.89,
+    "primaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 502.77
+    },
+    "pulse": 11.4,
+    "resonanceClass": "VEIL",
+    "resonanceId": "RX-6AAC91F6E5D5",
+    "resonanceSignature": "6aac91f6e5d526e1f21653ffe1588efde8402856026c9d53a94b17165f0ae301",
+    "resonanceVersion": "OX-RESONANCE-1",
+    "secondaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 882.35
+    },
+    "spectrum": "Obsidian-Cyan"
+  },
+  "serial": "#0010",
+  "tier": "RARE",
+  "tokenId": 10,
+  "visualIdentity": {
+    "artSpecAvailable": true,
+    "camera": "Low-angle side three-quarter portrait",
+    "framing": "Dragon occupies 60-70 percent of frame",
+    "pose": "Standing guardian",
+    "render": {
+      "aspectRatio": "1:1",
+      "colorSpace": "sRGB",
+      "dragonCount": 1,
+      "masterHeight": 2048,
+      "masterWidth": 2048,
+      "preferredFormat": "PNG",
+      "visibleTypography": false
+    },
+    "visualGrammarVersion": "OX-RARE-VISUAL-1"
+  }
+}

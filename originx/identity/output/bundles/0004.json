@@ -1,0 +1,86 @@
+{
+  "akashic": {
+    "akashicVersion": "OX-AKASHIC-1",
+    "eventCount": 3,
+    "firstEventHash": "234484b64e8aa5020706af95982438e76c28036d89b3297317026e8270afe1be",
+    "latestEventHash": "a8fb61860b517b6e2c92fc2817a740b097867b2a33d5015eba4613a2f4629faf"
+  },
+  "bundleHash": "6bf852d6348473c40348cd87b4ee2461d73d1da860b757ef4ddd3d11a2fadb53",
+  "bundleVersion": "OX-IDENTITY-BUNDLE-1",
+  "campaignPhase": "Genesis",
+  "displayName": "Vaerkayx — Wyvern of the Ancient Citadel",
+  "dna": {
+    "dnaHash": "99c1a712433b5dd7dcbc1b314c60c8ce7a1d3a9131a65592605f0e8e4942505d",
+    "seedHash": "f81a38b6c16c6c0c700ed2b710eef6d01840d45326f4d00e73eae566cf53ad9d",
+    "traits": {
+      "ancientMarkings": "Origin Runes",
+      "armor": "Ancient Iron",
+      "atmosphere": "Storm Veil",
+      "aura": "Moonlit Dust",
+      "backgroundCity": "Ancient Citadel",
+      "bodyStructure": "Monolithic",
+      "chestCore": "Obsidian Seal",
+      "dragonArchetype": "Obsidian Wyvern",
+      "eyeConfiguration": "Deep Blue",
+      "foreground": "Cathedral Rails",
+      "headStructure": "Broad Skull",
+      "hornConfiguration": "Backward Bone Horns",
+      "mechanicalAugmentation": "Primitive Gearwork",
+      "originxGlyph": "OX-Alpha",
+      "scalePattern": "Bone-Laced Scales",
+      "serialTreatment": "Engraved Stone",
+      "skylineArchitecture": "Fortress Silhouette",
+      "specialVariation": "None",
+      "tail": "Stone Tail",
+      "weather": "Storm",
+      "wings": "Cathedral Wings"
+    }
+  },
+  "dragonName": "Vaerkayx",
+  "dragonTitle": "Wyvern of the Ancient Citadel",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "resonance": {
+    "glyphSeed": "219ac9da1f1b1588016ed06654b5edea21bd7f19291eb99749bf0884e97fe68c",
+    "phaseDegrees": 268.86,
+    "primaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 596.44
+    },
+    "pulse": 9.84,
+    "resonanceClass": "ECHO",
+    "resonanceId": "RX-8910F7C7A7F4",
+    "resonanceSignature": "8910f7c7a7f4b7f8cda23efebf304028ff163f8293eb632a1db4fed35e5f9cd0",
+    "resonanceVersion": "OX-RESONANCE-1",
+    "secondaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 691.65
+    },
+    "spectrum": "Ancient-Gold"
+  },
+  "serial": "#0004",
+  "tier": "RARE",
+  "tokenId": 4,
+  "visualIdentity": {
+    "artSpecAvailable": true,
+    "camera": "Low-angle side three-quarter portrait",
+    "framing": "Dragon occupies 60-70 percent of frame",
+    "pose": "Wing-partially-open dominance",
+    "render": {
+      "aspectRatio": "1:1",
+      "colorSpace": "sRGB",
+      "dragonCount": 1,
+      "masterHeight": 2048,
+      "masterWidth": 2048,
+      "preferredFormat": "PNG",
+      "visibleTypography": false
+    },
+    "visualGrammarVersion": "OX-RARE-VISUAL-1"
+  }
+}

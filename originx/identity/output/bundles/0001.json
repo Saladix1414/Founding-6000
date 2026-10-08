@@ -1,0 +1,86 @@
+{
+  "akashic": {
+    "akashicVersion": "OX-AKASHIC-1",
+    "eventCount": 4,
+    "firstEventHash": "f7a4b00ddf4e75f208f08757af7c6bbdea52a02471b7321d4ef1513f152032e6",
+    "latestEventHash": "c43a9f3b1ec9fef7d6c77919ad647be236282d8cf69b19f81fc97ed52bb6dc2c"
+  },
+  "bundleHash": "a27ec548d0f145c603eddc261bc25a2ea006719f6923539708af7e76818d70d9",
+  "bundleVersion": "OX-IDENTITY-BUNDLE-1",
+  "campaignPhase": "Genesis",
+  "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
+  "dna": {
+    "dnaHash": "9402ff0d1d8f692c339069115eef26531ca73856e5123d0579168cfbaaca3f4e",
+    "seedHash": "9d099c8efd5fa6d0ebf9dafecd2fdb553065641850f044ef74452e1001f7cdac",
+    "traits": {
+      "ancientMarkings": "Tribal Sigils",
+      "armor": "Primitive Chain Armor",
+      "atmosphere": "Cold Rain",
+      "aura": "Cold Cyan",
+      "backgroundCity": "Obsidian Spires",
+      "bodyStructure": "Heavy",
+      "chestCore": "Ancient Ember",
+      "dragonArchetype": "Ancient Ravager",
+      "eyeConfiguration": "Moon White",
+      "foreground": "Stone Chains",
+      "headStructure": "Broad Skull",
+      "hornConfiguration": "Cathedral Horns",
+      "mechanicalAugmentation": "Embedded Metal",
+      "originxGlyph": "OX-Prime",
+      "scalePattern": "Bone-Laced Scales",
+      "serialTreatment": "Runic Inscription",
+      "skylineArchitecture": "Stone Megastructure",
+      "specialVariation": "Broken Horn",
+      "tail": "Spiked Tail",
+      "weather": "Ashfall",
+      "wings": "Ancient Leather Wings"
+    }
+  },
+  "dragonName": "Vaerkaion",
+  "dragonTitle": "Ravager of the Obsidian Spires",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "resonance": {
+    "glyphSeed": "247ac62fb4dc003bc8732f4d32440137368c48ba474d8c2c98073bd6accb364d",
+    "phaseDegrees": 139.95,
+    "primaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 379.79
+    },
+    "pulse": 1.23,
+    "resonanceClass": "RELIC",
+    "resonanceId": "RX-42C5C1E2F340",
+    "resonanceSignature": "42c5c1e2f3402091055b07f26385cdc354f929b57e06889f36e8e8a64baeb476",
+    "resonanceVersion": "OX-RESONANCE-1",
+    "secondaryFrequency": {
+      "meaning": "artistic deterministic representation",
+      "unit": "Hz",
+      "value": 923.71
+    },
+    "spectrum": "Crimson-Graphite"
+  },
+  "serial": "#0001",
+  "tier": "RARE",
+  "tokenId": 1,
+  "visualIdentity": {
+    "artSpecAvailable": true,
+    "camera": "Low-angle side three-quarter portrait",
+    "framing": "Dragon occupies 60-70 percent of frame",
+    "pose": "Standing guardian",
+    "render": {
+      "aspectRatio": "1:1",
+      "colorSpace": "sRGB",
+      "dragonCount": 1,
+      "masterHeight": 2048,
+      "masterWidth": 2048,
+      "preferredFormat": "PNG",
+      "visibleTypography": false
+    },
+    "visualGrammarVersion": "OX-RARE-VISUAL-1"
+  }
+}
