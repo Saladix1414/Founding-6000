@@ -1,0 +1,26 @@
+{
+  "tokenId": 2,
+  "serial": "#0002",
+  "dragonName": "Vaerkaath",
+  "displayName": "Vaerkaath — Ravager of the Obsidian Spires",
+  "generationVersion": "OX-GEN-1",
+  "dnaHash": "fdfae087aa26e617328af8b617b934ee468da457c183be419e12e781941b785a",
+  "resonanceVersion": "OX-RESONANCE-1",
+  "resonanceId": "RX-E2B359EDAA75",
+  "resonanceSignature": "e2b359edaa75f3e4142743225af08522e0807a9b4de767b624ce767ff8a65f63",
+  "primaryFrequency": {
+    "value": 872.7,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "secondaryFrequency": {
+    "value": 699.37,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "pulse": 1.87,
+  "phaseDegrees": 127.88,
+  "spectrum": "Obsidian-Cyan",
+  "resonanceClass": "CATALYST",
+  "glyphSeed": "10eb2a02e982efdc97cd91b5d7aadfcd3bdf9163f169b1f692d453228b4e4cb5"
+}

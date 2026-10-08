@@ -1,0 +1,26 @@
+{
+  "tokenId": 7,
+  "serial": "#0007",
+  "dragonName": "Vaerkaon",
+  "displayName": "Vaerkaon — Serpent of the Iron Basilica",
+  "generationVersion": "OX-GEN-1",
+  "dnaHash": "7f02b008b8dfab71cbebcf27c8caf4d706783a8bfac15fd19a2e975bf21eb642",
+  "resonanceVersion": "OX-RESONANCE-1",
+  "resonanceId": "RX-62D00EF7E6DC",
+  "resonanceSignature": "62d00ef7e6dc081cb8441ff53948e148c8923ceefd5013c31836cc24a2d525cc",
+  "primaryFrequency": {
+    "value": 478.54,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "secondaryFrequency": {
+    "value": 885.52,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "pulse": 8.92,
+  "phaseDegrees": 80.56,
+  "spectrum": "Moonstone-Blue",
+  "resonanceClass": "VEIL",
+  "glyphSeed": "0987babe75e26e125f4a11647691f84c34d3ad9097185cfb5741dafc630e3da0"
+}

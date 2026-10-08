@@ -1,0 +1,26 @@
+{
+  "tokenId": 4,
+  "serial": "#0004",
+  "dragonName": "Vaerkayx",
+  "displayName": "Vaerkayx — Wyvern of the Ancient Citadel",
+  "generationVersion": "OX-GEN-1",
+  "dnaHash": "99c1a712433b5dd7dcbc1b314c60c8ce7a1d3a9131a65592605f0e8e4942505d",
+  "resonanceVersion": "OX-RESONANCE-1",
+  "resonanceId": "RX-8910F7C7A7F4",
+  "resonanceSignature": "8910f7c7a7f4b7f8cda23efebf304028ff163f8293eb632a1db4fed35e5f9cd0",
+  "primaryFrequency": {
+    "value": 596.44,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "secondaryFrequency": {
+    "value": 691.65,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "pulse": 9.84,
+  "phaseDegrees": 268.86,
+  "spectrum": "Ancient-Gold",
+  "resonanceClass": "ECHO",
+  "glyphSeed": "219ac9da1f1b1588016ed06654b5edea21bd7f19291eb99749bf0884e97fe68c"
+}

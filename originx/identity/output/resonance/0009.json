@@ -1,0 +1,26 @@
+{
+  "tokenId": 9,
+  "serial": "#0009",
+  "dragonName": "Vaerkaek",
+  "displayName": "Vaerkaek — Wyrm of the Ancient Citadel",
+  "generationVersion": "OX-GEN-1",
+  "dnaHash": "10cd9bc671ef3c5b339791568c9373e3913f6d0fc2a0a99ec857018690a049e2",
+  "resonanceVersion": "OX-RESONANCE-1",
+  "resonanceId": "RX-9FFEA8499B2F",
+  "resonanceSignature": "9ffea8499b2f451b4fd7633acb92ae8a9b9de25aeea50c486d393d2951c0030c",
+  "primaryFrequency": {
+    "value": 667.11,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "secondaryFrequency": {
+    "value": 652.28,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "pulse": 4.43,
+  "phaseDegrees": 286.27,
+  "spectrum": "Void-Silver",
+  "resonanceClass": "ECHO",
+  "glyphSeed": "256542f69867ce4b78dcfabacf9d355cc5d37877b4b6a535ceace30c1b70cff1"
+}

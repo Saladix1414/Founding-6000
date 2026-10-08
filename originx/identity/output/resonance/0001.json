@@ -1,0 +1,26 @@
+{
+  "tokenId": 1,
+  "serial": "#0001",
+  "dragonName": "Vaerkaion",
+  "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
+  "generationVersion": "OX-GEN-1",
+  "dnaHash": "9402ff0d1d8f692c339069115eef26531ca73856e5123d0579168cfbaaca3f4e",
+  "resonanceVersion": "OX-RESONANCE-1",
+  "resonanceId": "RX-42C5C1E2F340",
+  "resonanceSignature": "42c5c1e2f3402091055b07f26385cdc354f929b57e06889f36e8e8a64baeb476",
+  "primaryFrequency": {
+    "value": 379.79,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "secondaryFrequency": {
+    "value": 923.71,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "pulse": 1.23,
+  "phaseDegrees": 139.95,
+  "spectrum": "Crimson-Graphite",
+  "resonanceClass": "RELIC",
+  "glyphSeed": "247ac62fb4dc003bc8732f4d32440137368c48ba474d8c2c98073bd6accb364d"
+}

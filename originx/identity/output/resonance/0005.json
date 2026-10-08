@@ -1,0 +1,26 @@
+{
+  "tokenId": 5,
+  "serial": "#0005",
+  "dragonName": "Vaerkaar",
+  "displayName": "Vaerkaar — Serpent of the Obsidian Spires",
+  "generationVersion": "OX-GEN-1",
+  "dnaHash": "d6a9b43d565cad6bbe43b78a4fdaa44f4dc39186abdd77b8a1dbf85db3c8d551",
+  "resonanceVersion": "OX-RESONANCE-1",
+  "resonanceId": "RX-94CC2681530F",
+  "resonanceSignature": "94cc2681530f17ab0866bd5e286286f0f619c9fb68ac96a2614620bc71605022",
+  "primaryFrequency": {
+    "value": 632.6,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "secondaryFrequency": {
+    "value": 429.99,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "pulse": 1.36,
+  "phaseDegrees": 56.79,
+  "spectrum": "Crimson-Graphite",
+  "resonanceClass": "CATALYST",
+  "glyphSeed": "1b7d123cd78c4da37c955781353ac7cee15ba0b5250702f3efed775e27edc032"
+}

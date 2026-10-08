@@ -1,0 +1,26 @@
+{
+  "tokenId": 3,
+  "serial": "#0003",
+  "dragonName": "Vaerkaor",
+  "displayName": "Vaerkaor — Serpent of the Black Cathedral District",
+  "generationVersion": "OX-GEN-1",
+  "dnaHash": "6ed04b60b16fcc2d3331457b8772b206e74673f794ccc74d9d35b3a7e2931885",
+  "resonanceVersion": "OX-RESONANCE-1",
+  "resonanceId": "RX-F106FBEBAB83",
+  "resonanceSignature": "f106fbebab838f318aa41b89f40d50c4d92bd4fb39d9a278411c0a04972c4fe9",
+  "primaryFrequency": {
+    "value": 916.85,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "secondaryFrequency": {
+    "value": 702.61,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "pulse": 6.96,
+  "phaseDegrees": 343.2,
+  "spectrum": "Basalt-Violet",
+  "resonanceClass": "CATALYST",
+  "glyphSeed": "0847db711db6a08674ec3b877270827d391b3e9cef93d133cb2112a124501608"
+}

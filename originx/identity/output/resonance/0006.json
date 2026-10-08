@@ -1,0 +1,26 @@
+{
+  "tokenId": 6,
+  "serial": "#0006",
+  "dragonName": "Vaerkaeth",
+  "displayName": "Vaerkaeth — Wyrm of the Black Cathedral District",
+  "generationVersion": "OX-GEN-1",
+  "dnaHash": "c5b668fe3aff0fc1d0e5b774d68694352ca22d8a098081e010e35cd1562c7026",
+  "resonanceVersion": "OX-RESONANCE-1",
+  "resonanceId": "RX-029FCCCEF6BB",
+  "resonanceSignature": "029fcccef6bb8d1d5614298129ab6f760daae54c14c7710282db138ab0bbd897",
+  "primaryFrequency": {
+    "value": 182.09,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "secondaryFrequency": {
+    "value": 934.44,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "pulse": 4.7,
+  "phaseDegrees": 58.6,
+  "spectrum": "Moonstone-Blue",
+  "resonanceClass": "ASCENDANT",
+  "glyphSeed": "b0afaf79815a8f18463c7f63d3e22b098393f2af3ecca1f0f2b7eebdc19eedbf"
+}

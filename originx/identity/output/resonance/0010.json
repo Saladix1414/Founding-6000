@@ -1,0 +1,26 @@
+{
+  "tokenId": 10,
+  "serial": "#0010",
+  "dragonName": "Vaerkaum",
+  "displayName": "Vaerkaum — Serpent of the Iron Basilica",
+  "generationVersion": "OX-GEN-1",
+  "dnaHash": "a94ae2a49505b113c6a1b84076c02e54c6cb61a7e481327cf74360217c84f215",
+  "resonanceVersion": "OX-RESONANCE-1",
+  "resonanceId": "RX-6AAC91F6E5D5",
+  "resonanceSignature": "6aac91f6e5d526e1f21653ffe1588efde8402856026c9d53a94b17165f0ae301",
+  "primaryFrequency": {
+    "value": 502.77,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "secondaryFrequency": {
+    "value": 882.35,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "pulse": 11.4,
+  "phaseDegrees": 316.89,
+  "spectrum": "Obsidian-Cyan",
+  "resonanceClass": "VEIL",
+  "glyphSeed": "d6fee98692e529566da4913b1d7f355fe6c9d095d2027de97437636ba296f574"
+}

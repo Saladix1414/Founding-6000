@@ -1,0 +1,26 @@
+{
+  "tokenId": 8,
+  "serial": "#0008",
+  "dragonName": "Vaerkais",
+  "displayName": "Vaerkais — Ravager of the Ruined Megalith Ward",
+  "generationVersion": "OX-GEN-1",
+  "dnaHash": "a9a705927cf3deb0b031a2c919b7ad7fb42d2793154d6ae9d69295bdd60ca75e",
+  "resonanceVersion": "OX-RESONANCE-1",
+  "resonanceId": "RX-39BB2C092DB1",
+  "resonanceSignature": "39bb2c092db163c37e51a58ea83d61d20159398b29f4f880fbd70cd6f357bb46",
+  "primaryFrequency": {
+    "value": 351.93,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "secondaryFrequency": {
+    "value": 314.83,
+    "unit": "Hz",
+    "meaning": "artistic deterministic representation"
+  },
+  "pulse": 6.43,
+  "phaseDegrees": 236.59,
+  "spectrum": "Crimson-Graphite",
+  "resonanceClass": "CATALYST",
+  "glyphSeed": "665acefbd052fbe34ff26d8f50044923343dcb893f8826703e87a94ccb921bd1"
+}
