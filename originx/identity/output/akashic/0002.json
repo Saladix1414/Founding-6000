@@ -1,0 +1,60 @@
+{
+  "akashicVersion": "OX-AKASHIC-1",
+  "displayName": "Vaerkaath — Ravager of the Obsidian Spires",
+  "dragonName": "Vaerkaath",
+  "eventCount": 3,
+  "events": [
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "83ad9e5496519fdbcab5b89f1c71a2d70107a73009fce3438b049352371569b3",
+      "eventType": "DNA_FORGED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkaath — Ravager of the Obsidian Spires",
+        "dnaHash": "fdfae087aa26e617328af8b617b934ee468da457c183be419e12e781941b785a",
+        "dragonName": "Vaerkaath",
+        "generationTheme": "Primitive Origin",
+        "generationVersion": "OX-GEN-1",
+        "serial": "#0002",
+        "tier": "RARE"
+      },
+      "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "sequence": 1,
+      "tokenId": 2
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "c390131376464b16c6b791aabd29e037bc2d12cbe9e70632e2d0c5bfe128ce97",
+      "eventType": "NAME_ASSIGNED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkaath — Ravager of the Obsidian Spires",
+        "dragonName": "Vaerkaath",
+        "dragonTitle": "Ravager of the Obsidian Spires"
+      },
+      "previousEventHash": "83ad9e5496519fdbcab5b89f1c71a2d70107a73009fce3438b049352371569b3",
+      "sequence": 2,
+      "tokenId": 2
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "33d7c33a476dee99d31e8d6d8bba3f0243c4609f9b131fe32b9b0cb45f1285e0",
+      "eventType": "RESONANCE_CREATED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphSeed": "10eb2a02e982efdc97cd91b5d7aadfcd3bdf9163f169b1f692d453228b4e4cb5",
+        "resonanceClass": "CATALYST",
+        "resonanceId": "RX-E2B359EDAA75",
+        "resonanceSignature": "e2b359edaa75f3e4142743225af08522e0807a9b4de767b624ce767ff8a65f63",
+        "spectrum": "Obsidian-Cyan"
+      },
+      "previousEventHash": "c390131376464b16c6b791aabd29e037bc2d12cbe9e70632e2d0c5bfe128ce97",
+      "sequence": 3,
+      "tokenId": 2
+    }
+  ],
+  "firstEventHash": "83ad9e5496519fdbcab5b89f1c71a2d70107a73009fce3438b049352371569b3",
+  "latestEventHash": "33d7c33a476dee99d31e8d6d8bba3f0243c4609f9b131fe32b9b0cb45f1285e0",
+  "serial": "#0002",
+  "tokenId": 2
+}

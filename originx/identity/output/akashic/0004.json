@@ -1,0 +1,60 @@
+{
+  "akashicVersion": "OX-AKASHIC-1",
+  "displayName": "Vaerkayx — Wyvern of the Ancient Citadel",
+  "dragonName": "Vaerkayx",
+  "eventCount": 3,
+  "events": [
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "234484b64e8aa5020706af95982438e76c28036d89b3297317026e8270afe1be",
+      "eventType": "DNA_FORGED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkayx — Wyvern of the Ancient Citadel",
+        "dnaHash": "99c1a712433b5dd7dcbc1b314c60c8ce7a1d3a9131a65592605f0e8e4942505d",
+        "dragonName": "Vaerkayx",
+        "generationTheme": "Primitive Origin",
+        "generationVersion": "OX-GEN-1",
+        "serial": "#0004",
+        "tier": "RARE"
+      },
+      "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "sequence": 1,
+      "tokenId": 4
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "1d014121c7e111a807643c989d86e7cfca670311413303bee6d7b900d6d5c2f1",
+      "eventType": "NAME_ASSIGNED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkayx — Wyvern of the Ancient Citadel",
+        "dragonName": "Vaerkayx",
+        "dragonTitle": "Wyvern of the Ancient Citadel"
+      },
+      "previousEventHash": "234484b64e8aa5020706af95982438e76c28036d89b3297317026e8270afe1be",
+      "sequence": 2,
+      "tokenId": 4
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "a8fb61860b517b6e2c92fc2817a740b097867b2a33d5015eba4613a2f4629faf",
+      "eventType": "RESONANCE_CREATED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphSeed": "219ac9da1f1b1588016ed06654b5edea21bd7f19291eb99749bf0884e97fe68c",
+        "resonanceClass": "ECHO",
+        "resonanceId": "RX-8910F7C7A7F4",
+        "resonanceSignature": "8910f7c7a7f4b7f8cda23efebf304028ff163f8293eb632a1db4fed35e5f9cd0",
+        "spectrum": "Ancient-Gold"
+      },
+      "previousEventHash": "1d014121c7e111a807643c989d86e7cfca670311413303bee6d7b900d6d5c2f1",
+      "sequence": 3,
+      "tokenId": 4
+    }
+  ],
+  "firstEventHash": "234484b64e8aa5020706af95982438e76c28036d89b3297317026e8270afe1be",
+  "latestEventHash": "a8fb61860b517b6e2c92fc2817a740b097867b2a33d5015eba4613a2f4629faf",
+  "serial": "#0004",
+  "tokenId": 4
+}

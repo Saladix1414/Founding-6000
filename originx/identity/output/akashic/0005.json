@@ -1,0 +1,60 @@
+{
+  "akashicVersion": "OX-AKASHIC-1",
+  "displayName": "Vaerkaar — Serpent of the Obsidian Spires",
+  "dragonName": "Vaerkaar",
+  "eventCount": 3,
+  "events": [
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "3dd47f05e2be0e4e20dc80b0f6e854b6c73c486c064aa256de8021bb97adeb26",
+      "eventType": "DNA_FORGED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkaar — Serpent of the Obsidian Spires",
+        "dnaHash": "d6a9b43d565cad6bbe43b78a4fdaa44f4dc39186abdd77b8a1dbf85db3c8d551",
+        "dragonName": "Vaerkaar",
+        "generationTheme": "Primitive Origin",
+        "generationVersion": "OX-GEN-1",
+        "serial": "#0005",
+        "tier": "RARE"
+      },
+      "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "sequence": 1,
+      "tokenId": 5
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "284ae164039031940081d42e14fe337467212898356eee558ec9d583f9218dab",
+      "eventType": "NAME_ASSIGNED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkaar — Serpent of the Obsidian Spires",
+        "dragonName": "Vaerkaar",
+        "dragonTitle": "Serpent of the Obsidian Spires"
+      },
+      "previousEventHash": "3dd47f05e2be0e4e20dc80b0f6e854b6c73c486c064aa256de8021bb97adeb26",
+      "sequence": 2,
+      "tokenId": 5
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "93184b946c352cb5424b6fab760bb78ba08e8ced30b7f84358a839b85d019888",
+      "eventType": "RESONANCE_CREATED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphSeed": "1b7d123cd78c4da37c955781353ac7cee15ba0b5250702f3efed775e27edc032",
+        "resonanceClass": "CATALYST",
+        "resonanceId": "RX-94CC2681530F",
+        "resonanceSignature": "94cc2681530f17ab0866bd5e286286f0f619c9fb68ac96a2614620bc71605022",
+        "spectrum": "Crimson-Graphite"
+      },
+      "previousEventHash": "284ae164039031940081d42e14fe337467212898356eee558ec9d583f9218dab",
+      "sequence": 3,
+      "tokenId": 5
+    }
+  ],
+  "firstEventHash": "3dd47f05e2be0e4e20dc80b0f6e854b6c73c486c064aa256de8021bb97adeb26",
+  "latestEventHash": "93184b946c352cb5424b6fab760bb78ba08e8ced30b7f84358a839b85d019888",
+  "serial": "#0005",
+  "tokenId": 5
+}

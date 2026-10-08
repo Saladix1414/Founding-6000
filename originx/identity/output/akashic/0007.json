@@ -1,0 +1,60 @@
+{
+  "akashicVersion": "OX-AKASHIC-1",
+  "displayName": "Vaerkaon — Serpent of the Iron Basilica",
+  "dragonName": "Vaerkaon",
+  "eventCount": 3,
+  "events": [
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "b4ee163cf596edc40e389a0891cbb09aa345cff64dc006c473234d93f461b8a3",
+      "eventType": "DNA_FORGED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkaon — Serpent of the Iron Basilica",
+        "dnaHash": "7f02b008b8dfab71cbebcf27c8caf4d706783a8bfac15fd19a2e975bf21eb642",
+        "dragonName": "Vaerkaon",
+        "generationTheme": "Primitive Origin",
+        "generationVersion": "OX-GEN-1",
+        "serial": "#0007",
+        "tier": "RARE"
+      },
+      "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "sequence": 1,
+      "tokenId": 7
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "d03e8954144cbd167caeaa8150daba3a86aa0a1f4d6b49b76ac3520f69bef270",
+      "eventType": "NAME_ASSIGNED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkaon — Serpent of the Iron Basilica",
+        "dragonName": "Vaerkaon",
+        "dragonTitle": "Serpent of the Iron Basilica"
+      },
+      "previousEventHash": "b4ee163cf596edc40e389a0891cbb09aa345cff64dc006c473234d93f461b8a3",
+      "sequence": 2,
+      "tokenId": 7
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "74f256e2d6d0859155c6bcc9e2f3b1a7b3f635c90c8923145c4082f08ab351bc",
+      "eventType": "RESONANCE_CREATED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphSeed": "0987babe75e26e125f4a11647691f84c34d3ad9097185cfb5741dafc630e3da0",
+        "resonanceClass": "VEIL",
+        "resonanceId": "RX-62D00EF7E6DC",
+        "resonanceSignature": "62d00ef7e6dc081cb8441ff53948e148c8923ceefd5013c31836cc24a2d525cc",
+        "spectrum": "Moonstone-Blue"
+      },
+      "previousEventHash": "d03e8954144cbd167caeaa8150daba3a86aa0a1f4d6b49b76ac3520f69bef270",
+      "sequence": 3,
+      "tokenId": 7
+    }
+  ],
+  "firstEventHash": "b4ee163cf596edc40e389a0891cbb09aa345cff64dc006c473234d93f461b8a3",
+  "latestEventHash": "74f256e2d6d0859155c6bcc9e2f3b1a7b3f635c90c8923145c4082f08ab351bc",
+  "serial": "#0007",
+  "tokenId": 7
+}

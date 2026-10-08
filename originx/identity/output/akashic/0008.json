@@ -1,0 +1,60 @@
+{
+  "akashicVersion": "OX-AKASHIC-1",
+  "displayName": "Vaerkais — Ravager of the Ruined Megalith Ward",
+  "dragonName": "Vaerkais",
+  "eventCount": 3,
+  "events": [
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "972dbccee80d83ba8c6c482dc714fa166304922fc2343cba547fc70b269e4546",
+      "eventType": "DNA_FORGED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkais — Ravager of the Ruined Megalith Ward",
+        "dnaHash": "a9a705927cf3deb0b031a2c919b7ad7fb42d2793154d6ae9d69295bdd60ca75e",
+        "dragonName": "Vaerkais",
+        "generationTheme": "Primitive Origin",
+        "generationVersion": "OX-GEN-1",
+        "serial": "#0008",
+        "tier": "RARE"
+      },
+      "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "sequence": 1,
+      "tokenId": 8
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "44607461f45e83ae1877458183acfde9c35c37deaa1132619501c105003367fe",
+      "eventType": "NAME_ASSIGNED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkais — Ravager of the Ruined Megalith Ward",
+        "dragonName": "Vaerkais",
+        "dragonTitle": "Ravager of the Ruined Megalith Ward"
+      },
+      "previousEventHash": "972dbccee80d83ba8c6c482dc714fa166304922fc2343cba547fc70b269e4546",
+      "sequence": 2,
+      "tokenId": 8
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "642595ce1c80286330fe8acf5aaffee1e1d592c906d7e8bf2ed5cfbb009f80f1",
+      "eventType": "RESONANCE_CREATED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphSeed": "665acefbd052fbe34ff26d8f50044923343dcb893f8826703e87a94ccb921bd1",
+        "resonanceClass": "CATALYST",
+        "resonanceId": "RX-39BB2C092DB1",
+        "resonanceSignature": "39bb2c092db163c37e51a58ea83d61d20159398b29f4f880fbd70cd6f357bb46",
+        "spectrum": "Crimson-Graphite"
+      },
+      "previousEventHash": "44607461f45e83ae1877458183acfde9c35c37deaa1132619501c105003367fe",
+      "sequence": 3,
+      "tokenId": 8
+    }
+  ],
+  "firstEventHash": "972dbccee80d83ba8c6c482dc714fa166304922fc2343cba547fc70b269e4546",
+  "latestEventHash": "642595ce1c80286330fe8acf5aaffee1e1d592c906d7e8bf2ed5cfbb009f80f1",
+  "serial": "#0008",
+  "tokenId": 8
+}

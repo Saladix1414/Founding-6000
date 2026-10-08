@@ -1,0 +1,60 @@
+{
+  "akashicVersion": "OX-AKASHIC-1",
+  "displayName": "Vaerkaor — Serpent of the Black Cathedral District",
+  "dragonName": "Vaerkaor",
+  "eventCount": 3,
+  "events": [
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "6f2a5882ea3366fe7c24027753fe335d6c5b4a0e3fb7b7c7f00d784c1456c3cc",
+      "eventType": "DNA_FORGED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkaor — Serpent of the Black Cathedral District",
+        "dnaHash": "6ed04b60b16fcc2d3331457b8772b206e74673f794ccc74d9d35b3a7e2931885",
+        "dragonName": "Vaerkaor",
+        "generationTheme": "Primitive Origin",
+        "generationVersion": "OX-GEN-1",
+        "serial": "#0003",
+        "tier": "RARE"
+      },
+      "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "sequence": 1,
+      "tokenId": 3
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "51bfcf1511e51d0f56670af600ea112389c3b58fcfb6f518ee7c5652b1fb0224",
+      "eventType": "NAME_ASSIGNED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkaor — Serpent of the Black Cathedral District",
+        "dragonName": "Vaerkaor",
+        "dragonTitle": "Serpent of the Black Cathedral District"
+      },
+      "previousEventHash": "6f2a5882ea3366fe7c24027753fe335d6c5b4a0e3fb7b7c7f00d784c1456c3cc",
+      "sequence": 2,
+      "tokenId": 3
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "598ce77ae3bd1ab5fac2ea24298d84c4e85bbf6d2a0488ae2ad737b27b5c2441",
+      "eventType": "RESONANCE_CREATED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphSeed": "0847db711db6a08674ec3b877270827d391b3e9cef93d133cb2112a124501608",
+        "resonanceClass": "CATALYST",
+        "resonanceId": "RX-F106FBEBAB83",
+        "resonanceSignature": "f106fbebab838f318aa41b89f40d50c4d92bd4fb39d9a278411c0a04972c4fe9",
+        "spectrum": "Basalt-Violet"
+      },
+      "previousEventHash": "51bfcf1511e51d0f56670af600ea112389c3b58fcfb6f518ee7c5652b1fb0224",
+      "sequence": 3,
+      "tokenId": 3
+    }
+  ],
+  "firstEventHash": "6f2a5882ea3366fe7c24027753fe335d6c5b4a0e3fb7b7c7f00d784c1456c3cc",
+  "latestEventHash": "598ce77ae3bd1ab5fac2ea24298d84c4e85bbf6d2a0488ae2ad737b27b5c2441",
+  "serial": "#0003",
+  "tokenId": 3
+}

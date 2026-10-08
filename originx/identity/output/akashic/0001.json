@@ -1,0 +1,73 @@
+{
+  "akashicVersion": "OX-AKASHIC-1",
+  "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
+  "dragonName": "Vaerkaion",
+  "eventCount": 4,
+  "events": [
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "f7a4b00ddf4e75f208f08757af7c6bbdea52a02471b7321d4ef1513f152032e6",
+      "eventType": "DNA_FORGED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
+        "dnaHash": "9402ff0d1d8f692c339069115eef26531ca73856e5123d0579168cfbaaca3f4e",
+        "dragonName": "Vaerkaion",
+        "generationTheme": "Primitive Origin",
+        "generationVersion": "OX-GEN-1",
+        "serial": "#0001",
+        "tier": "RARE"
+      },
+      "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "sequence": 1,
+      "tokenId": 1
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "8538d467a204c8be303f6456a85ab2445df33ae2b1555afb7b3971e4859f407c",
+      "eventType": "NAME_ASSIGNED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
+        "dragonName": "Vaerkaion",
+        "dragonTitle": "Ravager of the Obsidian Spires"
+      },
+      "previousEventHash": "f7a4b00ddf4e75f208f08757af7c6bbdea52a02471b7321d4ef1513f152032e6",
+      "sequence": 2,
+      "tokenId": 1
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "8133ed050e1d767aceca8c537b9dc980565a1000c1f0f63d45c87e93822288f5",
+      "eventType": "RESONANCE_CREATED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphSeed": "247ac62fb4dc003bc8732f4d32440137368c48ba474d8c2c98073bd6accb364d",
+        "resonanceClass": "RELIC",
+        "resonanceId": "RX-42C5C1E2F340",
+        "resonanceSignature": "42c5c1e2f3402091055b07f26385cdc354f929b57e06889f36e8e8a64baeb476",
+        "spectrum": "Crimson-Graphite"
+      },
+      "previousEventHash": "8538d467a204c8be303f6456a85ab2445df33ae2b1555afb7b3971e4859f407c",
+      "sequence": 3,
+      "tokenId": 1
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "c43a9f3b1ec9fef7d6c77919ad647be236282d8cf69b19f81fc97ed52bb6dc2c",
+      "eventType": "VISUAL_MANIFESTED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "artDirectionVersion": "OX-ART-1",
+        "mediaHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "previousEventHash": "8133ed050e1d767aceca8c537b9dc980565a1000c1f0f63d45c87e93822288f5",
+      "sequence": 4,
+      "tokenId": 1
+    }
+  ],
+  "firstEventHash": "f7a4b00ddf4e75f208f08757af7c6bbdea52a02471b7321d4ef1513f152032e6",
+  "latestEventHash": "c43a9f3b1ec9fef7d6c77919ad647be236282d8cf69b19f81fc97ed52bb6dc2c",
+  "serial": "#0001",
+  "tokenId": 1
+}

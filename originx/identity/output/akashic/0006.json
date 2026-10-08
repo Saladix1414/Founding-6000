@@ -1,0 +1,60 @@
+{
+  "akashicVersion": "OX-AKASHIC-1",
+  "displayName": "Vaerkaeth — Wyrm of the Black Cathedral District",
+  "dragonName": "Vaerkaeth",
+  "eventCount": 3,
+  "events": [
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "1b2649a64bffb7b7d0e7975fdb07d9512c28ab28e8c675a981cafa91a8bfe71e",
+      "eventType": "DNA_FORGED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkaeth — Wyrm of the Black Cathedral District",
+        "dnaHash": "c5b668fe3aff0fc1d0e5b774d68694352ca22d8a098081e010e35cd1562c7026",
+        "dragonName": "Vaerkaeth",
+        "generationTheme": "Primitive Origin",
+        "generationVersion": "OX-GEN-1",
+        "serial": "#0006",
+        "tier": "RARE"
+      },
+      "previousEventHash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "sequence": 1,
+      "tokenId": 6
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "73882f6b3c73e20bd141083c81ef0d07a3bfd9bd089ab3c55a55c7a7d3db7f8b",
+      "eventType": "NAME_ASSIGNED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "displayName": "Vaerkaeth — Wyrm of the Black Cathedral District",
+        "dragonName": "Vaerkaeth",
+        "dragonTitle": "Wyrm of the Black Cathedral District"
+      },
+      "previousEventHash": "1b2649a64bffb7b7d0e7975fdb07d9512c28ab28e8c675a981cafa91a8bfe71e",
+      "sequence": 2,
+      "tokenId": 6
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "79f04edc46ffe017c1331f2d9d08f8b14c5de41597a845f17d5e43a43ee67609",
+      "eventType": "RESONANCE_CREATED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphSeed": "b0afaf79815a8f18463c7f63d3e22b098393f2af3ecca1f0f2b7eebdc19eedbf",
+        "resonanceClass": "ASCENDANT",
+        "resonanceId": "RX-029FCCCEF6BB",
+        "resonanceSignature": "029fcccef6bb8d1d5614298129ab6f760daae54c14c7710282db138ab0bbd897",
+        "spectrum": "Moonstone-Blue"
+      },
+      "previousEventHash": "73882f6b3c73e20bd141083c81ef0d07a3bfd9bd089ab3c55a55c7a7d3db7f8b",
+      "sequence": 3,
+      "tokenId": 6
+    }
+  ],
+  "firstEventHash": "1b2649a64bffb7b7d0e7975fdb07d9512c28ab28e8c675a981cafa91a8bfe71e",
+  "latestEventHash": "79f04edc46ffe017c1331f2d9d08f8b14c5de41597a845f17d5e43a43ee67609",
+  "serial": "#0006",
+  "tokenId": 6
+}
