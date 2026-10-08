@@ -1,0 +1,23 @@
+{
+  "displayName": "Vaerkaek — Wyrm of the Ancient Citadel",
+  "dragonName": "Vaerkaek",
+  "geometry": {
+    "innerRadius": 157,
+    "lineWeight": 3.61,
+    "nodeRadius": 12,
+    "outerRadius": 421,
+    "phaseOffsetDegrees": 139.539,
+    "ringCount": 4,
+    "rotationDegrees": 236.655,
+    "spokeCount": 11
+  },
+  "glyphSeed": "256542f69867ce4b78dcfabacf9d355cc5d37877b4b6a535ceace30c1b70cff1",
+  "glyphVersion": "OX-RESONANCE-GLYPH-1",
+  "manifestHash": "25e72dfac9d68ae041ed01722d286fe602a90fd8a0cfe68d816461b20b2cefcf",
+  "resonanceId": "RX-9FFEA8499B2F",
+  "resonanceSignature": "9ffea8499b2f451b4fd7633acb92ae8a9b9de25aeea50c486d393d2951c0030c",
+  "serial": "#0009",
+  "svgFile": "glyphs/0009.svg",
+  "svgHash": "71b7b4de5dc73a0c7f7f2d49f8629c73822c74bbe90703a9af5e3fa67e8c7c9e",
+  "tokenId": 9
+}

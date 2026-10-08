@@ -1,0 +1,23 @@
+{
+  "displayName": "Vaerkaar — Serpent of the Obsidian Spires",
+  "dragonName": "Vaerkaar",
+  "geometry": {
+    "innerRadius": 143,
+    "lineWeight": 2.5,
+    "nodeRadius": 5,
+    "outerRadius": 404,
+    "phaseOffsetDegrees": 266.302,
+    "ringCount": 2,
+    "rotationDegrees": 54.147,
+    "spokeCount": 7
+  },
+  "glyphSeed": "1b7d123cd78c4da37c955781353ac7cee15ba0b5250702f3efed775e27edc032",
+  "glyphVersion": "OX-RESONANCE-GLYPH-1",
+  "manifestHash": "0b3b4f19456b445a588837bdb58359c27004445b607c075b9f25031216db0238",
+  "resonanceId": "RX-94CC2681530F",
+  "resonanceSignature": "94cc2681530f17ab0866bd5e286286f0f619c9fb68ac96a2614620bc71605022",
+  "serial": "#0005",
+  "svgFile": "glyphs/0005.svg",
+  "svgHash": "29e8b0d39eaf9937c2724d1e8ce5c076a14c10c82dbe34e2a887f1982c254e79",
+  "tokenId": 5
+}

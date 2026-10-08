@@ -1,0 +1,23 @@
+{
+  "displayName": "Vaerkaeth — Wyrm of the Black Cathedral District",
+  "dragonName": "Vaerkaeth",
+  "geometry": {
+    "innerRadius": 118,
+    "lineWeight": 1.7,
+    "nodeRadius": 11,
+    "outerRadius": 340,
+    "phaseOffsetDegrees": 58.366,
+    "ringCount": 5,
+    "rotationDegrees": 288.011,
+    "spokeCount": 8
+  },
+  "glyphSeed": "b0afaf79815a8f18463c7f63d3e22b098393f2af3ecca1f0f2b7eebdc19eedbf",
+  "glyphVersion": "OX-RESONANCE-GLYPH-1",
+  "manifestHash": "06f6b72078d3d697dcbea623db1cd88f88d5120b4154e77f161e9aacb3917cd7",
+  "resonanceId": "RX-029FCCCEF6BB",
+  "resonanceSignature": "029fcccef6bb8d1d5614298129ab6f760daae54c14c7710282db138ab0bbd897",
+  "serial": "#0006",
+  "svgFile": "glyphs/0006.svg",
+  "svgHash": "16a948a1fd8bf9b90ea51fba8d381c08094e0deef24b9513098399d3393cea23",
+  "tokenId": 6
+}

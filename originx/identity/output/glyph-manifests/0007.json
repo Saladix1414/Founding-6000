@@ -1,0 +1,23 @@
+{
+  "displayName": "Vaerkaon — Serpent of the Iron Basilica",
+  "dragonName": "Vaerkaon",
+  "geometry": {
+    "innerRadius": 105,
+    "lineWeight": 2.17,
+    "nodeRadius": 5,
+    "outerRadius": 331,
+    "phaseOffsetDegrees": 44.94,
+    "ringCount": 2,
+    "rotationDegrees": 21.045,
+    "spokeCount": 6
+  },
+  "glyphSeed": "0987babe75e26e125f4a11647691f84c34d3ad9097185cfb5741dafc630e3da0",
+  "glyphVersion": "OX-RESONANCE-GLYPH-1",
+  "manifestHash": "9c1b802f1c47ce95dc4a77df5ce11fb8527f2acc5b980d4d38334a6535f0ee5b",
+  "resonanceId": "RX-62D00EF7E6DC",
+  "resonanceSignature": "62d00ef7e6dc081cb8441ff53948e148c8923ceefd5013c31836cc24a2d525cc",
+  "serial": "#0007",
+  "svgFile": "glyphs/0007.svg",
+  "svgHash": "9371d4603665935837f816e6dc6ab3eb9b874de4a73aaa30f3f19662fea7e68a",
+  "tokenId": 7
+}

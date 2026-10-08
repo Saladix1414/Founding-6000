@@ -1,0 +1,23 @@
+{
+  "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
+  "dragonName": "Vaerkaion",
+  "geometry": {
+    "innerRadius": 127,
+    "lineWeight": 2.39,
+    "nodeRadius": 10,
+    "outerRadius": 382,
+    "phaseOffsetDegrees": 11.173,
+    "ringCount": 3,
+    "rotationDegrees": 272.652,
+    "spokeCount": 9
+  },
+  "glyphSeed": "247ac62fb4dc003bc8732f4d32440137368c48ba474d8c2c98073bd6accb364d",
+  "glyphVersion": "OX-RESONANCE-GLYPH-1",
+  "manifestHash": "b8fb137f70c983e328225523f5b474d5889361d3b4a6314b7de8d6721ead992f",
+  "resonanceId": "RX-42C5C1E2F340",
+  "resonanceSignature": "42c5c1e2f3402091055b07f26385cdc354f929b57e06889f36e8e8a64baeb476",
+  "serial": "#0001",
+  "svgFile": "glyphs/0001.svg",
+  "svgHash": "07d66438b69d8530f038d01b24942f873be2a29c4e514dc04046476d190368b8",
+  "tokenId": 1
+}

@@ -1,0 +1,23 @@
+{
+  "displayName": "Vaerkais — Ravager of the Ruined Megalith Ward",
+  "dragonName": "Vaerkais",
+  "geometry": {
+    "innerRadius": 177,
+    "lineWeight": 2.29,
+    "nodeRadius": 11,
+    "outerRadius": 334,
+    "phaseOffsetDegrees": 232.815,
+    "ringCount": 5,
+    "rotationDegrees": 61.925,
+    "spokeCount": 7
+  },
+  "glyphSeed": "665acefbd052fbe34ff26d8f50044923343dcb893f8826703e87a94ccb921bd1",
+  "glyphVersion": "OX-RESONANCE-GLYPH-1",
+  "manifestHash": "11de6fe936bbd02d1337ae390f8c8914079634f59fb0e64e95f03316aafa92d9",
+  "resonanceId": "RX-39BB2C092DB1",
+  "resonanceSignature": "39bb2c092db163c37e51a58ea83d61d20159398b29f4f880fbd70cd6f357bb46",
+  "serial": "#0008",
+  "svgFile": "glyphs/0008.svg",
+  "svgHash": "13280055b372da88557fe34438e5cce89f4ed038758a360cf04a2e0194a89001",
+  "tokenId": 8
+}

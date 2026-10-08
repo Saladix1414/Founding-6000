@@ -1,0 +1,23 @@
+{
+  "displayName": "Vaerkaum — Serpent of the Iron Basilica",
+  "dragonName": "Vaerkaum",
+  "geometry": {
+    "innerRadius": 142,
+    "lineWeight": 1.72,
+    "nodeRadius": 7,
+    "outerRadius": 388,
+    "phaseOffsetDegrees": 118.121,
+    "ringCount": 2,
+    "rotationDegrees": 205.261,
+    "spokeCount": 7
+  },
+  "glyphSeed": "d6fee98692e529566da4913b1d7f355fe6c9d095d2027de97437636ba296f574",
+  "glyphVersion": "OX-RESONANCE-GLYPH-1",
+  "manifestHash": "4866f8f32311ce2ca3eefcc73d13f6c157ba749c5abde2f6698afac3ee996282",
+  "resonanceId": "RX-6AAC91F6E5D5",
+  "resonanceSignature": "6aac91f6e5d526e1f21653ffe1588efde8402856026c9d53a94b17165f0ae301",
+  "serial": "#0010",
+  "svgFile": "glyphs/0010.svg",
+  "svgHash": "800caca8db31c632c3922b165f07db7d2ff1360416faaf7a35e09b2981e71f2f",
+  "tokenId": 10
+}

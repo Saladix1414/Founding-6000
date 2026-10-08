@@ -1,0 +1,23 @@
+{
+  "displayName": "Vaerkaath — Ravager of the Obsidian Spires",
+  "dragonName": "Vaerkaath",
+  "geometry": {
+    "innerRadius": 167,
+    "lineWeight": 1.88,
+    "nodeRadius": 9,
+    "outerRadius": 431,
+    "phaseOffsetDegrees": 94.407,
+    "ringCount": 5,
+    "rotationDegrees": 126.46,
+    "spokeCount": 8
+  },
+  "glyphSeed": "10eb2a02e982efdc97cd91b5d7aadfcd3bdf9163f169b1f692d453228b4e4cb5",
+  "glyphVersion": "OX-RESONANCE-GLYPH-1",
+  "manifestHash": "594f206f18414d46ddcce71c3a6e96a4412940358662af7b60ab818191626658",
+  "resonanceId": "RX-E2B359EDAA75",
+  "resonanceSignature": "e2b359edaa75f3e4142743225af08522e0807a9b4de767b624ce767ff8a65f63",
+  "serial": "#0002",
+  "svgFile": "glyphs/0002.svg",
+  "svgHash": "823c7162eabbe6a83198ed1cb033657f87a57e08a9766ed0236c9b43e40ebe9c",
+  "tokenId": 2
+}

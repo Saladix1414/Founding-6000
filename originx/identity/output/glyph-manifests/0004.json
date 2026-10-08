@@ -1,0 +1,23 @@
+{
+  "displayName": "Vaerkayx — Wyvern of the Ancient Citadel",
+  "dragonName": "Vaerkayx",
+  "geometry": {
+    "innerRadius": 126,
+    "lineWeight": 3.09,
+    "nodeRadius": 10,
+    "outerRadius": 386,
+    "phaseOffsetDegrees": 88.584,
+    "ringCount": 2,
+    "rotationDegrees": 348.442,
+    "spokeCount": 10
+  },
+  "glyphSeed": "219ac9da1f1b1588016ed06654b5edea21bd7f19291eb99749bf0884e97fe68c",
+  "glyphVersion": "OX-RESONANCE-GLYPH-1",
+  "manifestHash": "781dcb633e16b762a34f9679fd4bad6b6f92f998f6f768a3ea1478ce6930a051",
+  "resonanceId": "RX-8910F7C7A7F4",
+  "resonanceSignature": "8910f7c7a7f4b7f8cda23efebf304028ff163f8293eb632a1db4fed35e5f9cd0",
+  "serial": "#0004",
+  "svgFile": "glyphs/0004.svg",
+  "svgHash": "eac669bddaf956b8436cd7005b5b153f09c35c3aaf746b5efa18c5b16892ecf5",
+  "tokenId": 4
+}

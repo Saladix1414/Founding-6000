@@ -1,0 +1,23 @@
+{
+  "displayName": "Vaerkaor — Serpent of the Black Cathedral District",
+  "dragonName": "Vaerkaor",
+  "geometry": {
+    "innerRadius": 137,
+    "lineWeight": 3.11,
+    "nodeRadius": 7,
+    "outerRadius": 412,
+    "phaseOffsetDegrees": 38.722,
+    "ringCount": 4,
+    "rotationDegrees": 354.265,
+    "spokeCount": 9
+  },
+  "glyphSeed": "0847db711db6a08674ec3b877270827d391b3e9cef93d133cb2112a124501608",
+  "glyphVersion": "OX-RESONANCE-GLYPH-1",
+  "manifestHash": "37b9c4a1e4d08ed4ba53201dd0e8030b23030d2c6dbe9de8ac09a4b702e9b5fe",
+  "resonanceId": "RX-F106FBEBAB83",
+  "resonanceSignature": "f106fbebab838f318aa41b89f40d50c4d92bd4fb39d9a278411c0a04972c4fe9",
+  "serial": "#0003",
+  "svgFile": "glyphs/0003.svg",
+  "svgHash": "170b90e54da29988cc50195d74cfd7a88f947562e6062689e1ed6a7e7bdf2720",
+  "tokenId": 3
+}
