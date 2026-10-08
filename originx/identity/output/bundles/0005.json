@@ -1,11 +1,11 @@
 {
   "akashic": {
     "akashicVersion": "OX-AKASHIC-1",
-    "eventCount": 3,
+    "eventCount": 4,
     "firstEventHash": "3dd47f05e2be0e4e20dc80b0f6e854b6c73c486c064aa256de8021bb97adeb26",
-    "latestEventHash": "93184b946c352cb5424b6fab760bb78ba08e8ced30b7f84358a839b85d019888"
+    "latestEventHash": "1b29ea53547adbe76879d82c38e6fd00d6f4b45e7898fe315b24cf9df7f935e6"
   },
-  "bundleHash": "7836eabb5a0070ff879bab4ac3b0a02db3014170de0914f4a6a658fd0ef7d2d8",
+  "bundleHash": "fbfad7b234d6c94ed9664de8a5542d11ff9b288d3466fd8dabdb96a9828c0933",
   "bundleVersion": "OX-IDENTITY-BUNDLE-1",
   "campaignPhase": "Genesis",
   "displayName": "Vaerkaar — Serpent of the Obsidian Spires",
@@ -63,6 +63,23 @@
       "value": 429.99
     },
     "spectrum": "Crimson-Graphite"
+  },
+  "resonanceGlyph": {
+    "geometry": {
+      "innerRadius": 143,
+      "lineWeight": 2.5,
+      "nodeRadius": 5,
+      "outerRadius": 404,
+      "phaseOffsetDegrees": 266.302,
+      "ringCount": 2,
+      "rotationDegrees": 54.147,
+      "spokeCount": 7
+    },
+    "glyphVersion": "OX-RESONANCE-GLYPH-1",
+    "manifestHash": "0b3b4f19456b445a588837bdb58359c27004445b607c075b9f25031216db0238",
+    "resonanceId": "RX-94CC2681530F",
+    "svgFile": "glyphs/0005.svg",
+    "svgHash": "29e8b0d39eaf9937c2724d1e8ce5c076a14c10c82dbe34e2a887f1982c254e79"
   },
   "serial": "#0005",
   "tier": "RARE",

@@ -1,11 +1,11 @@
 {
   "akashic": {
     "akashicVersion": "OX-AKASHIC-1",
-    "eventCount": 3,
+    "eventCount": 4,
     "firstEventHash": "1b2649a64bffb7b7d0e7975fdb07d9512c28ab28e8c675a981cafa91a8bfe71e",
-    "latestEventHash": "79f04edc46ffe017c1331f2d9d08f8b14c5de41597a845f17d5e43a43ee67609"
+    "latestEventHash": "f39b363109dd8a53d31811626e99d42c69821cb8a13f083f98d25096229eac06"
   },
-  "bundleHash": "1b4e688beadb8b69aa045b97cfada43835470cf0ba7abe48ed43b8d11d8d7938",
+  "bundleHash": "6cefc97179076b78eff897260a2bbec44c0d755bed462d62d6fe2dd2173fd52b",
   "bundleVersion": "OX-IDENTITY-BUNDLE-1",
   "campaignPhase": "Genesis",
   "displayName": "Vaerkaeth — Wyrm of the Black Cathedral District",
@@ -63,6 +63,23 @@
       "value": 934.44
     },
     "spectrum": "Moonstone-Blue"
+  },
+  "resonanceGlyph": {
+    "geometry": {
+      "innerRadius": 118,
+      "lineWeight": 1.7,
+      "nodeRadius": 11,
+      "outerRadius": 340,
+      "phaseOffsetDegrees": 58.366,
+      "ringCount": 5,
+      "rotationDegrees": 288.011,
+      "spokeCount": 8
+    },
+    "glyphVersion": "OX-RESONANCE-GLYPH-1",
+    "manifestHash": "06f6b72078d3d697dcbea623db1cd88f88d5120b4154e77f161e9aacb3917cd7",
+    "resonanceId": "RX-029FCCCEF6BB",
+    "svgFile": "glyphs/0006.svg",
+    "svgHash": "16a948a1fd8bf9b90ea51fba8d381c08094e0deef24b9513098399d3393cea23"
   },
   "serial": "#0006",
   "tier": "RARE",

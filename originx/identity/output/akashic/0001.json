@@ -2,7 +2,7 @@
   "akashicVersion": "OX-AKASHIC-1",
   "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
   "dragonName": "Vaerkaion",
-  "eventCount": 4,
+  "eventCount": 5,
   "events": [
     {
       "akashicVersion": "OX-AKASHIC-1",
@@ -64,10 +64,25 @@
       "previousEventHash": "8133ed050e1d767aceca8c537b9dc980565a1000c1f0f63d45c87e93822288f5",
       "sequence": 4,
       "tokenId": 1
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "2b60d9190123c8c76a11940654877f0d44072a0e74d5ea8655f7f31faec0a108",
+      "eventType": "RESONANCE_GLYPH_MANIFESTED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphVersion": "OX-RESONANCE-GLYPH-1",
+        "manifestHash": "b8fb137f70c983e328225523f5b474d5889361d3b4a6314b7de8d6721ead992f",
+        "resonanceId": "RX-42C5C1E2F340",
+        "svgHash": "07d66438b69d8530f038d01b24942f873be2a29c4e514dc04046476d190368b8"
+      },
+      "previousEventHash": "c43a9f3b1ec9fef7d6c77919ad647be236282d8cf69b19f81fc97ed52bb6dc2c",
+      "sequence": 5,
+      "tokenId": 1
     }
   ],
   "firstEventHash": "f7a4b00ddf4e75f208f08757af7c6bbdea52a02471b7321d4ef1513f152032e6",
-  "latestEventHash": "c43a9f3b1ec9fef7d6c77919ad647be236282d8cf69b19f81fc97ed52bb6dc2c",
+  "latestEventHash": "2b60d9190123c8c76a11940654877f0d44072a0e74d5ea8655f7f31faec0a108",
   "serial": "#0001",
   "tokenId": 1
 }

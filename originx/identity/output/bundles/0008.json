@@ -1,11 +1,11 @@
 {
   "akashic": {
     "akashicVersion": "OX-AKASHIC-1",
-    "eventCount": 3,
+    "eventCount": 4,
     "firstEventHash": "972dbccee80d83ba8c6c482dc714fa166304922fc2343cba547fc70b269e4546",
-    "latestEventHash": "642595ce1c80286330fe8acf5aaffee1e1d592c906d7e8bf2ed5cfbb009f80f1"
+    "latestEventHash": "1884776292745fa905e54689be365af25f6afa0b028aba4dc7f84c566c5bc5f8"
   },
-  "bundleHash": "ca501f9c153351528687049eac9056053c3cbbc583b4b695dee9f88fc4a357cd",
+  "bundleHash": "4e1ef66289ffcb91b7810d1c0557a0ef876bacd8292ab8bd3b03c4e18f3b1511",
   "bundleVersion": "OX-IDENTITY-BUNDLE-1",
   "campaignPhase": "Genesis",
   "displayName": "Vaerkais — Ravager of the Ruined Megalith Ward",
@@ -63,6 +63,23 @@
       "value": 314.83
     },
     "spectrum": "Crimson-Graphite"
+  },
+  "resonanceGlyph": {
+    "geometry": {
+      "innerRadius": 177,
+      "lineWeight": 2.29,
+      "nodeRadius": 11,
+      "outerRadius": 334,
+      "phaseOffsetDegrees": 232.815,
+      "ringCount": 5,
+      "rotationDegrees": 61.925,
+      "spokeCount": 7
+    },
+    "glyphVersion": "OX-RESONANCE-GLYPH-1",
+    "manifestHash": "11de6fe936bbd02d1337ae390f8c8914079634f59fb0e64e95f03316aafa92d9",
+    "resonanceId": "RX-39BB2C092DB1",
+    "svgFile": "glyphs/0008.svg",
+    "svgHash": "13280055b372da88557fe34438e5cce89f4ed038758a360cf04a2e0194a89001"
   },
   "serial": "#0008",
   "tier": "RARE",

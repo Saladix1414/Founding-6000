@@ -1,11 +1,11 @@
 {
   "akashic": {
     "akashicVersion": "OX-AKASHIC-1",
-    "eventCount": 3,
+    "eventCount": 4,
     "firstEventHash": "234484b64e8aa5020706af95982438e76c28036d89b3297317026e8270afe1be",
-    "latestEventHash": "a8fb61860b517b6e2c92fc2817a740b097867b2a33d5015eba4613a2f4629faf"
+    "latestEventHash": "23eb1254ab36849e942d7a5a70b9afcac539b5115c9f13ae69803a1986b368c6"
   },
-  "bundleHash": "6bf852d6348473c40348cd87b4ee2461d73d1da860b757ef4ddd3d11a2fadb53",
+  "bundleHash": "78951c03a5a17b0d1ada0a67423011e1ce796846cce8bf83fc5780c0ef6d23dd",
   "bundleVersion": "OX-IDENTITY-BUNDLE-1",
   "campaignPhase": "Genesis",
   "displayName": "Vaerkayx — Wyvern of the Ancient Citadel",
@@ -63,6 +63,23 @@
       "value": 691.65
     },
     "spectrum": "Ancient-Gold"
+  },
+  "resonanceGlyph": {
+    "geometry": {
+      "innerRadius": 126,
+      "lineWeight": 3.09,
+      "nodeRadius": 10,
+      "outerRadius": 386,
+      "phaseOffsetDegrees": 88.584,
+      "ringCount": 2,
+      "rotationDegrees": 348.442,
+      "spokeCount": 10
+    },
+    "glyphVersion": "OX-RESONANCE-GLYPH-1",
+    "manifestHash": "781dcb633e16b762a34f9679fd4bad6b6f92f998f6f768a3ea1478ce6930a051",
+    "resonanceId": "RX-8910F7C7A7F4",
+    "svgFile": "glyphs/0004.svg",
+    "svgHash": "eac669bddaf956b8436cd7005b5b153f09c35c3aaf746b5efa18c5b16892ecf5"
   },
   "serial": "#0004",
   "tier": "RARE",

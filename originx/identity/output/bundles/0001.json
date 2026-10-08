@@ -1,11 +1,11 @@
 {
   "akashic": {
     "akashicVersion": "OX-AKASHIC-1",
-    "eventCount": 4,
+    "eventCount": 5,
     "firstEventHash": "f7a4b00ddf4e75f208f08757af7c6bbdea52a02471b7321d4ef1513f152032e6",
-    "latestEventHash": "c43a9f3b1ec9fef7d6c77919ad647be236282d8cf69b19f81fc97ed52bb6dc2c"
+    "latestEventHash": "2b60d9190123c8c76a11940654877f0d44072a0e74d5ea8655f7f31faec0a108"
   },
-  "bundleHash": "a27ec548d0f145c603eddc261bc25a2ea006719f6923539708af7e76818d70d9",
+  "bundleHash": "0b17362a0eb02ab59e9ee265f77173addebe893152ac053b2a4655b9d20de43f",
   "bundleVersion": "OX-IDENTITY-BUNDLE-1",
   "campaignPhase": "Genesis",
   "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
@@ -63,6 +63,23 @@
       "value": 923.71
     },
     "spectrum": "Crimson-Graphite"
+  },
+  "resonanceGlyph": {
+    "geometry": {
+      "innerRadius": 127,
+      "lineWeight": 2.39,
+      "nodeRadius": 10,
+      "outerRadius": 382,
+      "phaseOffsetDegrees": 11.173,
+      "ringCount": 3,
+      "rotationDegrees": 272.652,
+      "spokeCount": 9
+    },
+    "glyphVersion": "OX-RESONANCE-GLYPH-1",
+    "manifestHash": "b8fb137f70c983e328225523f5b474d5889361d3b4a6314b7de8d6721ead992f",
+    "resonanceId": "RX-42C5C1E2F340",
+    "svgFile": "glyphs/0001.svg",
+    "svgHash": "07d66438b69d8530f038d01b24942f873be2a29c4e514dc04046476d190368b8"
   },
   "serial": "#0001",
   "tier": "RARE",

@@ -79,6 +79,37 @@ def main() -> None:
         updated
     )
 
+    glyph_updated = append_event(
+        updated,
+        event_type=(
+            "RESONANCE_GLYPH_MANIFESTED"
+        ),
+        occurred_at=TIMESTAMP,
+        payload={
+            "resonanceId": (
+                "RX-TEST"
+            ),
+            "svgHash": (
+                "c" * 64
+            ),
+            "manifestHash": (
+                "d" * 64
+            ),
+        },
+    )
+
+    if (
+        glyph_updated["eventCount"]
+        != 5
+    ):
+        raise AssertionError(
+            "glyph Akashic append failed"
+        )
+
+    verify_chain(
+        glyph_updated
+    )
+
     tampered = copy.deepcopy(
         updated
     )
@@ -174,6 +205,10 @@ def main() -> None:
 
     print(
         "APPEND_ONLY_CHAIN=PASS"
+    )
+
+    print(
+        "RESONANCE_GLYPH_EVENT=PASS"
     )
 
     print(

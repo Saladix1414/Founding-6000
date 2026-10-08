@@ -2,7 +2,7 @@
   "akashicVersion": "OX-AKASHIC-1",
   "displayName": "Vaerkaeth — Wyrm of the Black Cathedral District",
   "dragonName": "Vaerkaeth",
-  "eventCount": 3,
+  "eventCount": 4,
   "events": [
     {
       "akashicVersion": "OX-AKASHIC-1",
@@ -51,10 +51,25 @@
       "previousEventHash": "73882f6b3c73e20bd141083c81ef0d07a3bfd9bd089ab3c55a55c7a7d3db7f8b",
       "sequence": 3,
       "tokenId": 6
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "f39b363109dd8a53d31811626e99d42c69821cb8a13f083f98d25096229eac06",
+      "eventType": "RESONANCE_GLYPH_MANIFESTED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphVersion": "OX-RESONANCE-GLYPH-1",
+        "manifestHash": "06f6b72078d3d697dcbea623db1cd88f88d5120b4154e77f161e9aacb3917cd7",
+        "resonanceId": "RX-029FCCCEF6BB",
+        "svgHash": "16a948a1fd8bf9b90ea51fba8d381c08094e0deef24b9513098399d3393cea23"
+      },
+      "previousEventHash": "79f04edc46ffe017c1331f2d9d08f8b14c5de41597a845f17d5e43a43ee67609",
+      "sequence": 4,
+      "tokenId": 6
     }
   ],
   "firstEventHash": "1b2649a64bffb7b7d0e7975fdb07d9512c28ab28e8c675a981cafa91a8bfe71e",
-  "latestEventHash": "79f04edc46ffe017c1331f2d9d08f8b14c5de41597a845f17d5e43a43ee67609",
+  "latestEventHash": "f39b363109dd8a53d31811626e99d42c69821cb8a13f083f98d25096229eac06",
   "serial": "#0006",
   "tokenId": 6
 }

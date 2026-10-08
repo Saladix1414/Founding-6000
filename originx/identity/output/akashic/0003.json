@@ -2,7 +2,7 @@
   "akashicVersion": "OX-AKASHIC-1",
   "displayName": "Vaerkaor — Serpent of the Black Cathedral District",
   "dragonName": "Vaerkaor",
-  "eventCount": 3,
+  "eventCount": 4,
   "events": [
     {
       "akashicVersion": "OX-AKASHIC-1",
@@ -51,10 +51,25 @@
       "previousEventHash": "51bfcf1511e51d0f56670af600ea112389c3b58fcfb6f518ee7c5652b1fb0224",
       "sequence": 3,
       "tokenId": 3
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "1c5ecb76f16567e6b7200bf350b55378a21c1d263fc6d44bf690c044f8607307",
+      "eventType": "RESONANCE_GLYPH_MANIFESTED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphVersion": "OX-RESONANCE-GLYPH-1",
+        "manifestHash": "37b9c4a1e4d08ed4ba53201dd0e8030b23030d2c6dbe9de8ac09a4b702e9b5fe",
+        "resonanceId": "RX-F106FBEBAB83",
+        "svgHash": "170b90e54da29988cc50195d74cfd7a88f947562e6062689e1ed6a7e7bdf2720"
+      },
+      "previousEventHash": "598ce77ae3bd1ab5fac2ea24298d84c4e85bbf6d2a0488ae2ad737b27b5c2441",
+      "sequence": 4,
+      "tokenId": 3
     }
   ],
   "firstEventHash": "6f2a5882ea3366fe7c24027753fe335d6c5b4a0e3fb7b7c7f00d784c1456c3cc",
-  "latestEventHash": "598ce77ae3bd1ab5fac2ea24298d84c4e85bbf6d2a0488ae2ad737b27b5c2441",
+  "latestEventHash": "1c5ecb76f16567e6b7200bf350b55378a21c1d263fc6d44bf690c044f8607307",
   "serial": "#0003",
   "tokenId": 3
 }

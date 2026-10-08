@@ -2,7 +2,7 @@
   "akashicVersion": "OX-AKASHIC-1",
   "displayName": "Vaerkaek — Wyrm of the Ancient Citadel",
   "dragonName": "Vaerkaek",
-  "eventCount": 3,
+  "eventCount": 4,
   "events": [
     {
       "akashicVersion": "OX-AKASHIC-1",
@@ -51,10 +51,25 @@
       "previousEventHash": "265d8be4b740d4f4428212bf2d3ab99e01b49b50c913819062070914089b021c",
       "sequence": 3,
       "tokenId": 9
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "29bdfa6bf9f13d5772d0f7d2e0e9a199d43415996b66ea412c1d114699fb1549",
+      "eventType": "RESONANCE_GLYPH_MANIFESTED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphVersion": "OX-RESONANCE-GLYPH-1",
+        "manifestHash": "25e72dfac9d68ae041ed01722d286fe602a90fd8a0cfe68d816461b20b2cefcf",
+        "resonanceId": "RX-9FFEA8499B2F",
+        "svgHash": "71b7b4de5dc73a0c7f7f2d49f8629c73822c74bbe90703a9af5e3fa67e8c7c9e"
+      },
+      "previousEventHash": "4954e40864340e164e75a30b9a66a88dc432e7d12c2219232c35da6e0842d066",
+      "sequence": 4,
+      "tokenId": 9
     }
   ],
   "firstEventHash": "238b17e8f02763b11cde306f1d9ec7be52d47bdb4454b54b87c4e4945556bee3",
-  "latestEventHash": "4954e40864340e164e75a30b9a66a88dc432e7d12c2219232c35da6e0842d066",
+  "latestEventHash": "29bdfa6bf9f13d5772d0f7d2e0e9a199d43415996b66ea412c1d114699fb1549",
   "serial": "#0009",
   "tokenId": 9
 }

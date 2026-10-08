@@ -48,6 +48,16 @@ def main() -> None:
                 "missing resonance signature"
             )
 
+        if not first["resonanceGlyph"]["svgHash"]:
+            raise AssertionError(
+                "missing glyph SVG hash"
+            )
+
+        if not first["resonanceGlyph"]["manifestHash"]:
+            raise AssertionError(
+                "missing glyph manifest hash"
+            )
+
         if first["akashic"]["eventCount"] < 3:
             raise AssertionError(
                 "invalid Akashic event count"
@@ -68,6 +78,7 @@ def main() -> None:
     print("PII_GUARD=PASS")
     print("RESONANCE_LINK=PASS")
     print("AKASHIC_LINK=PASS")
+    print("GLYPH_LINK=PASS")
 
 
 if __name__ == "__main__":

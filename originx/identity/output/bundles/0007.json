@@ -1,11 +1,11 @@
 {
   "akashic": {
     "akashicVersion": "OX-AKASHIC-1",
-    "eventCount": 3,
+    "eventCount": 4,
     "firstEventHash": "b4ee163cf596edc40e389a0891cbb09aa345cff64dc006c473234d93f461b8a3",
-    "latestEventHash": "74f256e2d6d0859155c6bcc9e2f3b1a7b3f635c90c8923145c4082f08ab351bc"
+    "latestEventHash": "3da0d05b9015cb5a6ed07a6eddf111d01313b7dec350e4e321cc2a2d0d0f843a"
   },
-  "bundleHash": "d5dd3e7effc69e29f5348355627e293c550a014625a7d8bc5c1877bc87059d33",
+  "bundleHash": "2df696612316e76c4e0b829dfd44956cc4723211e0ffb11adc9d2da932d7dfb2",
   "bundleVersion": "OX-IDENTITY-BUNDLE-1",
   "campaignPhase": "Genesis",
   "displayName": "Vaerkaon — Serpent of the Iron Basilica",
@@ -63,6 +63,23 @@
       "value": 885.52
     },
     "spectrum": "Moonstone-Blue"
+  },
+  "resonanceGlyph": {
+    "geometry": {
+      "innerRadius": 105,
+      "lineWeight": 2.17,
+      "nodeRadius": 5,
+      "outerRadius": 331,
+      "phaseOffsetDegrees": 44.94,
+      "ringCount": 2,
+      "rotationDegrees": 21.045,
+      "spokeCount": 6
+    },
+    "glyphVersion": "OX-RESONANCE-GLYPH-1",
+    "manifestHash": "9c1b802f1c47ce95dc4a77df5ce11fb8527f2acc5b980d4d38334a6535f0ee5b",
+    "resonanceId": "RX-62D00EF7E6DC",
+    "svgFile": "glyphs/0007.svg",
+    "svgHash": "9371d4603665935837f816e6dc6ab3eb9b874de4a73aaa30f3f19662fea7e68a"
   },
   "serial": "#0007",
   "tier": "RARE",

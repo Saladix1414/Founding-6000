@@ -2,7 +2,7 @@
   "akashicVersion": "OX-AKASHIC-1",
   "displayName": "Vaerkayx — Wyvern of the Ancient Citadel",
   "dragonName": "Vaerkayx",
-  "eventCount": 3,
+  "eventCount": 4,
   "events": [
     {
       "akashicVersion": "OX-AKASHIC-1",
@@ -51,10 +51,25 @@
       "previousEventHash": "1d014121c7e111a807643c989d86e7cfca670311413303bee6d7b900d6d5c2f1",
       "sequence": 3,
       "tokenId": 4
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "23eb1254ab36849e942d7a5a70b9afcac539b5115c9f13ae69803a1986b368c6",
+      "eventType": "RESONANCE_GLYPH_MANIFESTED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphVersion": "OX-RESONANCE-GLYPH-1",
+        "manifestHash": "781dcb633e16b762a34f9679fd4bad6b6f92f998f6f768a3ea1478ce6930a051",
+        "resonanceId": "RX-8910F7C7A7F4",
+        "svgHash": "eac669bddaf956b8436cd7005b5b153f09c35c3aaf746b5efa18c5b16892ecf5"
+      },
+      "previousEventHash": "a8fb61860b517b6e2c92fc2817a740b097867b2a33d5015eba4613a2f4629faf",
+      "sequence": 4,
+      "tokenId": 4
     }
   ],
   "firstEventHash": "234484b64e8aa5020706af95982438e76c28036d89b3297317026e8270afe1be",
-  "latestEventHash": "a8fb61860b517b6e2c92fc2817a740b097867b2a33d5015eba4613a2f4629faf",
+  "latestEventHash": "23eb1254ab36849e942d7a5a70b9afcac539b5115c9f13ae69803a1986b368c6",
   "serial": "#0004",
   "tokenId": 4
 }

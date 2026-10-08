@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DNA_DIR = ROOT / "generation" / "output" / "dna"
 RESONANCE_DIR = ROOT / "identity" / "output" / "resonance"
 AKASHIC_DIR = ROOT / "identity" / "output" / "akashic"
+GLYPH_MANIFEST_DIR = ROOT / "identity" / "output" / "glyph-manifests"
 BRIEF_DIR = ROOT / "generation" / "output" / "render-briefs"
 ART_SPEC_DIR = ROOT / "generation" / "output" / "art-specs"
 OUTPUT_DIR = ROOT / "identity" / "output" / "bundles"
@@ -95,6 +96,10 @@ def build_bundle(
     dna_path = DNA_DIR / f"{token_id:04d}.json"
     resonance_path = RESONANCE_DIR / f"{token_id:04d}.json"
     akashic_path = AKASHIC_DIR / f"{token_id:04d}.json"
+    glyph_manifest_path = (
+        GLYPH_MANIFEST_DIR
+        / f"{token_id:04d}.json"
+    )
     brief_path = BRIEF_DIR / f"{token_id:04d}.json"
     art_spec_path = ART_SPEC_DIR / f"{token_id:04d}.json"
 
@@ -102,6 +107,7 @@ def build_bundle(
         "DNA": dna_path,
         "RESONANCE": resonance_path,
         "AKASHIC": akashic_path,
+        "GLYPH_MANIFEST": glyph_manifest_path,
         "RENDER_BRIEF": brief_path,
     }
 
@@ -114,6 +120,9 @@ def build_bundle(
     dna = load_json(dna_path)
     resonance = load_json(resonance_path)
     akashic = load_json(akashic_path)
+    glyph_manifest = load_json(
+        glyph_manifest_path
+    )
     render_brief = load_json(brief_path)
 
     art_spec = (
@@ -128,6 +137,27 @@ def build_bundle(
         akashic,
         render_brief,
     )
+
+    if glyph_manifest["tokenId"] != token_id:
+        raise ValueError(
+            "GLYPH_TOKEN_MISMATCH"
+        )
+
+    if (
+        glyph_manifest["resonanceSignature"]
+        != resonance["resonanceSignature"]
+    ):
+        raise ValueError(
+            "GLYPH_RESONANCE_MISMATCH"
+        )
+
+    if (
+        glyph_manifest["resonanceId"]
+        != resonance["resonanceId"]
+    ):
+        raise ValueError(
+            "GLYPH_RESONANCE_ID_MISMATCH"
+        )
 
     core = {
         "bundleVersion": "OX-IDENTITY-BUNDLE-1",
@@ -158,6 +188,27 @@ def build_bundle(
             "spectrum": resonance["spectrum"],
             "resonanceClass": resonance["resonanceClass"],
             "glyphSeed": resonance["glyphSeed"],
+        },
+
+        "resonanceGlyph": {
+            "glyphVersion": glyph_manifest[
+                "glyphVersion"
+            ],
+            "resonanceId": glyph_manifest[
+                "resonanceId"
+            ],
+            "svgFile": glyph_manifest[
+                "svgFile"
+            ],
+            "svgHash": glyph_manifest[
+                "svgHash"
+            ],
+            "manifestHash": glyph_manifest[
+                "manifestHash"
+            ],
+            "geometry": glyph_manifest[
+                "geometry"
+            ],
         },
 
         "visualIdentity": {

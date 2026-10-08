@@ -2,7 +2,7 @@
   "akashicVersion": "OX-AKASHIC-1",
   "displayName": "Vaerkaum — Serpent of the Iron Basilica",
   "dragonName": "Vaerkaum",
-  "eventCount": 3,
+  "eventCount": 4,
   "events": [
     {
       "akashicVersion": "OX-AKASHIC-1",
@@ -51,10 +51,25 @@
       "previousEventHash": "3b9c4ef2cd0ffcaee828ca1e84adcf97ec2a15faa3680aaa9fb910074f942771",
       "sequence": 3,
       "tokenId": 10
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "c84a000d36320f4b3c25c90318d6c87670a180d3b9864b75e4a081222c063e31",
+      "eventType": "RESONANCE_GLYPH_MANIFESTED",
+      "occurredAt": "2026-01-01T00:00:00Z",
+      "payload": {
+        "glyphVersion": "OX-RESONANCE-GLYPH-1",
+        "manifestHash": "4866f8f32311ce2ca3eefcc73d13f6c157ba749c5abde2f6698afac3ee996282",
+        "resonanceId": "RX-6AAC91F6E5D5",
+        "svgHash": "800caca8db31c632c3922b165f07db7d2ff1360416faaf7a35e09b2981e71f2f"
+      },
+      "previousEventHash": "9c7a8c758ff2f6db489aa7b51aa2e419341c4a55205809449e26818ce6ec78c5",
+      "sequence": 4,
+      "tokenId": 10
     }
   ],
   "firstEventHash": "cf50cec1f8f94db417ce767cd1891607c8df8d8d446a1255bc807309f1ff8bf6",
-  "latestEventHash": "9c7a8c758ff2f6db489aa7b51aa2e419341c4a55205809449e26818ce6ec78c5",
+  "latestEventHash": "c84a000d36320f4b3c25c90318d6c87670a180d3b9864b75e4a081222c063e31",
   "serial": "#0010",
   "tokenId": 10
 }

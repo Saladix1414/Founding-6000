@@ -1,11 +1,11 @@
 {
   "akashic": {
     "akashicVersion": "OX-AKASHIC-1",
-    "eventCount": 3,
+    "eventCount": 4,
     "firstEventHash": "238b17e8f02763b11cde306f1d9ec7be52d47bdb4454b54b87c4e4945556bee3",
-    "latestEventHash": "4954e40864340e164e75a30b9a66a88dc432e7d12c2219232c35da6e0842d066"
+    "latestEventHash": "29bdfa6bf9f13d5772d0f7d2e0e9a199d43415996b66ea412c1d114699fb1549"
   },
-  "bundleHash": "4aac5ca68ea0a72ffba0df0ce58cb4b1268a19afe38655fa3f10c9a9c28c7307",
+  "bundleHash": "f5fa02ad18acc4da8976d8544a8492ccb0abe46ab4a810334d48af9cd3442811",
   "bundleVersion": "OX-IDENTITY-BUNDLE-1",
   "campaignPhase": "Genesis",
   "displayName": "Vaerkaek — Wyrm of the Ancient Citadel",
@@ -63,6 +63,23 @@
       "value": 652.28
     },
     "spectrum": "Void-Silver"
+  },
+  "resonanceGlyph": {
+    "geometry": {
+      "innerRadius": 157,
+      "lineWeight": 3.61,
+      "nodeRadius": 12,
+      "outerRadius": 421,
+      "phaseOffsetDegrees": 139.539,
+      "ringCount": 4,
+      "rotationDegrees": 236.655,
+      "spokeCount": 11
+    },
+    "glyphVersion": "OX-RESONANCE-GLYPH-1",
+    "manifestHash": "25e72dfac9d68ae041ed01722d286fe602a90fd8a0cfe68d816461b20b2cefcf",
+    "resonanceId": "RX-9FFEA8499B2F",
+    "svgFile": "glyphs/0009.svg",
+    "svgHash": "71b7b4de5dc73a0c7f7f2d49f8629c73822c74bbe90703a9af5e3fa67e8c7c9e"
   },
   "serial": "#0009",
   "tier": "RARE",

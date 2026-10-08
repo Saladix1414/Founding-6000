@@ -1,11 +1,11 @@
 {
   "akashic": {
     "akashicVersion": "OX-AKASHIC-1",
-    "eventCount": 3,
+    "eventCount": 4,
     "firstEventHash": "6f2a5882ea3366fe7c24027753fe335d6c5b4a0e3fb7b7c7f00d784c1456c3cc",
-    "latestEventHash": "598ce77ae3bd1ab5fac2ea24298d84c4e85bbf6d2a0488ae2ad737b27b5c2441"
+    "latestEventHash": "1c5ecb76f16567e6b7200bf350b55378a21c1d263fc6d44bf690c044f8607307"
   },
-  "bundleHash": "6466a96c00775f004cd0ffe9549087b9380855d69d823f0116350b6d4db72a23",
+  "bundleHash": "a001c58604d4500db2fcab6503d743dfd607d754635979825fcd37d2811c5444",
   "bundleVersion": "OX-IDENTITY-BUNDLE-1",
   "campaignPhase": "Genesis",
   "displayName": "Vaerkaor — Serpent of the Black Cathedral District",
@@ -63,6 +63,23 @@
       "value": 702.61
     },
     "spectrum": "Basalt-Violet"
+  },
+  "resonanceGlyph": {
+    "geometry": {
+      "innerRadius": 137,
+      "lineWeight": 3.11,
+      "nodeRadius": 7,
+      "outerRadius": 412,
+      "phaseOffsetDegrees": 38.722,
+      "ringCount": 4,
+      "rotationDegrees": 354.265,
+      "spokeCount": 9
+    },
+    "glyphVersion": "OX-RESONANCE-GLYPH-1",
+    "manifestHash": "37b9c4a1e4d08ed4ba53201dd0e8030b23030d2c6dbe9de8ac09a4b702e9b5fe",
+    "resonanceId": "RX-F106FBEBAB83",
+    "svgFile": "glyphs/0003.svg",
+    "svgHash": "170b90e54da29988cc50195d74cfd7a88f947562e6062689e1ed6a7e7bdf2720"
   },
   "serial": "#0003",
   "tier": "RARE",
