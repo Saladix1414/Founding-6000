@@ -1,0 +1,25 @@
+{
+  "endpoint": "https://api.stability.ai/v2beta/stable-image/generate/sd3",
+  "model": "sd3.5-large",
+  "provider": "STABILITY_AI",
+  "providerRequestHash": "bdb364c52b205621082f734ff461923dfa799f47d30b372ba7e999d5fa853efb",
+  "renderJobId": "oxr-0004-8279c15a74ecd640",
+  "renderRequestHash": "8279c15a74ecd64056eccff7c0f939ed90a4775a1778e328afca0441f6e08a9e",
+  "request": {
+    "aspect_ratio": "1:1",
+    "model": "sd3.5-large",
+    "negative_prompt": "cartoon, anime imitation, cute mascot, rainbow fantasy, generic stock dragon, modern skyscraper, cyberpunk advertisement, existing franchise creature, superhero costume, watermark, signature, visible prompt text, clean futuristic exosuit, modern robotics, spaceship technology, neon cyberpunk armor, holographic city advertising, modern firearms",
+    "output_format": "png",
+    "prompt": "Original OriginX dark gothic dragon artwork. Primitive Origin era. one dominant dragon only. Low-angle side three-quarter portrait. Wing-partially-open dominance. Dragon occupies 60-70 percent of frame. dragon archetype Obsidian Wyvern. body structure Monolithic. scale pattern Bone-Laced Scales. head structure Broad Skull. horn configuration Backward Bone Horns. eyes Deep Blue. wings Cathedral Wings. tail Stone Tail. armor Ancient Iron. chest core Obsidian Seal. mechanical augmentation Primitive Gearwork. ancient markings Origin Runes. OriginX glyph treatment OX-Alpha. aura Moonlit Dust. environment Ancient Citadel. architecture Fortress Silhouette. atmosphere Storm Veil. weather Storm. foreground Cathedral Rails. special variation None. cinematic low-key lighting. volumetric atmospheric depth. ancient basalt and weathered metal material realism. monumental scale. high detail. text-free master artwork. square collectible composition.",
+    "seed": 2189017435
+  },
+  "seed": 2189017435,
+  "tokenId": 4,
+  "upscale": {
+    "endpoint": "https://api.stability.ai/v2beta/stable-image/upscale/conservative",
+    "mode": "conservative",
+    "output_format": "png",
+    "provider": "STABILITY_AI",
+    "targetPolicy": "4MP_SOURCE_THEN_CANONICAL_2048"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "endpoint": "https://api.stability.ai/v2beta/stable-image/generate/sd3",
+  "model": "sd3.5-large",
+  "provider": "STABILITY_AI",
+  "providerRequestHash": "f02725b356bb2848d600364a55614d16e5b44b89ce0866c9bb81e09a1807b77e",
+  "renderJobId": "oxr-0005-26fbf406fdf6032d",
+  "renderRequestHash": "26fbf406fdf6032dd807322d4e51ed64941dcb7446bbb053a1cd4df13db80fac",
+  "request": {
+    "aspect_ratio": "1:1",
+    "model": "sd3.5-large",
+    "negative_prompt": "cartoon, anime imitation, cute mascot, rainbow fantasy, generic stock dragon, modern skyscraper, cyberpunk advertisement, existing franchise creature, superhero costume, watermark, signature, visible prompt text, clean futuristic exosuit, modern robotics, spaceship technology, neon cyberpunk armor, holographic city advertising, modern firearms",
+    "output_format": "png",
+    "prompt": "Original OriginX dark gothic dragon artwork. Primitive Origin era. one dominant dragon only. Low-angle side three-quarter portrait. Wing-partially-open dominance. Dragon occupies 60-70 percent of frame. dragon archetype Iron Serpent. body structure Feral. scale pattern Obsidian Scales. head structure Broad Skull. horn configuration Backward Bone Horns. eyes Ember Red. wings Stone Membrane Wings. tail Whip Tail. armor Primitive Chain Armor. chest core Crimson Relic. mechanical augmentation Embedded Metal. ancient markings War Etchings. OriginX glyph treatment OX-Vault. aura None. environment Obsidian Spires. architecture Stone Megastructure. atmosphere Moonlit Haze. weather Storm. foreground Broken Gargoyles. special variation Moon Crest. cinematic low-key lighting. volumetric atmospheric depth. ancient basalt and weathered metal material realism. monumental scale. high detail. text-free master artwork. square collectible composition. Do not add magical halo. Atmospheric fog remains allowed. Subtle lunar crest motif allowed. Must not become a modern logo.",
+    "seed": 654046215
+  },
+  "seed": 654046215,
+  "tokenId": 5,
+  "upscale": {
+    "endpoint": "https://api.stability.ai/v2beta/stable-image/upscale/conservative",
+    "mode": "conservative",
+    "output_format": "png",
+    "provider": "STABILITY_AI",
+    "targetPolicy": "4MP_SOURCE_THEN_CANONICAL_2048"
+  }
+}

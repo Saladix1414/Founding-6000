@@ -1,0 +1,25 @@
+{
+  "endpoint": "https://api.stability.ai/v2beta/stable-image/generate/sd3",
+  "model": "sd3.5-large",
+  "provider": "STABILITY_AI",
+  "providerRequestHash": "50f7597ec5cced8ca0cd10ecfd0bcd58da9075237e2d5a79f40dbdbe928097ce",
+  "renderJobId": "oxr-0003-bb85928ff3a451f9",
+  "renderRequestHash": "bb85928ff3a451f986a47e1a2a602efd9f9c4702a19bb24507c681279f7bbdf8",
+  "request": {
+    "aspect_ratio": "1:1",
+    "model": "sd3.5-large",
+    "negative_prompt": "cartoon, anime imitation, cute mascot, rainbow fantasy, generic stock dragon, modern skyscraper, cyberpunk advertisement, existing franchise creature, superhero costume, watermark, signature, visible prompt text, clean futuristic exosuit, modern robotics, spaceship technology, neon cyberpunk armor, holographic city advertising, modern firearms",
+    "output_format": "png",
+    "prompt": "Original OriginX dark gothic dragon artwork. Primitive Origin era. one dominant dragon only. Low-angle three-quarter portrait. Perched sentinel. Dragon occupies 65-75 percent with compressed skyline. dragon archetype Iron Serpent. body structure Lean. scale pattern Ridge Scales. head structure Razor Jaw. horn configuration Asymmetric Horns. eyes Deep Blue. wings Ancient Leather Wings. tail Stone Tail. armor None. chest core Ancient Ember. mechanical augmentation Primitive Gearwork. ancient markings Cathedral Marks. OriginX glyph treatment OX-Prime. aura Moonlit Dust. environment Black Cathedral District. architecture Cathedral Towers. atmosphere Cold Rain. weather Storm. foreground Iron Pillars. special variation Ancient Chain. cinematic low-key lighting. volumetric atmospheric depth. ancient basalt and weathered metal material realism. monumental scale. high detail. text-free master artwork. square collectible composition. Do not invent plate armor. Natural scales remain visible. Ancient chain may appear as integrated environmental or body detail.",
+    "seed": 3146093200
+  },
+  "seed": 3146093200,
+  "tokenId": 3,
+  "upscale": {
+    "endpoint": "https://api.stability.ai/v2beta/stable-image/upscale/conservative",
+    "mode": "conservative",
+    "output_format": "png",
+    "provider": "STABILITY_AI",
+    "targetPolicy": "4MP_SOURCE_THEN_CANONICAL_2048"
+  }
+}

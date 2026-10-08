@@ -1,0 +1,25 @@
+{
+  "endpoint": "https://api.stability.ai/v2beta/stable-image/generate/sd3",
+  "model": "sd3.5-large",
+  "provider": "STABILITY_AI",
+  "providerRequestHash": "82438e09e82b42b8ab6eadef53d60819a2edf9df973569b4420f044f41ae9424",
+  "renderJobId": "oxr-0006-313d27cbc0902c10",
+  "renderRequestHash": "313d27cbc0902c1046110c3d6620eafa6d559d568dd7299eb4a7f81db48fbda6",
+  "request": {
+    "aspect_ratio": "1:1",
+    "model": "sd3.5-large",
+    "negative_prompt": "cartoon, anime imitation, cute mascot, rainbow fantasy, generic stock dragon, modern skyscraper, cyberpunk advertisement, existing franchise creature, superhero costume, watermark, signature, visible prompt text, clean futuristic exosuit, modern robotics, spaceship technology, neon cyberpunk armor, holographic city advertising, modern firearms",
+    "output_format": "png",
+    "prompt": "Original OriginX dark gothic dragon artwork. Primitive Origin era. one dominant dragon only. Low-angle side three-quarter portrait. Perched sentinel. Dragon occupies 60-70 percent of frame. dragon archetype Stone Wyrm. body structure Lean. scale pattern Obsidian Scales. head structure Fortress Jaw. horn configuration Asymmetric Horns. eyes Ember Red. wings Stone Membrane Wings. tail Chain Tail. armor Ancient Iron. chest core Dormant. mechanical augmentation Ancient Prosthetic. ancient markings Runic Scars. OriginX glyph treatment OX-Prime. aura Black Vapor. environment Black Cathedral District. architecture Cathedral Towers. atmosphere Cold Rain. weather Still Night. foreground Iron Pillars. special variation Moon Crest. cinematic low-key lighting. volumetric atmospheric depth. ancient basalt and weathered metal material realism. monumental scale. high detail. text-free master artwork. square collectible composition. No rain streaks. No ashfall particles. Subtle lunar crest motif allowed. Must not become a modern logo.",
+    "seed": 826091468
+  },
+  "seed": 826091468,
+  "tokenId": 6,
+  "upscale": {
+    "endpoint": "https://api.stability.ai/v2beta/stable-image/upscale/conservative",
+    "mode": "conservative",
+    "output_format": "png",
+    "provider": "STABILITY_AI",
+    "targetPolicy": "4MP_SOURCE_THEN_CANONICAL_2048"
+  }
+}

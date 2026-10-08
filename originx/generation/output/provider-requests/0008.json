@@ -1,0 +1,25 @@
+{
+  "endpoint": "https://api.stability.ai/v2beta/stable-image/generate/sd3",
+  "model": "sd3.5-large",
+  "provider": "STABILITY_AI",
+  "providerRequestHash": "39981d68e7d75078c723714f81c7ca7ea3a1922e90ec748c9f44a3ac4d6d7097",
+  "renderJobId": "oxr-0008-a562a477c6024b9f",
+  "renderRequestHash": "a562a477c6024b9fec2cf85394b7a3efee0d628a060592dce7d5f050b3d72a28",
+  "request": {
+    "aspect_ratio": "1:1",
+    "model": "sd3.5-large",
+    "negative_prompt": "cartoon, anime imitation, cute mascot, rainbow fantasy, generic stock dragon, modern skyscraper, cyberpunk advertisement, existing franchise creature, superhero costume, watermark, signature, visible prompt text, clean futuristic exosuit, modern robotics, spaceship technology, neon cyberpunk armor, holographic city advertising, modern firearms",
+    "output_format": "png",
+    "prompt": "Original OriginX dark gothic dragon artwork. Primitive Origin era. one dominant dragon only. Low-angle three-quarter portrait. Wing-partially-open dominance. Dragon occupies 55-65 percent with architecture visible. dragon archetype Ancient Ravager. body structure Armored. scale pattern Basalt Plates. head structure Razor Jaw. horn configuration Asymmetric Horns. eyes Ember Red. wings Ribbed Wings. tail Bladed Tail. armor Ancient Iron. chest core Crimson Relic. mechanical augmentation None. ancient markings Cathedral Marks. OriginX glyph treatment OX-Crown. aura None. environment Ruined Megalith Ward. architecture Industrial Arches. atmosphere Dense Fog. weather Rain. foreground Broken Gargoyles. special variation Broken Horn. cinematic low-key lighting. volumetric atmospheric depth. ancient basalt and weathered metal material realism. monumental scale. high detail. text-free master artwork. square collectible composition. Do not invent mechanical prosthetics. Keep anatomy organic. Do not add magical halo. Atmospheric fog remains allowed. At least one primary horn must visibly show old structural damage.",
+    "seed": 2774705272
+  },
+  "seed": 2774705272,
+  "tokenId": 8,
+  "upscale": {
+    "endpoint": "https://api.stability.ai/v2beta/stable-image/upscale/conservative",
+    "mode": "conservative",
+    "output_format": "png",
+    "provider": "STABILITY_AI",
+    "targetPolicy": "4MP_SOURCE_THEN_CANONICAL_2048"
+  }
+}

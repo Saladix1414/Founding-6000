@@ -1,0 +1,25 @@
+{
+  "endpoint": "https://api.stability.ai/v2beta/stable-image/generate/sd3",
+  "model": "sd3.5-large",
+  "provider": "STABILITY_AI",
+  "providerRequestHash": "1e6f543143b3f190a7b14655301c0d366d9fb2265e2c5c2c26e3050d5f5deaae",
+  "renderJobId": "oxr-0001-d8463d7ee91fad61",
+  "renderRequestHash": "d8463d7ee91fad617867740270c78de36a446992f39dfb9103d8e67b1ecf5564",
+  "request": {
+    "aspect_ratio": "1:1",
+    "model": "sd3.5-large",
+    "negative_prompt": "cartoon, anime imitation, cute mascot, rainbow fantasy, generic stock dragon, modern skyscraper, cyberpunk advertisement, existing franchise creature, superhero costume, watermark, signature, visible prompt text, clean futuristic exosuit, modern robotics, spaceship technology, neon cyberpunk armor, holographic city advertising, modern firearms",
+    "output_format": "png",
+    "prompt": "Original OriginX dark gothic dragon artwork. Primitive Origin era. one dominant dragon only. Low-angle side three-quarter portrait. Standing guardian. Dragon occupies 60-70 percent of frame. dragon archetype Ancient Ravager. body structure Heavy. scale pattern Bone-Laced Scales. head structure Broad Skull. horn configuration Cathedral Horns. eyes Moon White. wings Ancient Leather Wings. tail Spiked Tail. armor Primitive Chain Armor. chest core Ancient Ember. mechanical augmentation Embedded Metal. ancient markings Tribal Sigils. OriginX glyph treatment OX-Prime. aura Cold Cyan. environment Obsidian Spires. architecture Stone Megastructure. atmosphere Cold Rain. weather Ashfall. foreground Stone Chains. special variation Broken Horn. cinematic low-key lighting. volumetric atmospheric depth. ancient basalt and weathered metal material realism. monumental scale. high detail. text-free master artwork. square collectible composition. At least one primary horn must visibly show old structural damage.",
+    "seed": 3628481919
+  },
+  "seed": 3628481919,
+  "tokenId": 1,
+  "upscale": {
+    "endpoint": "https://api.stability.ai/v2beta/stable-image/upscale/conservative",
+    "mode": "conservative",
+    "output_format": "png",
+    "provider": "STABILITY_AI",
+    "targetPolicy": "4MP_SOURCE_THEN_CANONICAL_2048"
+  }
+}

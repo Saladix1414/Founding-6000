@@ -1,0 +1,25 @@
+{
+  "endpoint": "https://api.stability.ai/v2beta/stable-image/generate/sd3",
+  "model": "sd3.5-large",
+  "provider": "STABILITY_AI",
+  "providerRequestHash": "5b75135c7de848cec1e7a0ad7b749565cc9b7a733f0fc8d2b19972fc93f87bc8",
+  "renderJobId": "oxr-0010-23a5ee204c5990d7",
+  "renderRequestHash": "23a5ee204c5990d7fa0f2142bc433bfc73393bf674146f98796b1dfaca3fa8f5",
+  "request": {
+    "aspect_ratio": "1:1",
+    "model": "sd3.5-large",
+    "negative_prompt": "cartoon, anime imitation, cute mascot, rainbow fantasy, generic stock dragon, modern skyscraper, cyberpunk advertisement, existing franchise creature, superhero costume, watermark, signature, visible prompt text, clean futuristic exosuit, modern robotics, spaceship technology, neon cyberpunk armor, holographic city advertising, modern firearms",
+    "output_format": "png",
+    "prompt": "Original OriginX dark gothic dragon artwork. Primitive Origin era. one dominant dragon only. Low-angle side three-quarter portrait. Standing guardian. Dragon occupies 60-70 percent of frame. dragon archetype Iron Serpent. body structure Heavy. scale pattern Ridge Scales. head structure Fortress Jaw. horn configuration Backward Bone Horns. eyes Deep Blue. wings Cathedral Wings. tail Whip Tail. armor None. chest core Crimson Relic. mechanical augmentation Primitive Gearwork. ancient markings Runic Scars. OriginX glyph treatment OX-Sigil. aura Moonlit Dust. environment Iron Basilica. architecture Industrial Arches. atmosphere Storm Veil. weather Fog. foreground Black Glass Ruins. special variation Battle Scar. cinematic low-key lighting. volumetric atmospheric depth. ancient basalt and weathered metal material realism. monumental scale. high detail. text-free master artwork. square collectible composition. Do not invent plate armor. Natural scales remain visible. Visible healed scar permitted on head, neck or torso.",
+    "seed": 598076961
+  },
+  "seed": 598076961,
+  "tokenId": 10,
+  "upscale": {
+    "endpoint": "https://api.stability.ai/v2beta/stable-image/upscale/conservative",
+    "mode": "conservative",
+    "output_format": "png",
+    "provider": "STABILITY_AI",
+    "targetPolicy": "4MP_SOURCE_THEN_CANONICAL_2048"
+  }
+}
