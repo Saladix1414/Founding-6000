@@ -1,0 +1,179 @@
+{
+  "attributes": [
+    {
+      "trait_type": "Founding Serial",
+      "value": "#0010"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "RARE"
+    },
+    {
+      "trait_type": "Campaign Phase",
+      "value": "Genesis"
+    },
+    {
+      "trait_type": "Generation Theme",
+      "value": "Primitive Origin"
+    },
+    {
+      "trait_type": "Generation Version",
+      "value": "OX-GEN-1"
+    },
+    {
+      "trait_type": "Resonance ID",
+      "value": "RX-6AAC91F6E5D5"
+    },
+    {
+      "trait_type": "Resonance Class",
+      "value": "VEIL"
+    },
+    {
+      "trait_type": "Resonance Spectrum",
+      "value": "Obsidian-Cyan"
+    },
+    {
+      "trait_type": "Ancient Markings",
+      "value": "Runic Scars"
+    },
+    {
+      "trait_type": "Armor",
+      "value": "None"
+    },
+    {
+      "trait_type": "Atmosphere",
+      "value": "Storm Veil"
+    },
+    {
+      "trait_type": "Aura",
+      "value": "Moonlit Dust"
+    },
+    {
+      "trait_type": "Background City",
+      "value": "Iron Basilica"
+    },
+    {
+      "trait_type": "Body Structure",
+      "value": "Heavy"
+    },
+    {
+      "trait_type": "Chest Core",
+      "value": "Crimson Relic"
+    },
+    {
+      "trait_type": "Dragon Archetype",
+      "value": "Iron Serpent"
+    },
+    {
+      "trait_type": "Eye Configuration",
+      "value": "Deep Blue"
+    },
+    {
+      "trait_type": "Foreground",
+      "value": "Black Glass Ruins"
+    },
+    {
+      "trait_type": "Head Structure",
+      "value": "Fortress Jaw"
+    },
+    {
+      "trait_type": "Horn Configuration",
+      "value": "Backward Bone Horns"
+    },
+    {
+      "trait_type": "Mechanical Augmentation",
+      "value": "Primitive Gearwork"
+    },
+    {
+      "trait_type": "Originx Glyph",
+      "value": "OX-Sigil"
+    },
+    {
+      "trait_type": "Scale Pattern",
+      "value": "Ridge Scales"
+    },
+    {
+      "trait_type": "Serial Treatment",
+      "value": "Ancient Steel"
+    },
+    {
+      "trait_type": "Skyline Architecture",
+      "value": "Industrial Arches"
+    },
+    {
+      "trait_type": "Special Variation",
+      "value": "Battle Scar"
+    },
+    {
+      "trait_type": "Tail",
+      "value": "Whip Tail"
+    },
+    {
+      "trait_type": "Weather",
+      "value": "Fog"
+    },
+    {
+      "trait_type": "Wings",
+      "value": "Cathedral Wings"
+    }
+  ],
+  "campaignPhase": "Genesis",
+  "description": "OriginX Founding 6000 digital membership identity. This token combines a canonical dragon identity, deterministic generative DNA, OriginX Resonance, a cryptographic Resonance Glyph and an append-oriented Akashic provenance record. Spiritual terminology is used as artistic and narrative language.",
+  "generationTheme": "Primitive Origin",
+  "image": null,
+  "metadataHash": "19eeeb51cd178214f08cb6ecc3f9e3858ac571ba0a9ac11577e8903588bd7cf7",
+  "metadataVersion": "OX-METADATA-1",
+  "name": "Vaerkaum — Serpent of the Iron Basilica",
+  "originx": {
+    "akashic": {
+      "eventCount": 4,
+      "firstEventHash": "cf50cec1f8f94db417ce767cd1891607c8df8d8d446a1255bc807309f1ff8bf6",
+      "latestEventHash": "c84a000d36320f4b3c25c90318d6c87670a180d3b9864b75e4a081222c063e31",
+      "version": "OX-AKASHIC-1"
+    },
+    "dnaHash": "a94ae2a49505b113c6a1b84076c02e54c6cb61a7e481327cf74360217c84f215",
+    "dragonName": "Vaerkaum",
+    "dragonTitle": "Serpent of the Iron Basilica",
+    "generationVersion": "OX-GEN-1",
+    "glyph": {
+      "manifestHash": "4866f8f32311ce2ca3eefcc73d13f6c157ba749c5abde2f6698afac3ee996282",
+      "svg": "originx://glyph/0010.svg",
+      "svgHash": "800caca8db31c632c3922b165f07db7d2ff1360416faaf7a35e09b2981e71f2f",
+      "version": "OX-RESONANCE-GLYPH-1"
+    },
+    "identityBundleHash": "eb52fdd6b6dc24adad4632511d4496edc724dea01ef0bd8b997b9bb7311695c9",
+    "resonance": {
+      "class": "VEIL",
+      "id": "RX-6AAC91F6E5D5",
+      "phaseDegrees": 316.89,
+      "primaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 502.77
+      },
+      "pulse": 11.4,
+      "resonanceSignature": "6aac91f6e5d526e1f21653ffe1588efde8402856026c9d53a94b17165f0ae301",
+      "secondaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 882.35
+      },
+      "spectrum": "Obsidian-Cyan",
+      "version": "OX-RESONANCE-1"
+    },
+    "seedHash": "e3887abde73bd6c70e753825dc8b982c7372d96b601729c0c423c6d99e694230",
+    "visual": {
+      "mediaHash": null,
+      "qualityStatus": null,
+      "status": "AWAITING_VISUAL"
+    }
+  },
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "serial": "#0010",
+  "tier": "RARE",
+  "tokenId": 10,
+  "visualStatus": "AWAITING_VISUAL"
+}

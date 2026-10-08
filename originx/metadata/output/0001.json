@@ -1,0 +1,179 @@
+{
+  "attributes": [
+    {
+      "trait_type": "Founding Serial",
+      "value": "#0001"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "RARE"
+    },
+    {
+      "trait_type": "Campaign Phase",
+      "value": "Genesis"
+    },
+    {
+      "trait_type": "Generation Theme",
+      "value": "Primitive Origin"
+    },
+    {
+      "trait_type": "Generation Version",
+      "value": "OX-GEN-1"
+    },
+    {
+      "trait_type": "Resonance ID",
+      "value": "RX-42C5C1E2F340"
+    },
+    {
+      "trait_type": "Resonance Class",
+      "value": "RELIC"
+    },
+    {
+      "trait_type": "Resonance Spectrum",
+      "value": "Crimson-Graphite"
+    },
+    {
+      "trait_type": "Ancient Markings",
+      "value": "Tribal Sigils"
+    },
+    {
+      "trait_type": "Armor",
+      "value": "Primitive Chain Armor"
+    },
+    {
+      "trait_type": "Atmosphere",
+      "value": "Cold Rain"
+    },
+    {
+      "trait_type": "Aura",
+      "value": "Cold Cyan"
+    },
+    {
+      "trait_type": "Background City",
+      "value": "Obsidian Spires"
+    },
+    {
+      "trait_type": "Body Structure",
+      "value": "Heavy"
+    },
+    {
+      "trait_type": "Chest Core",
+      "value": "Ancient Ember"
+    },
+    {
+      "trait_type": "Dragon Archetype",
+      "value": "Ancient Ravager"
+    },
+    {
+      "trait_type": "Eye Configuration",
+      "value": "Moon White"
+    },
+    {
+      "trait_type": "Foreground",
+      "value": "Stone Chains"
+    },
+    {
+      "trait_type": "Head Structure",
+      "value": "Broad Skull"
+    },
+    {
+      "trait_type": "Horn Configuration",
+      "value": "Cathedral Horns"
+    },
+    {
+      "trait_type": "Mechanical Augmentation",
+      "value": "Embedded Metal"
+    },
+    {
+      "trait_type": "Originx Glyph",
+      "value": "OX-Prime"
+    },
+    {
+      "trait_type": "Scale Pattern",
+      "value": "Bone-Laced Scales"
+    },
+    {
+      "trait_type": "Serial Treatment",
+      "value": "Runic Inscription"
+    },
+    {
+      "trait_type": "Skyline Architecture",
+      "value": "Stone Megastructure"
+    },
+    {
+      "trait_type": "Special Variation",
+      "value": "Broken Horn"
+    },
+    {
+      "trait_type": "Tail",
+      "value": "Spiked Tail"
+    },
+    {
+      "trait_type": "Weather",
+      "value": "Ashfall"
+    },
+    {
+      "trait_type": "Wings",
+      "value": "Ancient Leather Wings"
+    }
+  ],
+  "campaignPhase": "Genesis",
+  "description": "OriginX Founding 6000 digital membership identity. This token combines a canonical dragon identity, deterministic generative DNA, OriginX Resonance, a cryptographic Resonance Glyph and an append-oriented Akashic provenance record. Spiritual terminology is used as artistic and narrative language.",
+  "generationTheme": "Primitive Origin",
+  "image": null,
+  "metadataHash": "e87d99c085637428c4e934ea800fbb8e12cef88a5e1a2229b3c94a99d3e627f5",
+  "metadataVersion": "OX-METADATA-1",
+  "name": "Vaerkaion — Ravager of the Obsidian Spires",
+  "originx": {
+    "akashic": {
+      "eventCount": 5,
+      "firstEventHash": "f7a4b00ddf4e75f208f08757af7c6bbdea52a02471b7321d4ef1513f152032e6",
+      "latestEventHash": "2b60d9190123c8c76a11940654877f0d44072a0e74d5ea8655f7f31faec0a108",
+      "version": "OX-AKASHIC-1"
+    },
+    "dnaHash": "9402ff0d1d8f692c339069115eef26531ca73856e5123d0579168cfbaaca3f4e",
+    "dragonName": "Vaerkaion",
+    "dragonTitle": "Ravager of the Obsidian Spires",
+    "generationVersion": "OX-GEN-1",
+    "glyph": {
+      "manifestHash": "b8fb137f70c983e328225523f5b474d5889361d3b4a6314b7de8d6721ead992f",
+      "svg": "originx://glyph/0001.svg",
+      "svgHash": "07d66438b69d8530f038d01b24942f873be2a29c4e514dc04046476d190368b8",
+      "version": "OX-RESONANCE-GLYPH-1"
+    },
+    "identityBundleHash": "0b17362a0eb02ab59e9ee265f77173addebe893152ac053b2a4655b9d20de43f",
+    "resonance": {
+      "class": "RELIC",
+      "id": "RX-42C5C1E2F340",
+      "phaseDegrees": 139.95,
+      "primaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 379.79
+      },
+      "pulse": 1.23,
+      "resonanceSignature": "42c5c1e2f3402091055b07f26385cdc354f929b57e06889f36e8e8a64baeb476",
+      "secondaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 923.71
+      },
+      "spectrum": "Crimson-Graphite",
+      "version": "OX-RESONANCE-1"
+    },
+    "seedHash": "9d099c8efd5fa6d0ebf9dafecd2fdb553065641850f044ef74452e1001f7cdac",
+    "visual": {
+      "mediaHash": null,
+      "qualityStatus": null,
+      "status": "AWAITING_VISUAL"
+    }
+  },
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "serial": "#0001",
+  "tier": "RARE",
+  "tokenId": 1,
+  "visualStatus": "AWAITING_VISUAL"
+}

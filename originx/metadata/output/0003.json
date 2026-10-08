@@ -1,0 +1,179 @@
+{
+  "attributes": [
+    {
+      "trait_type": "Founding Serial",
+      "value": "#0003"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "RARE"
+    },
+    {
+      "trait_type": "Campaign Phase",
+      "value": "Genesis"
+    },
+    {
+      "trait_type": "Generation Theme",
+      "value": "Primitive Origin"
+    },
+    {
+      "trait_type": "Generation Version",
+      "value": "OX-GEN-1"
+    },
+    {
+      "trait_type": "Resonance ID",
+      "value": "RX-F106FBEBAB83"
+    },
+    {
+      "trait_type": "Resonance Class",
+      "value": "CATALYST"
+    },
+    {
+      "trait_type": "Resonance Spectrum",
+      "value": "Basalt-Violet"
+    },
+    {
+      "trait_type": "Ancient Markings",
+      "value": "Cathedral Marks"
+    },
+    {
+      "trait_type": "Armor",
+      "value": "None"
+    },
+    {
+      "trait_type": "Atmosphere",
+      "value": "Cold Rain"
+    },
+    {
+      "trait_type": "Aura",
+      "value": "Moonlit Dust"
+    },
+    {
+      "trait_type": "Background City",
+      "value": "Black Cathedral District"
+    },
+    {
+      "trait_type": "Body Structure",
+      "value": "Lean"
+    },
+    {
+      "trait_type": "Chest Core",
+      "value": "Ancient Ember"
+    },
+    {
+      "trait_type": "Dragon Archetype",
+      "value": "Iron Serpent"
+    },
+    {
+      "trait_type": "Eye Configuration",
+      "value": "Deep Blue"
+    },
+    {
+      "trait_type": "Foreground",
+      "value": "Iron Pillars"
+    },
+    {
+      "trait_type": "Head Structure",
+      "value": "Razor Jaw"
+    },
+    {
+      "trait_type": "Horn Configuration",
+      "value": "Asymmetric Horns"
+    },
+    {
+      "trait_type": "Mechanical Augmentation",
+      "value": "Primitive Gearwork"
+    },
+    {
+      "trait_type": "Originx Glyph",
+      "value": "OX-Prime"
+    },
+    {
+      "trait_type": "Scale Pattern",
+      "value": "Ridge Scales"
+    },
+    {
+      "trait_type": "Serial Treatment",
+      "value": "Black Glass"
+    },
+    {
+      "trait_type": "Skyline Architecture",
+      "value": "Cathedral Towers"
+    },
+    {
+      "trait_type": "Special Variation",
+      "value": "Ancient Chain"
+    },
+    {
+      "trait_type": "Tail",
+      "value": "Stone Tail"
+    },
+    {
+      "trait_type": "Weather",
+      "value": "Storm"
+    },
+    {
+      "trait_type": "Wings",
+      "value": "Ancient Leather Wings"
+    }
+  ],
+  "campaignPhase": "Genesis",
+  "description": "OriginX Founding 6000 digital membership identity. This token combines a canonical dragon identity, deterministic generative DNA, OriginX Resonance, a cryptographic Resonance Glyph and an append-oriented Akashic provenance record. Spiritual terminology is used as artistic and narrative language.",
+  "generationTheme": "Primitive Origin",
+  "image": null,
+  "metadataHash": "6dc1a1071e18f6dc28bd55d1eeced1c9f189dacac5af020d686be437dedbaf80",
+  "metadataVersion": "OX-METADATA-1",
+  "name": "Vaerkaor — Serpent of the Black Cathedral District",
+  "originx": {
+    "akashic": {
+      "eventCount": 4,
+      "firstEventHash": "6f2a5882ea3366fe7c24027753fe335d6c5b4a0e3fb7b7c7f00d784c1456c3cc",
+      "latestEventHash": "1c5ecb76f16567e6b7200bf350b55378a21c1d263fc6d44bf690c044f8607307",
+      "version": "OX-AKASHIC-1"
+    },
+    "dnaHash": "6ed04b60b16fcc2d3331457b8772b206e74673f794ccc74d9d35b3a7e2931885",
+    "dragonName": "Vaerkaor",
+    "dragonTitle": "Serpent of the Black Cathedral District",
+    "generationVersion": "OX-GEN-1",
+    "glyph": {
+      "manifestHash": "37b9c4a1e4d08ed4ba53201dd0e8030b23030d2c6dbe9de8ac09a4b702e9b5fe",
+      "svg": "originx://glyph/0003.svg",
+      "svgHash": "170b90e54da29988cc50195d74cfd7a88f947562e6062689e1ed6a7e7bdf2720",
+      "version": "OX-RESONANCE-GLYPH-1"
+    },
+    "identityBundleHash": "a001c58604d4500db2fcab6503d743dfd607d754635979825fcd37d2811c5444",
+    "resonance": {
+      "class": "CATALYST",
+      "id": "RX-F106FBEBAB83",
+      "phaseDegrees": 343.2,
+      "primaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 916.85
+      },
+      "pulse": 6.96,
+      "resonanceSignature": "f106fbebab838f318aa41b89f40d50c4d92bd4fb39d9a278411c0a04972c4fe9",
+      "secondaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 702.61
+      },
+      "spectrum": "Basalt-Violet",
+      "version": "OX-RESONANCE-1"
+    },
+    "seedHash": "6ec35126c347eb6e1ab138873698f0ec340ae477074fde6a12923c33c46369da",
+    "visual": {
+      "mediaHash": null,
+      "qualityStatus": null,
+      "status": "AWAITING_VISUAL"
+    }
+  },
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "serial": "#0003",
+  "tier": "RARE",
+  "tokenId": 3,
+  "visualStatus": "AWAITING_VISUAL"
+}

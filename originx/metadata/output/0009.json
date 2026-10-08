@@ -1,0 +1,179 @@
+{
+  "attributes": [
+    {
+      "trait_type": "Founding Serial",
+      "value": "#0009"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "RARE"
+    },
+    {
+      "trait_type": "Campaign Phase",
+      "value": "Genesis"
+    },
+    {
+      "trait_type": "Generation Theme",
+      "value": "Primitive Origin"
+    },
+    {
+      "trait_type": "Generation Version",
+      "value": "OX-GEN-1"
+    },
+    {
+      "trait_type": "Resonance ID",
+      "value": "RX-9FFEA8499B2F"
+    },
+    {
+      "trait_type": "Resonance Class",
+      "value": "ECHO"
+    },
+    {
+      "trait_type": "Resonance Spectrum",
+      "value": "Void-Silver"
+    },
+    {
+      "trait_type": "Ancient Markings",
+      "value": "War Etchings"
+    },
+    {
+      "trait_type": "Armor",
+      "value": "Bone Fragments"
+    },
+    {
+      "trait_type": "Atmosphere",
+      "value": "Dense Fog"
+    },
+    {
+      "trait_type": "Aura",
+      "value": "Moonlit Dust"
+    },
+    {
+      "trait_type": "Background City",
+      "value": "Ancient Citadel"
+    },
+    {
+      "trait_type": "Body Structure",
+      "value": "Feral"
+    },
+    {
+      "trait_type": "Chest Core",
+      "value": "Cyan Relic"
+    },
+    {
+      "trait_type": "Dragon Archetype",
+      "value": "Stone Wyrm"
+    },
+    {
+      "trait_type": "Eye Configuration",
+      "value": "Ember Red"
+    },
+    {
+      "trait_type": "Foreground",
+      "value": "Black Glass Ruins"
+    },
+    {
+      "trait_type": "Head Structure",
+      "value": "Long Skull"
+    },
+    {
+      "trait_type": "Horn Configuration",
+      "value": "Twin Stone Horns"
+    },
+    {
+      "trait_type": "Mechanical Augmentation",
+      "value": "Primitive Gearwork"
+    },
+    {
+      "trait_type": "Originx Glyph",
+      "value": "OX-Sigil"
+    },
+    {
+      "trait_type": "Scale Pattern",
+      "value": "Obsidian Scales"
+    },
+    {
+      "trait_type": "Serial Treatment",
+      "value": "Engraved Stone"
+    },
+    {
+      "trait_type": "Skyline Architecture",
+      "value": "Fortress Silhouette"
+    },
+    {
+      "trait_type": "Special Variation",
+      "value": "Battle Scar"
+    },
+    {
+      "trait_type": "Tail",
+      "value": "Stone Tail"
+    },
+    {
+      "trait_type": "Weather",
+      "value": "Still Night"
+    },
+    {
+      "trait_type": "Wings",
+      "value": "Stone Membrane Wings"
+    }
+  ],
+  "campaignPhase": "Genesis",
+  "description": "OriginX Founding 6000 digital membership identity. This token combines a canonical dragon identity, deterministic generative DNA, OriginX Resonance, a cryptographic Resonance Glyph and an append-oriented Akashic provenance record. Spiritual terminology is used as artistic and narrative language.",
+  "generationTheme": "Primitive Origin",
+  "image": null,
+  "metadataHash": "0be55cf83c01287997b691fadec0bc6931ad672062722a78a70a4859c018c95f",
+  "metadataVersion": "OX-METADATA-1",
+  "name": "Vaerkaek — Wyrm of the Ancient Citadel",
+  "originx": {
+    "akashic": {
+      "eventCount": 4,
+      "firstEventHash": "238b17e8f02763b11cde306f1d9ec7be52d47bdb4454b54b87c4e4945556bee3",
+      "latestEventHash": "29bdfa6bf9f13d5772d0f7d2e0e9a199d43415996b66ea412c1d114699fb1549",
+      "version": "OX-AKASHIC-1"
+    },
+    "dnaHash": "10cd9bc671ef3c5b339791568c9373e3913f6d0fc2a0a99ec857018690a049e2",
+    "dragonName": "Vaerkaek",
+    "dragonTitle": "Wyrm of the Ancient Citadel",
+    "generationVersion": "OX-GEN-1",
+    "glyph": {
+      "manifestHash": "25e72dfac9d68ae041ed01722d286fe602a90fd8a0cfe68d816461b20b2cefcf",
+      "svg": "originx://glyph/0009.svg",
+      "svgHash": "71b7b4de5dc73a0c7f7f2d49f8629c73822c74bbe90703a9af5e3fa67e8c7c9e",
+      "version": "OX-RESONANCE-GLYPH-1"
+    },
+    "identityBundleHash": "f5fa02ad18acc4da8976d8544a8492ccb0abe46ab4a810334d48af9cd3442811",
+    "resonance": {
+      "class": "ECHO",
+      "id": "RX-9FFEA8499B2F",
+      "phaseDegrees": 286.27,
+      "primaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 667.11
+      },
+      "pulse": 4.43,
+      "resonanceSignature": "9ffea8499b2f451b4fd7633acb92ae8a9b9de25aeea50c486d393d2951c0030c",
+      "secondaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 652.28
+      },
+      "spectrum": "Void-Silver",
+      "version": "OX-RESONANCE-1"
+    },
+    "seedHash": "62bf5ed77f293e9619c0759223a5437806c72d483fa2cba061380c3000e34a4b",
+    "visual": {
+      "mediaHash": null,
+      "qualityStatus": null,
+      "status": "AWAITING_VISUAL"
+    }
+  },
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "serial": "#0009",
+  "tier": "RARE",
+  "tokenId": 9,
+  "visualStatus": "AWAITING_VISUAL"
+}

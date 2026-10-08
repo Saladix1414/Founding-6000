@@ -1,0 +1,179 @@
+{
+  "attributes": [
+    {
+      "trait_type": "Founding Serial",
+      "value": "#0006"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "RARE"
+    },
+    {
+      "trait_type": "Campaign Phase",
+      "value": "Genesis"
+    },
+    {
+      "trait_type": "Generation Theme",
+      "value": "Primitive Origin"
+    },
+    {
+      "trait_type": "Generation Version",
+      "value": "OX-GEN-1"
+    },
+    {
+      "trait_type": "Resonance ID",
+      "value": "RX-029FCCCEF6BB"
+    },
+    {
+      "trait_type": "Resonance Class",
+      "value": "ASCENDANT"
+    },
+    {
+      "trait_type": "Resonance Spectrum",
+      "value": "Moonstone-Blue"
+    },
+    {
+      "trait_type": "Ancient Markings",
+      "value": "Runic Scars"
+    },
+    {
+      "trait_type": "Armor",
+      "value": "Ancient Iron"
+    },
+    {
+      "trait_type": "Atmosphere",
+      "value": "Cold Rain"
+    },
+    {
+      "trait_type": "Aura",
+      "value": "Black Vapor"
+    },
+    {
+      "trait_type": "Background City",
+      "value": "Black Cathedral District"
+    },
+    {
+      "trait_type": "Body Structure",
+      "value": "Lean"
+    },
+    {
+      "trait_type": "Chest Core",
+      "value": "Dormant"
+    },
+    {
+      "trait_type": "Dragon Archetype",
+      "value": "Stone Wyrm"
+    },
+    {
+      "trait_type": "Eye Configuration",
+      "value": "Ember Red"
+    },
+    {
+      "trait_type": "Foreground",
+      "value": "Iron Pillars"
+    },
+    {
+      "trait_type": "Head Structure",
+      "value": "Fortress Jaw"
+    },
+    {
+      "trait_type": "Horn Configuration",
+      "value": "Asymmetric Horns"
+    },
+    {
+      "trait_type": "Mechanical Augmentation",
+      "value": "Ancient Prosthetic"
+    },
+    {
+      "trait_type": "Originx Glyph",
+      "value": "OX-Prime"
+    },
+    {
+      "trait_type": "Scale Pattern",
+      "value": "Obsidian Scales"
+    },
+    {
+      "trait_type": "Serial Treatment",
+      "value": "Engraved Stone"
+    },
+    {
+      "trait_type": "Skyline Architecture",
+      "value": "Cathedral Towers"
+    },
+    {
+      "trait_type": "Special Variation",
+      "value": "Moon Crest"
+    },
+    {
+      "trait_type": "Tail",
+      "value": "Chain Tail"
+    },
+    {
+      "trait_type": "Weather",
+      "value": "Still Night"
+    },
+    {
+      "trait_type": "Wings",
+      "value": "Stone Membrane Wings"
+    }
+  ],
+  "campaignPhase": "Genesis",
+  "description": "OriginX Founding 6000 digital membership identity. This token combines a canonical dragon identity, deterministic generative DNA, OriginX Resonance, a cryptographic Resonance Glyph and an append-oriented Akashic provenance record. Spiritual terminology is used as artistic and narrative language.",
+  "generationTheme": "Primitive Origin",
+  "image": null,
+  "metadataHash": "000a01c483428a5348968231d5cfddb02e30b5d8bd4906d63beff63d009288de",
+  "metadataVersion": "OX-METADATA-1",
+  "name": "Vaerkaeth — Wyrm of the Black Cathedral District",
+  "originx": {
+    "akashic": {
+      "eventCount": 4,
+      "firstEventHash": "1b2649a64bffb7b7d0e7975fdb07d9512c28ab28e8c675a981cafa91a8bfe71e",
+      "latestEventHash": "f39b363109dd8a53d31811626e99d42c69821cb8a13f083f98d25096229eac06",
+      "version": "OX-AKASHIC-1"
+    },
+    "dnaHash": "c5b668fe3aff0fc1d0e5b774d68694352ca22d8a098081e010e35cd1562c7026",
+    "dragonName": "Vaerkaeth",
+    "dragonTitle": "Wyrm of the Black Cathedral District",
+    "generationVersion": "OX-GEN-1",
+    "glyph": {
+      "manifestHash": "06f6b72078d3d697dcbea623db1cd88f88d5120b4154e77f161e9aacb3917cd7",
+      "svg": "originx://glyph/0006.svg",
+      "svgHash": "16a948a1fd8bf9b90ea51fba8d381c08094e0deef24b9513098399d3393cea23",
+      "version": "OX-RESONANCE-GLYPH-1"
+    },
+    "identityBundleHash": "6cefc97179076b78eff897260a2bbec44c0d755bed462d62d6fe2dd2173fd52b",
+    "resonance": {
+      "class": "ASCENDANT",
+      "id": "RX-029FCCCEF6BB",
+      "phaseDegrees": 58.6,
+      "primaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 182.09
+      },
+      "pulse": 4.7,
+      "resonanceSignature": "029fcccef6bb8d1d5614298129ab6f760daae54c14c7710282db138ab0bbd897",
+      "secondaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 934.44
+      },
+      "spectrum": "Moonstone-Blue",
+      "version": "OX-RESONANCE-1"
+    },
+    "seedHash": "bae85245a9f0e582e8a7774d4cacfca78c84581ddde5f641ef6d7d470861d23a",
+    "visual": {
+      "mediaHash": null,
+      "qualityStatus": null,
+      "status": "AWAITING_VISUAL"
+    }
+  },
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "serial": "#0006",
+  "tier": "RARE",
+  "tokenId": 6,
+  "visualStatus": "AWAITING_VISUAL"
+}

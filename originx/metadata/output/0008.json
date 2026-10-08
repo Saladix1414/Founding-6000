@@ -1,0 +1,179 @@
+{
+  "attributes": [
+    {
+      "trait_type": "Founding Serial",
+      "value": "#0008"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "RARE"
+    },
+    {
+      "trait_type": "Campaign Phase",
+      "value": "Genesis"
+    },
+    {
+      "trait_type": "Generation Theme",
+      "value": "Primitive Origin"
+    },
+    {
+      "trait_type": "Generation Version",
+      "value": "OX-GEN-1"
+    },
+    {
+      "trait_type": "Resonance ID",
+      "value": "RX-39BB2C092DB1"
+    },
+    {
+      "trait_type": "Resonance Class",
+      "value": "CATALYST"
+    },
+    {
+      "trait_type": "Resonance Spectrum",
+      "value": "Crimson-Graphite"
+    },
+    {
+      "trait_type": "Ancient Markings",
+      "value": "Cathedral Marks"
+    },
+    {
+      "trait_type": "Armor",
+      "value": "Ancient Iron"
+    },
+    {
+      "trait_type": "Atmosphere",
+      "value": "Dense Fog"
+    },
+    {
+      "trait_type": "Aura",
+      "value": "None"
+    },
+    {
+      "trait_type": "Background City",
+      "value": "Ruined Megalith Ward"
+    },
+    {
+      "trait_type": "Body Structure",
+      "value": "Armored"
+    },
+    {
+      "trait_type": "Chest Core",
+      "value": "Crimson Relic"
+    },
+    {
+      "trait_type": "Dragon Archetype",
+      "value": "Ancient Ravager"
+    },
+    {
+      "trait_type": "Eye Configuration",
+      "value": "Ember Red"
+    },
+    {
+      "trait_type": "Foreground",
+      "value": "Broken Gargoyles"
+    },
+    {
+      "trait_type": "Head Structure",
+      "value": "Razor Jaw"
+    },
+    {
+      "trait_type": "Horn Configuration",
+      "value": "Asymmetric Horns"
+    },
+    {
+      "trait_type": "Mechanical Augmentation",
+      "value": "None"
+    },
+    {
+      "trait_type": "Originx Glyph",
+      "value": "OX-Crown"
+    },
+    {
+      "trait_type": "Scale Pattern",
+      "value": "Basalt Plates"
+    },
+    {
+      "trait_type": "Serial Treatment",
+      "value": "Ancient Steel"
+    },
+    {
+      "trait_type": "Skyline Architecture",
+      "value": "Industrial Arches"
+    },
+    {
+      "trait_type": "Special Variation",
+      "value": "Broken Horn"
+    },
+    {
+      "trait_type": "Tail",
+      "value": "Bladed Tail"
+    },
+    {
+      "trait_type": "Weather",
+      "value": "Rain"
+    },
+    {
+      "trait_type": "Wings",
+      "value": "Ribbed Wings"
+    }
+  ],
+  "campaignPhase": "Genesis",
+  "description": "OriginX Founding 6000 digital membership identity. This token combines a canonical dragon identity, deterministic generative DNA, OriginX Resonance, a cryptographic Resonance Glyph and an append-oriented Akashic provenance record. Spiritual terminology is used as artistic and narrative language.",
+  "generationTheme": "Primitive Origin",
+  "image": null,
+  "metadataHash": "7d68aeeb681cf369add4cdcbe22b5e835844a1ec32ea482c47d9f51893a4de43",
+  "metadataVersion": "OX-METADATA-1",
+  "name": "Vaerkais — Ravager of the Ruined Megalith Ward",
+  "originx": {
+    "akashic": {
+      "eventCount": 4,
+      "firstEventHash": "972dbccee80d83ba8c6c482dc714fa166304922fc2343cba547fc70b269e4546",
+      "latestEventHash": "1884776292745fa905e54689be365af25f6afa0b028aba4dc7f84c566c5bc5f8",
+      "version": "OX-AKASHIC-1"
+    },
+    "dnaHash": "a9a705927cf3deb0b031a2c919b7ad7fb42d2793154d6ae9d69295bdd60ca75e",
+    "dragonName": "Vaerkais",
+    "dragonTitle": "Ravager of the Ruined Megalith Ward",
+    "generationVersion": "OX-GEN-1",
+    "glyph": {
+      "manifestHash": "11de6fe936bbd02d1337ae390f8c8914079634f59fb0e64e95f03316aafa92d9",
+      "svg": "originx://glyph/0008.svg",
+      "svgHash": "13280055b372da88557fe34438e5cce89f4ed038758a360cf04a2e0194a89001",
+      "version": "OX-RESONANCE-GLYPH-1"
+    },
+    "identityBundleHash": "4e1ef66289ffcb91b7810d1c0557a0ef876bacd8292ab8bd3b03c4e18f3b1511",
+    "resonance": {
+      "class": "CATALYST",
+      "id": "RX-39BB2C092DB1",
+      "phaseDegrees": 236.59,
+      "primaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 351.93
+      },
+      "pulse": 6.43,
+      "resonanceSignature": "39bb2c092db163c37e51a58ea83d61d20159398b29f4f880fbd70cd6f357bb46",
+      "secondaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 314.83
+      },
+      "spectrum": "Crimson-Graphite",
+      "version": "OX-RESONANCE-1"
+    },
+    "seedHash": "148972859fd97565ed849cdc0aa0f178a7d4be2f0bdf1fe628483bcdd815616c",
+    "visual": {
+      "mediaHash": null,
+      "qualityStatus": null,
+      "status": "AWAITING_VISUAL"
+    }
+  },
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "serial": "#0008",
+  "tier": "RARE",
+  "tokenId": 8,
+  "visualStatus": "AWAITING_VISUAL"
+}

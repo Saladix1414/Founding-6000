@@ -1,0 +1,179 @@
+{
+  "attributes": [
+    {
+      "trait_type": "Founding Serial",
+      "value": "#0007"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "RARE"
+    },
+    {
+      "trait_type": "Campaign Phase",
+      "value": "Genesis"
+    },
+    {
+      "trait_type": "Generation Theme",
+      "value": "Primitive Origin"
+    },
+    {
+      "trait_type": "Generation Version",
+      "value": "OX-GEN-1"
+    },
+    {
+      "trait_type": "Resonance ID",
+      "value": "RX-62D00EF7E6DC"
+    },
+    {
+      "trait_type": "Resonance Class",
+      "value": "VEIL"
+    },
+    {
+      "trait_type": "Resonance Spectrum",
+      "value": "Moonstone-Blue"
+    },
+    {
+      "trait_type": "Ancient Markings",
+      "value": "Origin Runes"
+    },
+    {
+      "trait_type": "Armor",
+      "value": "Stone Plates"
+    },
+    {
+      "trait_type": "Atmosphere",
+      "value": "Cold Rain"
+    },
+    {
+      "trait_type": "Aura",
+      "value": "None"
+    },
+    {
+      "trait_type": "Background City",
+      "value": "Iron Basilica"
+    },
+    {
+      "trait_type": "Body Structure",
+      "value": "Monolithic"
+    },
+    {
+      "trait_type": "Chest Core",
+      "value": "Ancient Ember"
+    },
+    {
+      "trait_type": "Dragon Archetype",
+      "value": "Iron Serpent"
+    },
+    {
+      "trait_type": "Eye Configuration",
+      "value": "Controlled Crimson"
+    },
+    {
+      "trait_type": "Foreground",
+      "value": "Iron Pillars"
+    },
+    {
+      "trait_type": "Head Structure",
+      "value": "Razor Jaw"
+    },
+    {
+      "trait_type": "Horn Configuration",
+      "value": "Cathedral Horns"
+    },
+    {
+      "trait_type": "Mechanical Augmentation",
+      "value": "Primitive Gearwork"
+    },
+    {
+      "trait_type": "Originx Glyph",
+      "value": "OX-Prime"
+    },
+    {
+      "trait_type": "Scale Pattern",
+      "value": "Bone-Laced Scales"
+    },
+    {
+      "trait_type": "Serial Treatment",
+      "value": "Engraved Stone"
+    },
+    {
+      "trait_type": "Skyline Architecture",
+      "value": "Stone Megastructure"
+    },
+    {
+      "trait_type": "Special Variation",
+      "value": "Broken Horn"
+    },
+    {
+      "trait_type": "Tail",
+      "value": "Stone Tail"
+    },
+    {
+      "trait_type": "Weather",
+      "value": "Ashfall"
+    },
+    {
+      "trait_type": "Wings",
+      "value": "Cathedral Wings"
+    }
+  ],
+  "campaignPhase": "Genesis",
+  "description": "OriginX Founding 6000 digital membership identity. This token combines a canonical dragon identity, deterministic generative DNA, OriginX Resonance, a cryptographic Resonance Glyph and an append-oriented Akashic provenance record. Spiritual terminology is used as artistic and narrative language.",
+  "generationTheme": "Primitive Origin",
+  "image": null,
+  "metadataHash": "c32ee1a7c18f2138016429bcb22a08d177ebd322a8ea3e538a20a738d1c7c517",
+  "metadataVersion": "OX-METADATA-1",
+  "name": "Vaerkaon — Serpent of the Iron Basilica",
+  "originx": {
+    "akashic": {
+      "eventCount": 4,
+      "firstEventHash": "b4ee163cf596edc40e389a0891cbb09aa345cff64dc006c473234d93f461b8a3",
+      "latestEventHash": "3da0d05b9015cb5a6ed07a6eddf111d01313b7dec350e4e321cc2a2d0d0f843a",
+      "version": "OX-AKASHIC-1"
+    },
+    "dnaHash": "7f02b008b8dfab71cbebcf27c8caf4d706783a8bfac15fd19a2e975bf21eb642",
+    "dragonName": "Vaerkaon",
+    "dragonTitle": "Serpent of the Iron Basilica",
+    "generationVersion": "OX-GEN-1",
+    "glyph": {
+      "manifestHash": "9c1b802f1c47ce95dc4a77df5ce11fb8527f2acc5b980d4d38334a6535f0ee5b",
+      "svg": "originx://glyph/0007.svg",
+      "svgHash": "9371d4603665935837f816e6dc6ab3eb9b874de4a73aaa30f3f19662fea7e68a",
+      "version": "OX-RESONANCE-GLYPH-1"
+    },
+    "identityBundleHash": "2df696612316e76c4e0b829dfd44956cc4723211e0ffb11adc9d2da932d7dfb2",
+    "resonance": {
+      "class": "VEIL",
+      "id": "RX-62D00EF7E6DC",
+      "phaseDegrees": 80.56,
+      "primaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 478.54
+      },
+      "pulse": 8.92,
+      "resonanceSignature": "62d00ef7e6dc081cb8441ff53948e148c8923ceefd5013c31836cc24a2d525cc",
+      "secondaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 885.52
+      },
+      "spectrum": "Moonstone-Blue",
+      "version": "OX-RESONANCE-1"
+    },
+    "seedHash": "05558b2167ee30accc9e51ed8a466e30fa8cfd17bdd9545e89763b32b64dee1a",
+    "visual": {
+      "mediaHash": null,
+      "qualityStatus": null,
+      "status": "AWAITING_VISUAL"
+    }
+  },
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "serial": "#0007",
+  "tier": "RARE",
+  "tokenId": 7,
+  "visualStatus": "AWAITING_VISUAL"
+}

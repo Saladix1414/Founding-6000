@@ -1,0 +1,179 @@
+{
+  "attributes": [
+    {
+      "trait_type": "Founding Serial",
+      "value": "#0004"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "RARE"
+    },
+    {
+      "trait_type": "Campaign Phase",
+      "value": "Genesis"
+    },
+    {
+      "trait_type": "Generation Theme",
+      "value": "Primitive Origin"
+    },
+    {
+      "trait_type": "Generation Version",
+      "value": "OX-GEN-1"
+    },
+    {
+      "trait_type": "Resonance ID",
+      "value": "RX-8910F7C7A7F4"
+    },
+    {
+      "trait_type": "Resonance Class",
+      "value": "ECHO"
+    },
+    {
+      "trait_type": "Resonance Spectrum",
+      "value": "Ancient-Gold"
+    },
+    {
+      "trait_type": "Ancient Markings",
+      "value": "Origin Runes"
+    },
+    {
+      "trait_type": "Armor",
+      "value": "Ancient Iron"
+    },
+    {
+      "trait_type": "Atmosphere",
+      "value": "Storm Veil"
+    },
+    {
+      "trait_type": "Aura",
+      "value": "Moonlit Dust"
+    },
+    {
+      "trait_type": "Background City",
+      "value": "Ancient Citadel"
+    },
+    {
+      "trait_type": "Body Structure",
+      "value": "Monolithic"
+    },
+    {
+      "trait_type": "Chest Core",
+      "value": "Obsidian Seal"
+    },
+    {
+      "trait_type": "Dragon Archetype",
+      "value": "Obsidian Wyvern"
+    },
+    {
+      "trait_type": "Eye Configuration",
+      "value": "Deep Blue"
+    },
+    {
+      "trait_type": "Foreground",
+      "value": "Cathedral Rails"
+    },
+    {
+      "trait_type": "Head Structure",
+      "value": "Broad Skull"
+    },
+    {
+      "trait_type": "Horn Configuration",
+      "value": "Backward Bone Horns"
+    },
+    {
+      "trait_type": "Mechanical Augmentation",
+      "value": "Primitive Gearwork"
+    },
+    {
+      "trait_type": "Originx Glyph",
+      "value": "OX-Alpha"
+    },
+    {
+      "trait_type": "Scale Pattern",
+      "value": "Bone-Laced Scales"
+    },
+    {
+      "trait_type": "Serial Treatment",
+      "value": "Engraved Stone"
+    },
+    {
+      "trait_type": "Skyline Architecture",
+      "value": "Fortress Silhouette"
+    },
+    {
+      "trait_type": "Special Variation",
+      "value": "None"
+    },
+    {
+      "trait_type": "Tail",
+      "value": "Stone Tail"
+    },
+    {
+      "trait_type": "Weather",
+      "value": "Storm"
+    },
+    {
+      "trait_type": "Wings",
+      "value": "Cathedral Wings"
+    }
+  ],
+  "campaignPhase": "Genesis",
+  "description": "OriginX Founding 6000 digital membership identity. This token combines a canonical dragon identity, deterministic generative DNA, OriginX Resonance, a cryptographic Resonance Glyph and an append-oriented Akashic provenance record. Spiritual terminology is used as artistic and narrative language.",
+  "generationTheme": "Primitive Origin",
+  "image": null,
+  "metadataHash": "1512e08d93047a3549056c43bba52d6cf30ce97a6658aa6d09cee78004204f74",
+  "metadataVersion": "OX-METADATA-1",
+  "name": "Vaerkayx — Wyvern of the Ancient Citadel",
+  "originx": {
+    "akashic": {
+      "eventCount": 4,
+      "firstEventHash": "234484b64e8aa5020706af95982438e76c28036d89b3297317026e8270afe1be",
+      "latestEventHash": "23eb1254ab36849e942d7a5a70b9afcac539b5115c9f13ae69803a1986b368c6",
+      "version": "OX-AKASHIC-1"
+    },
+    "dnaHash": "99c1a712433b5dd7dcbc1b314c60c8ce7a1d3a9131a65592605f0e8e4942505d",
+    "dragonName": "Vaerkayx",
+    "dragonTitle": "Wyvern of the Ancient Citadel",
+    "generationVersion": "OX-GEN-1",
+    "glyph": {
+      "manifestHash": "781dcb633e16b762a34f9679fd4bad6b6f92f998f6f768a3ea1478ce6930a051",
+      "svg": "originx://glyph/0004.svg",
+      "svgHash": "eac669bddaf956b8436cd7005b5b153f09c35c3aaf746b5efa18c5b16892ecf5",
+      "version": "OX-RESONANCE-GLYPH-1"
+    },
+    "identityBundleHash": "78951c03a5a17b0d1ada0a67423011e1ce796846cce8bf83fc5780c0ef6d23dd",
+    "resonance": {
+      "class": "ECHO",
+      "id": "RX-8910F7C7A7F4",
+      "phaseDegrees": 268.86,
+      "primaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 596.44
+      },
+      "pulse": 9.84,
+      "resonanceSignature": "8910f7c7a7f4b7f8cda23efebf304028ff163f8293eb632a1db4fed35e5f9cd0",
+      "secondaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 691.65
+      },
+      "spectrum": "Ancient-Gold",
+      "version": "OX-RESONANCE-1"
+    },
+    "seedHash": "f81a38b6c16c6c0c700ed2b710eef6d01840d45326f4d00e73eae566cf53ad9d",
+    "visual": {
+      "mediaHash": null,
+      "qualityStatus": null,
+      "status": "AWAITING_VISUAL"
+    }
+  },
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "serial": "#0004",
+  "tier": "RARE",
+  "tokenId": 4,
+  "visualStatus": "AWAITING_VISUAL"
+}
