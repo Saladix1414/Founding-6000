@@ -8,12 +8,17 @@ const health =
     "utf8",
   );
 
-const required = [
+const policy =
+  readFileSync(
+    "server/src/economics/economicReconciliationHealthPolicy.ts",
+    "utf8",
+  );
+
+const requiredHealth = [
   "economicIntegrity",
   "economicReconciledAt",
   "economicReportHash",
-  "ECONOMIC_RECONCILIATION_STALE_MS",
-  "reconciliationStale",
+  "resolveEconomicReconciliationHealth",
   "economicIntegrityReady",
   "overallReady",
   "getLatestEconomicIntegrityIncidentEvent",
@@ -24,7 +29,7 @@ const required = [
 
 for (
   const value of
-    required
+    requiredHealth
 ) {
   if (
     !health.includes(
@@ -33,6 +38,29 @@ for (
   ) {
     throw new Error(
       `ECONOMIC_HEALTH_CONTRACT_MISSING:${value}`,
+    );
+  }
+}
+
+const requiredPolicy = [
+  "ECONOMIC_RECONCILIATION_STALE_MS",
+  "15 * 60 * 1000",
+  "resolveEconomicReconciliationHealth",
+  '"STALE"',
+  '"NOT_SEEN"',
+];
+
+for (
+  const value of
+    requiredPolicy
+) {
+  if (
+    !policy.includes(
+      value,
+    )
+  ) {
+    throw new Error(
+      `ECONOMIC_HEALTH_POLICY_CONTRACT_MISSING:${value}`,
     );
   }
 }
@@ -91,6 +119,10 @@ for (
 
 console.log(
   "OX_ECONOMIC_INTEGRITY_HEALTH_CONTRACT=PASS",
+);
+
+console.log(
+  "SHARED_STALE_POLICY=YES",
 );
 
 console.log(

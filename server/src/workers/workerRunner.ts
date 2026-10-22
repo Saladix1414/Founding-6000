@@ -52,6 +52,10 @@ import {
   syncEconomicIncidentAlerts,
 } from "../services/economicAlertOutboxService.js";
 
+import {
+  evaluateEconomicReconciliationStaleness,
+} from "../services/economicIntegrityStaleService.js";
+
 const EMAIL_INTERVAL_MS =
   30_000;
 
@@ -405,10 +409,76 @@ async function runReconciliationCycle() {
   } catch (error) {
     /*
      * Reconciliation never repairs or mutates
-     * economic authority. Failure is surfaced
-     * operationally and the previous evidence
-     * will eventually become stale.
+     * economic authority.
+     *
+     * On failure, evaluate whether the most recent
+     * durable reconciliation evidence has crossed
+     * the STALE threshold.
+     *
+     * If so:
+     *   STALE -> incident ledger -> alert outbox
+     *
+     * No alert delivery, reserve mutation,
+     * auto-repair or blockchain transaction occurs.
      */
+    try {
+      const staleResult =
+        evaluateEconomicReconciliationStaleness();
+
+      const staleAlertSync =
+        staleResult.stale
+          ? syncEconomicIncidentAlerts()
+          : {
+              scanned:
+                0,
+
+              created:
+                0,
+
+              replayed:
+                0,
+            };
+
+      logEvent(
+        "ECONOMIC_RECONCILIATION_FAILURE_STALE_EVALUATION",
+        {
+          stale:
+            staleResult.stale,
+
+          staleState:
+            staleResult.state,
+
+          staleAgeMs:
+            staleResult.ageMs,
+
+          staleIncidentAction:
+            staleResult
+              .incidentResult
+              ?.action,
+
+          staleIncidentEventType:
+            staleResult
+              .incidentResult
+              ?.event
+              ?.eventType,
+
+          alertSyncScanned:
+            staleAlertSync.scanned,
+
+          alertSyncCreated:
+            staleAlertSync.created,
+
+          alertSyncReplayed:
+            staleAlertSync.replayed,
+        },
+      );
+    } catch (staleError) {
+      logError(
+        "ECONOMIC_RECONCILIATION_STALE_EVALUATION_FAILED",
+        staleError,
+      );
+    }
+
     logError(
       "ECONOMIC_RECONCILIATION_CYCLE_FAILED",
       error,

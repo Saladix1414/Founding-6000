@@ -32,6 +32,10 @@ import {
   getLatestEconomicIntegrityIncidentEvent,
 } from "../services/economicIntegrityIncidentService.js";
 
+import {
+  resolveEconomicReconciliationHealth,
+} from "../economics/economicReconciliationHealthPolicy.js";
+
 export const healthRouter =
   Router();
 
@@ -43,9 +47,6 @@ type PublicWorkerState =
   | "not_seen"
   | "unavailable"
   | "disabled";
-
-const ECONOMIC_RECONCILIATION_STALE_MS =
-  15 * 60 * 1000;
 
 const WORKER_STALE_MS:
   Record<
@@ -249,30 +250,32 @@ function operationalSnapshot() {
       economicIntegrity =
         "not_seen";
     } else {
-      const reconciliationAgeMs =
-        now -
-        Date.parse(
-          economicEvidence
-            .reconciledAt,
-        );
+      const reconciliationState =
+        resolveEconomicReconciliationHealth({
+          status:
+            economicEvidence.status,
 
-      const reconciliationStale =
-        !Number.isFinite(
-          reconciliationAgeMs,
-        ) ||
-        reconciliationAgeMs >
-          ECONOMIC_RECONCILIATION_STALE_MS;
+          reconciledAt:
+            economicEvidence.reconciledAt,
+
+          nowMs:
+            now,
+        });
 
       economicIntegrity =
-        reconciliationStale
+        reconciliationState ===
+          "STALE"
           ? "stale"
-          : economicEvidence.status ===
+          : reconciliationState ===
               "OK"
             ? "ok"
-            : economicEvidence.status ===
+            : reconciliationState ===
                 "WARNING"
               ? "warning"
-              : "critical";
+              : reconciliationState ===
+                  "CRITICAL"
+                ? "critical"
+                : "not_seen";
 
       economicReconciledAt =
         economicEvidence

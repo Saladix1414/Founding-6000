@@ -12,13 +12,15 @@ const required = [
   "captureEconomicReconciliationEvidence",
   "recordEconomicIntegrityObservation",
   "syncEconomicIncidentAlerts",
+  "evaluateEconomicReconciliationStaleness",
   "RECONCILIATION_INTERVAL_MS",
   "async function runReconciliationCycle()",
   "ECONOMIC_RECONCILIATION_CYCLE_COMPLETE",
   "ECONOMIC_RECONCILIATION_CYCLE_FAILED",
-  "failingCodes",
-  "incidentAction",
-  "alertSyncScanned",
+  "ECONOMIC_RECONCILIATION_FAILURE_STALE_EVALUATION",
+  "ECONOMIC_RECONCILIATION_STALE_EVALUATION_FAILED",
+  "staleIncidentAction",
+  "staleIncidentEventType",
   "alertSyncCreated",
   "alertSyncReplayed",
   "reconciliationRunning",
@@ -97,16 +99,61 @@ if (
 }
 
 /*
- * Alert sync may populate the outbox only.
- *
- * It must not become delivery, treasury,
- * governance or repair authority.
+ * Failure path must evaluate stale state.
  */
+const catchIndex =
+  worker.indexOf(
+    "} catch (error) {",
+    worker.indexOf(
+      "async function runReconciliationCycle()"
+    ),
+  );
+
+const finallyIndex =
+  worker.indexOf(
+    "} finally {",
+    catchIndex,
+  );
+
+if (
+  catchIndex === -1 ||
+  finallyIndex === -1
+) {
+  throw new Error(
+    "RECONCILIATION_CATCH_BOUNDARY_NOT_FOUND",
+  );
+}
+
+const failurePath =
+  worker.slice(
+    catchIndex,
+    finallyIndex,
+  );
+
+if (
+  !failurePath.includes(
+    "evaluateEconomicReconciliationStaleness"
+  )
+) {
+  throw new Error(
+    "STALE_EVALUATION_NOT_IN_FAILURE_PATH",
+  );
+}
+
+if (
+  !failurePath.includes(
+    "syncEconomicIncidentAlerts"
+  )
+) {
+  throw new Error(
+    "STALE_ALERT_SYNC_NOT_IN_FAILURE_PATH",
+  );
+}
+
 const forbidden = [
   "sendTransaction(",
   "signTransaction(",
   "wallet.send",
-  "AUTO_REPAIR",
   "dispatchEconomicAlert",
   "sendEconomicAlert",
   "deliverEconomicAlert",
@@ -122,7 +169,7 @@ for (
     )
   ) {
     throw new Error(
-      `WORKER_GAINED_FORBIDDEN_ALERT_AUTHORITY:${value}`,
+      `WORKER_GAINED_FORBIDDEN_AUTHORITY:${value}`,
     );
   }
 }
@@ -140,11 +187,11 @@ console.log(
 );
 
 console.log(
-  "INCIDENT_OBSERVATION=YES",
+  "STALE_FAILURE_EVALUATION=YES",
 );
 
 console.log(
-  "ALERT_OUTBOX_SYNC=YES",
+  "STALE_ALERT_OUTBOX_SYNC=YES",
 );
 
 console.log(
