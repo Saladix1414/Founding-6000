@@ -23,6 +23,12 @@ QC_CONFIG_PATH = (
     / "rare_quality_gate_v1.json"
 )
 
+AZHURAK_QC_CONFIG_PATH = (
+    ROOT
+    / "config"
+    / "azhurak_quality_gate_v1.json"
+)
+
 
 def load_json(path: Path) -> dict[str, Any]:
     return json.loads(
@@ -150,8 +156,14 @@ def main() -> None:
         brief_path
     )
 
+    qc_config_path = (
+        AZHURAK_QC_CONFIG_PATH
+        if token_id == 1
+        else QC_CONFIG_PATH
+    )
+
     qc_config = load_json(
-        QC_CONFIG_PATH
+        qc_config_path
     )
 
     verify_identity(

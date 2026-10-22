@@ -1,23 +1,23 @@
 {
-  "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
-  "dragonName": "Vaerkaion",
+  "displayName": "Azhurak — The Primordial Witness",
+  "dragonName": "Azhurak",
   "geometry": {
-    "innerRadius": 127,
-    "lineWeight": 2.39,
-    "nodeRadius": 10,
-    "outerRadius": 382,
-    "phaseOffsetDegrees": 11.173,
-    "ringCount": 3,
-    "rotationDegrees": 272.652,
-    "spokeCount": 9
+    "innerRadius": 131,
+    "lineWeight": 1.89,
+    "nodeRadius": 5,
+    "outerRadius": 411,
+    "phaseOffsetDegrees": 234.754,
+    "ringCount": 4,
+    "rotationDegrees": 23.797,
+    "spokeCount": 6
   },
-  "glyphSeed": "247ac62fb4dc003bc8732f4d32440137368c48ba474d8c2c98073bd6accb364d",
+  "glyphSeed": "6c8afce2d8a7269e3c7452dbcd45e3bebf231b8c70bd766b5c9b153708b85cc9",
   "glyphVersion": "OX-RESONANCE-GLYPH-1",
-  "manifestHash": "b8fb137f70c983e328225523f5b474d5889361d3b4a6314b7de8d6721ead992f",
-  "resonanceId": "RX-42C5C1E2F340",
-  "resonanceSignature": "42c5c1e2f3402091055b07f26385cdc354f929b57e06889f36e8e8a64baeb476",
+  "manifestHash": "cbc37d1a57ed7b2dfca0e7fc50d9750091a93a2210fd022d63e25c502c7d2d11",
+  "resonanceId": "RX-D99A10EC3DEB",
+  "resonanceSignature": "d99a10ec3deb2446b028a6ef4dc6540bbcbe0824be212a1e46f7f7f9724963f7",
   "serial": "#0001",
   "svgFile": "glyphs/0001.svg",
-  "svgHash": "07d66438b69d8530f038d01b24942f873be2a29c4e514dc04046476d190368b8",
+  "svgHash": "68e636d5cacde87539c9a5614c3a40eea78725e7efa9977189a8cef67f72689f",
   "tokenId": 1
 }

@@ -1,0 +1,40 @@
+{
+  "version": "OX-AZHURAK-QC-1",
+  "tokenId": 1,
+  "serial": "#0001",
+  "tier": "RARE",
+  "identity": "Azhurak — The Primordial Witness",
+  "required": {
+    "width": 2048,
+    "height": 2048,
+    "format": "PNG",
+    "aspectRatio": "1:1"
+  },
+  "manualCriteria": [
+    "Azhurak remains the single coherent primary entity",
+    "Multiple integrated dragon heads or cranial structures are allowed",
+    "Primary eye and facial structures remain identifiable",
+    "Biomechanical ornamental identity remains visually coherent",
+    "Magenta, fuchsia, graphite and cyan visual language is preserved",
+    "No unrelated additional creature is introduced",
+    "No franchise-derived design",
+    "No visible watermark",
+    "No visible prompt text",
+    "No severe anatomical or mechanical corruption",
+    "No accidental duplicated disconnected anatomy",
+    "Source visual identity remains recognizable"
+  ],
+  "automaticRejectReasons": [
+    "FILE_MISSING",
+    "INVALID_PNG_SIGNATURE",
+    "INVALID_DIMENSIONS",
+    "EMPTY_FILE",
+    "DNA_RECORD_MISSING",
+    "RENDER_BRIEF_MISSING",
+    "IDENTITY_MISMATCH"
+  ],
+  "authority": {
+    "qcApprovalIsMintAuthority": false,
+    "qcApprovalIsMainnetAuthority": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": "OX-CANONICAL-OVERRIDES-1",
+  "authority": {
+    "scope": "PRE_MINT_PRODUCT_CANON",
+    "blockchainAuthority": false,
+    "mintAuthority": false,
+    "mainnetAuthority": false
+  },
+  "tokens": {
+    "1": {
+      "tokenId": 1,
+      "serial": "#0001",
+      "dragonName": "Azhurak",
+      "dragonTitle": "The Primordial Witness",
+      "displayName": "Azhurak — The Primordial Witness",
+      "reason": "Founding #0001 hand-authored canonical identity approved before mint",
+      "supersedesPreProductionName": "Vaerkaion — Ravager of the Obsidian Spires"
+    }
+  }
+}

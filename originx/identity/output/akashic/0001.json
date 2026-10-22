@@ -1,18 +1,18 @@
 {
   "akashicVersion": "OX-AKASHIC-1",
-  "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
-  "dragonName": "Vaerkaion",
-  "eventCount": 5,
+  "displayName": "Azhurak — The Primordial Witness",
+  "dragonName": "Azhurak",
+  "eventCount": 6,
   "events": [
     {
       "akashicVersion": "OX-AKASHIC-1",
-      "eventHash": "f7a4b00ddf4e75f208f08757af7c6bbdea52a02471b7321d4ef1513f152032e6",
+      "eventHash": "92f254cfad763c980bf7e61bc6d080475f20842b9db441f024a79e1904c380e2",
       "eventType": "DNA_FORGED",
-      "occurredAt": "2026-01-01T00:00:00Z",
+      "occurredAt": "2026-10-22T17:45:00Z",
       "payload": {
-        "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
-        "dnaHash": "9402ff0d1d8f692c339069115eef26531ca73856e5123d0579168cfbaaca3f4e",
-        "dragonName": "Vaerkaion",
+        "displayName": "Azhurak — The Primordial Witness",
+        "dnaHash": "c3f4228216cf1b519c30e530e5d8ef8a673a9f56925e8384c38659220bb7a2d0",
+        "dragonName": "Azhurak",
         "generationTheme": "Primitive Origin",
         "generationVersion": "OX-GEN-1",
         "serial": "#0001",
@@ -24,65 +24,93 @@
     },
     {
       "akashicVersion": "OX-AKASHIC-1",
-      "eventHash": "8538d467a204c8be303f6456a85ab2445df33ae2b1555afb7b3971e4859f407c",
+      "eventHash": "e4764b6a4ff859c0a17461eddf37fb28ef58b9409b77337db8b32b04207c46c3",
       "eventType": "NAME_ASSIGNED",
-      "occurredAt": "2026-01-01T00:00:00Z",
+      "occurredAt": "2026-10-22T17:45:00Z",
       "payload": {
-        "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
-        "dragonName": "Vaerkaion",
-        "dragonTitle": "Ravager of the Obsidian Spires"
+        "displayName": "Azhurak — The Primordial Witness",
+        "dragonName": "Azhurak",
+        "dragonTitle": "The Primordial Witness"
       },
-      "previousEventHash": "f7a4b00ddf4e75f208f08757af7c6bbdea52a02471b7321d4ef1513f152032e6",
+      "previousEventHash": "92f254cfad763c980bf7e61bc6d080475f20842b9db441f024a79e1904c380e2",
       "sequence": 2,
       "tokenId": 1
     },
     {
       "akashicVersion": "OX-AKASHIC-1",
-      "eventHash": "8133ed050e1d767aceca8c537b9dc980565a1000c1f0f63d45c87e93822288f5",
+      "eventHash": "d9cad77f4ddb52ee1eaefd8dc16743739bb12daf068b1fc38485eb90161ae168",
       "eventType": "RESONANCE_CREATED",
-      "occurredAt": "2026-01-01T00:00:00Z",
+      "occurredAt": "2026-10-22T17:45:00Z",
       "payload": {
-        "glyphSeed": "247ac62fb4dc003bc8732f4d32440137368c48ba474d8c2c98073bd6accb364d",
-        "resonanceClass": "RELIC",
-        "resonanceId": "RX-42C5C1E2F340",
-        "resonanceSignature": "42c5c1e2f3402091055b07f26385cdc354f929b57e06889f36e8e8a64baeb476",
-        "spectrum": "Crimson-Graphite"
+        "glyphSeed": "6c8afce2d8a7269e3c7452dbcd45e3bebf231b8c70bd766b5c9b153708b85cc9",
+        "resonanceClass": "ASCENDANT",
+        "resonanceId": "RX-D99A10EC3DEB",
+        "resonanceSignature": "d99a10ec3deb2446b028a6ef4dc6540bbcbe0824be212a1e46f7f7f9724963f7",
+        "spectrum": "Ancient-Gold"
       },
-      "previousEventHash": "8538d467a204c8be303f6456a85ab2445df33ae2b1555afb7b3971e4859f407c",
+      "previousEventHash": "e4764b6a4ff859c0a17461eddf37fb28ef58b9409b77337db8b32b04207c46c3",
       "sequence": 3,
       "tokenId": 1
     },
     {
       "akashicVersion": "OX-AKASHIC-1",
-      "eventHash": "c43a9f3b1ec9fef7d6c77919ad647be236282d8cf69b19f81fc97ed52bb6dc2c",
-      "eventType": "VISUAL_MANIFESTED",
-      "occurredAt": "2026-01-01T00:00:00Z",
+      "eventHash": "d9a4b119adfd98b5dd728fa2feadbc03ec560892fa02c3bb19f313de37737ef5",
+      "eventType": "PRE_MINT_IDENTITY_RECANONICALIZED",
+      "occurredAt": "2026-10-22T17:45:00Z",
       "payload": {
-        "artDirectionVersion": "OX-ART-1",
-        "mediaHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        "blockchainMintedBeforeChange": false,
+        "identitySource": "CANONICAL_OVERRIDE",
+        "newDisplayName": "Azhurak — The Primordial Witness",
+        "newDnaHash": "c3f4228216cf1b519c30e530e5d8ef8a673a9f56925e8384c38659220bb7a2d0",
+        "previousAkashicLatestEventHash": "2b60d9190123c8c76a11940654877f0d44072a0e74d5ea8655f7f31faec0a108",
+        "previousDisplayName": "Vaerkaion — Ravager of the Obsidian Spires",
+        "previousDnaHash": "9402ff0d1d8f692c339069115eef26531ca73856e5123d0579168cfbaaca3f4e",
+        "reason": "PRE_MINT_CANONICAL_IDENTITY_SUPERSESSION"
       },
-      "previousEventHash": "8133ed050e1d767aceca8c537b9dc980565a1000c1f0f63d45c87e93822288f5",
+      "previousEventHash": "d9cad77f4ddb52ee1eaefd8dc16743739bb12daf068b1fc38485eb90161ae168",
       "sequence": 4,
       "tokenId": 1
     },
     {
       "akashicVersion": "OX-AKASHIC-1",
-      "eventHash": "2b60d9190123c8c76a11940654877f0d44072a0e74d5ea8655f7f31faec0a108",
+      "eventHash": "58f3fa5f44c9d29a2d2ed524c95c3a6dbfcff0337a7cb6721b4ad03bab4d9194",
       "eventType": "RESONANCE_GLYPH_MANIFESTED",
-      "occurredAt": "2026-01-01T00:00:00Z",
+      "occurredAt": "2026-10-22T17:45:00Z",
       "payload": {
         "glyphVersion": "OX-RESONANCE-GLYPH-1",
-        "manifestHash": "b8fb137f70c983e328225523f5b474d5889361d3b4a6314b7de8d6721ead992f",
-        "resonanceId": "RX-42C5C1E2F340",
-        "svgHash": "07d66438b69d8530f038d01b24942f873be2a29c4e514dc04046476d190368b8"
+        "manifestHash": "cbc37d1a57ed7b2dfca0e7fc50d9750091a93a2210fd022d63e25c502c7d2d11",
+        "resonanceId": "RX-D99A10EC3DEB",
+        "svgHash": "68e636d5cacde87539c9a5614c3a40eea78725e7efa9977189a8cef67f72689f"
       },
-      "previousEventHash": "c43a9f3b1ec9fef7d6c77919ad647be236282d8cf69b19f81fc97ed52bb6dc2c",
+      "previousEventHash": "d9a4b119adfd98b5dd728fa2feadbc03ec560892fa02c3bb19f313de37737ef5",
       "sequence": 5,
+      "tokenId": 1
+    },
+    {
+      "akashicVersion": "OX-AKASHIC-1",
+      "eventHash": "6c1f11941e78e6173f5fe7ac5119996ce7959739fbfdac26a8b9049a0cdb0009",
+      "eventType": "VISUAL_MANIFESTED",
+      "occurredAt": "2026-10-22T18:00:00Z",
+      "payload": {
+        "format": "PNG",
+        "height": 2048,
+        "mediaHash": "a4dce9bbbcb6ec183ede3b2e3f512046677b058cbafe248255c2a021fe0ed4d7",
+        "mintAuthority": false,
+        "publicationAuthority": false,
+        "qualityGateVersion": "OX-AZHURAK-QC-1",
+        "qualityStatus": "APPROVED",
+        "semanticRegeneration": false,
+        "sourceReferenceHash": "cbdda8994a57ee0300a32d235c87f735c4e8a7985c28ef440d63aebafc1f653f",
+        "visualRole": "CANONICAL_MASTER",
+        "width": 2048
+      },
+      "previousEventHash": "58f3fa5f44c9d29a2d2ed524c95c3a6dbfcff0337a7cb6721b4ad03bab4d9194",
+      "sequence": 6,
       "tokenId": 1
     }
   ],
-  "firstEventHash": "f7a4b00ddf4e75f208f08757af7c6bbdea52a02471b7321d4ef1513f152032e6",
-  "latestEventHash": "2b60d9190123c8c76a11940654877f0d44072a0e74d5ea8655f7f31faec0a108",
+  "firstEventHash": "92f254cfad763c980bf7e61bc6d080475f20842b9db441f024a79e1904c380e2",
+  "latestEventHash": "6c1f11941e78e6173f5fe7ac5119996ce7959739fbfdac26a8b9049a0cdb0009",
   "serial": "#0001",
   "tokenId": 1
 }

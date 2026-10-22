@@ -1,0 +1,26 @@
+{
+  "authority": {
+    "blockchainAuthority": false,
+    "imageIsIdentityAuthority": false,
+    "sourceReferenceIsMintAuthority": false,
+    "sourceReferenceIsPublicationAuthority": false
+  },
+  "displayName": "Azhurak — The Primordial Witness",
+  "dnaHash": "c3f4228216cf1b519c30e530e5d8ef8a673a9f56925e8384c38659220bb7a2d0",
+  "dragonName": "Azhurak",
+  "masterStatus": "NOT_YET_CREATED",
+  "publicationStatus": "BLOCKED",
+  "recordHash": "e17320387e7988f1515ccb1570a2e1b3d6ab9c6d6cad46f25443c7cc4a5a28d4",
+  "serial": "#0001",
+  "sourceVisual": {
+    "format": "PNG",
+    "height": 512,
+    "repositoryPath": "originx/generation/source-visuals/rare/0001/azhurak-source.png",
+    "role": "CANONICAL_VISUAL_REFERENCE",
+    "sha256": "cbdda8994a57ee0300a32d235c87f735c4e8a7985c28ef440d63aebafc1f653f",
+    "width": 512
+  },
+  "status": "SOURCE_REFERENCE_APPROVED",
+  "tokenId": 1,
+  "version": "OX-SOURCE-VISUAL-PROVENANCE-1"
+}

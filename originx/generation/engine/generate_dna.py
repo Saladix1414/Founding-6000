@@ -12,6 +12,11 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "generation_v1.json"
+CANONICAL_OVERRIDES_PATH = (
+    ROOT
+    / "config"
+    / "canonical_overrides_v1.json"
+)
 DNA_OUTPUT_DIR = ROOT / "output" / "dna"
 MANIFEST_OUTPUT_DIR = ROOT / "output" / "manifests"
 
@@ -40,6 +45,95 @@ def sha256_hex(value: str) -> str:
 
 def load_config() -> dict[str, Any]:
     return json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+
+
+def load_canonical_overrides() -> dict[str, Any]:
+    if not CANONICAL_OVERRIDES_PATH.exists():
+        return {
+            "version": "OX-CANONICAL-OVERRIDES-1",
+            "tokens": {},
+        }
+
+    return json.loads(
+        CANONICAL_OVERRIDES_PATH.read_text(
+            encoding="utf-8"
+        )
+    )
+
+
+def resolve_canonical_identity(
+    token_id: int,
+    *,
+    derived_name: str,
+    derived_title: str,
+) -> dict[str, str]:
+    overrides = load_canonical_overrides()
+
+    raw = (
+        overrides
+        .get("tokens", {})
+        .get(str(token_id))
+    )
+
+    if raw is None:
+        return {
+            "dragonName": derived_name,
+            "dragonTitle": derived_title,
+            "displayName": (
+                f"{derived_name} — {derived_title}"
+            ),
+            "identitySource": "DETERMINISTIC_NAME_SYSTEM",
+        }
+
+    if int(raw.get("tokenId", -1)) != token_id:
+        raise ValueError(
+            "CANONICAL_OVERRIDE_TOKEN_MISMATCH"
+        )
+
+    expected_serial = f"#{token_id:04d}"
+
+    if raw.get("serial") != expected_serial:
+        raise ValueError(
+            "CANONICAL_OVERRIDE_SERIAL_MISMATCH"
+        )
+
+    dragon_name = str(
+        raw["dragonName"]
+    ).strip()
+
+    dragon_title = str(
+        raw["dragonTitle"]
+    ).strip()
+
+    display_name = str(
+        raw["displayName"]
+    ).strip()
+
+    if not dragon_name:
+        raise ValueError(
+            "CANONICAL_OVERRIDE_NAME_EMPTY"
+        )
+
+    if not dragon_title:
+        raise ValueError(
+            "CANONICAL_OVERRIDE_TITLE_EMPTY"
+        )
+
+    expected_display = (
+        f"{dragon_name} — {dragon_title}"
+    )
+
+    if display_name != expected_display:
+        raise ValueError(
+            "CANONICAL_OVERRIDE_DISPLAY_MISMATCH"
+        )
+
+    return {
+        "dragonName": dragon_name,
+        "dragonTitle": dragon_title,
+        "displayName": display_name,
+        "identitySource": "CANONICAL_OVERRIDE",
+    }
 
 
 def resolve_tier(token_id: int, config: dict[str, Any]) -> Tier:
@@ -199,18 +293,38 @@ def create_dna_record(
         config=config,
     )
 
-    dragon_name = derive_canonical_name(
+    derived_name = derive_canonical_name(
         token_id=token_id,
         config=config,
     )
 
-    dragon_title = derive_dragon_title(
+    derived_title = derive_dragon_title(
         traits=traits,
     )
 
-    display_name = (
-        f"{dragon_name} — {dragon_title}"
+    canonical_identity = (
+        resolve_canonical_identity(
+            token_id,
+            derived_name=derived_name,
+            derived_title=derived_title,
+        )
     )
+
+    dragon_name = canonical_identity[
+        "dragonName"
+    ]
+
+    dragon_title = canonical_identity[
+        "dragonTitle"
+    ]
+
+    display_name = canonical_identity[
+        "displayName"
+    ]
+
+    identity_source = canonical_identity[
+        "identitySource"
+    ]
 
     dna_payload = {
         "tokenId": token_id,
@@ -221,6 +335,7 @@ def create_dna_record(
         "campaignPhase": tier.campaign_phase,
         "generationTheme": tier.generation_theme,
         "generationVersion": generation_version,
+        "identitySource": identity_source,
         "traits": traits,
     }
 
@@ -238,6 +353,7 @@ def create_dna_record(
         "campaignPhase": tier.campaign_phase,
         "generationTheme": tier.generation_theme,
         "generationVersion": generation_version,
+        "identitySource": identity_source,
         "seedHash": seed_hash,
         "dnaHash": dna_hash,
         "traits": traits,

@@ -1,0 +1,56 @@
+{
+  "authority": {
+    "blockchainAuthority": false,
+    "mainnetAuthority": false,
+    "mintAuthority": false,
+    "preMintOnly": true
+  },
+  "blockchainMinted": false,
+  "files": {
+    "originx/generation/output/art-specs/0001.json": {
+      "sha256": "10a0bb8f75aa1617ddfebac2c7d5a7da1818a81cef67f2bae931e39c1be3ed98"
+    },
+    "originx/generation/output/dna/0001.json": {
+      "sha256": "9ca206c7b73930c980e7e9c572b4e10aabaf33e319c81a02905cf5ef79654c50"
+    },
+    "originx/generation/output/render-briefs/0001.json": {
+      "sha256": "95587c49322af7faf21708f029b24c27663a5cfac6da017e55d859554c37d653"
+    },
+    "originx/generation/output/render-jobs/0001.json": {
+      "sha256": "44491429706b17c28f3997d0775b9b6c3e96735ea9d8d0dd45a93d55f9c01d5d"
+    },
+    "originx/identity/output/akashic/0001.json": {
+      "sha256": "fbd7a4bd3e6b7a96c8136a952df45657075f4530ebdf17a6d78de469b39308e3"
+    },
+    "originx/identity/output/bundles/0001.json": {
+      "sha256": "452c2ee6ad5f7dfdd09319d855ca63c28e2342a70376e82994f5d726a26c0401"
+    },
+    "originx/identity/output/glyph-manifests/0001.json": {
+      "sha256": "d09804c3eb486335e0e164c25491f80b3dc3a142a0e8e5bc1c6cb15a7d684cb1"
+    },
+    "originx/identity/output/glyphs/0001.svg": {
+      "sha256": "07d66438b69d8530f038d01b24942f873be2a29c4e514dc04046476d190368b8"
+    },
+    "originx/identity/output/resonance/0001.json": {
+      "sha256": "29adece92fab471be317a7144623917f6707582d402a1e852e6a8208020bbd21"
+    },
+    "originx/metadata/output/0001.json": {
+      "sha256": "1249b77bf72c1ea665d9a36b52935bbd19704f71abe293ee7f7324b4d91793c7"
+    }
+  },
+  "newIdentity": {
+    "displayName": "Azhurak — The Primordial Witness",
+    "dragonName": "Azhurak",
+    "identitySource": "CANONICAL_OVERRIDE"
+  },
+  "oldIdentity": {
+    "akashicLatestEventHash": "2b60d9190123c8c76a11940654877f0d44072a0e74d5ea8655f7f31faec0a108",
+    "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
+    "dnaHash": "9402ff0d1d8f692c339069115eef26531ca73856e5123d0579168cfbaaca3f4e",
+    "dragonName": "Vaerkaion"
+  },
+  "serial": "#0001",
+  "status": "PRE_MINT_SUPERSEDED",
+  "tokenId": 1,
+  "version": "OX-PRE-MINT-SUPERSESSION-1"
+}

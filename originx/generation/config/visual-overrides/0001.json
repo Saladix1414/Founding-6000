@@ -1,0 +1,57 @@
+{
+  "version": "OX-VISUAL-OVERRIDE-1",
+  "tokenId": 1,
+  "serial": "#0001",
+  "dragonName": "Azhurak",
+  "displayName": "Azhurak — The Primordial Witness",
+  "identitySource": "CANONICAL_OVERRIDE",
+  "visualAuthority": {
+    "status": "SOURCE_REFERENCE_APPROVED",
+    "masterApproved": false,
+    "publicationApproved": false,
+    "mintAuthority": false,
+    "mainnetAuthority": false
+  },
+  "sourceVisual": {
+    "file": "source-visuals/rare/0001/azhurak-source.png",
+    "sha256": "cbdda8994a57ee0300a32d235c87f735c4e8a7985c28ef440d63aebafc1f653f",
+    "width": 512,
+    "height": 512,
+    "format": "PNG",
+    "role": "CANONICAL_VISUAL_REFERENCE"
+  },
+  "canonicalVisualIntent": {
+    "subject": "Azhurak",
+    "archetype": "Primordial biomechanical dragon",
+    "composition": "Interwoven multi-headed primordial dragon portrait",
+    "headMultiplicity": "MULTI_HEAD_ALLOWED",
+    "dominantSubjectCount": 1,
+    "style": "Biomechanical ornamental dark fantasy",
+    "surfaceLanguage": [
+      "ornamental filigree",
+      "biomechanical plating",
+      "dark scaled tissue",
+      "metallic magenta armor"
+    ],
+    "palette": [
+      "magenta",
+      "fuchsia",
+      "graphite",
+      "black",
+      "cyan",
+      "turquoise"
+    ],
+    "lighting": "High-contrast neon cyan and magenta",
+    "background": "Cyan and turquoise atmospheric field",
+    "textAllowed": false,
+    "watermarkAllowed": false
+  },
+  "masterRequirement": {
+    "width": 2048,
+    "height": 2048,
+    "format": "PNG",
+    "aspectRatio": "1:1",
+    "sourceImageMayNotBePublishedAsMaster": true,
+    "masterRequiresSeparateQC": true
+  }
+}

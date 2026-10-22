@@ -1,16 +1,16 @@
 {
   "akashic": {
     "akashicVersion": "OX-AKASHIC-1",
-    "eventCount": 5,
-    "firstEventHash": "f7a4b00ddf4e75f208f08757af7c6bbdea52a02471b7321d4ef1513f152032e6",
-    "latestEventHash": "2b60d9190123c8c76a11940654877f0d44072a0e74d5ea8655f7f31faec0a108"
+    "eventCount": 6,
+    "firstEventHash": "92f254cfad763c980bf7e61bc6d080475f20842b9db441f024a79e1904c380e2",
+    "latestEventHash": "6c1f11941e78e6173f5fe7ac5119996ce7959739fbfdac26a8b9049a0cdb0009"
   },
-  "bundleHash": "0b17362a0eb02ab59e9ee265f77173addebe893152ac053b2a4655b9d20de43f",
+  "bundleHash": "5e01429b50b5959bbf2e27ffaceb765c98617691c216cfb509cc7a8b122e0bf2",
   "bundleVersion": "OX-IDENTITY-BUNDLE-1",
   "campaignPhase": "Genesis",
-  "displayName": "Vaerkaion — Ravager of the Obsidian Spires",
+  "displayName": "Azhurak — The Primordial Witness",
   "dna": {
-    "dnaHash": "9402ff0d1d8f692c339069115eef26531ca73856e5123d0579168cfbaaca3f4e",
+    "dnaHash": "c3f4228216cf1b519c30e530e5d8ef8a673a9f56925e8384c38659220bb7a2d0",
     "seedHash": "9d099c8efd5fa6d0ebf9dafecd2fdb553065641850f044ef74452e1001f7cdac",
     "traits": {
       "ancientMarkings": "Tribal Sigils",
@@ -36,8 +36,8 @@
       "wings": "Ancient Leather Wings"
     }
   },
-  "dragonName": "Vaerkaion",
-  "dragonTitle": "Ravager of the Obsidian Spires",
+  "dragonName": "Azhurak",
+  "dragonTitle": "The Primordial Witness",
   "generationTheme": "Primitive Origin",
   "generationVersion": "OX-GEN-1",
   "privacy": {
@@ -45,41 +45,41 @@
     "publicSafe": true
   },
   "resonance": {
-    "glyphSeed": "247ac62fb4dc003bc8732f4d32440137368c48ba474d8c2c98073bd6accb364d",
-    "phaseDegrees": 139.95,
+    "glyphSeed": "6c8afce2d8a7269e3c7452dbcd45e3bebf231b8c70bd766b5c9b153708b85cc9",
+    "phaseDegrees": 109.37,
     "primaryFrequency": {
       "meaning": "artistic deterministic representation",
       "unit": "Hz",
-      "value": 379.79
+      "value": 844.66
     },
-    "pulse": 1.23,
-    "resonanceClass": "RELIC",
-    "resonanceId": "RX-42C5C1E2F340",
-    "resonanceSignature": "42c5c1e2f3402091055b07f26385cdc354f929b57e06889f36e8e8a64baeb476",
+    "pulse": 8.57,
+    "resonanceClass": "ASCENDANT",
+    "resonanceId": "RX-D99A10EC3DEB",
+    "resonanceSignature": "d99a10ec3deb2446b028a6ef4dc6540bbcbe0824be212a1e46f7f7f9724963f7",
     "resonanceVersion": "OX-RESONANCE-1",
     "secondaryFrequency": {
       "meaning": "artistic deterministic representation",
       "unit": "Hz",
-      "value": 923.71
+      "value": 364.83
     },
-    "spectrum": "Crimson-Graphite"
+    "spectrum": "Ancient-Gold"
   },
   "resonanceGlyph": {
     "geometry": {
-      "innerRadius": 127,
-      "lineWeight": 2.39,
-      "nodeRadius": 10,
-      "outerRadius": 382,
-      "phaseOffsetDegrees": 11.173,
-      "ringCount": 3,
-      "rotationDegrees": 272.652,
-      "spokeCount": 9
+      "innerRadius": 131,
+      "lineWeight": 1.89,
+      "nodeRadius": 5,
+      "outerRadius": 411,
+      "phaseOffsetDegrees": 234.754,
+      "ringCount": 4,
+      "rotationDegrees": 23.797,
+      "spokeCount": 6
     },
     "glyphVersion": "OX-RESONANCE-GLYPH-1",
-    "manifestHash": "b8fb137f70c983e328225523f5b474d5889361d3b4a6314b7de8d6721ead992f",
-    "resonanceId": "RX-42C5C1E2F340",
+    "manifestHash": "cbc37d1a57ed7b2dfca0e7fc50d9750091a93a2210fd022d63e25c502c7d2d11",
+    "resonanceId": "RX-D99A10EC3DEB",
     "svgFile": "glyphs/0001.svg",
-    "svgHash": "07d66438b69d8530f038d01b24942f873be2a29c4e514dc04046476d190368b8"
+    "svgHash": "68e636d5cacde87539c9a5614c3a40eea78725e7efa9977189a8cef67f72689f"
   },
   "serial": "#0001",
   "tier": "RARE",

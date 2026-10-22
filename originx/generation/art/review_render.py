@@ -74,6 +74,16 @@ def main() -> None:
         args.note
     )
 
+    for criterion in record[
+        "manualReview"
+    ].get(
+        "criteria",
+        [],
+    ):
+        criterion["status"] = (
+            final_status
+        )
+
     record["finalStatus"] = (
         final_status
     )

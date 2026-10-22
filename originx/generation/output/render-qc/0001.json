@@ -1,0 +1,75 @@
+{
+  "automaticRejectReasons": [],
+  "automaticStatus": "AWAITING_MANUAL_REVIEW",
+  "displayName": "Azhurak — The Primordial Witness",
+  "dnaHash": "c3f4228216cf1b519c30e530e5d8ef8a673a9f56925e8384c38659220bb7a2d0",
+  "dragonName": "Azhurak",
+  "file": "output/rendered/0001.png",
+  "finalStatus": "APPROVED",
+  "format": "PNG",
+  "generationTheme": "Primitive Origin",
+  "generationVersion": "OX-GEN-1",
+  "height": 2048,
+  "manualReview": {
+    "criteria": [
+      {
+        "criterion": "Azhurak remains the single coherent primary entity",
+        "status": "APPROVED"
+      },
+      {
+        "criterion": "Multiple integrated dragon heads or cranial structures are allowed",
+        "status": "APPROVED"
+      },
+      {
+        "criterion": "Primary eye and facial structures remain identifiable",
+        "status": "APPROVED"
+      },
+      {
+        "criterion": "Biomechanical ornamental identity remains visually coherent",
+        "status": "APPROVED"
+      },
+      {
+        "criterion": "Magenta, fuchsia, graphite and cyan visual language is preserved",
+        "status": "APPROVED"
+      },
+      {
+        "criterion": "No unrelated additional creature is introduced",
+        "status": "APPROVED"
+      },
+      {
+        "criterion": "No franchise-derived design",
+        "status": "APPROVED"
+      },
+      {
+        "criterion": "No visible watermark",
+        "status": "APPROVED"
+      },
+      {
+        "criterion": "No visible prompt text",
+        "status": "APPROVED"
+      },
+      {
+        "criterion": "No severe anatomical or mechanical corruption",
+        "status": "APPROVED"
+      },
+      {
+        "criterion": "No accidental duplicated disconnected anatomy",
+        "status": "APPROVED"
+      },
+      {
+        "criterion": "Source visual identity remains recognizable",
+        "status": "APPROVED"
+      }
+    ],
+    "note": "Founding #0001 Azhurak canonical master approved after automatic dimension/hash gate and token-specific manual visual review.",
+    "status": "APPROVED"
+  },
+  "mediaHash": "a4dce9bbbcb6ec183ede3b2e3f512046677b058cbafe248255c2a021fe0ed4d7",
+  "qualityGateVersion": "OX-AZHURAK-QC-1",
+  "seedHash": "9d099c8efd5fa6d0ebf9dafecd2fdb553065641850f044ef74452e1001f7cdac",
+  "serial": "#0001",
+  "tier": "RARE",
+  "tokenId": 1,
+  "visualGrammarVersion": "OX-RARE-VISUAL-1",
+  "width": 2048
+}
