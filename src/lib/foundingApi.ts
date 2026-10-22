@@ -729,3 +729,141 @@ export async function getTokenEconomyHistory(
     response,
   );
 }
+/* =========================================================
+ * OX-FOUNDING-ECONOMICS-7D
+ * Public-safe economic operations / integrity view
+ * ========================================================= */
+
+export type EconomicOperationsIncidentEvent = {
+  eventType:
+    | "OPENED"
+    | "OBSERVED"
+    | "RESOLVED";
+
+  severity:
+    | "WARNING"
+    | "CRITICAL"
+    | null;
+
+  integrityState:
+    | "OK"
+    | "WARNING"
+    | "CRITICAL"
+    | "STALE";
+
+  reportHash:
+    string | null;
+
+  createdAt:
+    string;
+};
+
+export type EconomicOperationsView = {
+  viewVersion:
+    "OX-ECONOMIC-OPS-VIEW-1";
+
+  integrity: {
+    state:
+      | "OK"
+      | "WARNING"
+      | "CRITICAL"
+      | "STALE"
+      | "NOT_SEEN";
+
+    reconciliationVersion:
+      string | null;
+
+    reconciledAt:
+      string | null;
+
+    reportHash:
+      string | null;
+
+    criticalFailures:
+      number;
+
+    warnings:
+      number;
+  };
+
+  incident: {
+    state:
+      | "NONE"
+      | "OPEN"
+      | "RESOLVED";
+
+    severity:
+      | "WARNING"
+      | "CRITICAL"
+      | null;
+
+    eventType:
+      | "OPENED"
+      | "OBSERVED"
+      | "RESOLVED"
+      | null;
+
+    updatedAt:
+      string | null;
+
+    reportHash:
+      string | null;
+  };
+
+  proofOfReserve: {
+    available:
+      boolean;
+
+    snapshotHash:
+      string | null;
+
+    capturedAt:
+      string | null;
+
+    totalLiabilityMinor:
+      string | null;
+
+    onchainBalanceMinor:
+      string | null;
+
+    coverageBps:
+      string | null;
+
+    fullyCovered:
+      boolean;
+  };
+
+  navPolicy: {
+    version:
+      string | null;
+
+    supplyBasis:
+      string | null;
+  };
+
+  incidentTimeline:
+    EconomicOperationsIncidentEvent[];
+};
+
+export async function getEconomicOperationsView() {
+  const response =
+    await fetch(
+      `${API_BASE}/api/economy/operations`,
+      {
+        method:
+          "GET",
+
+        headers: {
+          Accept:
+            "application/json",
+        },
+      },
+    );
+
+  return parseResponse<{
+    operations:
+      EconomicOperationsView;
+  }>(
+    response,
+  );
+}

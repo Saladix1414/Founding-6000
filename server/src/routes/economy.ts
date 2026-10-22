@@ -18,6 +18,10 @@ import {
   getTokenEconomyHistory,
 } from "../services/economyHistoryService.js";
 
+import {
+  getEconomicOperationsView,
+} from "../services/economicOperationsViewService.js";
+
 export const economyRouter =
   Router();
 
@@ -66,6 +70,38 @@ const economyReadLimiter =
         "ECONOMY_RATE_LIMITED",
     },
   });
+
+/*
+ * Public-safe economic integrity / operations view.
+ *
+ * Read-only transparency surface.
+ *
+ * Deliberately excludes:
+ * - PII
+ * - order/payment identifiers
+ * - incident fingerprints
+ * - raw evidence_json
+ * - detailed reconciliation check payloads
+ * - signer/private material
+ * - mutation controls
+ */
+economyRouter.get(
+  "/operations",
+
+  economyReadLimiter,
+
+  (
+    _request,
+    response,
+  ) => {
+    const operations =
+      getEconomicOperationsView();
+
+    return response.json({
+      operations,
+    });
+  },
+);
 
 /*
  * Public historical economy endpoint.

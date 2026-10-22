@@ -8089,3 +8089,876 @@
       auto;
   }
 }
+
+/* =========================================================
+   OX-FOUNDING-ECONOMICS-7D
+   ECONOMIC OPERATIONS / TRANSPARENCY
+   ========================================================= */
+
+.economic-operations {
+  position: relative;
+
+  padding:
+    clamp(
+      4rem,
+      8vw,
+      7rem
+    )
+    0;
+
+  overflow: hidden;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.055);
+
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(22, 140, 255, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(101, 232, 247, 0.055),
+      transparent 32%
+    ),
+    #05080d;
+}
+
+.economic-operations__inner {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.economic-operations__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 1.5rem;
+
+  margin-bottom: 0.65rem;
+}
+
+.economic-operations__eyebrow {
+  display: block;
+
+  margin-bottom: 0.55rem;
+
+  color:
+    var(--db-cyan-400);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size: 0.6rem;
+  letter-spacing: 0.17em;
+}
+
+.economic-operations__header h2 {
+  max-width: 760px;
+
+  margin: 0;
+
+  color:
+    var(--db-white);
+
+  font-size:
+    clamp(
+      2rem,
+      5vw,
+      3.5rem
+    );
+
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.economic-operations__header p {
+  max-width: 720px;
+
+  margin:
+    0.75rem
+    0
+    0;
+
+  color:
+    var(--db-text-muted);
+
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.economic-operations__refresh {
+  min-height: 40px;
+
+  flex:
+    0
+    0
+    auto;
+
+  padding:
+    0.65rem
+    0.95rem;
+
+  border:
+    1px solid
+    rgba(101, 232, 247, 0.2);
+
+  border-radius: 9px;
+
+  color:
+    var(--db-cyan-400);
+
+  background:
+    rgba(101, 232, 247, 0.045);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+}
+
+.economic-operations__refresh:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.economic-operations__notice {
+  padding:
+    0.75rem
+    0.9rem;
+
+  border:
+    1px solid
+    rgba(251, 191, 36, 0.2);
+
+  border-radius: 10px;
+
+  color:
+    #fbbf24;
+
+  background:
+    rgba(251, 191, 36, 0.045);
+
+  font-size: 0.7rem;
+}
+
+.economic-operations__status-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 0.7rem;
+}
+
+.economic-operations-card {
+  min-width: 0;
+  min-height: 178px;
+
+  display: grid;
+  align-content: start;
+
+  gap: 0.55rem;
+
+  padding: 1rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(17, 24, 34, 0.78),
+      rgba(7, 11, 17, 0.92)
+    );
+}
+
+.economic-operations-card__label {
+  color:
+    var(--db-text-muted);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+}
+
+.economic-operations-card__hero {
+  margin-top: 0.4rem;
+
+  color:
+    var(--db-white);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size:
+    clamp(
+      1.45rem,
+      4vw,
+      2.15rem
+    );
+
+  line-height: 1.05;
+}
+
+.economic-operations-card__hero--small {
+  font-family: inherit;
+
+  font-size:
+    clamp(
+      1.05rem,
+      3vw,
+      1.4rem
+    );
+}
+
+.economic-operations-card__value {
+  color:
+    var(--db-text-soft);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size: 0.66rem;
+
+  overflow-wrap:
+    anywhere;
+}
+
+.economic-operations-card small {
+  margin-top: auto;
+
+  color:
+    var(--db-text-muted);
+
+  font-size: 0.58rem;
+}
+
+.economic-operations-badge {
+  width: fit-content;
+
+  display:
+    inline-flex;
+
+  align-items: center;
+
+  gap: 0.45rem;
+
+  padding:
+    0.4rem
+    0.55rem;
+
+  border:
+    1px solid
+    currentColor;
+
+  border-radius:
+    999px;
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size:
+    0.65rem;
+}
+
+.economic-operations-badge__dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius:
+    999px;
+
+  background:
+    currentColor;
+
+  box-shadow:
+    0 0 12px
+    currentColor;
+}
+
+.economic-operations-badge.is-ok {
+  color:
+    #6ee7b7;
+}
+
+.economic-operations-badge.is-warning {
+  color:
+    #fbbf24;
+}
+
+.economic-operations-badge.is-critical {
+  color:
+    #fca5a5;
+}
+
+.economic-operations-badge.is-stale {
+  color:
+    #fdba74;
+}
+
+.economic-operations-badge.is-not_seen {
+  color:
+    var(--db-text-muted);
+}
+
+.economic-operations__detail-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.1fr)
+    minmax(0, 0.9fr);
+
+  gap: 0.7rem;
+}
+
+.economic-operations__reserve,
+.economic-operations__integrity,
+.economic-operations__timeline {
+  min-width: 0;
+
+  padding: 1rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-radius: 14px;
+
+  background:
+    rgba(8, 13, 20, 0.86);
+}
+
+.economic-operations__reserve > header,
+.economic-operations__integrity > header,
+.economic-operations__timeline > header {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    flex-start;
+
+  gap: 1rem;
+}
+
+.economic-operations__reserve header span,
+.economic-operations__integrity header span,
+.economic-operations__timeline header span {
+  color:
+    var(--db-cyan-400);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size: 0.52rem;
+  letter-spacing: 0.11em;
+}
+
+.economic-operations__reserve h3,
+.economic-operations__integrity h3,
+.economic-operations__timeline h3 {
+  margin:
+    0.28rem
+    0
+    0;
+
+  color:
+    var(--db-white);
+
+  font-size: 1rem;
+}
+
+.economic-operations__proof-state {
+  padding:
+    0.35rem
+    0.5rem;
+
+  border:
+    1px solid
+    currentColor;
+
+  border-radius: 7px;
+
+  font-size:
+    0.5rem !important;
+}
+
+.economic-operations__proof-state.is-covered {
+  color:
+    #6ee7b7;
+}
+
+.economic-operations__proof-state.is-uncovered {
+  color:
+    #fbbf24;
+}
+
+.economic-operations__reserve-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 0.55rem;
+
+  margin-top: 1rem;
+}
+
+.economic-operations__reserve-grid > div,
+.economic-operations__integrity-stats > div {
+  min-width: 0;
+
+  display: grid;
+
+  gap: 0.22rem;
+
+  padding: 0.75rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.055);
+
+  border-radius: 9px;
+
+  background:
+    rgba(255, 255, 255, 0.018);
+}
+
+.economic-operations__reserve-grid span,
+.economic-operations__integrity-stats span,
+.economic-operations__meta span {
+  color:
+    var(--db-text-muted);
+
+  font-size: 0.54rem;
+}
+
+.economic-operations__reserve-grid strong {
+  color:
+    var(--db-white);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size: 0.76rem;
+
+  overflow-wrap:
+    anywhere;
+}
+
+.economic-operations__integrity-stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 0.55rem;
+
+  margin-top: 1rem;
+}
+
+.economic-operations__integrity-stats strong {
+  color:
+    var(--db-white);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size: 1.35rem;
+}
+
+.economic-operations__meta {
+  display: grid;
+
+  gap: 0.55rem;
+
+  margin-top: 0.75rem;
+}
+
+.economic-operations__meta > div {
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      90px,
+      0.35fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap: 0.5rem;
+
+  padding-top: 0.55rem;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.055);
+}
+
+.economic-operations__meta strong,
+.economic-operations__meta code {
+  min-width: 0;
+
+  color:
+    var(--db-text-soft);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size: 0.6rem;
+
+  overflow-wrap:
+    anywhere;
+}
+
+.economic-operations__timeline > header small {
+  color:
+    var(--db-text-muted);
+
+  font-size: 0.54rem;
+}
+
+.economic-operations__timeline-list {
+  display: grid;
+
+  margin-top: 0.9rem;
+}
+
+.economic-operations-event {
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    10px
+    minmax(0, 1fr)
+    auto;
+
+  align-items:
+    center;
+
+  gap: 0.7rem;
+
+  padding:
+    0.7rem
+    0;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.055);
+}
+
+.economic-operations-event__marker {
+  width: 7px;
+  height: 7px;
+
+  border-radius:
+    999px;
+
+  background:
+    var(--db-text-muted);
+}
+
+.economic-operations-event__marker.is-ok {
+  background:
+    #6ee7b7;
+}
+
+.economic-operations-event__marker.is-warning {
+  background:
+    #fbbf24;
+}
+
+.economic-operations-event__marker.is-critical {
+  background:
+    #fca5a5;
+}
+
+.economic-operations-event__marker.is-stale {
+  background:
+    #fdba74;
+}
+
+.economic-operations-event__body {
+  min-width: 0;
+
+  display: grid;
+
+  gap: 0.15rem;
+}
+
+.economic-operations-event__body > div {
+  display: flex;
+
+  align-items:
+    center;
+
+  gap: 0.45rem;
+}
+
+.economic-operations-event__body strong {
+  color:
+    var(--db-white);
+
+  font-size: 0.68rem;
+}
+
+.economic-operations-event__body span {
+  padding:
+    0.18rem
+    0.32rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  border-radius: 5px;
+
+  color:
+    var(--db-text-muted);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size: 0.46rem;
+}
+
+.economic-operations-event__body small {
+  color:
+    var(--db-text-muted);
+
+  font-size: 0.52rem;
+}
+
+.economic-operations-event code {
+  max-width: 190px;
+
+  color:
+    var(--db-text-muted);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size: 0.52rem;
+
+  overflow-wrap:
+    anywhere;
+}
+
+.economic-operations__empty {
+  margin-top: 0.9rem;
+
+  padding: 1rem;
+
+  border:
+    1px dashed
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 9px;
+
+  color:
+    var(--db-text-muted);
+
+  font-size: 0.65rem;
+}
+
+.economic-operations__disclaimer {
+  display: flex;
+
+  align-items:
+    flex-start;
+
+  gap: 0.75rem;
+
+  padding:
+    0.8rem
+    0.9rem;
+
+  border:
+    1px solid
+    rgba(101, 232, 247, 0.09);
+
+  border-radius: 10px;
+
+  background:
+    rgba(101, 232, 247, 0.025);
+}
+
+.economic-operations__disclaimer > span {
+  flex:
+    0
+    0
+    auto;
+
+  color:
+    var(--db-cyan-400);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+}
+
+.economic-operations__disclaimer p {
+  margin: 0;
+
+  color:
+    var(--db-text-muted);
+
+  font-size: 0.58rem;
+  line-height: 1.55;
+}
+
+.economic-operations__loading {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      1fr
+    );
+
+  gap: 0.7rem;
+}
+
+.economic-operations__loading span {
+  height: 170px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.05);
+
+  border-radius: 14px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+}
+
+@media (max-width: 900px) {
+  .economic-operations__detail-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .economic-operations__status-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .economic-operations__status-grid
+    .economic-operations-card:last-child {
+    grid-column:
+      1 / -1;
+  }
+}
+
+@media (max-width: 650px) {
+  .economic-operations {
+    padding:
+      3.2rem
+      0;
+  }
+
+  .economic-operations__header {
+    align-items:
+      stretch;
+
+    flex-direction:
+      column;
+  }
+
+  .economic-operations__refresh {
+    width: 100%;
+  }
+
+  .economic-operations__status-grid,
+  .economic-operations__loading {
+    grid-template-columns:
+      1fr;
+  }
+
+  .economic-operations__status-grid
+    .economic-operations-card:last-child {
+    grid-column:
+      auto;
+  }
+
+  .economic-operations-card {
+    min-height: 0;
+  }
+
+  .economic-operations__reserve-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .economic-operations__timeline > header {
+    flex-direction:
+      column;
+  }
+
+  .economic-operations-event {
+    grid-template-columns:
+      10px
+      minmax(0, 1fr);
+  }
+
+  .economic-operations-event > code {
+    grid-column:
+      2;
+
+    max-width:
+      none;
+  }
+
+  .economic-operations__disclaimer {
+    flex-direction:
+      column;
+  }
+}
+
+@media (max-width: 430px) {
+  .economic-operations__header h2 {
+    font-size: 2rem;
+  }
+
+  .economic-operations__integrity-stats {
+    grid-template-columns:
+      1fr;
+  }
+
+  .economic-operations__meta > div {
+    grid-template-columns:
+      1fr;
+  }
+}

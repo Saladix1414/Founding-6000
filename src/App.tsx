@@ -6,6 +6,7 @@ import {
 } from "react";
 import UsdtPaymentPanel from "./components/UsdtPaymentPanel";
 import NftEconomyPanel from "./components/NftEconomyPanel";
+import EconomicOperationsPanel from "./components/EconomicOperationsPanel";
 
 import {
   registerPrelaunchEmail,
@@ -2834,6 +2835,12 @@ function App() {
           </section>
         </div>
       )}
+
+      <EconomicOperationsPanel
+        language={
+          language
+        }
+      />
 
       <footer className="campaign-footer">
         <div className="db-container campaign-footer__inner">
