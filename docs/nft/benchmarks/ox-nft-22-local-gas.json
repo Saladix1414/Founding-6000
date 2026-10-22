@@ -1,0 +1,126 @@
+{
+  "version": "OX-NFT-GAS-BENCHMARK-1",
+  "environment": {
+    "network": "LOCAL_GANACHE",
+    "chainId": 31337,
+    "realFundsUsed": false,
+    "publicRpcUsed": false
+  },
+  "compiler": {
+    "solcVersion": "0.8.38+commit.1835d247.Emscripten.clang",
+    "optimizer": true,
+    "optimizerRuns": 200
+  },
+  "contract": {
+    "name": "OriginXFoundingBenchmark",
+    "address": "0x17197Fd1902511Bb3Fa42A989c860593f324Fd80",
+    "maxSupply": 6000,
+    "benchmarkTier": "RARE",
+    "benchmarkTokenStart": 1,
+    "benchmarkTokenEnd": 1000
+  },
+  "gas": {
+    "deployment": "1498867",
+    "firstMint": "76350",
+    "lastMint": "59262",
+    "minimumMint": "59250",
+    "maximumMint": "76350",
+    "averageMint": "59276",
+    "mint1000Total": "59276004",
+    "deploymentPlus1000Mints": "60774871",
+    "mint1000With15PercentHeadroom": "68167404",
+    "deploymentPlus1000With15PercentMintHeadroom": "69666271"
+  },
+  "execution": {
+    "mintCount": 1000,
+    "elapsedMs": 96759,
+    "ownerVerification": true
+  },
+  "samples": [
+    {
+      "tokenId": 1,
+      "gasUsed": "76350"
+    },
+    {
+      "tokenId": 2,
+      "gasUsed": "59250"
+    },
+    {
+      "tokenId": 3,
+      "gasUsed": "59250"
+    },
+    {
+      "tokenId": 4,
+      "gasUsed": "59250"
+    },
+    {
+      "tokenId": 5,
+      "gasUsed": "59250"
+    },
+    {
+      "tokenId": 6,
+      "gasUsed": "59250"
+    },
+    {
+      "tokenId": 7,
+      "gasUsed": "59250"
+    },
+    {
+      "tokenId": 8,
+      "gasUsed": "59250"
+    },
+    {
+      "tokenId": 9,
+      "gasUsed": "59250"
+    },
+    {
+      "tokenId": 10,
+      "gasUsed": "59250"
+    },
+    {
+      "tokenId": 100,
+      "gasUsed": "59250"
+    },
+    {
+      "tokenId": 200,
+      "gasUsed": "59250"
+    },
+    {
+      "tokenId": 300,
+      "gasUsed": "59262"
+    },
+    {
+      "tokenId": 400,
+      "gasUsed": "59262"
+    },
+    {
+      "tokenId": 500,
+      "gasUsed": "59262"
+    },
+    {
+      "tokenId": 600,
+      "gasUsed": "59262"
+    },
+    {
+      "tokenId": 700,
+      "gasUsed": "59262"
+    },
+    {
+      "tokenId": 800,
+      "gasUsed": "59262"
+    },
+    {
+      "tokenId": 900,
+      "gasUsed": "59262"
+    },
+    {
+      "tokenId": 1000,
+      "gasUsed": "59262"
+    }
+  ],
+  "authority": {
+    "mainnetAuthorized": false,
+    "realTransaction": false,
+    "reserveAuthority": false
+  }
+}

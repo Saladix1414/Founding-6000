@@ -57,13 +57,16 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^24.19.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
+    "ganache": "^7.9.2",
     "oxlint": "^1.81.0",
+    "solc": "^0.8.38",
     "tsx": "^4.23.15",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
