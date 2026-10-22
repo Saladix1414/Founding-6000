@@ -8,16 +8,10 @@ const worker =
     "utf8",
   );
 
-const health =
-  readFileSync(
-    "server/src/routes/health.ts",
-    "utf8",
-  );
-
-const workerRequirements = [
+const required = [
   "captureEconomicReconciliationEvidence",
   "RECONCILIATION_INTERVAL_MS",
-  "runReconciliationCycle",
+  "async function runReconciliationCycle()",
   "ECONOMIC_RECONCILIATION_CYCLE_COMPLETE",
   "ECONOMIC_RECONCILIATION_CYCLE_FAILED",
   "reconciliationRunning",
@@ -25,61 +19,107 @@ const workerRequirements = [
 ];
 
 for (
-  const requirement of
-    workerRequirements
+  const value of
+    required
 ) {
   if (
     !worker.includes(
-      requirement,
+      value,
     )
   ) {
     throw new Error(
-      `RECONCILIATION_WORKER_REQUIREMENT_MISSING:${requirement}`,
+      `RECONCILIATION_WORKER_CONTRACT_MISSING:${value}`,
     );
   }
 }
 
-/*
- * Reconciliation must not depend on reserve sweep
- * enablement. Reserve automation can be disabled while
- * integrity auditing continues.
- */
-const scheduleSection =
-  worker.split(
-    "function scheduleWorkers()",
-  )[1] ??
-  "";
+const scheduleStart =
+  worker.indexOf(
+    "function scheduleWorkers()"
+  );
+
+const shutdownStart =
+  worker.indexOf(
+    "async function shutdown("
+  );
 
 if (
-  !scheduleSection.includes(
-    "void runReconciliationCycle();"
-  )
+  scheduleStart === -1 ||
+  shutdownStart === -1 ||
+  shutdownStart <=
+    scheduleStart
+) {
+  throw new Error(
+    "WORKER_SCHEDULE_BOUNDARY_NOT_FOUND",
+  );
+}
+
+const schedule =
+  worker.slice(
+    scheduleStart,
+    shutdownStart,
+  );
+
+/*
+ * One occurrence belongs to the interval callback.
+ * Another must belong to the immediate startup run.
+ */
+const reconciliationCalls =
+  schedule.match(
+    /void runReconciliationCycle\(\);/g,
+  ) ?? [];
+
+if (
+  reconciliationCalls.length <
+    2
 ) {
   throw new Error(
     "INITIAL_RECONCILIATION_CYCLE_MISSING",
   );
 }
 
+const immediateAnchor =
+  `void runEmailCycle();
+  void runUsdtCycle();
+  void runReconciliationCycle();`;
+
 if (
-  !health.includes(
-    "ECONOMIC_RECONCILIATION_STALE_MS"
+  !schedule.includes(
+    immediateAnchor,
   )
 ) {
   throw new Error(
-    "RECONCILIATION_STALENESS_POLICY_MISSING",
+    "RECONCILIATION_NOT_RUN_AT_WORKER_START",
   );
 }
 
+/*
+ * Reconciliation must not depend on the reserve
+ * sweep feature flag.
+ */
+const initialReconciliationPosition =
+  schedule.indexOf(
+    immediateAnchor,
+  );
+
+const reserveConditionalPosition =
+  schedule.indexOf(
+    `if (
+    env.RESERVE_SWEEP_ENABLED
+  ) {`,
+    initialReconciliationPosition,
+  );
+
 if (
-  !health.includes(
-    'economicIntegrity !==\n      "critical"'
-  ) ||
-  !health.includes(
-    'economicIntegrity !==\n      "stale"'
-  )
+  initialReconciliationPosition ===
+    -1 ||
+  reserveConditionalPosition ===
+    -1 ||
+  initialReconciliationPosition >
+    reserveConditionalPosition
 ) {
   throw new Error(
-    "ECONOMIC_READINESS_FAIL_CLOSED_MISSING",
+    "INITIAL_RECONCILIATION_DEPENDS_ON_RESERVE_SWEEP",
   );
 }
 
@@ -88,17 +128,13 @@ console.log(
 );
 
 console.log(
-  "AUTOMATED_RECONCILIATION=YES",
+  "INTERVAL_RECONCILIATION=YES",
+);
+
+console.log(
+  "INITIAL_RECONCILIATION=YES",
 );
 
 console.log(
   "RESERVE_SWEEP_DEPENDENCY=NO",
-);
-
-console.log(
-  "CRITICAL_BLOCKS_READINESS=YES",
-);
-
-console.log(
-  "STALE_BLOCKS_READINESS=YES",
 );

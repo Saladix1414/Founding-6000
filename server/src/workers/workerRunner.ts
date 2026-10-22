@@ -379,6 +379,7 @@ function scheduleWorkers() {
 
   void runEmailCycle();
   void runUsdtCycle();
+  void runReconciliationCycle();
 
   if (
     env.RESERVE_SWEEP_ENABLED

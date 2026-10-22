@@ -323,9 +323,13 @@ function operationalSnapshot() {
     economicIntegrity !==
       "stale";
 
+  const overallReady =
+    coreReady &&
+    economicIntegrityReady;
+
   return {
     status:
-      coreReady
+      overallReady
         ? "ok"
         : "degraded",
 
@@ -362,8 +366,7 @@ function operationalSnapshot() {
     economicIntegrityReady,
 
     coreReady:
-      coreReady &&
-      economicIntegrityReady,
+      overallReady,
   };
 }
 
@@ -452,6 +455,15 @@ healthRouter.get(
 
         payments:
           snapshot.payments,
+
+        economicIntegrity:
+          snapshot.economicIntegrity,
+
+        economicReconciledAt:
+          snapshot.economicReconciledAt,
+
+        economicReportHash:
+          snapshot.economicReportHash,
 
         timestamp:
           new Date()

@@ -15,6 +15,7 @@ const required = [
   "ECONOMIC_RECONCILIATION_STALE_MS",
   "reconciliationStale",
   "economicIntegrityReady",
+  "overallReady",
 ];
 
 for (
@@ -52,8 +53,61 @@ if (
   );
 }
 
+if (
+  !health.includes(
+    "const overallReady ="
+  ) ||
+  !health.includes(
+    "status:\n      overallReady"
+  ) ||
+  !health.includes(
+    "coreReady:\n      overallReady"
+  )
+) {
+  throw new Error(
+    "HEALTH_STATUS_READINESS_DIVERGENCE",
+  );
+}
+
+const readyRoute =
+  health.split(
+    'healthRouter.get(\n  "/ready"',
+  )[1];
+
+if (!readyRoute) {
+  throw new Error(
+    "READY_ROUTE_NOT_FOUND",
+  );
+}
+
+for (
+  const field of [
+    "economicIntegrity:",
+    "economicReconciledAt:",
+    "economicReportHash:",
+  ]
+) {
+  if (
+    !readyRoute.includes(
+      field,
+    )
+  ) {
+    throw new Error(
+      `READY_ECONOMIC_FIELD_MISSING:${field}`,
+    );
+  }
+}
+
 console.log(
   "OX_ECONOMIC_INTEGRITY_HEALTH_CONTRACT=PASS",
+);
+
+console.log(
+  "HEALTH_STATUS_MATCHES_READINESS=YES",
+);
+
+console.log(
+  "READY_EXPOSES_ECONOMIC_INTEGRITY=YES",
 );
 
 console.log(
@@ -62,12 +116,4 @@ console.log(
 
 console.log(
   "STALE_BLOCKS_READINESS=YES",
-);
-
-console.log(
-  "WARNING_BLOCKS_READINESS=NO",
-);
-
-console.log(
-  "NOT_SEEN_BLOCKS_READINESS=NO",
 );
