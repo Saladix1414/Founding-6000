@@ -1,0 +1,33 @@
+{
+  "version": "OX-NETWORK-READINESS-SNAPSHOT-1",
+  "observedAt": "2026-10-22T20:04:17Z",
+  "network": {
+    "name": "base-sepolia",
+    "chainId": 84532,
+    "rpcMode": "READ_ONLY"
+  },
+  "observation": {
+    "blockNumber": 48887939,
+    "gasPriceWei": "6000000"
+  },
+  "planning": {
+    "gasUnits": 69666271,
+    "requiredWei": "417997626000000",
+    "requiredEth": "0.000417997626"
+  },
+  "authority": {
+    "observationIsAuthority": false,
+    "snapshotIsFundingApproval": false,
+    "snapshotIsDeploymentApproval": false,
+    "snapshotIsMintApproval": false,
+    "snapshotIsMainnetApproval": false
+  },
+  "safety": {
+    "privateKeyUsed": false,
+    "signerUsed": false,
+    "transactionExecuted": false,
+    "fundingExecuted": false,
+    "mintExecuted": false
+  },
+  "snapshotHash": "db7f1f643b2c880f568d981c10b07ec4a7fa8f42b29aa14efe299990834311a8"
+}
