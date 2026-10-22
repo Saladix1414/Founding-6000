@@ -40,6 +40,10 @@ import {
   runReserveAutomationCycle,
 } from "../services/reserveAutomationService.js";
 
+import {
+  captureEconomicReconciliationEvidence,
+} from "../services/economicReconciliationEvidenceService.js";
+
 const EMAIL_INTERVAL_MS =
   30_000;
 
@@ -51,6 +55,14 @@ const USDT_INTERVAL_MS =
  * than payment verification.
  */
 const RESERVE_INTERVAL_MS =
+  5 * 60_000;
+
+/*
+ * Economic reconciliation is independent from reserve
+ * sweep enablement. It is read-only and should continue
+ * even when automated treasury movement is disabled.
+ */
+const RECONCILIATION_INTERVAL_MS =
   5 * 60_000;
 
 const EMAIL_BATCH_SIZE =
@@ -71,6 +83,9 @@ let usdtRunning =
 let reserveRunning =
   false;
 
+let reconciliationRunning =
+  false;
+
 let emailTimer:
   NodeJS.Timeout | null =
     null;
@@ -80,6 +95,10 @@ let usdtTimer:
     null;
 
 let reserveTimer:
+  NodeJS.Timeout | null =
+    null;
+
+let reconciliationTimer:
   NodeJS.Timeout | null =
     null;
 
@@ -267,6 +286,60 @@ async function runReserveCycle() {
   }
 }
 
+async function runReconciliationCycle() {
+  if (
+    stopping ||
+    reconciliationRunning
+  ) {
+    return;
+  }
+
+  reconciliationRunning =
+    true;
+
+  try {
+    const result =
+      captureEconomicReconciliationEvidence();
+
+    logEvent(
+      "ECONOMIC_RECONCILIATION_CYCLE_COMPLETE",
+      {
+        status:
+          result.report.status,
+
+        criticalFailures:
+          result
+            .report
+            .summary
+            .criticalFailures,
+
+        warnings:
+          result
+            .report
+            .summary
+            .warnings,
+
+        reportHash:
+          result.reportHash,
+      },
+    );
+  } catch (error) {
+    /*
+     * Reconciliation never repairs or mutates
+     * economic authority. Failure is surfaced
+     * operationally and the previous evidence
+     * will eventually become stale.
+     */
+    logError(
+      "ECONOMIC_RECONCILIATION_CYCLE_FAILED",
+      error,
+    );
+  } finally {
+    reconciliationRunning =
+      false;
+  }
+}
+
 function scheduleWorkers() {
   emailTimer =
     setInterval(
@@ -282,6 +355,14 @@ function scheduleWorkers() {
         void runUsdtCycle();
       },
       USDT_INTERVAL_MS,
+    );
+
+  reconciliationTimer =
+    setInterval(
+      () => {
+        void runReconciliationCycle();
+      },
+      RECONCILIATION_INTERVAL_MS,
     );
 
   if (
@@ -341,6 +422,12 @@ async function shutdown(
     );
   }
 
+  if (reconciliationTimer) {
+    clearInterval(
+      reconciliationTimer,
+    );
+  }
+
   const deadline =
     Date.now() +
     10_000;
@@ -349,7 +436,8 @@ async function shutdown(
     (
       emailRunning ||
       usdtRunning ||
-      reserveRunning
+      reserveRunning ||
+      reconciliationRunning
     ) &&
     Date.now() <
       deadline
@@ -374,6 +462,9 @@ async function shutdown(
 
       reserveStillRunning:
         reserveRunning,
+
+      reconciliationStillRunning:
+        reconciliationRunning,
     },
   );
 
@@ -401,6 +492,9 @@ async function main() {
 
       reserveIntervalMs:
         RESERVE_INTERVAL_MS,
+
+      reconciliationIntervalMs:
+        RECONCILIATION_INTERVAL_MS,
 
       reserveEnabled:
         env.RESERVE_SWEEP_ENABLED,

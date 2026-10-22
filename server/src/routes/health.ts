@@ -24,6 +24,10 @@ import {
   type WorkerName,
 } from "../repositories/workerHealthRepository.js";
 
+import {
+  getLatestEconomicReconciliationEvidence,
+} from "../services/economicReconciliationEvidenceService.js";
+
 export const healthRouter =
   Router();
 
@@ -35,6 +39,9 @@ type PublicWorkerState =
   | "not_seen"
   | "unavailable"
   | "disabled";
+
+const ECONOMIC_RECONCILIATION_STALE_MS =
+  15 * 60 * 1000;
 
 const WORKER_STALE_MS:
   Record<
@@ -154,6 +161,23 @@ function operationalSnapshot() {
         ? "unavailable"
         : "disabled";
 
+  let economicIntegrity:
+    "ok" |
+    "warning" |
+    "critical" |
+    "not_seen" |
+    "stale" |
+    "unavailable" =
+      "unavailable";
+
+  let economicReconciledAt:
+    string | null =
+      null;
+
+  let economicReportHash:
+    string | null =
+      null;
+
   try {
     db.prepare(
       "SELECT 1 AS ok",
@@ -180,6 +204,47 @@ function operationalSnapshot() {
 
     const now =
       Date.now();
+
+    const economicEvidence =
+      getLatestEconomicReconciliationEvidence();
+
+    if (!economicEvidence) {
+      economicIntegrity =
+        "not_seen";
+    } else {
+      const reconciliationAgeMs =
+        now -
+        Date.parse(
+          economicEvidence
+            .reconciledAt,
+        );
+
+      const reconciliationStale =
+        !Number.isFinite(
+          reconciliationAgeMs,
+        ) ||
+        reconciliationAgeMs >
+          ECONOMIC_RECONCILIATION_STALE_MS;
+
+      economicIntegrity =
+        reconciliationStale
+          ? "stale"
+          : economicEvidence.status ===
+              "OK"
+            ? "ok"
+            : economicEvidence.status ===
+                "WARNING"
+              ? "warning"
+              : "critical";
+
+      economicReconciledAt =
+        economicEvidence
+          .reconciledAt;
+
+      economicReportHash =
+        economicEvidence
+          .reportHash;
+    }
 
     emailWorker =
       workerState(
@@ -252,6 +317,12 @@ function operationalSnapshot() {
         "running"
     );
 
+  const economicIntegrityReady =
+    economicIntegrity !==
+      "critical" &&
+    economicIntegrity !==
+      "stale";
+
   return {
     status:
       coreReady
@@ -282,7 +353,17 @@ function operationalSnapshot() {
 
     payments,
 
-    coreReady,
+    economicIntegrity,
+
+    economicReconciledAt,
+
+    economicReportHash,
+
+    economicIntegrityReady,
+
+    coreReady:
+      coreReady &&
+      economicIntegrityReady,
   };
 }
 
@@ -319,6 +400,15 @@ healthRouter.get(
 
       payments:
         snapshot.payments,
+
+      economicIntegrity:
+        snapshot.economicIntegrity,
+
+      economicReconciledAt:
+        snapshot.economicReconciledAt,
+
+      economicReportHash:
+        snapshot.economicReportHash,
 
       paymentReadiness:
         env.PAYMENT_READINESS,

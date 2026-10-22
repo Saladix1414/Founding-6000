@@ -35,6 +35,10 @@ import {
   ensureEconomicExitDecisionSchema,
 } from "./economicExitDecisionSchema.js";
 
+import {
+  ensureEconomicReconciliationEvidenceSchema,
+} from "./economicReconciliationEvidenceSchema.js";
+
 type DatabaseMigration = {
   id: string;
   description: string;
@@ -298,6 +302,18 @@ const migrations:
 
       apply() {
         ensureEconomicExitDecisionSchema();
+      },
+    },
+
+    {
+      id:
+        "012_economic_reconciliation_evidence",
+
+      description:
+        "Append-only economic reconciliation evidence",
+
+      apply() {
+        ensureEconomicReconciliationEvidenceSchema();
       },
     },
   ];
