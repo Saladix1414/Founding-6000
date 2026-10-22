@@ -56,6 +56,9 @@ export type EconomicIncidentAlertInput = {
 };
 
 type UnsyncedIncidentEventRow = {
+  sourceRowid:
+    number;
+
   id:
     string;
 
@@ -274,9 +277,39 @@ export function syncEconomicIncidentAlerts(
     );
   }
 
+  const cursorRow =
+    db.prepare(`
+      SELECT
+        last_incident_rowid
+          AS lastIncidentRowid
+
+      FROM economic_alert_sync_state
+
+      WHERE stream = ?
+
+      LIMIT 1
+    `).get(
+      "economic_integrity_incident_events",
+    ) as
+      | {
+          lastIncidentRowid:
+            number;
+        }
+      | undefined;
+
+  const lastIncidentRowid =
+    Number(
+      cursorRow
+        ?.lastIncidentRowid ??
+        0,
+    );
+
   const rows =
     db.prepare(`
       SELECT
+        rowid
+          AS sourceRowid,
+
         id,
 
         incident_id
@@ -298,11 +331,14 @@ export function syncEconomicIncidentAlerts(
 
       FROM economic_integrity_incident_events
 
+      WHERE rowid > ?
+
       ORDER BY
         rowid ASC
 
       LIMIT ?
     `).all(
+      lastIncidentRowid,
       limit,
     ) as
       UnsyncedIncidentEventRow[];
@@ -350,6 +386,28 @@ export function syncEconomicIncidentAlerts(
       created +=
         1;
     }
+
+    /*
+     * Advance only after this source event has been
+     * processed successfully.
+     *
+     * A crash before the cursor update safely replays
+     * the same source event on the next cycle.
+     */
+    db.prepare(`
+      UPDATE economic_alert_sync_state
+
+      SET
+        last_incident_rowid = ?,
+        updated_at = ?
+
+      WHERE stream = ?
+    `).run(
+      row.sourceRowid,
+      new Date()
+        .toISOString(),
+      "economic_integrity_incident_events",
+    );
   }
 
   return {

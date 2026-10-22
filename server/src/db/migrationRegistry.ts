@@ -348,6 +348,18 @@ const migrations:
         ensureEconomicAlertOutboxSchema();
       },
     },
+
+    {
+      id:
+        "015_economic_alert_sync_cursor",
+
+      description:
+        "Persistent economic alert incident sync cursor",
+
+      apply() {
+        ensureEconomicAlertOutboxSchema();
+      },
+    },
   ];
 
 export function ensureMigrationRegistry() {

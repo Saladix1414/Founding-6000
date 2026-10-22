@@ -52,6 +52,8 @@ for (
     "'DELIVERED'",
     "'FAILED'",
     "alert_key TEXT NOT NULL UNIQUE",
+    "economic_alert_sync_state",
+    "last_incident_rowid",
   ]
 ) {
   if (
@@ -72,6 +74,8 @@ for (
     "idempotentReplay",
     "incident_id",
     "trigger_type",
+    "WHERE rowid > ?",
+    "last_incident_rowid = ?",
   ]
 ) {
   if (
@@ -112,6 +116,16 @@ if (
 ) {
   throw new Error(
     "MIGRATION_014_MISSING",
+  );
+}
+
+if (
+  !migration.includes(
+    '"015_economic_alert_sync_cursor"'
+  )
+) {
+  throw new Error(
+    "MIGRATION_015_MISSING",
   );
 }
 

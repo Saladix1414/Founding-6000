@@ -49,6 +49,28 @@ export function ensureEconomicAlertOutboxSchema() {
       failed_at TEXT
     );
 
+    CREATE TABLE IF NOT EXISTS economic_alert_sync_state (
+      stream TEXT PRIMARY KEY,
+
+      last_incident_rowid INTEGER NOT NULL
+        CHECK (
+          last_incident_rowid >= 0
+        ),
+
+      updated_at TEXT NOT NULL
+    );
+
+    INSERT OR IGNORE INTO economic_alert_sync_state (
+      stream,
+      last_incident_rowid,
+      updated_at
+    )
+    VALUES (
+      'economic_integrity_incident_events',
+      0,
+      CURRENT_TIMESTAMP
+    );
+
     CREATE INDEX IF NOT EXISTS
       idx_economic_alert_outbox_pending
 
