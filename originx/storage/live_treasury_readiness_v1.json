@@ -1,0 +1,43 @@
+{
+  "version": "OX-TREASURY-LIVE-READINESS-1",
+  "status": "ADAPTER_DEFINED",
+  "purpose": "Read live network gas price and NFT minter balance for readiness evidence",
+  "allowedRpcMethods": [
+    "eth_gasPrice",
+    "eth_getBalance"
+  ],
+  "forbiddenCapabilities": [
+    "eth_sendTransaction",
+    "eth_sendRawTransaction",
+    "eth_sign",
+    "personal_sign",
+    "wallet_signTransaction",
+    "private-key-signing"
+  ],
+  "inputs": {
+    "rpcUrl": "runtime-input",
+    "nftMinterAddress": "runtime-input"
+  },
+  "outputs": {
+    "gasPriceWei": true,
+    "currentMinterBalanceWei": true,
+    "requiredBalanceWei": true,
+    "fundingDeficitWei": true,
+    "fundingSurplusWei": true,
+    "balanceReady": true
+  },
+  "authority": {
+    "rpcObservationIsFundingApproval": false,
+    "rpcObservationIsMintApproval": false,
+    "rpcObservationIsMainnetApproval": false,
+    "balanceReadyIsAuthority": false
+  },
+  "safety": {
+    "signerSupported": false,
+    "privateKeySupported": false,
+    "transactionSubmissionSupported": false,
+    "automaticFundingAuthorized": false,
+    "mainnetFundingAuthorized": false,
+    "reserveFundingAllowed": false
+  }
+}

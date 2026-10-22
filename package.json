@@ -45,7 +45,9 @@
     "test:reserve-sweep": "tsx server/src/tests/oxReserveSweepPolicyTest.ts",
     "test:wallet-treasury-authority": "tsx server/src/tests/oxWalletTreasuryAuthorityTest.ts",
     "test:treasury-gas-budget": "tsx server/src/tests/oxTreasuryGasBudgetTest.ts",
-    "test:treasury-funding-readiness": "tsx server/src/tests/oxTreasuryFundingReadinessTest.ts"
+    "test:treasury-funding-readiness": "tsx server/src/tests/oxTreasuryFundingReadinessTest.ts",
+    "test:treasury-live-readiness": "tsx server/src/tests/oxLiveTreasuryReadinessTest.ts",
+    "treasury:live-readiness": "tsx server/src/scripts/checkLiveTreasuryReadiness.ts"
   },
   "dependencies": {
     "cors": "^2.8.6",
