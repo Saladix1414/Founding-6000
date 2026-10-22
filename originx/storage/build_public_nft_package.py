@@ -607,8 +607,143 @@ def inspect_token(
     return result
 
 
+def normalize_base_url(
+    value: str,
+) -> str:
+    value = value.strip().rstrip("/")
+
+    if not value.startswith("https://"):
+        raise ValueError(
+            "PUBLIC_BASE_URL_MUST_BE_HTTPS"
+        )
+
+    return value
+
+
+def build_public_metadata(
+    token_id: int,
+    inspection: dict[str, Any],
+    source_metadata: dict[str, Any],
+    base_url: str,
+    image_path: str,
+    glyph_path: str,
+) -> dict[str, Any]:
+
+    base_url = normalize_base_url(
+        base_url
+    )
+
+    attributes = source_metadata.get(
+        "attributes",
+        [],
+    )
+
+    return {
+        "name":
+            source_metadata["name"],
+
+        "description":
+            source_metadata.get(
+                "description",
+                "",
+            ),
+
+        "image":
+            base_url
+            + image_path,
+
+        "external_url":
+            (
+                base_url
+                + "/nft/rare/"
+                + f"{token_id:04d}"
+            ),
+
+        "attributes":
+            attributes,
+
+        "originx": {
+            "publicMetadataVersion":
+                "OX-ERC721-PUBLIC-METADATA-1",
+
+            "tokenId":
+                token_id,
+
+            "serial":
+                inspection[
+                    "serial"
+                ],
+
+            "tier":
+                inspection[
+                    "tier"
+                ],
+
+            "displayName":
+                inspection[
+                    "displayName"
+                ],
+
+            "glyph":
+                base_url
+                + glyph_path,
+
+            "identity": {
+                "dnaHash":
+                    inspection[
+                        "identity"
+                    ][
+                        "dnaHash"
+                    ],
+
+                "bundleHash":
+                    inspection[
+                        "identity"
+                    ][
+                        "bundleHash"
+                    ],
+
+                "akashicLatestEventHash":
+                    inspection[
+                        "identity"
+                    ][
+                        "akashicLatestEventHash"
+                    ],
+
+                "internalMetadataHash":
+                    inspection[
+                        "identity"
+                    ][
+                        "metadataHash"
+                    ],
+            },
+
+            "visual": {
+                "mediaHash":
+                    inspection[
+                        "visual"
+                    ][
+                        "mediaHash"
+                    ],
+
+                "approved":
+                    True,
+            },
+
+            "authority": {
+                "metadataIsMintAuthority":
+                    False,
+
+                "metadataIsGovernanceAuthority":
+                    False,
+            },
+        },
+    }
+
+
 def publish_token(
     token_id: int,
+    base_url: str,
 ) -> dict[str, Any]:
 
     inspection = (
@@ -686,8 +821,25 @@ def publish_token(
         f"glyph-{glyph_hash}.svg"
     )
 
-    metadata_name = (
-        f"metadata-{metadata_hash}.json"
+    internal_metadata_name = (
+        f"internal-metadata-{metadata_hash}.json"
+    )
+
+    image_path = (
+        f"/nft/rare/"
+        f"{serial}/"
+        f"{image_name}"
+    )
+
+    glyph_path = (
+        f"/nft/rare/"
+        f"{serial}/"
+        f"{glyph_name}"
+    )
+
+    public_metadata_path = (
+        f"/nft/metadata/"
+        f"{token_id}.json"
     )
 
     shutil.copyfile(
@@ -705,7 +857,54 @@ def publish_token(
     shutil.copyfile(
         paths["metadata"],
         target_dir
-        / metadata_name,
+        / internal_metadata_name,
+    )
+
+    source_metadata = load_json(
+        paths["metadata"]
+    )
+
+    public_metadata = (
+        build_public_metadata(
+            token_id=token_id,
+            inspection=inspection,
+            source_metadata=source_metadata,
+            base_url=base_url,
+            image_path=image_path,
+            glyph_path=glyph_path,
+        )
+    )
+
+    public_metadata_dir = (
+        PUBLIC_NFT_DIR
+        / "metadata"
+    )
+
+    public_metadata_dir.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    public_metadata_file = (
+        public_metadata_dir
+        / f"{token_id}.json"
+    )
+
+    public_metadata_file.write_text(
+        json.dumps(
+            public_metadata,
+            indent=2,
+            ensure_ascii=False,
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    public_metadata_sha256 = (
+        sha256_file(
+            public_metadata_file
+        )
     )
 
     manifest_core = {
@@ -731,11 +930,7 @@ def publish_token(
         "assets": {
             "image": {
                 "path":
-                    (
-                        f"/nft/rare/"
-                        f"{serial}/"
-                        f"{image_name}"
-                    ),
+                    image_path,
 
                 "sha256":
                     media_hash,
@@ -743,22 +938,18 @@ def publish_token(
 
             "glyph": {
                 "path":
-                    (
-                        f"/nft/rare/"
-                        f"{serial}/"
-                        f"{glyph_name}"
-                    ),
+                    glyph_path,
 
                 "sha256":
                     glyph_hash,
             },
 
-            "metadata": {
+            "internalMetadata": {
                 "path":
                     (
                         f"/nft/rare/"
                         f"{serial}/"
-                        f"{metadata_name}"
+                        f"{internal_metadata_name}"
                     ),
 
                 "canonicalHash":
@@ -770,6 +961,22 @@ def publish_token(
                             "metadata"
                         ]
                     ),
+            },
+
+            "publicMetadata": {
+                "path":
+                    public_metadata_path,
+
+                "url":
+                    (
+                        normalize_base_url(
+                            base_url
+                        )
+                        + public_metadata_path
+                    ),
+
+                "fileSha256":
+                    public_metadata_sha256,
             },
         },
 
@@ -795,6 +1002,13 @@ def publish_token(
                     "akashicLatestEventHash"
                 ],
         },
+
+        "tokenURI": (
+            normalize_base_url(
+                base_url
+            )
+            + public_metadata_path
+        ),
 
         "authority": {
             "mintAuthorized":
@@ -862,6 +1076,19 @@ def publish_token(
 
         "manifestHash":
             manifest_hash,
+
+        "tokenURI":
+            (
+                normalize_base_url(
+                    base_url
+                )
+                + public_metadata_path
+            ),
+
+        "publicMetadata":
+            str(
+                public_metadata_file
+            ),
     }
 
 
@@ -881,11 +1108,22 @@ def main() -> None:
         action="store_true",
     )
 
+    parser.add_argument(
+        "--base-url",
+        default=None,
+    )
+
     args = parser.parse_args()
 
     if args.publish:
+        if not args.base_url:
+            raise SystemExit(
+                "PUBLIC_BASE_URL_REQUIRED"
+            )
+
         result = publish_token(
-            args.token_id
+            args.token_id,
+            args.base_url,
         )
 
         print(
@@ -912,6 +1150,20 @@ def main() -> None:
             "OUTPUT="
             + result[
                 "directory"
+            ]
+        )
+
+        print(
+            "TOKEN_URI="
+            + result[
+                "tokenURI"
+            ]
+        )
+
+        print(
+            "PUBLIC_METADATA="
+            + result[
+                "publicMetadata"
             ]
         )
 
