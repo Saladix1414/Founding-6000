@@ -208,6 +208,60 @@ const envSchema =
           "false",
         ),
 
+    RESERVE_SWEEP_ENABLED:
+      z.enum([
+        "true",
+        "false",
+      ])
+        .default(
+          "false",
+        ),
+
+    RESERVE_SWEEP_TREASURY_ADDRESS:
+      z.string()
+        .trim()
+        .regex(
+          /^0x[a-fA-F0-9]{40}$/,
+        )
+        .optional(),
+
+    RESERVE_SWEEP_SIGNER_PRIVATE_KEY:
+      z.string()
+        .trim()
+        .regex(
+          /^0x[a-fA-F0-9]{64}$/,
+        )
+        .optional(),
+
+    RESERVE_SWEEP_MAX_CONTRIBUTIONS:
+      z.coerce
+        .number()
+        .int()
+        .min(1)
+        .max(500)
+        .default(
+          100,
+        ),
+
+    RESERVE_SWEEP_CONFIRMATIONS:
+      z.coerce
+        .number()
+        .int()
+        .min(1)
+        .max(128)
+        .default(
+          12,
+        ),
+
+    RESERVE_SWEEP_MIN_AMOUNT_MINOR:
+      z.coerce
+        .number()
+        .int()
+        .min(1)
+        .default(
+          1000000,
+        ),
+
     USDT_CONFIRMATIONS_REQUIRED:
       z.coerce
         .number()
@@ -314,6 +368,11 @@ export const env = {
   RESERVE_PROOF_ENABLED:
     parsed.data
       .RESERVE_PROOF_ENABLED ===
+    "true",
+
+  RESERVE_SWEEP_ENABLED:
+    parsed.data
+      .RESERVE_SWEEP_ENABLED ===
     "true",
 
   TRUST_PROXY:

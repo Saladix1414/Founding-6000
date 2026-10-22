@@ -41,6 +41,21 @@ type ProductionRuntimeConfig = {
   ETHEREUM_RPC_URL?:
     string;
 
+  RESERVE_PROOF_ENABLED?:
+    boolean;
+
+  RESERVE_VAULT_ADDRESS?:
+    string;
+
+  RESERVE_SWEEP_ENABLED?:
+    boolean;
+
+  RESERVE_SWEEP_TREASURY_ADDRESS?:
+    string;
+
+  RESERVE_SWEEP_SIGNER_PRIVATE_KEY?:
+    string;
+
   SELLER_DISPLAY_NAME?:
     string;
 
@@ -293,6 +308,58 @@ export function getProductionRuntimeProblems(
     problems.push(
       "REAL_PAYMENTS_REQUIRE_PUBLIC_CHECKOUT",
     );
+  }
+
+  /*
+   * Reserve automation must fail closed.
+   */
+  if (
+    config.RESERVE_SWEEP_ENABLED
+  ) {
+    if (
+      !config.RESERVE_PROOF_ENABLED
+    ) {
+      problems.push(
+        "RESERVE_SWEEP_REQUIRES_PROOF_OF_RESERVE",
+      );
+    }
+
+    if (
+      !isSecurePublicUrl(
+        config.ETHEREUM_RPC_URL,
+      )
+    ) {
+      problems.push(
+        "RESERVE_SWEEP_REQUIRES_HTTPS_RPC",
+      );
+    }
+
+    if (
+      !config.RESERVE_VAULT_ADDRESS
+    ) {
+      problems.push(
+        "RESERVE_SWEEP_REQUIRES_VAULT_ADDRESS",
+      );
+    }
+
+    if (
+      !config.RESERVE_SWEEP_TREASURY_ADDRESS
+    ) {
+      problems.push(
+        "RESERVE_SWEEP_REQUIRES_TREASURY_ADDRESS",
+      );
+    }
+
+    if (
+      !config.RESERVE_SWEEP_SIGNER_PRIVATE_KEY ||
+      !/^0x[a-fA-F0-9]{64}$/.test(
+        config.RESERVE_SWEEP_SIGNER_PRIVATE_KEY,
+      )
+    ) {
+      problems.push(
+        "RESERVE_SWEEP_REQUIRES_SIGNER_SECRET",
+      );
+    }
   }
 
   /*

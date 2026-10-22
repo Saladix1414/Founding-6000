@@ -40,7 +40,9 @@
     "test:d3de-storage": "tsx server/src/tests/d3deRuntimeStorageTest.ts",
     "deploy:preflight": "bash deploy/prelaunch-preflight.sh",
     "reserve:snapshot": "tsx server/src/scripts/captureReserveSnapshot.ts",
-    "test:reserve-snapshot": "tsx server/src/tests/oxReserveSnapshotPolicyTest.ts"
+    "test:reserve-snapshot": "tsx server/src/tests/oxReserveSnapshotPolicyTest.ts",
+    "reserve:sweep-once": "tsx server/src/scripts/processReserveSweep.ts",
+    "test:reserve-sweep": "tsx server/src/tests/oxReserveSweepPolicyTest.ts"
   },
   "dependencies": {
     "cors": "^2.8.6",

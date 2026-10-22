@@ -23,6 +23,10 @@ import {
   ensureReserveProofSchema,
 } from "./reserveProofSchema.js";
 
+import {
+  ensureReserveSweepSchema,
+} from "./reserveSweepSchema.js";
+
 type DatabaseMigration = {
   id: string;
   description: string;
@@ -178,6 +182,18 @@ const migrations:
 
       apply() {
         ensureReserveProofSchema();
+      },
+    },
+
+    {
+      id:
+        "008_reserve_sweep_engine",
+
+      description:
+        "Idempotent OriginX reserve sweep queue and transaction state",
+
+      apply() {
+        ensureReserveSweepSchema();
       },
     },
   ];
