@@ -53,6 +53,15 @@ import {
 } from "../services/economicAlertOutboxService.js";
 
 import {
+  dispatchEconomicAlerts,
+} from "../services/economicAlertDeliveryService.js";
+
+import {
+  createEconomicAlertWebhookAdapter,
+} from "../services/economicAlertWebhookAdapter.js";
+
+
+import {
   evaluateEconomicReconciliationStaleness,
 } from "../services/economicIntegrityStaleService.js";
 
@@ -77,6 +86,12 @@ const RESERVE_INTERVAL_MS =
 const RECONCILIATION_INTERVAL_MS =
   5 * 60_000;
 
+const ECONOMIC_ALERT_DELIVERY_INTERVAL_MS =
+  60_000;
+
+const ECONOMIC_ALERT_DELIVERY_BATCH_SIZE =
+  25;
+
 const EMAIL_BATCH_SIZE =
   25;
 
@@ -98,6 +113,9 @@ let reserveRunning =
 let reconciliationRunning =
   false;
 
+let economicAlertDeliveryRunning =
+  false;
+
 let emailTimer:
   NodeJS.Timeout | null =
     null;
@@ -111,6 +129,10 @@ let reserveTimer:
     null;
 
 let reconciliationTimer:
+  NodeJS.Timeout | null =
+    null;
+
+let economicAlertDeliveryTimer:
   NodeJS.Timeout | null =
     null;
 
@@ -489,6 +511,57 @@ async function runReconciliationCycle() {
   }
 }
 
+async function runEconomicAlertDeliveryCycle() {
+  if (
+    stopping ||
+    economicAlertDeliveryRunning ||
+    !env.ECONOMIC_ALERT_DELIVERY_ENABLED
+  ) {
+    return;
+  }
+
+  economicAlertDeliveryRunning =
+    true;
+
+  try {
+    const adapter =
+      createEconomicAlertWebhookAdapter();
+
+    const result =
+      await dispatchEconomicAlerts({
+        limit:
+          ECONOMIC_ALERT_DELIVERY_BATCH_SIZE,
+
+        adapter,
+      });
+
+    logEvent(
+      "ECONOMIC_ALERT_DELIVERY_CYCLE_COMPLETE",
+      {
+        processed:
+          result.processed,
+
+        delivered:
+          result.delivered,
+
+        retrying:
+          result.retrying,
+
+        failed:
+          result.failed,
+      },
+    );
+  } catch (error) {
+    logError(
+      "ECONOMIC_ALERT_DELIVERY_CYCLE_FAILED",
+      error,
+    );
+  } finally {
+    economicAlertDeliveryRunning =
+      false;
+  }
+}
+
 function scheduleWorkers() {
   emailTimer =
     setInterval(
@@ -513,6 +586,18 @@ function scheduleWorkers() {
       },
       RECONCILIATION_INTERVAL_MS,
     );
+
+  if (
+    env.ECONOMIC_ALERT_DELIVERY_ENABLED
+  ) {
+    economicAlertDeliveryTimer =
+      setInterval(
+        () => {
+          void runEconomicAlertDeliveryCycle();
+        },
+        ECONOMIC_ALERT_DELIVERY_INTERVAL_MS,
+      );
+  }
 
   if (
     env.RESERVE_SWEEP_ENABLED
@@ -578,6 +663,14 @@ async function shutdown(
     );
   }
 
+  if (
+    economicAlertDeliveryTimer
+  ) {
+    clearInterval(
+      economicAlertDeliveryTimer,
+    );
+  }
+
   const deadline =
     Date.now() +
     10_000;
@@ -587,7 +680,8 @@ async function shutdown(
       emailRunning ||
       usdtRunning ||
       reserveRunning ||
-      reconciliationRunning
+      reconciliationRunning ||
+      economicAlertDeliveryRunning
     ) &&
     Date.now() <
       deadline
@@ -615,6 +709,9 @@ async function shutdown(
 
       reconciliationStillRunning:
         reconciliationRunning,
+
+      economicAlertDeliveryStillRunning:
+        economicAlertDeliveryRunning,
     },
   );
 
@@ -645,6 +742,12 @@ async function main() {
 
       reconciliationIntervalMs:
         RECONCILIATION_INTERVAL_MS,
+
+      economicAlertDeliveryIntervalMs:
+        ECONOMIC_ALERT_DELIVERY_INTERVAL_MS,
+
+      economicAlertDeliveryEnabled:
+        env.ECONOMIC_ALERT_DELIVERY_ENABLED,
 
       reserveEnabled:
         env.RESERVE_SWEEP_ENABLED,

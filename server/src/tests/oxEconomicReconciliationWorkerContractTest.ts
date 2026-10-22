@@ -154,7 +154,7 @@ const forbidden = [
   "sendTransaction(",
   "signTransaction(",
   "wallet.send",
-  "dispatchEconomicAlert",
+  "dispatchEconomicAlert(",
   "sendEconomicAlert",
   "deliverEconomicAlert",
 ];

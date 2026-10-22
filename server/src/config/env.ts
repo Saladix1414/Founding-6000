@@ -262,6 +262,34 @@ const envSchema =
           1000000,
         ),
 
+    ECONOMIC_ALERT_DELIVERY_ENABLED:
+      z.enum([
+        "true",
+        "false",
+      ])
+        .default(
+          "false",
+        ),
+
+    ECONOMIC_ALERT_WEBHOOK_URL:
+      z.string()
+        .url()
+        .optional(),
+
+    /*
+     * Backend-only bearer token for the operational
+     * alert webhook.
+     *
+     * Never expose through frontend variables,
+     * API responses or logs.
+     */
+    ECONOMIC_ALERT_WEBHOOK_BEARER_TOKEN:
+      z.string()
+        .trim()
+        .min(16)
+        .max(2048)
+        .optional(),
+
     USDT_CONFIRMATIONS_REQUIRED:
       z.coerce
         .number()
@@ -373,6 +401,11 @@ export const env = {
   RESERVE_SWEEP_ENABLED:
     parsed.data
       .RESERVE_SWEEP_ENABLED ===
+    "true",
+
+  ECONOMIC_ALERT_DELIVERY_ENABLED:
+    parsed.data
+      .ECONOMIC_ALERT_DELIVERY_ENABLED ===
     "true",
 
   TRUST_PROXY:

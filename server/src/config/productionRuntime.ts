@@ -56,6 +56,15 @@ type ProductionRuntimeConfig = {
   RESERVE_SWEEP_SIGNER_PRIVATE_KEY?:
     string;
 
+  ECONOMIC_ALERT_DELIVERY_ENABLED?:
+    boolean;
+
+  ECONOMIC_ALERT_WEBHOOK_URL?:
+    string;
+
+  ECONOMIC_ALERT_WEBHOOK_BEARER_TOKEN?:
+    string;
+
   SELLER_DISPLAY_NAME?:
     string;
 
@@ -358,6 +367,45 @@ export function getProductionRuntimeProblems(
     ) {
       problems.push(
         "RESERVE_SWEEP_REQUIRES_SIGNER_SECRET",
+      );
+    }
+  }
+
+  /*
+   * Economic alert delivery is operational only.
+   *
+   * When enabled in production it must point to an
+   * explicit public HTTPS webhook and have a backend-only
+   * bearer credential.
+   *
+   * This does not grant economic authority.
+   */
+  if (
+    config.ECONOMIC_ALERT_DELIVERY_ENABLED
+  ) {
+    if (
+      !isSecurePublicUrl(
+        config.ECONOMIC_ALERT_WEBHOOK_URL,
+      )
+    ) {
+      problems.push(
+        "ECONOMIC_ALERT_DELIVERY_REQUIRES_HTTPS_WEBHOOK",
+      );
+    }
+
+    if (
+      !config
+        .ECONOMIC_ALERT_WEBHOOK_BEARER_TOKEN ||
+      config
+        .ECONOMIC_ALERT_WEBHOOK_BEARER_TOKEN
+        .length < 16 ||
+      looksLikePlaceholder(
+        config
+          .ECONOMIC_ALERT_WEBHOOK_BEARER_TOKEN,
+      )
+    ) {
+      problems.push(
+        "ECONOMIC_ALERT_DELIVERY_REQUIRES_BEARER_TOKEN",
       );
     }
   }

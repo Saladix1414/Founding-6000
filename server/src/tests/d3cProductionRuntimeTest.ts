@@ -233,6 +233,58 @@ console.log(
   "[PASS] Explicit complete payment configuration accepted",
 );
 
+expectProblem(
+  {
+    ...base(),
+
+    ECONOMIC_ALERT_DELIVERY_ENABLED:
+      true,
+  },
+  "ECONOMIC_ALERT_DELIVERY_REQUIRES_HTTPS_WEBHOOK",
+);
+
+expectProblem(
+  {
+    ...base(),
+
+    ECONOMIC_ALERT_DELIVERY_ENABLED:
+      true,
+
+    ECONOMIC_ALERT_WEBHOOK_URL:
+      "https://alerts.example.com/originx",
+  },
+  "ECONOMIC_ALERT_DELIVERY_REQUIRES_BEARER_TOKEN",
+);
+
+const alertDeliveryReady =
+  getProductionRuntimeProblems({
+    ...base(),
+
+    ECONOMIC_ALERT_DELIVERY_ENABLED:
+      true,
+
+    ECONOMIC_ALERT_WEBHOOK_URL:
+      "https://alerts.example.com/originx",
+
+    ECONOMIC_ALERT_WEBHOOK_BEARER_TOKEN:
+      "x".repeat(
+        64,
+      ),
+  });
+
+if (
+  alertDeliveryReady.length !==
+    0
+) {
+  throw new Error(
+    `VALID_ALERT_DELIVERY_CONFIGURATION_REJECTED_${alertDeliveryReady.join(",")}`,
+  );
+}
+
+console.log(
+  "[PASS] Economic alert delivery is fail-closed",
+);
+
 console.log("");
 console.log(
   "============================================",

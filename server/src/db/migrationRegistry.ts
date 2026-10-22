@@ -360,6 +360,18 @@ const migrations:
         ensureEconomicAlertOutboxSchema();
       },
     },
+
+    {
+      id:
+        "016_economic_alert_delivery_state",
+
+      description:
+        "Economic alert delivery lease and retry state",
+
+      apply() {
+        ensureEconomicAlertOutboxSchema();
+      },
+    },
   ];
 
 export function ensureMigrationRegistry() {

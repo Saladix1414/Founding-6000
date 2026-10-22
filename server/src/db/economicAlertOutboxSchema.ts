@@ -2,6 +2,56 @@ import {
   db,
 } from "./database.js";
 
+function ensureEconomicAlertOutboxColumn(
+  name:
+    string,
+
+  definition:
+    string,
+) {
+  const columns =
+    db.prepare(`
+      PRAGMA table_info(economic_alert_outbox)
+    `).all() as Array<{
+      name:
+        string;
+    }>;
+
+  if (
+    columns.some(
+      (column) =>
+        column.name ===
+          name,
+    )
+  ) {
+    return;
+  }
+
+  try {
+    db.exec(`
+      ALTER TABLE economic_alert_outbox
+      ADD COLUMN ${definition};
+    `);
+  } catch (error) {
+    const message =
+      error instanceof Error
+        ? error.message
+        : String(error);
+
+    if (
+      message
+        .toLowerCase()
+        .includes(
+          "duplicate column name",
+        )
+    ) {
+      return;
+    }
+
+    throw error;
+  }
+}
+
 export function ensureEconomicAlertOutboxSchema() {
   db.exec(`
     CREATE TABLE IF NOT EXISTS economic_alert_outbox (
@@ -100,5 +150,42 @@ export function ensureEconomicAlertOutboxSchema() {
           'ECONOMIC_ALERT_OUTBOX_APPEND_ONLY_DELETE'
         );
     END;
+  `);
+
+  ensureEconomicAlertOutboxColumn(
+    "attempts",
+    "attempts INTEGER NOT NULL DEFAULT 0",
+  );
+
+  ensureEconomicAlertOutboxColumn(
+    "last_error",
+    "last_error TEXT",
+  );
+
+  ensureEconomicAlertOutboxColumn(
+    "next_attempt_at",
+    "next_attempt_at TEXT",
+  );
+
+  ensureEconomicAlertOutboxColumn(
+    "lease_owner",
+    "lease_owner TEXT",
+  );
+
+  ensureEconomicAlertOutboxColumn(
+    "lease_until",
+    "lease_until TEXT",
+  );
+
+  db.exec(`
+    CREATE INDEX IF NOT EXISTS
+      idx_economic_alert_outbox_delivery
+
+    ON economic_alert_outbox(
+      status,
+      next_attempt_at,
+      lease_until,
+      created_at
+    );
   `);
 }
