@@ -10,7 +10,8 @@ export function ensureWorkerHealthSchema() {
           worker_name IN (
             'email',
             'usdt',
-            'reserve'
+            'reserve',
+            'economic_alert_delivery'
           )
         ),
 

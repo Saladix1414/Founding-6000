@@ -389,6 +389,73 @@ const migrations:
         ensureEconomicAlertRecoverySchema();
       },
     },
+
+    {
+      id:
+        "018_economic_alert_delivery_worker_health",
+
+      description:
+        "Extend worker health state with economic alert delivery worker",
+
+      apply() {
+        db.exec(`
+          CREATE TABLE worker_health_v3 (
+            worker_name TEXT PRIMARY KEY
+              CHECK (
+                worker_name IN (
+                  'email',
+                  'usdt',
+                  'reserve',
+                  'economic_alert_delivery'
+                )
+              ),
+
+            last_started_at TEXT,
+            last_completed_at TEXT,
+            last_failed_at TEXT,
+
+            last_status TEXT NOT NULL
+              CHECK (
+                last_status IN (
+                  'RUNNING',
+                  'OK',
+                  'FAILED'
+                )
+              ),
+
+            updated_at TEXT NOT NULL
+          );
+
+          INSERT OR REPLACE INTO worker_health_v3 (
+            worker_name,
+            last_started_at,
+            last_completed_at,
+            last_failed_at,
+            last_status,
+            updated_at
+          )
+          SELECT
+            worker_name,
+            last_started_at,
+            last_completed_at,
+            last_failed_at,
+            last_status,
+            updated_at
+          FROM worker_health;
+
+          DROP TABLE worker_health;
+
+          ALTER TABLE worker_health_v3
+            RENAME TO worker_health;
+
+          CREATE INDEX IF NOT EXISTS
+            idx_worker_health_updated
+          ON worker_health(
+            updated_at
+          );
+        `);
+      },
+    },
   ];
 
 export function ensureMigrationRegistry() {

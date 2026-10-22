@@ -5,7 +5,8 @@ import {
 export type WorkerName =
   | "email"
   | "usdt"
-  | "reserve";
+  | "reserve"
+  | "economic_alert_delivery";
 
 export type WorkerHealthRow = {
   workerName:

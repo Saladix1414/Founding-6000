@@ -523,6 +523,10 @@ async function runEconomicAlertDeliveryCycle() {
   economicAlertDeliveryRunning =
     true;
 
+  recordWorkerCycleStarted(
+    "economic_alert_delivery",
+  );
+
   try {
     const adapter =
       createEconomicAlertWebhookAdapter();
@@ -534,6 +538,10 @@ async function runEconomicAlertDeliveryCycle() {
 
         adapter,
       });
+
+    recordWorkerCycleCompleted(
+      "economic_alert_delivery",
+    );
 
     logEvent(
       "ECONOMIC_ALERT_DELIVERY_CYCLE_COMPLETE",
@@ -552,6 +560,10 @@ async function runEconomicAlertDeliveryCycle() {
       },
     );
   } catch (error) {
+    recordWorkerCycleFailed(
+      "economic_alert_delivery",
+    );
+
     logError(
       "ECONOMIC_ALERT_DELIVERY_CYCLE_FAILED",
       error,

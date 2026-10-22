@@ -36,6 +36,16 @@ import {
   resolveEconomicReconciliationHealth,
 } from "../economics/economicReconciliationHealthPolicy.js";
 
+import {
+  getEconomicAlertOperationsSnapshot,
+} from "../services/economicAlertOperationsService.js";
+
+import {
+  isEconomicAlertOperationallyHealthy,
+  shouldEconomicAlertHealthBlockCoreReadiness,
+} from "../economics/economicAlertHealthPolicy.js";
+
+
 export const healthRouter =
   Router();
 
@@ -65,6 +75,13 @@ const WORKER_STALE_MS:
      */
     reserve:
       10 * 60 * 1000,
+
+    /*
+     * Alert delivery runs every 60 seconds.
+     * Allow three missed cycles before stale.
+     */
+    economic_alert_delivery:
+      3 * 60 * 1000,
   };
 
 function workerState(
@@ -166,6 +183,12 @@ function operationalSnapshot() {
         ? "unavailable"
         : "disabled";
 
+  let economicAlertDeliveryWorker:
+    PublicWorkerState =
+      env.ECONOMIC_ALERT_DELIVERY_ENABLED
+        ? "unavailable"
+        : "disabled";
+
   let economicIntegrity:
     "ok" |
     "warning" |
@@ -196,6 +219,32 @@ function operationalSnapshot() {
       null;
 
   let economicIncidentUpdatedAt:
+    string | null =
+      null;
+
+  let economicAlertDelivery:
+    "DISABLED" |
+    "IDLE" |
+    "ACTIVE" |
+    "DEGRADED" |
+    "FAILED" |
+    "unavailable" =
+      "unavailable";
+
+  let economicAlertPending =
+    0;
+
+  let economicAlertRetrying =
+    0;
+
+  let economicAlertFailed =
+    0;
+
+  let economicAlertLastDeliveredAt:
+    string | null =
+      null;
+
+  let economicAlertLastFailedAt:
     string | null =
       null;
 
@@ -231,6 +280,40 @@ function operationalSnapshot() {
 
     const latestIncident =
       getLatestEconomicIntegrityIncidentEvent();
+
+    const alertOperations =
+      getEconomicAlertOperationsSnapshot({
+        nowMs:
+          now,
+      });
+
+    economicAlertDelivery =
+      alertOperations.health;
+
+    economicAlertPending =
+      alertOperations
+        .counts
+        .pending;
+
+    economicAlertRetrying =
+      alertOperations
+        .counts
+        .retrying;
+
+    economicAlertFailed =
+      alertOperations
+        .counts
+        .failed;
+
+    economicAlertLastDeliveredAt =
+      alertOperations
+        .timestamps
+        .lastDeliveredAt;
+
+    economicAlertLastFailedAt =
+      alertOperations
+        .timestamps
+        .lastFailedAt;
 
     if (latestIncident) {
       economicIncidentState =
@@ -323,6 +406,21 @@ function operationalSnapshot() {
           now,
         );
     }
+
+    if (
+      env.ECONOMIC_ALERT_DELIVERY_ENABLED
+    ) {
+      economicAlertDeliveryWorker =
+        workerState(
+          "economic_alert_delivery",
+          workers.find(
+            (worker) =>
+              worker.workerName ===
+              "economic_alert_delivery",
+          ),
+          now,
+        );
+    }
   } catch {
     // Never expose raw operational errors publicly.
   }
@@ -363,9 +461,33 @@ function operationalSnapshot() {
     economicIntegrity !==
       "stale";
 
+  const economicAlertWorkerOperational =
+    !env.ECONOMIC_ALERT_DELIVERY_ENABLED ||
+    economicAlertDeliveryWorker ===
+      "healthy" ||
+    economicAlertDeliveryWorker ===
+      "running";
+
+  const economicAlertsOperational =
+    economicAlertDelivery !==
+      "unavailable" &&
+    isEconomicAlertOperationallyHealthy(
+      economicAlertDelivery,
+    ) &&
+    economicAlertWorkerOperational;
+
+  const economicAlertsBlockCoreReadiness =
+    economicAlertDelivery ===
+      "unavailable"
+      ? false
+      : shouldEconomicAlertHealthBlockCoreReadiness(
+          economicAlertDelivery,
+        );
+
   const overallReady =
     coreReady &&
-    economicIntegrityReady;
+    economicIntegrityReady &&
+    !economicAlertsBlockCoreReadiness;
 
   return {
     status:
@@ -386,10 +508,14 @@ function operationalSnapshot() {
 
       reserve:
         reserveWorker,
+
+      economicAlertDelivery:
+        economicAlertDeliveryWorker,
     },
 
     operations:
-      workersHealthy
+      workersHealthy &&
+      economicAlertsOperational
         ? "ok"
         : "degraded",
 
@@ -408,6 +534,24 @@ function operationalSnapshot() {
     economicIncidentSeverity,
 
     economicIncidentUpdatedAt,
+
+    economicAlertDelivery,
+
+    economicAlertPending,
+
+    economicAlertRetrying,
+
+    economicAlertFailed,
+
+    economicAlertLastDeliveredAt,
+
+    economicAlertLastFailedAt,
+
+    economicAlertWorkerOperational,
+
+    economicAlertsOperational,
+
+    economicAlertsBlockCoreReadiness,
 
     economicIntegrityReady,
 
@@ -467,6 +611,30 @@ healthRouter.get(
 
       economicIncidentUpdatedAt:
         snapshot.economicIncidentUpdatedAt,
+
+      economicAlertDelivery:
+        snapshot.economicAlertDelivery,
+
+      economicAlertPending:
+        snapshot.economicAlertPending,
+
+      economicAlertRetrying:
+        snapshot.economicAlertRetrying,
+
+      economicAlertFailed:
+        snapshot.economicAlertFailed,
+
+      economicAlertLastDeliveredAt:
+        snapshot.economicAlertLastDeliveredAt,
+
+      economicAlertLastFailedAt:
+        snapshot.economicAlertLastFailedAt,
+
+      economicAlertWorkerOperational:
+        snapshot.economicAlertWorkerOperational,
+
+      economicAlertsOperational:
+        snapshot.economicAlertsOperational,
 
       paymentReadiness:
         env.PAYMENT_READINESS,
@@ -528,6 +696,27 @@ healthRouter.get(
 
         economicIncidentUpdatedAt:
           snapshot.economicIncidentUpdatedAt,
+
+        economicAlertDelivery:
+          snapshot.economicAlertDelivery,
+
+        economicAlertPending:
+          snapshot.economicAlertPending,
+
+        economicAlertRetrying:
+          snapshot.economicAlertRetrying,
+
+        economicAlertFailed:
+          snapshot.economicAlertFailed,
+
+        economicAlertWorkerOperational:
+          snapshot.economicAlertWorkerOperational,
+
+        economicAlertsOperational:
+          snapshot.economicAlertsOperational,
+
+        economicAlertsBlockCoreReadiness:
+          snapshot.economicAlertsBlockCoreReadiness,
 
         timestamp:
           new Date()
