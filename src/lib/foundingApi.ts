@@ -321,3 +321,199 @@ export async function registerPrelaunchEmail(
     response,
   );
 }
+
+
+/* =========================================================
+ * OX-FOUNDING-ECONOMICS-4B
+ * Public-safe NFT economy view
+ * ========================================================= */
+
+export type FoundingCollectionTier =
+  | "RARE"
+  | "EPIC"
+  | "GENESIS";
+
+export type TokenEconomyProof = {
+  status:
+    | "VERIFIED"
+    | "NOT_FULLY_COVERED"
+    | "UNAVAILABLE";
+
+  snapshotVersion:
+    string | null;
+
+  snapshotHash:
+    string | null;
+
+  capturedAt:
+    string | null;
+
+  network:
+    string | null;
+
+  chainId:
+    number | null;
+
+  tokenContract:
+    string | null;
+
+  vaultAddress:
+    string | null;
+
+  totalLiabilityMinor:
+    string | null;
+
+  onchainBalanceMinor:
+    string | null;
+
+  surplusDeficitMinor:
+    string | null;
+
+  coverageBps:
+    string | null;
+
+  fullyCovered:
+    boolean;
+};
+
+export type TokenEconomy = {
+  viewVersion:
+    string;
+
+  tokenId:
+    number;
+
+  serialNumber:
+    number;
+
+  collectionTier:
+    FoundingCollectionTier;
+
+  tierPolicy: {
+    wave:
+      number;
+
+    serialStart:
+      number;
+
+    serialEnd:
+      number;
+
+    supply:
+      number;
+
+    canonicalPrimaryPriceMinor:
+      string;
+
+    canonicalPrimaryPriceUsdt:
+      string;
+  };
+
+  acquisition: {
+    amountMinor:
+      string;
+
+    amountUsdt:
+      string;
+
+    settledAt:
+      string;
+  };
+
+  reserveContribution: {
+    totalMinor:
+      string;
+
+    totalUsdt:
+      string;
+
+    reserveBps:
+      number;
+
+    economicModelVersion:
+      string;
+
+    waterfallVersion:
+      string;
+  };
+
+  tierBaseAllocation: {
+    amountMinor:
+      string;
+
+    amountUsdt:
+      string;
+
+    weightBps:
+      number;
+  };
+
+  current:
+    | {
+        reserveBalanceMinor:
+          string;
+
+        reserveBalanceUsdt:
+          string;
+
+        issuedSupply:
+          number;
+
+        navMinor:
+          string | null;
+
+        navUsdt:
+          string | null;
+
+        growthDeltaMinor:
+          string | null;
+
+        growthDeltaUsdt:
+          string | null;
+
+        growthBps:
+          string | null;
+      }
+    | null;
+
+  proofOfReserve:
+    TokenEconomyProof;
+};
+
+export async function getTokenEconomy(
+  tokenId:
+    number,
+) {
+  if (
+    !Number.isInteger(
+      tokenId,
+    ) ||
+    tokenId < 1 ||
+    tokenId > 6000
+  ) {
+    throw new Error(
+      "INVALID_TOKEN_ID",
+    );
+  }
+
+  const response =
+    await fetch(
+      `${API_BASE}/api/economy/tokens/${tokenId}`,
+      {
+        method:
+          "GET",
+
+        headers: {
+          Accept:
+            "application/json",
+        },
+      },
+    );
+
+  return parseResponse<{
+    economy:
+      TokenEconomy;
+  }>(
+    response,
+  );
+}

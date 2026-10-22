@@ -5,6 +5,7 @@ import {
   useState,
 } from "react";
 import UsdtPaymentPanel from "./components/UsdtPaymentPanel";
+import NftEconomyPanel from "./components/NftEconomyPanel";
 
 import {
   registerPrelaunchEmail,
@@ -54,28 +55,28 @@ type CampaignPhase = {
 const phases: CampaignPhase[] = [
   {
     number: "01",
-    name: "Genesis",
+    name: "RARE",
     capacity: 1000,
     price: 50,
     range: "#0001–#1000",
-    status: "Genesis Member",
+    status: "OriginX · RARE",
     active: true,
   },
   {
     number: "02",
-    name: "Early Access",
+    name: "EPIC",
     capacity: 2000,
     price: 70,
     range: "#1001–#3000",
-    status: "Founding Member",
+    status: "OriginX · EPIC",
   },
   {
     number: "03",
-    name: "Founding Access",
+    name: "GENESIS",
     capacity: 3000,
     price: 90,
     range: "#3001–#6000",
-    status: "Founding Member",
+    status: "OriginX · GENESIS",
   },
 ];
 
@@ -1038,7 +1039,7 @@ function App() {
                       ? "Fase actual"
                       : "Current phase"}
                   </span>
-                  <strong>Genesis</strong>
+                  <strong>RARE</strong>
                 </div>
 
                 <div>
@@ -1053,8 +1054,8 @@ function App() {
                 <div>
                   <span>
                     {language === "es"
-                      ? "Rango Genesis"
-                      : "Genesis range"}
+                      ? "Rango RARE"
+                      : "RARE range"}
                   </span>
                   <strong>#0001–#1000</strong>
                 </div>
@@ -2028,8 +2029,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "Genesis es la primera fase de la campaña, con un precio de referencia de US$50 y una capacidad máxima de 1.000 membresías verificadas."
-                    : "Genesis is the first campaign phase with a reference price of US$50 and a maximum capacity of 1,000 verified memberships."}
+                    ? "RARE es el primer tier de la colección, con un precio primario de 50 USDT y una capacidad máxima de 1.000 NFTs Founding."
+                    : "RARE is the first collection tier, with a 50 USDT primary price and a maximum supply of 1,000 Founding NFTs."}
                 </p>
 
                 <div className="purchase-panel__meta">
@@ -2037,16 +2038,16 @@ function App() {
                     <span>
                       {language === "es" ? "Fase" : "Phase"}
                     </span>
-                    <strong>Genesis</strong>
+                    <strong>RARE</strong>
                   </div>
 
                   <div>
                     <span>
                       {language === "es"
-                        ? "Referencia"
-                        : "Reference"}
+                        ? "Precio primario"
+                        : "Primary price"}
                     </span>
-                    <strong>US$50</strong>
+                    <strong>50 USDT</strong>
                   </div>
 
                   <div>
@@ -2370,18 +2371,30 @@ function App() {
                     </div>
 
                     <div>
-                      <span>Phase</span>
-                      <strong>Genesis</strong>
+                      <span>
+                        {language === "es"
+                          ? "Tier de colección"
+                          : "Collection tier"}
+                      </span>
+                      <strong>RARE</strong>
                     </div>
 
                     <div>
-                      <span>Membership</span>
-                      <strong>Genesis Member</strong>
+                      <span>
+                        {language === "es"
+                          ? "Rango"
+                          : "Range"}
+                      </span>
+                      <strong>#0001–#1000</strong>
                     </div>
 
                     <div>
-                      <span>Reference price</span>
-                      <strong>US$50</strong>
+                      <span>
+                        {language === "es"
+                          ? "Precio primario"
+                          : "Primary price"}
+                      </span>
+                      <strong>50 USDT</strong>
                     </div>
 
                     <div>
@@ -2717,20 +2730,24 @@ function App() {
 
                     {publicCheckoutEnabled &&
                       verifiedPurchase
-                        ?.membership && (
+                        ?.allocation && (
                         <div>
                           <span>
                             {language === "es"
-                              ? "Membresía"
-                              : "Membership"}
+                              ? "Tier OriginX"
+                              : "OriginX tier"}
                           </span>
 
                           <strong>
                             {verifiedPurchase
-                              .membership
-                              .genesisMember
-                              ? "Genesis Member"
-                              : "Founding Member"}
+                              .allocation
+                              .serialNumber <= 1000
+                              ? "RARE"
+                              : verifiedPurchase
+                                  .allocation
+                                  .serialNumber <= 3000
+                                ? "EPIC"
+                                : "GENESIS"}
                           </strong>
                         </div>
                       )}
@@ -2753,6 +2770,21 @@ function App() {
                         </div>
                       )}
                   </div>
+
+                  {publicCheckoutEnabled &&
+                    verifiedPurchase
+                      ?.allocation && (
+                      <NftEconomyPanel
+                        tokenId={
+                          verifiedPurchase
+                            .allocation
+                            .serialNumber
+                        }
+                        language={
+                          language
+                        }
+                      />
+                    )}
 
                   <div className="checkout-actions">
                     {publicCheckoutEnabled && (
