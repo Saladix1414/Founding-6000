@@ -587,6 +587,26 @@ export function NftEconomyPanel({
         <div>
           <span>
             {language === "es"
+              ? "Base de supply para NAV"
+              : "NAV supply basis"}
+          </span>
+
+          <strong
+            title={
+              economy
+                .navPolicy
+                .supplyBasis
+            }
+          >
+            {language === "es"
+              ? "Supply histórico emitido"
+              : "Historical issued supply"}
+          </strong>
+        </div>
+
+        <div>
+          <span>
+            {language === "es"
               ? "Snapshot"
               : "Snapshot"}
           </span>
@@ -648,8 +668,8 @@ export function NftEconomyPanel({
       <footer className="nft-economy-panel__footer">
         <span>
           {language === "es"
-            ? "El NAV representa el respaldo económico calculado por el sistema de reserva. No representa precio de mercado."
-            : "NAV represents economic backing calculated from the reserve system. It does not represent market price."}
+            ? "El NAV representa el respaldo económico calculado por el sistema de reserva y usa como denominador el supply histórico emitido. No representa precio de mercado."
+            : "NAV represents economic backing calculated from the reserve system using historical issued supply as its denominator. It does not represent market price."}
         </span>
 
         <span>

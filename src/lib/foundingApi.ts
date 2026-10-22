@@ -389,6 +389,14 @@ export type TokenEconomy = {
   collectionTier:
     FoundingCollectionTier;
 
+  navPolicy: {
+    version:
+      string;
+
+    supplyBasis:
+      "HISTORICAL_ISSUED_SUPPLY";
+  };
+
   tierPolicy: {
     wave:
       number;
@@ -614,6 +622,14 @@ export type TokenEconomyHistory = {
 
   collectionTier:
     FoundingCollectionTier;
+
+  navPolicy: {
+    version:
+      string;
+
+    supplyBasis:
+      "HISTORICAL_ISSUED_SUPPLY";
+  };
 
   order:
     "DESC";

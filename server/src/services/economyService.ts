@@ -13,6 +13,11 @@ import {
   formatUsdtMinor,
 } from "../economics/economyViewPolicy.js";
 
+import {
+  NAV_SUPPLY_BASIS,
+  NAV_SUPPLY_POLICY_VERSION,
+} from "../economics/navSupplyPolicy.js";
+
 type ContributionRow = {
   id:
     string;
@@ -413,6 +418,14 @@ export function getTokenEconomy(
 
     collectionTier:
       contribution.saleTier,
+
+    navPolicy: {
+      version:
+        NAV_SUPPLY_POLICY_VERSION,
+
+      supplyBasis:
+        NAV_SUPPLY_BASIS,
+    },
 
     tierPolicy: {
       wave:

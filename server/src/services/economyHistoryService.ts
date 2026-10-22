@@ -11,6 +11,11 @@ import {
   formatUsdtMinor,
 } from "../economics/economyViewPolicy.js";
 
+import {
+  NAV_SUPPLY_BASIS,
+  NAV_SUPPLY_POLICY_VERSION,
+} from "../economics/navSupplyPolicy.js";
+
 export const ECONOMY_HISTORY_VERSION =
   "OX-ECONOMY-HISTORY-1";
 
@@ -663,6 +668,14 @@ export function getTokenEconomyHistory(
 
     collectionTier:
       context.saleTier,
+
+    navPolicy: {
+      version:
+        NAV_SUPPLY_POLICY_VERSION,
+
+      supplyBasis:
+        NAV_SUPPLY_BASIS,
+    },
 
     order:
       "DESC" as const,

@@ -23,6 +23,12 @@ import {
 } from "../economics/reserveSnapshotPolicy.js";
 
 import {
+  NAV_SUPPLY_BASIS,
+  NAV_SUPPLY_POLICY_VERSION,
+  validateIssuedSupply,
+} from "../economics/navSupplyPolicy.js";
+
+import {
   readReserveVaultBalanceMinor,
 } from "../web3/reserveVault.js";
 
@@ -79,22 +85,25 @@ function getIssuedSupply() {
       genesis: number;
     };
 
-  return {
-    RARE:
-      Number(
-        row.rare,
-      ),
+  const validated =
+    validateIssuedSupply({
+      RARE:
+        Number(
+          row.rare,
+        ),
 
-    EPIC:
-      Number(
-        row.epic,
-      ),
+      EPIC:
+        Number(
+          row.epic,
+        ),
 
-    GENESIS:
-      Number(
-        row.genesis,
-      ),
-  };
+      GENESIS:
+        Number(
+          row.genesis,
+        ),
+    });
+
+  return validated.supply;
 }
 
 export async function captureReserveProofSnapshot() {
@@ -272,6 +281,12 @@ export async function captureReserveProofSnapshot() {
         snapshot
           .proof
           .fullyCovered,
+
+      navSupplyBasis:
+        NAV_SUPPLY_BASIS,
+
+      navSupplyPolicyVersion:
+        NAV_SUPPLY_POLICY_VERSION,
     },
   });
 
