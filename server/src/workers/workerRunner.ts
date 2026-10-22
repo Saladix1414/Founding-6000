@@ -48,6 +48,10 @@ import {
   recordEconomicIntegrityObservation,
 } from "../services/economicIntegrityIncidentService.js";
 
+import {
+  syncEconomicIncidentAlerts,
+} from "../services/economicAlertOutboxService.js";
+
 const EMAIL_INTERVAL_MS =
   30_000;
 
@@ -348,6 +352,17 @@ async function runReconciliationCycle() {
         },
       });
 
+    /*
+     * Synchronize durable incident history into the
+     * informational alert outbox.
+     *
+     * This does NOT deliver alerts.
+     * This does NOT mutate reserve state.
+     * This does NOT execute blockchain transactions.
+     */
+    const alertSync =
+      syncEconomicIncidentAlerts();
+
     logEvent(
       "ECONOMIC_RECONCILIATION_CYCLE_COMPLETE",
       {
@@ -376,6 +391,15 @@ async function runReconciliationCycle() {
           incidentResult
             .event
             ?.eventType,
+
+        alertSyncScanned:
+          alertSync.scanned,
+
+        alertSyncCreated:
+          alertSync.created,
+
+        alertSyncReplayed:
+          alertSync.replayed,
       },
     );
   } catch (error) {

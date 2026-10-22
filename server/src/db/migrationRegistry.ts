@@ -43,6 +43,10 @@ import {
   ensureEconomicIntegrityIncidentSchema,
 } from "./economicIntegrityIncidentSchema.js";
 
+import {
+  ensureEconomicAlertOutboxSchema,
+} from "./economicAlertOutboxSchema.js";
+
 type DatabaseMigration = {
   id: string;
   description: string;
@@ -330,6 +334,18 @@ const migrations:
 
       apply() {
         ensureEconomicIntegrityIncidentSchema();
+      },
+    },
+
+    {
+      id:
+        "014_economic_alert_outbox",
+
+      description:
+        "Economic integrity alert outbox",
+
+      apply() {
+        ensureEconomicAlertOutboxSchema();
       },
     },
   ];

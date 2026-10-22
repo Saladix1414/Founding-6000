@@ -11,12 +11,16 @@ const worker =
 const required = [
   "captureEconomicReconciliationEvidence",
   "recordEconomicIntegrityObservation",
+  "syncEconomicIncidentAlerts",
   "RECONCILIATION_INTERVAL_MS",
   "async function runReconciliationCycle()",
   "ECONOMIC_RECONCILIATION_CYCLE_COMPLETE",
   "ECONOMIC_RECONCILIATION_CYCLE_FAILED",
   "failingCodes",
   "incidentAction",
+  "alertSyncScanned",
+  "alertSyncCreated",
+  "alertSyncReplayed",
   "reconciliationRunning",
   "reconciliationTimer",
 ];
@@ -93,13 +97,19 @@ if (
 }
 
 /*
- * Incident recording is observation only.
- * Worker never gains repair/governance authority.
+ * Alert sync may populate the outbox only.
+ *
+ * It must not become delivery, treasury,
+ * governance or repair authority.
  */
 const forbidden = [
-  "AUTO_REPAIR",
   "sendTransaction(",
   "signTransaction(",
+  "wallet.send",
+  "AUTO_REPAIR",
+  "dispatchEconomicAlert",
+  "sendEconomicAlert",
+  "deliverEconomicAlert",
 ];
 
 for (
@@ -112,7 +122,7 @@ for (
     )
   ) {
     throw new Error(
-      `WORKER_GAINED_FORBIDDEN_AUTHORITY:${value}`,
+      `WORKER_GAINED_FORBIDDEN_ALERT_AUTHORITY:${value}`,
     );
   }
 }
@@ -131,6 +141,14 @@ console.log(
 
 console.log(
   "INCIDENT_OBSERVATION=YES",
+);
+
+console.log(
+  "ALERT_OUTBOX_SYNC=YES",
+);
+
+console.log(
+  "ALERT_DELIVERY=NO",
 );
 
 console.log(
