@@ -31,6 +31,10 @@ import {
   ensureAkashicEconomicOutboxSchema,
 } from "./akashicEconomicOutboxSchema.js";
 
+import {
+  ensureEconomicExitDecisionSchema,
+} from "./economicExitDecisionSchema.js";
+
 type DatabaseMigration = {
   id: string;
   description: string;
@@ -282,6 +286,18 @@ const migrations:
 
       apply() {
         ensureAkashicEconomicOutboxSchema();
+      },
+    },
+
+    {
+      id:
+        "011_economic_exit_decisions",
+
+      description:
+        "Append-only idempotent economic exit policy decisions",
+
+      apply() {
+        ensureEconomicExitDecisionSchema();
       },
     },
   ];
