@@ -1,0 +1,101 @@
+{
+  "version": "OX-WALLET-TREASURY-AUTHORITY-1",
+  "status": "ARCHITECTURE_DEFINED",
+  "networkPolicy": {
+    "paymentSettlementNetwork": "ethereum-mainnet",
+    "nftMintNetwork": "base-preferred",
+    "baseSepoliaForEndToEndTesting": true,
+    "mainnetMintAuthorized": false
+  },
+  "roles": {
+    "PAYMENT_RECEIVER": {
+      "purpose": "Receive verified primary-sale USDT payments",
+      "mayReceiveCustomerFunds": true,
+      "mayFundOperations": false,
+      "mayFundMinter": false,
+      "mayHoldReserve": false,
+      "mayMint": false,
+      "mayAdminContract": false
+    },
+    "OPERATING_TREASURY": {
+      "purpose": "Fund approved operating expenses, infrastructure and blockchain gas",
+      "mayReceiveCustomerFunds": false,
+      "mayFundOperations": true,
+      "mayFundMinter": true,
+      "mayHoldReserve": false,
+      "mayMint": false,
+      "mayAdminContract": false
+    },
+    "RESERVE_VAULT": {
+      "purpose": "Hold the protected economic reserve allocation",
+      "mayReceiveCustomerFunds": false,
+      "mayFundOperations": false,
+      "mayFundMinter": false,
+      "mayHoldReserve": true,
+      "mayMint": false,
+      "mayAdminContract": false
+    },
+    "NFT_MINTER": {
+      "purpose": "Submit approved NFT mint transactions only",
+      "mayReceiveCustomerFunds": false,
+      "mayFundOperations": false,
+      "mayFundMinter": false,
+      "mayHoldReserve": false,
+      "mayMint": true,
+      "mayAdminContract": false
+    },
+    "ADMIN": {
+      "purpose": "Hold restricted contract administration authority",
+      "mayReceiveCustomerFunds": false,
+      "mayFundOperations": false,
+      "mayFundMinter": false,
+      "mayHoldReserve": false,
+      "mayMint": false,
+      "mayAdminContract": true
+    }
+  },
+  "requiredSeparation": [
+    ["PAYMENT_RECEIVER", "NFT_MINTER"],
+    ["RESERVE_VAULT", "NFT_MINTER"],
+    ["OPERATING_TREASURY", "NFT_MINTER"],
+    ["ADMIN", "NFT_MINTER"],
+    ["RESERVE_VAULT", "OPERATING_TREASURY"],
+    ["RESERVE_VAULT", "PAYMENT_RECEIVER"]
+  ],
+  "authorityPrinciples": {
+    "walletOwnershipIsAuthority": false,
+    "walletSignatureIsAuthority": false,
+    "balanceIsAuthority": false,
+    "paymentVerificationIsMintApproval": false,
+    "reserveBalanceIsOperationalBudget": false,
+    "minterRoleIsAdminRole": false,
+    "adminRoleIsMinterRole": false
+  },
+  "reservePolicy": {
+    "primarySaleReservePercent": 25,
+    "reserveSweepEnabled": false,
+    "reserveMayPayGas": false,
+    "reserveMayFundMinter": false,
+    "reserveMutationRequiresExplicitFutureAuthorization": true
+  },
+  "mintPolicy": {
+    "nftMintEnabled": false,
+    "mainnetMintAuthorized": false,
+    "minterSignerMustBeIsolated": true,
+    "minterSignerMayHoldOnlyOperationalGas": true,
+    "minterSignerMayHoldCustomerFunds": false,
+    "minterSignerMayHoldReserve": false
+  },
+  "treasuryPolicy": {
+    "treasuryActionAuthorized": false,
+    "operatingTreasuryMayFundGas": true,
+    "paymentReceiverMayDirectlyMint": false,
+    "reserveVaultMayDirectlyMint": false
+  },
+  "fundingBootstrap": {
+    "rule": "NO_TREASURY_BEFORE_FUNDING",
+    "operatingTreasuryMayRemainUnfundedUntilBootstrap": true,
+    "nftMinterMayRemainUnfundedUntilMintReadiness": true,
+    "reserveVaultMayRemainUnfundedUntilVerifiedRevenueExists": true
+  }
+}
