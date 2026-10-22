@@ -38,7 +38,9 @@
     "prod:backup": "node server/dist/scripts/backupDatabase.js",
     "prod:restore-test": "node server/dist/scripts/testDatabaseRestore.js",
     "test:d3de-storage": "tsx server/src/tests/d3deRuntimeStorageTest.ts",
-    "deploy:preflight": "bash deploy/prelaunch-preflight.sh"
+    "deploy:preflight": "bash deploy/prelaunch-preflight.sh",
+    "reserve:snapshot": "tsx server/src/scripts/captureReserveSnapshot.ts",
+    "test:reserve-snapshot": "tsx server/src/tests/oxReserveSnapshotPolicyTest.ts"
   },
   "dependencies": {
     "cors": "^2.8.6",

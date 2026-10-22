@@ -185,6 +185,29 @@ const envSchema =
         .trim()
         .optional(),
 
+    /*
+     * Dedicated OriginX reserve vault.
+     *
+     * This is public blockchain information,
+     * not a private key.
+     */
+    RESERVE_VAULT_ADDRESS:
+      z.string()
+        .trim()
+        .regex(
+          /^0x[a-fA-F0-9]{40}$/,
+        )
+        .optional(),
+
+    RESERVE_PROOF_ENABLED:
+      z.enum([
+        "true",
+        "false",
+      ])
+        .default(
+          "false",
+        ),
+
     USDT_CONFIRMATIONS_REQUIRED:
       z.coerce
         .number()
@@ -286,6 +309,11 @@ export const env = {
   REAL_PAYMENTS_ENABLED:
     parsed.data
       .REAL_PAYMENTS_ENABLED ===
+    "true",
+
+  RESERVE_PROOF_ENABLED:
+    parsed.data
+      .RESERVE_PROOF_ENABLED ===
     "true",
 
   TRUST_PROXY:

@@ -19,6 +19,10 @@ import {
   ensureReserveSchema,
 } from "./reserveSchema.js";
 
+import {
+  ensureReserveProofSchema,
+} from "./reserveProofSchema.js";
+
 type DatabaseMigration = {
   id: string;
   description: string;
@@ -162,6 +166,18 @@ const migrations:
 
       apply() {
         ensureReserveSchema();
+      },
+    },
+
+    {
+      id:
+        "007_reserve_proof_snapshots",
+
+      description:
+        "On-chain Proof of Reserve and NAV snapshot history",
+
+      apply() {
+        ensureReserveProofSchema();
       },
     },
   ];
