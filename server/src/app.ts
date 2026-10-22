@@ -50,6 +50,10 @@ import {
 } from "./routes/memberships.js";
 
 import {
+  economyRouter,
+} from "./routes/economy.js";
+
+import {
   requestIdMiddleware,
 } from "./middleware/requestId.js";
 
@@ -227,6 +231,11 @@ export function createApp() {
   app.use(
     "/api/memberships",
     membershipsRouter,
+  );
+
+  app.use(
+    "/api/economy",
+    economyRouter,
   );
 
   app.use(
