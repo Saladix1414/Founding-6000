@@ -1,0 +1,50 @@
+{
+  "version": "OX-TREASURY-BOOTSTRAP-1",
+  "status": "POLICY_DEFINED",
+  "scope": {
+    "tier": "RARE",
+    "tokenRange": "0001-1000",
+    "tokenCount": 1000,
+    "network": "base-preferred"
+  },
+  "benchmark": {
+    "sourcePhase": "OX-NFT-22",
+    "deployGas": 1498867,
+    "firstMintGas": 76350,
+    "averageMintGas": 59276,
+    "mintCount": 1000,
+    "totalMintGas": 59276004,
+    "deployPlusMintGas": 60774871,
+    "plannedGasWithHeadroom": 69666271
+  },
+  "budgetPolicy": {
+    "planningGasUnits": 69666271,
+    "gasPriceIsRuntimeInput": true,
+    "gasPriceIsAuthority": false,
+    "budgetCalculationIsAuthority": false,
+    "automaticFundingAuthorized": false,
+    "automaticTransferAuthorized": false,
+    "mainnetFundingAuthorized": false
+  },
+  "fundingPolicy": {
+    "fundingSource": "OPERATING_TREASURY",
+    "fundingTarget": "NFT_MINTER",
+    "reserveVaultMayFundGas": false,
+    "paymentReceiverMayFundMinterDirectly": false,
+    "minterTargetBalanceIsOperationalOnly": true,
+    "minterMayHoldCustomerFunds": false,
+    "minterMayHoldReserveFunds": false
+  },
+  "bootstrapRule": {
+    "rule": "NO_TREASURY_BEFORE_FUNDING",
+    "operatingTreasuryCanRemainUnfunded": true,
+    "minterCanRemainUnfunded": true,
+    "fundOnlyAfterExplicitReadiness": true
+  },
+  "authority": {
+    "policyIsFundingApproval": false,
+    "policyIsMintApproval": false,
+    "policyIsMainnetApproval": false,
+    "policyIsReserveMutationApproval": false
+  }
+}
