@@ -1,0 +1,39 @@
+{
+  "assets": {
+    "glyph": {
+      "path": "/nft/rare/0001/glyph-68e636d5cacde87539c9a5614c3a40eea78725e7efa9977189a8cef67f72689f.svg",
+      "sha256": "68e636d5cacde87539c9a5614c3a40eea78725e7efa9977189a8cef67f72689f"
+    },
+    "image": {
+      "path": "/nft/rare/0001/image-a4dce9bbbcb6ec183ede3b2e3f512046677b058cbafe248255c2a021fe0ed4d7.png",
+      "sha256": "a4dce9bbbcb6ec183ede3b2e3f512046677b058cbafe248255c2a021fe0ed4d7"
+    },
+    "internalMetadata": {
+      "canonicalHash": "d583033332612c5279d70109c32a3d6a211d545d06b5ae6a3bb3204339af0417",
+      "fileSha256": "bce1331ba6dabe89ad6502954991cbe0c2b6aba1a61e23ecec85711b6ffd1a1d",
+      "path": "/nft/rare/0001/internal-metadata-d583033332612c5279d70109c32a3d6a211d545d06b5ae6a3bb3204339af0417.json"
+    },
+    "publicMetadata": {
+      "fileSha256": "6bca77fdd5f9fac023a5f49ce022e5ef48bcba264fddc71a63f2675f99cb4636",
+      "path": "/nft/metadata/1.json",
+      "url": "https://founding-6000-prelaunch.digitalboostlaunch.workers.dev/nft/metadata/1.json"
+    }
+  },
+  "authority": {
+    "mainnetAuthorized": false,
+    "mintAuthorized": false,
+    "publicationIsMintAuthority": false
+  },
+  "displayName": "Azhurak — The Primordial Witness",
+  "identity": {
+    "akashicLatestEventHash": "6c1f11941e78e6173f5fe7ac5119996ce7959739fbfdac26a8b9049a0cdb0009",
+    "bundleHash": "5e01429b50b5959bbf2e27ffaceb765c98617691c216cfb509cc7a8b122e0bf2",
+    "dnaHash": "c3f4228216cf1b519c30e530e5d8ef8a673a9f56925e8384c38659220bb7a2d0"
+  },
+  "manifestHash": "8165a8aa23469520d2632c6b8853e05e9c832773841154e08c8b2b1e20aceb45",
+  "manifestVersion": "OX-NFT-PUBLIC-MANIFEST-1",
+  "serial": "#0001",
+  "tier": "RARE",
+  "tokenId": 1,
+  "tokenURI": "https://founding-6000-prelaunch.digitalboostlaunch.workers.dev/nft/metadata/1.json"
+}

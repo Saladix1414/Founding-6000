@@ -1,0 +1,29 @@
+{
+  "version": "OX-NFT-PUBLIC-ORIGIN-1",
+  "status": "PROVISIONAL",
+  "baseUrl": "https://founding-6000-prelaunch.digitalboostlaunch.workers.dev",
+  "scope": {
+    "collection": "OriginX — DigitalBoost Origin Founding 6000",
+    "initialTier": "RARE",
+    "initialTokenRange": "0001-1000"
+  },
+  "uriPolicy": {
+    "tokenUriPath": "/nft/metadata/{tokenId}.json",
+    "imageAssetsContentAddressed": true,
+    "glyphAssetsContentAddressed": true,
+    "internalMetadataPreserved": true,
+    "httpsRequired": true
+  },
+  "migrationPolicy": {
+    "baseUrlMutableDuringPreMainnet": true,
+    "contentIdentityMutable": false,
+    "hashesMustRemainVerified": true,
+    "futureCanonicalDomainAllowed": true,
+    "mainnetBaseUriFrozen": false
+  },
+  "authority": {
+    "publicOriginIsMintAuthority": false,
+    "publicOriginIsGovernanceAuthority": false,
+    "publicOriginIsMainnetApproval": false
+  }
+}

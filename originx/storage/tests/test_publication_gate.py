@@ -292,11 +292,6 @@ def verify_missing_render_fails_closed(
 
 
 def main() -> None:
-    if PUBLIC_PATH.exists():
-        raise AssertionError(
-            "public package already exists"
-        )
-
     verify_current_ready_state()
 
     with tempfile.TemporaryDirectory(
@@ -334,11 +329,6 @@ def main() -> None:
         raise AssertionError(
             "gate did not return to READY "
             "after fixture restoration"
-        )
-
-    if PUBLIC_PATH.exists():
-        raise AssertionError(
-            "test unexpectedly published token"
         )
 
     print(

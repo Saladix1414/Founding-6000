@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+<metadata>{"dragonName":"Azhurak","generator":"OriginX Resonance Glyph v1","resonanceId":"RX-D99A10EC3DEB","resonanceSignature":"d99a10ec3deb2446b028a6ef4dc6540bbcbe0824be212a1e46f7f7f9724963f7","serial":"#0001","tokenId":1}</metadata>
+<rect width="1024" height="1024" fill="#000"/>
+<g fill="none" stroke="currentColor" stroke-width="1.89" color="#d7dde5">
+<circle cx="512" cy="512" r="187" opacity="0.42"/>
+<circle cx="512" cy="512" r="243" opacity="0.42"/>
+<circle cx="512" cy="512" r="299" opacity="0.42"/>
+<circle cx="512" cy="512" r="355" opacity="0.42"/>
+<line x1="564.858" y1="392.138" x2="677.837" y2="135.943" opacity="0.88"/>
+<line x1="642.233" y1="497.845" x2="920.594" y2="467.591" opacity="0.88"/>
+<line x1="589.375" y1="617.708" x2="754.756" y2="843.648" opacity="0.88"/>
+<line x1="459.142" y1="631.862" x2="346.163" y2="888.057" opacity="0.88"/>
+<line x1="381.767" y1="526.155" x2="103.406" y2="556.409" opacity="0.88"/>
+<line x1="434.625" y1="406.292" x2="269.244" y2="180.352" opacity="0.88"/>
+<polygon points="677.837,135.943 920.594,467.591 754.756,843.648 346.163,888.057 103.406,556.409 269.244,180.352" opacity="0.72"/>
+<polygon points="272.386,681.318 245.559,389.147 485.174,219.829 751.614,342.682 778.441,634.853 538.826,804.171" opacity="0.38"/>
+<circle cx="677.837" cy="135.943" r="3.08" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="920.594" cy="467.591" r="4.385" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="754.756" cy="843.648" r="3.156" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="346.163" cy="888.057" r="2.369" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="103.406" cy="556.409" r="4.277" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="269.244" cy="180.352" r="4.299" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="512" cy="512" r="39" opacity="0.95"/>
+<circle cx="512" cy="512" r="19.5" fill="currentColor" stroke="none"/>
+</g>
+</svg>

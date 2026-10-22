@@ -1,0 +1,146 @@
+{
+  "attributes": [
+    {
+      "trait_type": "Founding Serial",
+      "value": "#0001"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "RARE"
+    },
+    {
+      "trait_type": "Campaign Phase",
+      "value": "Genesis"
+    },
+    {
+      "trait_type": "Generation Theme",
+      "value": "Primitive Origin"
+    },
+    {
+      "trait_type": "Generation Version",
+      "value": "OX-GEN-1"
+    },
+    {
+      "trait_type": "Resonance ID",
+      "value": "RX-D99A10EC3DEB"
+    },
+    {
+      "trait_type": "Resonance Class",
+      "value": "ASCENDANT"
+    },
+    {
+      "trait_type": "Resonance Spectrum",
+      "value": "Ancient-Gold"
+    },
+    {
+      "trait_type": "Ancient Markings",
+      "value": "Tribal Sigils"
+    },
+    {
+      "trait_type": "Armor",
+      "value": "Primitive Chain Armor"
+    },
+    {
+      "trait_type": "Atmosphere",
+      "value": "Cold Rain"
+    },
+    {
+      "trait_type": "Aura",
+      "value": "Cold Cyan"
+    },
+    {
+      "trait_type": "Background City",
+      "value": "Obsidian Spires"
+    },
+    {
+      "trait_type": "Body Structure",
+      "value": "Heavy"
+    },
+    {
+      "trait_type": "Chest Core",
+      "value": "Ancient Ember"
+    },
+    {
+      "trait_type": "Dragon Archetype",
+      "value": "Ancient Ravager"
+    },
+    {
+      "trait_type": "Eye Configuration",
+      "value": "Moon White"
+    },
+    {
+      "trait_type": "Foreground",
+      "value": "Stone Chains"
+    },
+    {
+      "trait_type": "Head Structure",
+      "value": "Broad Skull"
+    },
+    {
+      "trait_type": "Horn Configuration",
+      "value": "Cathedral Horns"
+    },
+    {
+      "trait_type": "Mechanical Augmentation",
+      "value": "Embedded Metal"
+    },
+    {
+      "trait_type": "Originx Glyph",
+      "value": "OX-Prime"
+    },
+    {
+      "trait_type": "Scale Pattern",
+      "value": "Bone-Laced Scales"
+    },
+    {
+      "trait_type": "Serial Treatment",
+      "value": "Runic Inscription"
+    },
+    {
+      "trait_type": "Skyline Architecture",
+      "value": "Stone Megastructure"
+    },
+    {
+      "trait_type": "Special Variation",
+      "value": "Broken Horn"
+    },
+    {
+      "trait_type": "Tail",
+      "value": "Spiked Tail"
+    },
+    {
+      "trait_type": "Weather",
+      "value": "Ashfall"
+    },
+    {
+      "trait_type": "Wings",
+      "value": "Ancient Leather Wings"
+    }
+  ],
+  "description": "OriginX Founding 6000 digital membership identity. This token combines a canonical dragon identity, deterministic generative DNA, OriginX Resonance, a cryptographic Resonance Glyph and an append-oriented Akashic provenance record. Spiritual terminology is used as artistic and narrative language.",
+  "external_url": "https://founding-6000-prelaunch.digitalboostlaunch.workers.dev/nft/rare/0001",
+  "image": "https://founding-6000-prelaunch.digitalboostlaunch.workers.dev/nft/rare/0001/image-a4dce9bbbcb6ec183ede3b2e3f512046677b058cbafe248255c2a021fe0ed4d7.png",
+  "name": "Azhurak — The Primordial Witness",
+  "originx": {
+    "authority": {
+      "metadataIsGovernanceAuthority": false,
+      "metadataIsMintAuthority": false
+    },
+    "displayName": "Azhurak — The Primordial Witness",
+    "glyph": "https://founding-6000-prelaunch.digitalboostlaunch.workers.dev/nft/rare/0001/glyph-68e636d5cacde87539c9a5614c3a40eea78725e7efa9977189a8cef67f72689f.svg",
+    "identity": {
+      "akashicLatestEventHash": "6c1f11941e78e6173f5fe7ac5119996ce7959739fbfdac26a8b9049a0cdb0009",
+      "bundleHash": "5e01429b50b5959bbf2e27ffaceb765c98617691c216cfb509cc7a8b122e0bf2",
+      "dnaHash": "c3f4228216cf1b519c30e530e5d8ef8a673a9f56925e8384c38659220bb7a2d0",
+      "internalMetadataHash": "d583033332612c5279d70109c32a3d6a211d545d06b5ae6a3bb3204339af0417"
+    },
+    "publicMetadataVersion": "OX-ERC721-PUBLIC-METADATA-1",
+    "serial": "#0001",
+    "tier": "RARE",
+    "tokenId": 1,
+    "visual": {
+      "approved": true,
+      "mediaHash": "a4dce9bbbcb6ec183ede3b2e3f512046677b058cbafe248255c2a021fe0ed4d7"
+    }
+  }
+}

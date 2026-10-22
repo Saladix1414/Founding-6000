@@ -1,0 +1,179 @@
+{
+  "attributes": [
+    {
+      "trait_type": "Founding Serial",
+      "value": "#0001"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "RARE"
+    },
+    {
+      "trait_type": "Campaign Phase",
+      "value": "Genesis"
+    },
+    {
+      "trait_type": "Generation Theme",
+      "value": "Primitive Origin"
+    },
+    {
+      "trait_type": "Generation Version",
+      "value": "OX-GEN-1"
+    },
+    {
+      "trait_type": "Resonance ID",
+      "value": "RX-D99A10EC3DEB"
+    },
+    {
+      "trait_type": "Resonance Class",
+      "value": "ASCENDANT"
+    },
+    {
+      "trait_type": "Resonance Spectrum",
+      "value": "Ancient-Gold"
+    },
+    {
+      "trait_type": "Ancient Markings",
+      "value": "Tribal Sigils"
+    },
+    {
+      "trait_type": "Armor",
+      "value": "Primitive Chain Armor"
+    },
+    {
+      "trait_type": "Atmosphere",
+      "value": "Cold Rain"
+    },
+    {
+      "trait_type": "Aura",
+      "value": "Cold Cyan"
+    },
+    {
+      "trait_type": "Background City",
+      "value": "Obsidian Spires"
+    },
+    {
+      "trait_type": "Body Structure",
+      "value": "Heavy"
+    },
+    {
+      "trait_type": "Chest Core",
+      "value": "Ancient Ember"
+    },
+    {
+      "trait_type": "Dragon Archetype",
+      "value": "Ancient Ravager"
+    },
+    {
+      "trait_type": "Eye Configuration",
+      "value": "Moon White"
+    },
+    {
+      "trait_type": "Foreground",
+      "value": "Stone Chains"
+    },
+    {
+      "trait_type": "Head Structure",
+      "value": "Broad Skull"
+    },
+    {
+      "trait_type": "Horn Configuration",
+      "value": "Cathedral Horns"
+    },
+    {
+      "trait_type": "Mechanical Augmentation",
+      "value": "Embedded Metal"
+    },
+    {
+      "trait_type": "Originx Glyph",
+      "value": "OX-Prime"
+    },
+    {
+      "trait_type": "Scale Pattern",
+      "value": "Bone-Laced Scales"
+    },
+    {
+      "trait_type": "Serial Treatment",
+      "value": "Runic Inscription"
+    },
+    {
+      "trait_type": "Skyline Architecture",
+      "value": "Stone Megastructure"
+    },
+    {
+      "trait_type": "Special Variation",
+      "value": "Broken Horn"
+    },
+    {
+      "trait_type": "Tail",
+      "value": "Spiked Tail"
+    },
+    {
+      "trait_type": "Weather",
+      "value": "Ashfall"
+    },
+    {
+      "trait_type": "Wings",
+      "value": "Ancient Leather Wings"
+    }
+  ],
+  "campaignPhase": "Genesis",
+  "description": "OriginX Founding 6000 digital membership identity. This token combines a canonical dragon identity, deterministic generative DNA, OriginX Resonance, a cryptographic Resonance Glyph and an append-oriented Akashic provenance record. Spiritual terminology is used as artistic and narrative language.",
+  "generationTheme": "Primitive Origin",
+  "image": "originx://media/0001.png",
+  "metadataHash": "d583033332612c5279d70109c32a3d6a211d545d06b5ae6a3bb3204339af0417",
+  "metadataVersion": "OX-METADATA-1",
+  "name": "Azhurak — The Primordial Witness",
+  "originx": {
+    "akashic": {
+      "eventCount": 6,
+      "firstEventHash": "92f254cfad763c980bf7e61bc6d080475f20842b9db441f024a79e1904c380e2",
+      "latestEventHash": "6c1f11941e78e6173f5fe7ac5119996ce7959739fbfdac26a8b9049a0cdb0009",
+      "version": "OX-AKASHIC-1"
+    },
+    "dnaHash": "c3f4228216cf1b519c30e530e5d8ef8a673a9f56925e8384c38659220bb7a2d0",
+    "dragonName": "Azhurak",
+    "dragonTitle": "The Primordial Witness",
+    "generationVersion": "OX-GEN-1",
+    "glyph": {
+      "manifestHash": "cbc37d1a57ed7b2dfca0e7fc50d9750091a93a2210fd022d63e25c502c7d2d11",
+      "svg": "originx://glyph/0001.svg",
+      "svgHash": "68e636d5cacde87539c9a5614c3a40eea78725e7efa9977189a8cef67f72689f",
+      "version": "OX-RESONANCE-GLYPH-1"
+    },
+    "identityBundleHash": "5e01429b50b5959bbf2e27ffaceb765c98617691c216cfb509cc7a8b122e0bf2",
+    "resonance": {
+      "class": "ASCENDANT",
+      "id": "RX-D99A10EC3DEB",
+      "phaseDegrees": 109.37,
+      "primaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 844.66
+      },
+      "pulse": 8.57,
+      "resonanceSignature": "d99a10ec3deb2446b028a6ef4dc6540bbcbe0824be212a1e46f7f7f9724963f7",
+      "secondaryFrequency": {
+        "meaning": "artistic deterministic representation",
+        "unit": "Hz",
+        "value": 364.83
+      },
+      "spectrum": "Ancient-Gold",
+      "version": "OX-RESONANCE-1"
+    },
+    "seedHash": "9d099c8efd5fa6d0ebf9dafecd2fdb553065641850f044ef74452e1001f7cdac",
+    "visual": {
+      "mediaHash": "a4dce9bbbcb6ec183ede3b2e3f512046677b058cbafe248255c2a021fe0ed4d7",
+      "qualityStatus": "APPROVED",
+      "status": "VISUAL_APPROVED"
+    }
+  },
+  "privacy": {
+    "containsPII": false,
+    "publicSafe": true
+  },
+  "serial": "#0001",
+  "tier": "RARE",
+  "tokenId": 1,
+  "visualStatus": "VISUAL_APPROVED"
+}
