@@ -1,0 +1,35 @@
+{
+  "version": "OX-TREASURY-FUNDING-READINESS-1",
+  "status": "MODEL_DEFINED",
+  "scope": {
+    "tokenRange": "0001-1000",
+    "tier": "RARE",
+    "network": "base-preferred"
+  },
+  "inputs": {
+    "gasPriceWei": "runtime-planning-input",
+    "currentMinterBalanceWei": "runtime-observation-input",
+    "planningGasUnits": 69666271
+  },
+  "outputs": {
+    "requiredBalanceWei": true,
+    "currentBalanceWei": true,
+    "fundingDeficitWei": true,
+    "fundingSurplusWei": true,
+    "balanceReady": true
+  },
+  "authority": {
+    "balanceReadyIsFundingApproval": false,
+    "balanceReadyIsMintApproval": false,
+    "balanceReadyIsMainnetApproval": false,
+    "calculationMayTransferFunds": false,
+    "calculationMayUsePrivateKey": false
+  },
+  "safety": {
+    "rpcRequired": false,
+    "automaticFundingAuthorized": false,
+    "treasuryActionAuthorized": false,
+    "mainnetFundingAuthorized": false,
+    "reserveFundingAllowed": false
+  }
+}
