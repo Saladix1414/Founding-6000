@@ -49,7 +49,8 @@
     "test:treasury-live-readiness": "tsx server/src/tests/oxLiveTreasuryReadinessTest.ts",
     "treasury:live-readiness": "tsx server/src/scripts/checkLiveTreasuryReadiness.ts",
     "test:nft-network-readiness": "tsx server/src/tests/oxNetworkReadinessTest.ts",
-    "nft:network-readiness": "tsx server/src/scripts/checkNetworkReadiness.ts"
+    "nft:network-readiness": "tsx server/src/scripts/checkNetworkReadiness.ts",
+    "test:nft-final-contract": "node blockchain/tests/originx-founding-access-contract.mjs"
   },
   "dependencies": {
     "cors": "^2.8.6",
