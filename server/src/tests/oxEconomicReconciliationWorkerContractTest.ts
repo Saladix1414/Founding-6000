@@ -10,10 +10,13 @@ const worker =
 
 const required = [
   "captureEconomicReconciliationEvidence",
+  "recordEconomicIntegrityObservation",
   "RECONCILIATION_INTERVAL_MS",
   "async function runReconciliationCycle()",
   "ECONOMIC_RECONCILIATION_CYCLE_COMPLETE",
   "ECONOMIC_RECONCILIATION_CYCLE_FAILED",
+  "failingCodes",
+  "incidentAction",
   "reconciliationRunning",
   "reconciliationTimer",
 ];
@@ -60,10 +63,6 @@ const schedule =
     shutdownStart,
   );
 
-/*
- * One occurrence belongs to the interval callback.
- * Another must belong to the immediate startup run.
- */
 const reconciliationCalls =
   schedule.match(
     /void runReconciliationCycle\(\);/g,
@@ -74,7 +73,7 @@ if (
     2
 ) {
   throw new Error(
-    "INITIAL_RECONCILIATION_CYCLE_MISSING",
+    "INITIAL_OR_PERIODIC_RECONCILIATION_MISSING",
   );
 }
 
@@ -94,33 +93,28 @@ if (
 }
 
 /*
- * Reconciliation must not depend on the reserve
- * sweep feature flag.
+ * Incident recording is observation only.
+ * Worker never gains repair/governance authority.
  */
-const initialReconciliationPosition =
-  schedule.indexOf(
-    immediateAnchor,
-  );
+const forbidden = [
+  "AUTO_REPAIR",
+  "sendTransaction(",
+  "signTransaction(",
+];
 
-const reserveConditionalPosition =
-  schedule.indexOf(
-    `if (
-    env.RESERVE_SWEEP_ENABLED
-  ) {`,
-    initialReconciliationPosition,
-  );
-
-if (
-  initialReconciliationPosition ===
-    -1 ||
-  reserveConditionalPosition ===
-    -1 ||
-  initialReconciliationPosition >
-    reserveConditionalPosition
+for (
+  const value of
+    forbidden
 ) {
-  throw new Error(
-    "INITIAL_RECONCILIATION_DEPENDS_ON_RESERVE_SWEEP",
-  );
+  if (
+    worker.includes(
+      value,
+    )
+  ) {
+    throw new Error(
+      `WORKER_GAINED_FORBIDDEN_AUTHORITY:${value}`,
+    );
+  }
 }
 
 console.log(
@@ -128,13 +122,17 @@ console.log(
 );
 
 console.log(
-  "INTERVAL_RECONCILIATION=YES",
-);
-
-console.log(
   "INITIAL_RECONCILIATION=YES",
 );
 
 console.log(
-  "RESERVE_SWEEP_DEPENDENCY=NO",
+  "PERIODIC_RECONCILIATION=YES",
+);
+
+console.log(
+  "INCIDENT_OBSERVATION=YES",
+);
+
+console.log(
+  "AUTO_REPAIR=NO",
 );

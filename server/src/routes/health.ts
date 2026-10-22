@@ -28,6 +28,10 @@ import {
   getLatestEconomicReconciliationEvidence,
 } from "../services/economicReconciliationEvidenceService.js";
 
+import {
+  getLatestEconomicIntegrityIncidentEvent,
+} from "../services/economicIntegrityIncidentService.js";
+
 export const healthRouter =
   Router();
 
@@ -178,6 +182,22 @@ function operationalSnapshot() {
     string | null =
       null;
 
+  let economicIncidentState:
+    "none" |
+    "open" |
+    "resolved" =
+      "none";
+
+  let economicIncidentSeverity:
+    "WARNING" |
+    "CRITICAL" |
+    null =
+      null;
+
+  let economicIncidentUpdatedAt:
+    string | null =
+      null;
+
   try {
     db.prepare(
       "SELECT 1 AS ok",
@@ -207,6 +227,23 @@ function operationalSnapshot() {
 
     const economicEvidence =
       getLatestEconomicReconciliationEvidence();
+
+    const latestIncident =
+      getLatestEconomicIntegrityIncidentEvent();
+
+    if (latestIncident) {
+      economicIncidentState =
+        latestIncident.eventType ===
+          "RESOLVED"
+          ? "resolved"
+          : "open";
+
+      economicIncidentSeverity =
+        latestIncident.severity;
+
+      economicIncidentUpdatedAt =
+        latestIncident.createdAt;
+    }
 
     if (!economicEvidence) {
       economicIntegrity =
@@ -363,6 +400,12 @@ function operationalSnapshot() {
 
     economicReportHash,
 
+    economicIncidentState,
+
+    economicIncidentSeverity,
+
+    economicIncidentUpdatedAt,
+
     economicIntegrityReady,
 
     coreReady:
@@ -412,6 +455,15 @@ healthRouter.get(
 
       economicReportHash:
         snapshot.economicReportHash,
+
+      economicIncidentState:
+        snapshot.economicIncidentState,
+
+      economicIncidentSeverity:
+        snapshot.economicIncidentSeverity,
+
+      economicIncidentUpdatedAt:
+        snapshot.economicIncidentUpdatedAt,
 
       paymentReadiness:
         env.PAYMENT_READINESS,
@@ -464,6 +516,15 @@ healthRouter.get(
 
         economicReportHash:
           snapshot.economicReportHash,
+
+        economicIncidentState:
+          snapshot.economicIncidentState,
+
+        economicIncidentSeverity:
+          snapshot.economicIncidentSeverity,
+
+        economicIncidentUpdatedAt:
+          snapshot.economicIncidentUpdatedAt,
 
         timestamp:
           new Date()

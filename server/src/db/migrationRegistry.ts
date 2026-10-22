@@ -39,6 +39,10 @@ import {
   ensureEconomicReconciliationEvidenceSchema,
 } from "./economicReconciliationEvidenceSchema.js";
 
+import {
+  ensureEconomicIntegrityIncidentSchema,
+} from "./economicIntegrityIncidentSchema.js";
+
 type DatabaseMigration = {
   id: string;
   description: string;
@@ -314,6 +318,18 @@ const migrations:
 
       apply() {
         ensureEconomicReconciliationEvidenceSchema();
+      },
+    },
+
+    {
+      id:
+        "013_economic_integrity_incidents",
+
+      description:
+        "Append-only economic integrity incident event history",
+
+      apply() {
+        ensureEconomicIntegrityIncidentSchema();
       },
     },
   ];

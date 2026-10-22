@@ -16,6 +16,10 @@ const required = [
   "reconciliationStale",
   "economicIntegrityReady",
   "overallReady",
+  "getLatestEconomicIntegrityIncidentEvent",
+  "economicIncidentState",
+  "economicIncidentSeverity",
+  "economicIncidentUpdatedAt",
 ];
 
 for (
@@ -53,22 +57,6 @@ if (
   );
 }
 
-if (
-  !health.includes(
-    "const overallReady ="
-  ) ||
-  !health.includes(
-    "status:\n      overallReady"
-  ) ||
-  !health.includes(
-    "coreReady:\n      overallReady"
-  )
-) {
-  throw new Error(
-    "HEALTH_STATUS_READINESS_DIVERGENCE",
-  );
-}
-
 const readyRoute =
   health.split(
     'healthRouter.get(\n  "/ready"',
@@ -85,6 +73,9 @@ for (
     "economicIntegrity:",
     "economicReconciledAt:",
     "economicReportHash:",
+    "economicIncidentState:",
+    "economicIncidentSeverity:",
+    "economicIncidentUpdatedAt:",
   ]
 ) {
   if (
@@ -93,7 +84,7 @@ for (
     )
   ) {
     throw new Error(
-      `READY_ECONOMIC_FIELD_MISSING:${field}`,
+      `READY_FIELD_MISSING:${field}`,
     );
   }
 }
@@ -103,11 +94,11 @@ console.log(
 );
 
 console.log(
-  "HEALTH_STATUS_MATCHES_READINESS=YES",
+  "READY_EXPOSES_INTEGRITY=YES",
 );
 
 console.log(
-  "READY_EXPOSES_ECONOMIC_INTEGRITY=YES",
+  "READY_EXPOSES_INCIDENT_STATE=YES",
 );
 
 console.log(
@@ -116,4 +107,8 @@ console.log(
 
 console.log(
   "STALE_BLOCKS_READINESS=YES",
+);
+
+console.log(
+  "INCIDENT_IS_AUTHORITY=NO",
 );

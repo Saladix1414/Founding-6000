@@ -44,6 +44,10 @@ import {
   captureEconomicReconciliationEvidence,
 } from "../services/economicReconciliationEvidenceService.js";
 
+import {
+  recordEconomicIntegrityObservation,
+} from "../services/economicIntegrityIncidentService.js";
+
 const EMAIL_INTERVAL_MS =
   30_000;
 
@@ -301,6 +305,49 @@ async function runReconciliationCycle() {
     const result =
       captureEconomicReconciliationEvidence();
 
+    const failingCodes =
+      result
+        .report
+        .checks
+        .filter(
+          (check) =>
+            !check.passed,
+        )
+        .map(
+          (check) =>
+            check.code,
+        );
+
+    const incidentResult =
+      recordEconomicIntegrityObservation({
+        state:
+          result.report.status,
+
+        reportHash:
+          result.reportHash,
+
+        failingCodes,
+
+        evidence: {
+          criticalFailures:
+            result
+              .report
+              .summary
+              .criticalFailures,
+
+          warnings:
+            result
+              .report
+              .summary
+              .warnings,
+
+          reconciledAt:
+            result
+              .report
+              .reconciledAt,
+        },
+      });
+
     logEvent(
       "ECONOMIC_RECONCILIATION_CYCLE_COMPLETE",
       {
@@ -321,6 +368,14 @@ async function runReconciliationCycle() {
 
         reportHash:
           result.reportHash,
+
+        incidentAction:
+          incidentResult.action,
+
+        incidentEventType:
+          incidentResult
+            .event
+            ?.eventType,
       },
     );
   } catch (error) {
