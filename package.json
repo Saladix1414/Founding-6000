@@ -47,7 +47,9 @@
     "test:treasury-gas-budget": "tsx server/src/tests/oxTreasuryGasBudgetTest.ts",
     "test:treasury-funding-readiness": "tsx server/src/tests/oxTreasuryFundingReadinessTest.ts",
     "test:treasury-live-readiness": "tsx server/src/tests/oxLiveTreasuryReadinessTest.ts",
-    "treasury:live-readiness": "tsx server/src/scripts/checkLiveTreasuryReadiness.ts"
+    "treasury:live-readiness": "tsx server/src/scripts/checkLiveTreasuryReadiness.ts",
+    "test:nft-network-readiness": "tsx server/src/tests/oxNetworkReadinessTest.ts",
+    "nft:network-readiness": "tsx server/src/scripts/checkNetworkReadiness.ts"
   },
   "dependencies": {
     "cors": "^2.8.6",

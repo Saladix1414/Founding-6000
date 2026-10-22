@@ -1,0 +1,28 @@
+{
+  "version": "OX-NETWORK-READINESS-1",
+  "status": "POLICY_DEFINED",
+  "target": {
+    "networkName": "base-sepolia",
+    "chainId": 84532,
+    "environment": "testnet",
+    "purpose": "OriginX NFT end-to-end validation before mainnet"
+  },
+  "requiredChecks": [
+    "eth_chainId",
+    "eth_blockNumber",
+    "eth_gasPrice"
+  ],
+  "authority": {
+    "networkReachableIsDeploymentApproval": false,
+    "networkReachableIsFundingApproval": false,
+    "networkReachableIsMintApproval": false,
+    "networkReachableIsMainnetApproval": false
+  },
+  "safety": {
+    "signerSupported": false,
+    "privateKeySupported": false,
+    "transactionSubmissionSupported": false,
+    "automaticFundingAuthorized": false,
+    "mainnetAuthorized": false
+  }
+}
