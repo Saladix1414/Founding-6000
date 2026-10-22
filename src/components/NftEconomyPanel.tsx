@@ -8,6 +8,8 @@ import {
   type TokenEconomy,
 } from "../lib/foundingApi";
 
+import NftEconomyTimeline from "./NftEconomyTimeline";
+
 type Language =
   | "en"
   | "es";
@@ -633,6 +635,15 @@ export function NftEconomyPanel({
           </strong>
         </div>
       </div>
+
+      <NftEconomyTimeline
+        tokenId={
+          tokenId
+        }
+        language={
+          language
+        }
+      />
 
       <footer className="nft-economy-panel__footer">
         <span>

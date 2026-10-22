@@ -517,3 +517,199 @@ export async function getTokenEconomy(
     response,
   );
 }
+
+
+/* =========================================================
+ * OX-FOUNDING-ECONOMICS-5B
+ * Public-safe NAV / reserve history
+ * ========================================================= */
+
+export type TokenEconomyHistoryItem = {
+  snapshotVersion:
+    string;
+
+  snapshotHash:
+    string;
+
+  capturedAt:
+    string;
+
+  tier:
+    FoundingCollectionTier;
+
+  reserve: {
+    balanceMinor:
+      string;
+
+    balanceUsdt:
+      string;
+
+    issuedSupply:
+      number;
+
+    navMinor:
+      string | null;
+
+    navUsdt:
+      string | null;
+  };
+
+  growth: {
+    baseMinor:
+      string;
+
+    baseUsdt:
+      string;
+
+    deltaMinor:
+      string | null;
+
+    deltaUsdt:
+      string | null;
+
+    growthBps:
+      string | null;
+  };
+
+  proofOfReserve: {
+    status:
+      | "VERIFIED"
+      | "NOT_FULLY_COVERED";
+
+    coverageBps:
+      string | null;
+
+    fullyCovered:
+      boolean;
+
+    totalLiabilityMinor:
+      string;
+
+    onchainBalanceMinor:
+      string;
+
+    surplusDeficitMinor:
+      string;
+
+    network:
+      string;
+
+    chainId:
+      number;
+
+    tokenContract:
+      string;
+
+    vaultAddress:
+      string;
+  };
+};
+
+export type TokenEconomyHistory = {
+  historyVersion:
+    string;
+
+  tokenId:
+    number;
+
+  collectionTier:
+    FoundingCollectionTier;
+
+  order:
+    "DESC";
+
+  pagination: {
+    limit:
+      number;
+
+    hasMore:
+      boolean;
+
+    nextCursor:
+      string | null;
+  };
+
+  items:
+    TokenEconomyHistoryItem[];
+};
+
+export async function getTokenEconomyHistory(
+  input: {
+    tokenId:
+      number;
+
+    limit?:
+      number;
+
+    cursor?:
+      string | null;
+  },
+) {
+  if (
+    !Number.isInteger(
+      input.tokenId,
+    ) ||
+    input.tokenId < 1 ||
+    input.tokenId > 6000
+  ) {
+    throw new Error(
+      "INVALID_TOKEN_ID",
+    );
+  }
+
+  const limit =
+    input.limit ??
+    25;
+
+  if (
+    !Number.isInteger(
+      limit,
+    ) ||
+    limit < 1 ||
+    limit > 100
+  ) {
+    throw new Error(
+      "INVALID_ECONOMY_HISTORY_LIMIT",
+    );
+  }
+
+  const params =
+    new URLSearchParams();
+
+  params.set(
+    "limit",
+    String(
+      limit,
+    ),
+  );
+
+  if (
+    input.cursor
+  ) {
+    params.set(
+      "cursor",
+      input.cursor,
+    );
+  }
+
+  const response =
+    await fetch(
+      `${API_BASE}/api/economy/tokens/${input.tokenId}/history?${params.toString()}`,
+      {
+        method:
+          "GET",
+
+        headers: {
+          Accept:
+            "application/json",
+        },
+      },
+    );
+
+  return parseResponse<{
+    history:
+      TokenEconomyHistory;
+  }>(
+    response,
+  );
+}

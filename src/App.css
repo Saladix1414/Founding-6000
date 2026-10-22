@@ -7541,3 +7541,551 @@
       1fr;
   }
 }
+
+
+/* =========================================================
+   OX-FOUNDING-ECONOMICS-5B
+   NFT NAV HISTORY / TIMELINE
+   ========================================================= */
+
+.nft-economy-timeline {
+  display: grid;
+  gap: 0.9rem;
+
+  padding:
+    1rem;
+
+  border:
+    1px solid
+    rgba(101, 232, 247, 0.11);
+
+  border-radius:
+    13px;
+
+  background:
+    rgba(0, 0, 0, 0.14);
+}
+
+.nft-economy-timeline__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap:
+    1rem;
+}
+
+.nft-economy-timeline__header > div {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.nft-economy-timeline__header span {
+  color:
+    var(--db-cyan-400);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size:
+    0.52rem;
+
+  letter-spacing:
+    0.13em;
+}
+
+.nft-economy-timeline__header h4 {
+  margin: 0;
+
+  color:
+    var(--db-white);
+
+  font-size:
+    1rem;
+}
+
+.nft-economy-timeline__header p {
+  margin: 0;
+
+  color:
+    var(--db-text-muted);
+
+  font-size:
+    0.65rem;
+}
+
+.nft-economy-timeline__header > strong {
+  color:
+    var(--db-text-soft);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size:
+    0.62rem;
+}
+
+.nft-economy-timeline__chart {
+  position: relative;
+
+  height:
+    190px;
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.055);
+
+  border-radius:
+    10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(22, 140, 255, 0.05),
+      rgba(0, 0, 0, 0.09)
+    );
+}
+
+.nft-economy-timeline__chart svg {
+  position: absolute;
+
+  inset:
+    12px
+    12px
+    12px
+    68px;
+
+  width:
+    calc(
+      100% - 80px
+    );
+
+  height:
+    calc(
+      100% - 24px
+    );
+
+  overflow:
+    visible;
+}
+
+.nft-economy-timeline__axis {
+  position: absolute;
+
+  z-index: 2;
+
+  inset:
+    14px
+    auto
+    14px
+    10px;
+
+  width:
+    52px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  color:
+    var(--db-text-muted);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size:
+    0.48rem;
+}
+
+.nft-economy-timeline__grid-line {
+  stroke:
+    rgba(255, 255, 255, 0.08);
+
+  stroke-width:
+    1;
+}
+
+.nft-economy-timeline__line {
+  fill:
+    none;
+
+  stroke:
+    var(--db-cyan-400);
+
+  stroke-width:
+    2;
+
+  stroke-linejoin:
+    round;
+
+  stroke-linecap:
+    round;
+
+  filter:
+    drop-shadow(
+      0
+      0
+      4px
+      rgba(101, 232, 247, 0.32)
+    );
+}
+
+.nft-economy-timeline__point {
+  stroke-width:
+    1.1;
+
+  cursor:
+    help;
+}
+
+.nft-economy-timeline__point.is-verified {
+  fill:
+    #6ee7b7;
+
+  stroke:
+    rgba(110, 231, 183, 0.72);
+}
+
+.nft-economy-timeline__point.is-warning {
+  fill:
+    #fbbf24;
+
+  stroke:
+    rgba(251, 191, 36, 0.72);
+}
+
+.nft-economy-timeline__legend {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap:
+    0.8rem;
+}
+
+.nft-economy-timeline__legend span {
+  display: inline-flex;
+  align-items: center;
+
+  gap:
+    0.35rem;
+
+  color:
+    var(--db-text-muted);
+
+  font-size:
+    0.56rem;
+}
+
+.nft-economy-timeline__legend i {
+  width:
+    7px;
+
+  height:
+    7px;
+
+  border-radius:
+    999px;
+}
+
+.nft-economy-timeline__legend i.is-verified {
+  background:
+    #6ee7b7;
+}
+
+.nft-economy-timeline__legend i.is-warning {
+  background:
+    #fbbf24;
+}
+
+.nft-economy-timeline__list {
+  display: grid;
+
+  gap:
+    0.45rem;
+}
+
+.nft-economy-timeline__item {
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      130px,
+      1.4fr
+    )
+    repeat(
+      4,
+      minmax(
+        72px,
+        1fr
+      )
+    );
+
+  align-items: center;
+
+  gap:
+    0.6rem;
+
+  padding:
+    0.65rem
+    0.7rem;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.055);
+
+  border-radius:
+    9px;
+
+  background:
+    rgba(255, 255, 255, 0.018);
+}
+
+.nft-economy-timeline__item > div {
+  min-width:
+    0;
+
+  display: grid;
+
+  gap:
+    0.12rem;
+}
+
+.nft-economy-timeline__item span {
+  color:
+    var(--db-text-muted);
+
+  font-size:
+    0.49rem;
+}
+
+.nft-economy-timeline__item strong,
+.nft-economy-timeline__item time {
+  min-width:
+    0;
+
+  color:
+    var(--db-text-soft);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size:
+    0.56rem;
+
+  overflow:
+    hidden;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+}
+
+.nft-economy-timeline__date {
+  grid-template-columns:
+    auto
+    minmax(
+      0,
+      1fr
+    );
+
+  align-items:
+    center;
+
+  column-gap:
+    0.38rem;
+}
+
+.nft-economy-timeline__date > span {
+  width:
+    7px;
+
+  height:
+    7px;
+
+  grid-row:
+    1;
+
+  border-radius:
+    999px;
+}
+
+.nft-economy-timeline__date > span.is-verified {
+  background:
+    #6ee7b7;
+}
+
+.nft-economy-timeline__date > span.is-warning {
+  background:
+    #fbbf24;
+}
+
+.nft-economy-timeline__date time {
+  grid-column:
+    2;
+}
+
+.nft-economy-timeline__more {
+  justify-self:
+    start;
+
+  padding:
+    0.55rem
+    0.75rem;
+
+  border:
+    1px solid
+    rgba(101, 232, 247, 0.18);
+
+  border-radius:
+    8px;
+
+  color:
+    var(--db-cyan-400);
+
+  background:
+    rgba(22, 140, 255, 0.045);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size:
+    0.56rem;
+
+  cursor:
+    pointer;
+}
+
+.nft-economy-timeline__more:disabled {
+  cursor:
+    wait;
+
+  opacity:
+    0.55;
+}
+
+.nft-economy-timeline__footer,
+.nft-economy-timeline__error {
+  margin: 0;
+
+  color:
+    var(--db-text-muted);
+
+  font-size:
+    0.54rem;
+
+  line-height:
+    1.55;
+}
+
+.nft-economy-timeline__error {
+  color:
+    #fca5a5;
+}
+
+.nft-economy-timeline--loading,
+.nft-economy-timeline--empty {
+  min-height:
+    130px;
+}
+
+.nft-economy-timeline__skeleton {
+  min-height:
+    105px;
+
+  border-radius:
+    10px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+}
+
+.nft-economy-timeline--empty > span {
+  color:
+    var(--db-cyan-400);
+
+  font-family:
+    var(--db-font-mono);
+
+  font-size:
+    0.54rem;
+}
+
+.nft-economy-timeline--empty p {
+  margin: 0;
+
+  color:
+    var(--db-text-muted);
+
+  font-size:
+    0.68rem;
+}
+
+
+/* =========================================================
+   NAV TIMELINE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .nft-economy-timeline__header {
+    display: grid;
+  }
+
+  .nft-economy-timeline__chart {
+    height:
+      160px;
+  }
+
+  .nft-economy-timeline__item {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+  .nft-economy-timeline__date {
+    grid-column:
+      1 / -1;
+  }
+}
+
+@media (max-width: 390px) {
+  .nft-economy-timeline__chart svg {
+    inset:
+      10px
+      8px
+      10px
+      58px;
+
+    width:
+      calc(
+        100% - 66px
+      );
+  }
+
+  .nft-economy-timeline__axis {
+    width:
+      45px;
+
+    font-size:
+      0.44rem;
+  }
+
+  .nft-economy-timeline__item {
+    grid-template-columns:
+      1fr;
+  }
+
+  .nft-economy-timeline__date {
+    grid-column:
+      auto;
+  }
+}
