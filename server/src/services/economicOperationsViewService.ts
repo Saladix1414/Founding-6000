@@ -16,6 +16,11 @@ import {
   getLatestEconomicIntegrityIncidentEvent,
 } from "./economicIntegrityIncidentService.js";
 
+import {
+  getEconomicAlertOperationsSnapshot,
+} from "./economicAlertOperationsService.js";
+
+
 type PublicIncidentEventRow = {
   eventType:
     "OPENED" |
@@ -96,6 +101,9 @@ function getRecentPublicIncidentEvents(
 export function getEconomicOperationsView() {
   const reconciliation =
     getLatestEconomicReconciliationEvidence();
+
+  const alertDelivery =
+    getEconomicAlertOperationsSnapshot();
 
   const latestIncident =
     getLatestEconomicIntegrityIncidentEvent();
@@ -282,6 +290,8 @@ export function getEconomicOperationsView() {
           ?.supplyBasis ??
         null,
     },
+
+    alertDelivery,
 
     incidentTimeline:
       getRecentPublicIncidentEvents(

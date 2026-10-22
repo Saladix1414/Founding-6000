@@ -47,6 +47,11 @@ import {
   ensureEconomicAlertOutboxSchema,
 } from "./economicAlertOutboxSchema.js";
 
+import {
+  ensureEconomicAlertRecoverySchema,
+} from "./economicAlertRecoverySchema.js";
+
+
 type DatabaseMigration = {
   id: string;
   description: string;
@@ -370,6 +375,18 @@ const migrations:
 
       apply() {
         ensureEconomicAlertOutboxSchema();
+      },
+    },
+
+    {
+      id:
+        "017_economic_alert_recovery_audit",
+
+      description:
+        "Append-only audit ledger for manual failed alert recovery",
+
+      apply() {
+        ensureEconomicAlertRecoverySchema();
       },
     },
   ];
