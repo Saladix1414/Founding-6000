@@ -225,6 +225,42 @@ contract OriginXFoundingAccess is
         );
     }
 
+    function _grantRole(
+        bytes32 role,
+        address account
+    )
+        internal
+        override
+        returns (
+            bool
+        )
+    {
+        if (
+            role == MINTER_ROLE &&
+            hasRole(
+                DEFAULT_ADMIN_ROLE,
+                account
+            )
+        ) {
+            revert AuthorityCollision();
+        }
+
+        if (
+            role == DEFAULT_ADMIN_ROLE &&
+            hasRole(
+                MINTER_ROLE,
+                account
+            )
+        ) {
+            revert AuthorityCollision();
+        }
+
+        return super._grantRole(
+            role,
+            account
+        );
+    }
+
     function supportsInterface(
         bytes4 interfaceId
     )
