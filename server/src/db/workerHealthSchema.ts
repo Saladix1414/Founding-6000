@@ -9,7 +9,8 @@ export function ensureWorkerHealthSchema() {
         CHECK (
           worker_name IN (
             'email',
-            'usdt'
+            'usdt',
+            'reserve'
           )
         ),
 

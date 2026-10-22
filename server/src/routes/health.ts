@@ -33,7 +33,8 @@ type PublicWorkerState =
   | "failed"
   | "stale"
   | "not_seen"
-  | "unavailable";
+  | "unavailable"
+  | "disabled";
 
 const WORKER_STALE_MS:
   Record<
@@ -45,6 +46,13 @@ const WORKER_STALE_MS:
 
     usdt:
       3 * 60 * 1000,
+
+    /*
+     * Reserve worker runs every 5 minutes.
+     * Allow two missed cycles before stale.
+     */
+    reserve:
+      10 * 60 * 1000,
   };
 
 function workerState(
@@ -140,6 +148,12 @@ function operationalSnapshot() {
     PublicWorkerState =
       "unavailable";
 
+  let reserveWorker:
+    PublicWorkerState =
+      env.RESERVE_SWEEP_ENABLED
+        ? "unavailable"
+        : "disabled";
+
   try {
     db.prepare(
       "SELECT 1 AS ok",
@@ -188,6 +202,22 @@ function operationalSnapshot() {
         ),
         now,
       );
+
+
+    if (
+      env.RESERVE_SWEEP_ENABLED
+    ) {
+      reserveWorker =
+        workerState(
+          "reserve",
+          workers.find(
+            (worker) =>
+              worker.workerName ===
+              "reserve",
+          ),
+          now,
+        );
+    }
   } catch {
     // Never expose raw operational errors publicly.
   }
@@ -238,6 +268,9 @@ function operationalSnapshot() {
 
       usdt:
         usdtWorker,
+
+      reserve:
+        reserveWorker,
     },
 
     operations:

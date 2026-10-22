@@ -36,11 +36,22 @@ import {
   processPendingUsdtVerifications,
 } from "../services/usdtVerificationPipeline.js";
 
+import {
+  runReserveAutomationCycle,
+} from "../services/reserveAutomationService.js";
+
 const EMAIL_INTERVAL_MS =
   30_000;
 
 const USDT_INTERVAL_MS =
   60_000;
+
+/*
+ * Reserve sweeps are intentionally less frequent
+ * than payment verification.
+ */
+const RESERVE_INTERVAL_MS =
+  5 * 60_000;
 
 const EMAIL_BATCH_SIZE =
   25;
@@ -57,11 +68,18 @@ let emailRunning =
 let usdtRunning =
   false;
 
+let reserveRunning =
+  false;
+
 let emailTimer:
   NodeJS.Timeout | null =
     null;
 
 let usdtTimer:
+  NodeJS.Timeout | null =
+    null;
+
+let reserveTimer:
   NodeJS.Timeout | null =
     null;
 
@@ -203,6 +221,52 @@ async function runUsdtCycle() {
   }
 }
 
+async function runReserveCycle() {
+  if (
+    stopping ||
+    reserveRunning ||
+    !env.RESERVE_SWEEP_ENABLED
+  ) {
+    return;
+  }
+
+  reserveRunning =
+    true;
+
+  recordWorkerCycleStarted(
+    "reserve",
+  );
+
+  try {
+    const result =
+      await runReserveAutomationCycle();
+
+    recordWorkerCycleCompleted(
+      "reserve",
+    );
+
+    logEvent(
+      "RESERVE_WORKER_CYCLE_COMPLETE",
+      {
+        status:
+          result.status,
+      },
+    );
+  } catch (error) {
+    recordWorkerCycleFailed(
+      "reserve",
+    );
+
+    logError(
+      "RESERVE_WORKER_CYCLE_FAILED",
+      error,
+    );
+  } finally {
+    reserveRunning =
+      false;
+  }
+}
+
 function scheduleWorkers() {
   emailTimer =
     setInterval(
@@ -220,8 +284,26 @@ function scheduleWorkers() {
       USDT_INTERVAL_MS,
     );
 
+  if (
+    env.RESERVE_SWEEP_ENABLED
+  ) {
+    reserveTimer =
+      setInterval(
+        () => {
+          void runReserveCycle();
+        },
+        RESERVE_INTERVAL_MS,
+      );
+  }
+
   void runEmailCycle();
   void runUsdtCycle();
+
+  if (
+    env.RESERVE_SWEEP_ENABLED
+  ) {
+    void runReserveCycle();
+  }
 }
 
 async function shutdown(
@@ -253,6 +335,12 @@ async function shutdown(
     );
   }
 
+  if (reserveTimer) {
+    clearInterval(
+      reserveTimer,
+    );
+  }
+
   const deadline =
     Date.now() +
     10_000;
@@ -260,7 +348,8 @@ async function shutdown(
   while (
     (
       emailRunning ||
-      usdtRunning
+      usdtRunning ||
+      reserveRunning
     ) &&
     Date.now() <
       deadline
@@ -282,6 +371,9 @@ async function shutdown(
 
       usdtStillRunning:
         usdtRunning,
+
+      reserveStillRunning:
+        reserveRunning,
     },
   );
 
@@ -306,6 +398,12 @@ async function main() {
 
       usdtIntervalMs:
         USDT_INTERVAL_MS,
+
+      reserveIntervalMs:
+        RESERVE_INTERVAL_MS,
+
+      reserveEnabled:
+        env.RESERVE_SWEEP_ENABLED,
 
       emailBatchSize:
         EMAIL_BATCH_SIZE,

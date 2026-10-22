@@ -4,7 +4,8 @@ import {
 
 export type WorkerName =
   | "email"
-  | "usdt";
+  | "usdt"
+  | "reserve";
 
 export type WorkerHealthRow = {
   workerName:

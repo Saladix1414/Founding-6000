@@ -27,6 +27,10 @@ import {
   ensureReserveSweepSchema,
 } from "./reserveSweepSchema.js";
 
+import {
+  ensureAkashicEconomicOutboxSchema,
+} from "./akashicEconomicOutboxSchema.js";
+
 type DatabaseMigration = {
   id: string;
   description: string;
@@ -194,6 +198,90 @@ const migrations:
 
       apply() {
         ensureReserveSweepSchema();
+      },
+    },
+
+    {
+      id:
+        "009_reserve_worker_health",
+
+      description:
+        "Extend worker health state with reserve automation worker",
+
+      apply() {
+        /*
+         * SQLite cannot alter an existing CHECK constraint.
+         *
+         * Rebuild the small worker_health table while
+         * preserving all existing heartbeat rows.
+         */
+        db.exec(`
+          CREATE TABLE IF NOT EXISTS worker_health_v2 (
+            worker_name TEXT PRIMARY KEY
+              CHECK (
+                worker_name IN (
+                  'email',
+                  'usdt',
+                  'reserve'
+                )
+              ),
+
+            last_started_at TEXT,
+            last_completed_at TEXT,
+            last_failed_at TEXT,
+
+            last_status TEXT NOT NULL
+              CHECK (
+                last_status IN (
+                  'RUNNING',
+                  'OK',
+                  'FAILED'
+                )
+              ),
+
+            updated_at TEXT NOT NULL
+          );
+
+          INSERT OR REPLACE INTO worker_health_v2 (
+            worker_name,
+            last_started_at,
+            last_completed_at,
+            last_failed_at,
+            last_status,
+            updated_at
+          )
+          SELECT
+            worker_name,
+            last_started_at,
+            last_completed_at,
+            last_failed_at,
+            last_status,
+            updated_at
+          FROM worker_health;
+
+          DROP TABLE worker_health;
+
+          ALTER TABLE worker_health_v2
+            RENAME TO worker_health;
+
+          CREATE INDEX IF NOT EXISTS
+            idx_worker_health_updated
+          ON worker_health(
+            updated_at
+          );
+        `);
+      },
+    },
+
+    {
+      id:
+        "010_akashic_economic_outbox",
+
+      description:
+        "Append-only bridge for verified economic events into Akashic history",
+
+      apply() {
+        ensureAkashicEconomicOutboxSchema();
       },
     },
   ];

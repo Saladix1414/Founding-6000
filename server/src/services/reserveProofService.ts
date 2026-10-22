@@ -26,6 +26,10 @@ import {
   readReserveVaultBalanceMinor,
 } from "../web3/reserveVault.js";
 
+import {
+  queueReserveSnapshotForAkashic,
+} from "./akashicEconomicBridge.js";
+
 ensureReserveProofSchema();
 
 function getIssuedSupply() {
@@ -269,6 +273,39 @@ export async function captureReserveProofSnapshot() {
           .proof
           .fullyCovered,
     },
+  });
+
+  queueReserveSnapshotForAkashic({
+    snapshotHash:
+      snapshot.snapshotHash,
+
+    capturedAt:
+      snapshot.capturedAt,
+
+    totalLiabilityMinor:
+      snapshot
+        .ledger
+        .totalLiabilityMinor,
+
+    onchainVaultBalanceMinor:
+      snapshot
+        .proof
+        .onchainVaultBalanceMinor,
+
+    coverageBps:
+      snapshot
+        .proof
+        .coverageBps,
+
+    fullyCovered:
+      snapshot
+        .proof
+        .fullyCovered,
+
+    vaultAddress:
+      snapshot
+        .network
+        .vaultAddress,
   });
 
   return snapshot;
