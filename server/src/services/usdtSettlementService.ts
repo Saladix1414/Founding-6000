@@ -24,6 +24,10 @@ import {
   queueFoundingEmailWithinTransaction,
 } from "./emailOutboxService.js";
 
+import {
+  recordReserveContributionWithinTransaction,
+} from "./reserveService.js";
+
 import type {
   VerifiedUsdtTransfer,
 } from "../web3/usdtVerifier.js";
@@ -293,6 +297,23 @@ export function settleVerifiedUsdtTransfer(
             context.orderId,
         });
 
+      const reserveResult =
+        recordReserveContributionWithinTransaction({
+          settlementId,
+
+          orderId:
+            context.orderId,
+
+          serialNumber:
+            allocation.serialNumber,
+
+          grossAmountMinor:
+            input.transfer.amountMinor,
+
+          externalReference:
+            txHash,
+        });
+
       const orderEmailRow =
         db.prepare(`
           SELECT email
@@ -417,6 +438,19 @@ export function settleVerifiedUsdtTransfer(
 
       phaseTransitioned:
         allocation.phaseTransitioned,
+
+      economics: {
+        modelVersion:
+          "OX-FOUNDING-ECONOMICS-1",
+
+        saleTier:
+          reserveResult.saleTier,
+
+        reserveContributionMinor:
+          reserveResult
+            .reserveAmountMinor
+            .toString(),
+      },
     };
   } catch (error) {
     try {

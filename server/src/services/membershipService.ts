@@ -250,8 +250,15 @@ export function createMembershipForPaidOrderWithinTransaction(
   const publicId =
     `mem_${randomUUID()}`;
 
+  /*
+   * Commercial collection order:
+   *
+   * RARE    #0001-#1000
+   * EPIC    #1001-#3000
+   * GENESIS #3001-#6000
+   */
   const genesisMember =
-    serialNumber <= 1000;
+    serialNumber >= 3001;
 
   db.prepare(`
     INSERT INTO founding_memberships (

@@ -15,6 +15,10 @@ import {
   ensureWorkerHealthSchema,
 } from "./workerHealthSchema.js";
 
+import {
+  ensureReserveSchema,
+} from "./reserveSchema.js";
+
 type DatabaseMigration = {
   id: string;
   description: string;
@@ -68,6 +72,96 @@ const migrations:
 
       apply() {
         ensureWorkerHealthSchema();
+      },
+    },
+
+    {
+      id:
+        "005_collection_tier_authority",
+
+      description:
+        "Canonical RARE EPIC GENESIS collection tier ordering",
+
+      apply() {
+        /*
+         * Preserve historical internal phase IDs while
+         * correcting the commercial tier authority.
+         */
+        db.prepare(`
+          UPDATE campaign_phases
+          SET
+            code = ?,
+            name = ?,
+            reference_price_usd = ?,
+            updated_at = ?
+          WHERE id = ?
+        `).run(
+          "RARE",
+          "Rare",
+          50,
+          new Date().toISOString(),
+          "phase_genesis",
+        );
+
+        db.prepare(`
+          UPDATE campaign_phases
+          SET
+            code = ?,
+            name = ?,
+            reference_price_usd = ?,
+            updated_at = ?
+          WHERE id = ?
+        `).run(
+          "EPIC",
+          "Epic",
+          70,
+          new Date().toISOString(),
+          "phase_early_access",
+        );
+
+        db.prepare(`
+          UPDATE campaign_phases
+          SET
+            code = ?,
+            name = ?,
+            reference_price_usd = ?,
+            updated_at = ?
+          WHERE id = ?
+        `).run(
+          "GENESIS",
+          "Genesis",
+          90,
+          new Date().toISOString(),
+          "phase_founding_access",
+        );
+
+        db.exec(`
+          UPDATE founding_memberships
+
+          SET
+            genesis_member =
+              CASE
+                WHEN serial_number
+                  BETWEEN 3001 AND 6000
+                THEN 1
+                ELSE 0
+              END,
+
+            updated_at =
+              CURRENT_TIMESTAMP;
+        `);
+      },
+    },
+
+    {
+      id:
+        "006_reserve_economics_schema",
+
+      description:
+        "OriginX Founding reserve contribution and waterfall ledger",
+
+      apply() {
+        ensureReserveSchema();
       },
     },
   ];

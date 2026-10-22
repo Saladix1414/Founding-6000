@@ -174,9 +174,16 @@ function seedCampaign() {
 
   const phases = [
     {
+      /*
+       * Legacy internal phase id retained to preserve
+       * existing foreign-key relationships.
+       *
+       * Commercial collection authority:
+       * RARE #0001-#1000.
+       */
       id: "phase_genesis",
-      code: "GENESIS",
-      name: "Genesis",
+      code: "RARE",
+      name: "Rare",
       position: 1,
       capacity: 1000,
       price: 50,
@@ -186,8 +193,8 @@ function seedCampaign() {
     },
     {
       id: "phase_early_access",
-      code: "EARLY_ACCESS",
-      name: "Early Access",
+      code: "EPIC",
+      name: "Epic",
       position: 2,
       capacity: 2000,
       price: 70,
@@ -197,8 +204,8 @@ function seedCampaign() {
     },
     {
       id: "phase_founding_access",
-      code: "FOUNDING_ACCESS",
-      name: "Founding Access",
+      code: "GENESIS",
+      name: "Genesis",
       position: 3,
       capacity: 3000,
       price: 90,
