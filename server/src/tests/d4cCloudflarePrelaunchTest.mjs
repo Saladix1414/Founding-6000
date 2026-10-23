@@ -1372,6 +1372,320 @@ try {
     console.log(
       "NFT_MINT_JOB_REPLAY=PASS",
     );
+    /*
+     * Invoke the actual settlement method again using
+     * stored verified blockchain evidence.
+     * No network request or real transaction.
+     */
+    const existingPayment =
+      db.prepare(`
+        SELECT evidence_json AS evidenceJson
+        FROM payment_settlements
+        LIMIT 1
+      `).get();
+
+    assert(
+      existingPayment?.evidenceJson,
+      "NFT_SETTLEMENT_EVIDENCE_MISSING",
+    );
+
+    const internalReplay =
+      core.commerce.settleVerifiedUsdt({
+        paymentAttemptPublicId:
+          publicAttemptBody.attempt.publicId,
+        transfer:
+          JSON.parse(existingPayment.evidenceJson),
+      });
+
+    assert(
+      internalReplay.idempotentReplay === true,
+      "NFT_INTERNAL_REPLAY_NOT_IDEMPOTENT",
+    );
+
+    const replayCounts =
+      db.prepare(`
+        SELECT
+          (SELECT COUNT(*) FROM payment_settlements)
+            AS settlements,
+          (SELECT COUNT(*) FROM inventory_allocations)
+            AS allocations,
+          (SELECT COUNT(*) FROM founding_memberships)
+            AS memberships,
+          (SELECT COUNT(*) FROM nft_mint_jobs)
+            AS jobs
+      `).get();
+
+    assert(
+      replayCounts.settlements === 1 &&
+      replayCounts.allocations === 1 &&
+      replayCounts.memberships === 1 &&
+      replayCounts.jobs === 1,
+      "NFT_INTERNAL_REPLAY_DUPLICATED_STATE",
+    );
+
+    console.log(
+      "NFT_INTERNAL_SETTLEMENT_REPLAY=PASS",
+    );
+    /*
+     * Simulate another paid order. Trigger failure
+     * precisely at NFT job insertion, proving that
+     * SQLite reverses the entire settlement.
+     */
+    const rollbackOrderResponse =
+      await callCommerce("/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Idempotency-Key": "nft-rollback-order-001",
+        },
+        body: JSON.stringify({
+          email: "nft-rollback@example.com",
+        }),
+      });
+
+    assert(
+      rollbackOrderResponse.status === 201,
+      "NFT_ROLLBACK_ORDER_CREATION_FAILED",
+    );
+
+    const rollbackOrder =
+      await rollbackOrderResponse.json();
+
+    const rollbackAttemptResponse =
+      await callCommerce("/api/payments/usdt/attempts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Idempotency-Key": "nft-rollback-attempt-001",
+        },
+        body: JSON.stringify({
+          orderPublicId: rollbackOrder.order.publicId,
+        }),
+      });
+
+    assert(
+      rollbackAttemptResponse.status === 201,
+      "NFT_ROLLBACK_ATTEMPT_CREATION_FAILED",
+    );
+
+    const rollbackAttempt =
+      await rollbackAttemptResponse.json();
+
+    const rollbackHash =
+      `0x${"d".repeat(64)}`;
+
+    const rollbackSubmission =
+      await callCommerce(
+        `/api/payments/usdt/attempts/${rollbackAttempt.attempt.publicId}/submit`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            txHash: rollbackHash,
+          }),
+        },
+      );
+
+    assert(
+      rollbackSubmission.status === 200,
+      "NFT_ROLLBACK_HASH_SUBMISSION_FAILED",
+    );
+
+    const rollbackTransfer = {
+      ...JSON.parse(existingPayment.evidenceJson),
+      txHash: rollbackHash,
+      receiverAddress:
+        rollbackAttempt.attempt.receiverAddress,
+    };
+
+    const countsBeforeFailure = db.prepare(`
+      SELECT
+        (SELECT COUNT(*) FROM payment_settlements) AS settlements,
+        (SELECT COUNT(*) FROM inventory_allocations) AS allocations,
+        (SELECT COUNT(*) FROM founding_memberships) AS memberships,
+        (SELECT COUNT(*) FROM nft_mint_jobs) AS jobs
+    `).get();
+
+    db.exec(`
+      CREATE TRIGGER nft_test_reject_insert
+      BEFORE INSERT ON nft_mint_jobs
+      BEGIN
+        SELECT RAISE(ABORT, 'NFT_TEST_FORCED_FAILURE');
+      END;
+    `);
+
+    let rollbackRejected = false;
+
+    try {
+      core.commerce.settleVerifiedUsdt({
+        paymentAttemptPublicId:
+          rollbackAttempt.attempt.publicId,
+        transfer: rollbackTransfer,
+      });
+    } catch (error) {
+      rollbackRejected =
+        String(error).includes("NFT_TEST_FORCED_FAILURE");
+
+      if (!rollbackRejected) {
+        throw error;
+      }
+    } finally {
+      db.exec("DROP TRIGGER nft_test_reject_insert");
+    }
+
+    assert(
+      rollbackRejected,
+      "NFT_MINT_FAILURE_NOT_PROPAGATED",
+    );
+
+    const countsAfterFailure = db.prepare(`
+      SELECT
+        (SELECT COUNT(*) FROM payment_settlements) AS settlements,
+        (SELECT COUNT(*) FROM inventory_allocations) AS allocations,
+        (SELECT COUNT(*) FROM founding_memberships) AS memberships,
+        (SELECT COUNT(*) FROM nft_mint_jobs) AS jobs
+    `).get();
+
+    assert(
+      JSON.stringify(countsAfterFailure) ===
+        JSON.stringify(countsBeforeFailure),
+      "NFT_SETTLEMENT_PARTIAL_COMMIT",
+    );
+
+    const rollbackOrderState = db.prepare(`
+      SELECT status
+      FROM founding_orders
+      WHERE public_id = ?
+    `).get(rollbackOrder.order.publicId);
+
+    assert(
+      rollbackOrderState?.status === "CREATED",
+      "NFT_ROLLBACK_ORDER_BECAME_PAID",
+    );
+
+    const recoveredSettlement =
+      core.commerce.settleVerifiedUsdt({
+        paymentAttemptPublicId:
+          rollbackAttempt.attempt.publicId,
+        transfer: rollbackTransfer,
+      });
+
+    assert(
+      recoveredSettlement.idempotentReplay === false &&
+      recoveredSettlement.order.status === "PAID",
+      "NFT_SETTLEMENT_RECOVERY_FAILED",
+    );
+
+    const countsAfterRecovery = db.prepare(`
+      SELECT
+        (SELECT COUNT(*) FROM payment_settlements) AS settlements,
+        (SELECT COUNT(*) FROM inventory_allocations) AS allocations,
+        (SELECT COUNT(*) FROM founding_memberships) AS memberships,
+        (SELECT COUNT(*) FROM nft_mint_jobs) AS jobs
+    `).get();
+
+    assert(
+      countsAfterRecovery.settlements ===
+        countsBeforeFailure.settlements + 1 &&
+      countsAfterRecovery.allocations ===
+        countsBeforeFailure.allocations + 1 &&
+      countsAfterRecovery.memberships ===
+        countsBeforeFailure.memberships + 1 &&
+      countsAfterRecovery.jobs ===
+        countsBeforeFailure.jobs + 1,
+      "NFT_SETTLEMENT_RECOVERY_INCOMPLETE",
+    );
+
+    console.log("NFT_MINT_SETTLEMENT_ROLLBACK=PASS");
+    console.log("NFT_MINT_SETTLEMENT_RECOVERY=PASS");
+
+
+    /*
+     * The database must reject duplicate membership
+     * and serial jobs, independently of API behavior.
+     */
+    const insertDuplicateJob =
+      db.prepare(`
+        INSERT INTO nft_mint_jobs (
+          id,
+          membership_id,
+          order_id,
+          serial_number,
+          recipient_address,
+          status,
+          mint_tx_hash,
+          created_at,
+          updated_at
+        )
+        VALUES (?, ?, ?, ?, NULL, 'AWAITING_WALLET', NULL, ?, ?)
+      `);
+
+    const jobTime =
+      new Date().toISOString();
+
+    let duplicateMembershipBlocked =
+      false;
+
+    try {
+      insertDuplicateJob.run(
+        "test_duplicate_membership",
+        nftJobBeforeReplay.membershipId,
+        "test_other_order_membership",
+        6000,
+        jobTime,
+        jobTime,
+      );
+    } catch (error) {
+      duplicateMembershipBlocked =
+        /UNIQUE|constraint/i.test(String(error));
+      if (!duplicateMembershipBlocked) throw error;
+    }
+
+    assert(
+      duplicateMembershipBlocked,
+      "NFT_DUPLICATE_MEMBERSHIP_ALLOWED",
+    );
+
+    let duplicateSerialBlocked =
+      false;
+
+    try {
+      insertDuplicateJob.run(
+        "test_duplicate_serial",
+        "test_other_membership_serial",
+        "test_other_order_serial",
+        nftJobBeforeReplay.serialNumber,
+        jobTime,
+        jobTime,
+      );
+    } catch (error) {
+      duplicateSerialBlocked =
+        /UNIQUE|constraint/i.test(String(error));
+      if (!duplicateSerialBlocked) throw error;
+    }
+
+    assert(
+      duplicateSerialBlocked,
+      "NFT_DUPLICATE_SERIAL_ALLOWED",
+    );
+
+    const finalJobCount =
+      db.prepare(`
+        SELECT COUNT(*) AS count
+        FROM nft_mint_jobs
+      `).get().count;
+
+    assert(
+      finalJobCount === countsAfterRecovery.jobs,
+      "NFT_UNIQUENESS_CHANGED_JOB_COUNT",
+    );
+
+    console.log(
+      "NFT_MINT_JOB_UNIQUENESS=PASS",
+    );
+
 
 
     assert(
