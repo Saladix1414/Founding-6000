@@ -325,6 +325,25 @@ export class CommerceCore {
        *
        * A challenge alone never authorizes minting.
        */
+      CREATE TABLE IF NOT EXISTS nft_claim_grants (
+        id TEXT PRIMARY KEY,
+        membership_id TEXT NOT NULL,
+        token_hash TEXT NOT NULL UNIQUE,
+        status TEXT NOT NULL
+          CHECK(status IN ('ISSUED', 'CONSUMED', 'REVOKED')),
+        expires_at TEXT NOT NULL,
+        consumed_at TEXT,
+        created_at TEXT NOT NULL,
+        CHECK (
+          (status = 'CONSUMED' AND consumed_at IS NOT NULL)
+          OR
+          (status != 'CONSUMED' AND consumed_at IS NULL)
+        )
+      );
+
+      CREATE INDEX IF NOT EXISTS idx_nft_claim_membership
+      ON nft_claim_grants(membership_id, status);
+
       CREATE TABLE IF NOT EXISTS nft_wallet_challenges (
         id TEXT PRIMARY KEY,
         membership_id TEXT NOT NULL,

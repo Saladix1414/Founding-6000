@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import { DatabaseSync } from "node:sqlite";
 import { Wallet } from "ethers";
+import {
+  issueNftClaimGrant,
+} from "../../../cloudflare/nftClaimGrant.mjs";
 import { CommerceCore } from "../../../cloudflare/commerceCore.mjs";
 import {
   beginNftWalletBinding,
@@ -157,9 +160,123 @@ assert.throws(() => completeNftWalletBinding({
 
 console.log("EXPIRED_SIGNATURE_BLOCKED=PASS");
 
+/*
+ * A valid wallet signature without a buyer claim must fail.
+ */
+assert.throws(() => completeNftWalletBinding({
+  storage, membershipId: memberId,
+  nonce: challenge.nonce, signature,
+  now: now + 1000,
+}), /NFT_CLAIM_REQUIRED/);
+
+const grant = issueNftClaimGrant({
+  storage, membershipId: memberId, now,
+});
+
+assert.throws(() => completeNftWalletBinding({
+  storage, membershipId: memberId,
+  nonce: challenge.nonce, signature,
+  claimToken: "0x" + "f".repeat(64),
+  now: now + 1000,
+}), /NFT_CLAIM_INVALID_OR_EXPIRED/);
+
+const pendingBefore = db.prepare(`
+  SELECT status FROM nft_wallet_challenges
+  WHERE nonce = ?
+`).get(challenge.nonce);
+
+assert.equal(pendingBefore.status, "PENDING");
+
+const grantBefore = db.prepare(`
+  SELECT status FROM nft_claim_grants
+  WHERE membership_id = ? AND status = 'ISSUED'
+`).get(memberId);
+
+assert.equal(grantBefore.status, "ISSUED");
+
+
+/*
+ * Force a failure after the claim and challenge
+ * have been updated, at the mint-job transition.
+ *
+ * The entire transaction must roll back.
+ */
+db.exec(`
+  CREATE TRIGGER nft_claim_test_reject_ready
+  BEFORE UPDATE OF status ON nft_mint_jobs
+  WHEN NEW.status = 'READY'
+  BEGIN
+    SELECT RAISE(ABORT, 'NFT_TEST_READY_FAILURE');
+  END;
+`);
+
+let simulatedFailure = false;
+
+try {
+  completeNftWalletBinding({
+    storage,
+    membershipId: memberId,
+    nonce: challenge.nonce,
+    signature,
+    claimToken: grant.token,
+    now: now + 1000,
+  });
+} catch (error) {
+  simulatedFailure =
+    String(error).includes("NFT_TEST_READY_FAILURE");
+
+  if (!simulatedFailure) {
+    throw error;
+  }
+} finally {
+  db.exec("DROP TRIGGER nft_claim_test_reject_ready");
+}
+
+assert.equal(
+  simulatedFailure,
+  true,
+  "NFT_READY_FAILURE_NOT_TRIGGERED",
+);
+
+const claimAfterFailure = db.prepare(`
+  SELECT status, consumed_at AS consumedAt
+  FROM nft_claim_grants
+  WHERE membership_id = ?
+    AND token_hash = ?
+`).get(
+  memberId,
+  (
+    await import("ethers")
+  ).sha256(grant.token),
+);
+
+assert.equal(claimAfterFailure.status, "ISSUED");
+assert.equal(claimAfterFailure.consumedAt, null);
+
+const challengeAfterFailure = db.prepare(`
+  SELECT status, verified_at AS verifiedAt
+  FROM nft_wallet_challenges
+  WHERE nonce = ?
+`).get(challenge.nonce);
+
+assert.equal(challengeAfterFailure.status, "PENDING");
+assert.equal(challengeAfterFailure.verifiedAt, null);
+
+const jobAfterFailure = db.prepare(`
+  SELECT status, recipient_address AS recipientAddress
+  FROM nft_mint_jobs
+  WHERE membership_id = ?
+`).get(memberId);
+
+assert.equal(jobAfterFailure.status, "AWAITING_WALLET");
+assert.equal(jobAfterFailure.recipientAddress, null);
+
+console.log("NFT_CLAIM_ATOMIC_ROLLBACK=PASS");
+
 const completed = completeNftWalletBinding({
   storage, membershipId: memberId,
   nonce: challenge.nonce, signature,
+  claimToken: grant.token,
   now: now + 1000,
 });
 
@@ -175,7 +292,17 @@ const job = db.prepare(`
 assert.equal(job.status, "READY");
 assert.equal(job.recipientAddress, owner.address);
 
+const consumedGrant = db.prepare(`
+  SELECT status, consumed_at AS consumedAt
+  FROM nft_claim_grants
+  WHERE membership_id = ?
+`).get(memberId);
+
+assert.equal(consumedGrant.status, "CONSUMED");
+assert.ok(consumedGrant.consumedAt);
+
 console.log("AUTHORIZED_WALLET_JOB_READY=PASS");
+console.log("NFT_CLAIM_AND_WALLET_ATOMIC=PASS");
 
 assert.throws(() => completeNftWalletBinding({
   storage, membershipId: memberId,

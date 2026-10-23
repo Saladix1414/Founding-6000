@@ -1,3 +1,5 @@
+import { sha256 } from "ethers";
+
 import {
   createWalletChallenge,
   verifyWalletSignature,
@@ -88,6 +90,7 @@ export function completeNftWalletBinding({
   membershipId,
   nonce,
   signature,
+  claimToken,
   now = Date.now(),
 }) {
   return storage.transactionSync(() => {
@@ -138,7 +141,59 @@ export function completeNftWalletBinding({
       fail("NFT_WALLET_SIGNATURE_INVALID");
     }
 
+    /*
+     * Claim authorization and wallet proof are consumed
+     * together, inside the same SQLite transaction.
+     */
+    if (
+      typeof claimToken !== "string" ||
+      !/^0x[0-9a-f]{64}$/.test(claimToken) ||
+      !Number.isSafeInteger(now) ||
+      now < 0
+    ) {
+      fail("NFT_CLAIM_REQUIRED");
+    }
+
+    const grant = one(storage, `
+      SELECT id, expires_at AS expiresAt
+      FROM nft_claim_grants
+      WHERE membership_id = ?
+        AND token_hash = ?
+        AND status = 'ISSUED'
+    `, membershipId, sha256(claimToken));
+
+    if (
+      !grant ||
+      !Number.isFinite(Date.parse(grant.expiresAt)) ||
+      now >= Date.parse(grant.expiresAt)
+    ) {
+      fail("NFT_CLAIM_INVALID_OR_EXPIRED");
+    }
+
     const verifiedAt = new Date(now).toISOString();
+
+    storage.sql.exec(`
+      UPDATE nft_claim_grants
+      SET status = 'CONSUMED',
+          consumed_at = ?
+      WHERE id = ?
+        AND status = 'ISSUED'
+    `, verifiedAt, grant.id);
+
+    const consumed = one(storage, `
+      SELECT status, consumed_at AS consumedAt
+      FROM nft_claim_grants
+      WHERE id = ?
+    `, grant.id);
+
+    if (
+      consumed?.status !== "CONSUMED" ||
+      consumed.consumedAt !== verifiedAt
+    ) {
+      fail("NFT_CLAIM_CONSUME_FAILED");
+    }
+
+
 
     storage.sql.exec(`
       UPDATE nft_wallet_challenges
