@@ -325,6 +325,29 @@ export class CommerceCore {
        *
        * A challenge alone never authorizes minting.
        */
+      CREATE TABLE IF NOT EXISTS nft_email_deliveries (
+        challenge_id TEXT PRIMARY KEY,
+        membership_id TEXT NOT NULL,
+        status TEXT NOT NULL CHECK(
+          status IN ('PREPARED', 'ACCEPTED', 'FAILED')
+        ),
+        provider_message_id TEXT,
+        prepared_at TEXT NOT NULL,
+        accepted_at TEXT,
+        failed_at TEXT
+      );
+
+      CREATE INDEX IF NOT EXISTS idx_nft_email_deliveries_member
+      ON nft_email_deliveries(membership_id, prepared_at);
+
+      CREATE TABLE IF NOT EXISTS nft_email_rate_limits (
+        membership_id TEXT NOT NULL,
+        bucket_start INTEGER NOT NULL,
+        request_count INTEGER NOT NULL,
+        last_reserved_at INTEGER NOT NULL,
+        PRIMARY KEY (membership_id, bucket_start)
+      );
+
       CREATE TABLE IF NOT EXISTS nft_buyer_email_codes (
         id TEXT PRIMARY KEY,
         membership_id TEXT NOT NULL,
