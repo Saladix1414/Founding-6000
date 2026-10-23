@@ -1,0 +1,196 @@
+{
+  "schema": "OX-NFT-CONTRACT-ARTIFACT-1",
+  "contract": {
+    "name": "OriginXFoundingAccess",
+    "version": "1",
+    "sourcePath": "blockchain/contracts/OriginXFoundingAccess.sol",
+    "sourceUnit": "OriginXFoundingAccess.sol",
+    "tokenName": "OriginX Founding 6000",
+    "symbol": "OXF6000"
+  },
+  "compiler": {
+    "version": "0.8.38+commit.1835d247.Emscripten.clang",
+    "settings": {
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "evmVersion": "shanghai",
+      "outputSelection": {
+        "*": {
+          "*": [
+            "abi",
+            "evm.bytecode.object",
+            "evm.deployedBytecode.object"
+          ]
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "openzeppelinContracts": "5.0.2",
+    "imports": [
+      [
+        "@openzeppelin/contracts/access/AccessControl.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/access/AccessControl.sol",
+          "sha256": "1086a1ad3788972b885ff3f209da510615dde6214d46b29e1cd2a4924f66c06d"
+        }
+      ],
+      [
+        "@openzeppelin/contracts/access/IAccessControl.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/access/IAccessControl.sol",
+          "sha256": "1d6ef09193265172824fa1139e85cba422117ca918961183f080e692489d8c3b"
+        }
+      ],
+      [
+        "@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
+          "sha256": "4aea87243e6de38804bf8737bf86f750443d3b5e63dd0fd0b7ad92f77cdbd3e3"
+        }
+      ],
+      [
+        "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol",
+          "sha256": "94f07f843e2f541a5a000a6375a41345412c6d6da9316c547f39e0fe1f2447f7"
+        }
+      ],
+      [
+        "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
+          "sha256": "63d104c065c281e8d8e1fabe0eda19ff83d4660ce1378f9dad2471226d2bf34f"
+        }
+      ],
+      [
+        "@openzeppelin/contracts/token/ERC721/IERC721.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol",
+          "sha256": "8239cba58986af2deb65af8092d5abcd4ffe60a38dee00cb2e8c6465f945c2d0"
+        }
+      ],
+      [
+        "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
+          "sha256": "ad84633afd30a71a888403875e2ca7db9e97499d258ccdd98f48dd7cea8229f5"
+        }
+      ],
+      [
+        "@openzeppelin/contracts/utils/Context.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/utils/Context.sol",
+          "sha256": "847fda5460fee70f56f4200f59b82ae622bb03c79c77e67af010e31b7e2cc5b6"
+        }
+      ],
+      [
+        "@openzeppelin/contracts/utils/introspection/ERC165.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol",
+          "sha256": "99348354365cbdeb90157e2903334b861a00d69faab7720ae542d911d5c70d87"
+        }
+      ],
+      [
+        "@openzeppelin/contracts/utils/introspection/IERC165.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol",
+          "sha256": "07ae1ac964ab74dedada999e2dfc642031a6495469cffc0bf715daa4f1e4f904"
+        }
+      ],
+      [
+        "@openzeppelin/contracts/utils/math/Math.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/utils/math/Math.sol",
+          "sha256": "a6ee779fc42e6bf01b5e6a963065706e882b016affbedfd8be19a71ea48e6e15"
+        }
+      ],
+      [
+        "@openzeppelin/contracts/utils/math/SignedMath.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/utils/math/SignedMath.sol",
+          "sha256": "768c28e3a33c3312e57ae8a1caaec2893bc89ac6e386621de018f85e9a2d6e99"
+        }
+      ],
+      [
+        "@openzeppelin/contracts/utils/Pausable.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/utils/Pausable.sol",
+          "sha256": "6543160582b3c0319a180f31660faf6ba0a8444acbdb03357c09790a96256835"
+        }
+      ],
+      [
+        "@openzeppelin/contracts/utils/Strings.sol",
+        {
+          "path": "node_modules/@openzeppelin/contracts/utils/Strings.sol",
+          "sha256": "0519199dbc635f98ce2e4537986604ee618bca665c65e9a1738702dfacf72010"
+        }
+      ]
+    ]
+  },
+  "hashes": {
+    "sourceSha256": "01d56df7ee7a82431022d37feea86af4e75676540b170f72450dc606e711fee0",
+    "compilerInputSha256": "dd6d3850f9ea06b3d82cdab099ca9d83a975d01fcc022d26ea3992aaaa1d5488",
+    "abiFileSha256": "fafd79ae471141cd84e5a5251396f9088b9e94167b3c538979d39c18a091c41c",
+    "creationBytecodeSha256": "c7708d78b33453817bc78f9a39e742435c2d9dfb9dc252943fdaba887754a6c1",
+    "runtimeBytecodeSha256": "1c1fde5e9811f6e62254c1ddb71ed47e5ee0cc4b4eb4254a552c020c1a09c0a5"
+  },
+  "hashConventions": {
+    "source": "SHA256 of source file bytes",
+    "abi": "SHA256 of emitted JSON file bytes",
+    "bytecode": "SHA256 of decoded hexadecimal bytes"
+  },
+  "bytecodeSizes": {
+    "creationBytes": 8035,
+    "runtimeBytes": 6590
+  },
+  "parameters": {
+    "maxSupply": 6000,
+    "tokenIdMin": 1,
+    "tokenIdMax": 6000,
+    "minterRole": "0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6",
+    "defaultAdminRole": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "constructorInputs": [
+      {
+        "internalType": "address",
+        "name": "admin",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "minter",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "initialBaseURI",
+        "type": "string"
+      }
+    ]
+  },
+  "declaredFeatures": {
+    "erc721": true,
+    "accessControl": true,
+    "pausable": true,
+    "authorityCollisionGuard": true,
+    "pauseBlocksMintAndTransfer": true,
+    "metadataSuffix": ".json",
+    "baseUriFreezeIrreversible": true,
+    "burnImplemented": false,
+    "erc2981Implemented": false
+  },
+  "authorization": {
+    "deploymentApproved": false,
+    "mintApproved": false,
+    "mainnetApproved": false,
+    "artifactDoesNotGrantAuthority": true
+  },
+  "verification": {
+    "compilationCount": 2,
+    "outputsIdentical": true,
+    "networkDeploymentPerformed": false,
+    "realFundsMoved": false
+  }
+}
