@@ -1282,6 +1282,98 @@ try {
         FROM founding_memberships
       `).get().count;
 
+    /*
+     * Verified settlement must create exactly one
+     * NFT delivery job, without minting anything.
+     */
+    const nftMintJobs =
+      db.prepare(`
+        SELECT
+          membership_id AS membershipId,
+          serial_number AS serialNumber,
+          recipient_address AS recipientAddress,
+          status
+        FROM nft_mint_jobs
+      `).all();
+
+    assert(
+      nftMintJobs.length === 1,
+      "NFT_MINT_JOB_COUNT_INVALID",
+    );
+
+    assert(
+      nftMintJobs[0].serialNumber === 1,
+      "NFT_MINT_JOB_SERIAL_INVALID",
+    );
+
+    assert(
+      nftMintJobs[0].status === "AWAITING_WALLET",
+      "NFT_MINT_JOB_STATUS_INVALID",
+    );
+
+    assert(
+      nftMintJobs[0].recipientAddress === null,
+      "NFT_MINT_RECIPIENT_NOT_EMPTY",
+    );
+
+    console.log(
+      "NFT_MINT_JOB_PERSISTED=PASS",
+    );
+    /*
+     * Re-reading the verified payment must not
+     * duplicate or change the NFT mint job.
+     */
+    const nftJobBeforeReplay =
+      db.prepare(`
+        SELECT
+          id,
+          membership_id AS membershipId,
+          serial_number AS serialNumber,
+          status
+        FROM nft_mint_jobs
+      `).get();
+
+    const replayVerification =
+      await callCommerce(
+        `/api/payments/usdt/attempts/${publicAttemptBody.attempt.publicId}`,
+      );
+
+    assert(
+      replayVerification.status === 200,
+      "NFT_REPLAY_REQUEST_FAILED",
+    );
+
+    const nftJobsAfterReplay =
+      db.prepare(`
+        SELECT
+          id,
+          membership_id AS membershipId,
+          serial_number AS serialNumber,
+          status
+        FROM nft_mint_jobs
+      `).all();
+
+    assert(
+      nftJobsAfterReplay.length === 1,
+      "NFT_REPLAY_DUPLICATED_JOB",
+    );
+
+    assert(
+      nftJobsAfterReplay[0].id === nftJobBeforeReplay.id &&
+      nftJobsAfterReplay[0].membershipId ===
+        nftJobBeforeReplay.membershipId &&
+      nftJobsAfterReplay[0].serialNumber ===
+        nftJobBeforeReplay.serialNumber &&
+      nftJobsAfterReplay[0].status ===
+        "AWAITING_WALLET",
+      "NFT_REPLAY_MUTATED_JOB",
+    );
+
+    console.log(
+      "NFT_MINT_JOB_REPLAY=PASS",
+    );
+
+
     assert(
       verifiedSettlements === 1,
       "VERIFIED_SETTLEMENT_NOT_PERSISTED",

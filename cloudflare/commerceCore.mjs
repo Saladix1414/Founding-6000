@@ -319,6 +319,28 @@ export class CommerceCore {
         allocated_at TEXT NOT NULL
       );
 
+      CREATE TABLE IF NOT EXISTS nft_mint_jobs (
+        id TEXT PRIMARY KEY,
+        membership_id TEXT NOT NULL UNIQUE,
+        order_id TEXT NOT NULL UNIQUE,
+        serial_number INTEGER NOT NULL UNIQUE
+          CHECK(serial_number BETWEEN 1 AND 6000),
+        recipient_address TEXT,
+        status TEXT NOT NULL DEFAULT 'AWAITING_WALLET'
+          CHECK(status IN (
+            'AWAITING_WALLET',
+            'READY',
+            'MINTING',
+            'SUBMITTED',
+            'CONFIRMED',
+            'RETRYABLE_ERROR',
+            'FAILED'
+          )),
+        mint_tx_hash TEXT UNIQUE,
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      );
+
       CREATE TABLE IF NOT EXISTS founding_memberships (
         id TEXT PRIMARY KEY,
         public_id TEXT NOT NULL UNIQUE,
@@ -2263,6 +2285,34 @@ export class CommerceCore {
           genesisMember
             ? 1
             : 0,
+          now,
+          now,
+        );
+
+        /*
+         * NFT delivery is recorded only after the
+         * verified settlement creates the membership.
+         * No wallet, signer or blockchain call here.
+         */
+        this.sql.exec(
+          `
+            INSERT INTO nft_mint_jobs (
+              id,
+              membership_id,
+              order_id,
+              serial_number,
+              recipient_address,
+              status,
+              mint_tx_hash,
+              created_at,
+              updated_at
+            )
+            VALUES (?, ?, ?, ?, NULL, 'AWAITING_WALLET', NULL, ?, ?)
+          `,
+          crypto.randomUUID(),
+          membershipId,
+          context.orderId,
+          serialNumber,
           now,
           now,
         );
