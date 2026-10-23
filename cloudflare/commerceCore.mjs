@@ -319,6 +319,39 @@ export class CommerceCore {
         allocated_at TEXT NOT NULL
       );
 
+      /*
+       * Wallet ownership challenges are separate from
+       * payment authority and NFT mint authority.
+       *
+       * A challenge alone never authorizes minting.
+       */
+      CREATE TABLE IF NOT EXISTS nft_wallet_challenges (
+        id TEXT PRIMARY KEY,
+        membership_id TEXT NOT NULL,
+        wallet_address TEXT NOT NULL,
+        nonce TEXT NOT NULL UNIQUE,
+        challenge_message TEXT NOT NULL,
+        status TEXT NOT NULL
+          CHECK(status IN (
+            'PENDING',
+            'VERIFIED',
+            'EXPIRED',
+            'REVOKED'
+          )),
+        created_at TEXT NOT NULL,
+        expires_at TEXT NOT NULL,
+        verified_at TEXT,
+        CHECK (
+          (status = 'VERIFIED' AND verified_at IS NOT NULL)
+          OR
+          (status != 'VERIFIED' AND verified_at IS NULL)
+        )
+      );
+
+      CREATE INDEX IF NOT EXISTS
+        idx_nft_wallet_challenges_membership
+      ON nft_wallet_challenges(membership_id, status);
+
       CREATE TABLE IF NOT EXISTS nft_mint_jobs (
         id TEXT PRIMARY KEY,
         membership_id TEXT NOT NULL UNIQUE,
