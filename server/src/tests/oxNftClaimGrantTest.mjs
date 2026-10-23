@@ -2,6 +2,10 @@ import assert from "node:assert/strict";
 import { DatabaseSync } from "node:sqlite";
 import { CommerceCore } from "../../../cloudflare/commerceCore.mjs";
 import {
+  issueBuyerEmailCode,
+  verifyBuyerEmailCode,
+} from "../../../cloudflare/nftBuyerEmailAuth.mjs";
+import {
   issueNftClaimGrant,
   consumeNftClaimGrant,
 } from "../../../cloudflare/nftClaimGrant.mjs";
@@ -65,10 +69,28 @@ db.prepare(`
   ) VALUES (?, ?, ?, 2, 'AWAITING_WALLET', ?, ?)
 `).run(crypto.randomUUID(), memberId, orderId, date, date);
 
-const issue = (membershipId = memberId, time = now) =>
-  issueNftClaimGrant({
-    storage, membershipId, now: time,
+const issue = (
+  membershipId = memberId,
+  time = now,
+  emailChallengeId,
+) => issueNftClaimGrant({
+  storage, membershipId, emailChallengeId, now: time,
+});
+
+function verifiedEmail() {
+  const challenge = issueBuyerEmailCode({
+    storage, membershipId: memberId, now,
   });
+  const result = verifyBuyerEmailCode({
+    storage,
+    membershipId: memberId,
+    challengeId: challenge.challengeId,
+    code: challenge.code,
+    now: now + 1000,
+  });
+  assert.equal(result.verified, true);
+  return challenge.challengeId;
+}
 
 const consume = (token, membershipId = memberId, time = now) =>
   consumeNftClaimGrant({
@@ -83,8 +105,64 @@ db.prepare(`
   WHERE id = ?
 `).run(orderId);
 
-const first = issue();
-const second = issue();
+assert.throws(
+  () => issue(),
+  /NFT_VERIFIED_EMAIL_REQUIRED/,
+);
+console.log("CLAIM_WITHOUT_EMAIL_BLOCKED=PASS");
+
+const firstEmail = verifiedEmail();
+const first = issue(memberId, now + 1000, firstEmail);
+
+assert.throws(
+  () => issue(memberId, now + 1000, firstEmail),
+  /NFT_VERIFIED_EMAIL_REQUIRED/,
+);
+console.log("EMAIL_PROOF_REPLAY_BLOCKED=PASS");
+
+/*
+ * Fail claim insertion after email proof consumption:
+ * SQLite must restore the verified email proof.
+ */
+const rollbackEmail = verifiedEmail();
+
+db.exec(`
+  CREATE TRIGGER nft_email_claim_fail
+  BEFORE INSERT ON nft_claim_grants
+  BEGIN
+    SELECT RAISE(ABORT, 'NFT_TEST_CLAIM_INSERT_FAILURE');
+  END;
+`);
+
+try {
+  assert.throws(
+    () => issue(memberId, now + 1000, rollbackEmail),
+    /NFT_TEST_CLAIM_INSERT_FAILURE/,
+  );
+} finally {
+  db.exec("DROP TRIGGER nft_email_claim_fail");
+}
+
+assert.equal(
+  db.prepare(`
+    SELECT status FROM nft_buyer_email_codes
+    WHERE id = ?
+  `).get(rollbackEmail).status,
+  "VERIFIED",
+);
+
+console.log("EMAIL_CLAIM_ATOMIC_ROLLBACK=PASS");
+
+const second = issue(memberId, now + 1000, rollbackEmail);
+
+assert.equal(
+  db.prepare(`
+    SELECT status FROM nft_buyer_email_codes
+    WHERE id = ?
+  `).get(rollbackEmail).status,
+  "REVOKED",
+);
+console.log("VERIFIED_EMAIL_CONSUMED=PASS");
 
 assert.notEqual(first.token, second.token);
 assert.throws(() => consume(first.token), /NOT_VALID/);

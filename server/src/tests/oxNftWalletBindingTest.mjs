@@ -6,6 +6,10 @@ import {
 } from "../../../cloudflare/nftClaimGrant.mjs";
 import { CommerceCore } from "../../../cloudflare/commerceCore.mjs";
 import {
+  issueBuyerEmailCode,
+  verifyBuyerEmailCode,
+} from "../../../cloudflare/nftBuyerEmailAuth.mjs";
+import {
   beginNftWalletBinding,
   completeNftWalletBinding,
 } from "../../../cloudflare/nftWalletBinding.mjs";
@@ -169,8 +173,25 @@ assert.throws(() => completeNftWalletBinding({
   now: now + 1000,
 }), /NFT_CLAIM_REQUIRED/);
 
-const grant = issueNftClaimGrant({
+const emailChallenge = issueBuyerEmailCode({
   storage, membershipId: memberId, now,
+});
+
+const emailResult = verifyBuyerEmailCode({
+  storage,
+  membershipId: memberId,
+  challengeId: emailChallenge.challengeId,
+  code: emailChallenge.code,
+  now: now + 1000,
+});
+
+assert.equal(emailResult.verified, true);
+
+const grant = issueNftClaimGrant({
+  storage,
+  membershipId: memberId,
+  emailChallengeId: emailChallenge.challengeId,
+  now: now + 1000,
 });
 
 assert.throws(() => completeNftWalletBinding({

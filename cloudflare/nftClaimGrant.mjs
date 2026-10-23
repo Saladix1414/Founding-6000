@@ -42,6 +42,7 @@ function eligible(storage, membershipId) {
 export function issueNftClaimGrant({
   storage,
   membershipId,
+  emailChallengeId,
   now = Date.now(),
 }) {
   if (!Number.isSafeInteger(now) || now < 0) {
@@ -50,6 +51,54 @@ export function issueNftClaimGrant({
 
   return storage.transactionSync(() => {
     eligible(storage, membershipId);
+
+    /*
+     * NFT_EMAIL_GRANT_AUTHORIZATION_V1
+     * Email verification must belong to this membership.
+     * Consume it atomically with claim issuance.
+     */
+    if (
+      typeof emailChallengeId !== "string" ||
+      !/^[0-9a-f-]{36}$/i.test(emailChallengeId)
+    ) {
+      fail("NFT_VERIFIED_EMAIL_REQUIRED");
+    }
+
+    const verifiedEmail = storage.sql.exec(`
+      SELECT id, expires_at AS expiresAt
+      FROM nft_buyer_email_codes
+      WHERE id = ?
+        AND membership_id = ?
+        AND status = 'VERIFIED'
+    `, emailChallengeId, membershipId).toArray()[0];
+
+    if (
+      !verifiedEmail ||
+      !Number.isFinite(Date.parse(verifiedEmail.expiresAt)) ||
+      now >= Date.parse(verifiedEmail.expiresAt)
+    ) {
+      fail("NFT_VERIFIED_EMAIL_REQUIRED");
+    }
+
+    // REVOKED marks the email proof as no longer reusable.
+    // No database CHECK constraint migration is needed.
+    storage.sql.exec(`
+      UPDATE nft_buyer_email_codes
+      SET status = 'REVOKED'
+      WHERE id = ?
+        AND membership_id = ?
+        AND status = 'VERIFIED'
+    `, emailChallengeId, membershipId);
+
+    const emailConsumed = storage.sql.exec(`
+      SELECT status
+      FROM nft_buyer_email_codes
+      WHERE id = ? AND membership_id = ?
+    `, emailChallengeId, membershipId).toArray()[0];
+
+    if (emailConsumed?.status !== 'REVOKED') {
+      fail("NFT_EMAIL_PROOF_CONSUMPTION_FAILED");
+    }
 
     storage.sql.exec(`
       UPDATE nft_claim_grants
