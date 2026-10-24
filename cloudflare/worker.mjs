@@ -1002,6 +1002,69 @@ export default {
     const requestId =
       crypto.randomUUID();
 
+    /*
+     * OX_NFT_BUYER_PUBLIC_GATE_V1
+     *
+     * Registered but disabled by default.
+     *
+     * Do NOT import the gateway or contact
+     * the Durable Object while disabled.
+     *
+     * The gateway separately validates
+     * origin HMAC, internal credentials,
+     * request body and service bindings.
+     */
+    if (
+      url.pathname ===
+        "/api/nft/buyer/email"
+    ) {
+      if (
+        env.NFT_BUYER_EMAIL_ENABLED !== "true"
+      ) {
+        return json(
+          {
+            error: "NFT_BUYER_SERVICE_DISABLED",
+          },
+          503,
+          requestId,
+        );
+      }
+
+      if (
+        typeof env.NFT_BUYER_ACTOR_SECRET !== "string" ||
+        env.NFT_BUYER_ACTOR_SECRET.length < 32 ||
+        typeof env.NFT_INTERNAL_SERVICE_KEY !== "string" ||
+        env.NFT_INTERNAL_SERVICE_KEY.length < 32 ||
+        !env.FOUNDING_CORE
+      ) {
+        return json(
+          {
+            error: "NFT_BUYER_SERVICE_UNAVAILABLE",
+          },
+          503,
+          requestId,
+        );
+      }
+
+      try {
+        const { handleNftBuyerGateway } =
+          await import("./nftBuyerWorkerGateway.mjs");
+
+        return await handleNftBuyerGateway({
+          request,
+          env,
+        });
+      } catch {
+        return json(
+          {
+            error: "NFT_BUYER_SERVICE_UNAVAILABLE",
+          },
+          503,
+          requestId,
+        );
+      }
+    }
+
     if (
       request.method === "GET" &&
       (

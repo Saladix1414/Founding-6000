@@ -577,6 +577,26 @@ export class FoundingCore extends DurableObject {
       );
     }
 
+    /*
+     * OriginX NFT Buyer: private, disabled-by-default.
+     *
+     * The Worker does not expose this path publicly.
+     * Internal service authentication is mandatory.
+     */
+    if (
+      url.pathname ===
+        "/internal/nft/buyer/email"
+    ) {
+      const { handleInternalBuyerEmail } =
+        await import("./nftBuyerDoBridge.mjs");
+
+      return handleInternalBuyerEmail({
+        request,
+        storage: this.state.storage,
+        env: this.env,
+      });
+    }
+
     if (
       request.method === "GET" &&
       url.pathname ===

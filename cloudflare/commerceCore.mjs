@@ -340,6 +340,14 @@ export class CommerceCore {
       CREATE INDEX IF NOT EXISTS idx_nft_email_deliveries_member
       ON nft_email_deliveries(membership_id, prepared_at);
 
+      CREATE TABLE IF NOT EXISTS nft_email_actor_limits (
+        actor_hash TEXT NOT NULL,
+        bucket_start INTEGER NOT NULL,
+        request_count INTEGER NOT NULL,
+        updated_at TEXT NOT NULL,
+        PRIMARY KEY (actor_hash, bucket_start)
+      );
+
       CREATE TABLE IF NOT EXISTS nft_email_rate_limits (
         membership_id TEXT NOT NULL,
         bucket_start INTEGER NOT NULL,
