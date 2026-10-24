@@ -1,0 +1,58 @@
+name: OriginX NFT Cloudflare Bundle Verification
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-cloudflare-bundle:
+    name: Worker bundle dry-run
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    env:
+      CI: "true"
+      NFT_BUYER_EMAIL_ENABLED: "false"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Build application
+        run: |
+          npm run server:build
+          npm run build
+
+      - name: Verify NFT buyer security tests
+        run: |
+          node server/src/tests/oxNftBuyerDisabledRuntimeTest.mjs
+          node server/src/tests/oxNftBuyerRouteGateTest.mjs
+          node server/src/tests/oxNftBuyerWorkerGatewayTest.mjs
+          node server/src/tests/oxNftBuyerWorkerBridgeTest.mjs
+          node server/src/tests/oxNftBuyerDoBridgeTest.mjs
+          node server/src/tests/oxNftCloudflareRuntimePreflightTest.mjs
+
+      - name: Compile Worker without deploying
+        run: |
+          npx --yes wrangler@4.123.0 deploy \
+            --config wrangler.jsonc \
+            --dry-run \
+            --outdir "$RUNNER_TEMP/originx-worker-bundle"
+
+          test -d "$RUNNER_TEMP/originx-worker-bundle"
+
+          echo "WORKER_BUNDLE_DRY_RUN=PASS"
+          echo "REAL_DEPLOYMENT=NO"
+          echo "REAL_EMAIL_SENT=NO"
+          echo "REAL_MINT=NO"
