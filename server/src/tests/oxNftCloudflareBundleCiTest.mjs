@@ -16,12 +16,22 @@ assert.match(
   /workflow_dispatch:/,
 );
 
-assert.doesNotMatch(
+assert.match(
   workflow,
-  /^\s+(push|pull_request|schedule):/m,
+  /^  push:$/m,
 );
 
-console.log("CI_MANUAL_TRIGGER_ONLY=PASS");
+assert.match(
+  workflow,
+  /deploy\/cloudflare-d4/,
+);
+
+assert.doesNotMatch(
+  workflow,
+  /^  (pull_request|schedule):/m,
+);
+
+console.log("CI_CONTROLLED_BRANCH_TRIGGER=PASS");
 
 assert.match(
   workflow,

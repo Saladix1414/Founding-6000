@@ -2,6 +2,11 @@ name: OriginX NFT Cloudflare Bundle Verification
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - deploy/cloudflare-d4
+    paths:
+      - .github/workflows/originx-nft-cloudflare-bundle.yml
 
 permissions:
   contents: read
