@@ -597,6 +597,25 @@ export class FoundingCore extends DurableObject {
       });
     }
 
+    /*
+     * OriginX NFT buyer claim.
+     * Private-only, disabled by default.
+     * No public Worker routing is installed.
+     */
+    if (
+      url.pathname ===
+        "/internal/nft/buyer/claim"
+    ) {
+      const { handleInternalBuyerClaim } =
+        await import("./nftBuyerClaimDoBridge.mjs");
+
+      return handleInternalBuyerClaim({
+        request,
+        storage: this.state.storage,
+        env: this.env,
+      });
+    }
+
     if (
       request.method === "GET" &&
       url.pathname ===
