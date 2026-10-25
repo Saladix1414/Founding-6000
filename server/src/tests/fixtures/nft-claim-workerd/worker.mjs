@@ -19,6 +19,14 @@ import {
   handleBuyerClaimHttp,
 } from "../../../../../cloudflare/nftBuyerClaimHttpGateway.mjs";
 
+import {
+  issueEmailBoundWalletChallenge,
+} from "../../../../../cloudflare/nftWalletChallengeRequest.mjs";
+
+import {
+  verifyEmailBoundWalletChallenge,
+} from "../../../../../cloudflare/nftWalletChallengeVerification.mjs";
+
 const KEY = "originx-fixture-internal-key-2026-test-only";
 const ACTOR_SECRET =
   "originx-fixture-actor-secret-2026-local-only";
@@ -132,6 +140,77 @@ export class FixtureCore extends FoundingCore {
       return reply(200, result);
     }
 
+    /*
+     * Test-only wallet challenge and verification.
+     *
+     * These routes never enter the production
+     * Worker or FoundingCore public API.
+     */
+    if (
+      path === "/__fixture/wallet/challenge" ||
+      path === "/__fixture/wallet/verify"
+    ) {
+      if (
+        request.method !== "POST" ||
+        request.headers.get("X-OriginX-Fixture-Key")
+          !== KEY
+      ) {
+        return reply(403, { error: "FORBIDDEN" });
+      }
+
+      let body;
+
+      try {
+        body = await request.json();
+      } catch {
+        return reply(400, { error: "INVALID_REQUEST" });
+      }
+
+      if (
+        !body ||
+        typeof body !== "object" ||
+        Array.isArray(body)
+      ) {
+        return reply(400, { error: "INVALID_REQUEST" });
+      }
+
+      try {
+        if (path === "/__fixture/wallet/challenge") {
+          const result = issueEmailBoundWalletChallenge({
+            storage: this.state.storage,
+            claimToken: body.claimToken,
+            email: body.email,
+            walletAddress: body.walletAddress,
+            domain: "originx.example",
+            uri: "https://originx.example",
+            chainId: 8453,
+          });
+
+          return reply(200, result);
+        }
+
+        const result = verifyEmailBoundWalletChallenge({
+          storage: this.state.storage,
+          challengeId: body.challengeId,
+          claimToken: body.claimToken,
+          email: body.email,
+          signature: body.signature,
+          expectedOrigin: "https://originx.example",
+          expectedChainId: 8453,
+        });
+
+        return reply(200, {
+          verified: result.verified,
+          walletAddress: result.walletAddress,
+          chainId: result.chainId,
+        });
+      } catch {
+        return reply(403, {
+          error: "NFT_WALLET_VERIFICATION_UNAVAILABLE",
+        });
+      }
+    }
+
     if (path === "/__fixture/inspect") {
       if (
         request.method !== "POST" ||
@@ -149,8 +228,14 @@ export class FixtureCore extends FoundingCore {
       `, membershipId).toArray();
 
       const jobs = this.sql.exec(`
-        SELECT status
+        SELECT status, recipient_address AS recipient
         FROM nft_mint_jobs
+        WHERE membership_id = ?
+      `, membershipId).toArray();
+
+      const walletChallenges = this.sql.exec(`
+        SELECT status
+        FROM nft_wallet_challenges
         WHERE membership_id = ?
       `, membershipId).toArray();
 
@@ -174,6 +259,15 @@ export class FixtureCore extends FoundingCore {
         challengeStatus: codes[0]?.status ?? null,
         challengeAttempts: codes[0]?.attempts ?? null,
         actorBuckets: actorReservations[0]?.total ?? 0,
+        verifiedWalletChallenges:
+          walletChallenges.filter(
+            row => row.status === "VERIFIED"
+          ).length,
+        consumedGrants:
+          grants.filter(
+            row => row.status === "CONSUMED"
+          ).length,
+        walletRecipient: jobs[0]?.recipient ?? null,
       });
     }
 
@@ -198,7 +292,9 @@ export default {
 
     if (
       url.pathname === "/__fixture/seed" ||
-      url.pathname === "/__fixture/inspect"
+      url.pathname === "/__fixture/inspect" ||
+      url.pathname === "/__fixture/wallet/challenge" ||
+      url.pathname === "/__fixture/wallet/verify"
     ) {
       if (!localOnly(request)) {
         return reply(403, { error: "FORBIDDEN" });

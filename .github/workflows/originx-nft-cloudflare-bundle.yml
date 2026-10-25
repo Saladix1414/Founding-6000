@@ -173,6 +173,68 @@ jobs:
           echo "REAL_EMAIL=NO"
           echo "REAL_MINT=NO"
 
+      - name: Run isolated NFT wallet signature E2E
+        run: |
+          set -euo pipefail
+
+          LOG="$RUNNER_TEMP/originx-wallet-e2e-workerd.log"
+          DATA="$RUNNER_TEMP/originx-wallet-e2e-sqlite"
+
+          mkdir -p "$DATA"
+
+          echo "WALLET_E2E_ISOLATED_RUNTIME=STARTING"
+          echo "WALLET_E2E_DEPLOYMENT=NO"
+
+          npx --yes wrangler@4.152.0 dev \
+            --config server/src/tests/fixtures/nft-claim-workerd/wrangler.jsonc \
+            --local \
+            --ip 127.0.0.1 \
+            --port 8793 \
+            --persist-to "$DATA" \
+            > "$LOG" 2>&1 &
+
+          PID=$!
+
+          cleanup() {
+            result=$?
+            trap - EXIT
+
+            if [ "$result" -ne 0 ]; then
+              echo "=== NFT WALLET E2E FAILURE ==="
+              echo "WALLET_E2E_EXIT_CODE=$result"
+
+              if kill -0 "$PID" 2>/dev/null; then
+                echo "WALLET_WORKER_PROCESS=RUNNING"
+              else
+                echo "WALLET_WORKER_PROCESS=STOPPED"
+              fi
+
+              echo "=== WALLET WORKER LOGS ==="
+
+              if [ -f "$LOG" ]; then
+                tail -n 160 "$LOG"
+              else
+                echo "WALLET_WORKER_LOG_NOT_CREATED"
+              fi
+            fi
+
+            kill "$PID" 2>/dev/null || true
+            wait "$PID" 2>/dev/null || true
+
+            exit "$result"
+          }
+
+          trap cleanup EXIT
+
+          node server/src/tests/oxNftWalletWorkerdE2eTest.mjs
+
+          echo "OX_NFT_WALLET_WORKER_DO_E2E=PASS"
+          echo "EMAIL_MEMBERSHIP_BINDING=VERIFIED"
+          echo "ECDSA_SIGNATURE=VERIFIED"
+          echo "REPLAY_PROTECTION=VERIFIED"
+          echo "REAL_MINT=NO"
+          echo "REAL_FUNDS_MOVED=NO"
+
       - name: Compile Worker without deploying
         run: |
           npx --yes wrangler@4.152.0 deploy \
