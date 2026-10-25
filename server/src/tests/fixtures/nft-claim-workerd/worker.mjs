@@ -154,12 +154,26 @@ export class FixtureCore extends FoundingCore {
         WHERE membership_id = ?
       `, membershipId).toArray();
 
+      const codes = this.sql.exec(`
+        SELECT status, attempts
+        FROM nft_buyer_email_codes
+        WHERE membership_id = ?
+      `, membershipId).toArray();
+
+      const actorReservations = this.sql.exec(`
+        SELECT COUNT(*) AS total
+        FROM nft_email_actor_limits
+      `).toArray();
+
       return reply(200, {
         issuedGrants: grants.filter(
           row => row.status === "ISSUED"
         ).length,
         totalGrants: grants.length,
         mintJobStatus: jobs[0]?.status ?? null,
+        challengeStatus: codes[0]?.status ?? null,
+        challengeAttempts: codes[0]?.attempts ?? null,
+        actorBuckets: actorReservations[0]?.total ?? 0,
       });
     }
 

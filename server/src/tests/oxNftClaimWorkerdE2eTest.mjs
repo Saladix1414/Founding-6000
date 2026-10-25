@@ -122,6 +122,40 @@ const successes = results.filter(
   response => response.status === 200
 );
 
+if (successes.length !== 1) {
+  const diagnosticResponse = await call(
+    "/__fixture/inspect",
+    {
+      method: "POST",
+      headers: {
+        "X-OriginX-Fixture-Key": KEY,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        membershipId: fixture.membershipId,
+      }),
+    },
+  );
+
+  const diagnostic = diagnosticResponse.ok
+    ? await diagnosticResponse.json()
+    : {
+        inspectionStatus: diagnosticResponse.status,
+      };
+
+  console.log(
+    "E2E_CLAIM_HTTP_STATUSES=" +
+    results.map(r => r.status).join(",")
+  );
+
+  console.log(
+    "E2E_DIAGNOSTIC=" +
+    JSON.stringify(diagnostic)
+  );
+
+  console.log("E2E_CLAIM_TOKEN_LOGGED=NO");
+}
+
 assert.equal(successes.length, 1);
 
 const grant = await successes[0].json();
