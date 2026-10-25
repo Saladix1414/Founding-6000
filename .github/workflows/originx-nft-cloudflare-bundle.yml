@@ -64,15 +64,48 @@ jobs:
         run: |
           set -euo pipefail
 
+          LOG="$RUNNER_TEMP/originx-workerd.log"
+
+          echo "WORKER_STARTUP_LOG_DIAGNOSTICS=ENABLED"
+
           npx --yes wrangler@4.123.0 dev \
             --config wrangler.jsonc \
             --local \
             --ip 127.0.0.1 \
             --port 8791 \
-            > "$RUNNER_TEMP/originx-workerd.log" 2>&1 &
+            > "$LOG" 2>&1 &
 
           PID=$!
-          trap 'kill "$PID" 2>/dev/null || true' EXIT
+
+          cleanup() {
+            result=$?
+            trap - EXIT
+
+            if [ "$result" -ne 0 ]; then
+              echo "=== CLOUDFLARE WORKER FAILURE ==="
+              echo "WORKER_EXIT_CODE=$result"
+
+              if kill -0 "$PID" 2>/dev/null; then
+                echo "WRANGLER_PROCESS=RUNNING"
+              else
+                echo "WRANGLER_PROCESS=STOPPED"
+              fi
+
+              echo "=== WRANGLER LAST 120 LOG LINES ==="
+
+              if [ -f "$LOG" ]; then
+                tail -n 120 "$LOG"
+              else
+                echo "WRANGLER_LOG_NOT_CREATED"
+              fi
+            fi
+
+            kill "$PID" 2>/dev/null || true
+            wait "$PID" 2>/dev/null || true
+            exit "$result"
+          }
+
+          trap cleanup EXIT
 
           node server/src/tests/oxNftCloudflareLocalRuntimeSmoke.mjs
 
