@@ -214,12 +214,52 @@ assert.ok(
   ),
 );
 
-assert.equal(
-  worker.includes('"/api/nft/buyer/claim"'),
-  false,
+/*
+ * PHASE 5I.7:
+ * Public URL registered, disabled by default.
+ * Both feature flags must precede dynamic import.
+ */
+const claimGateStart = worker.indexOf(
+  "OX_NFT_BUYER_CLAIM_GATE_V1",
 );
+
+const claimGateEnd = worker.indexOf(
+  "OX_NFT_BUYER_PUBLIC_GATE_V1",
+  claimGateStart,
+);
+
+assert.ok(claimGateStart >= 0);
+assert.ok(claimGateEnd > claimGateStart);
+
+const claimGate = worker.slice(
+  claimGateStart,
+  claimGateEnd,
+);
+
+assert.ok(
+  claimGate.includes('"/api/nft/buyer/claim"'),
+);
+
+const enabledGate = claimGate.indexOf(
+  'env?.NFT_BUYER_CLAIM_ENABLED !== "true"',
+);
+
+const httpGate = claimGate.indexOf(
+  'env?.NFT_BUYER_CLAIM_HTTP_ENABLED !== "true"',
+);
+
+const gatewayImport = claimGate.indexOf(
+  'import("./nftBuyerClaimHttpGateway.mjs")',
+);
+
+assert.ok(enabledGate >= 0);
+assert.ok(httpGate >= 0);
+assert.ok(gatewayImport > enabledGate);
+assert.ok(gatewayImport > httpGate);
+
+console.log("CLAIM_PUBLIC_ROUTE_DOUBLE_GATE=PASS");
 
 console.log("CLAIM_DO_PRIVATE_ROUTE=PASS");
 console.log("NFT_BUYER_CLAIM_DO_BRIDGE_TEST=PASS");
-console.log("PUBLIC_CLAIM_ENDPOINT=NO");
+console.log("PUBLIC_CLAIM_ENDPOINT=DISABLED_BY_DEFAULT");
 console.log("REAL_MINT=NO");

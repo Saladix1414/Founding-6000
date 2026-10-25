@@ -1003,6 +1003,60 @@ export default {
       crypto.randomUUID();
 
     /*
+     * OX_NFT_BUYER_CLAIM_GATE_V1
+     *
+     * Registered but disabled by default.
+     * Do not import the gateway or touch the
+     * Durable Object until both flags pass.
+     */
+    if (
+      url.pathname ===
+        "/api/nft/buyer/claim"
+    ) {
+      if (
+        env?.NFT_BUYER_CLAIM_ENABLED !== "true" ||
+        env?.NFT_BUYER_CLAIM_HTTP_ENABLED !== "true"
+      ) {
+        return json(
+          { error: "NFT_BUYER_CLAIM_DISABLED" },
+          503,
+          requestId,
+        );
+      }
+
+      if (
+        typeof env?.NFT_BUYER_ACTOR_SECRET !== "string" ||
+        env.NFT_BUYER_ACTOR_SECRET.length < 32 ||
+        typeof env?.NFT_INTERNAL_SERVICE_KEY !== "string" ||
+        env.NFT_INTERNAL_SERVICE_KEY.length < 32 ||
+        typeof env?.FOUNDING_CORE?.idFromName !== "function" ||
+        typeof env?.FOUNDING_CORE?.get !== "function"
+      ) {
+        return json(
+          { error: "NFT_BUYER_CLAIM_UNAVAILABLE" },
+          503,
+          requestId,
+        );
+      }
+
+      try {
+        const { handleBuyerClaimHttp } =
+          await import("./nftBuyerClaimHttpGateway.mjs");
+
+        return await handleBuyerClaimHttp({
+          request,
+          env,
+        });
+      } catch {
+        return json(
+          { error: "NFT_BUYER_CLAIM_UNAVAILABLE" },
+          503,
+          requestId,
+        );
+      }
+    }
+
+    /*
      * OX_NFT_BUYER_PUBLIC_GATE_V1
      *
      * Registered but disabled by default.
