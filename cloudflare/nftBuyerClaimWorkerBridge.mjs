@@ -37,7 +37,7 @@ export async function forwardBuyerClaimToCore({
   challengeId,
   code,
   actorHash,
-  now = Date.now(),
+  now = undefined,
 }) {
   if (
     env?.NFT_BUYER_CLAIM_ENABLED !== "true" ||
@@ -61,8 +61,13 @@ export async function forwardBuyerClaimToCore({
     !CODE.test(code) ||
     typeof actorHash !== "string" ||
     !ACTOR.test(actorHash) ||
-    !Number.isSafeInteger(now) ||
-    now < 0
+    (
+      now !== undefined &&
+      (
+        !Number.isSafeInteger(now) ||
+        now < 0
+      )
+    )
   ) {
     invalid();
   }
@@ -150,10 +155,23 @@ export async function forwardBuyerClaimToCore({
 
   const expiry = Date.parse(data.claimExpiresAt);
 
+  /*
+   * Compare against the time the response arrives,
+   * not when the outbound DO request began.
+   *
+   * An actual DO issues its 15-minute credential
+   * after the Worker starts the request.
+   *
+   * Explicit now is reserved for deterministic
+   * tests; normal runtime reads the current clock.
+   */
+  const checkedAt =
+    now === undefined ? Date.now() : now;
+
   if (
     !Number.isFinite(expiry) ||
-    expiry <= now ||
-    expiry > now + 15 * 60 * 1000
+    expiry <= checkedAt ||
+    expiry > checkedAt + 15 * 60 * 1000
   ) {
     unavailable();
   }

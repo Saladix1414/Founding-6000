@@ -133,6 +133,69 @@ assert.deepEqual(await lastRequest.json(), input);
 console.log("CLAIM_BRIDGE_AUTHENTICATED_DO_POST=PASS");
 console.log("CLAIM_BRIDGE_CREDENTIAL_VALIDATED=PASS");
 
+/*
+ * Runtime regression:
+ * The DO issues a credential after the Worker
+ * request begins. Validation must use the
+ * receive-time clock, not the dispatch clock.
+ */
+const realTimeEnv = environment();
+
+realTimeEnv.FOUNDING_CORE.get = () => ({
+  async fetch() {
+    await new Promise(resolve =>
+      setTimeout(resolve, 30)
+    );
+
+    return Response.json({
+      claimToken: token,
+      claimExpiresAt: new Date(
+        Date.now() + 15 * 60 * 1000
+      ).toISOString(),
+    });
+  },
+});
+
+const liveTimeResult = await forwardBuyerClaimToCore({
+  env: realTimeEnv,
+  ...input,
+});
+
+assert.match(
+  liveTimeResult.claimToken,
+  /^0x[a-f0-9]{64}$/,
+);
+
+console.log("CLAIM_BRIDGE_DO_ISSUANCE_DELAY=PASS");
+
+/*
+ * Never accept credentials exceeding the
+ * 15-minute maximum.
+ */
+const futureEnv = environment();
+
+futureEnv.FOUNDING_CORE.get = () => ({
+  async fetch() {
+    return Response.json({
+      claimToken: token,
+      claimExpiresAt: new Date(
+        Date.now() + 16 * 60 * 1000
+      ).toISOString(),
+    });
+  },
+});
+
+await assert.rejects(
+  forwardBuyerClaimToCore({
+    env: futureEnv,
+    ...input,
+  }),
+  /NFT_BUYER_CLAIM_BRIDGE_UNAVAILABLE/,
+);
+
+console.log("CLAIM_BRIDGE_MAXIMUM_TTL_ENFORCED=PASS");
+
+
 for (const status of [400, 403, 429, 500, 503]) {
   await assert.rejects(
     forward(environment({ status })),
