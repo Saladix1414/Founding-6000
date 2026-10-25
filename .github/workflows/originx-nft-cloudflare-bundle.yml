@@ -7,6 +7,11 @@ on:
       - deploy/cloudflare-d4
     paths:
       - .github/workflows/originx-nft-cloudflare-bundle.yml
+      - cloudflare/**
+      - server/src/tests/oxNft*.mjs
+      - wrangler.jsonc
+      - package.json
+      - package-lock.json
 
 permissions:
   contents: read
@@ -47,6 +52,32 @@ jobs:
           node server/src/tests/oxNftBuyerWorkerBridgeTest.mjs
           node server/src/tests/oxNftBuyerDoBridgeTest.mjs
           node server/src/tests/oxNftCloudflareRuntimePreflightTest.mjs
+
+      - name: Verify current NFT claim integration
+        run: |
+          node server/src/tests/oxNftBuyerClaimSqliteIntegrationTest.mjs
+          node server/src/tests/oxNftBuyerClaimConcurrencyTest.mjs
+          node server/src/tests/oxNftBuyerClaimHttpGatewayTest.mjs
+          node server/src/tests/oxNftBuyerClaimRouteRuntimeTest.mjs
+
+      - name: Run local Cloudflare Worker and SQLite Durable Object
+        run: |
+          set -euo pipefail
+
+          npx --yes wrangler@4.123.0 dev \
+            --config wrangler.jsonc \
+            --local \
+            --ip 127.0.0.1 \
+            --port 8791 \
+            > "$RUNNER_TEMP/originx-workerd.log" 2>&1 &
+
+          PID=$!
+          trap 'kill "$PID" 2>/dev/null || true' EXIT
+
+          node server/src/tests/oxNftCloudflareLocalRuntimeSmoke.mjs
+
+          echo "CLOUDFLARE_LOCAL_RUNTIME=PASS"
+          echo "REAL_DEPLOYMENT=NO"
 
       - name: Compile Worker without deploying
         run: |
