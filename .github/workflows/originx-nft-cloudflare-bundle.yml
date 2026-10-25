@@ -68,7 +68,7 @@ jobs:
 
           echo "WORKER_STARTUP_LOG_DIAGNOSTICS=ENABLED"
 
-          npx --yes wrangler@4.123.0 dev \
+          npx --yes wrangler@4.152.0 dev \
             --config wrangler.jsonc \
             --local \
             --ip 127.0.0.1 \
@@ -114,7 +114,7 @@ jobs:
 
       - name: Compile Worker without deploying
         run: |
-          npx --yes wrangler@4.123.0 deploy \
+          npx --yes wrangler@4.152.0 deploy \
             --config wrangler.jsonc \
             --dry-run \
             --outdir "$RUNNER_TEMP/originx-worker-bundle"

@@ -76,7 +76,12 @@ console.log("CI_BUYER_SECURITY_TESTS=PASS");
 
 assert.match(
   workflow,
-  /wrangler@4\.123\.0 deploy/,
+  /wrangler@4\.152\.0 dev/,
+);
+
+assert.match(
+  workflow,
+  /wrangler@4\.152\.0 deploy/,
 );
 
 assert.match(
