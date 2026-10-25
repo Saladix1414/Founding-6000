@@ -31,6 +31,7 @@ const accepted = await sendBuyerVerificationEmail({
 
     assert.deepEqual(body.to, [input.to]);
     assert.ok(body.text.includes(input.code));
+    assert.ok(body.text.includes(input.challengeId));
     assert.ok(body.text.includes("30 minutos"));
 
     return Response.json({
