@@ -1,0 +1,26 @@
+{
+  "name": "originx-nft-claim-local-test-only",
+  "main": "./worker.mjs",
+  "compatibility_date": "2026-10-06",
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "FOUNDING_CORE",
+        "class_name": "FixtureCore"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "fixture-sqlite-v1",
+      "new_sqlite_classes": [
+        "FixtureCore"
+      ]
+    }
+  ],
+  "vars": {
+    "NFT_BUYER_CLAIM_ENABLED": "true",
+    "NFT_BUYER_CLAIM_HTTP_ENABLED": "true",
+    "NFT_INTERNAL_SERVICE_KEY": "originx-fixture-internal-key-2026-test-only"
+  }
+}

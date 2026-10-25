@@ -112,6 +112,67 @@ jobs:
           echo "CLOUDFLARE_LOCAL_RUNTIME=PASS"
           echo "REAL_DEPLOYMENT=NO"
 
+      - name: Run isolated NFT buyer claim E2E
+        run: |
+          set -euo pipefail
+
+          LOG="$RUNNER_TEMP/originx-nft-e2e-workerd.log"
+          DATA="$RUNNER_TEMP/originx-nft-e2e-sqlite"
+
+          mkdir -p "$DATA"
+
+          echo "E2E_ISOLATED_RUNTIME=STARTING"
+          echo "E2E_FIXTURE_DEPLOYMENT=NO"
+
+          npx --yes wrangler@4.152.0 dev \
+            --config server/src/tests/fixtures/nft-claim-workerd/wrangler.jsonc \
+            --local \
+            --ip 127.0.0.1 \
+            --port 8792 \
+            --persist-to "$DATA" \
+            > "$LOG" 2>&1 &
+
+          PID=$!
+
+          cleanup() {
+            result=$?
+            trap - EXIT
+
+            if [ "$result" -ne 0 ]; then
+              echo "=== NFT E2E RUNTIME FAILURE ==="
+              echo "E2E_EXIT_CODE=$result"
+
+              if kill -0 "$PID" 2>/dev/null; then
+                echo "E2E_WRANGLER_PROCESS=RUNNING"
+              else
+                echo "E2E_WRANGLER_PROCESS=STOPPED"
+              fi
+
+              echo "=== E2E WRANGLER LOGS ==="
+
+              if [ -f "$LOG" ]; then
+                tail -n 160 "$LOG"
+              else
+                echo "E2E_WRANGLER_LOG_NOT_CREATED"
+              fi
+            fi
+
+            kill "$PID" 2>/dev/null || true
+            wait "$PID" 2>/dev/null || true
+
+            exit "$result"
+          }
+
+          trap cleanup EXIT
+
+          node server/src/tests/oxNftClaimWorkerdE2eTest.mjs
+
+          echo "NFT_CLOUDFLARE_WORKER_DO_E2E=PASS"
+          echo "PRODUCTION_FLAGS_UNCHANGED=YES"
+          echo "REAL_PAYMENT=NO"
+          echo "REAL_EMAIL=NO"
+          echo "REAL_MINT=NO"
+
       - name: Compile Worker without deploying
         run: |
           npx --yes wrangler@4.152.0 deploy \
