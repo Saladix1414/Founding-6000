@@ -31,6 +31,10 @@ import {
   bindVerifiedWalletToMembership,
 } from "../../../../../cloudflare/nftWalletMembershipBinding.mjs";
 
+import {
+  evaluateNftDeliveryPreflight,
+} from "../../../../../cloudflare/nftWalletDeliveryPreflight.mjs";
+
 const KEY = "originx-fixture-internal-key-2026-test-only";
 const ACTOR_SECRET =
   "originx-fixture-actor-secret-2026-local-only";
@@ -271,6 +275,50 @@ export class FixtureCore extends FoundingCore {
       }
     }
 
+    /*
+     * Test-only, authenticated, read-only preflight.
+     * Not a production API or mint authorization.
+     */
+    if (path === "/__fixture/delivery/preflight") {
+      if (
+        request.method !== "POST" ||
+        request.headers.get("X-OriginX-Fixture-Key")
+          !== KEY
+      ) {
+        return reply(403, { error: "FORBIDDEN" });
+      }
+
+      let body;
+
+      try {
+        body = await request.json();
+      } catch {
+        return reply(400, { error: "INVALID_REQUEST" });
+      }
+
+      if (
+        !body ||
+        typeof body !== "object" ||
+        Array.isArray(body)
+      ) {
+        return reply(400, { error: "INVALID_REQUEST" });
+      }
+
+      try {
+        const result = evaluateNftDeliveryPreflight({
+          storage: this.state.storage,
+          membershipId: body.membershipId,
+          email: body.email,
+        });
+
+        return reply(200, result);
+      } catch {
+        return reply(403, {
+          error: "NFT_DELIVERY_PREFLIGHT_UNAVAILABLE",
+        });
+      }
+    }
+
     if (path === "/__fixture/inspect") {
       if (
         request.method !== "POST" ||
@@ -377,7 +425,8 @@ export default {
       url.pathname === "/__fixture/inspect" ||
       url.pathname === "/__fixture/wallet/challenge" ||
       url.pathname === "/__fixture/wallet/verify" ||
-      url.pathname === "/__fixture/wallet/bind"
+      url.pathname === "/__fixture/wallet/bind" ||
+      url.pathname === "/__fixture/delivery/preflight"
     ) {
       if (!localOnly(request)) {
         return reply(403, { error: "FORBIDDEN" });
