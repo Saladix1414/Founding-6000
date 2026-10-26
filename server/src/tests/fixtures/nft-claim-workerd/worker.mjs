@@ -377,6 +377,58 @@ export class FixtureCore extends FoundingCore {
       }
     }
 
+    /*
+     * PHASE 5J.6 — LOCAL FIXTURE BRIDGE.
+     *
+     * Unlike the earlier direct readiness fixture,
+     * this path exercises FoundingCore.fetch()
+     * and the real internal gateway.
+     *
+     * This route is NOT a production endpoint.
+     */
+    if (path === "/__fixture/readiness/bridge") {
+      if (
+        request.method !== "POST" ||
+        request.headers.get("X-OriginX-Fixture-Key") !== KEY
+      ) {
+        return reply(403, { error: "FORBIDDEN" });
+      }
+
+      const supplied = request.headers.get(
+        "X-OriginX-Readiness-Key"
+      );
+
+      let raw;
+
+      try {
+        raw = await request.text();
+      } catch {
+        return reply(400, { error: "INVALID_REQUEST" });
+      }
+
+      if (
+        new TextEncoder().encode(raw).byteLength > 1024
+      ) {
+        return reply(413, { error: "REQUEST_TOO_LARGE" });
+      }
+
+      return super.fetch(
+        new Request(
+          "https://founding-core.internal/internal/nft/mint/readiness",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              ...(supplied
+                ? { "X-OriginX-Readiness-Key": supplied }
+                : {}),
+            },
+            body: raw,
+          },
+        ),
+      );
+    }
+
     if (path === "/__fixture/inspect") {
       if (
         request.method !== "POST" ||
@@ -494,7 +546,8 @@ export default {
       url.pathname === "/__fixture/wallet/verify" ||
       url.pathname === "/__fixture/wallet/bind" ||
       url.pathname === "/__fixture/delivery/preflight" ||
-      url.pathname === "/__fixture/mint/readiness"
+      url.pathname === "/__fixture/mint/readiness" ||
+      url.pathname === "/__fixture/readiness/bridge"
     ) {
       if (!localOnly(request)) {
         return reply(403, { error: "FORBIDDEN" });

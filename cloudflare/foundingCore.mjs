@@ -616,6 +616,31 @@ export class FoundingCore extends DurableObject {
       });
     }
 
+    /*
+     * OX-NFT-5J.6 — private readiness boundary.
+     *
+     * No external Worker route is registered.
+     * Dedicated credential + default-off flag
+     * are checked by the gateway itself.
+     *
+     * READY does not authorize blockchain mint.
+     */
+    if (
+      url.pathname ===
+        "/internal/nft/mint/readiness"
+    ) {
+      const { handleInternalMintReadiness } =
+        await import(
+          "./nftMintReadinessInternalGateway.mjs"
+        );
+
+      return handleInternalMintReadiness({
+        request,
+        storage: this.state.storage,
+        env: this.env,
+      });
+    }
+
     if (
       request.method === "GET" &&
       url.pathname ===

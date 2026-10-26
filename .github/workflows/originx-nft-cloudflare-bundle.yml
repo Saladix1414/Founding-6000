@@ -408,6 +408,53 @@ jobs:
           echo "REAL_DEPLOYMENT=NO"
           echo "REAL_MINT=NO"
 
+      - name: Run isolated NFT readiness authority E2E
+        run: |
+          set -euo pipefail
+
+          LOG="$RUNNER_TEMP/originx-readiness-authority-e2e.log"
+          DATA="$RUNNER_TEMP/originx-readiness-authority-sqlite"
+
+          mkdir -p "$DATA"
+
+          npx --yes wrangler@4.152.0 dev \
+            --config server/src/tests/fixtures/nft-claim-workerd/wrangler.jsonc \
+            --local \
+            --ip 127.0.0.1 \
+            --port 8797 \
+            --persist-to "$DATA" \
+            > "$LOG" 2>&1 &
+
+          PID=$!
+
+          cleanup() {
+            result=$?
+            trap - EXIT
+
+            if [ "$result" -ne 0 ]; then
+              echo "=== READINESS AUTHORITY E2E FAILURE ==="
+              if [ -f "$LOG" ]; then
+                tail -n 160 "$LOG"
+              fi
+            fi
+
+            kill "$PID" 2>/dev/null || true
+            wait "$PID" 2>/dev/null || true
+            exit "$result"
+          }
+
+          trap cleanup EXIT
+
+          node server/src/tests/oxNftMintReadinessInternalGatewayTest.mjs
+          node server/src/tests/oxNftMintReadinessPrivateRouteTest.mjs
+          node server/src/tests/oxNftReadinessAuthorityWorkerdE2eTest.mjs
+
+          echo "OX_NFT_5J_6_AUTHORITY_WORKER_E2E=PASS"
+          echo "PRIVATE_GATEWAY=VERIFIED"
+          echo "PUBLIC_ROUTE=NOT_EXPOSED"
+          echo "REAL_DEPLOYMENT=NO"
+          echo "REAL_MINT=NO"
+
       - name: Compile Worker without deploying
         run: |
           npx --yes wrangler@4.152.0 deploy \

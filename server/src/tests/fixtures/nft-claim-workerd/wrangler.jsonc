@@ -21,6 +21,8 @@
   "vars": {
     "NFT_BUYER_CLAIM_ENABLED": "true",
     "NFT_BUYER_CLAIM_HTTP_ENABLED": "true",
-    "NFT_INTERNAL_SERVICE_KEY": "originx-fixture-internal-key-2026-test-only"
+    "NFT_INTERNAL_SERVICE_KEY": "originx-fixture-internal-key-2026-test-only",
+    "NFT_MINT_READINESS_ENABLED": "true",
+    "NFT_READINESS_INTERNAL_KEY": "originx-readiness-fixture-2026-local-only-key"
   }
 }
