@@ -43,6 +43,10 @@ import {
   reserveSimulatedNftMint,
 } from "../../../../../cloudflare/nftMintSimulationReservation.mjs";
 
+import {
+  recordSimulatedMintSubmission,
+} from "../../../../../cloudflare/nftMintSimulatedSubmission.mjs";
+
 const KEY = "originx-fixture-internal-key-2026-test-only";
 const ACTOR_SECRET =
   "originx-fixture-actor-secret-2026-local-only";
@@ -490,6 +494,70 @@ export class FixtureCore extends FoundingCore {
       }
     }
 
+    /*
+     * OriginX simulated submission.
+     *
+     * ISOLATED TEST FIXTURE ONLY.
+     * Not a real blockchain transaction.
+     * No mint signer or transaction authority.
+     */
+    if (
+      path === "/__fixture/mint/submission/simulate"
+    ) {
+      if (
+        request.method !== "POST" ||
+        request.headers.get("X-OriginX-Fixture-Key")
+          !== KEY
+      ) {
+        return reply(403, { error: "FORBIDDEN" });
+      }
+
+      let body;
+
+      try {
+        const raw = await request.text();
+
+        if (
+          new TextEncoder().encode(raw).byteLength > 1024
+        ) {
+          return reply(413, {
+            error: "REQUEST_TOO_LARGE",
+          });
+        }
+
+        body = JSON.parse(raw);
+      } catch {
+        return reply(400, {
+          error: "INVALID_REQUEST",
+        });
+      }
+
+      if (
+        !body ||
+        typeof body !== "object" ||
+        Array.isArray(body) ||
+        Object.keys(body).length !== 1 ||
+        typeof body.mintJobId !== "string"
+      ) {
+        return reply(400, {
+          error: "INVALID_REQUEST",
+        });
+      }
+
+      try {
+        const result = recordSimulatedMintSubmission({
+          storage: this.state.storage,
+          mintJobId: body.mintJobId,
+        });
+
+        return reply(200, result);
+      } catch {
+        return reply(403, {
+          error: "NFT_SIMULATED_SUBMISSION_UNAVAILABLE",
+        });
+      }
+    }
+
     if (path === "/__fixture/inspect") {
       if (
         request.method !== "POST" ||
@@ -507,7 +575,9 @@ export class FixtureCore extends FoundingCore {
       `, membershipId).toArray();
 
       const jobs = this.sql.exec(`
-        SELECT status, recipient_address AS recipient
+        SELECT status,
+               recipient_address AS recipient,
+               mint_tx_hash AS mintTxHash
         FROM nft_mint_jobs
         WHERE membership_id = ?
       `, membershipId).toArray();
@@ -551,6 +621,14 @@ export class FixtureCore extends FoundingCore {
           AND event_type = 'SIMULATED_MINT_RESERVED'
       `, membershipId).toArray();
 
+      const simulatedSubmissions = this.sql.exec(`
+        SELECT COUNT(*) AS total
+        FROM nft_mint_simulated_submissions
+        WHERE membership_id = ?
+          AND event_type =
+            'SIMULATED_SUBMISSION_RECORDED'
+      `, membershipId).toArray();
+
       const actorReservations = this.sql.exec(`
         SELECT COUNT(*) AS total
         FROM nft_email_actor_limits
@@ -562,6 +640,7 @@ export class FixtureCore extends FoundingCore {
         ).length,
         totalGrants: grants.length,
         mintJobStatus: jobs[0]?.status ?? null,
+        mintJobTxHash: jobs[0]?.mintTxHash ?? null,
         challengeStatus: codes[0]?.status ?? null,
         challengeAttempts: codes[0]?.attempts ?? null,
         actorBuckets: actorReservations[0]?.total ?? 0,
@@ -587,6 +666,8 @@ export class FixtureCore extends FoundingCore {
           readinessEvents.length,
         mintSimulationReservationCount:
           simulationReservations[0]?.total ?? 0,
+        mintSimulatedSubmissionCount:
+          simulatedSubmissions[0]?.total ?? 0,
       });
     }
 
@@ -618,7 +699,8 @@ export default {
       url.pathname === "/__fixture/delivery/preflight" ||
       url.pathname === "/__fixture/mint/readiness" ||
       url.pathname === "/__fixture/readiness/bridge" ||
-      url.pathname === "/__fixture/mint/simulate"
+      url.pathname === "/__fixture/mint/simulate" ||
+      url.pathname === "/__fixture/mint/submission/simulate"
     ) {
       if (!localOnly(request)) {
         return reply(403, { error: "FORBIDDEN" });

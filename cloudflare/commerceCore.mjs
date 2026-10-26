@@ -547,6 +547,30 @@ export class CommerceCore {
         );
     `);
 
+    /*
+     * Simulated-only submission audit.
+     * Unique reservation and job prevent replay.
+     * Never store fabricated blockchain tx hashes.
+     */
+    this.sql.exec(`
+      CREATE TABLE IF NOT EXISTS
+        nft_mint_simulated_submissions (
+          id TEXT PRIMARY KEY,
+          mint_job_id TEXT NOT NULL UNIQUE,
+          membership_id TEXT NOT NULL UNIQUE,
+          reservation_id TEXT NOT NULL UNIQUE,
+          serial_number INTEGER NOT NULL UNIQUE
+            CHECK(serial_number BETWEEN 1 AND 6000),
+          recipient_address TEXT NOT NULL,
+          chain_id INTEGER NOT NULL
+            CHECK(chain_id = 8453),
+          event_type TEXT NOT NULL
+            CHECK(event_type =
+              'SIMULATED_SUBMISSION_RECORDED'),
+          recorded_at TEXT NOT NULL
+        );
+    `);
+
     this.sql.exec(
       `
         INSERT OR IGNORE INTO campaign_phases (
