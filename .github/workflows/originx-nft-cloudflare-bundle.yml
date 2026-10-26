@@ -235,6 +235,67 @@ jobs:
           echo "REAL_MINT=NO"
           echo "REAL_FUNDS_MOVED=NO"
 
+      - name: Run isolated NFT wallet binding E2E
+        run: |
+          set -euo pipefail
+
+          LOG="$RUNNER_TEMP/originx-wallet-binding-e2e.log"
+          DATA="$RUNNER_TEMP/originx-wallet-binding-sqlite"
+
+          mkdir -p "$DATA"
+
+          echo "WALLET_BINDING_E2E=STARTING"
+          echo "WALLET_BINDING_DEPLOYMENT=NO"
+
+          npx --yes wrangler@4.152.0 dev \
+            --config server/src/tests/fixtures/nft-claim-workerd/wrangler.jsonc \
+            --local \
+            --ip 127.0.0.1 \
+            --port 8794 \
+            --persist-to "$DATA" \
+            > "$LOG" 2>&1 &
+
+          PID=$!
+
+          cleanup() {
+            result=$?
+            trap - EXIT
+
+            if [ "$result" -ne 0 ]; then
+              echo "=== WALLET BINDING E2E FAILURE ==="
+              echo "WALLET_BINDING_EXIT_CODE=$result"
+
+              if kill -0 "$PID" 2>/dev/null; then
+                echo "WALLET_BINDING_WORKER=RUNNING"
+              else
+                echo "WALLET_BINDING_WORKER=STOPPED"
+              fi
+
+              if [ -f "$LOG" ]; then
+                tail -n 160 "$LOG"
+              else
+                echo "WALLET_BINDING_LOG_MISSING"
+              fi
+            fi
+
+            kill "$PID" 2>/dev/null || true
+            wait "$PID" 2>/dev/null || true
+
+            exit "$result"
+          }
+
+          trap cleanup EXIT
+
+          node server/src/tests/oxNftWalletBindingWorkerdE2eTest.mjs
+
+          echo "OX_NFT_5J_3_WORKER_E2E=PASS"
+          echo "BINDING_PERSISTENCE=VERIFIED"
+          echo "BINDING_DUPLICATES=BLOCKED"
+          echo "ORIGINAL_SUBSCRIBER_EMAIL=PRESERVED"
+          echo "MINT_AUTHORITY=NONE"
+          echo "PRODUCTION_DEPLOYMENT=NO"
+          echo "REAL_MINT=NO"
+
       - name: Compile Worker without deploying
         run: |
           npx --yes wrangler@4.152.0 deploy \

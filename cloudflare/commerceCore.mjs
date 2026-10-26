@@ -465,6 +465,44 @@ export class CommerceCore {
       );
     `);
 
+    /*
+     * OX-NFT-5J.3 — Wallet binding foundation.
+     *
+     * Purchaser email remains canonical in
+     * founding_orders. No email copy here.
+     *
+     * This is NOT the current on-chain NFT owner.
+     * It does not authorize minting.
+     */
+    this.sql.exec(`
+      CREATE TABLE IF NOT EXISTS nft_wallet_bindings (
+        id TEXT PRIMARY KEY,
+        membership_id TEXT NOT NULL UNIQUE,
+        challenge_id TEXT NOT NULL UNIQUE,
+        wallet_address TEXT NOT NULL,
+        chain_id INTEGER NOT NULL
+          CHECK(chain_id = 8453),
+        status TEXT NOT NULL
+          CHECK(status = 'BOUND'),
+        bound_at TEXT NOT NULL
+      );
+
+      CREATE INDEX IF NOT EXISTS
+        idx_nft_wallet_bindings_wallet
+      ON nft_wallet_bindings(wallet_address);
+
+      CREATE TABLE IF NOT EXISTS
+        nft_wallet_binding_events (
+          id TEXT PRIMARY KEY,
+          binding_id TEXT NOT NULL UNIQUE,
+          membership_id TEXT NOT NULL,
+          challenge_id TEXT NOT NULL,
+          event_type TEXT NOT NULL
+            CHECK(event_type = 'WALLET_BOUND'),
+          created_at TEXT NOT NULL
+        );
+    `);
+
     this.sql.exec(
       `
         INSERT OR IGNORE INTO campaign_phases (

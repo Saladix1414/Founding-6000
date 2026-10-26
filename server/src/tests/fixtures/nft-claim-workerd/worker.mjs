@@ -27,6 +27,10 @@ import {
   verifyEmailBoundWalletChallenge,
 } from "../../../../../cloudflare/nftWalletChallengeVerification.mjs";
 
+import {
+  bindVerifiedWalletToMembership,
+} from "../../../../../cloudflare/nftWalletMembershipBinding.mjs";
+
 const KEY = "originx-fixture-internal-key-2026-test-only";
 const ACTOR_SECRET =
   "originx-fixture-actor-secret-2026-local-only";
@@ -211,6 +215,62 @@ export class FixtureCore extends FoundingCore {
       }
     }
 
+    /*
+     * PHASE 5J.3 — test-only binding gateway.
+     *
+     * No production route, no mint authority.
+     * The binding service checks the verified
+     * wallet challenge and original buyer email.
+     */
+    if (path === "/__fixture/wallet/bind") {
+      if (
+        request.method !== "POST" ||
+        request.headers.get("X-OriginX-Fixture-Key")
+          !== KEY
+      ) {
+        return reply(403, { error: "FORBIDDEN" });
+      }
+
+      let body;
+
+      try {
+        body = await request.json();
+      } catch {
+        return reply(400, {
+          error: "INVALID_REQUEST",
+        });
+      }
+
+      if (
+        !body ||
+        typeof body !== "object" ||
+        Array.isArray(body)
+      ) {
+        return reply(400, {
+          error: "INVALID_REQUEST",
+        });
+      }
+
+      try {
+        const result = bindVerifiedWalletToMembership({
+          storage: this.state.storage,
+          challengeId: body.challengeId,
+          email: body.email,
+        });
+
+        return reply(200, {
+          bound: result.bound,
+          walletAddress: result.walletAddress,
+          serialNumber: result.serialNumber,
+          chainId: result.chainId,
+        });
+      } catch {
+        return reply(403, {
+          error: "NFT_WALLET_BINDING_UNAVAILABLE",
+        });
+      }
+    }
+
     if (path === "/__fixture/inspect") {
       if (
         request.method !== "POST" ||
@@ -245,6 +305,19 @@ export class FixtureCore extends FoundingCore {
         WHERE membership_id = ?
       `, membershipId).toArray();
 
+      const bindings = this.sql.exec(`
+        SELECT wallet_address AS walletAddress,
+               status
+        FROM nft_wallet_bindings
+        WHERE membership_id = ?
+      `, membershipId).toArray();
+
+      const bindingEvents = this.sql.exec(`
+        SELECT event_type AS eventType
+        FROM nft_wallet_binding_events
+        WHERE membership_id = ?
+      `, membershipId).toArray();
+
       const actorReservations = this.sql.exec(`
         SELECT COUNT(*) AS total
         FROM nft_email_actor_limits
@@ -268,6 +341,15 @@ export class FixtureCore extends FoundingCore {
             row => row.status === "CONSUMED"
           ).length,
         walletRecipient: jobs[0]?.recipient ?? null,
+        walletBindingCount: bindings.length,
+        walletBindingStatus:
+          bindings[0]?.status ?? null,
+        walletBindingAddress:
+          bindings[0]?.walletAddress ?? null,
+        walletBindingEventCount:
+          bindingEvents.filter(
+            event => event.eventType === "WALLET_BOUND"
+          ).length,
       });
     }
 
@@ -294,7 +376,8 @@ export default {
       url.pathname === "/__fixture/seed" ||
       url.pathname === "/__fixture/inspect" ||
       url.pathname === "/__fixture/wallet/challenge" ||
-      url.pathname === "/__fixture/wallet/verify"
+      url.pathname === "/__fixture/wallet/verify" ||
+      url.pathname === "/__fixture/wallet/bind"
     ) {
       if (!localOnly(request)) {
         return reply(403, { error: "FORBIDDEN" });
