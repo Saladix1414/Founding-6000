@@ -559,6 +559,24 @@ jobs:
           echo "TRANSACTIONS_SIGNED=NO"
           echo "REAL_MINT=NO"
 
+      - name: Verify Base Sepolia RPC mint evidence
+        run: |
+          set -euo pipefail
+
+          node --check cloudflare/nftMintRpcEvidenceAdapter.mjs
+          node --check server/src/tests/oxNftMintRpcEvidenceAdapterTest.mjs
+          node --check server/src/tests/oxNftMintRpcEvidenceFailureTest.mjs
+
+          node server/src/tests/oxNftMintRpcEvidenceAdapterTest.mjs
+          node server/src/tests/oxNftMintRpcEvidenceFailureTest.mjs
+
+          echo "OX_NFT_RPC_EVIDENCE_CI=PASS"
+          echo "RPC_ADVERSARIAL_CASES=22"
+          echo "RPC_FAILURE_CASES=15"
+          echo "LIVE_RPC_CONNECTED=NO"
+          echo "TRANSACTIONS_SIGNED=NO"
+          echo "REAL_MINT=NO"
+
       - name: Compile Worker without deploying
         run: |
           npx --yes wrangler@4.152.0 deploy \
