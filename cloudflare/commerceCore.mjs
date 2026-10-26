@@ -523,6 +523,30 @@ export class CommerceCore {
         );
     `);
 
+    /*
+     * OX-NFT Mint Execution — local simulation.
+     *
+     * A reservation is operational test evidence,
+     * NOT permission to sign or submit a mint.
+     */
+    this.sql.exec(`
+      CREATE TABLE IF NOT EXISTS
+        nft_mint_simulation_reservations (
+          id TEXT PRIMARY KEY,
+          mint_job_id TEXT NOT NULL UNIQUE,
+          membership_id TEXT NOT NULL UNIQUE,
+          binding_id TEXT NOT NULL,
+          serial_number INTEGER NOT NULL UNIQUE
+            CHECK(serial_number BETWEEN 1 AND 6000),
+          recipient_address TEXT NOT NULL,
+          chain_id INTEGER NOT NULL
+            CHECK(chain_id = 8453),
+          event_type TEXT NOT NULL
+            CHECK(event_type = 'SIMULATED_MINT_RESERVED'),
+          reserved_at TEXT NOT NULL
+        );
+    `);
+
     this.sql.exec(
       `
         INSERT OR IGNORE INTO campaign_phases (

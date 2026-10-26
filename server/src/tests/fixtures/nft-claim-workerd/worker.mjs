@@ -39,6 +39,10 @@ import {
   prepareNftMintReadiness,
 } from "../../../../../cloudflare/nftMintReadinessTransition.mjs";
 
+import {
+  reserveSimulatedNftMint,
+} from "../../../../../cloudflare/nftMintSimulationReservation.mjs";
+
 const KEY = "originx-fixture-internal-key-2026-test-only";
 const ACTOR_SECRET =
   "originx-fixture-actor-secret-2026-local-only";
@@ -429,6 +433,63 @@ export class FixtureCore extends FoundingCore {
       );
     }
 
+    /*
+     * Local fixture only: simulated reservation.
+     *
+     * No signer, no RPC, no real mint.
+     * This must NEVER enter the public Worker.
+     */
+    if (path === "/__fixture/mint/simulate") {
+      if (
+        request.method !== "POST" ||
+        request.headers.get("X-OriginX-Fixture-Key")
+          !== KEY
+      ) {
+        return reply(403, { error: "FORBIDDEN" });
+      }
+
+      let body;
+
+      try {
+        const raw = await request.text();
+
+        if (
+          new TextEncoder().encode(raw).byteLength > 1024
+        ) {
+          return reply(413, {
+            error: "REQUEST_TOO_LARGE",
+          });
+        }
+
+        body = JSON.parse(raw);
+      } catch {
+        return reply(400, { error: "INVALID_REQUEST" });
+      }
+
+      if (
+        !body ||
+        typeof body !== "object" ||
+        Array.isArray(body) ||
+        Object.keys(body).length !== 1 ||
+        typeof body.mintJobId !== "string"
+      ) {
+        return reply(400, { error: "INVALID_REQUEST" });
+      }
+
+      try {
+        const result = reserveSimulatedNftMint({
+          storage: this.state.storage,
+          mintJobId: body.mintJobId,
+        });
+
+        return reply(200, result);
+      } catch {
+        return reply(403, {
+          error: "NFT_MINT_SIMULATION_UNAVAILABLE",
+        });
+      }
+    }
+
     if (path === "/__fixture/inspect") {
       if (
         request.method !== "POST" ||
@@ -483,6 +544,13 @@ export class FixtureCore extends FoundingCore {
           AND event_type = 'MINT_JOB_READY'
       `, membershipId).toArray();
 
+      const simulationReservations = this.sql.exec(`
+        SELECT COUNT(*) AS total
+        FROM nft_mint_simulation_reservations
+        WHERE membership_id = ?
+          AND event_type = 'SIMULATED_MINT_RESERVED'
+      `, membershipId).toArray();
+
       const actorReservations = this.sql.exec(`
         SELECT COUNT(*) AS total
         FROM nft_email_actor_limits
@@ -517,6 +585,8 @@ export class FixtureCore extends FoundingCore {
           ).length,
         mintReadinessEventCount:
           readinessEvents.length,
+        mintSimulationReservationCount:
+          simulationReservations[0]?.total ?? 0,
       });
     }
 
@@ -547,7 +617,8 @@ export default {
       url.pathname === "/__fixture/wallet/bind" ||
       url.pathname === "/__fixture/delivery/preflight" ||
       url.pathname === "/__fixture/mint/readiness" ||
-      url.pathname === "/__fixture/readiness/bridge"
+      url.pathname === "/__fixture/readiness/bridge" ||
+      url.pathname === "/__fixture/mint/simulate"
     ) {
       if (!localOnly(request)) {
         return reply(403, { error: "FORBIDDEN" });

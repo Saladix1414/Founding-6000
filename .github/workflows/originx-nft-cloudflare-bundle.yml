@@ -455,6 +455,48 @@ jobs:
           echo "REAL_DEPLOYMENT=NO"
           echo "REAL_MINT=NO"
 
+      - name: Run isolated NFT mint simulation E2E
+        run: |
+          set -euo pipefail
+
+          LOG="$RUNNER_TEMP/originx-mint-simulation.log"
+          DATA="$RUNNER_TEMP/originx-mint-simulation-sqlite"
+          mkdir -p "$DATA"
+
+          npx --yes wrangler@4.152.0 dev \
+            --config server/src/tests/fixtures/nft-claim-workerd/wrangler.jsonc \
+            --local \
+            --ip 127.0.0.1 \
+            --port 8798 \
+            --persist-to "$DATA" \
+            > "$LOG" 2>&1 &
+
+          PID=$!
+
+          cleanup() {
+            result=$?
+            trap - EXIT
+
+            if [ "$result" -ne 0 ]; then
+              echo "=== MINT SIMULATION E2E FAILURE ==="
+              tail -n 160 "$LOG" || true
+            fi
+
+            kill "$PID" 2>/dev/null || true
+            wait "$PID" 2>/dev/null || true
+            exit "$result"
+          }
+
+          trap cleanup EXIT
+
+          node server/src/tests/oxNftMintExecutionPlanTest.mjs
+          node server/src/tests/oxNftMintSimulationReservationTest.mjs
+          node server/src/tests/oxNftMintSimulationWorkerdE2eTest.mjs
+
+          echo "OX_NFT_MINT_SIMULATION_WORKER_E2E=PASS"
+          echo "REAL_MINT=NO"
+          echo "REAL_FUNDS_MOVED=NO"
+
       - name: Compile Worker without deploying
         run: |
           npx --yes wrangler@4.152.0 deploy \
