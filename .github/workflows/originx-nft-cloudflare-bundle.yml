@@ -540,6 +540,25 @@ jobs:
           echo "REAL_TRANSACTION_HASH=NULL"
           echo "REAL_MINT=NO"
 
+      - name: Verify NFT ERC721 receipt evidence
+        run: |
+          set -euo pipefail
+
+          echo "RECEIPT_EVIDENCE_CI=STARTING"
+          echo "NETWORK=BASE_SEPOLIA_84532"
+
+          node --check cloudflare/nftMintReceiptEvidence.mjs
+          node --check server/src/tests/oxNftMintReceiptEvidenceTest.mjs
+
+          node server/src/tests/oxNftMintReceiptEvidenceTest.mjs
+
+          echo "OX_NFT_RECEIPT_EVIDENCE_CI=PASS"
+          echo "ADVERSARIAL_CASES=22"
+          echo "EVIDENCE_AUTHENTICATED=NO"
+          echo "RPC_CALLS=NONE"
+          echo "TRANSACTIONS_SIGNED=NO"
+          echo "REAL_MINT=NO"
+
       - name: Compile Worker without deploying
         run: |
           npx --yes wrangler@4.152.0 deploy \
