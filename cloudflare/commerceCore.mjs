@@ -503,6 +503,26 @@ export class CommerceCore {
         );
     `);
 
+    /*
+     * OX-NFT-5J.5 — Readiness transition audit.
+     *
+     * This records a local queue preparation.
+     * It is not mint approval or on-chain proof.
+     */
+    this.sql.exec(`
+      CREATE TABLE IF NOT EXISTS
+        nft_mint_readiness_events (
+          id TEXT PRIMARY KEY,
+          mint_job_id TEXT NOT NULL UNIQUE,
+          membership_id TEXT NOT NULL UNIQUE,
+          binding_id TEXT NOT NULL,
+          recipient_address TEXT NOT NULL,
+          event_type TEXT NOT NULL
+            CHECK(event_type = 'MINT_JOB_READY'),
+          created_at TEXT NOT NULL
+        );
+    `);
+
     this.sql.exec(
       `
         INSERT OR IGNORE INTO campaign_phases (

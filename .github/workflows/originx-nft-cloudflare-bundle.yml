@@ -361,6 +361,53 @@ jobs:
           echo "REAL_DEPLOYMENT=NO"
           echo "REAL_MINT=NO"
 
+      - name: Run isolated NFT mint readiness E2E
+        run: |
+          set -euo pipefail
+
+          LOG="$RUNNER_TEMP/originx-readiness-e2e.log"
+          DATA="$RUNNER_TEMP/originx-readiness-sqlite"
+
+          mkdir -p "$DATA"
+
+          npx --yes wrangler@4.152.0 dev \
+            --config server/src/tests/fixtures/nft-claim-workerd/wrangler.jsonc \
+            --local \
+            --ip 127.0.0.1 \
+            --port 8796 \
+            --persist-to "$DATA" \
+            > "$LOG" 2>&1 &
+
+          PID=$!
+
+          cleanup() {
+            result=$?
+            trap - EXIT
+
+            if [ "$result" -ne 0 ]; then
+              echo "=== NFT READINESS E2E FAILURE ==="
+              if [ -f "$LOG" ]; then
+                tail -n 160 "$LOG"
+              fi
+            fi
+
+            kill "$PID" 2>/dev/null || true
+            wait "$PID" 2>/dev/null || true
+            exit "$result"
+          }
+
+          trap cleanup EXIT
+
+          node server/src/tests/oxNftMintReadinessTransitionTest.mjs
+          node server/src/tests/oxNftMintReadinessWorkerdE2eTest.mjs
+
+          echo "OX_NFT_5J_5_WORKER_E2E=PASS"
+          echo "SQLITE_ATOMIC_READINESS=VERIFIED"
+          echo "READINESS_AUDIT=PERSISTED"
+          echo "MINT_AUTHORITY=NONE"
+          echo "REAL_DEPLOYMENT=NO"
+          echo "REAL_MINT=NO"
+
       - name: Compile Worker without deploying
         run: |
           npx --yes wrangler@4.152.0 deploy \

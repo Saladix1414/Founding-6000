@@ -35,6 +35,10 @@ import {
   evaluateNftDeliveryPreflight,
 } from "../../../../../cloudflare/nftWalletDeliveryPreflight.mjs";
 
+import {
+  prepareNftMintReadiness,
+} from "../../../../../cloudflare/nftMintReadinessTransition.mjs";
+
 const KEY = "originx-fixture-internal-key-2026-test-only";
 const ACTOR_SECRET =
   "originx-fixture-actor-secret-2026-local-only";
@@ -319,6 +323,60 @@ export class FixtureCore extends FoundingCore {
       }
     }
 
+    /*
+     * PHASE 5J.5 — TEST FIXTURE ONLY.
+     *
+     * The caller cannot provide the authority
+     * callback, destination wallet or recipient.
+     *
+     * Fixture authorization is NOT an actual
+     * production mint-readiness authority.
+     */
+    if (path === "/__fixture/mint/readiness") {
+      if (
+        request.method !== "POST" ||
+        request.headers.get("X-OriginX-Fixture-Key")
+          !== KEY
+      ) {
+        return reply(403, { error: "FORBIDDEN" });
+      }
+
+      let body;
+
+      try {
+        body = await request.json();
+      } catch {
+        return reply(400, { error: "INVALID_REQUEST" });
+      }
+
+      if (
+        !body ||
+        typeof body !== "object" ||
+        Array.isArray(body)
+      ) {
+        return reply(400, { error: "INVALID_REQUEST" });
+      }
+
+      try {
+        const result = prepareNftMintReadiness({
+          storage: this.state.storage,
+          membershipId: body.membershipId,
+          email: body.email,
+          authorizeReadiness: context =>
+            context.operation ===
+              "NFT_MINT_READINESS" &&
+            context.membershipId ===
+              body.membershipId,
+        });
+
+        return reply(200, result);
+      } catch {
+        return reply(403, {
+          error: "NFT_MINT_READINESS_UNAVAILABLE",
+        });
+      }
+    }
+
     if (path === "/__fixture/inspect") {
       if (
         request.method !== "POST" ||
@@ -366,6 +424,13 @@ export class FixtureCore extends FoundingCore {
         WHERE membership_id = ?
       `, membershipId).toArray();
 
+      const readinessEvents = this.sql.exec(`
+        SELECT id
+        FROM nft_mint_readiness_events
+        WHERE membership_id = ?
+          AND event_type = 'MINT_JOB_READY'
+      `, membershipId).toArray();
+
       const actorReservations = this.sql.exec(`
         SELECT COUNT(*) AS total
         FROM nft_email_actor_limits
@@ -398,6 +463,8 @@ export class FixtureCore extends FoundingCore {
           bindingEvents.filter(
             event => event.eventType === "WALLET_BOUND"
           ).length,
+        mintReadinessEventCount:
+          readinessEvents.length,
       });
     }
 
@@ -426,7 +493,8 @@ export default {
       url.pathname === "/__fixture/wallet/challenge" ||
       url.pathname === "/__fixture/wallet/verify" ||
       url.pathname === "/__fixture/wallet/bind" ||
-      url.pathname === "/__fixture/delivery/preflight"
+      url.pathname === "/__fixture/delivery/preflight" ||
+      url.pathname === "/__fixture/mint/readiness"
     ) {
       if (!localOnly(request)) {
         return reply(403, { error: "FORBIDDEN" });
