@@ -592,6 +592,26 @@ jobs:
           echo "TRANSACTIONS_SIGNED=NO"
           echo "REAL_MINT=NO"
 
+      - name: Verify NFT RPC provider policy and mock integration
+        run: |
+          set -euo pipefail
+
+          node --check cloudflare/nftMintRpcProviderPolicy.mjs
+          node --check cloudflare/nftMintRpcPolicyIntegration.mjs
+          node --check server/src/tests/oxNftMintRpcProviderPolicyTest.mjs
+          node --check server/src/tests/oxNftMintRpcPolicyIntegrationTest.mjs
+
+          node server/src/tests/oxNftMintRpcProviderPolicyTest.mjs
+          node server/src/tests/oxNftMintRpcPolicyIntegrationTest.mjs
+
+          echo "OX_NFT_RPC_PROVIDER_POLICY_CI=PASS"
+          echo "POLICY_ADVERSARIAL_CASES=20"
+          echo "POLICY_INTEGRATION_ATTACKS=20"
+          echo "LIVE_RPC_MODE=BLOCKED"
+          echo "NETWORK_REQUESTS=MOCK_ONLY"
+          echo "MINT_AUTHORITY=NONE"
+          echo "REAL_MINT=NO"
+
       - name: Compile Worker without deploying
         run: |
           npx --yes wrangler@4.152.0 deploy \
