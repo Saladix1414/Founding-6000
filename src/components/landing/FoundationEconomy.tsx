@@ -74,13 +74,24 @@ export default function FoundationEconomy({
         </p>
 
         <div className="ox-economy-layout">
-          <div className="ox-economy-simulator">
-            <div className="ox-economy-simulator-title">
-              <h3>{es ? "Explorá la distribución" : "Explore the allocation"}</h3>
-              <span>{es ? "EJEMPLO TEÓRICO" : "THEORETICAL EXAMPLE"}</span>
-            </div>
-
-            <fieldset className="ox-economy-selector">
+          <details className="ox-economy-disclosure">
+            <summary className="ox-economy-disclosure-summary">
+              <span className="ox-economy-disclosure-copy">
+                <span className="ox-economy-disclosure-title">
+                  {es
+                    ? "Explorar la distribución económica"
+                    : "Explore the economic allocation"}
+                </span>
+                <span className="ox-economy-disclosure-note">
+                  {es
+                    ? "Ejemplo teórico · RARE / EPIC / LEGENDARY"
+                    : "Theoretical example · RARE / EPIC / LEGENDARY"}
+                </span>
+              </span>
+              <span className="ox-economy-disclosure-icon" aria-hidden="true" />
+            </summary>
+            <div className="ox-economy-simulator">
+              <fieldset className="ox-economy-selector">
               <legend>{es ? "Elegí un tier" : "Choose a tier"}</legend>
               <div>
                 {SIMULATION_TIERS.map(value => (
@@ -148,7 +159,8 @@ export default function FoundationEconomy({
                 </tbody>
               </table>
             </div>
-          </div>
+            </div>
+          </details>
 
           <aside className="ox-economy-explanation">
             <div className="ox-economy-policy">
