@@ -1533,17 +1533,17 @@ function App() {
               {publicCheckoutEnabled && checkoutStep === "confirm" && (
                 <div className="checkout-step">
                   <span className="checkout-step__number">
-                    STEP 02 / 04
+                    {language === "es" ? "PASO 02 / 04" : "STEP 02 / 04"}
                   </span>
 
                   <h2>
-                    Confirm your reservation details.
+                    {language === "es" ? "Revisá tu reserva." : "Review your reservation."}
                   </h2>
 
                   <p>
-                    Review the active campaign phase and
-                    pre-sale conditions before choosing a
-                    payment method.
+                    {language === "es"
+                      ? "Revisá la categoría, el precio y las condiciones antes de elegir cómo pagar."
+                      : "Review the category, price and terms before choosing how to pay."}
                   </p>
 
                   <div className="checkout-summary">
@@ -1555,8 +1555,8 @@ function App() {
                     <div>
                       <span>
                         {language === "es"
-                          ? "Tier de colección"
-                          : "Collection tier"}
+                          ? "Categoría"
+                          : "Category"}
                       </span>
                       <strong>RARE</strong>
                     </div>
@@ -1564,8 +1564,8 @@ function App() {
                     <div>
                       <span>
                         {language === "es"
-                          ? "Rango"
-                          : "Range"}
+                          ? "Números de la categoría"
+                          : "Category number range"}
                       </span>
                       <strong>#0001–#1000</strong>
                     </div>
@@ -1573,32 +1573,31 @@ function App() {
                     <div>
                       <span>
                         {language === "es"
-                          ? "Precio primario"
-                          : "Primary price"}
+                          ? "Precio de venta inicial"
+                          : "Initial sale price"}
                       </span>
                       <strong>50 USDT</strong>
                     </div>
 
                     <div>
-                      <span>Access</span>
+                      <span>{language === "es" ? "Acceso" : "Access"}</span>
                       <strong>
-                        12 months Focus Founding Access
+                        {language === "es"
+                          ? "12 meses de Focus Founding Access desde la activación válida"
+                          : "12 months of Focus Founding Access from valid activation"}
                       </strong>
                     </div>
                   </div>
 
                   <div className="checkout-disclosure">
                     <strong>
-                      Pre-sale disclosure
+                      {language === "es" ? "Condiciones de preventa" : "Pre-sale terms"}
                     </strong>
 
                     <p>
-                      Founding 6000 is a product pre-order /
-                      reservation. It is not equity,
-                      investment, company ownership, a
-                      security or revenue-sharing program.
-                      January 5, 2027 is a target launch date,
-                      not a guaranteed delivery date.
+                      {language === "es"
+                        ? "Founding 6000 es una preorden o reserva de producto. No es una inversión, no otorga acciones ni propiedad de la empresa, no es un valor financiero ni un programa de participación en ingresos. El 5 de enero de 2027 es una fecha objetivo de lanzamiento, no una fecha de entrega garantizada."
+                        : "Founding 6000 is a product pre-order or reservation. It is not an investment, equity, company ownership, a security or a revenue-sharing program. January 5, 2027 is a target launch date, not a guaranteed delivery date."}
                     </p>
                   </div>
 
@@ -1610,7 +1609,7 @@ function App() {
                         setCheckoutStep("email")
                       }
                     >
-                      Back
+                      {language === "es" ? "Volver" : "Back"}
                     </button>
 
                     <button
@@ -1620,7 +1619,7 @@ function App() {
                         setCheckoutStep("method")
                       }
                     >
-                      I understand · Continue
+                      {language === "es" ? "Entendido · Continuar" : "I understand · Continue"}
                     </button>
                   </div>
                 </div>
@@ -1629,7 +1628,7 @@ function App() {
               {publicCheckoutEnabled && checkoutStep === "method" && (
                 <div className="checkout-step">
                   <span className="checkout-step__number">
-                    STEP 03 / 04
+                    {language === "es" ? "PASO 03 / 04" : "STEP 03 / 04"}
                   </span>
 
                   <h2>
@@ -1640,8 +1639,8 @@ function App() {
 
                   <p>
                     {language === "es"
-                      ? "USDT en Ethereum Mainnet está disponible. Los métodos en pesos se incorporarán próximamente."
-                      : "USDT on Ethereum Mainnet is available. Peso payment methods will be added soon."}
+                      ? "Podés elegir USDT en Ethereum Mainnet. Los métodos en pesos todavía no están habilitados."
+                      : "You can choose USDT on Ethereum Mainnet. Peso payment methods are not enabled yet."}
                   </p>
 
                   <div className="payment-methods">
@@ -1706,8 +1705,8 @@ function App() {
 
                       <span className="payment-method__badge">
                         {language === "es"
-                          ? "PRÓXIMAMENTE"
-                          : "COMING SOON"}
+                          ? "NO HABILITADO"
+                          : "NOT ENABLED"}
                       </span>
                     </button>
 
@@ -1735,8 +1734,8 @@ function App() {
 
                       <span className="payment-method__badge">
                         {language === "es"
-                          ? "PRÓXIMAMENTE"
-                          : "COMING SOON"}
+                          ? "NO HABILITADO"
+                          : "NOT ENABLED"}
                       </span>
                     </button>
                   </div>
@@ -1760,7 +1759,7 @@ function App() {
               {publicCheckoutEnabled && checkoutStep === "details" && (
                 <div className="checkout-step">
                   <span className="checkout-step__number">
-                    STEP 04 / 04
+                    {language === "es" ? "PASO 04 / 04" : "STEP 04 / 04"}
                   </span>
 
                   <h2>
@@ -1769,8 +1768,8 @@ function App() {
 
                   <p>
                     {language === "es"
-                      ? "La información de red, contrato, monto y wallet que aparece debajo proviene del intento de pago creado por el servidor."
-                      : "The network, contract, amount and wallet below come from the server-created payment attempt."}
+                      ? "Revisá la red, el contrato de USDT, el importe y la dirección de destino indicados para este pago. Su confirmación depende de la verificación de la transferencia."
+                      : "Review the network, USDT contract, amount and destination address shown for this payment. Confirmation depends on transfer verification."}
                   </p>
 
                   {paymentMethod === "usdt" && (
@@ -1836,14 +1835,14 @@ function App() {
                   {publicCheckoutEnabled ? (
                     <p>
                       {language === "es"
-                        ? "El servidor verificó la transferencia USDT y creó de forma atómica tu asignación Founding y tu membresía."
-                        : "The server verified the USDT transfer and atomically created your Founding allocation and membership."}
+                        ? "Verificamos tu pago en USDT y registramos tu asignación Founding y tu membresía. La entrega del NFT y la activación del acceso son etapas distintas."
+                        : "We verified your USDT payment and recorded your Founding allocation and membership. NFT delivery and access activation are separate stages."}
                     </p>
                   ) : (
                     <p>
                       {language === "es"
-                        ? "Registramos tu email para novedades del lanzamiento. No se creó ningún pedido, pago, membresía ni serial Founding."
-                        : "We registered your email for launch updates. No order, payment, membership or Founding serial was created."}
+                        ? "Registramos tu email para enviarte novedades. No se creó una compra, un pago ni una membresía, y no se reservó un número de NFT."
+                        : "We registered your email for updates. No purchase, payment or membership was created, and no NFT number was reserved."}
                     </p>
                   )}
 
@@ -1865,9 +1864,9 @@ function App() {
                       <strong>
                         {publicCheckoutEnabled
                           ? verifiedPurchase
-                            ? "PAID"
-                            : "PENDING"
-                          : "PRELAUNCH ONLY"}
+                            ? language === "es" ? "Pagado" : "Paid"
+                            : language === "es" ? "Pendiente" : "Pending"
+                          : language === "es" ? "Registro de interés" : "Interest registered"}
                       </strong>
                     </div>
 
@@ -1881,9 +1880,9 @@ function App() {
                       <strong>
                         {publicCheckoutEnabled
                           ? verifiedPurchase
-                            ? "USDT · VERIFIED"
-                            : "NOT VERIFIED"
-                          : "NOT PROCESSED"}
+                            ? language === "es" ? "USDT · Verificado" : "USDT · Verified"
+                            : language === "es" ? "Sin verificar" : "Not verified"
+                          : language === "es" ? "No realizado" : "Not processed"}
                       </strong>
                     </div>
 
@@ -1893,8 +1892,8 @@ function App() {
                         <div>
                           <span>
                             {language === "es"
-                              ? "Serial Founding"
-                              : "Founding serial"}
+                              ? "Número Founding"
+                              : "Founding number"}
                           </span>
 
                           <strong>
@@ -1916,8 +1915,8 @@ function App() {
                         <div>
                           <span>
                             {language === "es"
-                              ? "Tier OriginX"
-                              : "OriginX tier"}
+                              ? "Categoría"
+                              : "Category"}
                           </span>
 
                           <strong>
@@ -1929,7 +1928,7 @@ function App() {
                                   .allocation
                                   .serialNumber <= 3000
                                 ? "EPIC"
-                                : "GENESIS"}
+                                : "LEGENDARY"}
                           </strong>
                         </div>
                       )}
@@ -1978,8 +1977,8 @@ function App() {
                         }
                       >
                         {language === "es"
-                          ? "Nuevo checkout"
-                          : "New checkout"}
+                          ? "Nueva compra"
+                          : "New purchase"}
                       </button>
                     )}
 

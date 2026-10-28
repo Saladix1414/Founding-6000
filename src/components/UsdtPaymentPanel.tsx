@@ -281,7 +281,9 @@ export default function UsdtPaymentPanel({
 
             return;
           } catch {
-            clearAttemptFromSession();
+            // Preserve the saved attempt when recovery is uncertain.
+            // Do not create another order after a failed lookup.
+            throw new Error("PAYMENT_RECOVERY_UNAVAILABLE");
           }
         }
 
@@ -519,8 +521,8 @@ export default function UsdtPaymentPanel({
     ) {
       setError(
         language === "es"
-          ? "El hash debe comenzar con 0x y contener 64 caracteres hexadecimales."
-          : "The hash must begin with 0x and contain 64 hexadecimal characters.",
+          ? "Pegá el identificador completo de la transacción: 0x seguido de 64 caracteres hexadecimales."
+          : "Paste the complete transaction ID: 0x followed by 64 hexadecimal characters.",
       );
 
       return;
@@ -547,8 +549,8 @@ export default function UsdtPaymentPanel({
 
       setVerificationNote(
         language === "es"
-          ? "Hash recibido. Iniciando verificación en Ethereum."
-          : "Transaction hash received. Starting Ethereum verification.",
+          ? "Recibimos el identificador. Estamos verificando la transacción en Ethereum."
+          : "We received the transaction ID. We are verifying the transaction on Ethereum.",
       );
     } catch (cause) {
       setError(
@@ -578,14 +580,14 @@ export default function UsdtPaymentPanel({
           <div>
             <strong>
               {language === "es"
-                ? "Preparando instrucciones USDT seguras"
-                : "Preparing secure USDT instructions"}
+                ? "Preparando tu pago en USDT"
+                : "Preparing your USDT payment"}
             </strong>
 
             <p>
               {language === "es"
-                ? "Creando tu intento de pago…"
-                : "Creating your payment attempt…"}
+                ? "Consultando los datos para tu transferencia…"
+                : "Getting the details for your transfer…"}
             </p>
           </div>
         </div>
@@ -605,20 +607,104 @@ export default function UsdtPaymentPanel({
         >
           <strong>
             {language === "es"
-              ? "No pudimos preparar el checkout USDT"
-              : "Could not prepare USDT checkout"}
+              ? "No pudimos preparar el pago en USDT"
+              : "Could not prepare your USDT payment"}
           </strong>
 
           <p>
-            {error ??
-              "CHECKOUT_SETUP_FAILED"}
+            {error === "PAYMENT_RECOVERY_UNAVAILABLE"
+              ? language === "es"
+                ? "No pudimos consultar tu intento de pago anterior. Conservamos su referencia y no iniciamos otra orden. Podés cerrar y volver a abrir este formulario para intentar recuperarlo."
+                : "We could not retrieve your previous payment attempt. We kept its reference and did not start another order. You can close and reopen this form to try retrieving it again."
+              : language === "es"
+                ? "No pudimos obtener las instrucciones de pago. No envíes fondos hasta que estén disponibles."
+                : "We could not retrieve the payment instructions. Do not send funds until they are available."}
           </p>
 
           <p>
             {language === "es"
-              ? "No se procesó ningún pago."
-              : "No payment was processed."}
+              ? "Si ya enviaste USDT, no repitas la transferencia. Conservá su identificador; este mensaje no confirma ni descarta el pago."
+              : "If you already sent USDT, do not send it again. Keep the transaction ID; this message neither confirms nor rules out payment."}
           </p>
+        </div>
+      </div>
+    );
+  }
+
+  /* OX expired payment presentation */
+  if (attempt.status === "EXPIRED") {
+    return (
+      <div className="usdt-payment-panel">
+        <div
+          className="usdt-notice usdt-notice-warning"
+          role="alert"
+        >
+          <strong>
+            {language === "es"
+              ? "Este intento de pago venció"
+              : "This payment attempt has expired"}
+          </strong>
+
+          <p>
+            {language === "es"
+              ? "No uses las instrucciones de este intento para enviar fondos. Ya no admite nuevos identificadores de transacción."
+              : "Do not use this attempt’s instructions to send funds. It no longer accepts transaction IDs."}
+          </p>
+
+          <p>
+            {language === "es"
+              ? "Si ya enviaste USDT, no repitas la transferencia. Conservá el comprobante, el identificador de la transacción y esta referencia para solicitar una revisión."
+              : "If you already sent USDT, do not send it again. Keep your receipt, transaction ID and this reference to request a review."}
+          </p>
+
+          <p>
+            {language === "es"
+              ? "Este aviso no confirma un pago ni un reembolso."
+              : "This notice does not confirm a payment or a refund."}
+          </p>
+        </div>
+
+        <div className="usdt-field">
+          <span>
+            {language === "es"
+              ? "Referencia del intento"
+              : "Payment attempt reference"}
+          </span>
+          <code style={{ overflowWrap: "anywhere" }}>
+            {attempt.publicId}
+          </code>
+        </div>
+
+        {attempt.txHash && (
+          <div className="usdt-field">
+            <span>
+              {language === "es"
+                ? "Identificador registrado"
+                : "Recorded transaction ID"}
+            </span>
+            <code style={{ overflowWrap: "anywhere" }}>
+              {attempt.txHash}
+            </code>
+          </div>
+        )}
+
+        <div className="usdt-legal-links">
+          <div className="usdt-legal-link-row">
+            <a
+              href="/legal/terms.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {language === "es" ? "Términos" : "Terms"}
+            </a>
+            <a
+              href="/legal/refunds.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {language === "es" ? "Reembolsos" : "Refunds"}
+            </a>
+          </div>
         </div>
       </div>
     );
@@ -630,8 +716,8 @@ export default function UsdtPaymentPanel({
     ) {
       case "SUBMITTED":
         return language === "es"
-          ? "Enviado"
-          : "Submitted";
+          ? "Transacción enviada a verificar"
+          : "Transaction submitted for verification";
 
       case "VERIFYING":
         return language === "es"
@@ -648,10 +734,7 @@ export default function UsdtPaymentPanel({
           ? "No verificado"
           : "Not verified";
 
-      case "EXPIRED":
-        return language === "es"
-          ? "Expirado"
-          : "Expired";
+
 
       default:
         return language === "es"
@@ -724,7 +807,7 @@ export default function UsdtPaymentPanel({
         <small>
           {language === "es"
             ? "La comisión de red no está incluida."
-            : "Network gas is not included."}
+            : "The network fee is not included."}
         </small>
       </div>
 
@@ -745,7 +828,7 @@ export default function UsdtPaymentPanel({
 
         <div className="usdt-field">
           <span>
-            Chain ID
+            {language === "es" ? "ID de red" : "Chain ID"}
           </span>
 
           <strong>
@@ -760,7 +843,7 @@ export default function UsdtPaymentPanel({
 
         <div className="usdt-field">
           <span>
-            Standard
+            {language === "es" ? "Estándar" : "Standard"}
           </span>
 
           <strong>
@@ -792,8 +875,8 @@ export default function UsdtPaymentPanel({
               ? "Copiada ✓"
               : "Copied ✓"
             : language === "es"
-              ? "Copiar wallet"
-              : "Copy wallet"}
+              ? "Copiar dirección"
+              : "Copy address"}
         </button>
       </div>
 
@@ -811,7 +894,7 @@ export default function UsdtPaymentPanel({
 
       <div className="usdt-notice">
         <strong>
-          Ethereum gas
+          {language === "es" ? "Comisión de red (gas)" : "Network fee (gas)"}
         </strong>
 
         <p>
@@ -839,14 +922,14 @@ export default function UsdtPaymentPanel({
         <div className="usdt-tx-section">
           <label htmlFor="usdt-tx-hash">
             {language === "es"
-              ? "Hash de transacción"
-              : "Transaction hash"}
+              ? "Identificador de transacción (hash)"
+              : "Transaction ID (hash)"}
           </label>
 
           <p>
             {language === "es"
-              ? "Después de enviar USDT, pegá aquí el hash de la transacción Ethereum."
-              : "After sending USDT, paste the Ethereum transaction hash here."}
+              ? "Después de enviar USDT, copiá el identificador de la transacción desde tu wallet y pegalo aquí. Comienza con 0x."
+              : "After sending USDT, copy the transaction ID from your wallet and paste it here. It starts with 0x."}
           </p>
 
           <input
@@ -938,8 +1021,8 @@ export default function UsdtPaymentPanel({
             {error ??
               (
                 language === "es"
-                  ? "La evidencia blockchain no coincide con este intento de pago."
-                  : "The blockchain evidence does not match this payment attempt."
+                  ? "La transacción no cumple los requisitos de este pago."
+                  : "The transaction does not meet this payment’s requirements."
               )}
           </p>
         </div>
@@ -988,14 +1071,14 @@ export default function UsdtPaymentPanel({
       <div className="usdt-authority-note">
         <strong>
           {language === "es"
-            ? "Verificación blockchain obligatoria"
-            : "Blockchain verification required"}
+            ? "Cuándo se confirma tu pago"
+            : "When your payment is confirmed"}
         </strong>
 
         <p>
           {language === "es"
-            ? "Enviar un hash no marca el pedido como pagado. La membresía y el serial se crean únicamente después de la verificación server-side en Ethereum."
-            : "Submitting a hash does not mark the order paid. Membership and serial are created only after server-side Ethereum verification."}
+            ? "Pegar el identificador no confirma el pago. Primero verificamos la transferencia en Ethereum. Solo después se crean tu membresía y tu número Founding."
+            : "Submitting the transaction ID does not confirm payment. We first verify the transfer on Ethereum. Only then are your membership and Founding number created."}
         </p>
       </div>
     </div>
