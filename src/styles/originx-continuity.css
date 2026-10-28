@@ -355,3 +355,82 @@
     line-height: 1.4;
   }
 }
+
+/* OX coordinated lower-page mobile refinement */
+@media (max-width: 599px) {
+  .ox-genesis.genesis-section {
+    padding: 26px 16px;
+  }
+
+  .ox-genesis .genesis-layout {
+    gap: 18px;
+  }
+
+  .ox-genesis .genesis-visual {
+    width: 100%;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: none;
+  }
+
+  .ox-genesis .genesis-visual__eyebrow,
+  .ox-genesis .genesis-visual__footer {
+    font-size: 10px;
+    line-height: 1.4;
+    letter-spacing: .07em;
+  }
+
+  .ox-genesis .genesis-visual__number {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+    font-size: clamp(25px, 7vw, 34px);
+    line-height: 1.1;
+  }
+
+  .ox-genesis .genesis-visual__number span {
+    font-size: 20px;
+  }
+
+  .ox-genesis .genesis-visual__line {
+    margin: 10px 0;
+  }
+
+  .ox-genesis .db-eyebrow {
+    margin-bottom: 8px;
+    font-size: 10px;
+    letter-spacing: .07em;
+  }
+
+  .ox-genesis .db-title {
+    margin-bottom: 10px;
+    font-size: 24px;
+    line-height: 1.15;
+  }
+
+  .ox-genesis .db-copy {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .ox-genesis .genesis-points {
+    margin-top: 0;
+  }
+
+  .ox-genesis .genesis-points > div {
+    gap: 12px;
+    padding: 10px 0;
+  }
+
+  .ox-genesis .genesis-points > div > span {
+    font-size: 11px;
+  }
+
+  .ox-genesis .genesis-points p {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+}

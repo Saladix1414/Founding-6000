@@ -318,3 +318,75 @@
     line-height: 1.45;
   }
 }
+
+/* OX coordinated lower-page mobile refinement */
+@media (max-width: 599px) {
+  .ox-journey {
+    padding: 26px 16px;
+  }
+
+  .ox-journey__heading {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .ox-journey__eyebrow {
+    margin: 0 0 8px;
+    font-size: 10px;
+    letter-spacing: .08em;
+  }
+
+  .ox-journey h2 {
+    font-size: 24px;
+    line-height: 1.15;
+  }
+
+  .ox-journey__intro,
+  .ox-journey__step p {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .ox-journey__steps,
+  .ox-journey__steps--four {
+    gap: 10px;
+  }
+
+  .ox-journey__step {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+    align-items: start;
+    gap: 8px 10px;
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .ox-journey__number {
+    grid-column: 1;
+    grid-row: 1;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    border-radius: 9px;
+    font-size: 12px;
+  }
+
+  .ox-journey__step h3 {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.25;
+  }
+
+  .ox-journey__step p {
+    grid-column: 1 / -1;
+  }
+
+  .ox-journey__boundary {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+}
