@@ -1,9 +1,23 @@
+import { useEffect, useState } from "react";
 import "../../styles/originx-membership.css";
 
 type Props = { language: "es" | "en" };
 
 export default function FoundingMembership({ language }: Props) {
   const es = language === "es";
+  const [compactBenefits, setCompactBenefits] = useState(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 599px)").matches
+  );
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 599px)");
+    const update = () => setCompactBenefits(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
 
   const benefits = [
     {
@@ -123,17 +137,23 @@ export default function FoundingMembership({ language }: Props) {
 
           <div className="ox-membership-benefits">
             {benefits.map(benefit => (
-              <article
+              <details
                 key={benefit.number}
+                open={!compactBenefits}
                 className={"ox-membership-benefit ox-membership-benefit--" + benefit.theme}
               >
-                <span className="ox-membership-index" aria-hidden="true">
-                  {benefit.number}
-                </span>
-                <h3>{benefit.title}</h3>
-                <p>{benefit.description}</p>
-                {benefit.note && <small>{benefit.note}</small>}
-              </article>
+                <summary className="ox-membership-benefit-summary">
+                  <span className="ox-membership-index" aria-hidden="true">
+                    {benefit.number}
+                  </span>
+                  <h3>{benefit.title}</h3>
+                  <span className="ox-membership-benefit-toggle" aria-hidden="true" />
+                </summary>
+                <div className="ox-membership-benefit-description">
+                  <p>{benefit.description}</p>
+                  {benefit.note && <small>{benefit.note}</small>}
+                </div>
+              </details>
             ))}
           </div>
         </div>

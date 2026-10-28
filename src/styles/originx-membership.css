@@ -485,3 +485,169 @@
     line-height: 1.3;
   }
 }
+
+/* OX membership progressive disclosure */
+.ox-membership details.ox-membership-benefit {
+  display: block;
+}
+
+.ox-membership .ox-membership-benefit-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.ox-membership .ox-membership-benefit-summary::-webkit-details-marker {
+  display: none;
+}
+
+.ox-membership .ox-membership-benefit-summary::marker {
+  content: "";
+}
+
+.ox-membership .ox-membership-benefit-summary .ox-membership-index {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+}
+
+.ox-membership .ox-membership-benefit-summary h3 {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+}
+
+.ox-membership .ox-membership-benefit-toggle {
+  display: grid;
+  place-items: center;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: #573b99;
+  background: #ffffff99;
+}
+
+.ox-membership .ox-membership-benefit-toggle::before {
+  content: "+";
+  font-size: 22px;
+  line-height: 1;
+}
+
+.ox-membership details[open] .ox-membership-benefit-toggle::before {
+  content: "−";
+}
+
+.ox-membership .ox-membership-benefit-description {
+  margin-top: 12px;
+}
+
+.ox-membership .ox-membership-benefit-description small {
+  margin-top: 10px;
+}
+
+.ox-membership details:not([open]) > .ox-membership-benefit-description {
+  display: none;
+}
+
+.ox-membership .ox-membership-benefit-summary:focus-visible {
+  outline: 3px solid #7046af;
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+@media (max-width: 599px) {
+  #benefits.ox-membership {
+    padding: 26px 16px;
+  }
+
+  .ox-membership .ox-membership-heading {
+    margin-bottom: 16px;
+  }
+
+  .ox-membership .ox-membership-eyebrow {
+    margin-bottom: 8px;
+    font-size: 10px;
+    letter-spacing: .08em;
+  }
+
+  .ox-membership .ox-membership-heading h2 {
+    margin-bottom: 10px;
+    font-size: 25px;
+    line-height: 1.15;
+  }
+
+  .ox-membership .ox-membership-heading > p:last-child {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .ox-membership .ox-membership-grid,
+  .ox-membership .ox-membership-benefits {
+    gap: 10px;
+  }
+
+  .ox-membership .ox-membership-feature {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  /* La duración permanece en el título; se elimina su duplicado decorativo. */
+  .ox-membership .ox-membership-duration {
+    display: none;
+  }
+
+  .ox-membership .ox-membership-feature-top {
+    margin-bottom: 12px;
+  }
+
+  .ox-membership .ox-membership-feature h3 {
+    font-size: 19px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .ox-membership .ox-membership-feature p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .ox-membership .ox-membership-feature-link {
+    margin-top: 8px;
+    min-height: 44px;
+    padding-block: 8px;
+    font-size: 14px;
+  }
+
+  .ox-membership details.ox-membership-benefit {
+    padding: 8px 14px;
+    border-radius: 14px;
+  }
+
+  .ox-membership .ox-membership-benefit-summary {
+    gap: 10px;
+  }
+
+  .ox-membership .ox-membership-benefit-summary h3 {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .ox-membership .ox-membership-benefit-description {
+    margin: 6px 0 8px;
+  }
+
+  .ox-membership .ox-membership-benefit-description p {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .ox-membership .ox-membership-benefit-description small {
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+}

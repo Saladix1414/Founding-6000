@@ -88,7 +88,7 @@ export default function OriginXNavbar({
       <button
         type="button"
         onClick={openEconomy}
-        aria-label={es ? "Economía: abrir whitepaper" : "Economy: open whitepaper"}
+        aria-label={es ? "Explorar la economía" : "Explore the economy"}
       >
         {es ? "Economía" : "Economy"}
       </button>
@@ -180,7 +180,15 @@ export default function OriginXNavbar({
         hidden={!menuOpen}
         aria-label={es ? "Navegación móvil" : "Mobile navigation"}
       >
-        <div className="ox-nav-mobile-links">{links}</div>
+        <div className="ox-nav-mobile-links">
+          {links}
+          <a href="#benefits" onClick={onCloseMenu}>
+            {es ? "Membresía" : "Membership"}
+          </a>
+          <a href="#economic-transparency" onClick={onCloseMenu}>
+            {es ? "Transparencia" : "Transparency"}
+          </a>
+        </div>
         <button
           className="ox-nav-cta"
           type="button"
