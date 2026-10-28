@@ -265,17 +265,17 @@
     padding: 24px;
   }
 
-  /* OX compact mobile ecosystem */
+  /* OX compact mobile ecosystem v2 */
   #product.ox-ecosystem {
-    padding: 36px 16px;
+    padding: 26px 16px;
   }
 
   #product.ox-ecosystem .section-heading {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: 8px;
+    margin-bottom: 14px;
   }
 
   #product.ox-ecosystem .section-heading > div {
@@ -284,72 +284,74 @@
   }
 
   #product.ox-ecosystem .db-eyebrow {
-    margin-bottom: 10px;
-    font-size: 11px;
-    line-height: 1.4;
-    letter-spacing: .08em;
+    margin-bottom: 7px;
+    font-size: 10px;
+    line-height: 1.3;
+    letter-spacing: .06em;
   }
 
   #product.ox-ecosystem .db-title {
-    margin-bottom: 12px;
-    font-size: clamp(25px, 6.5vw, 30px);
-    line-height: 1.15;
+    margin-bottom: 9px;
+    font-size: 23px;
+    line-height: 1.12;
     letter-spacing: -.035em;
   }
 
   #product.ox-ecosystem .db-copy {
     margin: 0;
-    font-size: 15px;
-    line-height: 1.45;
+    font-size: 14px;
+    line-height: 1.4;
   }
 
   #product.ox-ecosystem .truth-badge {
-    padding: 6px 10px;
+    padding: 4px 8px;
     font-size: 10px;
-    line-height: 1.4;
+    line-height: 1.3;
   }
 
   #product.ox-ecosystem .product-grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
+    gap: 8px;
   }
 
   #product.ox-ecosystem .product-card {
     display: block;
     min-height: 0;
-    padding: 16px;
-    border-radius: 18px;
+    padding: 12px;
+    border-radius: 14px;
+    box-shadow: none;
   }
 
   #product.ox-ecosystem .product-card__top {
     align-items: center;
-    gap: 8px 12px;
-    margin-bottom: 10px;
+    gap: 6px 10px;
+    margin-bottom: 7px;
   }
 
   #product.ox-ecosystem .product-card__top > span:first-child {
-    font-size: 12px;
-    line-height: 1.4;
+    font-size: 11px;
+    line-height: 1.3;
   }
 
   #product.ox-ecosystem .product-status {
-    padding: 5px 8px;
-    font-size: 11px;
-    line-height: 1.35;
+    padding: 3px 7px;
+    border-radius: 9px;
+    font-size: 10px;
+    line-height: 1.3;
     letter-spacing: normal;
     white-space: normal;
   }
 
   #product.ox-ecosystem .product-card h3 {
-    margin: 0 0 8px;
-    font-size: 20px;
+    margin: 0 0 5px;
+    font-size: 17px;
     line-height: 1.2;
-    letter-spacing: -.025em;
+    letter-spacing: -.02em;
   }
 
   #product.ox-ecosystem .product-card p {
     margin: 0;
-    font-size: 15px;
-    line-height: 1.45;
+    font-size: 14px;
+    line-height: 1.4;
   }
 }

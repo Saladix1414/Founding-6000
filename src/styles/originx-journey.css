@@ -249,3 +249,72 @@
     width: 100%;
   }
 }
+
+/* OX compact mobile purchase closing */
+@media (max-width: 599px) {
+  #purchase.ox-purchase {
+    padding: 20px 16px 32px;
+  }
+
+  #purchase.ox-purchase .purchase-panel {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  #purchase.ox-purchase .db-eyebrow {
+    margin-bottom: 12px;
+    font-size: 11px;
+    letter-spacing: .08em;
+  }
+
+  #purchase.ox-purchase h2 {
+    margin-bottom: 14px;
+    font-size: clamp(25px, 6.5vw, 30px);
+    line-height: 1.15;
+    letter-spacing: -.035em;
+  }
+
+  #purchase.ox-purchase .purchase-panel__content > p {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  #purchase.ox-purchase .purchase-panel__meta {
+    gap: 8px;
+    margin: 18px auto;
+  }
+
+  #purchase.ox-purchase .purchase-panel__meta > div {
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+
+  #purchase.ox-purchase .purchase-panel__meta span {
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+
+  #purchase.ox-purchase .purchase-panel__meta strong {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  #purchase.ox-purchase .purchase-panel__button {
+    min-height: 50px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 15px;
+    line-height: 1.35;
+  }
+
+  #purchase.ox-purchase .purchase-panel__note {
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+}
