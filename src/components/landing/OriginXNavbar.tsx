@@ -181,12 +181,26 @@ export default function OriginXNavbar({
         aria-label={es ? "Navegación móvil" : "Mobile navigation"}
       >
         <div className="ox-nav-mobile-links">
-          {links}
+          <a href="#top" onClick={onCloseMenu}>
+            {es ? "Inicio" : "Home"}
+          </a>
+          <a href="#phases" onClick={onCloseMenu}>
+            {es ? "Colección" : "Collection"}
+          </a>
           <a href="#benefits" onClick={onCloseMenu}>
             {es ? "Membresía" : "Membership"}
           </a>
+          <button type="button" onClick={openEconomy}>
+            {es ? "Economía" : "Economy"}
+          </button>
           <a href="#economic-transparency" onClick={onCloseMenu}>
             {es ? "Transparencia" : "Transparency"}
+          </a>
+          <a href="#product" onClick={onCloseMenu}>
+            {es ? "Proyecto" : "Project"}
+          </a>
+          <a href="#faq" onClick={onCloseMenu}>
+            {es ? "Preguntas" : "Questions"}
           </a>
         </div>
         <button

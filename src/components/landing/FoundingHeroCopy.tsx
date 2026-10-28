@@ -2,7 +2,8 @@ import "../../styles/originx-hero-copy.css";
 
 type Props = {
   language: "es" | "en";
-  onEconomy: () => void;
+  ctaLabel: string;
+  onCheckout: () => void;
 };
 
 function ArcadeIcon() {
@@ -27,17 +28,9 @@ function CollectionIcon() {
   );
 }
 
-function EconomyIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <rect x="2" y="14" width="5" height="8" rx="1" />
-      <rect x="9" y="8" width="5" height="14" rx="1" />
-      <rect x="16" y="2" width="5" height="20" rx="1" />
-    </svg>
-  );
-}
 
-export default function FoundingHeroCopy({ language, onEconomy }: Props) {
+
+export default function FoundingHeroCopy({ language, ctaLabel, onCheckout }: Props) {
   const es = language === "es";
 
   return (
@@ -62,30 +55,28 @@ export default function FoundingHeroCopy({ language, onEconomy }: Props) {
 
         <p className="ox-hero-description">
           {es
-            ? "Founding 6000 reúne 6.000 membresías NFT de OriginX Foundation. Cada membresía está diseñada para incluir una pieza coleccionable y 12 meses de Focus Founding Access desde su activación válida."
-            : "Founding 6000 brings together 6,000 OriginX Foundation NFT memberships. Each membership is designed to include a collectible and 12 months of Focus Founding Access from valid activation."}
+            ? "Una membresía de OriginX Foundation diseñada para incluir una pieza coleccionable y 12 meses de Focus Founding Access desde la activación válida."
+            : "An OriginX Foundation membership designed to include a collectible and 12 months of Focus Founding Access from valid activation."}
         </p>
       </div>
 
       <div className="ox-hero-actions">
-        <a className="ox-hero-button ox-hero-button-primary" href="#phases">
+        <button
+          className="ox-hero-button ox-hero-button-primary"
+          type="button"
+          onClick={onCheckout}
+        >
+          <span>{ctaLabel}</span>
+          <span aria-hidden="true">→</span>
+        </button>
+        <a
+          className="ox-hero-button ox-hero-button-secondary"
+          href="#phases"
+        >
           <CollectionIcon />
           <span>{es ? "Explorar la colección" : "Explore the collection"}</span>
           <span aria-hidden="true">→</span>
         </a>
-
-        <button
-          className="ox-hero-button ox-hero-button-secondary"
-          type="button"
-          onClick={onEconomy}
-          aria-label={
-            es ? "Ver la economía: abrir whitepaper" : "View the economy: open whitepaper"
-          }
-        >
-          <EconomyIcon />
-          <span>{es ? "Ver la economía" : "View the economy"}</span>
-          <span aria-hidden="true">→</span>
-        </button>
       </div>
 
       <dl className="ox-hero-stats">

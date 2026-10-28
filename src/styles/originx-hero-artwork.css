@@ -426,3 +426,33 @@
     align-items: stretch;
   }
 }
+
+/* OX mobile hero primary action before artwork */
+@media (max-width: 599px) {
+  #campaign .ox-hero-actions {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 16px;
+    gap: 10px;
+  }
+
+  #campaign .ox-hero-artwork {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 16px;
+  }
+
+  #campaign .ox-hero-actions .ox-hero-button {
+    min-width: 0;
+    min-height: 48px;
+    gap: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  #campaign .ox-hero-actions .ox-hero-button svg {
+    width: 20px;
+    height: 20px;
+  }
+}

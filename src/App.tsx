@@ -592,7 +592,8 @@ function App() {
           <div className="db-container campaign-hero__grid">
             <FoundingHeroCopy
               language={language}
-              onEconomy={scrollToEconomy}
+              ctaLabel={primaryCtaLabel}
+              onCheckout={openCheckout}
             />
 
             <HeroArtwork language={language} />
