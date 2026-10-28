@@ -36,8 +36,8 @@ export default function FoundingMembership({ language }: Props) {
       theme: "sky",
       title: es ? "Acceso beta prioritario" : "Priority beta access",
       description: es
-        ? "Oportunidades anticipadas para acceder a funciones elegibles del producto a medida que estén disponibles."
-        : "Earlier opportunities to access eligible product capabilities as they become available.",
+        ? "Oportunidades para probar antes determinadas funciones, a medida que estén disponibles."
+        : "Opportunities to try selected features early as they become available.",
       note: es
         ? "Sujeto a disponibilidad de cada programa."
         : "Subject to each program's availability.",
@@ -45,10 +45,10 @@ export default function FoundingMembership({ language }: Props) {
     {
       number: "04",
       theme: "peach",
-      title: es ? "Feedback de producto" : "Product feedback",
+      title: es ? "Tu opinión cuenta" : "Your feedback matters",
       description: es
-        ? "Oportunidades para ayudar a orientar decisiones de producto mediante programas estructurados de feedback Founding."
-        : "Opportunities to help shape product decisions through structured Founding feedback programs.",
+        ? "Oportunidades para compartir ideas y sugerencias en los programas de participación Founding."
+        : "Opportunities to share ideas and suggestions through Founding feedback programs.",
       note: null,
     },
     {
@@ -56,8 +56,8 @@ export default function FoundingMembership({ language }: Props) {
       theme: "green",
       title: es ? "Ecosistema conectado" : "Connected ecosystem",
       description: es
-        ? "El reconocimiento Founding podrá reflejarse más adelante en experiencias elegibles del ecosistema y espacios de comunidad."
-        : "Founding recognition may later appear across eligible ecosystem experiences and community spaces.",
+        ? "En el futuro, tu reconocimiento Founding podría aparecer en determinadas experiencias y espacios de la comunidad."
+        : "In the future, your Founding recognition could appear in selected experiences and community spaces.",
       note: es
         ? "Una posibilidad futura, no una función ya entregada."
         : "A future possibility, not an already delivered feature.",
@@ -105,8 +105,8 @@ export default function FoundingMembership({ language }: Props) {
           </h2>
           <p>
             {es
-              ? "Una identidad coleccionable y una membresía diseñada para acompañar tu participación en OriginX Foundation."
-              : "A collectible identity and a membership designed to support your participation in OriginX Foundation."}
+              ? "Conocé el acceso previsto, el reconocimiento Founding y las oportunidades de participación."
+              : "Explore the planned access, Founding recognition and opportunities to participate."}
           </p>
         </header>
 
@@ -125,8 +125,8 @@ export default function FoundingMembership({ language }: Props) {
             <h3>{es ? "12 meses de Focus Founding Access" : "12 months of Focus Founding Access"}</h3>
             <p>
               {es
-                ? "Cada membresía verificada está diseñada para incluir 12 meses desde la activación válida de la cuenta Founding Access."
-                : "Each verified membership is designed to include 12 months from valid activation of the Founding Access account."}
+                ? "La membresía verificada está diseñada para incluir este acceso. Los 12 meses empiezan con la activación válida de tu cuenta Founding Access, no con la compra."
+                : "Verified membership is designed to include this access. The 12 months start upon valid activation of your Founding Access account, not at purchase."}
             </p>
 
             <a className="ox-membership-feature-link" href="#ox-membership-lifecycle">
@@ -193,7 +193,7 @@ export default function FoundingMembership({ language }: Props) {
           <span className="ox-membership-boundary-icon" aria-hidden="true">i</span>
           <div>
             <h3>
-              {es ? "Founding Focus no significa infraestructura ilimitada." : "Founding Focus does not mean unlimited infrastructure."}
+              {es ? "El acceso tiene límites de uso." : "Access has usage limits."}
             </h3>
             <p>
               {es

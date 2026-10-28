@@ -53,8 +53,8 @@ export default function FoundationEconomy({
           </h2>
           <p>
             {es
-              ? "Una política de reserva definida y recursos separados para impulsar el desarrollo del ecosistema."
-              : "A defined reserve policy and separate resources to support ecosystem development."}
+              ? "Conocé qué parte de cada venta inicial se destina a la reserva y cómo se distribuye."
+              : "See what share of each initial sale goes to the reserve and how it is allocated."}
           </p>
         </header>
 
@@ -69,8 +69,8 @@ export default function FoundationEconomy({
 
         <p className="ox-economy-path-note">
           {es
-            ? "Este recorrido explica conceptos, no una transferencia de la reserva al desarrollo. Los fondos protegidos y los recursos operativos se mantienen separados."
-            : "This path explains concepts, not a transfer from reserves to development. Protected funds and operating resources remain separate."}
+            ? "Estos conceptos no representan un recorrido del dinero. La reserva protegida y los recursos operativos se mantienen separados."
+            : "These concepts do not show a flow of money. Protected reserves and operating resources remain separate."}
         </p>
 
         <div className="ox-economy-layout">
@@ -79,8 +79,8 @@ export default function FoundationEconomy({
               <span className="ox-economy-disclosure-copy">
                 <span className="ox-economy-disclosure-title">
                   {es
-                    ? "Explorar la distribución económica"
-                    : "Explore the economic allocation"}
+                    ? "Probá un ejemplo"
+                    : "Try an example"}
                 </span>
                 <span className="ox-economy-disclosure-note">
                   {es
@@ -92,7 +92,7 @@ export default function FoundationEconomy({
             </summary>
             <div className="ox-economy-simulator">
               <fieldset className="ox-economy-selector">
-              <legend>{es ? "Elegí un tier" : "Choose a tier"}</legend>
+              <legend>{es ? "Elegí una categoría" : "Choose a category"}</legend>
               <div>
                 {SIMULATION_TIERS.map(value => (
                   <label key={value}>
@@ -132,14 +132,14 @@ export default function FoundationEconomy({
 
               <p className="ox-economy-small">
                 {es
-                  ? "El importe fuera de reserva es anterior a gastos, impuestos y otras obligaciones. No equivale a capital disponible ni a beneficio."
-                  : "The amount outside reserve is before expenses, taxes and other obligations. It does not equal available capital or profit."}
+                  ? "Del importe fuera de reserva aún deben descontarse gastos, impuestos y otras obligaciones. No es beneficio ni dinero libre para gastar."
+                  : "Expenses, taxes and other obligations still need to be deducted from the amount outside reserve. It is not profit or money freely available to spend."}
               </p>
 
               <h4>{es ? "Cómo se distribuye el aporte a reserva" : "How the reserve contribution is allocated"}</h4>
               <table className="ox-economy-table">
                 <caption className="ox-economy-sr-only">
-                  {es ? "Distribución entre subreservas por tier" : "Allocation among tier subreserves"}
+                  {es ? "Distribución entre subreservas por categoría" : "Allocation among category subreserves"}
                 </caption>
                 <thead>
                   <tr>
@@ -168,17 +168,17 @@ export default function FoundationEconomy({
               <h3>{es ? "Una reserva con reglas." : "A reserve with rules."}</h3>
               <p>
                 {es
-                  ? "La política destina el 25% de cada venta primaria verificada a la reserva. Su distribución interna depende del tier vendido."
-                  : "The policy allocates 25% of each verified primary sale to reserves. Its internal distribution depends on the tier sold."}
+                  ? "La política destina a la reserva el 25% de cada venta inicial verificada. Ese aporte se reparte entre subreservas según la categoría vendida."
+                  : "The policy allocates 25% of each verified initial sale to the reserve. That contribution is split among subreserves according to the category sold."}
               </p>
             </div>
 
             <div className="ox-economy-data">
-              <h3>{es ? "Datos reales" : "Actual data"}</h3>
+              <h3>{es ? "Ejemplo y datos reales" : "Example and actual data"}</h3>
               <p>
                 {es
-                  ? "Esta sección todavía no está conectada a datos verificados de tesorería. Los valores del simulador no representan reservas depositadas, ventas ni fondos disponibles."
-                  : "This section is not yet connected to verified treasury data. Simulator values do not represent deposited reserves, sales or available funds."}
+                  ? "Este simulador muestra un ejemplo teórico. No consulta la tesorería ni muestra reservas depositadas, ventas reales o fondos disponibles."
+                  : "This simulator shows a theoretical example. It does not query the treasury or show deposited reserves, actual sales or available funds."}
               </p>
 
               <a
