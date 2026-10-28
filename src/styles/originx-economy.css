@@ -233,3 +233,33 @@
   .ox-economy .ox-economy-policy,
   .ox-economy .ox-economy-data { padding: 22px; }
 }
+
+/* OX economy transparency navigation */
+.ox-economy-data .ox-economy-transparency-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 48px;
+  max-width: 100%;
+  margin-top: 16px;
+  padding: 12px 18px;
+  border: 1px solid #9575c8;
+  border-radius: 14px;
+  background: #eee3fc;
+  color: #542c8c;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.ox-economy-data .ox-economy-transparency-link:hover {
+  background: #e3d3fa;
+}
+.ox-economy-data .ox-economy-transparency-link:focus-visible {
+  outline: 3px solid #7046af;
+  outline-offset: 4px;
+}
+.ox-economy-transparency-link > span {
+  flex-shrink: 0;
+}

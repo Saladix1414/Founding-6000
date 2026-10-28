@@ -197,3 +197,9 @@ footer.ox-public-footer a:hover {
     flex-direction: column;
   }
 }
+
+/* OX public footer spacing correction */
+footer.founding-footer.ox-public-footer {
+  margin-top: 0;
+  margin-bottom: 0;
+}

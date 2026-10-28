@@ -1,3 +1,4 @@
+import "../styles/originx-transparency.css";
 import {
   useCallback,
   useEffect,
@@ -439,7 +440,7 @@ export function EconomicOperationsPanel({
   ) {
     return (
       <section
-        className="economic-operations"
+        className="economic-operations ox-landing ox-transparency"
         aria-busy="true"
         aria-label={
           language === "es"
@@ -460,7 +461,7 @@ export function EconomicOperationsPanel({
 
   return (
     <section
-      className="economic-operations"
+      className="economic-operations ox-landing ox-transparency"
       id="economic-transparency"
       aria-labelledby="economic-operations-title"
     >

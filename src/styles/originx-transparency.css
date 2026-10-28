@@ -1,0 +1,478 @@
+
+/* Transparencia pública: presentación sin cambios de datos ni autoridad. */
+.economic-operations.ox-transparency {
+  padding: 64px 24px;
+  color: #0a173a;
+  color-scheme: light;
+  background: #f8f0e5;
+  border: 0;
+}
+.economic-operations.ox-transparency::before,
+.economic-operations.ox-transparency::after {
+  display: none;
+}
+.ox-transparency > .db-container {
+  width: min(100%, 1390px);
+  margin-inline: auto;
+}
+.ox-transparency .economic-operations__inner {
+  display: grid;
+  gap: 24px;
+}
+.ox-transparency .economic-operations__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0;
+}
+.ox-transparency .economic-operations__header > div {
+  min-width: 0;
+}
+.ox-transparency .economic-operations__eyebrow {
+  display: block;
+  margin-bottom: 14px;
+  color: #7046af;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .1em;
+}
+.ox-transparency h2 {
+  margin: 0 0 16px;
+  color: #0a173a;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -.035em;
+  text-shadow: none;
+}
+.ox-transparency .economic-operations__header p {
+  max-width: 720px;
+  margin: 0;
+  color: #505466;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.ox-transparency .economic-operations__refresh {
+  flex-shrink: 0;
+  min-height: 48px;
+  padding: 12px 22px;
+  border: 1px solid #0a173a26;
+  border-radius: 14px;
+  color: #0a173a;
+  background: #fffaf1;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 5px 16px #49351508;
+}
+.ox-transparency .economic-operations__refresh:hover:not(:disabled) {
+  background: #eee3fc;
+  border-color: #9575c8;
+}
+.ox-transparency .economic-operations__refresh:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+.ox-transparency button:focus-visible {
+  outline: 3px solid #7046af;
+  outline-offset: 4px;
+}
+.ox-transparency .economic-operations__notice {
+  margin: 0;
+  padding: 20px 24px;
+  border: 1px solid #d7b57c;
+  border-radius: 18px;
+  background: #fff0d7;
+  color: #70491b;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.ox-transparency .economic-operations__status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin: 0;
+}
+.ox-transparency .economic-operations-card {
+  min-width: 0;
+  padding: 26px;
+  border: 1px solid #0a173a0d;
+  border-radius: 24px;
+  background: #e9ddfc;
+  box-shadow: none;
+}
+.ox-transparency .economic-operations-card:nth-child(2) {
+  background: #ffe1b3;
+}
+.ox-transparency .economic-operations-card:nth-child(3) {
+  background: #dcefff;
+}
+.ox-transparency .economic-operations-card__label {
+  display: block;
+  margin-bottom: 18px;
+  color: #44465a;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+}
+.ox-transparency .economic-operations-card__hero {
+  display: block;
+  margin-bottom: 12px;
+  color: #0a173a;
+  font-size: clamp(30px, 3vw, 44px);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.ox-transparency .economic-operations-card__hero--small {
+  font-size: clamp(22px, 2.2vw, 30px);
+}
+.ox-transparency .economic-operations-card__value {
+  display: block;
+  margin-top: 8px;
+  color: #0a173a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.ox-transparency .economic-operations-card small {
+  color: #505466;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.ox-transparency .economic-operations-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 20px;
+  padding: 9px 13px;
+  border: 1px solid #0a173a18;
+  border-radius: 999px;
+  color: #4c5262;
+  background: #f0ede7;
+}
+.ox-transparency .economic-operations-badge strong {
+  color: inherit;
+}
+.ox-transparency .economic-operations-badge.is-ok {
+  color: #245d38;
+  background: #d7edcc;
+}
+.ox-transparency .economic-operations-badge.is-warning {
+  color: #79500d;
+  background: #ffedbc;
+}
+.ox-transparency .economic-operations-badge:is(.is-critical, .is-error, .is-failed) {
+  color: #922c32;
+  background: #ffdde0;
+}
+.ox-transparency .economic-operations-badge__dot {
+  width: 8px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 50%;
+  box-shadow: none;
+  animation: none;
+}
+.ox-transparency .economic-operations__detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin: 0;
+}
+.ox-transparency :is(
+  .economic-operations__reserve,
+  .economic-operations__integrity,
+  .economic-operations__timeline
+) {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid #0a173a18;
+  border-radius: 24px;
+  background: #fffaf1;
+  box-shadow: none;
+}
+.ox-transparency :is(
+  .economic-operations__reserve,
+  .economic-operations__integrity,
+  .economic-operations__timeline
+) > header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.ox-transparency article > header > div > span {
+  color: #7046af;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+.ox-transparency h3 {
+  margin: 8px 0 0;
+  color: #0a173a;
+  font-size: 23px;
+  line-height: 1.25;
+}
+.ox-transparency .economic-operations__proof-state {
+  max-width: 100%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #0a173a18;
+  color: #79500d;
+  background: #fff0d7;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.ox-transparency .economic-operations__proof-state.is-covered {
+  color: #245d38;
+  background: #d7edcc;
+}
+.ox-transparency .economic-operations__reserve-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.ox-transparency .economic-operations__reserve-grid > div {
+  min-width: 0;
+  padding: 16px;
+  border: 0;
+  border-radius: 14px;
+  background: #fff0d7;
+}
+.ox-transparency .economic-operations__reserve-grid span {
+  display: block;
+  margin-bottom: 10px;
+  color: #55596a;
+  font-size: 13px;
+}
+.ox-transparency .economic-operations__reserve-grid strong {
+  color: #0a173a;
+  font-size: 17px;
+  overflow-wrap: anywhere;
+}
+.ox-transparency .economic-operations__meta {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid #0a173a14;
+}
+.ox-transparency .economic-operations__meta > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding-block: 10px;
+  border-color: #0a173a12;
+}
+.ox-transparency .economic-operations__meta span {
+  color: #55596a;
+  font-size: 13px;
+}
+.ox-transparency .economic-operations__meta :is(strong, code) {
+  min-width: 0;
+  color: #0a173a;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.ox-transparency .economic-operations__integrity-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.ox-transparency .economic-operations__integrity-stats > div {
+  padding: 18px;
+  border: 0;
+  border-radius: 14px;
+  background: #eee5fc;
+}
+.ox-transparency .economic-operations__integrity-stats strong {
+  display: block;
+  color: #0a173a;
+  font-size: 30px;
+}
+.ox-transparency .economic-operations__integrity-stats span {
+  color: #55596a;
+  font-size: 13px;
+}
+.ox-transparency .economic-operations__timeline header small {
+  color: #55596a;
+  font-size: 12px;
+}
+.ox-transparency .economic-operations__empty {
+  padding: 24px;
+  border: 1px dashed #b6abc7;
+  border-radius: 16px;
+  color: #55596a;
+  background: #f5effb;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.ox-transparency .economic-operations__timeline-list {
+  display: grid;
+  gap: 12px;
+}
+.ox-transparency .economic-operations-event {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: start;
+  padding: 18px;
+  border: 1px solid #0a173a12;
+  border-radius: 16px;
+  background: #f8f3eb;
+}
+.ox-transparency .economic-operations-event__body {
+  min-width: 0;
+}
+.ox-transparency .economic-operations-event__body strong {
+  color: #0a173a;
+  overflow-wrap: anywhere;
+}
+.ox-transparency .economic-operations-event__body small {
+  color: #55596a;
+}
+.ox-transparency .economic-operations-event__body > div > span {
+  color: #70491b;
+  background: #fff0d7;
+}
+.ox-transparency .economic-operations-event > code {
+  color: #7046af;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.ox-transparency .economic-operations-event__marker {
+  width: 9px;
+  height: 9px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: #777185;
+  box-shadow: none;
+  animation: none;
+}
+.ox-transparency .economic-operations-event__marker.is-ok {
+  background: #347547;
+}
+.ox-transparency .economic-operations-event__marker.is-warning {
+  background: #9a6611;
+}
+.ox-transparency .economic-operations-event__marker:is(.is-critical, .is-error, .is-failed) {
+  background: #a73542;
+}
+.ox-transparency .economic-operations__disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid #0a173a12;
+  border-radius: 18px;
+  color: #55596a;
+  background: #eee7dc;
+}
+.ox-transparency .economic-operations__disclaimer > span {
+  flex-shrink: 0;
+  color: #55596a;
+  font-size: 11px;
+  font-weight: 800;
+}
+.ox-transparency .economic-operations__disclaimer p {
+  margin: 0;
+  color: #55596a;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.ox-transparency .economic-operations__loading {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.ox-transparency .economic-operations__loading span {
+  display: block;
+  min-height: 180px;
+  border: 1px solid #0a173a0d;
+  border-radius: 24px;
+  background: #e9ddfc;
+  animation: none;
+}
+.ox-transparency .economic-operations__loading span:nth-child(2) {
+  background: #ffe1b3;
+}
+.ox-transparency .economic-operations__loading span:nth-child(3) {
+  background: #dcefff;
+}
+@media (max-width: 1023px) {
+  .ox-transparency .economic-operations__detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 599px) {
+  .economic-operations.ox-transparency {
+    padding: 48px 16px;
+  }
+  .ox-transparency .economic-operations__header {
+    flex-direction: column;
+  }
+  .ox-transparency .economic-operations__status-grid,
+  .ox-transparency .economic-operations__loading,
+  .ox-transparency .economic-operations__reserve-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ox-transparency :is(
+    .economic-operations-card,
+    .economic-operations__reserve,
+    .economic-operations__integrity,
+    .economic-operations__timeline
+  ) {
+    padding: 22px;
+  }
+  .ox-transparency .economic-operations-event {
+    grid-template-columns: 12px minmax(0, 1fr);
+    gap: 12px;
+  }
+  .ox-transparency .economic-operations-event > code {
+    grid-column: 2;
+  }
+  .ox-transparency .economic-operations__disclaimer {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ox-transparency *,
+  .ox-transparency *::before,
+  .ox-transparency *::after {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* OX transparency placement and contrast correction */
+#economic-transparency.ox-transparency {
+  scroll-margin-top: 100px;
+}
+#economic-transparency.ox-transparency .economic-operations__header h2 {
+  color: #0a173a;
+  -webkit-text-fill-color: #0a173a;
+  background: none;
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+  text-shadow: none;
+  opacity: 1;
+}
+#economic-transparency.ox-transparency .economic-operations__header p {
+  color: #505466;
+  -webkit-text-fill-color: #505466;
+}
+#economic-transparency.ox-transparency .economic-operations__eyebrow {
+  color: #7046af;
+  -webkit-text-fill-color: #7046af;
+}
+#economic-transparency.ox-transparency .economic-operations__notice {
+  color: #70491b;
+  -webkit-text-fill-color: #70491b;
+}

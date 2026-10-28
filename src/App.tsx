@@ -815,6 +815,12 @@ function App() {
 
         <FoundingMembership language={language} />
 
+        <EconomicOperationsPanel
+        language={
+          language
+        }
+      />
+
         <section className="genesis-section ox-landing ox-genesis">
           <div className="db-container genesis-layout">
             <div className="genesis-visual">
@@ -2010,11 +2016,7 @@ function App() {
         </div>
       )}
 
-      <EconomicOperationsPanel
-        language={
-          language
-        }
-      />
+
 
       <div className="ox-landing ox-footer-note">
   <div className="ox-footer-note__inner">

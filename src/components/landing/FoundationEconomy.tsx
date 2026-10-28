@@ -168,6 +168,16 @@ export default function FoundationEconomy({
                   ? "Esta sección todavía no está conectada a datos verificados de tesorería. Los valores del simulador no representan reservas depositadas, ventas ni fondos disponibles."
                   : "This section is not yet connected to verified treasury data. Simulator values do not represent deposited reserves, sales or available funds."}
               </p>
+
+              <a
+                className="ox-economy-transparency-link"
+                href="#economic-transparency"
+              >
+                {es
+                  ? "Ver transparencia y reservas"
+                  : "View transparency and reserves"}
+                <span aria-hidden="true">→</span>
+              </a>
             </div>
 
             <p className="ox-economy-small">
