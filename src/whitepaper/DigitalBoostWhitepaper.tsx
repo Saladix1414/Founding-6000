@@ -53,18 +53,9 @@ export function DigitalBoostWhitepaper({
       <header className="project-whitepaper__header">
         <div className="project-whitepaper__identity">
           <span className="project-whitepaper__eyebrow">
-            DIGITAL BUSINESS OPERATING SYSTEM
-          </span>
-
-          <strong>
             {WHITEPAPER_BRAND}
-          </strong>
-
-          <p>
-            {language === "es"
-              ? "Whitepaper del ecosistema"
-              : "Ecosystem Whitepaper"}
-          </p>
+          </span>
+          <strong>Whitepaper</strong>
         </div>
 
         <button
@@ -81,13 +72,29 @@ export function DigitalBoostWhitepaper({
         </button>
       </header>
 
-      <div className="project-whitepaper__meta">
-        <span>FOUNDING 6000</span>
-        <span>CANONICAL EDITION</span>
-        <span>2026</span>
-      </div>
+
 
       <div className="project-whitepaper__layout">
+        <label className="project-whitepaper__chapter-picker">
+          <span>{language === "es" ? "Ir a un capítulo" : "Go to a chapter"}</span>
+          <select
+            defaultValue=""
+            onChange={(event) => {
+              const sectionId = event.currentTarget.value;
+              if (sectionId) scrollToSection(sectionId);
+              event.currentTarget.value = "";
+            }}
+          >
+            <option value="" disabled>
+              {language === "es" ? "Elegí un capítulo" : "Choose a chapter"}
+            </option>
+            {whitepaperSections.map((section) => (
+              <option key={section.id} value={section.id}>
+                {section.number} · {text(section.title)}
+              </option>
+            ))}
+          </select>
+        </label>
         <nav
           className="project-whitepaper__nav"
           aria-label={
@@ -127,48 +134,16 @@ export function DigitalBoostWhitepaper({
 
         <div className="project-whitepaper__document">
           <section className="project-whitepaper__cover">
-            <span className="project-whitepaper__cover-kicker">
-              DIGITALBOOST
-            </span>
-
             <h2>
-              {WHITEPAPER_BRAND}
+              {language === "es"
+                ? "Conocé el ecosistema"
+                : "Explore the ecosystem"}
             </h2>
-
-            <p className="project-whitepaper__cover-subtitle">
-              Digital Business Operating System
-            </p>
-
-            <div className="project-whitepaper__cover-line" />
-
             <p className="project-whitepaper__cover-description">
               {language === "es"
-                ? "Un ecosistema digital para crear, operar, automatizar, conectar, analizar, proteger y hacer evolucionar negocios y productos digitales desde un mismo entorno."
-                : "A digital ecosystem for creating, operating, automating, connecting, analyzing, protecting and evolving digital businesses and products from a unified environment."}
+                ? "La visión de DigitalBoost, sus productos y cómo se conectan. Un documento conceptual en evolución."
+                : "DigitalBoost’s vision, its products and how they connect. An evolving conceptual document."}
             </p>
-
-            <div className="project-whitepaper__cover-map">
-              <span>COMMERCE OS</span>
-              <span>WEB BUILDER</span>
-              <span>AI FORGE</span>
-              <span>TRADING ISLANDS</span>
-              <span>SENTINEL</span>
-              <span>NEXUS</span>
-            </div>
-
-            <div className="project-whitepaper__pulse">
-              <small>
-                TRANSVERSAL INTELLIGENCE
-              </small>
-
-              <strong>PULSE</strong>
-
-              <span>
-                {language === "es"
-                  ? "Comprender · Orquestar · Evolucionar"
-                  : "Understand · Orchestrate · Evolve"}
-              </span>
-            </div>
           </section>
 
           {whitepaperSections.map(
