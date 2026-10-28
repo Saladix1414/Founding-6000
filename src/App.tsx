@@ -225,8 +225,8 @@ function App() {
         ? "Comprar ahora"
         : "Purchase Now"
       : language === "es"
-        ? "Unirme al prelaunch"
-        : "Join Prelaunch";
+        ? "Recibir novedades"
+        : "Get launch updates";
 
   useEffect(() => {
     if (!checkoutOpen) {
@@ -1255,8 +1255,8 @@ function App() {
                     ? (
                       <>
                         {language === "es"
-    ? "Revisá las condiciones y los datos de pago antes de confirmar. El pago se considera completado después de su verificación."
-    : "Review the terms and payment details before confirming. Payment is completed after verification."}
+                          ? "Revisá las condiciones y los datos de pago antes de confirmar. El pago se considera completado después de su verificación."
+                          : "Review the terms and payment details before confirming. Payment is completed after verification."}
                       </>
                     )
                     : (
@@ -1425,46 +1425,47 @@ function App() {
                 <div className="checkout-step">
                   <span className="checkout-step__number">
                     {publicCheckoutEnabled
-                      ? "STEP 01 / 04"
-                      : "PRELAUNCH ACCESS"}
+                      ? language === "es" ? "PASO 01 / 04" : "STEP 01 / 04"
+                      : language === "es" ? "NOVEDADES DEL LANZAMIENTO" : "LAUNCH UPDATES"}
                   </span>
 
                   <h2>
                     {publicCheckoutEnabled
-                      ? "Start with your email."
-                      : "Be notified when reservations open."}
+                      ? language === "es"
+                        ? "Empezá con tu email."
+                        : "Start with your email."
+                      : language === "es"
+                        ? "Dejá tu email."
+                        : "Leave your email."}
                   </h2>
 
                   <p>
                     {publicCheckoutEnabled
                       ? (
                         <>
-                          Email is required before beginning a
-                          Founding 6000 reservation. It will be
-                          used for reservation contact,
-                          confirmation, launch notifications and
-                          account activation.
+                          {language === "es"
+                            ? "Necesitamos tu email para iniciar la reserva y enviarte confirmaciones, novedades del lanzamiento e información de activación."
+                            : "We need your email to start the reservation and send confirmations, launch updates and activation information."}
                         </>
                       )
                       : (
                         <>
-                          Register your email for Founding 6000
-                          launch updates. This does not create a
-                          reservation, membership or payment
-                          obligation.
+                          {language === "es"
+                            ? "Recibí novedades de Founding 6000 y enterate cuando abran las reservas. Registrarte no crea una reserva, una membresía ni una obligación de pago."
+                            : "Get Founding 6000 updates and hear when reservations open. Signing up does not create a reservation, membership or payment obligation."}
                         </>
                       )}
                   </p>
 
                   <label className="checkout-field">
-                    <span>Email address</span>
+                    <span>{language === "es" ? "Tu email" : "Your email"}</span>
 
                     <input
                       type="email"
                       inputMode="email"
                       autoComplete="email"
                       autoFocus
-                      placeholder="you@example.com"
+                      placeholder={language === "es" ? "tu@email.com" : "you@example.com"}
                       value={email}
                       disabled={emailSubmitting}
                       onChange={(event) => {
@@ -1495,16 +1496,16 @@ function App() {
                       {publicCheckoutEnabled
                         ? (
                           <>
-                            Email is a contact identifier. It is
-                            not canonical user identity and does
-                            not prove payment.
+                            {language === "es"
+                              ? "Tu email sirve para contactarte. No verifica tu identidad ni acredita un pago."
+                              : "Your email lets us contact you. It does not verify your identity or prove payment."}
                           </>
                         )
                         : (
                           <>
-                            Email registration records interest
-                            only. Inventory and Founding serials
-                            are not reserved during prelaunch.
+                            {language === "es"
+                              ? "Este registro solo expresa tu interés. No guarda un lugar en la colección ni reserva un número de NFT."
+                              : "This signup only records your interest. It does not hold a place in the collection or reserve an NFT number."}
                           </>
                         )}
                     </p>
@@ -1517,10 +1518,10 @@ function App() {
                     onClick={submitEmail}
                   >
                     {emailSubmitting
-                      ? "Registering…"
+                      ? language === "es" ? "Registrando…" : "Registering…"
                       : publicCheckoutEnabled
-                        ? "Continue"
-                        : "Join launch updates"}
+                        ? language === "es" ? "Continuar" : "Continue"
+                        : language === "es" ? "Recibir novedades" : "Get launch updates"}
 
                     <span aria-hidden="true">
                       →
@@ -1818,8 +1819,8 @@ function App() {
                         ? "PAGO VERIFICADO"
                         : "PAYMENT VERIFIED"
                       : language === "es"
-                        ? "PRELAUNCH REGISTRADO"
-                        : "PRELAUNCH REGISTERED"}
+                        ? "REGISTRO CONFIRMADO"
+                        : "SIGNUP CONFIRMED"}
                   </span>
 
                   <h2>
@@ -1828,8 +1829,8 @@ function App() {
                         ? "Tu pago fue verificado en Ethereum."
                         : "Your payment was verified on Ethereum."
                       : language === "es"
-                        ? "Ya estás en la lista de prelaunch de Founding 6000."
-                        : "You’re on the Founding 6000 prelaunch list."}
+                        ? "Ya estás en la lista de novedades."
+                        : "You’re on the launch updates list."}
                   </h2>
 
                   {publicCheckoutEnabled ? (
@@ -2002,14 +2003,14 @@ function App() {
             <footer className="checkout-footer">
               <span>
                 {publicCheckoutEnabled
-                  ? "Checkout"
-                  : "Prelaunch registration"}
+                  ? language === "es" ? "Compra" : "Checkout"
+                  : language === "es" ? "Novedades del lanzamiento" : "Launch updates"}
               </span>
 
               <span>
                 {publicCheckoutEnabled
-                  ? "Server-side payment authority"
-                  : "Reservations and payments closed"}
+                  ? language === "es" ? "Pago sujeto a verificación" : "Payment subject to verification"
+                  : language === "es" ? "Reservas y pagos aún no habilitados" : "Reservations and payments not yet open"}
               </span>
             </footer>
           </section>

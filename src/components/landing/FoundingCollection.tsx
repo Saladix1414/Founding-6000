@@ -51,20 +51,20 @@ export default function FoundingCollection({
           <div>
             <p className="ox-collection-eyebrow">FOUNDING 6000</p>
             <h2 id="ox-collection-title">
-              {es ? "Tres tiers." : "Three tiers."}{" "}
+              {es ? "Tres categorías." : "Three categories."}{" "}
               <span>
-                {es ? "Una colección fundadora." : "One founding collection."}
+                {es ? "Una colección." : "One collection."}
               </span>
             </h2>
             <p className="ox-collection-description">
               {es
-                ? "Seriales únicos del #0001 al #6000. Conocé la distribución de la colección y sus precios primarios de referencia."
-                : "Unique serials from #0001 to #6000. Explore the collection distribution and its reference primary prices."}
+                ? "RARE, EPIC y LEGENDARY: cada pieza tiene un número único, del #0001 al #6000. Compará cantidades y precios de referencia."
+                : "RARE, EPIC and LEGENDARY: each collectible has a unique number, from #0001 to #6000. Compare quantities and reference prices."}
             </p>
           </div>
 
           <div className="ox-collection-supply">
-            <strong>6.000</strong>
+            <strong>{(6000).toLocaleString(locale)}</strong>
             <span>{es ? "NFT · suministro máximo" : "NFTs · maximum supply"}</span>
           </div>
         </header>
@@ -104,7 +104,7 @@ export default function FoundingCollection({
 
                   <dl className="ox-tier-facts">
                     <div>
-                      <dt>{es ? "NFTs en este tier" : "NFTs in this tier"}</dt>
+                      <dt>{es ? "NFTs en esta categoría" : "NFTs in this category"}</dt>
                       <dd>{phase.capacity.toLocaleString(locale)}</dd>
                     </div>
                     <div>
@@ -112,7 +112,7 @@ export default function FoundingCollection({
                       <dd>{es ? "12 meses" : "12 months"}</dd>
                     </div>
                     <div>
-                      <dt>{es ? "Transferibilidad" : "Transferability"}</dt>
+                      <dt>{es ? "Se puede transferir" : "Transferable"}</dt>
                       <dd>{es ? "Sí" : "Yes"}</dd>
                     </div>
                   </dl>
@@ -121,8 +121,8 @@ export default function FoundingCollection({
                     <summary>{es ? "Ver detalles" : "View details"}</summary>
                     <p>
                       {es
-                        ? "El serial identifica la pieza dentro de Founding 6000. El período de acceso comienza con una activación válida."
-                        : "The serial identifies the piece within Founding 6000. The access term begins upon valid activation."}
+                        ? "Cada número identifica una pieza de Founding 6000. Los 12 meses de acceso comienzan con la activación válida."
+                        : "Each number identifies a Founding 6000 collectible. The 12-month access term begins upon valid activation."}
                     </p>
                     <p>
                       {es
@@ -139,8 +139,8 @@ export default function FoundingCollection({
         <footer className="ox-collection-footer">
           <p>
             {es
-              ? "Los precios son de referencia. La disponibilidad y la asignación de serial se confirman en el flujo habilitado; esta galería no reserva un tier."
-              : "Prices are for reference. Availability and serial allocation are confirmed through the enabled flow; this gallery does not reserve a tier."}
+              ? "Precios de referencia de venta inicial. Esta vista no reserva NFTs. La disponibilidad y el número asignado se confirman en la compra, cuando esté habilitada."
+              : "Reference prices for the initial sale. This view does not reserve NFTs. Availability and your assigned number are confirmed at checkout, when enabled."}
           </p>
           <button
             className="ox-collection-cta"

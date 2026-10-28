@@ -22,13 +22,13 @@ export default function FoundingJourney({
         {
           title: es ? "Revisá las condiciones" : "Review the terms",
           text: es
-            ? "Consultá el tier, el precio de referencia y las condiciones."
-            : "Check the tier, reference price and terms.",
+            ? "Revisá la categoría, el precio de referencia y las condiciones."
+            : "Check the category, reference price and terms.",
         },
         {
           title: es ? "Elegí cómo pagar" : "Choose how to pay",
           text: es
-            ? "Usá uno de los métodos disponibles en el checkout."
+            ? "Elegí entre los métodos habilitados en el formulario de compra."
             : "Use one of the methods available at checkout.",
         },
         {
@@ -40,22 +40,22 @@ export default function FoundingJourney({
       ]
     : [
         {
-          title: es ? "Unite al prelaunch" : "Join prelaunch",
+          title: es ? "Abrí el formulario" : "Open the form",
           text: es
-            ? "Abrí el formulario para recibir novedades de Founding 6000."
-            : "Open the form to receive Founding 6000 updates.",
+            ? "Tocá el botón «Recibir novedades»."
+            : "Select the “Get launch updates” button.",
         },
         {
           title: es ? "Dejá tu email" : "Enter your email",
           text: es
-            ? "Registrá un email de contacto válido."
-            : "Register a valid contact email.",
+            ? "Ingresá el email donde querés recibir las novedades."
+            : "Enter the email where you want to receive updates.",
         },
         {
           title: es ? "Registro confirmado" : "Registration confirmed",
           text: es
-            ? "El formulario confirma cuando tu registro se completa correctamente."
-            : "The form confirms when your registration completes successfully.",
+            ? "Esperá el mensaje de confirmación en pantalla."
+            : "Wait for the confirmation message on screen.",
         },
       ];
 
@@ -76,8 +76,8 @@ export default function FoundingJourney({
                   ? "Tu camino a Founding 6000."
                   : "Your path to Founding 6000."
                 : es
-                  ? "El primer paso es estar cerca."
-                  : "Start by staying connected."}
+                  ? "Enterate cuando abran las reservas."
+                  : "Hear when reservations open."}
             </h2>
           </div>
           <p className="ox-journey__intro">
@@ -86,8 +86,8 @@ export default function FoundingJourney({
                 ? "Conocé cada paso antes de comenzar. La confirmación depende de la verificación del pago."
                 : "Understand each step before you begin. Confirmation depends on payment verification."
               : es
-                ? "Recibí novedades del lanzamiento. El registro de interés no crea una compra ni una reserva."
-                : "Receive launch updates. Registering interest does not create a purchase or reservation."}
+                ? "Dejá tu email para recibir novedades del lanzamiento y la apertura de reservas. Registrarte no crea una compra ni una reserva."
+                : "Leave your email for launch updates and news about reservations opening. Signing up does not create a purchase or reservation."}
           </p>
         </header>
 
@@ -113,8 +113,8 @@ export default function FoundingJourney({
               ? "Pago, membresía, entrega del NFT y activación del acceso son etapas distintas. Los 12 meses comienzan con la activación válida."
               : "Payment, membership, NFT delivery and access activation are separate stages. The 12 months begin on valid activation."
             : es
-              ? "Registrarte no asigna un serial, no crea una membresía y no inicia los 12 meses de acceso."
-              : "Registration does not assign a serial, create a membership or start the 12-month access period."}
+              ? "El registro no asigna un número de NFT, no crea una membresía ni inicia los 12 meses de acceso."
+              : "Signing up does not assign an NFT number, create a membership or start the 12-month access period."}
         </p>
       </div>
     </section>
