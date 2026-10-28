@@ -289,9 +289,24 @@
   }
 }
 
+/* OX compact mobile membership */
 @media (max-width: 599px) {
   #benefits.ox-membership {
-    padding: 44px 16px;
+    padding: 36px 16px;
+  }
+
+  .ox-membership .ox-membership-heading {
+    margin-bottom: 22px;
+  }
+
+  .ox-membership .ox-membership-heading > p:last-child {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .ox-membership .ox-membership-grid,
+  .ox-membership .ox-membership-benefits {
+    gap: 14px;
   }
 
   .ox-membership .ox-membership-benefits,
@@ -301,11 +316,172 @@
 
   .ox-membership .ox-membership-feature,
   .ox-membership .ox-membership-benefit {
-    padding: 24px;
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .ox-membership .ox-membership-feature-top {
+    gap: 12px;
+    font-size: 10px;
+    letter-spacing: .06em;
+  }
+
+  .ox-membership .ox-membership-duration {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 14px 0;
+  }
+
+  .ox-membership .ox-membership-duration strong {
+    font-size: 42px;
+    line-height: 1;
+    letter-spacing: -.05em;
+    text-shadow: 2px 2px 0 rgb(255 255 255 / 70%);
+  }
+
+  .ox-membership .ox-membership-duration > span {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: .1em;
+  }
+
+  .ox-membership .ox-membership-feature h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .ox-membership .ox-membership-feature p,
+  .ox-membership .ox-membership-benefit p {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .ox-membership .ox-membership-feature-link {
+    min-height: 44px;
+    margin-top: 10px;
+    padding-block: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .ox-membership .ox-membership-benefit {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    align-content: start;
+    gap: 10px;
+  }
+
+  .ox-membership .ox-membership-index {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+    padding-top: 3px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .ox-membership .ox-membership-benefit h3 {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.25;
+  }
+
+  .ox-membership .ox-membership-benefit p,
+  .ox-membership .ox-membership-benefit small {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  .ox-membership .ox-membership-benefit small {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .ox-membership .ox-membership-lifecycle {
+    margin-top: 26px;
+  }
+
+  .ox-membership .ox-membership-lifecycle > h3 {
+    margin-bottom: 16px;
+    font-size: 23px;
+  }
+
+  .ox-membership .ox-membership-lifecycle ol {
+    gap: 16px;
+  }
+
+  .ox-membership .ox-membership-lifecycle li {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+    align-items: start;
+    gap: 8px 10px;
+    padding-top: 12px;
+  }
+
+  .ox-membership .ox-membership-lifecycle li > span {
+    grid-column: 1;
+    grid-row: 1;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    border-radius: 10px;
+  }
+
+  .ox-membership .ox-membership-lifecycle h4 {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    padding-top: 4px;
+    font-size: 17px;
+    line-height: 1.3;
+  }
+
+  .ox-membership .ox-membership-lifecycle p {
+    grid-column: 1 / -1;
+    line-height: 1.45;
+  }
+
+  .ox-membership .ox-membership-example {
+    margin-top: 18px;
+    border-radius: 16px;
+  }
+
+  .ox-membership .ox-membership-example summary {
+    min-height: 48px;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .ox-membership .ox-membership-example > div {
+    padding: 0 16px 14px;
   }
 
   .ox-membership .ox-membership-boundary {
-    gap: 12px;
-    padding: 18px;
+    gap: 10px;
+    margin-top: 14px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .ox-membership .ox-membership-boundary-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 13px;
+  }
+
+  .ox-membership .ox-membership-boundary > div {
+    min-width: 0;
+  }
+
+  .ox-membership .ox-membership-boundary h3 {
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 1.3;
   }
 }
