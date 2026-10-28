@@ -56,14 +56,14 @@ export default function FoundingHeroCopy({ language, onEconomy }: Props) {
         </h1>
 
         <p className="ox-hero-tagline">
-          <span>{es ? "Una comunidad." : "One community."}</span>{" "}
-          <span>{es ? "Un gran futuro." : "A great future."}</span>
+          <span>{es ? "Tu pieza." : "Your collectible."}</span>{" "}
+          <span>{es ? "Tu lugar en OriginX." : "Your place in OriginX."}</span>
         </p>
 
         <p className="ox-hero-description">
           {es
-            ? "OriginX Foundation presenta Founding 6000: una colección limitada de 6.000 membresías NFT que combinan identidad, acceso y una economía estructurada para construir un ecosistema junto a su comunidad."
-            : "OriginX Foundation presents Founding 6000: a limited collection of 6,000 NFT memberships combining identity, access and a structured economy to build an ecosystem with its community."}
+            ? "Founding 6000 reúne 6.000 membresías NFT de OriginX Foundation. Cada membresía está diseñada para incluir una pieza coleccionable y 12 meses de Focus Founding Access desde su activación válida."
+            : "Founding 6000 brings together 6,000 OriginX Foundation NFT memberships. Each membership is designed to include a collectible and 12 months of Focus Founding Access from valid activation."}
         </p>
       </div>
 
@@ -94,7 +94,7 @@ export default function FoundingHeroCopy({ language, onEconomy }: Props) {
           <dd>{es ? "6.000" : "6,000"}</dd>
         </div>
         <div>
-          <dt>{es ? "Tiers de colección" : "Collection tiers"}</dt>
+          <dt>{es ? "Categorías" : "Categories"}</dt>
           <dd>3</dd>
         </div>
         <div>

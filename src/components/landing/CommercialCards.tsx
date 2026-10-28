@@ -55,10 +55,10 @@ export default function CommercialCards({ language, onEconomy }: Props) {
     {
       key: "nft",
       number: "01",
-      title: es ? "NFT COLECCIONABLE" : "COLLECTIBLE NFT",
+      title: es ? "TU PIEZA" : "YOUR COLLECTIBLE",
       description: es
-        ? "Arte generativo, serial único y transferibilidad."
-        : "Generative art, a unique serial and transferability.",
+        ? "Una pieza de arte generativo con número único. Podés transferir tu NFT."
+        : "Generative art with a unique number. You can transfer your NFT.",
       image: "epic-dragon.png",
       href: "#phases",
       action: es ? "Explorar la colección" : "Explore the collection",
@@ -66,10 +66,10 @@ export default function CommercialCards({ language, onEconomy }: Props) {
     {
       key: "economy",
       number: "02",
-      title: es ? "ECONOMÍA TRANSPARENTE" : "TRANSPARENT ECONOMY",
+      title: es ? "REGLAS CLARAS" : "CLEAR RULES",
       description: es
-        ? "Reservas, fondos de desarrollo y uso verificable de recursos."
-        : "Reserves, development funds and verifiable use of resources.",
+        ? "Conocé la política de reserva y cómo se separan los fondos."
+        : "Explore the reserve policy and how funds are kept separate.",
       image: "economy-emblem.png",
       href: null,
       action: es ? "Explorar la economía" : "Explore the economy",
@@ -77,10 +77,10 @@ export default function CommercialCards({ language, onEconomy }: Props) {
     {
       key: "ecosystem",
       number: "03",
-      title: es ? "UN ECOSISTEMA REAL" : "A REAL ECOSYSTEM",
+      title: es ? "LO QUE VIENE" : "WHAT’S AHEAD",
       description: es
-        ? "Productos y servicios que buscamos construir junto a la comunidad Founding."
-        : "Products and services we aim to build with the Founding community.",
+        ? "Explorá los productos de OriginX y el estado de desarrollo de cada uno."
+        : "Explore OriginX products and each product’s development status.",
       image: "ecosystem-island.png",
       href: "#product",
       action: es ? "Conocer el proyecto" : "Discover the project",
