@@ -612,10 +612,9 @@ function App() {
                   aria-expanded={galleryOpen}
                   aria-controls="project-gallery-panel"
                   onClick={() => {
+                    setGalleryPreview(null);
                     setWhitepaperOpen(false);
-                    setGalleryOpen(
-                      (current) => !current,
-                    );
+                    setGalleryOpen(current => !current);
                   }}
                 >
                   <span
@@ -627,8 +626,8 @@ function App() {
 
                   <span>
                     {language === "es"
-                      ? "GALERÍA"
-                      : "GALLERY"}
+                      ? "Ver galería"
+                      : "View gallery"}
                   </span>
 
                   <span
@@ -664,7 +663,8 @@ function App() {
                   </span>
 
                   <span>
-                    WHITEPAPER
+
+                    {language === "es" ? "Leer whitepaper" : "Read whitepaper"}
                   </span>
 
                   <span
@@ -707,9 +707,10 @@ function App() {
                           ? "Cerrar galería"
                           : "Close gallery"
                       }
-                      onClick={() =>
-                        setGalleryOpen(false)
-                      }
+                      onClick={() => {
+                        setGalleryPreview(null);
+                        setGalleryOpen(false);
+                      }}
                     >
                       ×
                     </button>
@@ -717,8 +718,8 @@ function App() {
 
                   <p className="project-gallery-panel__intro">
                     {language === "es"
-                      ? "Una vista rápida de las principales áreas que forman el ecosistema DigitalBoost."
-                      : "A quick view of the core areas that make up the DigitalBoost ecosystem."}
+                      ? "Explorá las imágenes del proyecto. Tocá una para ampliarla. Consultá el estado de cada producto en la sección Proyecto."
+                      : "Explore the project images. Select one to enlarge it. Check each product’s status in the Project section."}
                   </p>
 
                   <div className="project-gallery-grid">
