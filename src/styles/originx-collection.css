@@ -296,141 +296,192 @@
 /* OX compact mobile collection cards */
 @media (max-width: 599px) {
   #phases.ox-collection {
-    padding: 36px 16px;
+    padding: 26px 16px;
   }
 
   .ox-collection .ox-collection-heading {
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .ox-collection .ox-collection-eyebrow {
+    margin-bottom: 8px;
+    font-size: 10px;
+    letter-spacing: .08em;
+  }
+
+  .ox-collection .ox-collection-heading h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    line-height: 1.15;
+  }
+
+  .ox-collection .ox-collection-description {
+    font-size: 14px;
+    line-height: 1.45;
   }
 
   .ox-collection .ox-collection-supply {
     flex-direction: row;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     width: 100%;
-    padding: 14px 16px;
+    padding: 10px 12px;
+    border-radius: 12px;
     text-align: left;
   }
 
   .ox-collection .ox-collection-supply strong {
-    font-size: 26px;
-  }
-
-  .ox-collection .ox-collection-description {
-    font-size: 16px;
+    font-size: 22px;
   }
 
   .ox-collection .ox-collection-grid {
-    gap: 14px;
+    gap: 10px;
   }
 
   .ox-collection .ox-tier-card {
-    border-radius: 18px;
+    border-radius: 14px;
+    box-shadow: none;
   }
 
   .ox-collection .ox-tier-banner {
     display: grid;
-    grid-template-columns: 40px minmax(0, 1fr);
+    grid-template-columns: 32px minmax(0, 1fr);
     align-items: center;
-    gap: 4px 12px;
-    padding: 14px 16px;
+    gap: 3px 10px;
+    padding: 10px 12px;
     text-align: left;
   }
 
   .ox-collection .ox-tier-topline {
     grid-column: 1 / -1;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     font-size: 10px;
-    letter-spacing: .07em;
+    letter-spacing: .05em;
   }
 
   .ox-collection .ox-tier-emblem {
     grid-column: 1;
     grid-row: 2 / 4;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     margin: 0;
-    border-radius: 12px;
+    border-radius: 9px;
   }
 
   .ox-collection .ox-tier-emblem svg {
-    width: 26px;
-    height: 24px;
+    width: 22px;
+    height: 20px;
   }
 
   .ox-collection .ox-tier-banner h3 {
     grid-column: 2;
     grid-row: 2;
     margin: 0;
-    font-size: 23px;
-    line-height: 1.1;
+    font-size: 20px;
+    line-height: 1.15;
   }
 
   .ox-collection .ox-tier-serial {
     grid-column: 2;
     grid-row: 3;
     font-size: 12px;
-    line-height: 1.4;
+    line-height: 1.35;
   }
 
   .ox-collection .ox-tier-body {
-    padding: 14px 16px 8px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0 10px;
+    padding: 10px 12px 0;
   }
 
   .ox-collection .ox-tier-price-label {
-    margin-bottom: 4px;
+    margin: 0;
     font-size: 12px;
-    line-height: 1.4;
+    line-height: 1.35;
   }
 
   .ox-collection .ox-tier-price {
-    gap: 7px;
-    margin-bottom: 10px;
+    justify-content: flex-end;
+    gap: 5px;
+    margin: 0;
   }
 
   .ox-collection .ox-tier-price strong {
-    font-size: 30px;
-    line-height: 1.1;
+    font-size: 26px;
+    line-height: 1.15;
   }
 
   .ox-collection .ox-tier-price span {
-    font-size: 14px;
+    font-size: 12px;
+  }
+
+  .ox-collection .ox-tier-facts,
+  .ox-collection .ox-tier-details {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  .ox-collection .ox-tier-facts {
+    margin-top: 10px;
   }
 
   .ox-collection .ox-tier-facts > div {
     align-items: baseline;
-    gap: 12px;
-    padding: 8px 0;
+    gap: 10px;
+    padding: 6px 0;
   }
 
-  .ox-collection .ox-tier-facts dt {
+  .ox-collection .ox-tier-facts dt,
+  .ox-collection .ox-tier-facts dd {
     min-width: 0;
     font-size: 13px;
-    line-height: 1.35;
+    line-height: 1.4;
   }
 
   .ox-collection .ox-tier-facts dd {
     flex-shrink: 0;
-    font-size: 13px;
-    line-height: 1.35;
   }
 
   .ox-collection .ox-tier-details {
-    margin-top: 4px;
+    margin-top: 2px;
     font-size: 14px;
+    line-height: 1.45;
   }
 
   .ox-collection .ox-tier-details summary {
+    box-sizing: border-box;
     display: list-item;
     min-height: 44px;
-    padding-block: 11px;
-    line-height: 22px;
+    padding-block: 12px;
+    line-height: 20px;
+  }
+
+  .ox-collection .ox-tier-details summary:focus-visible {
+    outline: 2px solid var(--tier-ink);
+    outline-offset: -2px;
+    border-radius: 6px;
+  }
+
+  .ox-collection .ox-collection-footer {
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .ox-collection .ox-collection-footer p {
+    font-size: 13px;
+    line-height: 1.45;
   }
 
   .ox-collection .ox-collection-cta {
     width: 100%;
+    min-height: 46px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
   }
 }
