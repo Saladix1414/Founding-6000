@@ -998,8 +998,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "Sistemas avanzados de trading, automatización, bots y activos digitales en desarrollo activo."
-                    : "Advanced trading, automation, bot and digital asset systems under active development."}
+                    ? "Herramientas de trading, bots y automatización para activos digitales. En desarrollo activo."
+                    : "Trading tools, bots and automation for digital assets. Under active development."}
                 </p>
               </article>
 
@@ -1017,8 +1017,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "Base para creación de IA, agentes, automatización, herramientas e inteligencia desplegable."
-                    : "Foundation for AI creation, agents, automation, tools and deployable intelligence."}
+                    ? "Una base en desarrollo para crear herramientas de IA, agentes y automatizaciones."
+                    : "A foundation under development for building AI tools, agents and automations."}
                 </p>
               </article>
 
@@ -1036,8 +1036,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "Capacidad planificada de DigitalBoost. Actualmente no se presenta como disponible."
-                    : "Planned DigitalBoost capability. It is not currently represented as available."}
+                    ? "Una capacidad planificada de DigitalBoost. Todavía no está disponible."
+                    : "A planned DigitalBoost capability. Not available yet."}
                 </p>
               </article>
 
@@ -1051,8 +1051,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "Superficie de ecosistema planificada para futuras experiencias conectadas de DigitalBoost."
-                    : "Planned ecosystem surface for future connected DigitalBoost experiences."}
+                    ? "Un espacio planificado para conectar futuras experiencias de DigitalBoost."
+                    : "A planned space to connect future DigitalBoost experiences."}
                 </p>
               </article>
             </div>
@@ -1082,8 +1082,8 @@ function App() {
 
               <p className="db-copy">
                 {language === "es"
-                  ? "Información importante sobre la preventa, el período de acceso, el estado del producto y la campaña."
-                  : "Important information about the pre-sale, access period, product status and campaign."}
+                  ? "Qué incluye la propuesta, cuándo empieza el acceso y cuáles son las condiciones."
+                  : "What the offer includes, when access starts and which terms apply."}
               </p>
             </div>
 
@@ -1097,8 +1097,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "Una preorden / reserva de producto OriginX Foundation · Founding 6000 destinada a brindar 12 meses de Focus Founding Access después de la activación de la cuenta, sujeta a los términos finales publicados y a límites técnicos."
-                    : "A OriginX Foundation · Founding 6000 product pre-order / reservation intended to provide 12 months of Focus Founding Access after account activation, subject to the final published terms and technical limits."}
+                    ? "Una preorden o reserva de Founding 6000, diseñada para incluir 12 meses de Focus Founding Access desde la activación válida de la cuenta. Está sujeta a los términos finales publicados y a límites técnicos. Registrarte para recibir novedades no equivale a comprar."
+                    : "A Founding 6000 product pre-order or reservation, designed to include 12 months of Focus Founding Access from valid account activation. Final published terms and technical limits apply. Signing up for updates is not a purchase."}
                 </p>
               </details>
 
@@ -1125,8 +1125,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "El período de 12 meses de Founding Access comienza cuando se activa tu cuenta Founding Access, no automáticamente en la fecha de compra."
-                    : "The 12-month Founding Access period begins when your Founding Access account is activated, not automatically on purchase date."}
+                    ? "Con la activación válida de tu cuenta Founding Access. Comprar o registrarte para recibir novedades no inicia los 12 meses."
+                    : "Upon valid activation of your Founding Access account. Purchasing or signing up for updates does not start the 12 months."}
                 </p>
               </details>
 
@@ -1139,8 +1139,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "No. El 5 de enero de 2027 es la fecha objetivo actual de lanzamiento. No se presenta como una fecha de entrega garantizada."
-                    : "No. January 5, 2027 is the current target launch date. It is explicitly not presented as a guaranteed delivery date."}
+                    ? "No. El 5 de enero de 2027 es una fecha objetivo de lanzamiento, sujeta a cambios. No es una fecha de entrega garantizada."
+                    : "No. January 5, 2027 is a target launch date, subject to change. It is not a guaranteed delivery date."}
                 </p>
               </details>
 
@@ -1161,14 +1161,24 @@ function App() {
               <details>
                 <summary>
                   {language === "es"
-                    ? "¿Qué métodos de pago están planificados?"
-                    : "Which payment methods are planned?"}
+                    ? "¿Cómo voy a poder pagar?"
+                    : "How will I be able to pay?"}
                 </summary>
 
                 <p>
+                  {publicCheckoutEnabled
+                    ? language === "es"
+                      ? "El formulario de compra permite elegir USDT en Ethereum Mainnet. Revisá allí la red, el importe y la dirección de destino antes de transferir. Los métodos en pesos todavía no están habilitados."
+                      : "Checkout offers USDT on Ethereum Mainnet. Review the network, amount and destination address there before transferring. Peso payment methods are not enabled yet."
+                    : language === "es"
+                      ? "Las reservas y los pagos todavía no están habilitados en esta página. Podés dejar tu email para recibir novedades de la apertura."
+                      : "Reservations and payments are not yet enabled on this page. You can leave your email for updates about opening."}
+                </p>
+
+                <p>
                   {language === "es"
-  ? "El plan actual contempla pagos en ARS mediante Mercado Pago, Naranja X únicamente si se verifica una integración oficial adecuada, y USDT en una red blockchain seleccionada explícitamente. Los pagos reales todavía no están habilitados."
-  : "The current plan includes ARS payment through Mercado Pago, Naranja X only if an official suitable integration is verified, and USDT on one explicitly selected blockchain network. Real payments are not enabled yet."}
+                    ? "El plan contempla Mercado Pago para pagos en pesos argentinos. Naranja X depende de que se verifique una integración oficial adecuada. No hay una fecha de disponibilidad confirmada para estos métodos."
+                    : "The plan includes Mercado Pago for Argentine peso payments. Naranja X depends on verification of a suitable official integration. Availability dates for these methods are not confirmed."}
                 </p>
               </details>
 
@@ -1203,21 +1213,25 @@ function App() {
                 </div>
 
                 <h2>
-                  {language === "es"
-                    ? "Formá parte de los primeros 6.000."
-                    : "Be part of the first 6,000."}
+                  {publicCheckoutEnabled
+                    ? language === "es"
+                      ? "Sé parte del próximo capítulo."
+                      : "Be part of the next chapter."
+                    : language === "es"
+                      ? "El próximo capítulo empieza acá."
+                      : "The next chapter starts here."}
                 </h2>
 
                 <p>
                   {language === "es"
-                    ? "RARE es el primer tier de la colección, con un precio primario de referencia de 50 USDT y una capacidad máxima de 1.000 NFTs Founding."
-                    : "RARE is the first collection tier, with a 50 USDT reference primary price and a maximum supply of 1,000 Founding NFTs."}
+                    ? "La colección comienza con RARE: hasta 1.000 NFTs, con un precio de referencia de venta inicial de 50 USDT."
+                    : "The collection starts with RARE: up to 1,000 NFTs, with an initial sale reference price of 50 USDT."}
                 </p>
 
                 <div className="purchase-panel__meta">
                   <div>
                     <span>
-                      {language === "es" ? "Fase" : "Phase"}
+                      {language === "es" ? "Categoría" : "Category"}
                     </span>
                     <strong>RARE</strong>
                   </div>
@@ -1237,7 +1251,7 @@ function App() {
                         ? "Capacidad"
                         : "Capacity"}
                     </span>
-                    <strong>1,000</strong>
+                    <strong>{(1000).toLocaleString(language === "es" ? "es-AR" : "en-US")}</strong>
                   </div>
                 </div>
 
@@ -1262,8 +1276,8 @@ function App() {
                     : (
                       <>
                         {language === "es"
-                          ? "Las reservas públicas todavía no están abiertas. Unite a las novedades del prelanzamiento sin crear una orden ni un pago."
-                          : "Public reservations are not open yet. Join prelaunch updates without creating an order or payment."}
+                          ? "Las reservas todavía no están abiertas. Dejá tu email para recibir novedades. Este registro no crea una compra, una reserva ni una membresía."
+                          : "Reservations are not open yet. Leave your email for updates. This signup does not create a purchase, reservation or membership."}
                       </>
                     )}
                 </span>
