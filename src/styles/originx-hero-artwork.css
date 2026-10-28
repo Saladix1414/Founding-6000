@@ -1,0 +1,223 @@
+/* OriginX Foundation — hero artwork */
+#campaign.ox-hero-stage {
+  display: block;
+  height: auto;
+  min-height: 0;
+  padding: 24px 0 20px;
+}
+
+#campaign.ox-hero-stage > .campaign-hero__grid {
+  width: min(calc(100% - 48px), var(--ox-container));
+  display: grid;
+  grid-template-columns: minmax(0, 0.96fr) minmax(0, 1fr);
+  grid-template-rows: auto auto auto auto;
+  align-items: start;
+  column-gap: 16px;
+  row-gap: 0;
+  min-height: 0;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#campaign .ox-hero-copy { display: contents; }
+#campaign .ox-hero-intro {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+  padding-top: 12px;
+}
+#campaign .ox-hero-actions { grid-column: 1; grid-row: 2; }
+#campaign .ox-hero-stats { grid-column: 1; grid-row: 3; }
+#campaign .ox-hero-conditions { grid-column: 1; grid-row: 4; }
+
+#campaign .ox-hero-artwork {
+  position: relative;
+  isolation: isolate;
+  grid-column: 2;
+  grid-row: 1 / 5;
+  align-self: center;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  container-type: inline-size;
+}
+
+#campaign .ox-hero-artwork-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 16px rgb(10 23 58 / 12%));
+}
+
+#campaign .ox-art-brand {
+  position: absolute;
+  top: 12%;
+  left: 24%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(-10deg);
+  color: #fff5e4;
+  line-height: 1;
+}
+#campaign .ox-art-brand strong {
+  font-family: var(--ox-font-display);
+  font-size: 4.4cqw;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+#campaign .ox-art-brand strong span { color: #fec171; }
+#campaign .ox-art-brand small {
+  margin-top: 0.5cqw;
+  font-size: 1.4cqw;
+  letter-spacing: 0.24em;
+}
+
+#campaign .ox-art-serial {
+  position: absolute;
+  top: 70%;
+  left: 18%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7cqw;
+  transform: rotate(-5deg);
+  color: #fff5e4;
+  line-height: 1;
+}
+#campaign .ox-art-serial strong {
+  font-size: 4.2cqw;
+  font-weight: 900;
+}
+#campaign .ox-art-serial > span {
+  padding: 0.35cqw 1.4cqw;
+  border: 1px solid #fec171;
+  border-radius: 1cqw;
+  font-size: 2.1cqw;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+#campaign .ox-art-tier {
+  position: absolute;
+  color: #1d1139;
+  font-family: var(--ox-font-display);
+  font-weight: 900;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  line-height: 1;
+}
+#campaign .ox-art-tier-epic {
+  top: 55%;
+  left: 75%;
+  font-size: 4cqw;
+}
+#campaign .ox-art-tier-legendary {
+  top: 51%;
+  left: 87%;
+  color: #5b2d10;
+  font-size: 2.8cqw;
+}
+#campaign .ox-art-caption {
+  margin-top: 4px;
+  color: var(--ox-text-muted);
+  font-size: 10px;
+  text-align: center;
+}
+
+#campaign.ox-hero-stage > .ox-hero-landscape {
+  background-image:
+    linear-gradient(
+      90deg,
+      var(--ox-page-cream) 0%,
+      rgb(248 240 229 / 96%) 29%,
+      rgb(248 240 229 / 65%) 40%,
+      transparent 54%
+    ),
+    url("/landing/arcade-pop/hero-landscape.png");
+  background-position: center, center;
+  background-size: 100% 100%, cover;
+}
+
+#campaign.ox-hero-stage > .project-dock {
+  position: relative;
+  inset: auto;
+  width: min(calc(100% - 48px), var(--ox-container));
+  min-height: 0;
+  margin: 12px auto 0;
+  padding: 0;
+  transform: none;
+}
+#campaign .project-dock__rail {
+  position: relative;
+  inset: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  transform: none;
+}
+#campaign .project-dock__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+}
+#campaign .project-dock__button {
+  min-height: 44px;
+  border: 1px solid var(--ox-border);
+  border-radius: 12px;
+  color: var(--ox-ink);
+  background: var(--ox-surface);
+  box-shadow: none;
+}
+
+@media (max-width: 899px) {
+  #campaign.ox-hero-stage > .campaign-hero__grid {
+    width: min(calc(100% - 40px), 720px);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto auto auto;
+  }
+  #campaign .ox-hero-intro { grid-column: 1; grid-row: 1; }
+  #campaign .ox-hero-artwork {
+    grid-column: 1;
+    grid-row: 2;
+    width: min(100%, 600px);
+    justify-self: center;
+    margin-top: 14px;
+  }
+  #campaign .ox-hero-actions {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 18px;
+  }
+  #campaign .ox-hero-stats { grid-column: 1; grid-row: 4; }
+  #campaign .ox-hero-conditions { grid-column: 1; grid-row: 5; }
+
+  #campaign.ox-hero-stage > .ox-hero-landscape {
+    top: 0;
+    background: var(--ox-page-cream);
+  }
+  #campaign .ox-hero-artwork::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      url("/landing/arcade-pop/hero-landscape.png")
+      right center / auto 100% no-repeat;
+    -webkit-mask-image: radial-gradient(ellipse, #000 45%, transparent 73%);
+    mask-image: radial-gradient(ellipse, #000 45%, transparent 73%);
+  }
+}
+
+@media (max-width: 599px) {
+  #campaign.ox-hero-stage { padding-top: 14px; }
+  #campaign.ox-hero-stage > .campaign-hero__grid,
+  #campaign.ox-hero-stage > .project-dock {
+    width: calc(100% - 32px);
+  }
+  #campaign .ox-hero-intro { padding-top: 0; }
+  #campaign .ox-hero-artwork { margin-top: 18px; }
+}

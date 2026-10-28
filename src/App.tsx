@@ -1,9 +1,12 @@
-import {
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import FoundingJourney from "./components/landing/FoundingJourney";
+import FoundingMembership from "./components/landing/FoundingMembership";
+import FoundationEconomy, { scrollToEconomy } from "./components/landing/FoundationEconomy";
+import FoundingCollection from "./components/landing/FoundingCollection";
+import CommercialCards from "./components/landing/CommercialCards";
+import HeroArtwork from "./components/landing/HeroArtwork";
+import FoundingHeroCopy from "./components/landing/FoundingHeroCopy";
+import OriginXNavbar from "./components/landing/OriginXNavbar";
+import { useEffect, useRef, useState } from "react";
 import UsdtPaymentPanel from "./components/UsdtPaymentPanel";
 import NftEconomyPanel from "./components/NftEconomyPanel";
 import EconomicOperationsPanel from "./components/EconomicOperationsPanel";
@@ -14,21 +17,20 @@ import {
 } from "./lib/foundingApi";
 
 import "./App.css";
+import "./styles/originx-checkout.css";
+import "./styles/originx-faq-footer.css";
+import "./styles/originx-continuity.css";
+import "./styles/originx-hero-background.css";
+import "./styles/originx-hero-artwork.css";
 import { DigitalBoostWhitepaper } from "./whitepaper/DigitalBoostWhitepaper";
 
-const TARGET_DATE = new Date("2027-01-05T00:00:00-03:00");
+
 
 type Language =
   | "en"
   | "es";
 
-type Countdown = {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-  reached: boolean;
-};
+
 
 type CheckoutStep =
   | "email"
@@ -81,57 +83,9 @@ const phases: CampaignPhase[] = [
   },
 ];
 
-function getCountdown(): Countdown {
-  const now = Date.now();
-  const difference = TARGET_DATE.getTime() - now;
 
-  if (difference <= 0) {
-    return {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-      reached: true,
-    };
-  }
 
-  const days = Math.floor(difference / 86_400_000);
 
-  const hours = Math.floor(
-    (difference % 86_400_000) / 3_600_000,
-  );
-
-  const minutes = Math.floor(
-    (difference % 3_600_000) / 60_000,
-  );
-
-  const seconds = Math.floor(
-    (difference % 60_000) / 1000,
-  );
-
-  return {
-    days,
-    hours,
-    minutes,
-    seconds,
-    reached: false,
-  };
-}
-
-function CountdownUnit({
-  value,
-  label,
-}: {
-  value: number;
-  label: string;
-}) {
-  return (
-    <div className="countdown-unit">
-      <strong>{String(value).padStart(2, "0")}</strong>
-      <span>{label}</span>
-    </div>
-  );
-}
 
 function App() {
   const [
@@ -151,8 +105,7 @@ function App() {
         : "en";
     });
 
-  const [countdown, setCountdown] =
-    useState<Countdown>(getCountdown);
+
 
   const [mobileMenuOpen, setMobileMenuOpen] =
     useState(false);
@@ -259,23 +212,12 @@ function App() {
       language;
   }, [language]);
 
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setCountdown(getCountdown());
-    }, 1000);
 
-    return () => {
-      window.clearInterval(interval);
-    };
-  }, []);
 
-  const sold = 0;
-  const total = 6000;
 
-  const progress = useMemo(
-    () => Math.min(100, (sold / total) * 100),
-    [sold],
-  );
+
+
+
 
   const primaryCtaLabel =
     publicCheckoutEnabled
@@ -557,196 +499,16 @@ function App() {
 
   return (
     <div className="campaign">
-      <header className="campaign-nav">
-        <div className="db-container campaign-nav__inner">
-          <a
-            href="#top"
-            className="campaign-brand"
-            aria-label="DigitalBoost Origin Founding 6000"
-            onClick={closeMenu}
-          >
-            <span
-              className="campaign-brand__mark"
-              aria-hidden="true"
-            >
-              D
-            </span>
-
-            <span className="campaign-brand__text">
-              <strong>DigitalBoost Origin</strong>
-              <small>Founding 6000</small>
-            </span>
-          </a>
-
-          <nav
-            className="campaign-nav__desktop"
-            aria-label={
-              language === "es"
-                ? "Navegación principal"
-                : "Primary navigation"
-            }
-          >
-            <a href="#campaign">
-              {language === "es" ? "Campaña" : "Campaign"}
-            </a>
-            <a href="#phases">
-              {language === "es" ? "Fases" : "Phases"}
-            </a>
-            <a href="#benefits">
-              {language === "es" ? "Beneficios" : "Benefits"}
-            </a>
-            <a href="#product">
-              {language === "es" ? "Producto" : "Product"}
-            </a>
-            <a href="#faq">FAQ</a>
-          </nav>
-
-          <div
-            className="language-switcher language-switcher--desktop"
-            role="group"
-            aria-label="Language"
-          >
-            <button
-              type="button"
-              className={
-                language === "en"
-                  ? "language-switcher__button is-active"
-                  : "language-switcher__button"
-              }
-              aria-pressed={language === "en"}
-              onClick={() => setLanguage("en")}
-            >
-              EN
-            </button>
-
-            <span aria-hidden="true">
-              /
-            </span>
-
-            <button
-              type="button"
-              className={
-                language === "es"
-                  ? "language-switcher__button is-active"
-                  : "language-switcher__button"
-              }
-              aria-pressed={language === "es"}
-              onClick={() => setLanguage("es")}
-            >
-              ES
-            </button>
-          </div>
-
-          <button
-            className="db-button db-button--primary campaign-nav__cta"
-            type="button"
-            onClick={openCheckout}
-          >
-            {primaryCtaLabel}
-          </button>
-
-          <button
-            className="mobile-menu-button"
-            type="button"
-            aria-label={
-              language === "es"
-                ? mobileMenuOpen
-                  ? "Cerrar menú de navegación"
-                  : "Abrir menú de navegación"
-                : mobileMenuOpen
-                  ? "Close navigation menu"
-                  : "Open navigation menu"
-            }
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-navigation"
-            onClick={() =>
-              setMobileMenuOpen((current) => !current)
-            }
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
-
-        {mobileMenuOpen && (
-          <nav
-            id="mobile-navigation"
-            className="mobile-nav"
-            aria-label={
-              language === "es"
-                ? "Navegación móvil"
-                : "Mobile navigation"
-            }
-          >
-            <div className="db-container mobile-nav__inner">
-              <a href="#campaign" onClick={closeMenu}>
-                {language === "es" ? "Campaña" : "Campaign"}
-              </a>
-
-              <a href="#phases" onClick={closeMenu}>
-                {language === "es" ? "Fases" : "Phases"}
-              </a>
-
-              <a href="#benefits" onClick={closeMenu}>
-                {language === "es" ? "Beneficios" : "Benefits"}
-              </a>
-
-              <a href="#product" onClick={closeMenu}>
-                {language === "es" ? "Producto" : "Product"}
-              </a>
-
-              <a href="#faq" onClick={closeMenu}>
-                FAQ
-              </a>
-
-              <div
-                className="language-switcher language-switcher--mobile"
-                role="group"
-                aria-label="Language"
-              >
-                <button
-                  type="button"
-                  className={
-                    language === "en"
-                      ? "language-switcher__button is-active"
-                      : "language-switcher__button"
-                  }
-                  aria-pressed={language === "en"}
-                  onClick={() => setLanguage("en")}
-                >
-                  EN
-                </button>
-
-                <span aria-hidden="true">
-                  /
-                </span>
-
-                <button
-                  type="button"
-                  className={
-                    language === "es"
-                      ? "language-switcher__button is-active"
-                      : "language-switcher__button"
-                  }
-                  aria-pressed={language === "es"}
-                  onClick={() => setLanguage("es")}
-                >
-                  ES
-                </button>
-              </div>
-
-              <button
-                type="button"
-                className="db-button db-button--primary"
-                onClick={openCheckout}
-              >
-                {primaryCtaLabel}
-              </button>
-            </div>
-          </nav>
-        )}
-      </header>
+      <OriginXNavbar
+        language={language}
+        onLanguageChange={setLanguage}
+        ctaLabel={primaryCtaLabel}
+        onCheckout={openCheckout}
+        onEconomy={scrollToEconomy}
+        menuOpen={mobileMenuOpen}
+        onToggleMenu={() => setMobileMenuOpen((current) => !current)}
+        onCloseMenu={closeMenu}
+      />
 
       {galleryPreview && (
         <div
@@ -820,10 +582,21 @@ function App() {
 
       <main id="top">
         <section
-          className="campaign-hero"
+          className="campaign-hero ox-landing ox-hero-stage"
           id="campaign"
         >
-          <div className="campaign-hero__signal" />
+          <div className="ox-hero-landscape" aria-hidden="true" />
+
+
+
+          <div className="db-container campaign-hero__grid">
+            <FoundingHeroCopy
+              language={language}
+              onEconomy={scrollToEconomy}
+            />
+
+            <HeroArtwork language={language} />
+          </div>
 
           <div className="db-container project-dock">
             <div className="project-dock__rail">
@@ -1002,525 +775,47 @@ function App() {
               )}
             </div>
           </div>
-
-          <div className="db-container campaign-hero__grid">
-            <div className="campaign-hero__content">
-              <div className="campaign-kicker">
-                <span className="campaign-kicker__dot" />
-                DIGITALBOOST ORIGIN
-                <span className="campaign-kicker__divider">
-                  /
-                </span>
-                {language === "es"
-                  ? "PRELANZAMIENTO"
-                  : "PRE-LAUNCH"}
-              </div>
-
-              <h1 className="campaign-hero__title">
-                FOUNDING
-                <span>6000</span>
-              </h1>
-
-              <p className="campaign-hero__headline">
-                {language === "es"
-                  ? "Formá parte de los primeros 6.000."
-                  : "Become part of the first 6,000."}
-              </p>
-
-              <p className="campaign-hero__description">
-                {language === "es"
-                  ? "12 meses de Focus Founding Access más estatus permanente de Founding Member cuando tu membresía sea verificada y activada."
-                  : "12 months of Focus Founding Access plus permanent Founding Member status when your membership is verified and activated."}
-              </p>
-
-              <div className="campaign-hero__meta">
-                <div>
-                  <span>
-                    {language === "es"
-                      ? "Fase actual"
-                      : "Current phase"}
-                  </span>
-                  <strong>RARE</strong>
-                </div>
-
-                <div>
-                  <span>
-                    {language === "es"
-                      ? "Precio de referencia"
-                      : "Reference price"}
-                  </span>
-                  <strong>US$50</strong>
-                </div>
-
-                <div>
-                  <span>
-                    {language === "es"
-                      ? "Rango RARE"
-                      : "RARE range"}
-                  </span>
-                  <strong>#0001–#1000</strong>
-                </div>
-              </div>
-
-              <div className="campaign-hero__actions">
-                <button
-                  className="db-button db-button--primary campaign-hero__primary"
-                  type="button"
-                  onClick={openCheckout}
-                >
-                  {primaryCtaLabel}
-                  <span aria-hidden="true">→</span>
-                </button>
-
-                <a
-                  className="db-button db-button--secondary"
-                  href="#phases"
-                >
-                  {language === "es"
-                    ? "Explorar la campaña"
-                    : "Explore the campaign"}
-                </a>
-              </div>
-
-              <p className="campaign-hero__disclosure">
-                {language === "es"
-                  ? "Preorden / reserva de producto. Founding 6000 no es una inversión, oferta de capital, valor financiero ni programa de participación en ingresos."
-                  : "Product pre-order / reservation. Founding 6000 is not an investment, equity offering, security or revenue-share program."}
-              </p>
-            </div>
-
-            <aside className="launch-panel">
-              <div className="launch-panel__top">
-                <div>
-                  <span className="launch-panel__eyebrow">
-                    {language === "es"
-                      ? "LANZAMIENTO OBJETIVO"
-                      : "TARGET LAUNCH"}
-                  </span>
-
-                  <strong>JAN 05 · 2027</strong>
-                </div>
-
-                <span className="launch-panel__status">
-                  {language === "es"
-                    ? "Objetivo"
-                    : "Target"}
-                </span>
-              </div>
-
-              {countdown.reached ? (
-                <div className="launch-window">
-                  <span>
-                    {language === "es"
-                      ? "Ventana de lanzamiento alcanzada"
-                      : "Launch window reached"}
-                  </span>
-
-                  <p>
-                    {language === "es"
-                      ? "Seguí las novedades de DigitalBoost Origin para conocer la disponibilidad actual del producto."
-                      : "Follow DigitalBoost Origin updates for current product availability."}
-                  </p>
-                </div>
-              ) : (
-                <>
-                  <div
-                    className="countdown"
-                    aria-label={
-                      language === "es"
-                        ? "Cuenta regresiva al lanzamiento objetivo"
-                        : "Countdown to target launch"
-                    }
-                  >
-                    <CountdownUnit
-                      value={countdown.days}
-                      label={language === "es" ? "Días" : "Days"}
-                    />
-
-                    <CountdownUnit
-                      value={countdown.hours}
-                      label={language === "es" ? "Horas" : "Hours"}
-                    />
-
-                    <CountdownUnit
-                      value={countdown.minutes}
-                      label={language === "es" ? "Min" : "Min"}
-                    />
-
-                    <CountdownUnit
-                      value={countdown.seconds}
-                      label={language === "es" ? "Seg" : "Sec"}
-                    />
-                  </div>
-
-                  <p className="launch-panel__note">
-                    {language === "es"
-                      ? "Esta es una fecha objetivo de lanzamiento, no una fecha de entrega garantizada."
-                      : "This is a target launch date, not a guaranteed delivery date."}
-                  </p>
-                </>
-              )}
-
-              <div className="launch-panel__line" />
-
-              <div className="launch-panel__phase">
-                <div>
-                  <span>
-                    {language === "es"
-                      ? "FASE ACTIVA"
-                      : "ACTIVE PHASE"}
-                  </span>
-                  <strong>01 · Genesis</strong>
-                </div>
-
-                <span>
-                  {language === "es"
-                    ? "máx. 1.000"
-                    : "1,000 max"}
-                </span>
-              </div>
-            </aside>
-          </div>
         </section>
+        <CommercialCards
+          language={language}
+          onEconomy={scrollToEconomy}
+        />
 
-        <section className="campaign-progress-section">
-          <div className="db-container">
-            <div className="campaign-progress">
-              <div className="campaign-progress__header">
-                <div>
-                  <span className="campaign-progress__eyebrow">
-                    {language === "es"
-                      ? "CAMPAÑA GLOBAL"
-                      : "GLOBAL CAMPAIGN"}
-                  </span>
-
-                  <h2>
-                    {language === "es"
-                      ? "Asignación de membresías Founding"
-                      : "Founding membership allocation"}
-                  </h2>
-                </div>
-
-                <div className="campaign-progress__number">
-                  <strong>{sold.toLocaleString()}</strong>
-                  <span>/ {total.toLocaleString()}</span>
-                </div>
-              </div>
-
-              <div
-                className="campaign-progress__track"
-                role="progressbar"
-                aria-valuemin={0}
-                aria-valuemax={total}
-                aria-valuenow={sold}
-                aria-label="Founding 6000 memberships allocated"
-              >
-                <div
-                  className="campaign-progress__fill"
-                  style={{
-                    width: `${progress}%`,
-                  }}
-                />
-              </div>
-
-              <div className="campaign-progress__footer">
-                <span>
-                  Initial prototype state: 0 verified
-                  memberships
-                </span>
-
-                <span>
-                  Production counters will be
-                  server-authoritative
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
 
         <section
-          className="db-section phase-section"
-          id="phases"
+          className="ox-landing ox-allocation-status"
+          aria-labelledby="ox-allocation-title"
         >
-          <div className="db-container">
-            <div className="section-heading">
-              <div>
-                <div className="db-eyebrow">
-                  {language === "es"
-                    ? "Estructura de campaña"
-                    : "Campaign structure"}
-                </div>
-
-                <h2 className="db-title">
-                  {language === "es"
-                    ? "Tres fases. Una sola cohorte fundadora."
-                    : "Three phases. One founding cohort."}
-                </h2>
-
-                <p className="db-copy">
-                  {language === "es"
-                    ? "Solo una fase está activa a la vez. Cada fase tiene una capacidad fija y un precio de referencia."
-                    : "Only one phase is active at a time. Each phase has a fixed capacity and reference price."}
-                </p>
-              </div>
-
-              <div className="section-heading__total">
-                <span>
-                  {language === "es"
-                    ? "Capacidad total"
-                    : "Total capacity"}
-                </span>
-                <strong>6,000</strong>
-              </div>
+          <div className="ox-allocation-inner">
+            <div>
+              <h2 id="ox-allocation-title">
+                {language === "es"
+                  ? "Asignación de membresías Founding"
+                  : "Founding membership allocation"}
+              </h2>
+              <p>
+                {language === "es"
+                  ? "Los datos verificados de asignación todavía no están disponibles en esta sección."
+                  : "Verified allocation data is not yet available in this section."}
+              </p>
             </div>
-
-            <div className="phase-grid">
-              {phases.map((phase) => (
-                <article
-                  className={
-                    phase.active
-                      ? "phase-card phase-card--active"
-                      : "phase-card"
-                  }
-                  key={phase.number}
-                >
-                  <div className="phase-card__top">
-                    <span className="phase-card__number">
-                      {phase.number}
-                    </span>
-
-                    {phase.active ? (
-                      <span className="phase-card__active">
-                        {language === "es"
-                          ? "Activa"
-                          : "Active"}
-                      </span>
-                    ) : (
-                      <span className="phase-card__future">
-                        {language === "es"
-                          ? "Próxima"
-                          : "Upcoming"}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="phase-card__body">
-                    <span className="phase-card__label">
-                      {language === "es"
-                        ? `Fase ${phase.number}`
-                        : `Phase ${phase.number}`}
-                    </span>
-
-                    <h3>{phase.name}</h3>
-
-                    <div className="phase-card__price">
-                      <small>
-                        {language === "es"
-                          ? "Referencia"
-                          : "Reference"}
-                      </small>
-                      <strong>US${phase.price}</strong>
-                    </div>
-
-                    <dl className="phase-card__details">
-                      <div>
-                        <dt>
-                          {language === "es"
-                            ? "Capacidad"
-                            : "Capacity"}
-                        </dt>
-                        <dd>
-                          {phase.capacity.toLocaleString()}
-                        </dd>
-                      </div>
-
-                      <div>
-                        <dt>
-                          {language === "es"
-                            ? "Rango de serie"
-                            : "Serial range"}
-                        </dt>
-                        <dd>{phase.range}</dd>
-                      </div>
-
-                      <div>
-                        <dt>
-                          {language === "es"
-                            ? "Estado"
-                            : "Status"}
-                        </dt>
-                        <dd>{phase.status}</dd>
-                      </div>
-                    </dl>
-                  </div>
-
-                  <div className="phase-card__bottom">
-                    {phase.active
-                      ? language === "es"
-                        ? "Fase actual de la campaña"
-                        : "Current campaign phase"
-                      : language === "es"
-                        ? "Abre después de completar la fase anterior"
-                        : "Opens after prior phase allocation"}
-                  </div>
-                </article>
-              ))}
-            </div>
+            <span className="ox-allocation-label">
+              {language === "es" ? "Datos no disponibles" : "Data unavailable"}
+            </span>
           </div>
         </section>
 
-        <section
-          className="db-section benefits-section"
-          id="benefits"
-        >
-          <div className="db-container">
-            <div className="section-heading section-heading--wide">
-              <div>
-                <div className="db-eyebrow">
-                  {language === "es"
-                    ? "Acceso Founding"
-                    : "Founding access"}
-                </div>
+        <FoundingCollection
+          language={language}
+          phases={phases}
+          ctaLabel={primaryCtaLabel}
+          onCheckout={openCheckout}
+        />
+        <FoundationEconomy language={language} />
 
-                <h2 className="db-title">
-                  {language === "es"
-                    ? "Más que acceso anticipado."
-                    : "More than early access."}
-                </h2>
+        <FoundingMembership language={language} />
 
-                <p className="db-copy">
-                  {language === "es"
-                    ? "Cada membresía verificada de Founding 6000 está diseñada para incluir 12 meses de Focus Founding Access desde la activación de la cuenta Founding Access del usuario."
-                    : "Every verified Founding 6000 membership is designed to include 12 months of Focus Founding Access beginning when the user's Founding Access account is activated."}
-                </p>
-              </div>
-            </div>
-
-            <div className="benefits-grid">
-              <article className="benefit-card benefit-card--feature">
-                <span className="benefit-card__index">
-                  01
-                </span>
-
-                <div>
-                  <span className="benefit-card__eyebrow">
-                    {language === "es"
-                      ? "ACCESO PRINCIPAL"
-                      : "CORE ACCESS"}
-                  </span>
-
-                  <h3>
-                    {language === "es"
-                      ? "12 meses de Focus"
-                      : "12 months of Focus"}
-                  </h3>
-
-                  <p>
-                    {language === "es"
-                      ? "Founding Access comienza con la activación de la cuenta, no automáticamente en la fecha de compra."
-                      : "Founding Access begins on account activation — not automatically on the purchase date."}
-                  </p>
-                </div>
-
-                <span className="benefit-card__signal">
-                  12 MONTHS
-                </span>
-              </article>
-
-              <article className="benefit-card">
-                <span className="benefit-card__index">
-                  02
-                </span>
-
-                <h3>
-                  Founding Member
-                </h3>
-
-                <p>
-                  {language === "es"
-                    ? "Reconocimiento permanente como uno de los primeros 6.000 miembros verificados de DigitalBoost Origin."
-                    : "Permanent recognition as one of the first 6,000 verified DigitalBoost Origin members."}
-                </p>
-              </article>
-
-              <article className="benefit-card">
-                <span className="benefit-card__index">
-                  03
-                </span>
-
-                <h3>
-                  {language === "es"
-                    ? "Acceso beta prioritario"
-                    : "Priority beta access"}
-                </h3>
-
-                <p>
-                  {language === "es"
-                    ? "Oportunidades anticipadas para acceder a funciones elegibles del producto a medida que estén disponibles."
-                    : "Earlier opportunities to access eligible product capabilities as they become available."}
-                </p>
-              </article>
-
-              <article className="benefit-card">
-                <span className="benefit-card__index">
-                  04
-                </span>
-
-                <h3>
-                  {language === "es"
-                    ? "Feedback de producto"
-                    : "Product feedback"}
-                </h3>
-
-                <p>
-                  {language === "es"
-                    ? "Oportunidades para ayudar a orientar decisiones de producto mediante programas estructurados de feedback Founding."
-                    : "Opportunities to help shape product decisions through structured founding feedback programs."}
-                </p>
-              </article>
-
-              <article className="benefit-card">
-                <span className="benefit-card__index">
-                  05
-                </span>
-
-                <h3>
-                  {language === "es"
-                    ? "Ecosistema conectado"
-                    : "Connected ecosystem"}
-                </h3>
-
-                <p>
-                  {language === "es"
-                    ? "El reconocimiento Founding podrá reflejarse más adelante en experiencias elegibles de DigitalBoost y espacios de comunidad."
-                    : "Founding recognition may later surface across eligible DigitalBoost experiences and community spaces."}
-                </p>
-              </article>
-            </div>
-
-            <div className="access-boundary">
-              <span className="access-boundary__icon">
-                ∞
-              </span>
-
-              <div>
-                <strong>
-                  {language === "es"
-                    ? "Founding Focus no significa infraestructura ilimitada."
-                    : "Founding Focus does not mean unlimited infrastructure."}
-                </strong>
-
-                <p>
-                  {language === "es"
-                    ? "Pueden aplicar límites de DBX, uso razonable, inferencia de IA, cómputo, almacenamiento, hosting, runtime, Sentinel y otras restricciones técnicas o legales."
-                    : "DBX allowance, fair-use, AI inference, compute, storage, hosting, runtime, Sentinel and other technical or legal limits may apply."}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="genesis-section">
+        <section className="genesis-section ox-landing ox-genesis">
           <div className="db-container genesis-layout">
             <div className="genesis-visual">
               <span className="genesis-visual__eyebrow">
@@ -1597,7 +892,7 @@ function App() {
         </section>
 
         <section
-          className="db-section product-section"
+          className="db-section product-section ox-landing ox-ecosystem"
           id="product"
         >
           <div className="db-container">
@@ -1611,8 +906,8 @@ function App() {
 
                 <h2 className="db-title">
                   {language === "es"
-                    ? "Construyendo el ecosistema DigitalBoost."
-                    : "Building the DigitalBoost ecosystem."}
+                    ? "Construyendo el ecosistema OriginX Foundation."
+                    : "Building the OriginX Foundation ecosystem."}
                 </h2>
 
                 <p className="db-copy">
@@ -1652,9 +947,7 @@ function App() {
               <article className="product-card">
                 <div className="product-card__top">
                   <span>02</span>
-                  <span className="product-status product-status--active">
-                    Functional / In development
-                  </span>
+                  <span className="product-status product-status--active">{language === "es" ? "Funcional / En desarrollo" : "Functional / In development"}</span>
                 </div>
 
                 <h3>Web Builder</h3>
@@ -1745,9 +1038,7 @@ function App() {
               <article className="product-card product-card--planned">
                 <div className="product-card__top">
                   <span>07</span>
-                  <span className="product-status">
-                    Planned
-                  </span>
+                  <span className="product-status">{language === "es" ? "Planificado" : "Planned"}</span>
                 </div>
 
                 <h3>Nexus</h3>
@@ -1762,128 +1053,13 @@ function App() {
           </div>
         </section>
 
-        <section className="db-section workflow-section">
-          <div className="db-container">
-            <div className="workflow-heading">
-              <div>
-                <div className="db-eyebrow">
-                  {language === "es"
-                    ? "Cómo funciona"
-                    : "How it works"}
-                </div>
-
-                <h2 className="db-title">
-                  {language === "es"
-                    ? "Del interés a la membresía verificada."
-                    : "From interest to verified membership."}
-                </h2>
-              </div>
-
-              <p className="db-copy">
-                {language === "es"
-                  ? "El estado del pago y de la membresía solo es autoritativo después de la verificación y liquidación del lado del servidor."
-                  : "Payment and membership state is authoritative only after server-side verification and settlement."}
-              </p>
-            </div>
-
-            <div className="workflow">
-              <div className="workflow-step">
-                <span>01</span>
-                <strong>{primaryCtaLabel}</strong>
-                <p>
-                  {language === "es"
-                    ? "Iniciá el flujo de reserva de Founding 6000."
-                    : "Begin the Founding 6000 reservation flow."}
-                </p>
-              </div>
-
-              <div className="workflow-arrow">
-                →
-              </div>
-
-              <div className="workflow-step">
-                <span>02</span>
-                <strong>Email</strong>
-                <p>
-                  {language === "es"
-                    ? "Registrá primero un email de contacto válido."
-                    : "Register a valid contact email first."}
-                </p>
-              </div>
-
-              <div className="workflow-arrow">
-                →
-              </div>
-
-              <div className="workflow-step">
-                <span>03</span>
-                <strong>
-                  {language === "es"
-                    ? "Confirmar"
-                    : "Confirm"}
-                </strong>
-                <p>
-                  {language === "es"
-                    ? "Revisá la fase, el precio de referencia y los términos."
-                    : "Review phase, reference price and terms."}
-                </p>
-              </div>
-
-              <div className="workflow-arrow">
-                →
-              </div>
-
-              <div className="workflow-step">
-                <span>04</span>
-                <strong>
-                  {language === "es"
-                    ? "Pago"
-                    : "Payment"}
-                </strong>
-                <p>
-                  {language === "es"
-                    ? "Elegí un medio de pago compatible y disponible."
-                    : "Choose an available supported payment rail."}
-                </p>
-              </div>
-
-              <div className="workflow-arrow">
-                →
-              </div>
-
-              <div className="workflow-step">
-                <span>05</span>
-                <strong>
-                  {language === "es"
-                    ? "Verificar"
-                    : "Verify"}
-                </strong>
-                <p>
-                  {language === "es"
-                    ? "La verificación del servidor o blockchain confirma la liquidación."
-                    : "Server or blockchain verification confirms settlement."}
-                </p>
-              </div>
-
-              <div className="workflow-arrow">
-                →
-              </div>
-
-              <div className="workflow-step">
-                <span>06</span>
-                <strong>Membership</strong>
-                <p>
-                  {language === "es"
-                    ? "La liquidación verificada crea la membresía canónica."
-                    : "Verified settlement creates the canonical membership."}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <FoundingJourney
+          language={language}
+          checkoutEnabled={publicCheckoutEnabled}
+        />
 
         <section
-          className="db-section faq-section"
+          className="db-section faq-section ox-landing ox-faq"
           id="faq"
         >
           <div className="db-container faq-layout">
@@ -1915,8 +1091,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "Una preorden / reserva de producto DigitalBoost Origin Founding 6000 destinada a brindar 12 meses de Focus Founding Access después de la activación de la cuenta, sujeta a los términos finales publicados y a límites técnicos."
-                    : "A DigitalBoost Origin Founding 6000 product pre-order / reservation intended to provide 12 months of Focus Founding Access after account activation, subject to the final published terms and technical limits."}
+                    ? "Una preorden / reserva de producto OriginX Foundation · Founding 6000 destinada a brindar 12 meses de Focus Founding Access después de la activación de la cuenta, sujeta a los términos finales publicados y a límites técnicos."
+                    : "A OriginX Foundation · Founding 6000 product pre-order / reservation intended to provide 12 months of Focus Founding Access after account activation, subject to the final published terms and technical limits."}
                 </p>
               </details>
 
@@ -1984,11 +1160,9 @@ function App() {
                 </summary>
 
                 <p>
-                  The current plan includes ARS payment through
-                  Mercado Pago, Naranja X only if an official
-                  suitable integration is verified, and USDT
-                  on one explicitly selected blockchain
-                  network. Real payments are not enabled yet.
+                  {language === "es"
+  ? "El plan actual contempla pagos en ARS mediante Mercado Pago, Naranja X únicamente si se verifica una integración oficial adecuada, y USDT en una red blockchain seleccionada explícitamente. Los pagos reales todavía no están habilitados."
+  : "The current plan includes ARS payment through Mercado Pago, Naranja X only if an official suitable integration is verified, and USDT on one explicitly selected blockchain network. Real payments are not enabled yet."}
                 </p>
               </details>
 
@@ -2010,12 +1184,12 @@ function App() {
         </section>
 
         <section
-          className="purchase-section"
+          className="purchase-section ox-landing ox-purchase"
           id="purchase"
         >
           <div className="db-container">
             <div className="purchase-panel">
-              <div className="purchase-panel__glow" />
+
 
               <div className="purchase-panel__content">
                 <div className="db-eyebrow">
@@ -2030,8 +1204,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "RARE es el primer tier de la colección, con un precio primario de 50 USDT y una capacidad máxima de 1.000 NFTs Founding."
-                    : "RARE is the first collection tier, with a 50 USDT primary price and a maximum supply of 1,000 Founding NFTs."}
+                    ? "RARE es el primer tier de la colección, con un precio primario de referencia de 50 USDT y una capacidad máxima de 1.000 NFTs Founding."
+                    : "RARE is the first collection tier, with a 50 USDT reference primary price and a maximum supply of 1,000 Founding NFTs."}
                 </p>
 
                 <div className="purchase-panel__meta">
@@ -2045,8 +1219,8 @@ function App() {
                   <div>
                     <span>
                       {language === "es"
-                        ? "Precio primario"
-                        : "Primary price"}
+                        ? "Precio de referencia"
+                        : "Reference price"}
                     </span>
                     <strong>50 USDT</strong>
                   </div>
@@ -2074,9 +1248,9 @@ function App() {
                   {publicCheckoutEnabled
                     ? (
                       <>
-                        Checkout availability is controlled by
-                        server-side readiness and payment
-                        authority.
+                        {language === "es"
+    ? "Revisá las condiciones y los datos de pago antes de confirmar. El pago se considera completado después de su verificación."
+    : "Review the terms and payment details before confirming. Payment is completed after verification."}
                       </>
                     )
                     : (
@@ -2093,10 +1267,10 @@ function App() {
         </section>
       </main>
 
-      <footer className="founding-footer">
+      <footer className="founding-footer ox-landing ox-public-footer">
         <div className="db-container founding-footer-inner">
           <div>
-            <strong>DigitalBoost Origin</strong>
+            <strong>OriginX Foundation</strong>
             <p>
               {language === "es"
                 ? "Founding 6000 · Programa de preorden / reserva."
@@ -2138,7 +1312,7 @@ function App() {
 
       {checkoutOpen && (
         <div
-          className="checkout-overlay"
+          className="checkout-overlay ox-checkout-overlay"
           role="presentation"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) {
@@ -2147,7 +1321,7 @@ function App() {
           }}
         >
           <section
-            className="checkout-modal"
+            className="checkout-modal ox-landing ox-checkout"
             role="dialog"
             aria-modal="true"
             aria-labelledby="checkout-title"
@@ -2842,19 +2016,16 @@ function App() {
         }
       />
 
-      <footer className="campaign-footer">
-        <div className="db-container campaign-footer__inner">
-          <div className="campaign-footer__brand">
-            <strong>DigitalBoost Origin</strong>
-            <span>Founding 6000</span>
-          </div>
-
-          <div className="campaign-footer__meta">
-            <span>Pre-launch campaign</span>
-            <span>Target launch · Jan 05, 2027</span>
-          </div>
-        </div>
-      </footer>
+      <div className="ox-landing ox-footer-note">
+  <div className="ox-footer-note__inner">
+    <span>{language === "es"
+      ? "Founding 6000 · Campaña de prelanzamiento"
+      : "Founding 6000 · Pre-launch campaign"}</span>
+    <span>{language === "es"
+      ? "Lanzamiento objetivo · 5 de enero de 2027 · Sujeto a cambios"
+      : "Target launch · January 5, 2027 · Subject to change"}</span>
+  </div>
+</div>
     </div>
   );
 }

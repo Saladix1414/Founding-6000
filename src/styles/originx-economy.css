@@ -1,0 +1,235 @@
+/* OriginX Foundation — illustrative public economy */
+#economia.ox-economy {
+  padding: 72px 24px;
+  background: var(--ox-page-cream);
+  color: var(--ox-ink);
+  scroll-margin-top: 24px;
+}
+.ox-economy .ox-economy-inner {
+  width: min(100%, var(--ox-container));
+  margin-inline: auto;
+}
+.ox-economy .ox-economy-heading {
+  max-width: 900px;
+  margin-bottom: 28px;
+}
+.ox-economy .ox-economy-eyebrow {
+  margin: 0 0 12px;
+  color: var(--ox-purple-text);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+.ox-economy .ox-economy-heading h2 {
+  margin: 0 0 16px;
+  font-family: var(--ox-font-display);
+  font-size: clamp(28px, 3vw, 46px);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  color: var(--ox-ink);
+}
+.ox-economy .ox-economy-heading h2 span { color: var(--ox-orange-text); }
+.ox-economy .ox-economy-heading > p:last-child {
+  color: var(--ox-text-muted);
+  font-size: 17px;
+  line-height: 1.55;
+}
+.ox-economy .ox-economy-path {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ox-economy .ox-economy-path li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 20px;
+  border-radius: 18px;
+  background: #e7deff;
+}
+.ox-economy .ox-economy-path li:nth-child(2) { background: #ffe0ab; }
+.ox-economy .ox-economy-path li:nth-child(3) { background: #ccecff; }
+.ox-economy .ox-economy-path li:nth-child(4) { background: #d3efc4; }
+.ox-economy .ox-economy-path li > span {
+  font-size: 13px;
+  font-weight: 800;
+  opacity: 0.7;
+}
+.ox-economy .ox-economy-path-note,
+.ox-economy .ox-economy-small {
+  color: var(--ox-text-muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.ox-economy .ox-economy-path-note { margin: 14px 0 28px; }
+.ox-economy .ox-economy-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 26px;
+  align-items: start;
+}
+.ox-economy .ox-economy-simulator {
+  min-width: 0;
+  padding: 30px;
+  border: 1px solid var(--ox-border);
+  border-radius: 24px;
+  background: var(--ox-surface);
+  box-shadow: var(--ox-shadow-soft);
+}
+.ox-economy .ox-economy-simulator-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.ox-economy h3 {
+  margin: 0 0 12px;
+  color: var(--ox-ink);
+  font-size: 23px;
+  line-height: 1.2;
+}
+.ox-economy .ox-economy-simulator-title h3 { margin: 0; }
+.ox-economy .ox-economy-simulator-title > span {
+  padding: 7px 10px;
+  border-radius: 20px;
+  background: #ffebce;
+  color: var(--ox-orange-text);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+.ox-economy .ox-economy-selector {
+  min-width: 0;
+  margin: 0 0 24px;
+  padding: 0;
+  border: 0;
+}
+.ox-economy .ox-economy-selector legend {
+  margin-bottom: 10px;
+  color: var(--ox-text-muted);
+  font-size: 14px;
+}
+.ox-economy .ox-economy-selector > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.ox-economy .ox-economy-selector label { position: relative; cursor: pointer; }
+.ox-economy .ox-economy-selector input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.ox-economy .ox-economy-selector label > span {
+  display: grid;
+  place-items: center;
+  min-height: 46px;
+  border: 1px solid var(--ox-border);
+  border-radius: 12px;
+  background: #fffdf8;
+  font-size: 12px;
+  font-weight: 800;
+}
+.ox-economy .ox-economy-selector input:checked + span {
+  border-color: var(--ox-purple-text);
+  background: #e7deff;
+  color: #4f328e;
+}
+.ox-economy .ox-economy-selector input:focus-visible + span {
+  outline: 3px solid var(--ox-focus);
+  outline-offset: 3px;
+}
+.ox-economy .ox-economy-price { margin: 0 0 20px; }
+.ox-economy .ox-economy-price > span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ox-text-muted);
+  font-size: 13px;
+}
+.ox-economy .ox-economy-price strong {
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.15;
+}
+.ox-economy .ox-economy-bar {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.ox-economy .ox-economy-bar span {
+  padding: 12px 4px;
+  background: #b3a3fc;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+.ox-economy .ox-economy-bar span + span { background: #fec171; }
+.ox-economy .ox-economy-split { margin: 18px 0 12px; }
+.ox-economy .ox-economy-split > div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--ox-border);
+}
+.ox-economy .ox-economy-split dt { font-size: 14px; }
+.ox-economy .ox-economy-split dd { margin: 0; font-weight: 800; }
+.ox-economy h4 { margin: 26px 0 12px; font-size: 17px; }
+.ox-economy .ox-economy-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.ox-economy .ox-economy-table th,
+.ox-economy .ox-economy-table td {
+  padding: 12px 6px;
+  border-bottom: 1px solid var(--ox-border);
+  text-align: right;
+}
+.ox-economy .ox-economy-table th:first-child { text-align: left; }
+.ox-economy .ox-economy-table thead { color: var(--ox-text-muted); }
+.ox-economy .ox-economy-explanation { display: grid; gap: 20px; }
+.ox-economy .ox-economy-policy,
+.ox-economy .ox-economy-data { padding: 28px; border-radius: 24px; }
+.ox-economy .ox-economy-policy { background: #ffe0ab; }
+.ox-economy .ox-economy-data {
+  border: 1px solid var(--ox-border);
+  background: var(--ox-surface);
+}
+.ox-economy .ox-economy-policy-number {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--ox-orange-text);
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+}
+.ox-economy .ox-economy-explanation p { margin: 0; line-height: 1.55; }
+.ox-economy .ox-economy-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@media (max-width: 899px) {
+  .ox-economy .ox-economy-layout { grid-template-columns: minmax(0, 1fr); }
+  .ox-economy .ox-economy-path { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 599px) {
+  #economia.ox-economy { padding: 44px 16px; }
+  .ox-economy .ox-economy-simulator { padding: 20px 14px; }
+  .ox-economy .ox-economy-path li { gap: 8px; padding: 16px 12px; font-size: 14px; }
+  .ox-economy .ox-economy-selector label > span { font-size: 11px; }
+  .ox-economy .ox-economy-policy,
+  .ox-economy .ox-economy-data { padding: 22px; }
+}

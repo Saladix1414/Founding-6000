@@ -1,0 +1,293 @@
+/* OriginX Foundation — live hero typography and controls */
+#campaign.ox-hero-stage > .campaign-hero__grid {
+  width: min(calc(100% - 48px), var(--ox-container));
+  max-width: var(--ox-container);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 660px) minmax(0, 1fr);
+  align-items: center;
+  gap: 32px;
+}
+
+#campaign .ox-hero-copy {
+  position: relative;
+  min-width: 0;
+  color: var(--ox-ink);
+  text-align: left;
+}
+
+#campaign .ox-hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 14px;
+  color: var(--ox-purple-text);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+}
+
+#campaign .ox-hero-eyebrow svg {
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+}
+
+#campaign .ox-hero-heading {
+  display: block;
+  margin: 0 0 10px;
+  padding: 0;
+  color: var(--ox-ink);
+  background: none;
+  font-family: var(--ox-font-display);
+  font-weight: 900;
+  font-style: normal;
+  text-transform: uppercase;
+  -webkit-text-fill-color: currentColor;
+}
+
+#campaign .ox-hero-number {
+  display: block;
+  font-size: clamp(88px, 9.1vw, 140px);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+  text-shadow: 3px 3px 0 #f5c28c;
+}
+
+#campaign .ox-hero-heading-label {
+  display: block;
+  margin-top: 6px;
+  font-size: clamp(36px, 3.9vw, 60px);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+  text-shadow: 2px 2px 0 #dfcbe8;
+}
+
+#campaign .ox-hero-tagline {
+  margin: 0 0 14px;
+  color: var(--ox-ink);
+  font-size: clamp(24px, 2.48vw, 38px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+}
+
+#campaign .ox-hero-tagline > span:last-child {
+  color: var(--ox-orange-strong);
+}
+
+#campaign .ox-hero-description {
+  max-width: 650px;
+  margin: 0;
+  color: var(--ox-ink);
+  font-size: clamp(17px, 1.43vw, 22px);
+  line-height: 1.4;
+}
+
+#campaign .ox-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 20px;
+  margin-top: 26px;
+}
+
+#campaign .ox-hero-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 64px;
+  padding: 13px 23px;
+  border: 1px solid transparent;
+  border-radius: 19px;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform var(--ox-duration-fast) var(--ox-ease),
+    box-shadow var(--ox-duration-fast) var(--ox-ease);
+}
+
+#campaign .ox-hero-button svg {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+#campaign .ox-hero-button-primary svg {
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+#campaign .ox-hero-button-primary {
+  color: var(--ox-white);
+  border-color: #ff743f;
+  background: linear-gradient(135deg, #ff803f, #ff6131);
+  box-shadow:
+    inset 0 0 0 3px var(--ox-page-cream-light),
+    var(--ox-shadow-button);
+}
+
+#campaign .ox-hero-button-secondary {
+  color: var(--ox-ink);
+  border-color: var(--ox-border);
+  background: rgb(255 249 239 / 95%);
+  box-shadow: var(--ox-shadow-soft);
+}
+
+#campaign .ox-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 26px 0 0;
+  padding: 20px 0;
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: 22px;
+  background: rgb(255 249 239 / 94%);
+  box-shadow: var(--ox-shadow-soft);
+}
+
+#campaign .ox-hero-stats > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 0;
+  padding: 0 8px;
+  text-align: center;
+}
+
+#campaign .ox-hero-stats > div + div {
+  border-left: 1px solid var(--ox-border);
+}
+
+#campaign .ox-hero-stats dt {
+  color: var(--ox-text-muted);
+  font-size: 11px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+#campaign .ox-hero-stats dd {
+  order: -1;
+  margin: 0;
+  color: var(--ox-ink);
+  font-family: var(--ox-font-display);
+  font-size: clamp(18px, 1.82vw, 28px);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+#campaign .ox-hero-conditions {
+  margin-top: 14px;
+  color: var(--ox-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+#campaign .ox-hero-conditions summary {
+  width: fit-content;
+  min-height: 44px;
+  padding-block: 12px;
+  cursor: pointer;
+}
+
+#campaign .ox-hero-conditions p {
+  margin: 8px 0;
+}
+
+@media (hover: hover) {
+  #campaign .ox-hero-button:hover {
+    transform: translateY(var(--ox-hover-lift));
+  }
+}
+
+@media (max-width: 899px) {
+  #campaign.ox-hero-stage > .campaign-hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #campaign .ox-hero-copy {
+    width: min(100%, 680px);
+  }
+}
+
+@media (max-width: 599px) {
+  #campaign.ox-hero-stage > .campaign-hero__grid {
+    width: calc(100% - 32px);
+    gap: 24px;
+  }
+
+  #campaign .ox-hero-eyebrow {
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.09em;
+  }
+
+  #campaign .ox-hero-eyebrow svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  #campaign .ox-hero-number {
+    font-size: clamp(86px, 25vw, 120px);
+  }
+
+  #campaign .ox-hero-heading-label {
+    font-size: clamp(28px, 7.7vw, 42px);
+  }
+
+  #campaign .ox-hero-tagline {
+    margin-top: 14px;
+    font-size: clamp(22px, 5.7vw, 28px);
+    letter-spacing: -0.035em;
+  }
+
+  #campaign .ox-hero-description {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  #campaign .ox-hero-actions {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  #campaign .ox-hero-button {
+    width: 100%;
+    min-height: 58px;
+    font-size: 16px;
+    padding-inline: 14px;
+  }
+
+  #campaign .ox-hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    padding: 8px 12px;
+  }
+
+  #campaign .ox-hero-stats > div {
+    min-height: 76px;
+    padding: 12px 4px;
+  }
+
+  #campaign .ox-hero-stats > div:nth-child(3) {
+    border-left: 0;
+  }
+
+  #campaign .ox-hero-stats > div:nth-child(n + 3) {
+    border-top: 1px solid var(--ox-border);
+  }
+
+  #campaign .ox-hero-stats dd {
+    font-size: 24px;
+  }
+}

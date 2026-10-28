@@ -1,0 +1,389 @@
+
+/* Presentación del modal. No modifica estados ni autoridades. */
+.checkout-overlay.ox-checkout-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  background: rgba(10, 23, 58, .48);
+  backdrop-filter: blur(5px);
+}
+.checkout-modal.ox-checkout {
+  position: relative;
+  display: block;
+  width: min(100%, 720px);
+  min-width: 0;
+  min-height: 0;
+  max-width: 720px;
+  max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  color: #0a173a;
+  color-scheme: light;
+  background: #fffaf1;
+  border: 1px solid #ffffffb3;
+  border-radius: 28px;
+  box-shadow: 0 24px 80px #0a173a38;
+  isolation: isolate;
+}
+.checkout-modal.ox-checkout::before,
+.checkout-modal.ox-checkout::after {
+  display: none;
+}
+.ox-checkout .checkout-header {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 28px;
+  color: #0a173a;
+  background: #f0e7fc;
+  border: 0;
+}
+.ox-checkout .checkout-header > div {
+  min-width: 0;
+}
+.ox-checkout .checkout-header__eyebrow {
+  display: block;
+  margin-bottom: 10px;
+  color: #7046af;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .1em;
+}
+.ox-checkout #checkout-title {
+  display: block;
+  color: #0a173a;
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 850;
+  line-height: 1.2;
+  letter-spacing: -.025em;
+}
+.ox-checkout .checkout-close {
+  position: static;
+  flex: 0 0 44px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #0a173a18;
+  border-radius: 14px;
+  color: #0a173a;
+  background: #fffaf1;
+  font-size: 28px;
+  cursor: pointer;
+}
+.ox-checkout .checkout-progress {
+  gap: 8px;
+  margin: 0;
+  padding: 18px 28px 0;
+  background: transparent;
+  border: 0;
+}
+.ox-checkout .checkout-progress__item {
+  height: 5px;
+  border: 0;
+  border-radius: 20px;
+  background: #e4ded5;
+  box-shadow: none;
+}
+.ox-checkout .checkout-progress__item--active {
+  background: #8b5eeb;
+  box-shadow: none;
+}
+/* El registro no representa los cuatro pasos de una compra. */
+.ox-checkout .checkout-progress--prelaunch {
+  display: none;
+}
+.ox-checkout .checkout-body {
+  padding: 28px;
+  color: #0a173a;
+  background: transparent;
+}
+.ox-checkout .checkout-step {
+  min-width: 0;
+}
+.ox-checkout .checkout-step__number {
+  color: #7046af;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .06em;
+}
+.ox-checkout .checkout-step h2 {
+  color: #0a173a;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  text-shadow: none;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.2;
+  letter-spacing: -.025em;
+}
+.ox-checkout .checkout-step > p {
+  color: #505466;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.ox-checkout .checkout-field {
+  display: grid;
+  gap: 10px;
+  margin-block: 24px;
+  color: #0a173a;
+}
+.ox-checkout .checkout-field > span {
+  color: #0a173a;
+  font-size: 14px;
+  font-weight: 750;
+}
+.ox-checkout .checkout-field input {
+  width: 100%;
+  min-width: 0;
+  min-height: 54px;
+  padding: 14px 16px;
+  border: 1px solid #9b95a6;
+  border-radius: 14px;
+  color: #0a173a;
+  background: #ffffff;
+  font-size: 16px;
+  line-height: 1.4;
+  box-shadow: none;
+}
+.ox-checkout .checkout-field input::placeholder {
+  color: #767080;
+  opacity: 1;
+}
+.ox-checkout .checkout-field input:disabled {
+  background: #eee9e2;
+  color: #55596a;
+}
+.ox-checkout .checkout-info,
+.ox-checkout .checkout-disclosure {
+  padding: 18px;
+  border: 1px solid #dfcda6;
+  border-radius: 16px;
+  color: #555044;
+  background: #fff0d7;
+  box-shadow: none;
+}
+.ox-checkout .checkout-info p,
+.ox-checkout .checkout-disclosure p {
+  margin: 0;
+  color: #555044;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.ox-checkout .checkout-info > span {
+  color: #80501e;
+  background: transparent;
+  border-color: #b89865;
+}
+.ox-checkout .checkout-step .checkout-error {
+  color: #a12525;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.ox-checkout .db-button {
+  min-height: 48px;
+  max-width: 100%;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.4;
+  white-space: normal;
+  text-align: center;
+  cursor: pointer;
+}
+.ox-checkout .db-button::before,
+.ox-checkout .db-button::after {
+  display: none;
+}
+.ox-checkout .db-button--primary {
+  border: 1px solid #ffffffb3;
+  color: #fff;
+  background: #d94720;
+  box-shadow: 0 5px 14px #bb53131a;
+}
+.ox-checkout .db-button--primary:hover:not(:disabled) {
+  background: #be3817;
+}
+.ox-checkout .db-button--secondary {
+  border: 1px solid #0a173a26;
+  color: #0a173a;
+  background: #fffaf1;
+  box-shadow: none;
+}
+.ox-checkout .checkout-main-button {
+  width: 100%;
+  margin-top: 24px;
+}
+.ox-checkout button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none;
+}
+.ox-checkout .checkout-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.ox-checkout .checkout-summary {
+  margin-block: 24px;
+  padding: 18px;
+  border: 1px solid #0a173a18;
+  border-radius: 16px;
+  background: #f5efdf;
+}
+.ox-checkout .checkout-summary > div {
+  gap: 16px;
+  padding-block: 12px;
+  border-color: #0a173a12;
+}
+.ox-checkout .checkout-summary span {
+  color: #55596a;
+}
+.ox-checkout .checkout-summary strong {
+  color: #0a173a;
+  overflow-wrap: anywhere;
+}
+.ox-checkout .payment-methods {
+  display: grid;
+  gap: 12px;
+}
+.ox-checkout .payment-method {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #0a173a24;
+  border-radius: 16px;
+  color: #0a173a;
+  background: #fffaf1;
+  box-shadow: none;
+}
+.ox-checkout .payment-method--available {
+  border-color: #9575c8;
+  background: #f0e7fc;
+}
+.ox-checkout .payment-method--coming-soon {
+  background: #f0ede7;
+  border-color: #d6d0c7;
+}
+.ox-checkout .payment-method__icon {
+  color: #7046af;
+  background: #ffffffa6;
+  box-shadow: none;
+}
+.ox-checkout .payment-method__copy {
+  min-width: 0;
+}
+.ox-checkout .payment-method__copy strong {
+  color: #0a173a;
+}
+.ox-checkout .payment-method__copy span,
+.ox-checkout .payment-method__copy p {
+  color: #55596a;
+}
+.ox-checkout .payment-method__badge {
+  color: #55596a;
+  background: #e7e2d9;
+  border-color: transparent;
+}
+.ox-checkout .payment-method__badge--available {
+  color: #245d38;
+  background: #d7edcc;
+}
+.ox-checkout .payment-method__arrow {
+  color: #7046af;
+}
+.ox-checkout .checkout-back-link {
+  min-height: 44px;
+  padding-block: 10px;
+  color: #7046af;
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.ox-checkout .checkout-complete__mark {
+  color: #245d38;
+  background: #d7edcc;
+  border-color: #8bbf96;
+  box-shadow: none;
+}
+.ox-checkout .checkout-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 20px;
+  padding: 20px 28px;
+  color: #55596a;
+  background: #f5efdf;
+  border: 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.ox-checkout :is(button, input, a, select):focus-visible {
+  outline: 3px solid #7046af;
+  outline-offset: 3px;
+}
+@media (max-width: 599px) {
+  .checkout-overlay.ox-checkout-overlay {
+    padding: 10px;
+  }
+  .checkout-modal.ox-checkout {
+    max-height: calc(100vh - 20px);
+    max-height: calc(100dvh - 20px);
+    border-radius: 22px;
+  }
+  .ox-checkout .checkout-header,
+  .ox-checkout .checkout-body {
+    padding: 20px;
+  }
+  .ox-checkout .checkout-header {
+    gap: 12px;
+  }
+  .ox-checkout #checkout-title {
+    font-size: 22px;
+  }
+  .ox-checkout .checkout-progress {
+    padding-inline: 20px;
+  }
+  .ox-checkout .checkout-footer {
+    padding: 18px 20px;
+  }
+  .ox-checkout .checkout-actions {
+    flex-direction: column;
+  }
+  .ox-checkout .checkout-actions .db-button {
+    width: 100%;
+  }
+  .ox-checkout .checkout-summary > div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .ox-checkout .payment-method {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .ox-checkout .payment-method__copy {
+    flex: 1 1 150px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .checkout-modal.ox-checkout,
+  .ox-checkout button,
+  .ox-checkout input {
+    animation: none;
+    transition: none;
+  }
+}

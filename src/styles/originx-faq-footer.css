@@ -1,0 +1,199 @@
+
+/* FAQ y pie público. Estilos limitados a estos bloques. */
+#faq.ox-faq {
+  background: #fff5e4;
+  color: #0a173a;
+  padding: 72px 24px;
+  border: 0;
+}
+#faq.ox-faq::before,
+#faq.ox-faq::after {
+  display: none;
+}
+#faq.ox-faq .db-container {
+  width: min(100%, 1390px);
+  margin-inline: auto;
+}
+#faq.ox-faq .faq-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
+  gap: 56px;
+  align-items: start;
+}
+#faq.ox-faq .faq-heading {
+  position: static;
+  min-width: 0;
+}
+#faq.ox-faq .db-eyebrow {
+  color: #7046af;
+  font-family: inherit;
+  font-weight: 800;
+}
+#faq.ox-faq .db-eyebrow::before {
+  display: none;
+}
+#faq.ox-faq .db-title {
+  color: #0a173a;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  text-shadow: none;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.12;
+  letter-spacing: -.035em;
+}
+#faq.ox-faq .db-copy {
+  color: #4f5262;
+  font-size: 16px;
+  line-height: 1.7;
+}
+#faq.ox-faq .faq-list {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+#faq.ox-faq .faq-list details {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #fffaf1;
+  border: 1px solid #0a173a18;
+  border-radius: 18px;
+  box-shadow: 0 5px 16px #49351505;
+}
+#faq.ox-faq .faq-list details[open] {
+  background: #f2eaff;
+  border-color: #8b5eeb45;
+}
+#faq.ox-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 64px;
+  padding: 20px 24px;
+  color: #0a173a;
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 750;
+  cursor: pointer;
+  list-style: none;
+}
+#faq.ox-faq summary::-webkit-details-marker {
+  display: none;
+}
+#faq.ox-faq summary::before {
+  display: none;
+}
+#faq.ox-faq summary::after {
+  content: "+";
+  position: static;
+  flex: 0 0 28px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: #7046af;
+  background: #e9ddfc;
+  font-size: 22px;
+  transform: none;
+}
+#faq.ox-faq details[open] summary::after {
+  content: "−";
+  transform: none;
+}
+#faq.ox-faq details p {
+  margin: 0;
+  padding: 0 24px 24px;
+  max-width: none;
+  color: #45485b;
+  font-size: 15px;
+  line-height: 1.75;
+}
+#faq.ox-faq summary:focus-visible {
+  outline: 3px solid #7046af;
+  outline-offset: -5px;
+}
+footer.ox-public-footer {
+  padding: 40px 24px 24px;
+  color: #0a173a;
+  background: #f8f0e5;
+  border: 0;
+  border-top: 1px solid #0a173a12;
+}
+footer.ox-public-footer .founding-footer-inner {
+  width: min(100%, 1390px);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+footer.ox-public-footer strong {
+  color: #0a173a;
+  font-size: 23px;
+  letter-spacing: -.04em;
+}
+footer.ox-public-footer p {
+  color: #505466;
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+footer.ox-public-footer .footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+footer.ox-public-footer .footer-legal-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #0a173a;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+footer.ox-public-footer a:hover {
+  color: #7046af;
+}
+.ox-footer-note {
+  background: #f8f0e5;
+  color: #55596a;
+  padding: 20px 24px 32px;
+}
+.ox-footer-note__inner {
+  width: min(100%, 1390px);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+@media (max-width: 899px) {
+  #faq.ox-faq .faq-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+}
+@media (max-width: 599px) {
+  #faq.ox-faq {
+    padding: 48px 16px;
+  }
+  #faq.ox-faq summary {
+    padding: 18px;
+  }
+  #faq.ox-faq details p {
+    padding: 0 18px 22px;
+  }
+  footer.ox-public-footer,
+  .ox-footer-note {
+    padding-inline: 16px;
+  }
+  .ox-footer-note__inner {
+    flex-direction: column;
+  }
+}

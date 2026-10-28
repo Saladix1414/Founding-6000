@@ -1,0 +1,311 @@
+/* OriginX Foundation — membership and benefits */
+#benefits.ox-membership {
+  padding: 72px 24px;
+  background: var(--ox-page-cream-light);
+  color: var(--ox-ink);
+  scroll-margin-top: 24px;
+}
+
+.ox-membership .ox-membership-inner {
+  width: min(100%, var(--ox-container));
+  margin-inline: auto;
+}
+
+.ox-membership .ox-membership-heading {
+  max-width: 860px;
+  margin-bottom: 34px;
+}
+
+.ox-membership .ox-membership-eyebrow {
+  margin: 0 0 12px;
+  color: var(--ox-purple-text);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.ox-membership .ox-membership-heading h2 {
+  margin: 0 0 16px;
+  font-family: var(--ox-font-display);
+  font-size: clamp(28px, 3vw, 46px);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  color: var(--ox-ink);
+}
+
+.ox-membership .ox-membership-heading h2 span {
+  color: var(--ox-purple-text);
+}
+
+.ox-membership .ox-membership-heading > p:last-child {
+  margin: 0;
+  color: var(--ox-text-muted);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.ox-membership .ox-membership-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.55fr);
+  gap: 22px;
+}
+
+.ox-membership .ox-membership-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 30px;
+  border: 1px solid rgb(255 255 255 / 65%);
+  border-radius: 26px;
+  background: linear-gradient(145deg, #dcefff, #b3dfff);
+  box-shadow: var(--ox-shadow-soft);
+}
+
+.ox-membership .ox-membership-feature-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  color: #175074;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.ox-membership .ox-membership-duration {
+  margin: 24px 0;
+  color: var(--ox-ink);
+}
+
+.ox-membership .ox-membership-duration strong {
+  display: block;
+  font-family: var(--ox-font-display);
+  font-size: clamp(80px, 8vw, 124px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+  text-shadow: 3px 3px 0 rgb(255 255 255 / 70%);
+}
+
+.ox-membership .ox-membership-duration > span {
+  display: block;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.ox-membership h3 {
+  margin: 0 0 12px;
+  color: var(--ox-ink);
+  font-size: 23px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.ox-membership .ox-membership-feature p,
+.ox-membership .ox-membership-benefit p {
+  margin: 0;
+  color: var(--ox-ink);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.ox-membership .ox-membership-feature-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 48px;
+  margin-top: auto;
+  padding-top: 20px;
+  color: #175074;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.ox-membership .ox-membership-benefits {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.ox-membership .ox-membership-benefit {
+  min-width: 0;
+  padding: 26px;
+  border: 1px solid rgb(255 255 255 / 60%);
+  border-radius: 22px;
+}
+
+.ox-membership .ox-membership-benefit--lavender { background: #e7deff; }
+.ox-membership .ox-membership-benefit--sky { background: #e2f2ff; }
+.ox-membership .ox-membership-benefit--peach { background: #ffe3bd; }
+.ox-membership .ox-membership-benefit--green { background: #d8f0c9; }
+
+.ox-membership .ox-membership-index {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--ox-text-muted);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.ox-membership .ox-membership-benefit small {
+  display: block;
+  margin-top: 12px;
+  color: var(--ox-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.ox-membership .ox-membership-lifecycle {
+  margin-top: 40px;
+  scroll-margin-top: 24px;
+}
+
+.ox-membership .ox-membership-lifecycle > h3 {
+  margin-bottom: 22px;
+  font-size: 28px;
+}
+
+.ox-membership .ox-membership-lifecycle ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ox-membership .ox-membership-lifecycle li {
+  min-width: 0;
+  padding-top: 18px;
+  border-top: 3px solid #d8c9f9;
+}
+
+.ox-membership .ox-membership-lifecycle li > span {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  background: #e7deff;
+  color: var(--ox-purple-text);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ox-membership .ox-membership-lifecycle h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.ox-membership .ox-membership-lifecycle p {
+  margin: 0;
+  color: var(--ox-text-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.ox-membership .ox-membership-example {
+  margin-top: 28px;
+  overflow: hidden;
+  border: 1px solid var(--ox-border);
+  border-radius: 18px;
+  background: var(--ox-surface);
+}
+
+.ox-membership .ox-membership-example summary {
+  min-height: 52px;
+  padding: 18px 22px;
+  color: var(--ox-ink);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ox-membership .ox-membership-example > div {
+  padding: 0 22px 18px;
+}
+
+.ox-membership .ox-membership-example p {
+  margin: 0 0 10px;
+  color: var(--ox-text-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.ox-membership .ox-membership-boundary {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 22px;
+  padding: 22px;
+  border: 1px solid #e9d6b7;
+  border-radius: 18px;
+  background: #fff0d9;
+}
+
+.ox-membership .ox-membership-boundary-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #a96c28;
+  border-radius: 50%;
+  color: #80501b;
+  font-weight: 800;
+}
+
+.ox-membership .ox-membership-boundary h3 {
+  font-size: 17px;
+}
+
+.ox-membership .ox-membership-boundary p {
+  margin: 0;
+  color: var(--ox-text-muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+@media (max-width: 999px) {
+  .ox-membership .ox-membership-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ox-membership .ox-membership-feature {
+    padding: 28px;
+  }
+
+  .ox-membership .ox-membership-duration {
+    margin-block: 20px;
+  }
+}
+
+@media (max-width: 599px) {
+  #benefits.ox-membership {
+    padding: 44px 16px;
+  }
+
+  .ox-membership .ox-membership-benefits,
+  .ox-membership .ox-membership-lifecycle ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ox-membership .ox-membership-feature,
+  .ox-membership .ox-membership-benefit {
+    padding: 24px;
+  }
+
+  .ox-membership .ox-membership-boundary {
+    gap: 12px;
+    padding: 18px;
+  }
+}

@@ -1,0 +1,114 @@
+/* OriginX Foundation — Arcade Pop
+ * Scoped visual tokens. No changes to legacy --db-* variables.
+ * Display font remains provisional until visual comparison.
+ */
+
+.ox-landing {
+  --ox-page-cream: #f8f0e5;
+  --ox-page-cream-light: #fff5e4;
+  --ox-sky: #93d4fe;
+  --ox-sky-light: #9fe0fe;
+
+  --ox-ink: #0a173a;
+  --ox-text-muted: #48516a;
+  --ox-white: #ffffff;
+
+  --ox-orange: #ff7d65;
+  --ox-orange-strong: #ff6538;
+  --ox-orange-text: #ad351c;
+
+  --ox-lavender: #b3a3fc;
+  --ox-lavender-deep: #8b5eeb;
+  --ox-purple-text: #6940ba;
+
+  --ox-peach: #fec171;
+  --ox-green: #b4eca1;
+  --ox-green-deep: #34723d;
+
+  --ox-surface: #fff9ef;
+  --ox-border: rgb(10 23 58 / 14%);
+  --ox-focus: #254bc4;
+
+  --ox-font-body:
+    Arial, "Helvetica Neue", system-ui, sans-serif;
+  --ox-font-display:
+    "Arial Black", "DejaVu Sans", Arial, sans-serif;
+
+  --ox-text-xs: 0.75rem;
+  --ox-text-sm: 0.875rem;
+  --ox-text-base: 1rem;
+  --ox-text-body: clamp(1rem, 1.43vw, 1.375rem);
+  --ox-text-section: clamp(2rem, 4vw, 3.75rem);
+  --ox-text-hero-number: clamp(5rem, 9.12vw, 8.75rem);
+  --ox-text-hero-title: clamp(2rem, 4.17vw, 4rem);
+  --ox-text-hero-subtitle: clamp(1.25rem, 2.61vw, 2.5rem);
+
+  --ox-leading-body: 1.45;
+  --ox-leading-title: 1.05;
+  --ox-tracking-eyebrow: 0.12em;
+
+  --ox-space-1: 0.25rem;
+  --ox-space-2: 0.5rem;
+  --ox-space-3: 0.75rem;
+  --ox-space-4: 1rem;
+  --ox-space-5: 1.25rem;
+  --ox-space-6: 1.5rem;
+  --ox-space-8: 2rem;
+  --ox-space-10: 2.5rem;
+  --ox-space-12: 3rem;
+  --ox-space-16: 4rem;
+  --ox-space-20: 5rem;
+
+  --ox-container: 1390px;
+  --ox-wide-container: 1480px;
+  --ox-page-gutter: clamp(1rem, 4.95vw, 4.75rem);
+  --ox-card-gap: 1rem;
+  --ox-touch-target: 2.75rem;
+
+  --ox-radius-control: 1.125rem;
+  --ox-radius-card: 1.375rem;
+  --ox-radius-pill: 999px;
+
+  --ox-shadow-soft: 0 8px 24px rgb(53 39 20 / 8%);
+  --ox-shadow-button: 0 6px 16px rgb(112 59 25 / 12%);
+  --ox-shadow-card: 0 12px 30px rgb(10 23 58 / 10%);
+  --ox-shadow-art: 0 18px 28px rgb(10 23 58 / 20%);
+
+  --ox-duration-fast: 150ms;
+  --ox-duration-normal: 220ms;
+  --ox-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ox-hover-lift: -3px;
+
+  color-scheme: light;
+  color: var(--ox-ink);
+  font-family: var(--ox-font-body);
+  line-height: var(--ox-leading-body);
+  background-color: var(--ox-page-cream);
+}
+
+.ox-landing :where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid var(--ox-focus);
+  outline-offset: 4px;
+}
+
+.ox-landing ::selection {
+  color: var(--ox-ink);
+  background: var(--ox-peach);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ox-landing {
+    --ox-duration-fast: 0ms;
+    --ox-duration-normal: 0ms;
+    --ox-hover-lift: 0px;
+  }
+
+  .ox-landing,
+  .ox-landing *,
+  .ox-landing *::before,
+  .ox-landing *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

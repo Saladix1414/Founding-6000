@@ -1,0 +1,216 @@
+/* OriginX Foundation — three commercial pillars */
+.ox-commercial-section.ox-landing {
+  margin: 0;
+  padding: 16px 28px 30px;
+  color: var(--ox-ink);
+  background: var(--ox-page-cream);
+}
+
+.ox-commercial-section .ox-commercial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  width: min(100%, var(--ox-wide-container));
+  margin-inline: auto;
+}
+
+.ox-commercial-section .ox-commercial-card {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  min-height: 242px;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 45%);
+  border-radius: 22px;
+  box-shadow: 0 5px 15px rgb(10 23 58 / 4%);
+}
+
+.ox-commercial-section .ox-commercial-card--nft {
+  --ox-pillar-accent: #6940ba;
+  background: linear-gradient(115deg, #b3a3fc, #b99bfa);
+}
+
+.ox-commercial-section .ox-commercial-card--economy {
+  --ox-pillar-accent: #a94614;
+  background: linear-gradient(115deg, #fec171, #ffd08c);
+}
+
+.ox-commercial-section .ox-commercial-card--ecosystem {
+  --ox-pillar-accent: #34723d;
+  background: linear-gradient(115deg, #b4eca1, #c4f2aa);
+}
+
+.ox-commercial-section .ox-commercial-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 62%;
+  min-height: 240px;
+  padding: 28px 0 26px 30px;
+}
+
+.ox-commercial-section .ox-commercial-kicker {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 16px;
+  color: var(--ox-pillar-accent);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ox-commercial-section .ox-commercial-kicker svg {
+  width: 26px;
+  height: 26px;
+}
+
+.ox-commercial-section .ox-commercial-content h2 {
+  margin: 0 0 10px;
+  color: var(--ox-ink);
+  font-family: var(--ox-font-display);
+  font-size: clamp(16px, 1.43vw, 22px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+  overflow-wrap: normal;
+}
+
+.ox-commercial-section .ox-commercial-content p {
+  margin: 0 0 16px;
+  color: var(--ox-ink);
+  font-size: clamp(14px, 1.04vw, 16px);
+  line-height: 1.35;
+}
+
+.ox-commercial-section .ox-commercial-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  margin-top: auto;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 50%;
+  background: var(--ox-pillar-accent);
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform var(--ox-duration-fast) var(--ox-ease),
+    box-shadow var(--ox-duration-fast) var(--ox-ease);
+}
+
+.ox-commercial-section .ox-commercial-action svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ox-commercial-section .ox-commercial-art {
+  position: absolute;
+  z-index: 0;
+  right: -4%;
+  bottom: -3%;
+  width: 48%;
+  height: 96%;
+  max-width: none;
+  object-fit: contain;
+  object-position: right bottom;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ox-commercial-section .ox-commercial-card--nft .ox-commercial-art {
+  right: 1%;
+  bottom: 6%;
+  width: 40%;
+  height: 80%;
+}
+
+.ox-commercial-section .ox-commercial-card--ecosystem .ox-commercial-art {
+  right: -8%;
+  bottom: -6%;
+  width: 54%;
+  height: 106%;
+}
+
+@media (hover: hover) {
+  .ox-commercial-section .ox-commercial-action:hover {
+    transform: translateY(var(--ox-hover-lift));
+    box-shadow: 0 5px 12px rgb(10 23 58 / 16%);
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  .ox-commercial-section.ox-landing {
+    padding-inline: 20px;
+  }
+
+  .ox-commercial-section .ox-commercial-grid {
+    gap: 12px;
+  }
+
+  .ox-commercial-section .ox-commercial-content {
+    width: 65%;
+    padding: 22px 0 22px 18px;
+  }
+
+  .ox-commercial-section .ox-commercial-content h2 {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 899px) {
+  .ox-commercial-section.ox-landing {
+    padding: 12px 20px 28px;
+  }
+
+  .ox-commercial-section .ox-commercial-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 720px;
+  }
+
+  .ox-commercial-section .ox-commercial-content {
+    width: 58%;
+  }
+
+  .ox-commercial-section .ox-commercial-content h2 {
+    font-size: 22px;
+  }
+
+  .ox-commercial-section .ox-commercial-content p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 599px) {
+  .ox-commercial-section.ox-landing {
+    padding-inline: 16px;
+  }
+
+  .ox-commercial-section .ox-commercial-content {
+    width: 62%;
+    padding: 22px 0 22px 18px;
+  }
+
+  .ox-commercial-section .ox-commercial-content h2 {
+    font-size: clamp(17px, 4.6vw, 22px);
+  }
+
+  .ox-commercial-section .ox-commercial-content p {
+    font-size: 14px;
+  }
+
+  .ox-commercial-section .ox-commercial-kicker {
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+}

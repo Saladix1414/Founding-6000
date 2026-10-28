@@ -1,0 +1,99 @@
+/* OriginX Foundation — landscape layer.
+ * Layout and artwork integration follow in PHASE 07 / PHASE 08.
+ */
+
+#campaign.ox-hero-stage {
+  position: relative;
+  isolation: isolate;
+  color: var(--ox-ink);
+  background: var(--ox-page-cream);
+}
+
+/* Retire legacy decorative overlays only inside this hero. */
+#campaign.ox-hero-stage::before,
+#campaign.ox-hero-stage::after {
+  content: none;
+  display: none;
+}
+
+#campaign.ox-hero-stage > .ox-hero-landscape {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+
+  background-color: var(--ox-page-cream);
+  background-image:
+    linear-gradient(
+      to bottom,
+      transparent 80%,
+      var(--ox-page-cream) 100%
+    ),
+    url("/landing/arcade-pop/hero-landscape.png");
+
+  background-repeat: no-repeat;
+  background-position: center bottom, center center;
+  background-size: 100% 100%, cover;
+}
+
+/* Keep copy legible while the legacy hero is still present. */
+#campaign.ox-hero-stage .campaign-hero__title,
+#campaign.ox-hero-stage .campaign-hero__headline,
+#campaign.ox-hero-stage .campaign-hero__description {
+  color: var(--ox-ink);
+  -webkit-text-fill-color: currentColor;
+  background: none;
+  text-shadow: none;
+}
+
+#campaign.ox-hero-stage .campaign-hero__description,
+#campaign.ox-hero-stage .campaign-hero__disclosure {
+  color: var(--ox-text-muted);
+}
+
+/* Carry the cream-to-sky transition into the navigation. */
+.ox-navbar.ox-landing {
+  background:
+    linear-gradient(
+      105deg,
+      var(--ox-page-cream) 0%,
+      var(--ox-page-cream-light) 47%,
+      var(--ox-sky-light) 72%,
+      var(--ox-sky) 100%
+    );
+}
+
+@media (max-width: 1199px) {
+  #campaign.ox-hero-stage > .ox-hero-landscape {
+    background-image:
+      linear-gradient(
+        90deg,
+        rgb(248 240 229 / 85%) 0%,
+        rgb(248 240 229 / 45%) 42%,
+        transparent 75%
+      ),
+      url("/landing/arcade-pop/hero-landscape.png");
+  }
+}
+
+@media (max-width: 767px) {
+  .ox-navbar.ox-landing {
+    background: var(--ox-page-cream);
+  }
+
+  #campaign.ox-hero-stage > .ox-hero-landscape {
+    top: 35%;
+    background-image:
+      linear-gradient(
+        to bottom,
+        var(--ox-page-cream) 0%,
+        transparent 25%,
+        transparent 78%,
+        var(--ox-page-cream) 100%
+      ),
+      url("/landing/arcade-pop/hero-landscape.png");
+    background-position: center, right center;
+    background-size: 100% 100%, auto 100%;
+  }
+}
