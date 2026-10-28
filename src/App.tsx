@@ -726,20 +726,20 @@ function App() {
                   className="project-gallery-panel"
                   aria-label={
                     language === "es"
-                      ? "Galería del proyecto"
-                      : "Project gallery"
+                      ? "Galería de la colección"
+                      : "Collection gallery"
                   }
                 >
                   <header className="project-gallery-panel__header">
                     <div>
                       <span>
-                        DIGITALBOOST
+                        ORIGINX FOUNDATION
                       </span>
 
                       <strong>
                         {language === "es"
-                          ? "Galería del proyecto"
-                          : "Project Gallery"}
+                          ? "Galería de la colección"
+                          : "Collection gallery"}
                       </strong>
                     </div>
 
@@ -761,38 +761,38 @@ function App() {
                   </header>
 
                   <p className="project-gallery-panel__intro">
-                    {language === "es"
-                      ? "Explorá las imágenes del proyecto. Tocá una para ampliarla. Consultá el estado de cada producto en la sección Proyecto."
-                      : "Explore the project images. Select one to enlarge it. Check each product’s status in the Project section."}
-                  </p>
+  {language === "es"
+    ? "Seis representaciones conceptuales de nuestra colección. Tocá una imagen para ampliarla. Arte promocional; no acredita emisión onchain."
+    : "Six concept representations of our collection. Select an image to enlarge it. Promotional artwork; not proof of onchain issuance."}
+</p>
 
                   <div className="project-gallery-grid">
                     {[
-                      [
-                        "NFT Forge",
-                        "/project-gallery/nft-forge.jpg",
-                      ],
-                      [
-                        "Web Builder",
-                        "/project-gallery/web-builder.jpg",
-                      ],
-                      [
-                        "AI Forge",
-                        "/project-gallery/ai-forge.jpg",
-                      ],
-                      [
-                        "Trading Islands",
-                        "/project-gallery/trading-islands.jpg",
-                      ],
-                      [
-                        "Store Builder",
-                        "/project-gallery/store-builder.jpg",
-                      ],
-                      [
-                        "DigitalBoost Origin",
-                        "/project-gallery/digitalboost-origin.jpg",
-                      ],
-                    ].map(([name, src]) => (
+[
+  language === "es" ? "RARE · Guardián del océano" : "RARE · Ocean guardian",
+  "/nft-gallery/rare-ocean.png",
+],
+[
+  language === "es" ? "RARE · Guardián del bosque" : "RARE · Forest guardian",
+  "/nft-gallery/rare-forest.png",
+],
+[
+  language === "es" ? "EPIC · Tormenta amatista" : "EPIC · Amethyst storm",
+  "/nft-gallery/epic-amethyst.png",
+],
+[
+  language === "es" ? "EPIC · Brasa carmesí" : "EPIC · Crimson ember",
+  "/nft-gallery/epic-ember.png",
+],
+[
+  language === "es" ? "LEGENDARY · Soberano solar" : "LEGENDARY · Solar sovereign",
+  "/nft-gallery/legendary-solar.png",
+],
+[
+  language === "es" ? "LEGENDARY · Soberano astral" : "LEGENDARY · Astral sovereign",
+  "/nft-gallery/legendary-astral.png",
+]
+].map(([name, src]) => (
                       <button
                         className="project-gallery-card"
                         key={name}
