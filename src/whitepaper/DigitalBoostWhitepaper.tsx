@@ -30,7 +30,9 @@ export function DigitalBoostWhitepaper({
       );
 
     element?.scrollIntoView({
-      behavior: "smooth",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
       block: "start",
     });
   };
@@ -39,6 +41,9 @@ export function DigitalBoostWhitepaper({
     <aside
       id="project-whitepaper-panel"
       className="project-whitepaper"
+      role="dialog"
+      aria-modal="true"
+      tabIndex={-1}
       aria-label={
         language === "es"
           ? `Whitepaper de ${WHITEPAPER_BRAND}`

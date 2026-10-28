@@ -352,28 +352,72 @@ function App() {
   }, [galleryOpen, galleryPreview]);
 
   useEffect(() => {
-    if (!whitepaperOpen) {
-      return;
-    }
+    if (!whitepaperOpen) return;
 
-    const handleWhitepaperKeyDown = (
-      event: KeyboardEvent,
-    ) => {
+    const panel = document.getElementById("project-whitepaper-panel");
+    if (!panel) return;
+
+    const previousFocus =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    panel.querySelector<HTMLButtonElement>(
+      ".project-whitepaper__close",
+    )?.focus({ preventScroll: true });
+
+    const handleWhitepaperKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        event.preventDefault();
         setWhitepaperOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusable = Array.from(
+        panel.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter(element => element.getClientRects().length > 0);
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (!first || !last) {
+        event.preventDefault();
+        panel.focus();
+        return;
+      }
+
+      const active = document.activeElement;
+      if (
+        !panel.contains(active) ||
+        (event.shiftKey && (active === first || active === panel))
+      ) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
       }
     };
 
-    document.addEventListener(
-      "keydown",
-      handleWhitepaperKeyDown,
-    );
+    document.addEventListener("keydown", handleWhitepaperKeyDown);
 
     return () => {
-      document.removeEventListener(
-        "keydown",
-        handleWhitepaperKeyDown,
-      );
+      document.removeEventListener("keydown", handleWhitepaperKeyDown);
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      if (previousFocus?.isConnected) {
+        previousFocus.focus({ preventScroll: true });
+      }
     };
   }, [whitepaperOpen]);
 

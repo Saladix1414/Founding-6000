@@ -8962,3 +8962,123 @@
       1fr;
   }
 }
+
+/* OX whitepaper viewport and scroll */
+.project-whitepaper-layer {
+  box-sizing: border-box;
+  padding: 20px;
+  overscroll-behavior: contain;
+}
+
+.project-whitepaper-layer > .project-whitepaper-layer__inner {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1120px;
+  height: 100%;
+  min-height: 0;
+  margin: 0 auto;
+  padding: 0;
+  justify-content: center;
+}
+
+#project-whitepaper-panel {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1120px;
+  height: 100%;
+  max-height: 100%;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+}
+
+#project-whitepaper-panel .project-whitepaper__header {
+  flex-shrink: 0;
+}
+
+#project-whitepaper-panel .project-whitepaper__identity {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+#project-whitepaper-panel .project-whitepaper__close {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+#project-whitepaper-panel .project-whitepaper__layout,
+#project-whitepaper-panel .project-whitepaper__document,
+#project-whitepaper-panel .project-whitepaper__nav {
+  min-width: 0;
+  min-height: 0;
+}
+
+#project-whitepaper-panel .project-whitepaper__document,
+#project-whitepaper-panel .project-whitepaper__nav {
+  overscroll-behavior: contain;
+}
+
+#project-whitepaper-panel .project-whitepaper__nav button {
+  min-height: 44px;
+}
+
+#project-whitepaper-panel button:focus-visible {
+  outline: 3px solid var(--db-cyan-400);
+  outline-offset: -3px;
+}
+
+@media (max-width: 700px) {
+  .project-whitepaper-layer {
+    padding:
+      max(8px, env(safe-area-inset-top))
+      max(8px, env(safe-area-inset-right))
+      max(8px, env(safe-area-inset-bottom))
+      max(8px, env(safe-area-inset-left));
+  }
+
+  #project-whitepaper-panel {
+    border-radius: 14px;
+  }
+
+  #project-whitepaper-panel .project-whitepaper__header {
+    min-height: 64px;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  #project-whitepaper-panel .project-whitepaper__layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  #project-whitepaper-panel .project-whitepaper__nav {
+    padding: 6px;
+  }
+
+  #project-whitepaper-panel .project-whitepaper__nav button strong {
+    font-size: 12px;
+  }
+
+  #project-whitepaper-panel .project-whitepaper__cover {
+    min-height: 0;
+    padding: 28px 18px;
+  }
+
+  #project-whitepaper-panel .project-whitepaper__section,
+  #project-whitepaper-panel .project-whitepaper__closing {
+    padding: 24px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-whitepaper-layer,
+  #project-whitepaper-panel {
+    animation: none;
+  }
+
+  #project-whitepaper-panel .project-whitepaper__document {
+    scroll-behavior: auto;
+  }
+}
