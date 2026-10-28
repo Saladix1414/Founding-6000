@@ -312,3 +312,84 @@
     animation: none;
   }
 }
+
+/* OX compact commercial cards with visible actions */
+.ox-commercial-section .ox-commercial-action {
+  box-sizing: border-box;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  min-height: 44px;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.ox-commercial-section .ox-commercial-action > span {
+  min-width: 0;
+}
+
+.ox-commercial-section .ox-commercial-action svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 599px) {
+  .ox-commercial-section.ox-landing {
+    padding: 10px 16px 20px;
+  }
+
+  .ox-commercial-section .ox-commercial-grid {
+    gap: 10px;
+  }
+
+  .ox-commercial-section .ox-commercial-card {
+    grid-template-columns: minmax(0, 1fr) minmax(76px, 28%);
+    gap: 10px;
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .ox-commercial-section .ox-commercial-kicker {
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+
+  .ox-commercial-section .ox-commercial-kicker svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .ox-commercial-section .ox-commercial-content h2 {
+    margin-bottom: 6px;
+    font-size: 17px;
+    line-height: 1.2;
+  }
+
+  .ox-commercial-section .ox-commercial-content p {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .ox-commercial-section .ox-commercial-action {
+    width: auto;
+    height: auto;
+    min-height: 44px;
+    margin-top: 0;
+  }
+
+  .ox-commercial-section .ox-commercial-card .ox-commercial-art {
+    width: 100%;
+    max-width: 112px;
+    height: auto;
+    align-self: center;
+  }
+}

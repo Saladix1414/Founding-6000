@@ -57,33 +57,33 @@ export default function CommercialCards({ language, onEconomy }: Props) {
       number: "01",
       title: es ? "TU PIEZA" : "YOUR COLLECTIBLE",
       description: es
-        ? "Una pieza de arte generativo con número único. Podés transferir tu NFT."
-        : "Generative art with a unique number. You can transfer your NFT.",
+        ? "Arte generativo, número único y un NFT transferible."
+        : "Generative art, a unique number and a transferable NFT.",
       image: "epic-dragon.png",
       href: "#phases",
-      action: es ? "Explorar la colección" : "Explore the collection",
+      action: es ? "Ver colección" : "View collection",
     },
     {
       key: "economy",
       number: "02",
       title: es ? "REGLAS CLARAS" : "CLEAR RULES",
       description: es
-        ? "Conocé la política de reserva y cómo se separan los fondos."
-        : "Explore the reserve policy and how funds are kept separate.",
+        ? "Cómo funciona la reserva y cómo se separan los fondos."
+        : "How the reserve works and how funds are kept separate.",
       image: "economy-emblem.png",
       href: null,
-      action: es ? "Explorar la economía" : "Explore the economy",
+      action: es ? "Ver economía" : "View economy",
     },
     {
       key: "ecosystem",
       number: "03",
       title: es ? "LO QUE VIENE" : "WHAT’S AHEAD",
       description: es
-        ? "Explorá los productos de OriginX y el estado de desarrollo de cada uno."
-        : "Explore OriginX products and each product’s development status.",
+        ? "Los productos de OriginX y su estado de desarrollo."
+        : "OriginX products and their development status.",
       image: "ecosystem-island.png",
       href: "#product",
-      action: es ? "Conocer el proyecto" : "Discover the project",
+      action: es ? "Ver proyecto" : "View project",
     },
   ] as const;
 
@@ -113,6 +113,7 @@ export default function CommercialCards({ language, onEconomy }: Props) {
                   href={card.href}
                   aria-label={card.action}
                 >
+                  <span>{card.action}</span>
                   <Arrow />
                 </a>
               ) : (
@@ -122,6 +123,7 @@ export default function CommercialCards({ language, onEconomy }: Props) {
                   onClick={onEconomy}
                   aria-label={card.action}
                 >
+                  <span>{card.action}</span>
                   <Arrow />
                 </button>
               )}
