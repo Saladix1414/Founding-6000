@@ -72,7 +72,7 @@ export default function CommercialCards({ language, onEconomy }: Props) {
         : "Reserves, development funds and verifiable use of resources.",
       image: "economy-emblem.png",
       href: null,
-      action: es ? "Ver economía en el whitepaper" : "View economy in the whitepaper",
+      action: es ? "Explorar la economía" : "Explore the economy",
     },
     {
       key: "ecosystem",

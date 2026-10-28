@@ -191,26 +191,124 @@
   }
 }
 
+/* OX mobile commercial cards: separated artwork */
 @media (max-width: 599px) {
   .ox-commercial-section.ox-landing {
-    padding-inline: 16px;
+    padding: 12px 16px 24px;
+  }
+
+  .ox-commercial-section .ox-commercial-grid {
+    gap: 14px;
+  }
+
+  .ox-commercial-section .ox-commercial-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, .65fr);
+    align-items: center;
+    gap: 12px;
+    min-height: 0;
+    padding: 18px;
+    border-radius: 20px;
   }
 
   .ox-commercial-section .ox-commercial-content {
-    width: 62%;
-    padding: 22px 0 22px 18px;
-  }
-
-  .ox-commercial-section .ox-commercial-content h2 {
-    font-size: clamp(17px, 4.6vw, 22px);
-  }
-
-  .ox-commercial-section .ox-commercial-content p {
-    font-size: 14px;
+    width: auto;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
   }
 
   .ox-commercial-section .ox-commercial-kicker {
-    gap: 14px;
-    margin-bottom: 14px;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .ox-commercial-section .ox-commercial-kicker svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ox-commercial-section .ox-commercial-content h2 {
+    margin-bottom: 8px;
+    font-size: clamp(16px, 4.3vw, 20px);
+    line-height: 1.15;
+    letter-spacing: -.035em;
+    overflow-wrap: anywhere;
+  }
+
+  .ox-commercial-section .ox-commercial-content p {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .ox-commercial-section .ox-commercial-action {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    margin-top: 0;
+  }
+
+  .ox-commercial-section .ox-commercial-card .ox-commercial-art {
+    position: static;
+    inset: auto;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+/* OX PHASE 17: commercial card interaction */
+@media (prefers-reduced-motion: no-preference) {
+  .ox-commercial-section .ox-commercial-card {
+    transition: translate 180ms ease-out;
+  }
+
+  .ox-commercial-section .ox-commercial-action {
+    transition:
+      transform 150ms ease-out,
+      translate 150ms ease-out,
+      background-color 150ms ease-out,
+      box-shadow 150ms ease-out;
+  }
+
+  .ox-commercial-section .ox-commercial-card:focus-within {
+    translate: 0 -3px;
+  }
+
+  .ox-commercial-section .ox-commercial-action:active {
+    translate: 0 1px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .ox-commercial-section .ox-commercial-card:hover {
+    translate: 0 -3px;
+  }
+}
+
+.ox-commercial-section .ox-commercial-action:focus-visible {
+  outline: 3px solid #0a173a;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ox-commercial-section .ox-commercial-card,
+  .ox-commercial-section .ox-commercial-card:hover,
+  .ox-commercial-section .ox-commercial-card:focus-within,
+  .ox-commercial-section .ox-commercial-action,
+  .ox-commercial-section .ox-commercial-action:hover,
+  .ox-commercial-section .ox-commercial-action:active {
+    translate: none;
+    transform: none;
+    transition: none;
+    animation: none;
   }
 }

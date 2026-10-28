@@ -293,31 +293,141 @@
   }
 }
 
+/* OX compact mobile collection cards */
 @media (max-width: 599px) {
   #phases.ox-collection {
-    padding: 44px 16px;
+    padding: 36px 16px;
   }
 
   .ox-collection .ox-collection-heading {
     flex-direction: column;
-    gap: 20px;
-    margin-bottom: 26px;
+    align-items: stretch;
+    gap: 16px;
+    margin-bottom: 20px;
   }
 
   .ox-collection .ox-collection-supply {
     flex-direction: row;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     width: 100%;
+    padding: 14px 16px;
     text-align: left;
   }
 
   .ox-collection .ox-collection-supply strong {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   .ox-collection .ox-collection-description {
     font-size: 16px;
+  }
+
+  .ox-collection .ox-collection-grid {
+    gap: 14px;
+  }
+
+  .ox-collection .ox-tier-card {
+    border-radius: 18px;
+  }
+
+  .ox-collection .ox-tier-banner {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: center;
+    gap: 4px 12px;
+    padding: 14px 16px;
+    text-align: left;
+  }
+
+  .ox-collection .ox-tier-topline {
+    grid-column: 1 / -1;
+    margin-bottom: 6px;
+    font-size: 10px;
+    letter-spacing: .07em;
+  }
+
+  .ox-collection .ox-tier-emblem {
+    grid-column: 1;
+    grid-row: 2 / 4;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border-radius: 12px;
+  }
+
+  .ox-collection .ox-tier-emblem svg {
+    width: 26px;
+    height: 24px;
+  }
+
+  .ox-collection .ox-tier-banner h3 {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0;
+    font-size: 23px;
+    line-height: 1.1;
+  }
+
+  .ox-collection .ox-tier-serial {
+    grid-column: 2;
+    grid-row: 3;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .ox-collection .ox-tier-body {
+    padding: 14px 16px 8px;
+  }
+
+  .ox-collection .ox-tier-price-label {
+    margin-bottom: 4px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .ox-collection .ox-tier-price {
+    gap: 7px;
+    margin-bottom: 10px;
+  }
+
+  .ox-collection .ox-tier-price strong {
+    font-size: 30px;
+    line-height: 1.1;
+  }
+
+  .ox-collection .ox-tier-price span {
+    font-size: 14px;
+  }
+
+  .ox-collection .ox-tier-facts > div {
+    align-items: baseline;
+    gap: 12px;
+    padding: 8px 0;
+  }
+
+  .ox-collection .ox-tier-facts dt {
+    min-width: 0;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .ox-collection .ox-tier-facts dd {
+    flex-shrink: 0;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .ox-collection .ox-tier-details {
+    margin-top: 4px;
+    font-size: 14px;
+  }
+
+  .ox-collection .ox-tier-details summary {
+    display: list-item;
+    min-height: 44px;
+    padding-block: 11px;
+    line-height: 22px;
   }
 
   .ox-collection .ox-collection-cta {
