@@ -476,3 +476,227 @@
   color: #70491b;
   -webkit-text-fill-color: #70491b;
 }
+
+/* OX compact mobile transparency */
+@media (max-width: 599px) {
+  .economic-operations.ox-transparency {
+    padding: 26px 16px;
+  }
+
+  .ox-transparency .economic-operations__inner {
+    gap: 14px;
+  }
+
+  .ox-transparency .economic-operations__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .ox-transparency .economic-operations__eyebrow {
+    margin-bottom: 8px;
+    font-size: 10px;
+    line-height: 1.4;
+    letter-spacing: .07em;
+    overflow-wrap: anywhere;
+  }
+
+  #economic-transparency.ox-transparency .economic-operations__header h2 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    line-height: 1.15;
+    letter-spacing: -.035em;
+  }
+
+  #economic-transparency.ox-transparency .economic-operations__header p {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .ox-transparency .economic-operations__refresh {
+    align-self: flex-start;
+    width: auto;
+    min-width: 112px;
+    max-width: 100%;
+    min-height: 44px;
+    margin: 0;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: normal;
+    box-shadow: none;
+  }
+
+  .ox-transparency .economic-operations__notice {
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .ox-transparency .economic-operations__status-grid,
+  .ox-transparency .economic-operations__detail-grid,
+  .ox-transparency .economic-operations__loading {
+    gap: 10px;
+  }
+
+  .ox-transparency :is(
+    .economic-operations-card,
+    .economic-operations__reserve,
+    .economic-operations__integrity,
+    .economic-operations__timeline
+  ) {
+    min-height: 0;
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .ox-transparency .economic-operations-card__label {
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+
+  .ox-transparency .economic-operations-card__hero {
+    margin-bottom: 6px;
+    font-size: 28px;
+  }
+
+  .ox-transparency .economic-operations-card__hero--small {
+    font-size: 20px;
+  }
+
+  .ox-transparency .economic-operations-card__value {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .ox-transparency .economic-operations-card small {
+    line-height: 1.4;
+  }
+
+  .ox-transparency .economic-operations-badge {
+    max-width: 100%;
+    gap: 7px;
+    margin-bottom: 10px;
+    padding: 6px 10px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .ox-transparency .economic-operations-badge__dot {
+    flex-shrink: 0;
+  }
+
+  .ox-transparency :is(
+    .economic-operations__reserve,
+    .economic-operations__integrity,
+    .economic-operations__timeline
+  ) > header {
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .ox-transparency h3 {
+    margin-top: 5px;
+    font-size: 18px;
+    line-height: 1.25;
+  }
+
+  .ox-transparency .economic-operations__proof-state {
+    padding: 5px 8px;
+    border-radius: 9px;
+  }
+
+  .ox-transparency .economic-operations__reserve-grid {
+    gap: 6px;
+  }
+
+  .ox-transparency .economic-operations__reserve-grid > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .ox-transparency .economic-operations__reserve-grid span {
+    margin: 0;
+  }
+
+  .ox-transparency .economic-operations__reserve-grid strong {
+    min-width: 0;
+    font-size: 15px;
+  }
+
+  .ox-transparency .economic-operations__meta {
+    margin-top: 12px;
+    padding-top: 6px;
+  }
+
+  .ox-transparency .economic-operations__meta > div {
+    gap: 6px 10px;
+    padding-block: 7px;
+  }
+
+  .ox-transparency .economic-operations__integrity-stats {
+    gap: 8px;
+  }
+
+  .ox-transparency .economic-operations__integrity-stats > div {
+    min-width: 0;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .ox-transparency .economic-operations__integrity-stats strong {
+    font-size: 24px;
+    overflow-wrap: anywhere;
+  }
+
+  .ox-transparency .economic-operations__empty {
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .ox-transparency .economic-operations__timeline-list {
+    gap: 8px;
+  }
+
+  .ox-transparency .economic-operations-event {
+    gap: 6px 10px;
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .ox-transparency .economic-operations-event__body strong {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .ox-transparency .economic-operations-event__body small {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .ox-transparency .economic-operations__disclaimer {
+    gap: 6px;
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .ox-transparency .economic-operations__disclaimer p {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .ox-transparency .economic-operations__loading span {
+    min-height: 90px;
+    border-radius: 14px;
+  }
+}
