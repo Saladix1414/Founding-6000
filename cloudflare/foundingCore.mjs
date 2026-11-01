@@ -1,3 +1,4 @@
+import { rareArcadeRelease } from "./rareArcadeRelease.mjs";
 import { DurableObject } from "cloudflare:workers";
 
 import {
@@ -60,10 +61,12 @@ export class FoundingCore extends DurableObject {
     this.commerce =
       new CommerceCore(
         state.storage,
+        { rareRelease: env.ARCADE_RARE_RELEASE_ENABLED === "true" ? rareArcadeRelease : null },
       );
 
     this.commerce
       .initializeSchema();
+    this.commerce.initializeRareRelease();
   }
 
   initializeSchema() {

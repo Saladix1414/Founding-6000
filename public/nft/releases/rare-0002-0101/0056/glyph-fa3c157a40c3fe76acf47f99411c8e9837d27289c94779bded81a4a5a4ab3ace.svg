@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+<metadata>{"dragonName":"Vaermoroth","generator":"OriginX Resonance Glyph v1","resonanceId":"RX-71BFA8DD03F4","resonanceSignature":"71bfa8dd03f4217994853b43dd04cf96eec957a88216e79f2450ca35f4c0aee8","serial":"#0056","tokenId":56}</metadata>
+<rect width="1024" height="1024" fill="#000"/>
+<g fill="none" stroke="currentColor" stroke-width="2.8" color="#d7dde5">
+<circle cx="512" cy="512" r="182.333" opacity="0.42"/>
+<circle cx="512" cy="512" r="222.667" opacity="0.42"/>
+<circle cx="512" cy="512" r="263" opacity="0.42"/>
+<circle cx="512" cy="512" r="303.333" opacity="0.42"/>
+<circle cx="512" cy="512" r="343.667" opacity="0.42"/>
+<line x1="392.281" y1="588.363" x2="188.253" y2="718.504" opacity="0.88"/>
+<line x1="377.653" y1="466.012" x2="148.696" y2="387.637" opacity="0.88"/>
+<line x1="464.191" y1="378.29" x2="382.714" y2="150.419" opacity="0.88"/>
+<line x1="586.73" y1="391.255" x2="714.087" y2="185.478" opacity="0.88"/>
+<line x1="652.996" y1="495.143" x2="893.285" y2="466.415" opacity="0.88"/>
+<line x1="613.089" y1="611.725" x2="785.367" y2="781.679" opacity="0.88"/>
+<line x1="497.06" y1="653.212" x2="471.598" y2="893.869" opacity="0.88"/>
+<polygon points="188.253,718.504 148.696,387.637 382.714,150.419 714.087,185.478 893.285,466.415 785.367,781.679 471.598,893.869" opacity="0.72"/>
+<polygon points="792.453,479.243 712.47,710.844 481.529,792.711 273.533,663.197 245.107,419.829 417.657,245.867 661.249,272.309" opacity="0.38"/>
+<circle cx="188.253" cy="718.504" r="8.34" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="148.696" cy="387.637" r="4.128" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="382.714" cy="150.419" r="8.068" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="714.087" cy="185.478" r="6.962" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="893.285" cy="466.415" r="8.67" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="785.367" cy="781.679" r="7.952" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="471.598" cy="893.869" r="5.739" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="512" cy="512" r="48" opacity="0.95"/>
+<circle cx="512" cy="512" r="24.0" fill="currentColor" stroke="none"/>
+</g>
+</svg>

@@ -1,3 +1,4 @@
+import { initializeRareRelease, reserveRareAsset, reservedRareSerial, completeRareAllocation } from "./rareReleaseInventory.mjs";
 const USDT_NETWORK =
   "ethereum-mainnet";
 
@@ -130,6 +131,10 @@ export function commerceErrorStatus(
 
   if (
     [
+      "NFT_RELEASE_NOT_APPROVED",
+      "NFT_RELEASE_PHASE_UNAVAILABLE",
+      "NFT_RELEASE_SOLD_OUT",
+      "NFT_RELEASE_RESERVATION_REQUIRED",
       "NO_ACTIVE_PHASE",
       "ORDER_NOT_PAYABLE",
       "IDEMPOTENCY_KEY_CONFLICT",
@@ -150,7 +155,8 @@ export function commerceErrorStatus(
 }
 
 export class CommerceCore {
-  constructor(storage) {
+  constructor(storage, options = {}) {
+    this.rareRelease = options.rareRelease ?? null;
     this.storage =
       storage;
 
@@ -650,6 +656,10 @@ export class CommerceCore {
     );
   }
 
+  initializeRareRelease() {
+    if (this.rareRelease) initializeRareRelease(this.storage, this.rareRelease);
+  }
+
   audit(
     eventType,
     entityType,
@@ -884,6 +894,10 @@ export class CommerceCore {
           now,
           now,
         );
+
+        if (this.rareRelease) {
+          reserveRareAsset(this.storage, this.rareRelease, id, phase);
+        }
 
         this.audit(
           "FOUNDING_ORDER_CREATED",
@@ -2255,12 +2269,9 @@ export class CommerceCore {
                 issuedRow.maxSerial,
               );
 
-        const serialNumber =
-          highestSerial === null
-            ? Number(
-                context.serialStart,
-              )
-            : highestSerial + 1;
+        const serialNumber = this.rareRelease
+          ? reservedRareSerial(this.storage, this.rareRelease, context.orderId)
+          : (highestSerial === null ? Number(context.serialStart) : highestSerial + 1);
 
         if (
           serialNumber <
@@ -2407,6 +2418,10 @@ export class CommerceCore {
           txHash,
           now,
         );
+
+        if (this.rareRelease) {
+          completeRareAllocation(this.storage, this.rareRelease, context.orderId, serialNumber);
+        }
 
         /*
          * Payment authority transitions.

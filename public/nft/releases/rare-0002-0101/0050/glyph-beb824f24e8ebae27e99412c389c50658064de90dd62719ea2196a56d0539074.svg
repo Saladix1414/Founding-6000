@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+<metadata>{"dragonName":"Vaermorar","generator":"OriginX Resonance Glyph v1","resonanceId":"RX-EEE4E9792EC8","resonanceSignature":"eee4e9792ec8aeec9bcc47bdce180fd6f598a629af1a5b9afc661e5bb936c548","serial":"#0050","tokenId":50}</metadata>
+<rect width="1024" height="1024" fill="#000"/>
+<g fill="none" stroke="currentColor" stroke-width="3.5" color="#d7dde5">
+<circle cx="512" cy="512" r="227.333" opacity="0.42"/>
+<circle cx="512" cy="512" r="298.667" opacity="0.42"/>
+<line x1="430.087" y1="379.236" x2="317.718" y2="197.112" opacity="0.88"/>
+<line x1="586.02" y1="374.679" x2="687.56" y2="186.303" opacity="0.88"/>
+<line x1="667.933" y1="507.443" x2="881.842" y2="501.191" opacity="0.88"/>
+<line x1="593.913" y1="644.764" x2="706.282" y2="826.888" opacity="0.88"/>
+<line x1="437.98" y1="649.321" x2="336.44" y2="837.697" opacity="0.88"/>
+<line x1="356.067" y1="516.557" x2="142.158" y2="522.809" opacity="0.88"/>
+<polygon points="317.718,197.112 687.56,186.303 881.842,501.191 706.282,826.888 336.44,837.697 142.158,522.809" opacity="0.72"/>
+<polygon points="787.082,564.888 603.739,776.672 328.657,723.784 236.918,459.112 420.261,247.328 695.343,300.216" opacity="0.38"/>
+<circle cx="317.718" cy="197.112" r="7.155" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="687.56" cy="186.303" r="4.014" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="881.842" cy="501.191" r="3.859" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="706.282" cy="826.888" r="7.293" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="336.44" cy="837.697" r="7.827" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="142.158" cy="522.809" r="6.223" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="512" cy="512" r="46" opacity="0.95"/>
+<circle cx="512" cy="512" r="23.0" fill="currentColor" stroke="none"/>
+</g>
+</svg>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+<metadata>{"dragonName":"Vaerkaon","generator":"OriginX Resonance Glyph v1","resonanceId":"RX-62D00EF7E6DC","resonanceSignature":"62d00ef7e6dc081cb8441ff53948e148c8923ceefd5013c31836cc24a2d525cc","serial":"#0007","tokenId":7}</metadata>
+<rect width="1024" height="1024" fill="#000"/>
+<g fill="none" stroke="currentColor" stroke-width="2.17" color="#d7dde5">
+<circle cx="512" cy="512" r="180.333" opacity="0.42"/>
+<circle cx="512" cy="512" r="255.667" opacity="0.42"/>
+<line x1="549.706" y1="414.004" x2="630.862" y2="203.078" opacity="0.88"/>
+<line x1="615.72" y1="495.656" x2="838.965" y2="460.477" opacity="0.88"/>
+<line x1="578.015" y1="593.652" x2="720.103" y2="769.399" opacity="0.88"/>
+<line x1="474.294" y1="609.996" x2="393.138" y2="820.922" opacity="0.88"/>
+<line x1="408.28" y1="528.344" x2="185.035" y2="563.523" opacity="0.88"/>
+<line x1="445.985" y1="430.348" x2="303.897" y2="254.601" opacity="0.88"/>
+<polygon points="630.862,203.078 838.965,460.477 720.103,769.399 393.138,820.922 185.035,563.523 303.897,254.601" opacity="0.72"/>
+<polygon points="678.759,344.892 740.1,572.863 573.341,739.972 345.241,679.108 283.9,451.137 450.659,284.028" opacity="0.38"/>
+<circle cx="630.862" cy="203.078" r="2.865" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="838.965" cy="460.477" r="3.026" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="720.103" cy="769.399" r="4.676" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="393.138" cy="820.922" r="3.026" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="185.035" cy="563.523" r="4.407" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="303.897" cy="254.601" r="3.825" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="512" cy="512" r="40" opacity="0.95"/>
+<circle cx="512" cy="512" r="20.0" fill="currentColor" stroke="none"/>
+</g>
+</svg>

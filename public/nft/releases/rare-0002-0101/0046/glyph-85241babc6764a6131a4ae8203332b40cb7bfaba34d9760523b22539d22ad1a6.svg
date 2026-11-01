@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+<metadata>{"dragonName":"Vaermorion","generator":"OriginX Resonance Glyph v1","resonanceId":"RX-923E9710EDDC","resonanceSignature":"923e9710eddc4d1ad4749760318d9cab3df5abedb1709c4bfad10f694dfe7d42","serial":"#0046","tokenId":46}</metadata>
+<rect width="1024" height="1024" fill="#000"/>
+<g fill="none" stroke="currentColor" stroke-width="2.64" color="#d7dde5">
+<circle cx="512" cy="512" r="217.2" opacity="0.42"/>
+<circle cx="512" cy="512" r="262.4" opacity="0.42"/>
+<circle cx="512" cy="512" r="307.6" opacity="0.42"/>
+<circle cx="512" cy="512" r="352.8" opacity="0.42"/>
+<line x1="419.749" y1="657.168" x2="298.536" y2="847.912" opacity="0.88"/>
+<line x1="359.524" y1="591.594" x2="159.178" y2="696.176" opacity="0.88"/>
+<line x1="340.155" y1="504.692" x2="114.359" y2="495.091" opacity="0.88"/>
+<line x1="366.832" y1="419.749" x2="176.088" y2="298.536" opacity="0.88"/>
+<line x1="432.406" y1="359.524" x2="327.824" y2="159.178" opacity="0.88"/>
+<line x1="519.308" y1="340.155" x2="528.909" y2="114.359" opacity="0.88"/>
+<line x1="604.251" y1="366.832" x2="725.464" y2="176.088" opacity="0.88"/>
+<line x1="664.476" y1="432.406" x2="864.822" y2="327.824" opacity="0.88"/>
+<line x1="683.845" y1="519.308" x2="909.641" y2="528.909" opacity="0.88"/>
+<line x1="657.168" y1="604.251" x2="847.912" y2="725.464" opacity="0.88"/>
+<line x1="591.594" y1="664.476" x2="696.176" y2="864.822" opacity="0.88"/>
+<line x1="504.692" y1="683.845" x2="495.091" y2="909.641" opacity="0.88"/>
+<polygon points="298.536,847.912 159.178,696.176 114.359,495.091 176.088,298.536 327.824,159.178 528.909,114.359 725.464,176.088 864.822,327.824 909.641,528.909 847.912,725.464 696.176,864.822 495.091,909.641" opacity="0.72"/>
+<polygon points="347.49,766.547 242.257,650.189 209.301,496.804 257.453,347.49 373.811,242.257 527.196,209.301 676.51,257.453 781.743,373.811 814.699,527.196 766.547,676.51 650.189,781.743 496.804,814.699" opacity="0.38"/>
+<circle cx="298.536" cy="847.912" r="5.001" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="159.178" cy="696.176" r="6.787" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="114.359" cy="495.091" r="7.078" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="176.088" cy="298.536" r="7.369" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="327.824" cy="159.178" r="5.234" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="528.909" cy="114.359" r="8.806" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="725.464" cy="176.088" r="7.369" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="864.822" cy="327.824" r="8.651" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="909.641" cy="528.909" r="7.486" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="847.912" cy="725.464" r="6.224" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="696.176" cy="864.822" r="7.078" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="495.091" cy="909.641" r="5.506" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="512" cy="512" r="31" opacity="0.95"/>
+<circle cx="512" cy="512" r="15.5" fill="currentColor" stroke="none"/>
+</g>
+</svg>

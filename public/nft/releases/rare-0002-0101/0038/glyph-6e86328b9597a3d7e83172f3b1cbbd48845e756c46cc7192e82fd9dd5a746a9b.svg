@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+<metadata>{"dragonName":"Vaertheris","generator":"OriginX Resonance Glyph v1","resonanceId":"RX-694974D531DF","resonanceSignature":"694974d531dfe10c8e7af98af6de5dfe71f03bed685fcc8f018a5ad87ec1eeb1","serial":"#0038","tokenId":38}</metadata>
+<rect width="1024" height="1024" fill="#000"/>
+<g fill="none" stroke="currentColor" stroke-width="2.7" color="#d7dde5">
+<circle cx="512" cy="512" r="200.75" opacity="0.42"/>
+<circle cx="512" cy="512" r="279.5" opacity="0.42"/>
+<circle cx="512" cy="512" r="358.25" opacity="0.42"/>
+<line x1="545.017" y1="629.447" x2="630.267" y2="932.692" opacity="0.88"/>
+<line x1="426.796" y1="599.317" x2="206.803" y2="824.768" opacity="0.88"/>
+<line x1="393.779" y1="481.87" x2="88.536" y2="404.076" opacity="0.88"/>
+<line x1="478.983" y1="394.553" x2="393.733" y2="91.308" opacity="0.88"/>
+<line x1="597.204" y1="424.683" x2="817.197" y2="199.232" opacity="0.88"/>
+<line x1="630.221" y1="542.13" x2="935.464" y2="619.924" opacity="0.88"/>
+<polygon points="630.267,932.692 206.803,824.768 88.536,404.076 393.733,91.308 817.197,199.232 935.464,619.924" opacity="0.72"/>
+<polygon points="463.914,211.118 748.528,319.916 796.614,620.797 560.086,812.882 275.472,704.084 227.386,403.203" opacity="0.38"/>
+<circle cx="630.267" cy="932.692" r="10.786" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="206.803" cy="824.768" r="10.217" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="88.536" cy="404.076" r="7.156" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="393.733" cy="91.308" r="10.976" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="817.197" cy="199.232" r="7.631" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="935.464" cy="619.924" r="10.644" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="512" cy="512" r="26" opacity="0.95"/>
+<circle cx="512" cy="512" r="13.0" fill="currentColor" stroke="none"/>
+</g>
+</svg>

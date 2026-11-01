@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+<metadata>{"dragonName":"Vaerthereth","generator":"OriginX Resonance Glyph v1","resonanceId":"RX-3F2111CE94F4","resonanceSignature":"3f2111ce94f44bab79ed47cf0b644b576dbc5d2e17b82c22cb8c5dad501f9dbf","serial":"#0036","tokenId":36}</metadata>
+<rect width="1024" height="1024" fill="#000"/>
+<g fill="none" stroke="currentColor" stroke-width="3.82" color="#d7dde5">
+<circle cx="512" cy="512" r="196.75" opacity="0.42"/>
+<circle cx="512" cy="512" r="256.5" opacity="0.42"/>
+<circle cx="512" cy="512" r="316.25" opacity="0.42"/>
+<line x1="569.981" y1="387.874" x2="671.13" y2="171.334" opacity="0.88"/>
+<line x1="648.487" y1="500.15" x2="886.591" y2="479.478" opacity="0.88"/>
+<line x1="590.506" y1="624.276" x2="727.46" y2="820.144" opacity="0.88"/>
+<line x1="454.019" y1="636.126" x2="352.87" y2="852.666" opacity="0.88"/>
+<line x1="375.513" y1="523.85" x2="137.409" y2="544.522" opacity="0.88"/>
+<line x1="433.494" y1="399.724" x2="296.54" y2="203.856" opacity="0.88"/>
+<polygon points="671.13,171.334 886.591,479.478 727.46,820.144 352.87,852.666 137.409,544.522 296.54,203.856" opacity="0.72"/>
+<polygon points="782.573,564.506 601.815,772.576 331.242,720.07 241.427,459.494 422.185,251.424 692.758,303.93" opacity="0.38"/>
+<circle cx="671.13" cy="171.334" r="2.842" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="886.591" cy="479.478" r="3.994" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="727.46" cy="820.144" r="3.671" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="352.87" cy="852.666" r="3.826" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="137.409" cy="544.522" r="4.111" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="296.54" cy="203.856" r="5.133" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="512" cy="512" r="50" opacity="0.95"/>
+<circle cx="512" cy="512" r="25.0" fill="currentColor" stroke="none"/>
+</g>
+</svg>

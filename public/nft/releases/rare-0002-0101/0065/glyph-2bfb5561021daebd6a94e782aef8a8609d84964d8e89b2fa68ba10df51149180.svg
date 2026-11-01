@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+<metadata>{"dragonName":"Vaerdranar","generator":"OriginX Resonance Glyph v1","resonanceId":"RX-155DE3095270","resonanceSignature":"155de3095270dbc9ff5c1a6e8fbbe8f5dbeed6a8be7554fdb4b05c912949b8e6","serial":"#0065","tokenId":65}</metadata>
+<rect width="1024" height="1024" fill="#000"/>
+<g fill="none" stroke="currentColor" stroke-width="2.4" color="#d7dde5">
+<circle cx="512" cy="512" r="189.25" opacity="0.42"/>
+<circle cx="512" cy="512" r="244.5" opacity="0.42"/>
+<circle cx="512" cy="512" r="299.75" opacity="0.42"/>
+<line x1="424.571" y1="410.451" x2="280.378" y2="242.971" opacity="0.88"/>
+<line x1="556.229" y1="385.51" x2="629.175" y2="176.895" opacity="0.88"/>
+<line x1="643.658" y1="487.059" x2="860.796" y2="445.924" opacity="0.88"/>
+<line x1="599.429" y1="613.549" x2="743.622" y2="781.029" opacity="0.88"/>
+<line x1="467.771" y1="638.49" x2="394.825" y2="847.105" opacity="0.88"/>
+<line x1="380.342" y1="536.941" x2="163.204" y2="578.076" opacity="0.88"/>
+<polygon points="280.378,242.971 629.175,176.895 860.796,445.924 743.622,781.029 394.825,847.105 163.204,578.076" opacity="0.72"/>
+<polygon points="670.393,303.075 772.132,544.71 613.738,753.636 353.607,720.925 251.868,479.29 410.262,270.364" opacity="0.38"/>
+<circle cx="280.378" cy="242.971" r="9.101" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="629.175" cy="176.895" r="10.24" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="860.796" cy="445.924" r="11.405" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="743.622" cy="781.029" r="11.741" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="394.825" cy="847.105" r="11.068" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="163.204" cy="578.076" r="11.56" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="512" cy="512" r="48" opacity="0.95"/>
+<circle cx="512" cy="512" r="24.0" fill="currentColor" stroke="none"/>
+</g>
+</svg>

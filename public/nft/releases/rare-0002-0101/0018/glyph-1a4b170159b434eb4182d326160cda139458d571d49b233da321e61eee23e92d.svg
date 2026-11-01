@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+<metadata>{"dragonName":"Vaervoror","generator":"OriginX Resonance Glyph v1","resonanceId":"RX-A8DC6BC76A51","resonanceSignature":"a8dc6bc76a51b52f27d9e04e2e041b9d9a9b42e3a225e440bd82b4333f745e28","serial":"#0018","tokenId":18}</metadata>
+<rect width="1024" height="1024" fill="#000"/>
+<g fill="none" stroke="currentColor" stroke-width="3.63" color="#d7dde5">
+<circle cx="512" cy="512" r="235.667" opacity="0.42"/>
+<circle cx="512" cy="512" r="299.333" opacity="0.42"/>
+<line x1="593.902" y1="663.248" x2="684.852" y2="831.204" opacity="0.88"/>
+<line x1="421.966" y1="658.554" x2="321.987" y2="821.296" opacity="0.88"/>
+<line x1="340.064" y1="507.306" x2="149.135" y2="502.092" opacity="0.88"/>
+<line x1="430.098" y1="360.752" x2="339.148" y2="192.796" opacity="0.88"/>
+<line x1="602.034" y1="365.446" x2="702.013" y2="202.704" opacity="0.88"/>
+<line x1="683.936" y1="516.694" x2="874.865" y2="521.908" opacity="0.88"/>
+<polygon points="684.852,831.204 321.987,821.296 149.135,502.092 339.148,192.796 702.013,202.704 874.865,521.908" opacity="0.72"/>
+<polygon points="313.561,310.539 587.251,239.416 785.69,440.877 710.439,713.461 436.749,784.584 238.31,583.123" opacity="0.38"/>
+<circle cx="684.852" cy="831.204" r="6.591" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="321.987" cy="821.296" r="5.504" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="149.135" cy="502.092" r="6.099" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="339.148" cy="192.796" r="9.464" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="702.013" cy="202.704" r="9.386" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="874.865" cy="521.908" r="9.412" fill="currentColor" stroke="none" opacity="0.9"/>
+<circle cx="512" cy="512" r="26" opacity="0.95"/>
+<circle cx="512" cy="512" r="13.0" fill="currentColor" stroke="none"/>
+</g>
+</svg>
