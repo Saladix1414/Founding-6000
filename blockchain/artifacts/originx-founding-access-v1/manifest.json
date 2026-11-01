@@ -131,11 +131,11 @@
     ]
   },
   "hashes": {
-    "sourceSha256": "01d56df7ee7a82431022d37feea86af4e75676540b170f72450dc606e711fee0",
-    "compilerInputSha256": "dd6d3850f9ea06b3d82cdab099ca9d83a975d01fcc022d26ea3992aaaa1d5488",
-    "abiFileSha256": "fafd79ae471141cd84e5a5251396f9088b9e94167b3c538979d39c18a091c41c",
-    "creationBytecodeSha256": "c7708d78b33453817bc78f9a39e742435c2d9dfb9dc252943fdaba887754a6c1",
-    "runtimeBytecodeSha256": "1c1fde5e9811f6e62254c1ddb71ed47e5ee0cc4b4eb4254a552c020c1a09c0a5"
+    "sourceSha256": "8cc68982ba0a53991b348f34b18a0ea2fb15bf3ee635273c1ba907b035c6f0b8",
+    "compilerInputSha256": "ab277619f3cdc061f942be4b61a361c267ceb98edf9c9566b6c001ada8283162",
+    "abiFileSha256": "3f0dc26a6c00df8cace3343ada75a8e5e9d031fa6ca15ae6981904e145c33905",
+    "creationBytecodeSha256": "2615678e553cd50f767a130e797d8d4cb326e132757bd135867c1286a9513119",
+    "runtimeBytecodeSha256": "9ed5125194af51175a650209fe49221c6e176e2e33b03af56765eb37569e3d9c"
   },
   "hashConventions": {
     "source": "SHA256 of source file bytes",
@@ -143,8 +143,8 @@
     "bytecode": "SHA256 of decoded hexadecimal bytes"
   },
   "bytecodeSizes": {
-    "creationBytes": 8035,
-    "runtimeBytes": 6590
+    "creationBytes": 9389,
+    "runtimeBytes": 7782
   },
   "parameters": {
     "maxSupply": 6000,
