@@ -99,7 +99,7 @@ assert.deepEqual(first, second, "DOUBLE_COMPILATION_MISMATCH");
 
 assert.equal(
   sha256(Buffer.from(source)),
-  "01d56df7ee7a82431022d37feea86af4e75676540b170f72450dc606e711fee0",
+  "8cc68982ba0a53991b348f34b18a0ea2fb15bf3ee635273c1ba907b035c6f0b8",
   "SOURCE_HASH_MISMATCH",
 );
 
