@@ -240,15 +240,200 @@ def main() -> None:
         )
         return
 
-    if not os.getenv(
+    api_key = os.getenv(
         "STABILITY_API_KEY"
-    ):
+    )
+
+    if not api_key:
         raise SystemExit(
             "STABILITY_API_KEY_MISSING"
         )
 
-    raise SystemExit(
-        "EXECUTION_NOT_ENABLED_YET"
+    # First live OriginX generation is intentionally restricted
+    # to token #0001. Batch execution remains disabled.
+    if args.token_id != 1:
+        raise SystemExit(
+            "LIVE_RENDER_TOKEN_NOT_AUTHORIZED"
+        )
+
+    import subprocess
+
+    RESULT_DIR.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    output_path = (
+        RESULT_DIR
+        / f"{args.token_id:04d}-candidate.png"
+    )
+
+    error_path = (
+        RESULT_DIR
+        / f"{args.token_id:04d}-error.txt"
+    )
+
+    request_data = request["request"]
+
+    command = [
+        "curl",
+        "--silent",
+        "--show-error",
+        "--output",
+        str(output_path),
+        "--write-out",
+        "%{http_code}",
+        "--header",
+        "@-",
+        "--header",
+        "accept: image/*",
+        "--form",
+        "none=",
+        "--form",
+        f"prompt={request_data['prompt']}",
+        "--form",
+        (
+            "negative_prompt="
+            + request_data["negative_prompt"]
+        ),
+        "--form",
+        f"model={request_data['model']}",
+        "--form",
+        (
+            "aspect_ratio="
+            + request_data["aspect_ratio"]
+        ),
+        "--form",
+        (
+            "output_format="
+            + request_data["output_format"]
+        ),
+        "--form",
+        f"seed={request_data['seed']}",
+        GENERATION_ENDPOINT,
+    ]
+
+    completed = subprocess.run(
+        command,
+        input=f"authorization: Bearer {api_key}\n",
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    http_status = (
+        completed.stdout.strip()
+    )
+
+    if completed.stderr:
+        error_path.write_text(
+            completed.stderr,
+            encoding="utf-8",
+        )
+
+    if http_status != "200":
+        if output_path.exists():
+            error_body = (
+                output_path.read_bytes()
+            )
+
+            error_path.write_bytes(
+                error_body
+            )
+
+            output_path.unlink()
+
+        raise SystemExit(
+            "STABILITY_GENERATION_FAILED:"
+            + http_status
+        )
+
+    if not output_path.exists():
+        raise SystemExit(
+            "STABILITY_OUTPUT_MISSING"
+        )
+
+    data = output_path.read_bytes()
+
+    png_signature = (
+        b"\x89PNG\r\n\x1a\n"
+    )
+
+    if not data.startswith(
+        png_signature
+    ):
+        raise SystemExit(
+            "STABILITY_OUTPUT_NOT_PNG"
+        )
+
+    media_hash = hashlib.sha256(
+        data
+    ).hexdigest()
+
+    result_record = {
+        "provider": PROVIDER,
+        "model": MODEL,
+        "tokenId": args.token_id,
+        "renderJobId": (
+            request["renderJobId"]
+        ),
+        "providerRequestHash": (
+            request[
+                "providerRequestHash"
+            ]
+        ),
+        "seed": request["seed"],
+        "status": (
+            "CANDIDATE_GENERATED"
+        ),
+        "candidateFile": (
+            str(
+                output_path.relative_to(
+                    ROOT
+                )
+            )
+        ),
+        "candidateMediaHash": (
+            media_hash
+        ),
+        "canonical": False,
+        "qualityGate": (
+            "NOT_RUN"
+        ),
+    }
+
+    result_path = (
+        RESULT_DIR
+        / f"{args.token_id:04d}.json"
+    )
+
+    result_path.write_text(
+        json.dumps(
+            result_record,
+            indent=2,
+            ensure_ascii=False,
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    print(
+        "MODE=LIVE_SINGLE_TOKEN"
+    )
+
+    print(
+        "CANDIDATE_GENERATED=PASS"
+    )
+
+    print(
+        "CANDIDATE_FILE="
+        + str(output_path)
+    )
+
+    print(
+        "CANDIDATE_MEDIA_HASH="
+        + media_hash
     )
 
 
