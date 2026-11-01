@@ -487,11 +487,31 @@ console.log(
 await (
   await contract
     .connect(admin)
-    .grantRole(
-      DEFAULT_ADMIN_ROLE,
-      adminBAddress,
-    )
+    .beginAdminTransfer(adminBAddress)
 ).wait();
+
+await ganacheProvider.request({
+  method: "evm_increaseTime",
+  params: [48 * 60 * 60],
+});
+
+await ganacheProvider.request({
+  method: "evm_mine",
+  params: [],
+});
+
+await (
+  await contract
+    .connect(adminB)
+    .acceptAdminTransfer()
+).wait();
+
+assert.equal(await contract.adminCount(), 1n);
+assert.equal(await contract.currentAdmin(), adminBAddress);
+assert.equal(
+  await contract.hasRole(DEFAULT_ADMIN_ROLE, adminAddress),
+  false,
+);
 
 assert.equal(
   await contract.hasRole(

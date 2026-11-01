@@ -392,22 +392,23 @@ assert.equal(
   true,
 );
 
-await (
-  await contract
-    .connect(admin)
-    .grantRole(
-      DEFAULT_ADMIN_ROLE,
-      secondaryAdminAddress,
-    )
-).wait();
+await mustRevert(
+  () => contract.connect(admin).grantRole(
+    DEFAULT_ADMIN_ROLE,
+    secondaryAdminAddress,
+  ),
+  "direct ADMIN assignment must revert",
+);
 
 assert.equal(
   await contract.hasRole(
     DEFAULT_ADMIN_ROLE,
     secondaryAdminAddress,
   ),
-  true,
+  false,
 );
+
+assert.equal(await contract.adminCount(), 1n);
 
 console.log(
   "SEPARATED_ROLE_EXPANSION=PASS",
@@ -893,6 +894,181 @@ assert.equal(
 console.log(
   "FINAL_ADMIN_MINTER_SEPARATION=PASS",
 );
+
+
+/*
+ * Part 7L — Last-admin continuity and safe rotation.
+ * All addresses are local Ganache test signers.
+ */
+
+const continuity = await deploy(
+  adminAddress,
+  minterAddress,
+);
+
+assert.equal(await continuity.adminCount(), 1n);
+
+await mustRevert(
+  () => continuity.renounceRole(
+    DEFAULT_ADMIN_ROLE, adminAddress
+  ),
+  "sole admin renounce",
+);
+
+await mustRevert(
+  () => continuity.revokeRole(
+    DEFAULT_ADMIN_ROLE, adminAddress
+  ),
+  "sole admin revoke",
+);
+
+await mustRevert(
+  () => continuity.grantRole(
+    DEFAULT_ADMIN_ROLE, secondaryAdminAddress
+  ),
+  "direct admin grant",
+);
+
+await (
+  await continuity.beginAdminTransfer(
+    secondaryAdminAddress
+  )
+).wait();
+
+await mustRevert(
+  () => continuity.connect(secondaryAdmin)
+    .acceptAdminTransfer(),
+  "early acceptance",
+);
+
+await (
+  await continuity.cancelAdminTransfer()
+).wait();
+
+await mustRevert(
+  () => continuity.connect(secondaryAdmin)
+    .acceptAdminTransfer(),
+  "cancelled acceptance",
+);
+
+await (
+  await continuity.beginAdminTransfer(
+    secondaryAdminAddress
+  )
+).wait();
+
+await mustRevert(
+  () => continuity.connect(attacker)
+    .acceptAdminTransfer(),
+  "wrong signer",
+);
+
+const deadline = await continuity.adminAcceptAfter();
+const latest = await ganacheProvider.request({
+  method: "eth_getBlockByNumber",
+  params: ["latest", false],
+});
+
+assert.ok(latest, "LOCAL_BLOCK_MISSING");
+
+const target = deadline + 10n;
+const delta = target > BigInt(latest.timestamp)
+  ? Number(target - BigInt(latest.timestamp))
+  : 0;
+
+await ganacheProvider.request({
+  method: "evm_increaseTime",
+  params: [delta],
+});
+
+await ganacheProvider.request({
+  method: "evm_mine",
+  params: [],
+});
+
+const advancedBlock = await ganacheProvider.request({
+  method: "eth_getBlockByNumber",
+  params: ["latest", false],
+});
+
+assert.ok(advancedBlock, "ADVANCED_BLOCK_MISSING");
+assert.ok(
+  BigInt(advancedBlock.timestamp) >= deadline,
+  "ADMIN_TRANSFER_TIME_NOT_REACHED",
+);
+
+console.log("ADMIN_TRANSFER_DEADLINE_REACHED=PASS");
+
+const confirmedBlock = await ganacheProvider.request({
+  method: "eth_getBlockByNumber",
+  params: ["latest", false],
+});
+
+const pendingBlock = await ganacheProvider.request({
+  method: "eth_getBlockByNumber",
+  params: ["pending", false],
+});
+
+const requiredTime = await continuity.adminAcceptAfter();
+
+console.log("=== ADMIN TRANSFER TIME DIAGNOSTIC ===");
+console.log("REQUIRED_TIMESTAMP=" + requiredTime);
+console.log("LATEST_TIMESTAMP=" +
+  BigInt(confirmedBlock.timestamp));
+console.log("PENDING_TIMESTAMP=" +
+  (pendingBlock
+    ? BigInt(pendingBlock.timestamp).toString()
+    : "UNAVAILABLE"));
+
+await (
+  await continuity.connect(secondaryAdmin)
+    .acceptAdminTransfer({ gasLimit: 1000000n })
+).wait();
+
+assert.equal(await continuity.adminCount(), 1n);
+assert.equal(
+  await continuity.currentAdmin(),
+  secondaryAdminAddress,
+);
+assert.equal(
+  await continuity.hasRole(DEFAULT_ADMIN_ROLE, adminAddress),
+  false,
+);
+assert.equal(
+  await continuity.hasRole(
+    DEFAULT_ADMIN_ROLE, secondaryAdminAddress
+  ),
+  true,
+);
+
+await mustRevert(
+  () => continuity.connect(secondaryAdmin)
+    .renounceRole(
+      DEFAULT_ADMIN_ROLE, secondaryAdminAddress
+    ),
+  "new sole admin renounce",
+);
+
+await mustRevert(
+  () => continuity.connect(secondaryAdmin)
+    .grantRole(MINTER_ROLE, secondaryAdminAddress),
+  "admin cannot be minter",
+);
+
+assert.equal(
+  await continuity.hasRole(MINTER_ROLE, minterAddress),
+  true,
+);
+
+console.log("PROTECTED_ADMIN_TRANSFER=PASS");
+console.log("ADMIN_COUNT_FINAL=1");
+console.log("OLD_ADMIN_REMOVED=PASS");
+
+console.log("LAST_ADMIN_RENOUNCE_GUARD=PASS");
+console.log("LAST_ADMIN_REVOKE_GUARD=PASS");
+console.log("ADMIN_COUNT_IDEMPOTENCE=PASS");
+console.log("ADMIN_ROTATION=PASS");
+console.log("LAST_ADMIN_ROTATION_GUARD=PASS");
 
 console.log(
   "OX_NFT_25_CONTRACT_HARDENING_TEST=PASS",
