@@ -14,7 +14,7 @@ assert.match(collection,/No es beneficio neto frente a la compra/);
 const {fullCloseV3}=await import('../../../shared/foundingReservePolicyV3.mjs');
 assert.deepEqual(fullCloseV3().map(unit=>simulateManagedReserveScenario(unit.reserve,400,1).netChange/BigInt(unit.supply)),[120_000n,67_990n,67_990n]);
 assert.deepEqual(fullCloseV3().map(unit=>unit.perNft),[30_000_000n,16_997_500n,16_997_500n]);
-assert.match(collection,/Hoy el rescate está deshabilitado/);
+assert.match(collection,/tras finalizar las ventas y habilitar el rescate/);
 const reference=simulateManagedReserveScenario(100_000_000n,400,1);
 assert.equal(reference.netChange,400_000n);
 assert.equal(reference.executionAuthorized,false);
@@ -30,7 +30,11 @@ assert.match(read("src/styles/originx-collection.css"),/background: #e1f5df; col
 console.log("GREEN_EXPECTED_PAYOUT_ROW=PASS");
 
 assert.match(collection,/ox-tier-benefits-brief/);
-assert.equal((collection.match(/<li>/g)||[]).length,3);
+assert.equal((collection.match(/<li>/g)||[]).length,4);
 assert.match(collection,/pasa el tiempo restante; no reinicia el plazo/);
 assert.match(collection,/sin sumar inversiones ni aportes futuros/);
-console.log('THREE_BRIEF_BENEFITS_AND_REDEMPTION_CONDITIONS=PASS');
+console.log('FOUR_BUSINESS_BENEFITS_WITH_CONDITIONAL_PLAN=PASS');
+
+assert.match(collection,/15% del beneficio neto futuro de suscripciones y servicios/);
+assert.match(collection,/hasta el 10% de la reserva/);
+assert.match(collection,/depende de resultados reales y de habilitar el plan/);
