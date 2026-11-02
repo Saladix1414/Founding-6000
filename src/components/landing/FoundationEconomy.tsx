@@ -2,6 +2,9 @@ import { useState } from "react";
 import {
   SIMULATION_TIERS,
   simulateReferenceSale,
+  simulateBatchClose,
+  simulateInvestmentScenario,
+  parseScenarioCosts,
   type SimulationTier,
 } from "./economySimulation";
 import "../../styles/originx-economy.css";
@@ -27,6 +30,15 @@ export default function FoundationEconomy({
   const es = language === "es";
   const [tier, setTier] = useState<SimulationTier>("RARE");
   const result = simulateReferenceSale(tier);
+  const [completedBatches, setCompletedBatches] = useState(3);
+  const [costInput, setCostInput] = useState('');
+  const [annualRateBps, setAnnualRateBps] = useState(0);
+  const [years, setYears] = useState(1);
+  let costs: bigint | null = null;
+  let costInvalid = false;
+  try { costs = parseScenarioCosts(costInput); } catch { costInvalid = true; }
+  const closing = simulateBatchClose(completedBatches, costs);
+  const investment = simulateInvestmentScenario(closing.reserve, annualRateBps, years);
 
   const money = (minor: bigint) =>
     new Intl.NumberFormat(es ? "es-AR" : "en-US", {
@@ -147,6 +159,67 @@ export default function FoundationEconomy({
                 <strong>{money(result.reserve)}</strong>
               </p>
             </div>
+          </div>
+        </div>
+
+        <div className="ox-economy-scheme ox-economy-projection">
+          <div className="ox-economy-scheme-heading">
+            <h3>{es ? 'Resultados netos de la venta por tandas hasta finalizar' : 'Net sale results by batch through completion'}</h3>
+            <span>{es ? '25% FIJO · CIERRE PROYECTADO' : 'FIXED 25% · PROJECTED CLOSE'}</span>
+          </div>
+          <p className="ox-economy-small">{es
+            ? 'Calculá el aporte fijo a reserva al completar cada tanda a precios de referencia. #0001 Azhurak permanece reservado: 999 ventas RARE y 5.999 ventas al completar las tres tandas.'
+            : 'Calculate the fixed reserve contribution as each batch completes at reference prices. #0001 Azhurak remains reserved: 999 RARE sales and 5,999 sales across all three batches.'}</p>
+          <label className="ox-economy-field" htmlFor="ox-closing-batches">
+            <span>{es ? 'Escenario de cierre' : 'Closing scenario'}</span>
+            <select id="ox-closing-batches" value={completedBatches} onChange={event => setCompletedBatches(Number(event.target.value))}>
+              <option value={1}>{es ? 'Al finalizar RARE' : 'After RARE'}</option>
+              <option value={2}>{es ? 'Al finalizar RARE + EPIC' : 'After RARE + EPIC'}</option>
+              <option value={3}>{es ? 'Al finalizar toda la colección' : 'After the full collection'}</option>
+            </select>
+          </label>
+          <div className="ox-economy-rules-scroll" role="region" aria-label={es ? 'Resultados por tanda' : 'Batch results'} tabIndex={0}>
+            <table className="ox-economy-table">
+              <caption>{es ? 'Importes calculados si se completan las ventas indicadas; no son cobros ya verificados.' : 'Calculated amounts if the selected sales complete; not already verified receipts.'}</caption>
+              <thead><tr><th scope="col">{es ? 'Tanda' : 'Batch'}</th><th scope="col">{es ? 'Ventas' : 'Sales'}</th><th scope="col">{es ? 'Ingreso' : 'Revenue'}</th><th scope="col">25% → {es ? 'reserva' : 'reserve'}</th><th scope="col">{es ? 'Reserva acumulada' : 'Cumulative reserve'}</th></tr></thead>
+              <tbody>{closing.stages.map(stage => <tr key={stage.tier}><th scope="row">{stage.tier}</th><td>{stage.quantity}</td><td>{money(stage.revenue)}</td><td>{money(stage.contribution)}</td><td>{money(stage.cumulativeReserve)}</td></tr>)}</tbody>
+            </table>
+          </div>
+          <div className="ox-economy-projection-metrics" aria-live="polite" aria-atomic="true">
+            <div><span>{es ? 'Ingresos del escenario' : 'Scenario revenue'}</span><strong>{money(closing.sales)}</strong></div>
+            <div><span>{es ? 'Aporte fijo a reserva' : 'Fixed reserve contribution'}</span><strong>{money(closing.reserve)}</strong></div>
+            <div><span>{es ? 'Fuera de reserva, antes de costes' : 'Outside reserve, before costs'}</span><strong>{money(closing.outsideReserve)}</strong></div>
+          </div>
+          <label className="ox-economy-field" htmlFor="ox-scenario-costs">
+            <span>{es ? 'Costes totales del escenario (USDT, opcional)' : 'Total scenario costs (USDT, optional)'}</span>
+            <input id="ox-scenario-costs" type="text" inputMode="decimal" maxLength={12} value={costInput} onChange={event => setCostInput(event.target.value)} placeholder={es ? 'Pendientes de definir' : 'Not defined yet'} aria-invalid={costInvalid} aria-describedby="ox-cost-explanation" />
+          </label>
+          <p id="ox-cost-explanation" className="ox-economy-small">{costInvalid
+            ? (es ? 'Ingresá un importe positivo con hasta dos decimales.' : 'Enter a positive amount with up to two decimal places.')
+            : (es ? 'Sin costes definidos, el beneficio neto operativo queda pendiente. El 25% corresponde al aporte a reserva.' : 'Without defined costs, operating net profit remains pending. The 25% is the reserve contribution.')}</p>
+          <div className="ox-economy-sale" aria-live="polite"><span>{es ? 'Neto operativo estimado tras la reserva y los costes ingresados' : 'Estimated operating net after reserves and entered costs'}</span><strong>{!costInvalid && closing.operatingNet !== null ? money(closing.operatingNet) : (es ? 'Pendiente' : 'Pending')}</strong></div>
+        </div>
+
+        <div className="ox-economy-scheme ox-economy-projection">
+          <div className="ox-economy-scheme-heading">
+            <h3>{es ? 'Estimado del resultado de inversiones tras finalizar la venta' : 'Estimated investment results after the sale closes'}</h3>
+            <span>{es ? 'ESCENARIO SELECCIONADO' : 'SELECTED SCENARIO'}</span>
+          </div>
+          <p className="ox-economy-small">{es ? 'Explorá la evolución de la reserva del cierre seleccionado. Este escenario supone invertir el 100% de esa reserva después de las ventas, con capitalización anual y la variación neta elegida; admite resultados positivos o negativos.' : 'Explore the reserve after the selected closing stage. This scenario assumes investing 100% of that reserve after sales, with annual compounding and the chosen net change; results may be positive or negative.'}</p>
+          <div className="ox-economy-projection-controls">
+            <label className="ox-economy-field" htmlFor="ox-investment-rate"><span>{es ? 'Variación neta anual supuesta' : 'Assumed annual net change'}</span><select id="ox-investment-rate" value={annualRateBps} onChange={event => setAnnualRateBps(Number(event.target.value))}>{[-2000,-1000,0,500,1000,2000].map(rate => <option key={rate} value={rate}>{rate > 0 ? '+' : ''}{rate / 100}%</option>)}</select></label>
+            <label className="ox-economy-field" htmlFor="ox-investment-years"><span>{es ? 'Plazo desde el cierre' : 'Time after closing'}</span><select id="ox-investment-years" value={years} onChange={event => setYears(Number(event.target.value))}>{[1,2,3,4,5].map(year => <option key={year} value={year}>{year} {es ? (year === 1 ? 'año' : 'años') : (year === 1 ? 'year' : 'years')}</option>)}</select></label>
+          </div>
+          <div className="ox-economy-projection-metrics" aria-live="polite" aria-atomic="true">
+            <div><span>{es ? 'Reserva de partida' : 'Opening reserve'}</span><strong>{money(investment.openingReserve)}</strong></div>
+            <div><span>{es ? 'Resultado neto estimado de inversión' : 'Estimated net investment result'}</span><strong>{money(investment.netChange)}</strong></div>
+            <div><span>{es ? 'Reserva final del escenario' : 'Scenario closing reserve'}</span><strong>{money(investment.closingReserve)}</strong></div>
+          </div>
+          <div className="ox-economy-rules-scroll" role="region" aria-label={es ? 'Evolución por categoría' : 'Evolution by category'} tabIndex={0}>
+            <table className="ox-economy-table"><caption>{es ? 'Reserva media por unidad de categoría, calculada sobre el suministro máximo (1.000 / 2.000 / 3.000). No es una cotización de reventa ni una ganancia personal confirmada.' : 'Average reserve per category unit, based on maximum supply (1,000 / 2,000 / 3,000). Not a resale quote or confirmed personal profit.'}</caption>
+              <thead><tr><th scope="col">{es ? 'Categoría' : 'Category'}</th><th scope="col">{es ? 'Tras las ventas' : 'After sales'}</th><th scope="col">{es ? 'Tras el escenario de inversión' : 'After the investment scenario'}</th></tr></thead>
+              <tbody>{closing.units.map(unit => <tr key={unit.tier}><th scope="row">{unit.tier}</th><td>{money(unit.averageReserve)}</td><td>{money(simulateInvestmentScenario(unit.reserve,annualRateBps,years).closingReserve / BigInt(unit.denominator))}</td></tr>)}</tbody>
+            </table>
           </div>
         </div>
 

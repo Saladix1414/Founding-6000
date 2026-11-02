@@ -1,4 +1,22 @@
 /* OriginX Foundation — illustrative public economy */
+/* Batch closing and investment scenarios: isolated to the economy section. */
+#economia .ox-economy-projection { margin-top: 18px; }
+#economia .ox-economy-field { display: grid; min-width: 0; gap: 7px; margin: 14px 0; font-size: 14px; font-weight: 700; }
+#economia .ox-economy-field input, #economia .ox-economy-field select { min-width: 0; width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid #9d89c5; border-radius: 12px; background: #fffdf8; color: #0a173a; font: inherit; box-sizing: border-box; }
+#economia .ox-economy-field :focus-visible { outline: 3px solid #7046af; outline-offset: 3px; }
+#economia .ox-economy-projection-controls { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+#economia .ox-economy-projection-metrics { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin: 16px 0; }
+#economia .ox-economy-projection-metrics > div { display: grid; align-content: start; gap: 10px; border-radius: 14px; padding: 16px; background: #e7deff; }
+#economia .ox-economy-projection-metrics > div:nth-child(2) { background: #ccecff; }
+#economia .ox-economy-projection-metrics > div:nth-child(3) { background: #d3efc4; }
+#economia .ox-economy-projection-metrics span { font-size: 13px; line-height: 1.4; }
+#economia .ox-economy-projection-metrics strong { font-size: clamp(18px,2.4vw,26px); overflow-wrap: anywhere; }
+#economia .ox-economy-projection table { min-width: 560px; }
+#economia .ox-economy-projection caption { padding: 10px 0; text-align: left; color: var(--ox-text-muted); line-height: 1.5; }
+@media(max-width:599px) {
+  #economia .ox-economy-projection-metrics, #economia .ox-economy-projection-controls { grid-template-columns: minmax(0,1fr); }
+  #economia .ox-economy-projection-metrics > div { padding: 12px; gap: 6px; }
+}
 #economia.ox-economy {
   padding: 72px 24px;
   background: var(--ox-page-cream);

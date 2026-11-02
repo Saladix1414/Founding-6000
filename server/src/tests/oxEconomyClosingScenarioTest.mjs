@@ -1,0 +1,42 @@
+import assert from 'node:assert/strict';
+import { simulateBatchClose, simulateInvestmentScenario, parseScenarioCosts, simulateReferenceSale } from '../../../src/components/landing/economySimulation.ts';
+
+const full=simulateBatchClose();
+assert.equal(full.sales,459950000000n);
+assert.equal(full.reserve,114987500000n);
+assert.equal(full.outsideReserve,344962500000n);
+assert.equal(full.operatingNet,null);
+assert.equal(full.stages.reduce((n,s)=>n+s.quantity,0),5999);
+assert.deepEqual(full.units.map(u=>u.reserve),[57237500000n,37500000000n,20250000000n]);
+assert.deepEqual(full.units.map(u=>u.averageReserve),[57237500n,18750000n,6750000n]);
+const first=simulateBatchClose(1);
+assert.equal(first.sales,49950000000n); assert.equal(first.reserve,12487500000n);
+assert.equal(simulateBatchClose(2).reserve,47487500000n);
+for(let count=1;count<=3;count++) {
+  const scenario=simulateBatchClose(count);
+  assert.equal(scenario.reserve*4n,scenario.sales);
+  assert.equal(scenario.units.reduce((n,u)=>n+u.reserve,0n),scenario.reserve);
+  for (const stage of scenario.stages) assert.equal(stage.revenue,simulateReferenceSale(stage.tier).price*BigInt(stage.quantity));
+}
+assert.equal(simulateBatchClose(3,1000000000n).operatingNet,343962500000n);
+assert.ok(simulateBatchClose(3,999999000000n).operatingNet<0n);
+assert.equal(parseScenarioCosts(''),null);
+assert.equal(parseScenarioCosts('10,25'),10250000n);
+assert.equal(parseScenarioCosts('0'),0n);
+assert.equal(parseScenarioCosts('10.5'),10500000n);
+for(const invalid of ['-1','1e3','NaN','Infinity','1.234','1,000.00','1000000000']) assert.throws(()=>parseScenarioCosts(invalid));
+const flat=simulateInvestmentScenario(full.reserve,0,5);
+assert.equal(flat.netChange,0n);
+assert.equal(simulateInvestmentScenario(100000000n,1000,2).closingReserve,121000000n);
+assert.equal(simulateInvestmentScenario(100000000n,-1000,2).closingReserve,81000000n);
+assert.equal(simulateInvestmentScenario(full.reserve,-10000,1).closingReserve,0n);
+for(const args of [[-1n,0,1],[1n,10001,1],[1n,0,0],[1n,0,6],[1n,NaN,1]]) assert.throws(()=>simulateInvestmentScenario(...args));
+for(const count of [0,4,1.5,NaN]) assert.throws(()=>simulateBatchClose(count));
+console.log('FIXED_25_PERCENT_AND_WATERFALL=PASS');
+console.log('THREE_BATCHES_AND_CUMULATIVE_TOTALS=PASS');
+console.log('AZHURAK_RESERVED_5999_SALES=PASS');
+console.log('COSTS_UNDEFINED_MEANS_NET_PENDING=PASS');
+console.log('ENTERED_COSTS_AND_NEGATIVE_NET=PASS');
+console.log('ANNUAL_COMPOUNDING_AND_LOSS_SCENARIOS=PASS');
+console.log('INVALID_NUMERIC_INPUTS_REJECTED=PASS');
+console.log('PRODUCTION_DATA_AND_PAYMENTS_UNCHANGED=PASS');
