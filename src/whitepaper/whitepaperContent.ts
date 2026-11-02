@@ -1,819 +1,97 @@
-export type WhitepaperLanguage =
-  | "en"
-  | "es";
-
-export type LocalizedText = {
-  en: string;
-  es: string;
-};
-
-export type WhitepaperCard = {
-  title: string;
-  text: LocalizedText;
-};
-
+export type WhitepaperLanguage = 'en' | 'es';
+export type LocalizedText = {en: string; es: string};
+export type WhitepaperCard = {title: string; text: LocalizedText};
 export type WhitepaperSection = {
-  id: string;
-  number: string;
-  label: string;
-  title: LocalizedText;
-  summary: LocalizedText;
-  paragraphs?: LocalizedText[];
-  bullets?: LocalizedText[];
-  flow?: string[];
-  cards?: WhitepaperCard[];
+  id: string; number: string; label: LocalizedText; title: LocalizedText; summary: LocalizedText;
+  paragraphs?: LocalizedText[]; bullets?: LocalizedText[]; flow?: string[]; cards?: WhitepaperCard[];
 };
+export const WHITEPAPER_BRAND = 'OriginX Foundation';
+export const WHITEPAPER_ORIGIN_LAYER = 'Founding 6000';
+export const WHITEPAPER_VERSION = '02.11.2026';
+const t = (es: string, en: string): LocalizedText => ({es, en});
 
-export const WHITEPAPER_BRAND =
-  "DigitalBoost Origin";
-
-export const WHITEPAPER_ORIGIN_LAYER =
-  "DigitalBoost OriginX";
-
-export const whitepaperSections:
-  WhitepaperSection[] = [
+export const whitepaperSections: WhitepaperSection[] = [
   {
-    id: "manifesto",
-    number: "00",
-    label: "MANIFESTO",
-    title: {
-      en: "A Digital Business Operating System",
-      es: "Un sistema operativo para negocios digitales",
-    },
-    summary: {
-      en: "DigitalBoost Origin is conceived as an integrated digital operating environment for creating, operating, automating, connecting, analyzing, protecting and evolving digital businesses and products.",
-      es: "DigitalBoost Origin se concibe como un entorno operativo digital integrado para crear, operar, automatizar, conectar, analizar, proteger y hacer evolucionar negocios y productos digitales.",
-    },
-    paragraphs: [
-      {
-        en: "The project is not based on the idea of accumulating unrelated tools. Its central thesis is that specialized systems become substantially more useful when they share identity, data, infrastructure, intelligence, economics, observability and orchestration.",
-        es: "El proyecto no parte de la idea de acumular herramientas aisladas. Su tesis central es que los sistemas especializados adquieren mucho más valor cuando comparten identidad, datos, infraestructura, inteligencia, economía, observabilidad y orquestación.",
-      },
-      {
-        en: "Each island focuses on a specific domain. PULSE exists above those domains as the transversal intelligence capable of understanding context, intent and objectives, and coordinating the capabilities required to pursue them.",
-        es: "Cada isla se especializa en un dominio concreto. PULSE existe por encima de esos dominios como la inteligencia transversal capaz de comprender contexto, intención y objetivos, y coordinar las capacidades necesarias para perseguirlos.",
-      },
+    id:'manifesto', number:'00', label:t('VISIÓN', 'VISION'),
+    title:t('Tu idea merece un ecosistema.', 'Your idea deserves an ecosystem.'),
+    summary:t('OriginX Foundation conecta creación web, comercio, inteligencia artificial y experiencias interactivas. Su objetivo: ayudarte a crear, operar y desarrollar tu próximo proyecto desde espacios especializados que trabajan sobre una base común.', 'OriginX Foundation connects website creation, commerce, artificial intelligence and interactive experiences. Its goal: help you build, operate and develop your next project through specialized workspaces sharing a common foundation.'),
+    paragraphs:[t('DigitalBoost Studio es el entorno de desarrollo de estas herramientas. Founding 6000 es la colección de membresías que acompaña su etapa fundadora: una pieza digital, acceso previsto y un modelo de reservas definido.', 'DigitalBoost Studio is the development environment for these tools. Founding 6000 is the membership collection accompanying the founding stage: a digital collectible, planned access and a defined reserve model.')],
+  },
+  {
+    id:'membership', number:'01', label:t('MEMBRESÍA', 'MEMBERSHIP'),
+    title:t('Una pieza única. Un lugar para crear.', 'A unique collectible. A place to build.'),
+    summary:t('6.000 números únicos, tres categorías y 12 meses de acceso a la web de tiendas y desarrollo desde la activación válida. Al transferir el NFT, el titular válido recibe el tiempo restante con el mismo vencimiento.', '6,000 unique serials, three categories and 12 months of access to the stores and development website from valid activation. When the NFT transfers, the valid holder receives the remaining term with the same expiry.'),
+    cards:[
+      {title:'RARE · 50 USDT',text:t('#0001–#1000 · 1.000 piezas. #0001 Azhurak queda reservado: 999 ventas previstas.', '#0001–#1000 · 1,000 collectibles. #0001 Azhurak remains reserved: 999 planned sales.')},
+      {title:'EPIC · 70 USDT',text:t('#1001–#3000 · 2.000 piezas y 2.000 ventas previstas.', '#1001–#3000 · 2,000 collectibles and 2,000 planned sales.')},
+      {title:'LEGENDARY · 90 USDT',text:t('#3001–#6000 · 3.000 piezas y 3.000 ventas previstas.', '#3001–#6000 · 3,000 collectibles and 3,000 planned sales.')},
     ],
-    flow: [
-      "CREATE",
-      "OPERATE",
-      "INTELLIGENCE",
-      "CONNECT",
-      "TRADE",
-      "SECURE",
-      "MEASURE",
-      "EVOLVE",
+    paragraphs:[t('Pago, asignación, entrega del NFT y activación del acceso son etapas distintas. La transferencia no inicia otros 12 meses. El acceso depende de las funciones habilitadas y de los límites del plan; la renovación aún no tiene precio definido.', 'Payment, allocation, NFT delivery and access activation are separate stages. Transfers do not start another 12 months. Access depends on enabled features and plan limits; renewal pricing has not yet been defined.')],
+  },
+  {
+    id:'ecosystem', number:'02', label:t('HERRAMIENTAS', 'TOOLS'),
+    title:t('Creá. Organizá. Automatizá.', 'Build. Organize. Automate.'),
+    summary:t('Cada espacio resuelve una parte del proyecto. Las versiones mostradas están en desarrollo; las integraciones y la publicación requieren habilitación y verificación.', 'Each workspace addresses part of your project. The versions shown are under development; integrations and publishing require activation and verification.'),
+    cards:[
+      {title:'Commerce OS + Store Builder',text:t('Tu operación comercial y tu tienda en un mismo espacio: productos, pedidos, clientes y diseño. Store Builder vive dentro de Commerce OS.', 'Commerce operations and your store in one workspace: products, orders, customers and design. Store Builder belongs inside Commerce OS.')},
+      {title:'Web Builder · Sky Workshop',text:t('Diseño de sitios y landing pages con canvas visual, estilos y vista previa responsive. En desarrollo activo.', 'Website and landing-page design with a visual canvas, styles and responsive preview. Under active development.')},
+      {title:'IA Forge',text:t('Arquitectura visual para inteligencias, agentes, bots y workflows. La ejecución requiere configurar modelos, proveedores y runtime.', 'Visual architecture for intelligences, agents, bots and workflows. Execution requires configuring models, providers and runtime.')},
+      {title:'Trading Islands',text:t('Exploración de mercados, estrategias, carteras y bots. Exchange Harbor muestra una demo local con datos simulados, sin operaciones reales.', 'Market, strategy, portfolio and bot exploration. Exchange Harbor shows a local demo with simulated data and no real trades.')},
+      {title:'PULSE',text:t('Orquestación transversal: interpreta objetivos y coordina herramientas con políticas, aprobación, verificación y auditoría.', 'Cross-platform orchestration: interprets goals and coordinates tools through policies, approval, verification and audit.')},
+      {title:'Sentinel + Nexus',text:t('Seguridad y conexiones del ecosistema: capacidades planificadas. No se presentan como servicios ya disponibles.', 'Ecosystem security and connectivity: planned capabilities, not services already available.')},
     ],
   },
-
   {
-    id: "ecosystem",
-    number: "01",
-    label: "ECOSYSTEM",
-    title: {
-      en: "Specialists connected by a common foundation",
-      es: "Especialistas conectados por una base común",
-    },
-    summary: {
-      en: "The ecosystem is organized around six major specialized areas, with PULSE operating as its transversal brain.",
-      es: "El ecosistema se organiza alrededor de seis grandes áreas especializadas, con PULSE funcionando como su cerebro transversal.",
-    },
-    cards: [
-      {
-        title: "Commerce OS",
-        text: {
-          en: "Operate products, customers, orders, inventory, payments, marketing and commercial intelligence.",
-          es: "Operar productos, clientes, pedidos, inventario, pagos, marketing e inteligencia comercial.",
-        },
-      },
-      {
-        title: "Web Builder",
-        text: {
-          en: "Build complete digital experiences through visual development, AI, data and code.",
-          es: "Construir experiencias digitales completas mediante desarrollo visual, IA, datos y código.",
-        },
-      },
-      {
-        title: "AI Forge",
-        text: {
-          en: "Build intelligent systems from models, agents, knowledge, tools, memory, skills and workflows.",
-          es: "Construir sistemas inteligentes a partir de modelos, agentes, conocimiento, herramientas, memoria, skills y workflows.",
-        },
-      },
-      {
-        title: "Trading Islands",
-        text: {
-          en: "Analyze markets, design strategies, simulate execution, operate bots and create digital assets.",
-          es: "Analizar mercados, diseñar estrategias, simular ejecución, operar bots y crear activos digitales.",
-        },
-      },
-      {
-        title: "Sentinel",
-        text: {
-          en: "Study cybersecurity through authorized assessment, pentesting, ethical hacking, red team, hardening and remediation.",
-          es: "Trabajar ciberseguridad mediante assessment autorizado, pentesting, hacking ético, red team, hardening y remediación.",
-        },
-      },
-      {
-        title: "Nexus",
-        text: {
-          en: "Connect DigitalBoost with APIs, SaaS, data platforms, communication systems and external infrastructure.",
-          es: "Conectar DigitalBoost con APIs, SaaS, plataformas de datos, sistemas de comunicación e infraestructura externa.",
-        },
-      },
+    id:'brain-boost', number:'03', label:t('BRAIN BOOST', 'BRAIN BOOST'),
+    title:t('Un ecosistema que también se juega.', 'An ecosystem you can play, too.'),
+    summary:t('Neural Arcade reúne experiencias recreativas de memoria, lógica, atención y orientación, con una identidad visual propia por juego.', 'Neural Arcade brings together recreational memory, logic, attention and spatial experiences, each with its own visual identity.'),
+    bullets:[
+      t('Memory Matrix, Ocean Echoes y Dragon Relics: secuencias, parejas y descubrimiento.', 'Memory Matrix, Ocean Echoes and Dragon Relics: sequences, pairs and discovery.'),
+      t('Logic Reactor y Number Patterns: relaciones lógicas y desafíos numéricos.', 'Logic Reactor and Number Patterns: logical relationships and numerical challenges.'),
+      t('Spatial Rift, Vector Routes, Focus Protocol y Signal Hunt: formas, rutas y búsqueda de señales.', 'Spatial Rift, Vector Routes, Focus Protocol and Signal Hunt: shapes, routes and signal searches.'),
+      t('Neural Baseline y Neon Arena: recorridos de habilidades y acción 3D contra hordas alienígenas.', 'Neural Baseline and Neon Arena: skill challenges and 3D action against alien hordes.'),
     ],
+    paragraphs:[t('Juegos presentes en la versión de desarrollo; el acceso depende de la versión habilitada. Daily Neural Run y Neural Boss siguen en el roadmap.', 'Games present in the development version; access depends on the enabled version. Daily Neural Run and Neural Boss remain on the roadmap.')],
   },
-
   {
-    id: "pulse",
-    number: "02",
-    label: "PULSE",
-    title: {
-      en: "The transversal brain",
-      es: "El cerebro transversal",
-    },
-    summary: {
-      en: "PULSE is the intelligence, context, coordination and orchestration system of DigitalBoost Origin.",
-      es: "PULSE es el sistema de inteligencia, contexto, coordinación y orquestación de DigitalBoost Origin.",
-    },
-    paragraphs: [
-      {
-        en: "PULSE does not represent a business activity of its own and does not replace the islands. It interprets what the user is trying to achieve and determines which capabilities, resources and systems may be relevant.",
-        es: "PULSE no representa una actividad empresarial propia y no reemplaza a las islas. Interpreta qué intenta conseguir el usuario y determina qué capacidades, recursos y sistemas pueden resultar relevantes.",
-      },
-      {
-        en: "Its conceptual domain includes context, intent, goals, planning, policies, governance, approvals, missions, execution, verification, evidence, audit, memory, learning and next action.",
-        es: "Su dominio conceptual incluye contexto, intención, objetivos, planificación, políticas, gobernanza, aprobaciones, misiones, ejecución, verificación, evidencia, auditoría, memoria, aprendizaje y siguiente acción.",
-      },
+    id:'reserves', number:'04', label:t('25% A RESERVA', '25% TO RESERVES'),
+    title:t('Cada venta aporta. El fondo se construye.', 'Every sale contributes. The fund takes shape.'),
+    summary:t('El modelo destina el 25% de cada venta inicial verificada a reserva. Con 5.999 ventas a los precios indicados, el ingreso de cierre sería de 459.950 USDT y el aporte total a reserva de 114.987,50 USDT.', 'The model allocates 25% of each verified initial sale to reserves. With 5,999 sales at the stated prices, closing revenue would be 459,950 USDT and the total reserve contribution 114,987.50 USDT.'),
+    cards:[
+      {title:'RARE · 12.487,50 USDT',text:t('Aporte de las 999 ventas RARE. Reserva acumulada tras esta tanda: 12.487,50 USDT.', 'Contribution from 999 RARE sales. Cumulative reserve after this batch: 12,487.50 USDT.')},
+      {title:'EPIC · 35.000 USDT',text:t('Aporte de las 2.000 ventas EPIC. Reserva acumulada tras esta tanda: 47.487,50 USDT.', 'Contribution from 2,000 EPIC sales. Cumulative reserve after this batch: 47,487.50 USDT.')},
+      {title:'LEGENDARY · 67.500 USDT',text:t('Aporte de las 3.000 ventas LEGENDARY. Reserva acumulada al cierre: 114.987,50 USDT.', 'Contribution from 3,000 LEGENDARY sales. Cumulative closing reserve: 114,987.50 USDT.')},
     ],
-    flow: [
-      "INTENT",
-      "CONTEXT",
-      "PLAN",
-      "COORDINATE",
-      "EXECUTE",
-      "VERIFY",
-      "LEARN",
-    ],
+    paragraphs:[t('El reparto previsto V3 asigna 30.000 USDT a RARE, 33.995 a EPIC y 50.992,50 a LEGENDARY. Sobre los suministros máximos de 1.000 / 2.000 / 3.000 piezas, representa 30 / 16,9975 / 16,9975 USDT por NFT. Las tarjetas redondean los dos últimos a 17,00 USDT.', 'The planned V3 allocation assigns 30,000 USDT to RARE, 33,995 to EPIC and 50,992.50 to LEGENDARY. Across maximum supplies of 1,000 / 2,000 / 3,000 collectibles, this represents 30 / 16.9975 / 16.9975 USDT per NFT. Cards round the latter two to 17.00 USDT.'),t('Son cálculos de cierre, no fondos ya acreditados ni beneficio neto del comprador. El 75% restante queda fuera de la reserva, antes de gastos, impuestos y obligaciones. Los costes operativos todavía no están definidos.', 'These are closing calculations, not credited funds or buyer net profit. The remaining 75% stays outside reserves before expenses, taxes and obligations. Operating costs have not yet been defined.')],
   },
-
   {
-    id: "commerce",
-    number: "03",
-    label: "COMMERCE OS",
-    title: {
-      en: "The commercial operating system",
-      es: "El sistema operativo comercial",
-    },
-    summary: {
-      en: "Commerce OS is the business core where commercial operations live.",
-      es: "Commerce OS es el núcleo empresarial donde vive la operación comercial.",
-    },
-    paragraphs: [
-      {
-        en: "Its purpose extends beyond building an online store. Commerce OS models the commercial reality of a business: what it sells, who buys, what inventory exists, how orders progress, how customers behave and how commercial decisions are measured.",
-        es: "Su propósito va más allá de construir una tienda online. Commerce OS modela la realidad comercial de un negocio: qué vende, quién compra, qué inventario existe, cómo avanzan los pedidos, cómo se comportan los clientes y cómo se miden las decisiones comerciales.",
-      },
+    id:'investment', number:'05', label:t('CRECIMIENTO', 'GROWTH'),
+    title:t('Dos vías propuestas para ampliar la reserva.', 'Two proposed ways to grow reserves.'),
+    summary:t('Durante las ventas se prevé mantener la reserva líquida. Tras el cierre y la habilitación de la estrategia, el análisis a 12 meses combina una inversión limitada con posibles aportes del negocio.', 'During sales, reserves are intended to remain liquid. After closing and strategy activation, the 12-month analysis combines limited investment with potential business contributions.'),
+    cards:[
+      {title:'90% líquido · hasta 10% invertido',text:t('La propuesta limita la parte invertida, sin préstamos, apalancamiento ni puentes. Proveedor y ejecución siguen pendientes de aprobación.', 'The proposal caps the invested portion, without borrowing, leverage or bridges. Provider selection and execution still require approval.')},
+      {title:'15% del beneficio neto del negocio',text:t('Aporte propuesto sobre beneficios futuros realizados de suscripciones y servicios. El 85% permanece en el negocio; no es un cobro adicional al miembro.', 'Proposed contribution from future realized net profit from subscriptions and services. 85% remains with the business; this is not an additional member charge.')},
     ],
-    cards: [
-      {
-        title: "Catalog",
-        text: {
-          en: "Products, variants, categories, attributes, pricing, media, stock, suppliers and commercial metadata.",
-          es: "Productos, variantes, categorías, atributos, precios, media, stock, proveedores y metadata comercial.",
-        },
-      },
-      {
-        title: "Customers",
-        text: {
-          en: "Profiles, lifecycle, history, behavior, segments, preferences and commercial context.",
-          es: "Perfiles, lifecycle, historial, comportamiento, segmentos, preferencias y contexto comercial.",
-        },
-      },
-      {
-        title: "Orders",
-        text: {
-          en: "Cart, checkout, payment, order, fulfillment, delivery and post-sale operations.",
-          es: "Carrito, checkout, pago, pedido, fulfillment, entrega y operación postventa.",
-        },
-      },
-      {
-        title: "Inventory",
-        text: {
-          en: "Stock, reservations, movements, locations, alerts and synchronization.",
-          es: "Stock, reservas, movimientos, ubicaciones, alertas y sincronización.",
-        },
-      },
-      {
-        title: "Marketing",
-        text: {
-          en: "Campaigns, promotions, segmentation, lifecycle automation and growth analysis.",
-          es: "Campañas, promociones, segmentación, automatización de lifecycle y análisis de crecimiento.",
-        },
-      },
-      {
-        title: "Analytics",
-        text: {
-          en: "Sales, conversion, customers, retention, products, inventory, revenue and campaign performance.",
-          es: "Ventas, conversión, clientes, retención, productos, inventario, revenue y rendimiento de campañas.",
-        },
-      },
-    ],
-    flow: [
-      "PRODUCT",
-      "CART",
-      "CHECKOUT",
-      "PAYMENT",
-      "ORDER",
-      "FULFILLMENT",
-      "DELIVERY",
-      "POST-SALE",
-    ],
+    paragraphs:[t('Ejemplo, no previsión: un 4% neto anual supuesto sobre el 10% de 114.987,50 USDT añadiría 459,95 USDT al fondo en un año. No es un 4% sobre toda la reserva. No hay proveedor aprobado ni rendimiento confirmado; la inversión puede perder valor.', 'Example, not a forecast: an assumed 4% net annual return on 10% of 114,987.50 USDT would add 459.95 USDT to the fund over one year. This is not 4% on the entire reserve. No provider is approved and no return is confirmed; investments can lose value.'),t('Los aportes del negocio dependen de beneficios reales y de aprobar la política. Los 12 meses incluidos no se cuentan como nuevas renovaciones. No se han definido precios de renovación ni un presupuesto que confirme rentabilidad.', 'Business contributions depend on actual profit and policy approval. The included 12 months are not counted as new renewals. Neither renewal pricing nor a budget confirming profitability has been defined.')],
   },
-
   {
-    id: "store-builder",
-    number: "04",
-    label: "STORE BUILDER",
-    title: {
-      en: "The visual commerce layer",
-      es: "La capa visual de comercio",
-    },
-    summary: {
-      en: "Store Builder is part of Commerce OS. It transforms commerce data and operations into a customer-facing shopping experience.",
-      es: "Store Builder forma parte de Commerce OS. Transforma los datos y operaciones comerciales en una experiencia de compra orientada al cliente.",
-    },
-    paragraphs: [
-      {
-        en: "Its domain includes storefronts, product pages, categories, navigation, carts, checkout, promotions, responsive behavior, design and personalization.",
-        es: "Su dominio incluye storefronts, páginas de producto, categorías, navegación, carrito, checkout, promociones, responsive, diseño y personalización.",
-      },
-      {
-        en: "The fundamental distinction is simple: Web Builder builds websites and digital experiences. Store Builder builds commerce experiences whose source of truth comes from Commerce OS.",
-        es: "La diferencia fundamental es simple: Web Builder construye sitios y experiencias digitales. Store Builder construye experiencias comerciales cuya fuente de verdad proviene de Commerce OS.",
-      },
-    ],
-    flow: [
-      "COMMERCE DATA",
-      "STOREFRONT",
-      "SHOPPING EXPERIENCE",
-      "CHECKOUT",
-      "CUSTOMER",
-      "ANALYTICS",
-    ],
+    id:'redemption', number:'06', label:t('RESCATE', 'REDEMPTION'),
+    title:t('Un futuro rescate desde tu wallet.', 'Future redemption from your wallet.'),
+    summary:t('El mecanismo previsto permitiría cobrar la parte de reserva correspondiente y quemar el NFT en una misma operación, o revertir todo si falla. Hoy la quema y el rescate permanecen deshabilitados.', 'The planned mechanism would pay the corresponding reserve share and burn the NFT in the same operation, or revert everything on failure. Burning and redemption are currently disabled.'),
+    bullets:[t('Completar las ventas y verificar la cobertura de los 6.000 números, incluido el reservado.', 'Complete sales and verify coverage of all 6,000 serials, including the reserved collectible.'),t('Verificar fondos, elegibilidad, reparto y divisor efectivo antes de habilitar cobros.', 'Verify funds, eligibility, allocation and the effective denominator before enabling payouts.'),t('Implementar y verificar el pago y la quema atómicos. Finalizar las ventas no los activa automáticamente.', 'Implement and verify atomic payment and burning. Completing sales does not activate them automatically.')],
+    paragraphs:[t('El importe de rescate no es una ganancia adicional al precio de compra ni una cotización de reventa. El resultado del comprador también depende de su coste de compra, comisiones e impuestos personales.', 'The redemption amount is not additional profit on top of the purchase price or a resale quote. Buyer outcomes also depend on purchase cost, fees and personal taxes.')],
   },
-
   {
-    id: "web-builder",
-    number: "05",
-    label: "WEB BUILDER",
-    title: {
-      en: "Build the web",
-      es: "Construir la web",
-    },
-    summary: {
-      en: "Web Builder is the AI-native visual web development environment of DigitalBoost Origin.",
-      es: "Web Builder es el entorno AI-native de desarrollo web visual de DigitalBoost Origin.",
-    },
-    paragraphs: [
-      {
-        en: "The objective is not to generate isolated landing pages, but to cover the complete lifecycle of a modern web product: intent, architecture, design system, visual construction, data, integrations, responsive behavior, discoverability, publishing and continuous improvement.",
-        es: "El objetivo no es generar landing pages aisladas, sino cubrir el ciclo completo de un producto web moderno: intención, arquitectura, design system, construcción visual, datos, integraciones, responsive, descubribilidad, publicación y mejora continua.",
-      },
-    ],
-    cards: [
-      {
-        title: "AI Creation",
-        text: {
-          en: "Translate natural-language intent into briefs, pages, sections, components, content and visual systems.",
-          es: "Traducir intención en lenguaje natural en briefs, páginas, secciones, componentes, contenido y sistemas visuales.",
-        },
-      },
-      {
-        title: "Design System",
-        text: {
-          en: "Colors, typography, spacing, grids, components, layouts, responsive rules and motion.",
-          es: "Colores, tipografía, spacing, grids, componentes, layouts, reglas responsive y motion.",
-        },
-      },
-      {
-        title: "Canvas",
-        text: {
-          en: "A visual environment for selecting, editing, moving and refining the actual digital experience.",
-          es: "Un entorno visual para seleccionar, editar, mover y refinar la experiencia digital real.",
-        },
-      },
-      {
-        title: "Data",
-        text: {
-          en: "CMS, databases, APIs, Commerce OS, forms, analytics and external services.",
-          es: "CMS, bases de datos, APIs, Commerce OS, formularios, analytics y servicios externos.",
-        },
-      },
-      {
-        title: "Discovery",
-        text: {
-          en: "SEO, AEO and GEO as complementary strategies for search engines, answer engines and generative discovery.",
-          es: "SEO, AEO y GEO como estrategias complementarias para buscadores, motores de respuesta y descubrimiento generativo.",
-        },
-      },
-    ],
-    flow: [
-      "IDEA",
-      "BRIEF",
-      "STRUCTURE",
-      "DESIGN",
-      "BUILD",
-      "DATA",
-      "DISCOVERY",
-      "RESPONSIVE",
-      "PUBLISH",
-      "IMPROVE",
-    ],
+    id:'roadmap', number:'07', label:t('HOJA DE RUTA', 'ROADMAP'),
+    title:t('Avanzar con hitos verificables.', 'Progress through verifiable milestones.'),
+    summary:t('El desarrollo avanza por entregas: una función se considera disponible cuando su ejecución y su resultado se verifican.', 'Development progresses through deliveries: a feature is considered available when its execution and result are verified.'),
+    bullets:[t('Consolidar los espacios de comercio, creación web, IA y juegos, con sus límites de acceso.', 'Consolidate commerce, website creation, AI and game workspaces with their access limits.'),t('Completar y verificar la entrega del NFT y la activación de membresía para producción.', 'Complete and verify production NFT delivery and membership activation.'),t('Publicar movimientos de reserva con evidencia y actualización tras cada venta verificada.', 'Publish evidence-backed reserve movements updated after each verified sale.'),t('Validar el presupuesto, la política de aportes, la estrategia de inversión y el mecanismo de rescate antes de activarlos.', 'Validate the budget, contribution policy, investment strategy and redemption mechanism before activation.')],
   },
-
   {
-    id: "ai-forge",
-    number: "06",
-    label: "AI FORGE",
-    title: {
-      en: "Build intelligence",
-      es: "Construir inteligencia",
-    },
-    summary: {
-      en: "AI Forge is the environment where intelligent systems are assembled, evaluated and operated.",
-      es: "AI Forge es el entorno donde se construyen, evalúan y operan sistemas inteligentes.",
-    },
-    paragraphs: [
-      {
-        en: "Its purpose is broader than providing access to language models. AI Forge combines models with agents, knowledge, memory, tools, reusable skills, workflows, evaluation and deployment.",
-        es: "Su propósito es más amplio que ofrecer acceso a modelos de lenguaje. AI Forge combina modelos con agentes, conocimiento, memoria, herramientas, skills reutilizables, workflows, evaluación y deployment.",
-      },
-      {
-        en: "DigitalBoost may favor open, local or self-hosted models when that improves control, economics, privacy or operational flexibility, while retaining routing and fallback capabilities across different model providers.",
-        es: "DigitalBoost puede favorecer modelos abiertos, locales o self-hosted cuando eso mejore control, economía, privacidad o flexibilidad operativa, manteniendo capacidades de routing y fallback entre diferentes proveedores.",
-      },
-    ],
-    cards: [
-      {
-        title: "Models",
-        text: {
-          en: "Open, local, self-hosted and external models with routing, fallback and inference infrastructure.",
-          es: "Modelos abiertos, locales, self-hosted y externos con routing, fallback e infraestructura de inferencia.",
-        },
-      },
-      {
-        title: "Agents",
-        text: {
-          en: "Identity, objectives, instructions, tools, memory, knowledge, skills, policies and runtime.",
-          es: "Identidad, objetivos, instrucciones, herramientas, memoria, conocimiento, skills, políticas y runtime.",
-        },
-      },
-      {
-        title: "Knowledge",
-        text: {
-          en: "Documents, procedures, business information, datasets and retrievable context.",
-          es: "Documentos, procedimientos, información empresarial, datasets y contexto recuperable.",
-        },
-      },
-      {
-        title: "Tools",
-        text: {
-          en: "APIs, databases, internal services, MCP, automation and specialized capabilities.",
-          es: "APIs, bases de datos, servicios internos, MCP, automatización y capacidades especializadas.",
-        },
-      },
-      {
-        title: "Workflows",
-        text: {
-          en: "Structured multi-step execution combining agents, data, validation, actions and notifications.",
-          es: "Ejecución estructurada de múltiples pasos combinando agentes, datos, validación, acciones y notificaciones.",
-        },
-      },
-      {
-        title: "Evaluation",
-        text: {
-          en: "Quality, precision, consistency, latency, cost, tool usage, regressions, failures and safety.",
-          es: "Calidad, precisión, consistencia, latencia, coste, uso de herramientas, regresiones, fallos y seguridad.",
-        },
-      },
-    ],
-  },
-
-  {
-    id: "trading-islands",
-    number: "07",
-    label: "TRADING ISLANDS",
-    title: {
-      en: "Analyze. Strategize. Create. Operate.",
-      es: "Analizar. Diseñar. Crear. Operar.",
-    },
-    summary: {
-      en: "Trading Islands combines market intelligence, strategy research, simulation, automation and digital assets.",
-      es: "Trading Islands combina inteligencia de mercado, investigación de estrategias, simulación, automatización y activos digitales.",
-    },
-    paragraphs: [
-      {
-        en: "The trading side begins with normalized market data and progresses through professional analysis, indicators, structured strategy design, backtesting, paper trading, risk control and bot operation.",
-        es: "La parte de trading comienza con market data normalizada y avanza mediante análisis profesional, indicadores, diseño estructurado de estrategias, backtesting, paper trading, control de riesgo y operación de bots.",
-      },
-      {
-        en: "Artificial intelligence may assist in translating a trading thesis into a structured strategy, but it does not transform historical simulations into guarantees of future profitability.",
-        es: "La inteligencia artificial puede ayudar a traducir una tesis de trading en una estrategia estructurada, pero no convierte simulaciones históricas en garantías de rentabilidad futura.",
-      },
-    ],
-    cards: [
-      {
-        title: "Trading Terminal",
-        text: {
-          en: "Charts, watchlists, indicators, timeframes, signals, positions, portfolios and market context.",
-          es: "Charts, watchlists, indicadores, timeframes, señales, posiciones, portfolios y contexto de mercado.",
-        },
-      },
-      {
-        title: "Strategy Builder",
-        text: {
-          en: "Markets, timeframes, indicators, entries, exits, stops, targets, sizing and risk rules.",
-          es: "Mercados, timeframes, indicadores, entradas, salidas, stops, targets, sizing y reglas de riesgo.",
-        },
-      },
-      {
-        title: "Backtesting",
-        text: {
-          en: "Historical research with returns, drawdown, win rate, profit factor, exposure and equity analysis.",
-          es: "Investigación histórica con retorno, drawdown, win rate, profit factor, exposición y análisis de equity.",
-        },
-      },
-      {
-        title: "Paper Trading",
-        text: {
-          en: "Operational simulation including fills, fees, slippage, positions and approximate latency.",
-          es: "Simulación operativa incluyendo fills, fees, slippage, posiciones y latencia aproximada.",
-        },
-      },
-      {
-        title: "Risk Engine",
-        text: {
-          en: "Exposure, position limits, daily loss, leverage, drawdown, stops and emergency controls.",
-          es: "Exposición, límites de posición, pérdida diaria, leverage, drawdown, stops y controles de emergencia.",
-        },
-      },
-      {
-        title: "Bot Forge",
-        text: {
-          en: "Transform structured strategies into testable and monitorable automated systems.",
-          es: "Transformar estrategias estructuradas en sistemas automatizados testeables y monitorizables.",
-        },
-      },
-    ],
-    flow: [
-      "MARKET DATA",
-      "ANALYSIS",
-      "STRATEGY",
-      "BACKTEST",
-      "PAPER",
-      "RISK",
-      "BOT",
-      "MONITOR",
-    ],
-  },
-
-  {
-    id: "nft-forge",
-    number: "08",
-    label: "NFT FORGE",
-    title: {
-      en: "Digital assets with identity and history",
-      es: "Activos digitales con identidad e historia",
-    },
-    summary: {
-      en: "NFT Forge is the digital-asset creation environment inside Trading Islands.",
-      es: "NFT Forge es el entorno de creación de activos digitales dentro de Trading Islands.",
-    },
-    paragraphs: [
-      {
-        en: "Its conceptual pipeline covers asset creation, metadata, traits, collections, verification and minting. The objective is to treat the digital asset as more than a media file by preserving identity, context and provenance.",
-        es: "Su pipeline conceptual cubre creación del activo, metadata, traits, colecciones, verificación y minting. El objetivo es tratar el activo digital como algo más que un archivo multimedia preservando identidad, contexto y procedencia.",
-      },
-      {
-        en: "DigitalBoost OriginX is the provenance and creative-identity layer of NFT Forge. It can combine NFT DNA, Forge Certificate, creation timeline, provenance, dynamic metadata, Origin Signature and Origin Master.",
-        es: "DigitalBoost OriginX es la capa de procedencia e identidad creativa de NFT Forge. Puede combinar NFT DNA, Forge Certificate, timeline de creación, provenance, metadata dinámica, Origin Signature y Origin Master.",
-      },
-    ],
-    cards: [
-      {
-        title: "NFT DNA",
-        text: {
-          en: "Creator, collection, traits, media hash, creation time, Forge configuration and version.",
-          es: "Creador, colección, traits, media hash, tiempo de creación, configuración de Forge y versión.",
-        },
-      },
-      {
-        title: "OriginX",
-        text: {
-          en: "A structured representation of how a digital creation originated and evolved.",
-          es: "Una representación estructurada de cómo se originó y evolucionó una creación digital.",
-        },
-      },
-      {
-        title: "Forge Modes",
-        text: {
-          en: "Classic, Generative, Living, Story, Immersive, Signature and Master creation modes.",
-          es: "Modos de creación Classic, Generative, Living, Story, Immersive, Signature y Master.",
-        },
-      },
-      {
-        title: "Marketplace",
-        text: {
-          en: "Collections, creators, listings, offers, sales, activity and rich asset identity.",
-          es: "Colecciones, creadores, listings, ofertas, ventas, actividad e identidad enriquecida del activo.",
-        },
-      },
-    ],
-    flow: [
-      "CREATE",
-      "ASSET",
-      "METADATA",
-      "TRAITS",
-      "COLLECTION",
-      "ORIGINX",
-      "VERIFY",
-      "MINT",
-    ],
-  },
-
-  {
-    id: "sentinel",
-    number: "09",
-    label: "SENTINEL",
-    title: {
-      en: "Think like an attacker. Build like a defender.",
-      es: "Pensar como un atacante. Construir como un defensor.",
-    },
-    summary: {
-      en: "Sentinel is the cybersecurity island of DigitalBoost Origin, focused on authorized security assessment, pentesting, ethical hacking, red team, hardening, remediation and continuous security understanding.",
-      es: "Sentinel es la isla de ciberseguridad de DigitalBoost Origin, enfocada en assessment autorizado, pentesting, hacking ético, red team, hardening, remediación y comprensión continua de la seguridad.",
-    },
-    paragraphs: [
-      {
-        en: "Sentinel approaches cybersecurity as a lifecycle rather than a scanner. The goal is to understand attack surfaces, discover weaknesses, validate real exposure within authorized scope, measure impact, remediate findings and verify that corrective actions actually worked.",
-        es: "Sentinel aborda la ciberseguridad como un ciclo de vida y no como un scanner. El objetivo es comprender superficies de ataque, descubrir debilidades, validar exposición real dentro de un alcance autorizado, medir impacto, remediar findings y verificar que las correcciones realmente funcionaron.",
-      },
-      {
-        en: "Its methodology can draw from professional frameworks such as OWASP WSTG, NIST SP 800-115 and MITRE ATT&CK to provide structured terminology for testing and adversary behavior.",
-        es: "Su metodología puede apoyarse en marcos profesionales como OWASP WSTG, NIST SP 800-115 y MITRE ATT&CK para disponer de un lenguaje estructurado de testing y comportamiento adversario.",
-      },
-    ],
-    cards: [
-      {
-        title: "Pentesting",
-        text: {
-          en: "Controlled offensive assessment of web applications, APIs, networks, infrastructure, cloud and identities.",
-          es: "Evaluación ofensiva controlada de aplicaciones web, APIs, redes, infraestructura, cloud e identidades.",
-        },
-      },
-      {
-        title: "Vulnerability Assessment",
-        text: {
-          en: "Discover, classify and prioritize weaknesses while separating detection from validated exploitability and impact.",
-          es: "Descubrir, clasificar y priorizar debilidades diferenciando detección de explotabilidad validada e impacto.",
-        },
-      },
-      {
-        title: "Red Team",
-        text: {
-          en: "Study broader adversary paths, behaviors and possible chains of compromise within authorized environments.",
-          es: "Estudiar rutas adversarias, comportamientos y posibles cadenas de compromiso dentro de entornos autorizados.",
-        },
-      },
-      {
-        title: "Hardening",
-        text: {
-          en: "Reduce attack surface through stronger configuration, privilege control, segmentation, secrets management and defensive controls.",
-          es: "Reducir superficie de ataque mediante configuración segura, control de privilegios, segmentación, gestión de secretos y controles defensivos.",
-        },
-      },
-      {
-        title: "Findings",
-        text: {
-          en: "Represent vulnerabilities as managed objects containing evidence, severity, confidence, impact, remediation and retest history.",
-          es: "Representar vulnerabilidades como objetos gestionables con evidencia, severidad, confianza, impacto, remediación e historial de retest.",
-        },
-      },
-      {
-        title: "Security AI",
-        text: {
-          en: "Correlate findings, analyze logs and configurations, study code, build threat models and assist remediation and reporting.",
-          es: "Correlacionar findings, analizar logs y configuraciones, estudiar código, construir threat models y asistir remediación y reporting.",
-        },
-      },
-    ],
-    flow: [
-      "ATTACK SURFACE",
-      "ASSESS",
-      "DISCOVER",
-      "VALIDATE",
-      "FINDINGS",
-      "REMEDIATE",
-      "RETEST",
-      "POSTURE",
-    ],
-  },
-
-  {
-    id: "nexus",
-    number: "10",
-    label: "NEXUS",
-    title: {
-      en: "Connect everything",
-      es: "Conectar todo",
-    },
-    summary: {
-      en: "Nexus is the connectivity layer responsible for linking DigitalBoost Origin with external systems.",
-      es: "Nexus es la capa de conectividad responsable de vincular DigitalBoost Origin con sistemas externos.",
-    },
-    paragraphs: [
-      {
-        en: "Instead of treating every integration as isolated custom code, Nexus turns connectivity into a reusable ecosystem capability.",
-        es: "En lugar de tratar cada integración como código personalizado aislado, Nexus convierte la conectividad en una capacidad reutilizable del ecosistema.",
-      },
-      {
-        en: "Its domain includes APIs, SaaS, payment providers, CRMs, ERPs, social networks, databases, cloud services, communication platforms, private APIs, MCP, webhooks and event synchronization.",
-        es: "Su dominio incluye APIs, SaaS, proveedores de pago, CRMs, ERPs, redes sociales, bases de datos, servicios cloud, plataformas de comunicación, APIs privadas, MCP, webhooks y sincronización de eventos.",
-      },
-    ],
-    cards: [
-      {
-        title: "Connectors",
-        text: {
-          en: "Structured integrations with systems such as Stripe, Shopify, Telegram, Meta, Google, CRM platforms and private services.",
-          es: "Integraciones estructuradas con sistemas como Stripe, Shopify, Telegram, Meta, Google, plataformas CRM y servicios privados.",
-        },
-      },
-      {
-        title: "Gateway",
-        text: {
-          en: "Common handling of authentication, requests, responses, retries, rate limits, transformations and errors.",
-          es: "Manejo común de autenticación, requests, responses, retries, rate limits, transformaciones y errores.",
-        },
-      },
-      {
-        title: "Events",
-        text: {
-          en: "Translate external webhooks and signals into internal events usable by the rest of DigitalBoost.",
-          es: "Traducir webhooks y señales externas en eventos internos utilizables por el resto de DigitalBoost.",
-        },
-      },
-      {
-        title: "Synchronization",
-        text: {
-          en: "Keep customer, product and operational data aligned between DigitalBoost and external platforms.",
-          es: "Mantener alineados datos de clientes, productos y operaciones entre DigitalBoost y plataformas externas.",
-        },
-      },
-    ],
-  },
-
-  {
-    id: "shared-core",
-    number: "11",
-    label: "SHARED CORE",
-    title: {
-      en: "The common foundation",
-      es: "La base común",
-    },
-    summary: {
-      en: "The islands share a common operational foundation instead of rebuilding identity, economics, storage, measurement and audit independently.",
-      es: "Las islas comparten una base operacional común en lugar de reconstruir identidad, economía, almacenamiento, medición y auditoría de forma independiente.",
-    },
-    cards: [
-      {
-        title: "Identity",
-        text: {
-          en: "Users, accounts, organizations, tenants, roles, permissions, authentication and sessions.",
-          es: "Usuarios, cuentas, organizaciones, tenants, roles, permisos, autenticación y sesiones.",
-        },
-      },
-      {
-        title: "DBX",
-        text: {
-          en: "An internal utility unit for measuring consumption of selected capabilities and resources.",
-          es: "Una unidad interna de utilidad para representar consumo de determinadas capacidades y recursos.",
-        },
-      },
-      {
-        title: "Billing",
-        text: {
-          en: "Plans define access and capacity; DBX represents consumption and utility.",
-          es: "Los planes definen acceso y capacidad; DBX representa consumo y utilidad.",
-        },
-      },
-      {
-        title: "Telemetry",
-        text: {
-          en: "Measure CPU, GPU, tokens, duration, storage, network, RPC and other operational costs.",
-          es: "Medir CPU, GPU, tokens, duración, almacenamiento, red, RPC y otros costes operativos.",
-        },
-      },
-      {
-        title: "Observability",
-        text: {
-          en: "Logs, metrics, traces, health, alerts, performance and service visibility.",
-          es: "Logs, métricas, traces, health, alertas, performance y visibilidad de servicios.",
-        },
-      },
-      {
-        title: "Storage",
-        text: {
-          en: "Structured databases, temporary state, caches, queues and object storage.",
-          es: "Bases estructuradas, estado temporal, caches, queues y object storage.",
-        },
-      },
-      {
-        title: "Infrastructure",
-        text: {
-          en: "Compute, containers, databases, storage, CDN, workers, networking, GPUs and backups.",
-          es: "Compute, containers, bases de datos, storage, CDN, workers, networking, GPUs y backups.",
-        },
-      },
-      {
-        title: "Audit",
-        text: {
-          en: "Historical evidence of who acted, what happened, when it happened, on which resource and with what result.",
-          es: "Evidencia histórica de quién actuó, qué ocurrió, cuándo, sobre qué recurso y con qué resultado.",
-        },
-      },
-    ],
-  },
-
-  {
-    id: "journeys",
-    number: "12",
-    label: "ECOSYSTEM JOURNEYS",
-    title: {
-      en: "The value appears when the islands work together",
-      es: "El valor aparece cuando las islas trabajan juntas",
-    },
-    summary: {
-      en: "DigitalBoost Origin is designed around complete journeys that cross product boundaries.",
-      es: "DigitalBoost Origin está diseñado alrededor de recorridos completos que atraviesan los límites entre productos.",
-    },
-    cards: [
-      {
-        title: "Launch a brand",
-        text: {
-          en: "Commerce OS manages products and customers; Store Builder creates the shop; Web Builder creates the brand experience; AI Forge creates intelligent automation; Nexus connects external services; Sentinel evaluates security; PULSE coordinates the journey.",
-          es: "Commerce OS gestiona productos y clientes; Store Builder crea la tienda; Web Builder crea la experiencia de marca; AI Forge crea automatización inteligente; Nexus conecta servicios externos; Sentinel evalúa seguridad; PULSE coordina el recorrido.",
-        },
-      },
-      {
-        title: "Build a trading system",
-        text: {
-          en: "Trading Terminal explores the market; Strategy Builder formalizes a thesis; AI Forge can assist its construction; Backtesting studies history; Paper Trading simulates execution; Risk controls exposure; Bot Forge operationalizes the strategy.",
-          es: "Trading Terminal explora el mercado; Strategy Builder formaliza una tesis; AI Forge puede asistir su construcción; Backtesting estudia el histórico; Paper Trading simula ejecución; Risk controla exposición; Bot Forge operacionaliza la estrategia.",
-        },
-      },
-      {
-        title: "Strengthen security",
-        text: {
-          en: "Sentinel discovers the attack surface, assesses architecture, identifies and validates weaknesses, creates findings, supports remediation, performs retesting and maintains an evolving security posture.",
-          es: "Sentinel descubre la superficie de ataque, evalúa arquitectura, identifica y valida debilidades, crea findings, acompaña remediación, realiza retesting y mantiene una postura de seguridad evolutiva.",
-        },
-      },
-    ],
-  },
-
-  {
-    id: "vision",
-    number: "13",
-    label: "UNIFIED VISION",
-    title: {
-      en: "One ecosystem, many specialized capabilities",
-      es: "Un ecosistema, múltiples capacidades especializadas",
-    },
-    summary: {
-      en: "The ambition of DigitalBoost Origin is not that every island becomes impressive in isolation. Its real value is the system that emerges when specialized capabilities can share context and work together.",
-      es: "La ambición de DigitalBoost Origin no es que cada isla resulte impresionante por separado. Su verdadero valor está en el sistema que emerge cuando capacidades especializadas pueden compartir contexto y trabajar juntas.",
-    },
-    paragraphs: [
-      {
-        en: "Commerce operates the business. Web Builder creates its digital presence. AI Forge constructs intelligence. Trading Islands analyzes markets and creates digital assets. Sentinel evaluates and strengthens security. Nexus connects the ecosystem with the outside world. PULSE understands context and coordinates those capabilities.",
-        es: "Commerce opera el negocio. Web Builder crea su presencia digital. AI Forge construye inteligencia. Trading Islands analiza mercados y crea activos digitales. Sentinel evalúa y fortalece seguridad. Nexus conecta el ecosistema con el exterior. PULSE comprende el contexto y coordina esas capacidades.",
-      },
-      {
-        en: "Identity, DBX, Billing, Telemetry, Observability, Storage, Infrastructure and Audit provide the common substrate required for the ecosystem to behave as one operating environment rather than a collection of unrelated applications.",
-        es: "Identity, DBX, Billing, Telemetry, Observability, Storage, Infrastructure y Audit proporcionan el sustrato común necesario para que el ecosistema se comporte como un único entorno operativo y no como una colección de aplicaciones desconectadas.",
-      },
-    ],
-    flow: [
-      "CREATE",
-      "OPERATE",
-      "INTELLIGENCE",
-      "CONNECT",
-      "TRADE",
-      "SECURE",
-      "MEASURE",
-      "EVOLVE",
-    ],
+    id:'pulse', number:'08', label:t('CONFIANZA', 'TRUST'),
+    title:t('Una visión ambiciosa. Reglas claras.', 'An ambitious vision. Clear rules.'),
+    summary:t('PULSE coordina el trabajo; las políticas y aprobaciones controlan la ejecución. Los datos reales, las demos y las estimaciones se identifican por separado.', 'PULSE coordinates work; policies and approvals control execution. Real data, demos and estimates are identified separately.'),
+    paragraphs:[t('El NFT no otorga acciones de la empresa, gobernanza ni rentabilidad garantizada. La disponibilidad de herramientas, fondos y rescates se confirma con evidencia, no con una imagen o un cálculo del simulador.', 'The NFT grants no company equity, governance or guaranteed return. Tool availability, funds and redemption are confirmed through evidence, not an image or simulator calculation.')],
+    flow:['USER','PULSE','POLICY','APPROVAL','EXECUTOR','VERIFY','AUDIT'],
   },
 ];

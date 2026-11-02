@@ -1,0 +1,46 @@
+#project-whitepaper-panel .project-whitepaper__layout { grid-template-columns: 176px minmax(0, 1fr); }
+#project-whitepaper-panel .project-whitepaper__cover {
+  min-height: 0; padding: 32px 28px; gap: 0;
+  background: linear-gradient(125deg, #fff2db 0%, #f0e8ff 100%);
+}
+#project-whitepaper-panel .project-whitepaper__cover::before { content: none; }
+#project-whitepaper-panel .project-whitepaper__edition { font-size: 11px; letter-spacing: .12em; font-weight: 800; color: #7046af; margin: 0 0 14px; }
+#project-whitepaper-panel .project-whitepaper__cover h2 { max-width: 660px; font-size: clamp(28px, 4vw, 46px); line-height: 1.08; margin: 0 0 16px; color: #101b40; }
+#project-whitepaper-panel .project-whitepaper__cover-description { max-width: 680px; font-size: 16px; line-height: 1.6; margin: 0; }
+#project-whitepaper-panel .project-whitepaper__highlights { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 24px 0 12px; }
+#project-whitepaper-panel .project-whitepaper__highlights > div { padding: 14px; border: 1px solid #decfe5; border-radius: 14px; background: #fffaf1; }
+#project-whitepaper-panel .project-whitepaper__highlights strong { display: block; color: #aa4114; font-size: 24px; line-height: 1.2; }
+#project-whitepaper-panel .project-whitepaper__highlights span { display: block; color: #45516e; font-size: 12px; line-height: 1.5; margin-top: 6px; }
+#project-whitepaper-panel .project-whitepaper__cover-note { color: #4e2c88; font-size: 12px; line-height: 1.5; margin: 4px 0 0; }
+#project-whitepaper-panel .project-whitepaper__nav button strong { white-space: normal; overflow: visible; text-overflow: clip; font-size: 11px; }
+#project-whitepaper-panel .project-whitepaper__section { padding: 26px 28px; }
+#project-whitepaper-panel .project-whitepaper__section-header h3 { font-size: clamp(22px, 2.8vw, 28px); line-height: 1.2; }
+#project-whitepaper-panel .project-whitepaper__lead { font-size: 16px; line-height: 1.65; }
+#project-whitepaper-panel .project-whitepaper__paragraph,
+#project-whitepaper-panel .project-whitepaper__bullets { font-size: 14px; line-height: 1.65; color: #45516e; }
+#project-whitepaper-panel .project-whitepaper__bullets { padding-left: 20px; }
+#project-whitepaper-panel .project-whitepaper__bullets li + li { margin-top: 8px; }
+#project-whitepaper-panel .project-whitepaper__cards { gap: 10px; }
+#project-whitepaper-panel .project-whitepaper__card { padding: 14px; border-radius: 13px; background: #f3ecff; border-color: #dfd1ed; }
+#project-whitepaper-panel .project-whitepaper__card:nth-child(3n + 2) { background: #e7f5ff; border-color: #cddfed; }
+#project-whitepaper-panel .project-whitepaper__card:nth-child(3n) { background: #eef7df; border-color: #d7e6bd; }
+#project-whitepaper-panel .project-whitepaper__card p { font-size: 14px; line-height: 1.55; }
+#project-whitepaper-panel .project-whitepaper__closing { padding: 28px; min-height: 0; }
+#project-whitepaper-panel .project-whitepaper__closing h3 { font-size: 28px; }
+@media(max-width:850px) {
+  #project-whitepaper-panel .project-whitepaper__layout { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); }
+  #project-whitepaper-panel .project-whitepaper__nav { display: none; }
+  #project-whitepaper-panel .project-whitepaper__chapter-picker { display: flex; padding: 10px 16px; gap: 8px; align-items: center; background: #f3ecff; border-bottom: 1px solid #ded7cd; }
+  #project-whitepaper-panel .project-whitepaper__chapter-picker select { min-height: 44px; width: 100%; min-width: 0; padding: 8px; border: 1px solid #cbb7e8; border-radius: 10px; background: #fffaf1; color: #101b40; }
+  #project-whitepaper-panel .project-whitepaper__chapter-picker > span { font-size: 12px; flex: 0 0 100px; }
+}
+@media(max-width:599px) {
+  #project-whitepaper-panel .project-whitepaper__cover,
+  #project-whitepaper-panel .project-whitepaper__section,
+  #project-whitepaper-panel .project-whitepaper__closing { padding: 24px 18px; }
+  #project-whitepaper-panel .project-whitepaper__highlights { gap: 6px; }
+  #project-whitepaper-panel .project-whitepaper__highlights > div { padding: 10px; }
+  #project-whitepaper-panel .project-whitepaper__highlights strong { font-size: 20px; }
+  #project-whitepaper-panel .project-whitepaper__highlights span { font-size: 11px; }
+  #project-whitepaper-panel .project-whitepaper__cards { grid-template-columns: minmax(0, 1fr); }
+}

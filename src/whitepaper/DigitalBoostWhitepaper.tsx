@@ -1,9 +1,11 @@
 import {
   WHITEPAPER_BRAND,
   WHITEPAPER_ORIGIN_LAYER,
+  WHITEPAPER_VERSION,
   whitepaperSections,
   type WhitepaperLanguage,
 } from "./whitepaperContent";
+import "./whitepaperFounding.css";
 
 type DigitalBoostWhitepaperProps = {
   language: WhitepaperLanguage;
@@ -29,11 +31,11 @@ export function DigitalBoostWhitepaper({
         `whitepaper-${sectionId}`,
       );
 
-    element?.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
-      block: "start",
+    const documentPanel = document.querySelector<HTMLElement>("#project-whitepaper-panel .project-whitepaper__document");
+    if (!element || !documentPanel) return;
+    documentPanel.scrollTo({
+      top: documentPanel.scrollTop + element.getBoundingClientRect().top - documentPanel.getBoundingClientRect().top - 16,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
     });
   };
 
@@ -55,7 +57,7 @@ export function DigitalBoostWhitepaper({
           <span className="project-whitepaper__eyebrow">
             {WHITEPAPER_BRAND}
           </span>
-          <strong>Whitepaper</strong>
+          <strong>Whitepaper · Founding 6000</strong>
         </div>
 
         <button
@@ -125,7 +127,7 @@ export function DigitalBoostWhitepaper({
                 </span>
 
                 <strong>
-                  {section.label}
+                  {text(section.label)}
                 </strong>
               </button>
             ),
@@ -134,16 +136,19 @@ export function DigitalBoostWhitepaper({
 
         <div className="project-whitepaper__document">
           <section className="project-whitepaper__cover">
-            <h2>
-              {language === "es"
-                ? "Conocé el ecosistema"
-                : "Explore the ecosystem"}
-            </h2>
+            <p className="project-whitepaper__edition">ORIGINX FOUNDATION · {WHITEPAPER_VERSION}</p>
+            <h2>{language === "es" ? "Creá tu negocio. Conectá tu futuro." : "Build your business. Connect your future."}</h2>
             <p className="project-whitepaper__cover-description">
               {language === "es"
-                ? "La visión de DigitalBoost, sus productos y cómo se conectan. Un documento conceptual en evolución."
-                : "DigitalBoost’s vision, its products and how they connect. An evolving conceptual document."}
+                ? "Una membresía NFT para acompañar tus proyectos. Conocé el acceso, las herramientas y el modelo de reservas de Founding 6000."
+                : "An NFT membership to support your projects. Explore Founding 6000 access, tools and reserve model."}
             </p>
+            <div className="project-whitepaper__highlights">
+              <div><strong>6.000</strong><span>{language === 'es' ? 'piezas · suministro máximo' : 'collectibles · maximum supply'}</span></div>
+              <div><strong>12 {language === 'es' ? 'meses' : 'months'}</strong><span>{language === 'es' ? 'desde la activación válida' : 'from valid activation'}</span></div>
+              <div><strong>25%</strong><span>{language === 'es' ? 'de cada venta inicial a reserva' : 'of each initial sale to reserves'}</span></div>
+            </div>
+            <p className="project-whitepaper__cover-note">{language === 'es' ? 'Prelanzamiento · Desarrollo activo · Estimaciones identificadas' : 'Pre-launch · Active development · Estimates identified'}</p>
           </section>
 
           {whitepaperSections.map(
@@ -160,7 +165,7 @@ export function DigitalBoostWhitepaper({
 
                   <div>
                     <small>
-                      {section.label}
+                      {text(section.label)}
                     </small>
 
                     <h3>
@@ -276,23 +281,21 @@ export function DigitalBoostWhitepaper({
           )}
 
           <section className="project-whitepaper__closing">
-            <span>DIGITALBOOST</span>
+            <span>ORIGINX FOUNDATION</span>
 
             <h3>
               {language === "es"
-                ? "Un ecosistema. Múltiples capacidades."
-                : "One ecosystem. Multiple capabilities."}
+                ? "Tu pieza. Tu acceso. Tu próximo proyecto."
+                : "Your collectible. Your access. Your next project."}
             </h3>
 
             <p>
-              CREATE → OPERATE → INTELLIGENCE →
-              CONNECT → TRADE → SECURE →
-              MEASURE → EVOLVE
+              {language === 'es' ? 'Creación · Comercio · IA · Juegos' : 'Creation · Commerce · AI · Games'}
             </p>
 
             <div className="project-whitepaper__originx">
               <small>
-                DIGITAL ASSETS
+                MEMBERSHIP NFT
               </small>
 
               <strong>
@@ -301,8 +304,8 @@ export function DigitalBoostWhitepaper({
 
               <span>
                 {language === "es"
-                  ? "Identidad · Procedencia · Historia"
-                  : "Identity · Provenance · History"}
+                  ? "Colección · Acceso transferible · Reserva prevista"
+                  : "Collectible · Transferable access · Planned reserve"}
               </span>
             </div>
           </section>
@@ -314,8 +317,8 @@ export function DigitalBoostWhitepaper({
 
             <span>
               {language === "es"
-                ? "Documento conceptual vivo"
-                : "Living conceptual document"}
+                ? "Resumen del modelo · " + WHITEPAPER_VERSION
+                : "Model overview · " + WHITEPAPER_VERSION}
             </span>
           </footer>
         </div>
