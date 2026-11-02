@@ -485,3 +485,10 @@
     font-size: 14px;
   }
 }
+
+/* Keep the modeled-gain qualifier beside its percentage on every tier. */
+#phases .ox-tier-facts .ox-tier-gain { background: #f1e9ff; border-radius: 10px; padding: 10px; gap: 10px; }
+#phases .ox-tier-gain dt { max-width: 17em; line-height: 1.4; }
+#phases .ox-tier-gain dd { white-space: nowrap; font-weight: 800; }
+
+#phases .ox-tier-gain-note { margin: 10px 0; font-size: 12px; line-height: 1.5; color: var(--ox-text-muted); }

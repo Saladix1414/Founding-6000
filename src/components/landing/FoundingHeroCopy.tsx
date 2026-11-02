@@ -55,8 +55,8 @@ export default function FoundingHeroCopy({ language, ctaLabel, onCheckout }: Pro
 
         <p className="ox-hero-description">
           {es
-            ? "Una membresía de OriginX Foundation diseñada para incluir una pieza coleccionable y 12 meses de Focus Founding Access desde la activación válida."
-            : "An OriginX Foundation membership designed to include a collectible and 12 months of Focus Founding Access from valid activation."}
+            ? "Una membresía de OriginX Foundation diseñada para incluir una pieza coleccionable y 12 meses de acceso a la web de tiendas y desarrollo desde la activación válida."
+            : "An OriginX Foundation membership designed to include a collectible and 12 months of access to the stores and development website from valid activation."}
         </p>
       </div>
 
@@ -89,7 +89,7 @@ export default function FoundingHeroCopy({ language, ctaLabel, onCheckout }: Pro
           <dd>3</dd>
         </div>
         <div>
-          <dt>{es ? "De acceso¹" : "Of access¹"}</dt>
+          <dt>{es ? "De acceso a la web de tiendas y desarrollo¹" : "Access to the stores and development website¹"}</dt>
           <dd>{es ? "12 MESES" : "12 MONTHS"}</dd>
         </div>
         <div>

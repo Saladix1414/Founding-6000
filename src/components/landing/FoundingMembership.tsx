@@ -116,8 +116,8 @@ export default function FoundingMembership({ language }: Props) {
           </h2>
           <p>
             {es
-              ? "12 meses de Focus Founding Access desde la activación válida, reconocimiento Founding y oportunidades de acceso beta y participación. El tiempo restante de la suscripción es transferible junto con el NFT."
-              : "12 months of Focus Founding Access from valid activation, Founding recognition, and opportunities for beta access and participation. The remaining subscription term is transferable with the NFT."}
+              ? "12 meses de acceso a la web de tiendas y desarrollo desde la activación válida, reconocimiento Founding y oportunidades de acceso beta y participación. El tiempo restante de la suscripción es transferible junto con el NFT."
+              : "12 months of access to the stores and development website from valid activation, Founding recognition, and opportunities for beta access and participation. The remaining subscription term is transferable with the NFT."}
           </p>
         </header>
 
@@ -133,7 +133,7 @@ export default function FoundingMembership({ language }: Props) {
               <span>{es ? "MESES" : "MONTHS"}</span>
             </div>
 
-            <h3>{es ? "12 meses de Focus Founding Access" : "12 months of Focus Founding Access"}</h3>
+            <h3>{es ? "12 meses de acceso a la web de tiendas y desarrollo" : "12 months of access to the stores and development website"}</h3>
             <p>
               {es
                 ? "La membresía verificada está diseñada para incluir este acceso. Los 12 meses empiezan con la activación válida de tu cuenta Founding Access, no con la compra."

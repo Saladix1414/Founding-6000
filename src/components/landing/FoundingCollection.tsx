@@ -1,4 +1,5 @@
 import "../../styles/originx-collection.css";
+import {fullCloseV3, simulateManagedReserveScenario} from "../../../shared/foundingReservePolicyV3.mjs";
 
 type CollectionPhase = {
   number: string;
@@ -39,6 +40,8 @@ export default function FoundingCollection({
 }: Props) {
   const es = language === "es";
   const locale = es ? "es-AR" : "en-US";
+  const closingReserves = fullCloseV3();
+  const money = (minor: bigint) => new Intl.NumberFormat(locale, {minimumFractionDigits: 2, maximumFractionDigits: 2}).format(Number(minor)/1_000_000) + ' USDT';
 
   return (
     <section
@@ -72,6 +75,8 @@ export default function FoundingCollection({
         <div className="ox-collection-grid">
           {phases.map(phase => {
             const tier = publicTier(phase.name);
+            const closing = closingReserves.find(unit => unit.tier === tier);
+            const netGain = closing ? simulateManagedReserveScenario(closing.reserve,400,1).netChange / BigInt(closing.supply) : null;
             const theme = tier === "RARE"
               ? "rare"
               : tier === "EPIC" ? "epic" : "legendary";
@@ -108,8 +113,12 @@ export default function FoundingCollection({
                       <dd>{phase.capacity.toLocaleString(locale)}</dd>
                     </div>
                     <div>
-                      <dt>{es ? "Acceso desde activación" : "Access from activation"}</dt>
+                      <dt>{es ? "Web de tiendas y desarrollo" : "Stores and development website"}</dt>
                       <dd>{es ? "12 meses" : "12 months"}</dd>
+                    </div>
+                    <div className="ox-tier-gain">
+                      <dt>{es ? "Ganancias" : "Gains"}</dt>
+                      <dd>{netGain === null ? (es ? "No disponible" : "Unavailable") : money(netGain)}</dd>
                     </div>
                     <div>
                       <dt>{es ? "Se puede transferir" : "Transferable"}</dt>
@@ -117,12 +126,15 @@ export default function FoundingCollection({
                     </div>
                   </dl>
 
+                  <p className="ox-tier-gain-note">{es ? 'Estimación de inversión a 1 año sobre la reserva; no es beneficio frente a la compra. Ver supuestos en detalles.' : 'One-year investment estimate on the reserve; not profit versus purchase price. See assumptions in details.'}</p>
                   <details className="ox-tier-details">
                     <summary>{es ? "Ver detalles" : "View details"}</summary>
+                    <p>{es ? 'Ganancias: incremento neto estimado de inversión sobre la reserva a un año. Los costes de la estrategia se suponen descontados; los costes e impuestos personales no están incluidos. Se excluyen los aportes futuros del negocio. El supuesto utilizado se explica en el simulador. No es un rendimiento sobre el precio de compra ni una ganancia garantizada. Inversión y rescate aún no habilitados.' : 'Gains: estimated net investment increase on the reserve over one year. Strategy costs are assumed deducted; personal costs and taxes are excluded. Future business contributions are excluded. The assumption is explained in the simulator. Not a return on the purchase price or a guaranteed gain. Investment and redemption are not yet enabled.'}</p>
+                    <a href="#ox-investment-gain-per-nft">{es ? 'Ver cálculo y escenarios' : 'View calculation and scenarios'}</a>
                     <p>
                       {es
-                        ? "Cada número identifica una pieza de Founding 6000. Los 12 meses de acceso comienzan con la activación válida."
-                        : "Each number identifies a Founding 6000 collectible. The 12-month access term begins upon valid activation."}
+                        ? "Cada número identifica una pieza de Founding 6000. Los 12 meses de acceso a la web de tiendas y desarrollo comienzan con la activación válida."
+                        : "Each number identifies a Founding 6000 collectible. The 12-month access term to the stores and development website begins upon valid activation."}
                     </p>
                     <p>
                       {es

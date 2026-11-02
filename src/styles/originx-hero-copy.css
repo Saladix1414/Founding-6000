@@ -291,3 +291,5 @@
     font-size: 24px;
   }
 }
+
+#campaign .ox-hero-stats dt { white-space: normal; overflow-wrap: anywhere; line-height: 1.35; }

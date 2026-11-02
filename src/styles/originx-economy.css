@@ -888,3 +888,23 @@
     padding: 10px;
   }
 }
+
+/* Compact economic preview: scope stays within this section. */
+#economia.ox-economy { padding-block: 44px; }
+#economia .ox-economy-projection { margin-top: 12px; padding: 18px; }
+#economia .ox-economy-scheme-heading { gap: 10px; margin-bottom: 10px; }
+#economia .ox-economy-projection .ox-economy-small { margin-block: 8px; line-height: 1.5; }
+#economia .ox-economy-field { margin-block: 10px; gap: 6px; }
+#economia .ox-economy-projection-metrics { gap: 8px; margin-block: 12px; }
+#economia .ox-economy-projection-metrics > div { padding: 12px; gap: 6px; }
+#economia .ox-economy-projection-metrics strong { font-size: clamp(18px,2.2vw,24px); }
+#economia .ox-economy-projection .ox-economy-table :is(th,td) { padding-block: 10px; }
+#economia .ox-economy-explanation { margin-block: 10px; padding: 12px; border: 1px solid #ded2f2; border-radius: 14px; background: #f6f0ff; }
+#economia .ox-economy-explanation > summary { cursor: pointer; font-weight: 700; line-height: 1.5; }
+#economia .ox-economy-explanation > summary:focus-visible { outline: 3px solid #7046af; outline-offset: 3px; }
+@media(max-width:599px) {
+ #economia.ox-economy { padding: 32px 16px; }
+ #economia .ox-economy-projection { padding: 14px; }
+ #economia .ox-economy-projection-metrics > div { grid-template-columns: minmax(0,1fr) auto; align-items: center; }
+ #economia .ox-economy-projection-metrics strong { text-align: right; }
+}
