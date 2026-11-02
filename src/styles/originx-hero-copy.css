@@ -293,3 +293,6 @@
 }
 
 #campaign .ox-hero-stats dt { white-space: normal; overflow-wrap: anywhere; line-height: 1.35; }
+
+/* Smaller access description only. */
+#campaign .ox-hero-stats > div:nth-child(3) dt { font-size: 10px; line-height: 1.3; letter-spacing: 0; }
