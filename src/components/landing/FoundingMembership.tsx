@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../styles/originx-membership.css";
+import "../../styles/originx-tier-popover.css";
 
 type Props = { language: "es" | "en" };
 
@@ -141,6 +142,17 @@ export default function FoundingMembership({ language }: Props) {
             </p>
 
             <p>{es ? "El NFT reúne tu pieza de colección y el acceso previsto. La reserva y el rescate futuro tienen reglas propias: no sustituyen la suscripción ni se activan automáticamente con la compra." : "The NFT brings together your collectible and planned access. Reserves and future redemption have separate rules: they do not replace the subscription or activate automatically at purchase."}</p>
+
+            <div className="ox-main-web-benefits">
+              <h4>{es ? "Impulsá tu proyecto con OriginX Foundation" : "Build your project with OriginX Foundation"}</h4>
+              <ul>
+                <li><strong>{es ? "Tiendas online:" : "Online stores:"}</strong> {es ? "creá tu tienda y organizá productos y ventas con Commerce OS." : "build your store and organize products and sales with Commerce OS."}</li>
+                <li><strong>{es ? "Creación web:" : "Website creation:"}</strong> {es ? "diseñá páginas y desarrollá tu presencia digital con Web Builder." : "design pages and develop your digital presence with Web Builder."}</li>
+                <li><strong>{es ? "IA y automatización:" : "AI and automation:"}</strong> {es ? "explorá asistentes y flujos de trabajo con IA Forge y PULSE." : "explore assistants and workflows with AI Forge and PULSE."}</li>
+                <li><strong>{es ? "Crecimiento del negocio:" : "Business growth:"}</strong> {es ? "herramientas de marketing, SEO y analítica para acompañar tus decisiones." : "marketing, SEO and analytics tools to support your decisions."}</li>
+              </ul>
+              <small>{es ? "Herramientas previstas para el ecosistema; el acceso depende de su disponibilidad, habilitación y límites del plan." : "Planned ecosystem tools; access depends on availability, activation and plan limits."}</small>
+            </div>
 
             <a className="ox-membership-feature-link" href="#ox-membership-lifecycle">
               {es ? "Cómo comienza tu acceso" : "How your access begins"}

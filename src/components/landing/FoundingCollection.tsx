@@ -1,4 +1,6 @@
 import "../../styles/originx-collection.css";
+import "../../styles/originx-tier-popover.css";
+import { positionTierPopover } from "./tierPopoverPosition";
 import {fullCloseV3} from "../../../shared/foundingReservePolicyV3.mjs";
 
 type CollectionPhase = {
@@ -127,8 +129,13 @@ export default function FoundingCollection({
                   </dl>
 
                   <p className="ox-tier-gain-note">{es ? 'Cobro previsto de tu reserva al cerrar las ventas y habilitar la quema. No es beneficio neto frente a la compra; costes e impuestos personales no incluidos.' : 'Share of the reserve expected to be paid through burning after sales close and redemption is enabled. Not net profit versus purchase price; personal costs and taxes excluded.'}</p>
-                  <details className="ox-tier-details">
-                    <summary>{es ? "Ver detalles" : "View details"}</summary>
+                  <div className="ox-tier-details ox-tier-popover-trigger">
+                    <button type="button" popoverTarget={"ox-tier-details-" + phase.number} aria-label={(es ? "Ver detalles de " : "View details for ") + tier} onClick={event => {
+                      const panel = document.getElementById("ox-tier-details-" + phase.number);
+                      if (panel) Object.assign(panel.style, positionTierPopover(event.currentTarget.getBoundingClientRect(), window.innerWidth, window.innerHeight));
+                    }}>{es ? "Ver detalles" : "View details"} <span aria-hidden="true">▾</span></button>
+                    <div id={"ox-tier-details-" + phase.number} popover="auto" className="ox-tier-popover-panel" aria-label={(es ? "Detalles de " : "Details for ") + tier}>
+                    <div className="ox-tier-popover-heading"><strong>{tier}</strong><button type="button" popoverTarget={"ox-tier-details-" + phase.number} popoverTargetAction="hide" aria-label={es ? "Cerrar detalles" : "Close details"}>×</button></div>
                     <ul className="ox-tier-benefits-brief">
                       <li><strong>{es ? 'Creá tu próximo proyecto.' : 'Build your next project.'}</strong> {es ? 'Una pieza única y 12 meses de acceso a la web de tiendas y desarrollo desde la activación válida.' : 'A unique collectible and 12 months of access to the stores and development website from valid activation.'}</li>
                       <li><strong>{es ? 'Acceso transferible.' : 'Transferable access.'}</strong> {es ? 'Si transferís el NFT, pasa el tiempo restante; no reinicia el plazo.' : 'Transferring the NFT passes on the remaining access without restarting the term.'}</li>
@@ -136,7 +143,8 @@ export default function FoundingCollection({
                       <li><strong>{es ? 'El negocio puede impulsar la reserva.' : 'The business could grow the reserve.'}</strong> {es ? 'El plan propone aportar el 15% del beneficio neto futuro de suscripciones y servicios e invertir hasta el 10% de la reserva tras el cierre. Su objetivo es ampliar el fondo; depende de resultados reales y de habilitar el plan.' : 'The plan proposes adding 15% of future net profit from subscriptions and services and investing up to 10% of reserves after closing. It aims to grow the fund, subject to actual results and plan activation.'}</li>
                     </ul>
                     <a href="#ox-business-reserve-scenario">{es ? 'Conocé el plan y explorá sus escenarios →' : 'Explore the plan and its scenarios →'}</a>
-                  </details>
+                    </div>
+                  </div>
                 </div>
               </article>
             );

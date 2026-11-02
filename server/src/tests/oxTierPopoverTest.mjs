@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {positionTierPopover} from '../../../src/components/landing/tierPopoverPosition.ts';
+const below = positionTierPopover({left:20,top:200,bottom:244},390,844);
+assert.equal(below.top,'252px');
+assert.equal(below.bottom,'auto');
+assert.equal(below.width,'360px');
+assert.equal(below.left,'18px');
+const above = positionTierPopover({left:800,top:700,bottom:744},1080,800);
+assert.equal(above.top,'auto');
+assert.equal(above.bottom,'108px');
+assert.equal(above.left,'708px');
+assert.equal(above.maxHeight,'676px');
+const narrow = positionTierPopover({left:4,top:100,bottom:144},320,480);
+assert.equal(narrow.width,'296px');
+assert.equal(narrow.left,'12px');
+assert.equal(narrow.maxHeight,'312px');
+console.log('POPOVER_VIEWPORT_PLACEMENT_AND_SMALL_SCREEN=PASS');
