@@ -1,0 +1,14 @@
+.ox-project-dialog { width: min(1120px, calc(100vw - 32px)); }
+.ox-project-dialog #product.ox-ecosystem,
+.ox-project-dialog .ox-journey { padding: 28px 24px; }
+.ox-project-dialog #product > .db-container,
+.ox-project-dialog .ox-journey__inner { width: 100%; min-width: 0; margin-inline: auto; }
+.ox-project-dialog .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ox-project-dialog .product-card { min-width: 0; }
+.ox-project-dialog [id] { scroll-margin-top: 80px; }
+@media(max-width:599px) {
+  .ox-project-dialog { width: calc(100vw - 16px); }
+  .ox-project-dialog #product.ox-ecosystem,
+  .ox-project-dialog .ox-journey { padding: 22px 14px; }
+  .ox-project-dialog .product-grid { grid-template-columns: minmax(0, 1fr); }
+}
