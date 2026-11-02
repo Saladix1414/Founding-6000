@@ -10,7 +10,7 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     if (!dialog.current) return;
-    return mountMembershipDialog(dialog.current, document, {rootId: 'product'});
+    return mountMembershipDialog(dialog.current, document, {rootId: 'product', eventName: 'ox:open-project'});
   }, []);
   const es = language === 'es';
   return (

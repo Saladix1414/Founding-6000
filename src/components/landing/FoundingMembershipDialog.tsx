@@ -7,7 +7,7 @@ export default function FoundingMembershipDialog({language}: {language: 'es' | '
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     if (!dialog.current) return;
-    return mountMembershipDialog(dialog.current);
+    return mountMembershipDialog(dialog.current, document, {eventName: 'ox:open-membership'});
   }, []);
   const es = language === 'es';
   return (

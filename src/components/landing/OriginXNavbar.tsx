@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import "../../styles/originx-navbar.css";
+import { activateNavbarDialog } from "./navbarDialogActions";
 
 type Language = "es" | "en";
 
@@ -67,10 +68,12 @@ export default function OriginXNavbar({
     };
   }, [menuOpen, onCloseMenu]);
 
-  const openEconomy = () => {
-    onCloseMenu();
-    onEconomy();
+  const openDialog = (section: 'membership' | 'economy' | 'project') => {
+    activateNavbarDialog(section, onCloseMenu, () => {
+      if (menuOpen) menuButton.current?.focus({preventScroll: true});
+    }, onEconomy);
   };
+  const openEconomy = () => openDialog('economy');
 
   const openCheckout = () => {
     onCloseMenu();
@@ -87,14 +90,17 @@ export default function OriginXNavbar({
       </a>
       <button
         type="button"
-        onClick={openEconomy}
+        aria-haspopup="dialog" onClick={openEconomy}
         aria-label={es ? "Explorar la economía" : "Explore the economy"}
       >
         {es ? "Economía" : "Economy"}
       </button>
-      <a href="#product" onClick={onCloseMenu}>
+      <button type="button" aria-haspopup="dialog" onClick={() => openDialog('membership')}>
+        {es ? "Membresía" : "Membership"}
+      </button>
+      <button type="button" aria-haspopup="dialog" onClick={() => openDialog('project')}>
         {es ? "Proyecto" : "Project"}
-      </a>
+      </button>
       <a href="#faq" onClick={onCloseMenu}>FAQ</a>
     </>
   );
@@ -187,18 +193,18 @@ export default function OriginXNavbar({
           <a href="#phases" onClick={onCloseMenu}>
             {es ? "Colección" : "Collection"}
           </a>
-          <a href="#benefits" onClick={onCloseMenu}>
+          <button type="button" aria-haspopup="dialog" onClick={() => openDialog('membership')}>
             {es ? "Membresía" : "Membership"}
-          </a>
-          <button type="button" onClick={openEconomy}>
+          </button>
+          <button type="button" aria-haspopup="dialog" onClick={openEconomy}>
             {es ? "Economía" : "Economy"}
           </button>
           <a href="#economic-transparency" onClick={onCloseMenu}>
             {es ? "Transparencia" : "Transparency"}
           </a>
-          <a href="#product" onClick={onCloseMenu}>
+          <button type="button" aria-haspopup="dialog" onClick={() => openDialog('project')}>
             {es ? "Proyecto" : "Project"}
-          </a>
+          </button>
           <a href="#faq" onClick={onCloseMenu}>
             {es ? "Preguntas" : "Questions"}
           </a>
