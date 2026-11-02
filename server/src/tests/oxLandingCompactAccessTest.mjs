@@ -28,3 +28,9 @@ console.log('COMPACT_DETAILS_PRESERVE_ASSUMPTIONS_AND_DISABLED_REDEMPTION=PASS')
 
 assert.match(read("src/styles/originx-collection.css"),/background: #e1f5df; color: #185526/);
 console.log("GREEN_EXPECTED_PAYOUT_ROW=PASS");
+
+assert.match(collection,/ox-tier-benefits-brief/);
+assert.equal((collection.match(/<li>/g)||[]).length,3);
+assert.match(collection,/pasa el tiempo restante; no reinicia el plazo/);
+assert.match(collection,/sin sumar inversiones ni aportes futuros/);
+console.log('THREE_BRIEF_BENEFITS_AND_REDEMPTION_CONDITIONS=PASS');

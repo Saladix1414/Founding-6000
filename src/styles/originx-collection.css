@@ -497,3 +497,9 @@
 #phases .ox-tier-facts .ox-tier-gain { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; background: #e1f5df; color: #185526; border: 1px solid #a5d59e; border-radius: 12px; padding: 12px 10px; gap: 8px; box-shadow: 0 3px 10px rgb(24 85 38 / 7%); }
 #phases .ox-tier-facts .ox-tier-gain dt { min-width: 0; max-width: none; color: #185526; font-weight: 700; line-height: 1.35; }
 #phases .ox-tier-facts .ox-tier-gain dd { color: #125221; font-weight: 900; font-size: 16px; white-space: nowrap; }
+
+#phases.ox-collection .ox-tier-card .ox-tier-facts .ox-tier-gain { background: #e1f5df; color: #185526; }
+#phases.ox-collection .ox-tier-card .ox-tier-facts .ox-tier-gain :is(dt,dd) { color: #145423; }
+#phases.ox-collection .ox-tier-benefits-brief { margin: 12px 0; padding-left: 18px; }
+#phases.ox-collection .ox-tier-benefits-brief li { margin: 0 0 10px; font-size: 14px; line-height: 1.5; }
+#phases.ox-collection .ox-tier-details > a { display: inline-block; margin-block: 6px; font-weight: 700; color: #185526; }

@@ -126,21 +126,16 @@ export default function FoundingCollection({
                     </div>
                   </dl>
 
-                  <p className="ox-tier-gain-note">{es ? 'Parte de la reserva prevista para cobrar mediante quema al finalizar las ventas y habilitar el rescate. No es beneficio neto frente a la compra; costes e impuestos personales no incluidos.' : 'Share of the reserve expected to be paid through burning after sales close and redemption is enabled. Not net profit versus purchase price; personal costs and taxes excluded.'}</p>
+                  <p className="ox-tier-gain-note">{es ? 'Cobro previsto de tu reserva al cerrar las ventas y habilitar la quema. No es beneficio neto frente a la compra; costes e impuestos personales no incluidos.' : 'Share of the reserve expected to be paid through burning after sales close and redemption is enabled. Not net profit versus purchase price; personal costs and taxes excluded.'}</p>
                   <details className="ox-tier-details">
                     <summary>{es ? "Ver detalles" : "View details"}</summary>
-                    <p>{es ? 'El cobro previsto se calcula con la reserva asignada al cierre: RARE 30 USDT; EPIC y LEGENDARY 16,9975 USDT por NFT (17,00 en pantalla). No incluye el rendimiento de inversiones ni los aportes futuros del negocio. Hoy el rescate está deshabilitado: antes de activarlo deben verificarse fondos, elegibilidad, divisor efectivo y ejecución del pago junto con la quema.' : 'Expected payout uses the closing reserve allocation: RARE 30 USDT; EPIC and LEGENDARY 16.9975 USDT per NFT (17.00 displayed). Investment returns and future business contributions are excluded. Redemption is currently disabled: funding, eligibility, the effective denominator and payment together with burning must be verified before activation.'}</p>
-                    <a href="#ox-investment-gain-per-nft">{es ? 'Ver cálculo y escenarios' : 'View calculation and scenarios'}</a>
-                    <p>
-                      {es
-                        ? "Cada número identifica una pieza de Founding 6000. Los 12 meses de acceso a la web de tiendas y desarrollo comienzan con la activación válida."
-                        : "Each number identifies a Founding 6000 collectible. The 12-month access term to the stores and development website begins upon valid activation."}
-                    </p>
-                    <p>
-                      {es
-                        ? "La transferencia conserva el tiempo de acceso restante; no inicia otros 12 meses."
-                        : "A transfer preserves the remaining access term; it does not start another 12 months."}
-                    </p>
+                    <ul className="ox-tier-benefits-brief">
+                      <li><strong>{es ? 'Tu pieza única.' : 'Your unique collectible.'}</strong> {es ? 'Un número propio dentro de Founding 6000.' : 'Your own serial within Founding 6000.'}</li>
+                      <li><strong>{es ? 'Creá y desarrollá.' : 'Create and build.'}</strong> {es ? '12 meses de acceso a la web de tiendas y desarrollo desde la activación válida. Si transferís el NFT, pasa el tiempo restante; no reinicia el plazo.' : '12 months of access to the stores and development website from valid activation. Transferring the NFT passes on remaining access without restarting the term.'}</li>
+                      <li><strong>{es ? 'Cobro previsto por quema: ' : 'Expected burn payout: '}{plannedPayout === null ? (es ? 'por verificar' : 'to be verified') : money(plannedPayout)}.</strong> {es ? 'Tu parte de la reserva al finalizar las ventas, sin sumar inversiones ni aportes futuros.' : 'Your share of the reserve after sales close, excluding future investment returns and contributions.'}</li>
+                    </ul>
+                    <p>{es ? 'Hoy el rescate está deshabilitado. Se habilitará solo tras verificar fondos, titularidad y pago junto con la quema.' : 'Redemption is currently disabled. Activation requires verified funding, ownership and payment together with burning.'}</p>
+                    <a href="#ox-investment-gain-per-nft">{es ? 'Explorá tu reserva y su crecimiento potencial →' : 'Explore your reserve and its potential growth →'}</a>
                   </details>
                 </div>
               </article>
