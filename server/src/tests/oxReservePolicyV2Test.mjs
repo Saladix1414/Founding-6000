@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {referenceSaleV2,calculateReserveContributionV2,fullCloseV2,simulateManagedReserveScenario,investmentPreparationPlan} from '../../../shared/foundingReservePolicyV2.mjs';
+import {referenceSaleV3 as referenceSaleV2,calculateReserveContributionV3 as calculateReserveContributionV2,fullCloseV3 as fullCloseV2,simulateManagedReserveScenario,investmentPreparationPlan} from '../../../shared/foundingReservePolicyV3.mjs';
 import {simulateReferenceSale,simulateBatchClose,simulateHolderExit} from '../../../src/components/landing/economySimulation.ts';
-const target=[40_000_000_000n,44_987_500_000n,30_000_000_000n];
-const expected={RARE:[12_500_000n,0n,0n],EPIC:[8_750_000n,8_750_000n,0n],LEGENDARY:[3_337_500n,9_162_500n,10_000_000n]};
+const target=[30_000_000_000n,33_995_000_000n,50_992_500_000n];
+const expected={RARE:[12_500_000n,0n,0n],EPIC:[7_500_000n,10_000_000n,0n],LEGENDARY:[837_500n,4_665_000n,16_997_500n]};
 for(const tier of Object.keys(expected)) {
   const sale=referenceSaleV2(tier), ui=simulateReferenceSale(tier);
   assert.deepEqual(sale.allocations.map(a=>a.amountMinor),expected[tier]);
@@ -19,7 +19,7 @@ for(let serial=2;serial<=6000;serial++) {
 assert.equal(count,5999);assert.deepEqual(totals,target);
 assert.deepEqual(fullCloseV2().map(t=>t.reserve),target);
 assert.deepEqual(simulateBatchClose().units.map(t=>t.reserve),target);
-assert.deepEqual(fullCloseV2().map(t=>t.perNft),[40_000_000n,22_493_750n,10_000_000n]);
+assert.deepEqual(fullCloseV2().map(t=>t.perNft),[30_000_000n,16_997_500n,16_997_500n]);
 assert.equal(target.reduce((a,b)=>a+b),114_987_500_000n);
 for(const bad of ['UNKNOWN','__proto__','constructor',null]) assert.throws(()=>referenceSaleV2(bad));
 for(const bad of [0n,-1n,1,NaN,1_000_000_000_000_001n]) assert.throws(()=>calculateReserveContributionV2({tier:'RARE',grossAmountMinor:bad}));
@@ -36,9 +36,14 @@ assert.equal(moderate.netChange,459_950_000n);assert.equal(moderate.closingReser
 assert.equal(simulateManagedReserveScenario(base,800,1).netChange,919_900_000n);
 assert.equal(simulateManagedReserveScenario(base,-2000,1).netChange,-2_299_750_000n);
 assert.equal(simulateManagedReserveScenario(base,-10000,1).closingReserve,103_488_750_000n);
-assert.equal(simulateHolderExit('RARE',400,1).modeledRedemption,40_160_000n);
+assert.equal(simulateHolderExit('RARE',400,1).modeledRedemption,30_120_000n);
 for(const args of [[-1n,0,1],[1n,Infinity,1],[1n,10001,1],[1n,0,6],[1n,0,0]]) assert.throws(()=>simulateManagedReserveScenario(...args));
 // V1 remains available for historical ledger calculations; it is not rewritten.
 const legacy=readFileSync(new URL('../economics/foundingEconomicsPolicy.ts',import.meta.url),'utf8');
 assert.match(legacy,/7000/);assert.match(legacy,/calculateReserveContributionV2/);
-for(const label of ['V2_EXACT_PER_SALE_WATERFALL','5999_SALES_AND_RESERVED_AZHURAK','V2_TOTAL_RESERVE_CONSERVATION','TARGETS_40_22_49375_10','SHARED_FRONTEND_ENGINE_PARITY','INVALID_INPUTS_FAIL_CLOSED','90_LIQUID_10_INVESTED_ASSUMPTION','STRATEGY_RATE_NOT_APPLIED_TO_ENTIRE_FUND','STRESS_LOSS_AND_ANNUAL_REBALANCING','LEGACY_LEDGER_NOT_REWRITTEN','INVESTMENT_AND_REDEMPTION_EXECUTION_DISABLED']) console.log(label+'=PASS');
+for(const label of ['V3_EXACT_PER_SALE_WATERFALL','5999_SALES_AND_RESERVED_AZHURAK','V3_TOTAL_RESERVE_CONSERVATION','TARGETS_30_16_9975_16_9975','SHARED_FRONTEND_ENGINE_PARITY','INVALID_INPUTS_FAIL_CLOSED','90_LIQUID_10_INVESTED_ASSUMPTION','STRATEGY_RATE_NOT_APPLIED_TO_ENTIRE_FUND','STRESS_LOSS_AND_ANNUAL_REBALANCING','LEGACY_LEDGER_NOT_REWRITTEN','INVESTMENT_AND_REDEMPTION_EXECUTION_DISABLED']) console.log(label+'=PASS');
+
+const historical=await import("../../../shared/foundingReservePolicyV2.mjs");
+assert.deepEqual(historical.fullCloseV2().map(u=>u.perNft),[40_000_000n,22_493_750n,10_000_000n]);
+assert.notEqual(historical.RESERVE_POLICY_VERSION,"OX-FOUNDING-RESERVE-3");
+console.log("HISTORICAL_V2_RULES_PRESERVED=PASS");

@@ -2,9 +2,9 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {simulateBusinessReserveYear} from '../../../shared/foundingBusinessScenario.mjs';
 const cases=[
-  [1000n,1800000000n,117247450000n,[40551304n,22896768n,10300869n]],
-  [5000n,9000000000n,124447450000n,[42116521n,24148942n,11344347n]],
-  [10000n,18000000000n,133447450000n,[44073043n,25714159n,12648695n]],
+  [1000n,1800000000n,117247450000n,[30511304n,17378533n,17326359n]],
+  [5000n,9000000000n,124447450000n,[32076521n,18630707n,18369837n]],
+  [10000n,18000000000n,133447450000n,[34033043n,20195924n,19674185n]],
 ];
 for(const [profit,contribution,final,perNft] of cases) {
   const result=simulateBusinessReserveYear(profit*1_000_000n);
@@ -39,7 +39,7 @@ const twoYear=simulateBusinessReserveYear(15_000_000_000n,400,2);
 assert.equal(twoYear.totalBusinessContribution,54000000000n);
 assert.equal(twoYear.financialResult,921739800n);
 assert.equal(twoYear.closingReserve,169909239800n);
-assert.deepEqual(twoYear.units.map(u=>u.closingPerNft),[52059770n,32065364n,17906246n]);
+assert.deepEqual(twoYear.units.map(u=>u.closingPerNft),[41979610n,26525056n,24959838n]);
 for(const profit of [1000n,5000n,10000n]) for(const term of [1,2]) {
   const r=simulateBusinessReserveYear(profit*1_000_000n,400,term);
   const growth=r.units.map(u=>u.increasePerNft);
@@ -54,7 +54,7 @@ assert.match(ui,/const businessYears = 1;/);
 assert.match(ui,/ox-investment-gain-per-nft/);
 assert.match(ui,/useState\(400\)/);
 const {simulateManagedReserveScenario}=await import('../../../shared/foundingReservePolicyV2.mjs');
-for(const [opening,gain] of [[40_000_000n,160_000n],[22_493_750n,89_975n],[10_000_000n,40_000n]]) assert.equal(simulateManagedReserveScenario(opening,400,1).netChange,gain);
+for(const [opening,gain] of [[30_000_000n,120_000n],[16_997_500n,67_990n],[16_997_500n,67_990n]]) assert.equal(simulateManagedReserveScenario(opening,400,1).netChange,gain);
 assert.ok(simulateManagedReserveScenario(40_000_000n,-2000,1).netChange<0n);
 assert.match(ui,/ox-business-years/);
 assert.match(ui,/pesos por NFT de 1,5 para RARE, 1,2 para EPIC y 1 para LEGENDARY/);

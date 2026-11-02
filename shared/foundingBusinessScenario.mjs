@@ -1,4 +1,4 @@
-import {fullCloseV2,simulateManagedReserveScenario} from './foundingReservePolicyV2.mjs';
+import {fullCloseV3 as fullCloseV2,simulateManagedReserveScenario} from './foundingReservePolicyV3.mjs';
 // Scenario assumptions only. No real profits, subscriptions or deposits are read.
 export function simulateBusinessReserveYear(monthlyProfitMinor,strategyRateBps=400,years=1) {
   if(typeof monthlyProfitMinor!=='bigint'||monthlyProfitMinor < 0n||monthlyProfitMinor>1_000_000_000_000_000n)

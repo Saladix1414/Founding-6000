@@ -9,8 +9,8 @@ export const SIMULATION_TIERS: readonly SimulationTier[] = [
   "RARE", "EPIC", "LEGENDARY",
 ];
 
-import { referenceSaleV2, simulateManagedReserveScenario } from "../../../shared/foundingReservePolicyV2.mjs";
-export { simulateManagedReserveScenario } from "../../../shared/foundingReservePolicyV2.mjs";
+import { referenceSaleV3 as referenceSaleV2, simulateManagedReserveScenario } from "../../../shared/foundingReservePolicyV3.mjs";
+export { simulateManagedReserveScenario } from "../../../shared/foundingReservePolicyV3.mjs";
 
 export function simulateReferenceSale(tier: SimulationTier) {
   const sale = referenceSaleV2(tier);

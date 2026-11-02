@@ -6,4 +6,4 @@
 
 Interfaz limitada a un año. Beneficios netos mensuales supuestos de 1.000 / 5.000 / 10.000 USDT producen aportes anuales de 1.800 / 9.000 / 18.000 USDT. El rendimiento financiero supuesto, separado, es 459,95 USDT al 4% neto anual sobre el 10% inicial invertido. Los nuevos aportes no reciben intereses en el modelo.
 
-Pesos por NFT para nuevos aportes: RARE 1,5; EPIC 1,2; LEGENDARY 1. Se preservan las reservas iniciales V2 de 40 / 22,49375 / 10 USDT por unidad y el suministro ilustrativo 1000 / 2000 / 3000. El incremento de reserva no equivale a precio de reventa o ganancia frente al precio de compra. Rescates, inversiones y aportes permanecen deshabilitados; no hay modificación de pagos, base de producción, checkout ni README.
+Pesos por NFT para nuevos aportes: RARE 1,5; EPIC 1,2; LEGENDARY 1. Se preservan las reservas iniciales V2 de 30 / 16,9975 / 16,9975 USDT por unidad y el suministro ilustrativo 1000 / 2000 / 3000. El incremento de reserva no equivale a precio de reventa o ganancia frente al precio de compra. Rescates, inversiones y aportes permanecen deshabilitados; no hay modificación de pagos, base de producción, checkout ni README.

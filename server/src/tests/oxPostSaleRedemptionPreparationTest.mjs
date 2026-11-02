@@ -22,7 +22,7 @@ assert.throws(()=>prepare(allSales,[]));
 assert.throws(()=>prepare(allSales,[1,2]));
 for(const invalid of [[2,2],[0],[6001],[NaN],[2.5],['2'],null]) assert.throws(()=>prepare(invalid));
 
-const expectations=[['RARE',40_000_000n,-10_000_000n],['EPIC',22_493_750n,-47_506_250n],['LEGENDARY',10_000_000n,-80_000_000n]];
+const expectations=[['RARE',30_000_000n,-20_000_000n],['EPIC',16_997_500n,-53_002_500n],['LEGENDARY',16_997_500n,-73_002_500n]];
 for(const [tier,gross,difference] of expectations) {
   const preview=simulateHolderExit(tier,0,1);
   assert.equal(preview.modeledRedemption,gross);
@@ -36,7 +36,7 @@ assert.throws(()=>simulateHolderExit('UNKNOWN',0,1));
 assert.throws(()=>simulateHolderExit('RARE',Infinity,1));
 assert.throws(()=>simulateHolderExit('RARE',0,0));
 // Rounding stays in the reserve, not an overpayment.
-const reserve=simulateManagedReserveScenario(40_000_000_000n,500,3).closingReserve;
+const reserve=simulateManagedReserveScenario(30_000_000_000n,500,3).closingReserve;
 const preview=simulateHolderExit('RARE',500,3);
 assert.equal(preview.modeledRedemption*1000n+preview.roundingRemainder,reserve);
 const policy=readFileSync(new URL('../economics/economicExitPolicy.ts',import.meta.url),'utf8');
