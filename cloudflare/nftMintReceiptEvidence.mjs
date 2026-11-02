@@ -42,6 +42,16 @@ function integer(value) {
 }
 
 export function verifyNftMintReceiptEvidence(input) {
+  return verifyReceipt(input, false);
+}
+
+// Event evidence does not identify the internal caller of a sponsored transaction.
+// Only the RPC adapter may bind it to a trusted runtime hash and canonical block.
+export function verifyNftMintEventEvidence(input) {
+  return verifyReceipt(input, true);
+}
+
+function verifyReceipt(input, eventOnly) {
   const {
     chainId,
     contractAddress,
@@ -77,8 +87,10 @@ export function verifyNftMintReceiptEvidence(input) {
     contract === ZeroAddress ||
     wallet === ZeroAddress ||
     checkedAddress(ownerAddress) !== wallet ||
-    checkedAddress(transaction.to) !== contract ||
-    checkedAddress(receipt.to) !== contract ||
+    (!eventOnly && (
+      checkedAddress(transaction.to) !== contract ||
+      checkedAddress(receipt.to) !== contract
+    )) ||
     transaction.chainId !== CHAIN_ID ||
     typeof transaction.hash !== "string" ||
     !HASH.test(transaction.hash) ||
@@ -99,25 +111,27 @@ export function verifyNftMintReceiptEvidence(input) {
     deny();
   }
 
-  let call;
+  if (!eventOnly) {
+    let call;
 
-  try {
-    call = ABI.parseTransaction({
-      data: transaction.data,
-      value: transaction.value ?? 0n,
-    });
-  } catch {
-    deny();
-  }
+    try {
+      call = ABI.parseTransaction({
+        data: transaction.data,
+        value: transaction.value ?? 0n,
+      });
+    } catch {
+      deny();
+    }
 
-  if (
-    !call ||
-    call.name !== "mint" ||
-    call.args[0] !== wallet ||
-    call.args[1] !== BigInt(tokenId) ||
-    BigInt(transaction.value ?? 0) !== 0n
-  ) {
-    deny();
+    if (
+      !call ||
+      call.name !== "mint" ||
+      call.args[0] !== wallet ||
+      call.args[1] !== BigInt(tokenId) ||
+      BigInt(transaction.value ?? 0) !== 0n
+    ) {
+      deny();
+    }
   }
 
   let transfers = 0;
@@ -131,6 +145,8 @@ export function verifyNftMintReceiptEvidence(input) {
     ) {
       continue;
     }
+
+    if (log.removed === true) deny();
 
     let event;
 
@@ -168,6 +184,8 @@ export function verifyNftMintReceiptEvidence(input) {
   return Object.freeze({
     evidenceConsistent: true,
     independentlyAuthenticated: false,
+    executionEvidence: eventOnly ? "CONTRACT_EVENT" : "DIRECT_CALL",
+    internalCallerIdentified: false,
     chainId: CHAIN_ID,
     contractAddress: contract,
     tokenId,

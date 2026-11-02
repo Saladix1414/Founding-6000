@@ -3,10 +3,12 @@ import {
   getAddress,
   id,
   ZeroAddress,
+  sha256,
 } from "ethers";
 
 import {
   verifyNftMintReceiptEvidence,
+  verifyNftMintEventEvidence,
 } from "./nftMintReceiptEvidence.mjs";
 
 /*
@@ -84,14 +86,25 @@ function blockTag(number) {
  * No supplied transport can be deemed trusted
  * merely because it implements this interface.
  */
-export async function verifyBaseSepoliaMintRpcEvidence({
+export async function verifyBaseSepoliaMintRpcEvidence(input) {
+  return verifyRpcEvidence(input, false);
+}
+
+// Explicit opt-in for read-only testnet observation, never a mint authorization.
+export async function verifyBaseSepoliaSponsoredMintRpcEvidence(input) {
+  return verifyRpcEvidence(input, true);
+}
+
+async function verifyRpcEvidence({
   rpc,
   contractAddress,
   transactionHash,
   recipient,
   tokenId,
   minConfirmations = 3,
-}) {
+  expectedRuntimeSha256,
+  expectedMinter,
+}, sponsored) {
   if (
     !rpc ||
     typeof rpc.send !== "function" ||
@@ -109,6 +122,12 @@ export async function verifyBaseSepoliaMintRpcEvidence({
 
   const contract = address(contractAddress);
   const wallet = address(recipient);
+  const configuredMinter = sponsored ? address(expectedMinter) : null;
+  if (sponsored && (
+    configuredMinter === ZeroAddress ||
+    typeof expectedRuntimeSha256 !== "string" ||
+    !/^[a-f0-9]{64}$/.test(expectedRuntimeSha256)
+  )) deny();
 
   if (
     contract === ZeroAddress ||
@@ -165,8 +184,9 @@ export async function verifyBaseSepoliaMintRpcEvidence({
     receipt.blockNumber == null ||
     quantity(tx.blockNumber) !==
       quantity(receipt.blockNumber) ||
-    address(tx.to) !== contract ||
-    address(receipt.to) !== contract ||
+    (!sponsored && address(tx.to) !== contract) ||
+    (!sponsored && address(receipt.to) !== contract) ||
+    (sponsored && address(tx.to) !== address(receipt.to)) ||
     address(tx.from) !== address(receipt.from)
   ) {
     deny();
@@ -227,6 +247,8 @@ export async function verifyBaseSepoliaMintRpcEvidence({
     deny();
   }
 
+  if (sponsored && sha256(code).slice(2) !== expectedRuntimeSha256) deny();
+
   async function contractCall(data) {
     const result = await read(
       "eth_call",
@@ -262,7 +284,7 @@ export async function verifyBaseSepoliaMintRpcEvidence({
     const roleResult = await contractCall(
       ABI.encodeFunctionData(
         "hasRole",
-        [MINTER_ROLE, address(tx.from)],
+        [MINTER_ROLE, sponsored ? configuredMinter : address(tx.from)],
       ),
     );
 
@@ -297,7 +319,8 @@ export async function verifyBaseSepoliaMintRpcEvidence({
     deny();
   }
 
-  const offline = verifyNftMintReceiptEvidence({
+  const validator = sponsored ? verifyNftMintEventEvidence : verifyNftMintReceiptEvidence;
+  const offline = validator({
     chainId: CHAIN_ID,
     contractAddress: contract,
     recipient: wallet,
@@ -334,7 +357,13 @@ export async function verifyBaseSepoliaMintRpcEvidence({
     rpcChecksPassed: true,
     rpcSourceIndependentlyVerified: false,
     canonicalBlockHash: receipt.blockHash.toLowerCase(),
-    minterRoleAtReceiptBlock: true,
+    minterRoleAtReceiptBlock: sponsored ? null : true,
+    configuredMinterRoleAtReceiptBlock: sponsored ? true : null,
+    configuredMinter: sponsored ? configuredMinter : null,
+    runtimeSha256Verified: sponsored,
+    internalCallerIdentified: false,
+    outerTransactionFrom: address(tx.from),
+    outerTransactionTo: address(tx.to),
     ownerAtReceiptBlock: wallet,
     status: "RPC_EVIDENCE_CONSISTENT",
     mintAuthority: false,
