@@ -12,16 +12,7 @@ import "../../styles/originx-economy.css";
 import { simulateBusinessReserveYear } from '../../../shared/foundingBusinessScenario.mjs';
 
 export function scrollToEconomy() {
-  const heading = document.getElementById("ox-economy-title");
-  const section = document.getElementById("economia");
-  if (!heading || !section) return;
-
-  heading.focus({ preventScroll: true });
-  section.scrollIntoView({
-    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      ? "auto" : "smooth",
-    block: "start",
-  });
+  document.dispatchEvent(new Event("ox:open-economy"));
 }
 
 export default function FoundationEconomy({

@@ -1,6 +1,7 @@
+import FoundationEconomyDialog from "./components/landing/FoundationEconomyDialog";
 import FoundingJourney from "./components/landing/FoundingJourney";
 import FoundingMembershipDialog from "./components/landing/FoundingMembershipDialog";
-import FoundationEconomy, { scrollToEconomy } from "./components/landing/FoundationEconomy";
+import { scrollToEconomy } from "./components/landing/FoundationEconomy";
 import FoundingCollection from "./components/landing/FoundingCollection";
 import CommercialCards from "./components/landing/CommercialCards";
 import HeroArtwork from "./components/landing/HeroArtwork";
@@ -857,7 +858,7 @@ function App() {
           ctaLabel={primaryCtaLabel}
           onCheckout={openCheckout}
         />
-        <FoundationEconomy language={language} />
+        <FoundationEconomyDialog language={language} />
 
         <FoundingMembershipDialog language={language} />
 

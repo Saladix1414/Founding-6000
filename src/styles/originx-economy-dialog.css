@@ -1,0 +1,8 @@
+.ox-economy-dialog { width: min(1120px, calc(100vw - 32px)); }
+.ox-economy-dialog #economia.ox-economy { padding: 24px; }
+.ox-economy-dialog .ox-economy-inner { width: 100%; min-width: 0; }
+.ox-economy-dialog #economia [id] { scroll-margin-top: 80px; }
+@media(max-width:599px) {
+  .ox-economy-dialog { width: calc(100vw - 16px); }
+  .ox-economy-dialog #economia.ox-economy { padding: 20px 14px; }
+}
