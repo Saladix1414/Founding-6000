@@ -117,7 +117,7 @@ export default function FoundingCollection({
                       <dd>{es ? "12 meses" : "12 months"}</dd>
                     </div>
                     <div className="ox-tier-gain">
-                      <dt>{es ? "Ganancia de cobro previsto" : "Expected payout benefit"}</dt>
+                      <dt>{es ? "Ganancias de cobro previsto" : "Expected payout benefit"}</dt>
                       <dd>{plannedPayout === null ? (es ? "No disponible" : "Unavailable") : money(plannedPayout)}</dd>
                     </div>
                     <div>
