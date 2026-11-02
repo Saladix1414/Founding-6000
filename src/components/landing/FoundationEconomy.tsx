@@ -34,11 +34,11 @@ export default function FoundationEconomy({
   const result = simulateReferenceSale(tier);
   const [completedBatches, setCompletedBatches] = useState(3);
   const [costInput, setCostInput] = useState('');
-  const [annualRateBps, setAnnualRateBps] = useState(0);
-  const [years, setYears] = useState(1);
+  const [annualRateBps, setAnnualRateBps] = useState(400);
+  const years = 1;
   const [holderTier, setHolderTier] = useState<SimulationTier>('RARE');
-  const [businessMonthlyProfit, setBusinessMonthlyProfit] = useState(3000);
-  const [businessYears, setBusinessYears] = useState(1);
+  const [businessMonthlyProfit, setBusinessMonthlyProfit] = useState(5000);
+  const businessYears = 1;
   let costs: bigint | null = null;
   let costInvalid = false;
   try { costs = parseScenarioCosts(costInput); } catch { costInvalid = true; }
@@ -46,7 +46,7 @@ export default function FoundationEconomy({
   const perNftAtClose = simulateHolderExit(holderTier, 0, 1);
   const perNftAfterInvestment = simulateHolderExit(holderTier, annualRateBps, years);
   const managedFund = simulateManagedReserveScenario(simulateBatchClose(3).reserve, annualRateBps, years);
-  const businessCases = [3000,15000,30000].map(value => simulateBusinessReserveYear(BigInt(value)*1_000_000n,400,businessYears));
+  const businessCases = [1000,5000,10000].map(value => simulateBusinessReserveYear(BigInt(value)*1_000_000n,400,businessYears));
   const businessSelected = simulateBusinessReserveYear(BigInt(businessMonthlyProfit)*1_000_000n,400,businessYears);
 
   const money = (minor: bigint) =>
@@ -175,7 +175,7 @@ export default function FoundationEconomy({
         </div>
 
         <div className="ox-economy-data">
-          <h3>{es ? 'Un NFT, una suscripción transferible y un modelo de reservas' : 'An NFT, a transferable subscription and a reserve model'}</h3>
+          <h3>{es ? 'Tu NFT: acceso, libertad y crecimiento potencial' : 'An NFT, a transferable subscription and a reserve model'}</h3>
           <p>{es ? 'Tu compra reúne una pieza única y 12 meses de Focus Founding Access desde la activación válida. Si transferís el NFT, el nuevo titular válido recibe el tiempo restante, con el mismo vencimiento. El 25% de cada venta inicial verificada se destina a reserva; los escenarios siguientes explican su posible evolución.' : 'Your purchase brings together a unique collectible and 12 months of Focus Founding Access from valid activation. If you transfer the NFT, its new valid holder receives the remaining term with the same expiry. 25% of each verified initial sale goes to reserves; the following scenarios explain their possible evolution.'}</p>
           <a className="ox-economy-transparency-link" href="#benefits">{es ? 'Conocer los beneficios de la suscripción' : 'Explore subscription benefits'}<span aria-hidden="true">↓</span></a>
         </div>
@@ -229,8 +229,8 @@ export default function FoundationEconomy({
             <div>{SIMULATION_TIERS.map(value => <label key={value}><input type="radio" name="ox-holder-tier" value={value} checked={holderTier === value} onChange={() => setHolderTier(value)} /><span>{value}</span></label>)}</div>
           </fieldset>
           <div className="ox-economy-projection-controls">
-            <label className="ox-economy-field" htmlFor="ox-investment-rate"><span>{es ? 'Rendimiento neto anual supuesto de la parte invertida (20%)' : 'Assumed annual net return on invested portion (20%)'}</span><select id="ox-investment-rate" value={annualRateBps} onChange={event => setAnnualRateBps(Number(event.target.value))}>{[-2000,0,200,400,800].map(rate => <option key={rate} value={rate}>{rate > 0 ? '+' : ''}{rate / 100}%</option>)}</select></label>
-            <label className="ox-economy-field" htmlFor="ox-investment-years"><span>{es ? 'Plazo desde el cierre' : 'Time after closing'}</span><select id="ox-investment-years" value={years} onChange={event => setYears(Number(event.target.value))}>{[1,2].map(year => <option key={year} value={year}>{year} {es ? (year === 1 ? 'año' : 'años') : (year === 1 ? 'year' : 'years')}</option>)}</select></label>
+            <label className="ox-economy-field" htmlFor="ox-investment-rate"><span>{es ? 'Rendimiento neto anual supuesto de la parte invertida (10%)' : 'Assumed annual net return on invested portion (10%)'}</span><select id="ox-investment-rate" value={annualRateBps} onChange={event => setAnnualRateBps(Number(event.target.value))}>{[-2000,0,200,400,800].map(rate => <option key={rate} value={rate}>{rate > 0 ? '+' : ''}{rate / 100}%</option>)}</select></label>
+            <p id="ox-investment-years" className="ox-economy-small">{es ? "Plazo del análisis: 1 año desde el cierre y la habilitación de la estrategia." : "Analysis term: 1 year after closing and strategy activation."}</p>
           </div>
           <div className="ox-economy-projection-metrics" aria-live="polite" aria-atomic="true">
             <div><span>{es ? 'Precio de compra de 1 NFT' : 'Purchase price of 1 NFT'} · {holderTier}</span><strong>{money(perNftAtClose.price)}</strong></div>
@@ -238,15 +238,15 @@ export default function FoundationEconomy({
             <div><span>{es ? 'Por NFT tras la inversión simulada' : 'Per NFT after simulated investment'} · {holderTier}</span><strong>{money(perNftAfterInvestment.modeledRedemption)}</strong></div>
           </div>
           <p className="ox-economy-small" aria-live="polite">{es
-            ? 'Para 1 NFT ' + holderTier + ': ' + money(perNftAtClose.price) + ' de compra → ' + money(perNftAtClose.modeledRedemption) + ' según reserva al cierre → ' + money(perNftAfterInvestment.modeledRedemption) + ' tras ' + years + (years === 1 ? ' año' : ' años') + ' con un rendimiento anual del ' + (annualRateBps / 100) + '% sobre el 20% invertido.'
-            : 'For 1 ' + holderTier + ' NFT: ' + money(perNftAtClose.price) + ' purchase → ' + money(perNftAtClose.modeledRedemption) + ' modeled reserve at close → ' + money(perNftAfterInvestment.modeledRedemption) + ' after ' + years + (years === 1 ? ' year' : ' years') + ' at ' + (annualRateBps / 100) + '% annual return on the invested 20%.'}</p>
+            ? 'Para 1 NFT ' + holderTier + ': ' + money(perNftAtClose.price) + ' de compra → ' + money(perNftAtClose.modeledRedemption) + ' según reserva al cierre → ' + money(perNftAfterInvestment.modeledRedemption) + ' tras ' + years + (years === 1 ? ' año' : ' años') + ' con un rendimiento anual del ' + (annualRateBps / 100) + '% sobre el 10% invertido.'
+            : 'For 1 ' + holderTier + ' NFT: ' + money(perNftAtClose.price) + ' purchase → ' + money(perNftAtClose.modeledRedemption) + ' modeled reserve at close → ' + money(perNftAfterInvestment.modeledRedemption) + ' after ' + years + (years === 1 ? ' year' : ' years') + ' at ' + (annualRateBps / 100) + '% annual return on the invested 10%.'}</p>
           <div className="ox-economy-sale" aria-live="polite"><span>{es ? 'Ganancia / pérdida de 1 NFT frente al precio de compra, antes de costes' : 'Gain / loss on 1 NFT versus purchase price, before costs'}</span><strong>{perNftAfterInvestment.differenceBeforeFees > 0n ? '+' : ''}{money(perNftAfterInvestment.differenceBeforeFees)}</strong></div>
-          <p className="ox-economy-small">{es ? 'Plan propuesto: 100% líquido durante las ventas. Tras el cierre y la habilitación del rescate, 80% líquido y hasta 20% invertido, con rebalanceo anual en este ejemplo. La tasa elegida se aplica solo a ese 20% y supone descontados los costes de la estrategia; no es una tasa observada ni prometida. No se simulan rescates intermedios. Los costes e impuestos personales de rescate siguen pendientes.' : 'Proposed plan: 100% liquid during sales. After closing and redemption activation, 80% liquid and up to 20% invested, with annual rebalancing in this illustration. The selected rate applies only to that 20% and assumes strategy costs deducted; it is not an observed or promised rate. No interim redemptions are simulated. Personal redemption costs and taxes remain undefined.'}</p>
+          <p className="ox-economy-small">{es ? 'Plan propuesto: 100% líquido durante las ventas. Tras el cierre y la habilitación del rescate, 90% líquido y hasta 10% invertido, con rebalanceo anual en este ejemplo. La tasa elegida se aplica solo a ese 10% y supone descontados los costes de la estrategia; no es una tasa observada ni prometida. No se simulan rescates intermedios. Los costes e impuestos personales de rescate siguen pendientes.' : 'Proposed plan: 100% liquid during sales. After closing and redemption activation, 90% liquid and up to 10% invested, with annual rebalancing in this illustration. The selected rate applies only to that 10% and assumes strategy costs deducted; it is not an observed or promised rate. No interim redemptions are simulated. Personal redemption costs and taxes remain undefined.'}</p>
           <div className="ox-economy-reserve-detail">
             <h4>{es ? 'Magnitud del fondo al completar la colección' : 'Fund size at full collection close'}</h4>
             <p className="ox-economy-small">{es
-              ? 'Capital previsto: ' + money(managedFund.openingReserve) + ' · Parte líquida (80%): ' + money(managedFund.openingLiquid) + ' · Máximo invertido inicial (20%): ' + money(managedFund.openingInvested) + '.'
-              : 'Modeled principal: ' + money(managedFund.openingReserve) + ' · Liquid portion (80%): ' + money(managedFund.openingLiquid) + ' · Initial invested maximum (20%): ' + money(managedFund.openingInvested) + '.'}</p>
+              ? 'Capital previsto: ' + money(managedFund.openingReserve) + ' · Parte líquida (90%): ' + money(managedFund.openingLiquid) + ' · Máximo invertido inicial (10%): ' + money(managedFund.openingInvested) + '.'
+              : 'Modeled principal: ' + money(managedFund.openingReserve) + ' · Liquid portion (90%): ' + money(managedFund.openingLiquid) + ' · Initial invested maximum (10%): ' + money(managedFund.openingInvested) + '.'}</p>
             <p className="ox-economy-small" aria-live="polite">{es
               ? 'Resultado estimado del fondo en el plazo elegido: ' + money(managedFund.netChange) + ' · Capital final simulado: ' + money(managedFund.closingReserve) + '.'
               : 'Estimated fund result over the selected term: ' + money(managedFund.netChange) + ' · Simulated final capital: ' + money(managedFund.closingReserve) + '.'}</p>
@@ -264,35 +264,57 @@ export default function FoundationEconomy({
           </div>
         </div>
 
+        <div id="ox-investment-gain-per-nft" className="ox-economy-scheme ox-economy-projection">
+          <div className="ox-economy-scheme-heading">
+            <h3>{es ? 'Incremento estimado por NFT con el plan de inversión a 1 año' : 'Estimated increase per NFT under the 1-year investment plan'}</h3>
+            <span>{es ? 'INVERSIÓN · SUPUESTO' : 'INVESTMENT · ASSUMPTION'}</span>
+          </div>
+          <p className="ox-economy-small">{es ? 'Este bloque muestra por separado cuánto añadiría la inversión a la reserva de cada NFT en 12 meses. Conserva el 90% líquido e invierte hasta el 10%, con la tasa neta anual seleccionada arriba. Con el supuesto inicial del 4%, el incremento equivale al 0,4% de la reserva inicial de cada NFT. No incluye aportes del negocio ni representa una ganancia frente al precio de compra.' : 'This section separately shows what investment would add to each NFT’s modeled reserve over 12 months. It keeps 90% liquid and invests up to 10% at the assumed annual net rate selected above. At the initial 4% assumption, the increase equals 0.4% of each NFT’s opening reserve. Business contributions are excluded; this is not profit versus purchase price.'}</p>
+          <div className="ox-economy-rules-scroll" role="region" tabIndex={0} aria-label={es ? 'Incremento de inversión por NFT a un año' : 'One-year investment increase per NFT'}>
+            <table className="ox-economy-table">
+              <caption>{es ? 'Estimaciones calculadas con las reservas V2 al completar la colección. Tasa supuesta, sin proveedor aprobado ni inversión activada; el resultado puede ser negativo. Costes e impuestos personales no incluidos.' : 'Estimates based on V2 reserves at full collection close. Assumed rate, no approved provider or active investment; the result may be negative. Personal costs and taxes excluded.'}</caption>
+              <thead><tr><th scope="col">{es ? 'Categoría' : 'Category'}</th><th scope="col">{es ? 'Reserva inicial por NFT' : 'Opening reserve per NFT'}</th><th scope="col">{es ? 'Incremento de inversión en 1 año' : 'Investment increase over 1 year'}</th><th scope="col">{es ? 'Reserva por NFT tras 1 año' : 'Reserve per NFT after 1 year'}</th></tr></thead>
+              <tbody>{SIMULATION_TIERS.map(value => {
+                const opening = simulateHolderExit(value, 0, 1).modeledRedemption;
+                const final = simulateHolderExit(value, annualRateBps, 1).modeledRedemption;
+                const gain = final - opening;
+                return <tr key={value}><th scope="row">{value}</th><td>{money(opening)}</td><td>{gain > 0n ? '+' : ''}{money(gain)}</td><td>{money(final)}</td></tr>;
+              })}</tbody>
+            </table>
+          </div>
+        </div>
+
         <div id="ox-business-reserve-scenario" className="ox-economy-scheme ox-economy-projection">
           <div className="ox-economy-scheme-heading">
-            <h3>{es ? 'Cómo podría crecer la reserva con la actividad del negocio' : 'How business activity could grow the reserve'}</h3>
-            <span>{es ? 'SUPUESTOS · HASTA 2 AÑOS' : 'ASSUMPTIONS · UP TO 2 YEARS'}</span>
+            <h3>{es ? 'El negocio crece. Tu reserva puede crecer también.' : 'As the business grows, your reserve could grow too.'}</h3>
+            <span>{es ? 'SUPUESTOS · 1 AÑO' : 'ASSUMPTIONS · 1 YEAR'}</span>
           </div>
-          <p className="ox-economy-small">{es ? 'El 25% de las ventas iniciales se mantiene. Por separado, este análisis propone aportar a reservas el 20% del beneficio neto mensual futuro de suscripciones y servicios, después de gastos, impuestos y obligaciones. Son hipótesis de negocio: no beneficios actuales, ingresos prometidos ni una política de aportes ya activada.' : 'The 25% of initial sales remains. Separately, this analysis proposes contributing 20% of future monthly net profit from subscriptions and services, after expenses, taxes and obligations. These are business assumptions, not current profits, promised revenue or an activated contribution policy.'}</p>
+          <p className="ox-economy-small">{es ? 'Cada venta inicial aporta un 25% a la reserva. Además, el modelo propone sumar el 15% del beneficio neto futuro de suscripciones y servicios. Si el negocio genera beneficios, el fondo recibe nuevos aportes. Son escenarios hipotéticos: no beneficios actuales ni aportes ya activados.' : 'Each initial sale allocates 25% to reserves. The model also proposes adding 15% of future net profit from subscriptions and services. If the business earns profits, the fund receives additional contributions. These are hypothetical scenarios, not current profits or active contributions.'}</p>
+          <p className="ox-economy-small">{es ? 'Un NFT único. 12 meses de acceso desde la activación válida. El tiempo restante es transferible con tu NFT. Explorá el crecimiento potencial de su reserva en 1 año.' : 'A unique NFT. 12 months of access from valid activation. Remaining access transfers with your NFT. Explore its reserve’s potential growth over 1 year.'}</p>
+          <p className="ox-economy-small">{es ? 'El 85% restante del beneficio neto queda en el negocio. La renovación y los gastos operativos aún no están definidos: elegís un beneficio neto supuesto, no una facturación. Los 12 meses incluidos con Founding no se cuentan como nuevos cobros mensuales.' : 'The other 85% of net profit stays with the business. Renewal pricing and operating costs are not yet defined: you select assumed net profit, not revenue. The 12 months included with Founding are not counted as new monthly payments.'}</p>
           <label className="ox-economy-field" htmlFor="ox-business-profit"><span>{es ? 'Beneficio neto mensual supuesto del negocio' : 'Assumed monthly net business profit'}</span>
             <select id="ox-business-profit" value={businessMonthlyProfit} onChange={event => setBusinessMonthlyProfit(Number(event.target.value))}>
-              {[3000,15000,30000].map(value => <option key={value} value={value}>{money(BigInt(value)*1_000_000n)} / {es ? 'mes (supuesto)' : 'month (assumption)'}</option>)}
+              {[1000,5000,10000].map(value => <option key={value} value={value}>{money(BigInt(value)*1_000_000n)} / {es ? 'mes (supuesto)' : 'month (assumption)'}</option>)}
             </select>
           </label>
-          <label className="ox-economy-field" htmlFor="ox-business-years"><span>{es ? 'Plazo del escenario del negocio' : 'Business scenario term'}</span><select id="ox-business-years" value={businessYears} onChange={event => setBusinessYears(Number(event.target.value))}>{[1,2].map(value => <option key={value} value={value}>{value} {es ? (value === 1 ? 'año' : 'años') : (value === 1 ? 'year' : 'years')}</option>)}</select></label>
+          <p id="ox-business-years" className="ox-economy-small">{es ? "Plazo del escenario del negocio: 12 meses." : "Business scenario term: 12 months."}</p>
           <div className="ox-economy-projection-metrics" aria-live="polite" aria-atomic="true">
             <div><span>{es ? 'Reserva inicial prevista · 25% de las ventas' : 'Modeled opening reserve · 25% of sales'}</span><strong>{money(businessSelected.openingReserve)}</strong></div>
-            <div><span>{es ? 'Aporte del negocio en ' + businessYears*12 + ' meses · 20% del beneficio neto' : 'Business contribution over ' + businessYears*12 + ' months · 20% of net profit'}</span><strong>{money(businessSelected.totalBusinessContribution)}</strong></div>
+            <div><span>{es ? 'Aporte del negocio en ' + businessYears*12 + ' meses · 15% del beneficio neto' : 'Business contribution over ' + businessYears*12 + ' months · 15% of net profit'}</span><strong>{money(businessSelected.totalBusinessContribution)}</strong></div>
             <div><span>{es ? 'Reserva total estimada tras ' + businessYears + (businessYears === 1 ? ' año' : ' años') : 'Estimated total reserve after ' + businessYears + (businessYears === 1 ? ' year' : ' years')}</span><strong>{money(businessSelected.closingReserve)}</strong></div>
           </div>
-          <p className="ox-economy-small">{es ? 'Comparación de ' + businessYears + (businessYears === 1 ? ' año' : ' años') + ' después del cierre y de habilitar la estrategia: 20% invertido, rebalanceado anualmente, al 4% neto anual supuesto aporta ' + money(businessSelected.financialResult) + '. Los nuevos aportes permanecen líquidos, sin rendimiento adicional; no se vuelven a contar las ventas iniciales ni se simulan rescates intermedios. Esta comparación usa su propio plazo de 1 o 2 años y no cambia con los controles del simulador de arriba.' : 'Comparison over ' + businessYears + (businessYears === 1 ? ' year' : ' years') + ' after closing and strategy activation: 20% invested, rebalanced annually, at an assumed 4% net annual return adds ' + money(businessSelected.financialResult) + '. New contributions stay liquid without additional return; initial sales are not counted twice and no interim redemptions are simulated. This comparison has its own 1- or 2-year term and does not change with the simulator controls above.'}</p>
+          <p className="ox-economy-small">{es ? 'Comparación de ' + businessYears + (businessYears === 1 ? ' año' : ' años') + ' después del cierre y de habilitar la estrategia: 10% invertido, rebalanceado anualmente, al 4% neto anual supuesto aporta ' + money(businessSelected.financialResult) + '. Los nuevos aportes permanecen líquidos, sin rendimiento adicional; no se vuelven a contar las ventas iniciales ni se simulan rescates intermedios. Esta comparación abarca 12 meses y utiliza el supuesto del 4% anual, independientemente del selector de tasa de arriba.' : 'Comparison over ' + businessYears + (businessYears === 1 ? ' year' : ' years') + ' after closing and strategy activation: 10% invested, rebalanced annually, at an assumed 4% net annual return adds ' + money(businessSelected.financialResult) + '. New contributions stay liquid without additional return; initial sales are not counted twice and no interim redemptions are simulated. This comparison covers 12 months and assumes a 4% annual rate, independently of the rate selector above.'}</p>
           <div className="ox-economy-rules-scroll" role="region" tabIndex={0} aria-label={es ? 'Reserva por NFT con aportes del negocio' : 'Reserve per NFT with business contributions'}>
             <table className="ox-economy-table"><caption>{es ? 'Importe según reserva por 1 NFT, no beneficio frente al precio de compra. Los aportes futuros del negocio usan pesos por NFT de 1,5 para RARE, 1,2 para EPIC y 1 para LEGENDARY. La reserva de cierre V2 se conserva.' : 'Reserve amount per 1 NFT, not profit versus purchase price. Future business contributions use per-NFT weights of 1.5 for RARE, 1.2 for EPIC and 1 for LEGENDARY. V2 closing reserves are preserved.'}</caption>
-              <thead><tr><th scope="col">{es ? 'Categoría' : 'Category'}</th><th scope="col">{es ? 'Al cierre' : 'At closing'}</th><th scope="col">{es ? 'Incremento estimado en el plazo elegido' : 'Estimated increase over the selected term'}</th><th scope="col">{es ? 'Importe estimado al finalizar el plazo' : 'Estimated amount at the end of the term'}</th></tr></thead>
+              <thead><tr><th scope="col">{es ? 'Categoría' : 'Category'}</th><th scope="col">{es ? 'Al cierre' : 'At closing'}</th><th scope="col">{es ? 'Crecimiento estimado por NFT en 1 año' : 'Estimated increase over the selected term'}</th><th scope="col">{es ? 'Reserva estimada por NFT al año' : 'Estimated amount at the end of the term'}</th></tr></thead>
               <tbody>{businessSelected.units.map(unit => <tr key={unit.tier}><th scope="row">{unit.tier}</th><td>{money(unit.openingPerNft)}</td><td>{unit.increasePerNft > 0n ? '+' : ''}{money(unit.increasePerNft)}</td><td>{money(unit.closingPerNft)}</td></tr>)}</tbody>
             </table>
           </div>
           <details className="ox-economy-rules"><summary>{es ? 'Comparar los tres escenarios del negocio' : 'Compare all three business scenarios'}</summary>
             <div className="ox-economy-rules-scroll" role="region" tabIndex={0} aria-label={es ? 'Comparación de escenarios hipotéticos' : 'Comparison of hypothetical scenarios'}>
               <table className="ox-economy-table"><caption>{es ? 'Cada caso supone beneficios netos realizados durante los ' + businessYears*12 + ' meses. Ninguna cifra es una previsión comercial validada.' : 'Each case assumes realized net profits for all ' + businessYears*12 + ' months. None is a validated business forecast.'}</caption>
-                <thead><tr><th scope="col">{es ? 'Beneficio neto supuesto / mes' : 'Assumed net profit / month'}</th><th scope="col">{es ? 'Reserva total al finalizar el plazo' : 'Total reserve at the end of the term'}</th>{SIMULATION_TIERS.map(value => <th scope="col" key={value}>{value} / NFT</th>)}</tr></thead>
-                <tbody>{businessCases.map(row => <tr key={row.monthlyProfitMinor.toString()}><th scope="row">{money(row.monthlyProfitMinor)}</th><td>{money(row.closingReserve)}</td>{row.units.map(unit => <td key={unit.tier}>{money(unit.closingPerNft)}</td>)}</tr>)}</tbody>
+                <thead><tr><th scope="col">{es ? 'Beneficio neto supuesto / mes' : 'Assumed net profit / month'}</th><th scope="col">{es ? '15% al fondo en 12 meses' : '15% to the fund over 12 months'}</th><th scope="col">{es ? '85% para el negocio / mes' : '85% for the business / month'}</th><th scope="col">{es ? 'Reserva total al finalizar el plazo' : 'Total reserve at the end of the term'}</th>{SIMULATION_TIERS.map(value => <th scope="col" key={value}>{value} / NFT</th>)}</tr></thead>
+                <tbody>{businessCases.map(row => <tr key={row.monthlyProfitMinor.toString()}><th scope="row">{money(row.monthlyProfitMinor)}</th><td>{money(row.totalBusinessContribution)}</td><td>{money(row.monthlyProfitMinor*85n/100n)}</td><td>{money(row.closingReserve)}</td>{row.units.map(unit => <td key={unit.tier}>{money(unit.closingPerNft)}</td>)}</tr>)}</tbody>
               </table>
             </div>
           </details>

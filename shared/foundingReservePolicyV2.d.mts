@@ -12,8 +12,8 @@ export function simulateManagedReserveScenario(openingReserve:bigint,strategyRat
   closingReserve:bigint;netChange:bigint;strategyRateBps:number;years:number;executionAuthorized:false;
 };
 export function investmentPreparationPlan():Readonly<{
-  version:string;status:'PREPARATION_ONLY';beforeCloseInvestedBps:0;requiresRedemptionActivation:true;afterCloseMaxInvestedBps:2000;
-  liquidTargetBps:8000;maxPerProtocolBps:1000;borrowingAllowed:false;leverageAllowed:false;
+  version:string;status:'PREPARATION_ONLY';beforeCloseInvestedBps:0;requiresRedemptionActivation:true;afterCloseMaxInvestedBps:1000;
+  liquidTargetBps:9000;maxPerProtocolBps:1000;borrowingAllowed:false;leverageAllowed:false;
   bridgesAllowed:false;actualProvidersApproved:false;actualNetRatesVerified:false;
   executionAuthorized:false;redemptionAuthorized:false;capitalGuaranteed:false;
 }>;

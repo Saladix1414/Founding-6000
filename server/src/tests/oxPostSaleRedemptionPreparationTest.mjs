@@ -28,7 +28,7 @@ for(const [tier,gross,difference] of expectations) {
   assert.equal(preview.modeledRedemption,gross);
   assert.equal(preview.differenceBeforeFees,difference);
   assert.equal(preview.executable,false);
-  assert.equal(simulateHolderExit(tier,-10000,1).modeledRedemption,gross*8n/10n);
+  assert.equal(simulateHolderExit(tier,-10000,1).modeledRedemption,gross*9n/10n);
   assert.ok(simulateHolderExit(tier,1000,2).modeledRedemption>gross);
   assert.ok(simulateHolderExit(tier,-1000,2).modeledRedemption<gross);
 }

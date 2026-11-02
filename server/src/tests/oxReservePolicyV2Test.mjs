@@ -26,19 +26,19 @@ for(const bad of [0n,-1n,1,NaN,1_000_000_000_000_001n]) assert.throws(()=>calcul
 assert.throws(()=>calculateReserveContributionV2({tier:'LEGENDARY',grossAmountMinor:4n}));
 const base=114_987_500_000n;
 const plan=investmentPreparationPlan();assert.ok(Object.isFrozen(plan));
-assert.equal(plan.beforeCloseInvestedBps,0);assert.equal(plan.afterCloseMaxInvestedBps,2000);
-assert.equal(plan.liquidTargetBps,8000);assert.equal(plan.executionAuthorized,false);
+assert.equal(plan.beforeCloseInvestedBps,0);assert.equal(plan.afterCloseMaxInvestedBps,1000);
+assert.equal(plan.liquidTargetBps,9000);assert.equal(plan.executionAuthorized,false);
 assert.equal(plan.redemptionAuthorized,false);assert.equal(plan.capitalGuaranteed,false);
 const flat=simulateManagedReserveScenario(base,0,5);assert.equal(flat.closingReserve,base);
 const moderate=simulateManagedReserveScenario(base,400,1);
-assert.equal(moderate.openingInvested,22_997_500_000n);assert.equal(moderate.openingLiquid,91_990_000_000n);
-assert.equal(moderate.netChange,919_900_000n);assert.equal(moderate.closingReserve,115_907_400_000n);
-assert.equal(simulateManagedReserveScenario(base,800,1).netChange,1_839_800_000n);
-assert.equal(simulateManagedReserveScenario(base,-2000,1).netChange,-4_599_500_000n);
-assert.equal(simulateManagedReserveScenario(base,-10000,1).closingReserve,91_990_000_000n);
-assert.equal(simulateHolderExit('RARE',400,1).modeledRedemption,40_320_000n);
+assert.equal(moderate.openingInvested,11_498_750_000n);assert.equal(moderate.openingLiquid,103_488_750_000n);
+assert.equal(moderate.netChange,459_950_000n);assert.equal(moderate.closingReserve,115_447_450_000n);
+assert.equal(simulateManagedReserveScenario(base,800,1).netChange,919_900_000n);
+assert.equal(simulateManagedReserveScenario(base,-2000,1).netChange,-2_299_750_000n);
+assert.equal(simulateManagedReserveScenario(base,-10000,1).closingReserve,103_488_750_000n);
+assert.equal(simulateHolderExit('RARE',400,1).modeledRedemption,40_160_000n);
 for(const args of [[-1n,0,1],[1n,Infinity,1],[1n,10001,1],[1n,0,6],[1n,0,0]]) assert.throws(()=>simulateManagedReserveScenario(...args));
 // V1 remains available for historical ledger calculations; it is not rewritten.
 const legacy=readFileSync(new URL('../economics/foundingEconomicsPolicy.ts',import.meta.url),'utf8');
 assert.match(legacy,/7000/);assert.match(legacy,/calculateReserveContributionV2/);
-for(const label of ['V2_EXACT_PER_SALE_WATERFALL','5999_SALES_AND_RESERVED_AZHURAK','V2_TOTAL_RESERVE_CONSERVATION','TARGETS_40_22_49375_10','SHARED_FRONTEND_ENGINE_PARITY','INVALID_INPUTS_FAIL_CLOSED','80_LIQUID_20_INVESTED_ASSUMPTION','STRATEGY_RATE_NOT_APPLIED_TO_ENTIRE_FUND','STRESS_LOSS_AND_ANNUAL_REBALANCING','LEGACY_LEDGER_NOT_REWRITTEN','INVESTMENT_AND_REDEMPTION_EXECUTION_DISABLED']) console.log(label+'=PASS');
+for(const label of ['V2_EXACT_PER_SALE_WATERFALL','5999_SALES_AND_RESERVED_AZHURAK','V2_TOTAL_RESERVE_CONSERVATION','TARGETS_40_22_49375_10','SHARED_FRONTEND_ENGINE_PARITY','INVALID_INPUTS_FAIL_CLOSED','90_LIQUID_10_INVESTED_ASSUMPTION','STRATEGY_RATE_NOT_APPLIED_TO_ENTIRE_FUND','STRESS_LOSS_AND_ANNUAL_REBALANCING','LEGACY_LEDGER_NOT_REWRITTEN','INVESTMENT_AND_REDEMPTION_EXECUTION_DISABLED']) console.log(label+'=PASS');

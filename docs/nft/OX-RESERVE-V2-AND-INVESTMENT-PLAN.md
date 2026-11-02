@@ -34,48 +34,6 @@ Antes de contabilizar una venta real con V2: identificar el escritor canónico a
 
 Prioridad: liquidez de rescate, conservación del capital y trazabilidad; rendimiento secundario. El plan no equivale a un fondo regulado constituido ni demuestra resultados futuros.
 
-Durante ventas: 100% de los aportes líquidos, 0% invertido, sin retiros operativos de ese capital. Solo después del cierre verificado y de habilitar el mecanismo de rescate: objetivo 80% líquido y un máximo inicial del 20% invertido. Sobre 114.987,50 USDT, son 91.990 USDT líquidos y hasta 22.997,50 USDT invertidos. Es una distribución propuesta; la custodia actual no se presenta como bloqueo técnico demostrado.
+Durante las ventas: 100% líquido y 0% invertido. Después del cierre y la habilitación del rescate: objetivo 90% líquido y máximo 10% invertido. Sobre 114.987,50 USDT: 103.488,75 líquidos y hasta 11.498,75 invertidos. Es una propuesta, sin proveedor aprobado ni ejecución autorizada.
 
-No se permite endeudamiento, apalancamiento, derivados, estrategias de trading, tokens especulativos ni puentes dentro de la estrategia propuesta. Hasta 10% del patrimonio por protocolo: el 20% requeriría al menos dos exposiciones aprobadas; si solo se aprueba una, se invierte como máximo 10% y el resto sigue líquido. No se fuerza la inversión para alcanzar un porcentaje.
-
-Candidatos a evaluar: suministro sin deuda de stablecoins en protocolos auditados y con mercado compatible con la cadena de rescate. Aave es un candidato de estudio, no una selección ni una tasa comprometida. Mantener USDC no paga por sí mismo al titular el rendimiento de las reservas del emisor; Circle Reserve Fund tampoco se presume accesible a OriginX. Ningún producto o proveedor está habilitado por este cambio.
-
-No hay garantía de que una stablecoin mantenga paridad o de que un protocolo permita retirar inmediatamente. Una auditoría reduce incertidumbre técnica, no elimina fallos. Una pérdida de paridad también puede afectar el 80% líquido: no se limita artificialmente el riesgo total a la parte invertida.
-
-### Condiciones previas y control
-
-1. Verificar cierre, entregas y saldo disponible; separar dinero operativo y reservas por categoría.
-2. Aprobar instrumento, cadena, contratos, riesgo del emisor, auditorías, liquidez de salida, comisiones, fiscalidad y custodia. No inferir compatibilidad Ethereum USDT / NFT en Base; la liquidación y quema atómicas requieren una ruta de fondos en la misma cadena.
-3. Custodia propuesta con firmantes separados y autorización múltiple; no implementada por este documento. Presupuesto de gas y costes fuera de las reservas de titulares salvo política publicada distinta.
-4. Probar aportes/retiros en testnet y retirada pequeña; empezar con hasta 5% total, revisar 30 días y escalar solo hasta los límites aprobados.
-5. Revisión diaria de saldo, paridad, liquidez y cambios del protocolo; conciliación mensual y antes de cada rebalanceo. Alertas propuestas: paridad fuera de 0,995–1,005 USD, incidente del protocolo o retiro fallido: detener nuevas inversiones y evaluar salida. Son umbrales operativos propuestos, no una garantía de salida o precio.
-6. El simulador rebalancea anualmente. En operación, revisar concentraciones mensualmente y reducir excedentes con autorización; nunca usar el rebalanceo para aumentar el riesgo tras una pérdida sin revisión.
-7. Para rescates, verificar liquidez efectiva y presupuesto antes de ofrecer importe ejecutable; el objetivo 80% no garantiza liquidez para el 100% de titulares simultáneamente. Si no hay fondos suficientes, la operación no quema el NFT. No prometer retiros instantáneos de posiciones ilíquidas.
-
-## 4. Estimados reproducibles
-
-Las tasas son supuestos, no tasas actuales ni pronósticos de Aave u otro proveedor. Se expresan netas de costes de la estrategia sobre el 20% invertido, no sobre el fondo entero. La porción líquida supone rendimiento cero y paridad constante. Sin ventas nuevas, rescates intermedios, variaciones de precio del token líquido ni impuestos personales. La estrategia deberá documentar sus costes reales antes de sustituir supuestos por rendimiento observado.
-
-Cada año: separar 80% líquido y 20% invertido, aplicar la tasa supuesta a la parte invertida y reunir ambas partes. El siguiente año se rebalancea de nuevo. El cálculo descarta solo fracciones inferiores a una unidad mínima de USDT; no inventa saldo.
-
-| Escenario ilustrativo a 1 año | Tasa neta del 20% invertido | Resultado del fondo | Capital final | RARE/unidad | EPIC/unidad | LEGENDARY/unidad |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Sin rendimiento | 0% | 0 | 114.987,50 | 40 | 22,49375 | 10 |
-| Sensibilidad positiva | 4% | +919,90 | 115.907,40 | 40,32 | 22,67370 | 10,08 |
-| Sensibilidad positiva mayor | 8% | +1.839,80 | 116.827,30 | 40,64 | 22,85365 | 10,16 |
-| Estrés | -20% | -4.599,50 | 110.388,00 | 38,40 | 21,59400 | 9,60 |
-
-Un 4% sobre el 20% invertido representa 0,8% sobre el fondo el primer año, no 4%. Cada categoría participa proporcionalmente de su propia subreserva; no se trasladan resultados entre categorías sin una nueva regla. La ganancia del comprador respecto a su compra es otra magnitud y no se oculta ni se suma dos veces al importe de rescate.
-
-## 5. Evidencia y publicación posterior
-
-En la siguiente etapa, mostrar por separado: ventas liquidadas, aportes contables, reservas depositadas verificadas, capital invertido, liquidez disponible, rendimiento realizado, rendimiento no realizado, costes y fecha de actualización. Vincular a referencias de transacciones públicas sin datos personales. Una venta contable no demuestra por sí sola depósito, inversión o retorno. El panel pendiente no debe mezclar simulaciones con saldo observado.
-
-Fuentes consultadas el 2 de noviembre de 2026:
-
-- Aave, riesgos técnicos, liquidez, red y puentes: https://www.aave.com/docs/resources/risks
-- Aave, rendimientos variables y retiros condicionados por liquidez: https://www.aave.com/faq
-- Investor.gov, diversificación y riesgo: https://www.investor.gov/introduction-investing/getting-started/asset-allocation
-- Circle, transparencia de las reservas del emisor: https://www.circle.com/transparency
-
-La asignación 80/20 y sus límites son una propuesta propia de OriginX; las fuentes no la recomiendan ni avalan los escenarios numéricos.
+Sin deuda, apalancamiento ni puentes. El 4% neto anual es un supuesto sobre el 10% invertido: +459,95 USDT al fondo en un año, equivalente al 0,4% de la reserva inicial. RARE +0,16; EPIC +0,089975; LEGENDARY +0,04 USDT por unidad. Se conservan escenarios negativos; sin garantía de capital ni retiros inmediatos. La liquidez y los costes reales deben verificarse antes de activar una estrategia. No se modifica el libro histórico ni la política de salida deshabilitada.

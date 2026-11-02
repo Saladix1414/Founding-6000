@@ -1,6 +1,6 @@
 // Versioned, deterministic calculation. No ledger, signer or network authority.
 export const RESERVE_POLICY_VERSION = 'OX-FOUNDING-RESERVE-2';
-export const INVESTMENT_PLAN_VERSION = 'OX-RESERVE-INVESTMENT-PREPARATION-1';
+export const INVESTMENT_PLAN_VERSION = 'OX-RESERVE-INVESTMENT-PREPARATION-2';
 export const RESERVE_TIERS = Object.freeze(['RARE', 'EPIC', 'LEGENDARY']);
 const rules = Object.freeze({
   RARE: Object.freeze({ price: 50_000_000n, quantity: 999, supply: 1000, denominator: 1n, weights: Object.freeze([1n,0n,0n]) }),
@@ -42,16 +42,16 @@ export function fullCloseV2() {
     perNft:buckets[i]/BigInt(rules[tier].supply)}));
 }
 
-// 80% liquid, 20% invested, rebalanced annually for this illustration.
+// 90% liquid, 10% invested, rebalanced annually for this illustration.
 // Strategy rate is an assumed NET return on the invested sleeve, not the fund.
 export function simulateManagedReserveScenario(openingReserve,strategyRateBps,years) {
   amount(openingReserve);
   if(!Number.isInteger(strategyRateBps)||strategyRateBps < -10000||strategyRateBps>10000||
     !Number.isInteger(years)||years<1||years>5) throw new Error('INVALID_MANAGED_SCENARIO');
-  const openingInvested=openingReserve*2000n/10000n;
+  const openingInvested=openingReserve*1000n/10000n;
   let closingReserve=openingReserve;
   for(let i=0;i<years;i++) {
-    const invested=closingReserve*2000n/10000n;
+    const invested=closingReserve*1000n/10000n;
     const liquid=closingReserve-invested;
     closingReserve=liquid+invested*BigInt(10000+strategyRateBps)/10000n;
   }
@@ -61,7 +61,7 @@ export function simulateManagedReserveScenario(openingReserve,strategyRateBps,ye
 }
 export function investmentPreparationPlan() {
   return Object.freeze({version:INVESTMENT_PLAN_VERSION,status:'PREPARATION_ONLY',
-    beforeCloseInvestedBps:0, requiresRedemptionActivation:true,afterCloseMaxInvestedBps:2000,liquidTargetBps:8000,
+    beforeCloseInvestedBps:0, requiresRedemptionActivation:true,afterCloseMaxInvestedBps:1000,liquidTargetBps:9000,
     maxPerProtocolBps:1000, borrowingAllowed:false,leverageAllowed:false,bridgesAllowed:false,
     actualProvidersApproved:false, actualNetRatesVerified:false,executionAuthorized:false,
     redemptionAuthorized:false,capitalGuaranteed:false});

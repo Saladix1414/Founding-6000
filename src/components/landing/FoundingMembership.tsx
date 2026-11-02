@@ -218,7 +218,7 @@ export default function FoundingMembership({ language }: Props) {
         <div className="ox-membership-example">
           <div style={{paddingTop:18}}>
             <h3>{es ? "Tu acceso y la reserva, conectados con reglas claras" : "Your access and reserves, connected by clear rules"}</h3>
-            <p>{es ? "El 25% de las ventas iniciales verificadas se destina a reserva. El análisis contempla además aportar un 20% del beneficio neto futuro del negocio, si se obtiene y se aprueba esa política. Ese aporte adicional no es un cargo extra a tu suscripción ni una distribución automática al titular." : "25% of verified initial sales is allocated to reserves. The analysis also considers contributing 20% of future net business profit, if earned and that policy is approved. This additional contribution is not an extra subscription charge or an automatic distribution to holders."}</p>
+            <p>{es ? "El 25% de las ventas iniciales verificadas se destina a reserva. El análisis contempla además aportar un 15% del beneficio neto futuro del negocio, si se obtiene y se aprueba esa política. Ese aporte adicional no es un cargo extra a tu suscripción ni una distribución automática al titular." : "25% of verified initial sales is allocated to reserves. The analysis also considers contributing 15% of future net business profit, if earned and that policy is approved. This additional contribution is not an extra subscription charge or an automatic distribution to holders."}</p>
             <a className="ox-membership-feature-link" href="#ox-business-reserve-scenario">{es ? "Explorar los escenarios de crecimiento de reservas" : "Explore reserve growth scenarios"}<span aria-hidden="true">↑</span></a>
           </div>
         </div>
