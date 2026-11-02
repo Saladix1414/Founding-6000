@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { preparePostSaleRedemption } from '../../../cloudflare/nftPostSaleRedemptionPreparation.mjs';
-import { simulateHolderExit, simulateInvestmentScenario } from '../../../src/components/landing/economySimulation.ts';
+import { simulateHolderExit, simulateManagedReserveScenario } from '../../../src/components/landing/economySimulation.ts';
 
 const allSales = Array.from({length:5999}, (_,i) => i+2);
 const prepare = (settledSerials=allSales,reservedSerials=[1]) => preparePostSaleRedemption({settledSerials,reservedSerials});
@@ -22,13 +22,13 @@ assert.throws(()=>prepare(allSales,[]));
 assert.throws(()=>prepare(allSales,[1,2]));
 for(const invalid of [[2,2],[0],[6001],[NaN],[2.5],['2'],null]) assert.throws(()=>prepare(invalid));
 
-const expectations=[['RARE',57_237_500n,7_237_500n],['EPIC',18_750_000n,-51_250_000n],['LEGENDARY',6_750_000n,-83_250_000n]];
+const expectations=[['RARE',40_000_000n,-10_000_000n],['EPIC',22_493_750n,-47_506_250n],['LEGENDARY',10_000_000n,-80_000_000n]];
 for(const [tier,gross,difference] of expectations) {
   const preview=simulateHolderExit(tier,0,1);
   assert.equal(preview.modeledRedemption,gross);
   assert.equal(preview.differenceBeforeFees,difference);
   assert.equal(preview.executable,false);
-  assert.equal(simulateHolderExit(tier,-10000,1).modeledRedemption,0n);
+  assert.equal(simulateHolderExit(tier,-10000,1).modeledRedemption,gross*8n/10n);
   assert.ok(simulateHolderExit(tier,1000,2).modeledRedemption>gross);
   assert.ok(simulateHolderExit(tier,-1000,2).modeledRedemption<gross);
 }
@@ -36,7 +36,7 @@ assert.throws(()=>simulateHolderExit('UNKNOWN',0,1));
 assert.throws(()=>simulateHolderExit('RARE',Infinity,1));
 assert.throws(()=>simulateHolderExit('RARE',0,0));
 // Rounding stays in the reserve, not an overpayment.
-const reserve=simulateInvestmentScenario(57_237_500_000n,500,3).closingReserve;
+const reserve=simulateManagedReserveScenario(40_000_000_000n,500,3).closingReserve;
 const preview=simulateHolderExit('RARE',500,3);
 assert.equal(preview.modeledRedemption*1000n+preview.roundingRemainder,reserve);
 const policy=readFileSync(new URL('../economics/economicExitPolicy.ts',import.meta.url),'utf8');

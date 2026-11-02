@@ -57,8 +57,8 @@ export default function CommercialCards({ language, onEconomy }: Props) {
       number: "01",
       title: es ? "TU PIEZA" : "YOUR COLLECTIBLE",
       description: es
-        ? "Arte generativo, número único y un NFT transferible."
-        : "Generative art, a unique number and a transferable NFT.",
+        ? "Arte generativo, número único y un NFT que acompaña el acceso restante de tu suscripción transferible."
+        : "Generative art, a unique number and an NFT carrying the remaining access of your transferable subscription.",
       image: "epic-dragon.png",
       href: "#phases",
       action: es ? "Ver colección" : "View collection",
@@ -68,8 +68,8 @@ export default function CommercialCards({ language, onEconomy }: Props) {
       number: "02",
       title: es ? "REGLAS CLARAS" : "CLEAR RULES",
       description: es
-        ? "Cómo funciona la reserva y cómo se separan los fondos."
-        : "How the reserve works and how funds are kept separate.",
+        ? "25% de cada venta inicial a reserva. Explorá los importes por NFT y los escenarios de crecimiento."
+        : "25% of each initial sale to reserves. Explore per-NFT amounts and growth scenarios.",
       image: "economy-emblem.png",
       href: null,
       action: es ? "Ver economía" : "View economy",

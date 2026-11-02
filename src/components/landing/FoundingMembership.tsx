@@ -22,6 +22,17 @@ export default function FoundingMembership({ language }: Props) {
   const benefits = [
     {
       number: "02",
+      theme: "green",
+      title: es ? "Suscripción transferible con tu NFT" : "Subscription transferable with your NFT",
+      description: es
+        ? "El acceso restante acompaña al NFT cuando se transfiere a otro titular válido. Podés ceder el tiempo que todavía quede de tu membresía, sujeto a la verificación de titularidad."
+        : "Remaining access follows the NFT when transferred to another valid holder. You can pass on the unused portion of your membership, subject to ownership verification.",
+      note: es
+        ? "Se conserva el vencimiento original: transferir no genera otros 12 meses ni duplica el acceso."
+        : "The original expiry is preserved: a transfer does not create another 12 months or duplicate access.",
+    },
+    {
+      number: "03",
       theme: "lavender",
       title: "Founding Member",
       description: es
@@ -32,7 +43,7 @@ export default function FoundingMembership({ language }: Props) {
         : "Recognition does not mean perpetual access.",
     },
     {
-      number: "03",
+      number: "04",
       theme: "sky",
       title: es ? "Acceso beta prioritario" : "Priority beta access",
       description: es
@@ -43,7 +54,7 @@ export default function FoundingMembership({ language }: Props) {
         : "Subject to each program's availability.",
     },
     {
-      number: "04",
+      number: "05",
       theme: "peach",
       title: es ? "Tu opinión cuenta" : "Your feedback matters",
       description: es
@@ -52,7 +63,7 @@ export default function FoundingMembership({ language }: Props) {
       note: null,
     },
     {
-      number: "05",
+      number: "06",
       theme: "green",
       title: es ? "Ecosistema conectado" : "Connected ecosystem",
       description: es
@@ -100,13 +111,13 @@ export default function FoundingMembership({ language }: Props) {
             {es ? "TU MEMBRESÍA FOUNDING" : "YOUR FOUNDING MEMBERSHIP"}
           </p>
           <h2 id="ox-membership-title">
-            {es ? "Identidad, acceso" : "Identity, access"}{" "}
-            <span>{es ? "y comunidad." : "and community."}</span>
+            {es ? "Tu suscripción," : "Your subscription,"}{" "}
+            <span>{es ? "conectada a tu NFT." : "connected to your NFT."}</span>
           </h2>
           <p>
             {es
-              ? "Conocé el acceso previsto, el reconocimiento Founding y las oportunidades de participación."
-              : "Explore the planned access, Founding recognition and opportunities to participate."}
+              ? "12 meses de Focus Founding Access desde la activación válida, reconocimiento Founding y oportunidades de acceso beta y participación. El tiempo restante de la suscripción es transferible junto con el NFT."
+              : "12 months of Focus Founding Access from valid activation, Founding recognition, and opportunities for beta access and participation. The remaining subscription term is transferable with the NFT."}
           </p>
         </header>
 
@@ -128,6 +139,8 @@ export default function FoundingMembership({ language }: Props) {
                 ? "La membresía verificada está diseñada para incluir este acceso. Los 12 meses empiezan con la activación válida de tu cuenta Founding Access, no con la compra."
                 : "Verified membership is designed to include this access. The 12 months start upon valid activation of your Founding Access account, not at purchase."}
             </p>
+
+            <p>{es ? "El NFT reúne tu pieza de colección y el acceso previsto. La reserva y el rescate futuro tienen reglas propias: no sustituyen la suscripción ni se activan automáticamente con la compra." : "The NFT brings together your collectible and planned access. Reserves and future redemption have separate rules: they do not replace the subscription or activate automatically at purchase."}</p>
 
             <a className="ox-membership-feature-link" href="#ox-membership-lifecycle">
               {es ? "Cómo comienza tu acceso" : "How your access begins"}
@@ -202,6 +215,13 @@ export default function FoundingMembership({ language }: Props) {
             </p>
           </div>
         </aside>
+        <div className="ox-membership-example">
+          <div style={{paddingTop:18}}>
+            <h3>{es ? "Tu acceso y la reserva, conectados con reglas claras" : "Your access and reserves, connected by clear rules"}</h3>
+            <p>{es ? "El 25% de las ventas iniciales verificadas se destina a reserva. El análisis contempla además aportar un 20% del beneficio neto futuro del negocio, si se obtiene y se aprueba esa política. Ese aporte adicional no es un cargo extra a tu suscripción ni una distribución automática al titular." : "25% of verified initial sales is allocated to reserves. The analysis also considers contributing 20% of future net business profit, if earned and that policy is approved. This additional contribution is not an extra subscription charge or an automatic distribution to holders."}</p>
+            <a className="ox-membership-feature-link" href="#ox-business-reserve-scenario">{es ? "Explorar los escenarios de crecimiento de reservas" : "Explore reserve growth scenarios"}<span aria-hidden="true">↑</span></a>
+          </div>
+        </div>
       </div>
     </section>
   );

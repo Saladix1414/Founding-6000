@@ -360,3 +360,7 @@ export function calculateReserveContribution(
     allocations,
   };
 }
+
+// V2 is explicit: existing version-1 ledger records and writers are not reinterpreted.
+export { calculateReserveContributionV2, RESERVE_POLICY_VERSION as RESERVE_POLICY_VERSION_V2 }
+  from "../../../shared/foundingReservePolicyV2.mjs";
