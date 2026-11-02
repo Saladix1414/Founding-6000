@@ -68,3 +68,14 @@ assert.match(ui,/85% restante del beneficio neto/);
 assert.match(ui,/no se cuentan como nuevos cobros mensuales/);
 assert.doesNotMatch(ui,/negocio rentable|20% invertido|80% líquido/);
 console.log("NO_GUARANTEED_PROFIT_OR_INCLUDED_SUBSCRIPTION_DOUBLE_COUNT=PASS");
+
+assert.match(ui,/ox-reserve-investment-totals/);
+const totalProjection=simulateManagedReserveScenario(114_987_500_000n,400,1);
+assert.equal(totalProjection.openingReserve+totalProjection.netChange,totalProjection.closingReserve);
+assert.equal(totalProjection.netChange,459_950_000n);
+assert.equal(totalProjection.closingReserve,115_447_450_000n);
+for(const rate of [-2000,0,200,400,800]) {
+ const total=simulateManagedReserveScenario(114_987_500_000n,rate,1);
+ assert.equal(total.openingReserve+total.netChange,total.closingReserve);
+}
+console.log('TOTAL_RESERVE_CAPITAL_AND_NET_RESULT_SEPARATE=PASS');

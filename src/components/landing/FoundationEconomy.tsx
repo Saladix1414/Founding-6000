@@ -270,6 +270,15 @@ export default function FoundationEconomy({
             <h3>{es ? 'Incremento estimado por NFT con el plan de inversión a 1 año' : 'Estimated increase per NFT under the 1-year investment plan'}</h3>
             <span>{es ? 'INVERSIÓN · SUPUESTO' : 'INVESTMENT · ASSUMPTION'}</span>
           </div>
+          <div id="ox-reserve-investment-totals" className="ox-economy-reserve-detail">
+            <h4>{es ? 'Resultado total de la reserva del 25% a 1 año' : 'Total one-year result for the 25% reserve'}</h4>
+            <div className="ox-economy-projection-metrics" aria-live="polite" aria-atomic="true">
+              <div><span>{es ? 'Reserva inicial · 25% de las ventas' : 'Opening reserve · 25% of sales'}</span><strong>{money(managedFund.openingReserve)}</strong></div>
+              <div><span>{es ? 'Resultado neto estimado de inversión · fondo completo' : 'Estimated net investment result · whole fund'}</span><strong>{managedFund.netChange > 0n ? '+' : ''}{money(managedFund.netChange)}</strong></div>
+              <div><span>{es ? 'Reserva total estimada tras 1 año' : 'Estimated total reserve after 1 year'}</span><strong>{money(managedFund.closingReserve)}</strong></div>
+            </div>
+            <p className="ox-economy-small">{es ? 'Capital inicial + resultado de inversión = reserva final. El resultado usa la tasa elegida sobre el 10% invertido; el 90% líquido no genera rendimiento en este ejemplo. Se suponen descontados los costes de la estrategia. No suma los aportes futuros del negocio ni descuenta los impuestos y costes personales. Son estimaciones, no fondos ya cobrados.' : 'Opening principal + investment result = closing reserve. The result uses your selected rate on the invested 10%; the liquid 90% earns no return in this example. Strategy costs are assumed deducted. Future business contributions are excluded, as are personal taxes and costs. These are estimates, not funds already received.'}</p>
+          </div>
           <p className="ox-economy-small">{es ? 'Este bloque muestra por separado cuánto añadiría la inversión a la reserva de cada NFT en 12 meses. Conserva el 90% líquido e invierte hasta el 10%, con la tasa neta anual seleccionada arriba. Con el supuesto inicial del 4%, el incremento equivale al 0,4% de la reserva inicial de cada NFT. No incluye aportes del negocio ni representa una ganancia frente al precio de compra.' : 'This section separately shows what investment would add to each NFT’s modeled reserve over 12 months. It keeps 90% liquid and invests up to 10% at the assumed annual net rate selected above. At the initial 4% assumption, the increase equals 0.4% of each NFT’s opening reserve. Business contributions are excluded; this is not profit versus purchase price.'}</p>
           <div className="ox-economy-rules-scroll" role="region" tabIndex={0} aria-label={es ? 'Incremento de inversión por NFT a un año' : 'One-year investment increase per NFT'}>
             <table className="ox-economy-table">
