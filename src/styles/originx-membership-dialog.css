@@ -1,0 +1,46 @@
+.ox-membership-dialog {
+  width: min(960px, calc(100vw - 32px));
+  max-width: none;
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid #d9cee9;
+  border-radius: 22px;
+  color: #0a173a;
+  background: #fff6e5;
+  box-shadow: 0 20px 70px rgb(10 23 58 / 24%);
+}
+.ox-membership-dialog::backdrop { background: rgb(10 23 58 / 55%); }
+.ox-membership-dialog-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  background: #fff6e5;
+  border-bottom: 1px solid #e3d8c8;
+  font-weight: 700;
+}
+.ox-membership-dialog-bar button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid #c7b3ed;
+  border-radius: 12px;
+  color: #4e2c88;
+  background: #eee4ff;
+  font: inherit;
+  cursor: pointer;
+}
+.ox-membership-dialog-bar button:focus-visible { outline: 3px solid #7046af; outline-offset: 2px; }
+.ox-membership-dialog #benefits.ox-membership { padding: 24px; }
+.ox-membership-dialog .ox-membership-inner { width: 100%; min-width: 0; }
+@media(max-width:599px) {
+  .ox-membership-dialog { width: calc(100vw - 16px); max-height: calc(100dvh - 16px); border-radius: 16px; }
+  .ox-membership-dialog-bar { padding: 10px 14px; font-size: 14px; }
+  .ox-membership-dialog #benefits.ox-membership { padding: 20px 14px; }
+}

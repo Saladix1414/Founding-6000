@@ -1,5 +1,5 @@
 import FoundingJourney from "./components/landing/FoundingJourney";
-import FoundingMembership from "./components/landing/FoundingMembership";
+import FoundingMembershipDialog from "./components/landing/FoundingMembershipDialog";
 import FoundationEconomy, { scrollToEconomy } from "./components/landing/FoundationEconomy";
 import FoundingCollection from "./components/landing/FoundingCollection";
 import CommercialCards from "./components/landing/CommercialCards";
@@ -859,7 +859,7 @@ function App() {
         />
         <FoundationEconomy language={language} />
 
-        <FoundingMembership language={language} />
+        <FoundingMembershipDialog language={language} />
 
         <EconomicOperationsPanel
         language={
