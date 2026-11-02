@@ -5,6 +5,7 @@ import {
   simulateBatchClose,
   simulateInvestmentScenario,
   parseScenarioCosts,
+  simulateHolderExit,
   type SimulationTier,
 } from "./economySimulation";
 import "../../styles/originx-economy.css";
@@ -56,14 +57,17 @@ export default function FoundationEconomy({
         <header className="ox-economy-heading">
           <p className="ox-economy-eyebrow">ORIGINX FOUNDATION</p>
           <h2 id="ox-economy-title" tabIndex={-1}>
-            {es ? "Cada venta," : "Every sale,"}{" "}
-            <span>{es ? "una distribución clara." : "a clear allocation."}</span>
+            {es ? "Tu NFT," : "Your NFT,"}{" "}
+            <span>{es ? "una reserva y un futuro rescate." : "a reserve and a future redemption."}</span>
           </h2>
           <p>
             {es
-              ? "La política destina el 25% de cada venta inicial verificada a reserva. El 75% restante queda fuera de ella."
-              : "The policy allocates 25% of each verified initial sale to reserves. The remaining 75% stays outside the reserve."}
+              ? "El 25% de cada venta inicial verificada se destina a reserva. El objetivo del modelo es permitirte rescatar tu NFT desde la web, quemándolo a cambio del importe que le corresponda según la política de su categoría, una vez completada la venta y habilitado el mecanismo."
+              : "25% of each verified initial sale is allocated to reserves. The model aims to let you redeem your NFT on this website, burning it in exchange for the amount assigned by its category policy, once sales close and the mechanism is enabled."}
           </p>
+          <p className="ox-economy-small">{es
+            ? 'Política prevista: acumular y preservar los aportes de reserva durante la venta, sin rescates ni retiros de ese capital hasta la habilitación de la quema. La protección efectiva de los fondos y el rescate aún requieren implementación y verificación.'
+            : 'Planned policy: accumulate and preserve reserve contributions during sales, with no redemptions or withdrawals of that principal before burn activation. Effective fund protection and redemption still require implementation and verification.'}</p>
         </header>
 
         <div className="ox-economy-scheme">
@@ -223,6 +227,32 @@ export default function FoundationEconomy({
           </div>
         </div>
 
+        <div className="ox-economy-scheme ox-economy-projection">
+          <div className="ox-economy-scheme-heading">
+            <h3>{es ? 'Qué recibirías al rescatar tu NFT' : 'What you would receive by redeeming your NFT'}</h3>
+            <span>{es ? 'SIMULACIÓN · RESCATE NO HABILITADO' : 'SIMULATION · REDEMPTION DISABLED'}</span>
+          </div>
+          <p className="ox-economy-small">{es
+            ? 'El recorrido previsto es: finalizar la venta de la colección → verificar las reservas disponibles → habilitar el rescate → solicitarlo desde tu wallet → cobrar y quemar el NFT en una misma operación, o revertir todo si falla. No se debe quemar primero y esperar un pago posterior.'
+            : 'Planned flow: complete collection sales → verify available reserves → enable redemption → request from your wallet → receive payment and burn the NFT in one operation, or revert everything on failure. Burning first and waiting for later payment is not the intended flow.'}</p>
+          <p className="ox-economy-small">{es
+            ? 'Cierre previsto: 5.999 ventas y #0001 Azhurak reservado, cubriendo los 6.000 números. Esta simulación usa el cierre completo y los mismos controles de inversión de arriba, aunque el selector por tandas muestre un cierre parcial. La elegibilidad de #0001 y el divisor efectivo para rescates deberán aprobarse antes de activar el cobro.'
+            : 'Planned close: 5,999 sales and reserved #0001 Azhurak, covering all 6,000 serials. This simulation uses the full close and the investment controls above, even when the batch selector shows a partial close. Eligibility of #0001 and the effective redemption denominator must be approved before payout activation.'}</p>
+          <div className="ox-economy-rules-scroll" role="region" tabIndex={0} aria-label={es ? 'Simulación de rescate por NFT' : 'Redemption simulation per NFT'}>
+            <table className="ox-economy-table">
+              <caption>{es ? 'Modelo ilustrativo: reserva de cada categoría dividida entre su suministro máximo. Diferencia antes de comisiones e impuestos; no es un importe disponible para cobrar.' : 'Illustrative model: each category reserve divided by maximum supply. Difference before fees and taxes; not an available payout quote.'}</caption>
+              <thead><tr><th scope="col">{es ? 'Categoría' : 'Category'}</th><th scope="col">{es ? 'Compra de referencia' : 'Reference purchase'}</th><th scope="col">{es ? 'Rescate simulado' : 'Modeled redemption'}</th><th scope="col">{es ? 'Ganancia / pérdida antes de costes' : 'Gain / loss before costs'}</th></tr></thead>
+              <tbody>{SIMULATION_TIERS.map(value => {
+                const exit = simulateHolderExit(value, annualRateBps, years);
+                return <tr key={value}><th scope="row">{value}</th><td>{money(exit.price)}</td><td>{money(exit.modeledRedemption)}</td><td>{exit.differenceBeforeFees > 0n ? '+' : ''}{money(exit.differenceBeforeFees)}</td></tr>;
+              })}</tbody>
+            </table>
+          </div>
+          <p className="ox-economy-small">{es
+            ? 'Un mayor saldo de reserva puede aumentar el importe del modelo. La ganancia del comprador depende de que el rescate supere su precio de compra y los costes. Los resultados de inversiones pueden ser positivos o negativos; el 25% fijo es un aporte, no una rentabilidad garantizada.'
+            : 'A larger reserve can increase the modeled amount. Buyer profit depends on redemption exceeding purchase price and costs. Investment results can be positive or negative; the fixed 25% is a contribution, not a guaranteed return.'}</p>
+        </div>
+
         <details className="ox-economy-rules">
           <summary>
             {es ? "Comparar las reglas de las tres categorías" : "Compare all three category rules"}
@@ -274,8 +304,8 @@ export default function FoundationEconomy({
 
         <p className="ox-economy-small">
           {es
-            ? "La distribución entre subreservas no representa dividendos individuales, un derecho de rescate ni rendimientos garantizados."
-            : "Allocation among subreserves does not represent individual dividends, redemption rights or guaranteed returns."}
+            ? "El rescate mediante quema es el mecanismo previsto para después del cierre. Hoy permanece deshabilitado; los ejemplos no constituyen saldos cobrables ni ganancias garantizadas."
+            : "Burn-based redemption is the intended mechanism after closing. It remains disabled today; these examples are not payable balances or guaranteed profits."}
         </p>
       </div>
     </section>

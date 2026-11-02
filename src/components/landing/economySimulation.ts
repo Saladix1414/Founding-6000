@@ -84,3 +84,15 @@ export function parseScenarioCosts(value: string): bigint | null {
   const [whole, fraction = ''] = value.replace(',', '.').split('.');
   return BigInt(whole) * 1_000_000n + BigInt(fraction.padEnd(6, '0'));
 }
+
+// Illustration only. Maximum-supply denominator is NOT a live redemption policy.
+export function simulateHolderExit(tier: SimulationTier, annualRateBps: number, years: number) {
+  const unit = simulateBatchClose(3).units.find(item => item.tier === tier);
+  if (!unit) throw new Error('INVALID_SIMULATION_TIER');
+  const price = simulateReferenceSale(tier).price;
+  const reserve = simulateInvestmentScenario(unit.reserve, annualRateBps, years).closingReserve;
+  const modeledRedemption = reserve / BigInt(unit.denominator);
+  return { tier, price, modeledRedemption, differenceBeforeFees: modeledRedemption - price,
+    denominator: unit.denominator, roundingRemainder: reserve % BigInt(unit.denominator),
+    executable: false as const };
+}
