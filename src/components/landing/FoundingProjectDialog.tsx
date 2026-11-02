@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import FoundingJourney from './FoundingJourney';
+import ProjectShowcase from './ProjectShowcase';
 import { mountMembershipDialog } from './membershipDialogController';
 import '../../styles/originx-membership-dialog.css';
 import '../../styles/originx-project-dialog.css';
@@ -29,20 +30,20 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
               <div>
                 <div className="db-eyebrow">
                   {language === "es"
-                    ? "Estado real del producto"
-                    : "Product truth"}
+                    ? "CREÁ · VENDÉ · EXPLORÁ"
+                    : "BUILD · SELL · EXPLORE"}
                 </div>
 
                 <h2 className="db-title">
                   {language === "es"
-                    ? "Construyendo el ecosistema OriginX Foundation."
-                    : "Building the OriginX Foundation ecosystem."}
+                    ? "Tu próximo proyecto empieza en OriginX Foundation."
+                    : "Your next project starts at OriginX Foundation."}
                 </h2>
 
                 <p className="db-copy">
                   {language === "es"
-                    ? "Founding 6000 es una campaña de prelanzamiento. La madurez de cada producto se muestra explícitamente para que las capacidades planificadas no se presenten como disponibles."
-                    : "Founding 6000 is a pre-launch campaign. Product maturity is shown explicitly so planned capabilities are not represented as already available."}
+                    ? "Un ecosistema para emprendedores, desarrolladores y creadores: tiendas online, diseño web, inteligencia artificial y juegos de Brain Boost. Conocé sus espacios y el estado de cada herramienta."
+                    : "An ecosystem for entrepreneurs, developers and creators: online stores, web design, artificial intelligence and Brain Boost games. Explore its workspaces and each tool’s status."}
                 </p>
               </div>
 
@@ -53,6 +54,9 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
               </span>
             </div>
 
+            <ProjectShowcase language={language} />
+
+            <h3 className="ox-project-status-heading">{es ? "Herramientas y estado de desarrollo" : "Tools and development status"}</h3>
             <div className="product-grid">
               <article className="product-card">
                 <div className="product-card__top">
@@ -68,8 +72,8 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
 
                 <p>
                   {language === "es"
-                    ? "Flujos de comercio y bases operativas actualmente en desarrollo activo."
-                    : "Commerce workflows and operational foundations currently under active development."}
+                    ? "Organizá productos, pedidos y clientes. Store Builder forma parte de Commerce OS para diseñar tu tienda dentro del mismo espacio. En desarrollo activo."
+                    : "Organize products, orders and customers. Store Builder is part of Commerce OS, letting you design your store in the same workspace. Under active development."}
                 </p>
               </article>
 
@@ -83,8 +87,8 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
 
                 <p>
                   {language === "es"
-                    ? "Entorno visual de creación de sitios web desarrollado como parte de DigitalBoost Studio."
-                    : "Visual website creation environment being developed as part of DigitalBoost Studio."}
+                    ? "Diseñá sitios y landing pages con un canvas visual, estilos y vista previa responsive. Sky Workshop reúne las herramientas de edición en un espacio de desarrollo."
+                    : "Design sites and landing pages with a visual canvas, styles and responsive preview. Sky Workshop brings editing tools into one development workspace."}
                 </p>
               </article>
 
@@ -102,8 +106,8 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
 
                 <p>
                   {language === "es"
-                    ? "Capacidad de orquestación comercial que actualmente forma parte de Commerce OS."
-                    : "Commerce orchestration capability currently belonging inside Commerce OS."}
+                    ? "Orquestación transversal de tareas y automatizaciones, con verificación y aprobación antes de ejecutar cambios. Incluye flujos del área comercial."
+                    : "Cross-platform task and automation orchestration, with verification and approval before executing changes. Includes commerce workflows."}
                 </p>
               </article>
 
@@ -112,8 +116,8 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
                   <span>04</span>
                   <span className="product-status product-status--active">
                     {language === "es"
-                      ? "Avanzado / En desarrollo"
-                      : "Advanced / In development"}
+                      ? "Demo local / En desarrollo"
+                      : "Local demo / In development"}
                   </span>
                 </div>
 
@@ -121,8 +125,8 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
 
                 <p>
                   {language === "es"
-                    ? "Herramientas de trading, bots y automatización para activos digitales. En desarrollo activo."
-                    : "Trading tools, bots and automation for digital assets. Under active development."}
+                    ? "Explorá mercados, carteras y bots en Exchange Harbor. La vista mostrada usa datos simulados y paper trading; no representa operaciones ni beneficios reales."
+                    : "Explore markets, portfolios and bots in Exchange Harbor. The view shown uses simulated data and paper trading; it does not represent real trades or profits."}
                 </p>
               </article>
 
@@ -140,8 +144,8 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
 
                 <p>
                   {language === "es"
-                    ? "Una base en desarrollo para crear herramientas de IA, agentes y automatizaciones."
-                    : "A foundation under development for building AI tools, agents and automations."}
+                    ? "Prepará inteligencias, agentes, bots y workflows con una arquitectura visual. La ejecución requiere configurar modelos, proveedores y runtime; el espacio mostrado está en desarrollo."
+                    : "Prepare intelligences, agents, bots and workflows with a visual architecture. Execution requires configuring models, providers and runtime; the workspace shown is under development."}
                 </p>
               </article>
 
@@ -159,8 +163,8 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
 
                 <p>
                   {language === "es"
-                    ? "Una capacidad planificada de DigitalBoost. Todavía no está disponible."
-                    : "A planned DigitalBoost capability. Not available yet."}
+                    ? "Seguridad y supervisión previstas para el ecosistema. Se mantiene como capacidad planificada; no se ofrece como servicio disponible."
+                    : "Planned ecosystem security and oversight. Remains a planned capability and is not offered as an available service."}
                 </p>
               </article>
 
@@ -174,9 +178,14 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
 
                 <p>
                   {language === "es"
-                    ? "Un espacio planificado para conectar futuras experiencias de DigitalBoost."
-                    : "A planned space to connect future DigitalBoost experiences."}
+                    ? "Conexión prevista entre experiencias y espacios de la comunidad OriginX. Su alcance y disponibilidad se definirán durante el desarrollo."
+                    : "Planned connections between OriginX experiences and community spaces. Scope and availability will be defined during development."}
                 </p>
+              </article>
+              <article className="product-card">
+                <div className="product-card__top"><span>08</span><span className="product-status product-status--active">{es ? 'Versión de desarrollo' : 'Development version'}</span></div>
+                <h3>Brain Boost · Neural Arcade</h3>
+                <p>{es ? 'Juegos de memoria, lógica, atención y orientación, más Neon Arena: Virus Survivor. Una propuesta recreativa con identidad visual propia por experiencia.' : 'Memory, logic, attention and spatial games, plus Neon Arena: Virus Survivor. Recreational experiences with their own visual identities.'}</p>
               </article>
             </div>
           </div>
