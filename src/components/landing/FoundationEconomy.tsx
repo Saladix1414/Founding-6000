@@ -3,7 +3,6 @@ import {
   SIMULATION_TIERS,
   simulateReferenceSale,
   simulateBatchClose,
-  simulateInvestmentScenario,
   parseScenarioCosts,
   simulateHolderExit,
   type SimulationTier,
@@ -35,11 +34,13 @@ export default function FoundationEconomy({
   const [costInput, setCostInput] = useState('');
   const [annualRateBps, setAnnualRateBps] = useState(0);
   const [years, setYears] = useState(1);
+  const [holderTier, setHolderTier] = useState<SimulationTier>('RARE');
   let costs: bigint | null = null;
   let costInvalid = false;
   try { costs = parseScenarioCosts(costInput); } catch { costInvalid = true; }
   const closing = simulateBatchClose(completedBatches, costs);
-  const investment = simulateInvestmentScenario(closing.reserve, annualRateBps, years);
+  const perNftAtClose = simulateHolderExit(holderTier, 0, 1);
+  const perNftAfterInvestment = simulateHolderExit(holderTier, annualRateBps, years);
 
   const money = (minor: bigint) =>
     new Intl.NumberFormat(es ? "es-AR" : "en-US", {
@@ -209,20 +210,33 @@ export default function FoundationEconomy({
             <h3>{es ? 'Estimado del resultado de inversiones tras finalizar la venta' : 'Estimated investment results after the sale closes'}</h3>
             <span>{es ? 'ESCENARIO SELECCIONADO' : 'SELECTED SCENARIO'}</span>
           </div>
-          <p className="ox-economy-small">{es ? 'Explorá la evolución de la reserva del cierre seleccionado. Este escenario supone invertir el 100% de esa reserva después de las ventas, con capitalización anual y la variación neta elegida; admite resultados positivos o negativos.' : 'Explore the reserve after the selected closing stage. This scenario assumes investing 100% of that reserve after sales, with annual compounding and the chosen net change; results may be positive or negative.'}</p>
+          <p className="ox-economy-small">{es ? 'Elegí tu categoría y compará cuánto pagás por un NFT, la reserva que representa una unidad al finalizar toda la colección y cómo cambiaría ese importe con la inversión seleccionada. Todos los importes destacados de este bloque son por un NFT, no por toda la reserva.' : 'Choose your category and compare the price of one NFT, its modeled reserve amount at full collection close, and how that amount would change under your selected investment scenario. Every highlighted amount in this section is per NFT, not the total reserve.'}</p>
+          <fieldset className="ox-economy-selector">
+            <legend>{es ? '¿Qué NFT querés comparar?' : 'Which NFT would you like to compare?'}</legend>
+            <div>{SIMULATION_TIERS.map(value => <label key={value}><input type="radio" name="ox-holder-tier" value={value} checked={holderTier === value} onChange={() => setHolderTier(value)} /><span>{value}</span></label>)}</div>
+          </fieldset>
           <div className="ox-economy-projection-controls">
             <label className="ox-economy-field" htmlFor="ox-investment-rate"><span>{es ? 'Variación neta anual supuesta' : 'Assumed annual net change'}</span><select id="ox-investment-rate" value={annualRateBps} onChange={event => setAnnualRateBps(Number(event.target.value))}>{[-2000,-1000,0,500,1000,2000].map(rate => <option key={rate} value={rate}>{rate > 0 ? '+' : ''}{rate / 100}%</option>)}</select></label>
             <label className="ox-economy-field" htmlFor="ox-investment-years"><span>{es ? 'Plazo desde el cierre' : 'Time after closing'}</span><select id="ox-investment-years" value={years} onChange={event => setYears(Number(event.target.value))}>{[1,2,3,4,5].map(year => <option key={year} value={year}>{year} {es ? (year === 1 ? 'año' : 'años') : (year === 1 ? 'year' : 'years')}</option>)}</select></label>
           </div>
           <div className="ox-economy-projection-metrics" aria-live="polite" aria-atomic="true">
-            <div><span>{es ? 'Reserva de partida' : 'Opening reserve'}</span><strong>{money(investment.openingReserve)}</strong></div>
-            <div><span>{es ? 'Resultado neto estimado de inversión' : 'Estimated net investment result'}</span><strong>{money(investment.netChange)}</strong></div>
-            <div><span>{es ? 'Reserva final del escenario' : 'Scenario closing reserve'}</span><strong>{money(investment.closingReserve)}</strong></div>
+            <div><span>{es ? 'Precio de compra de 1 NFT' : 'Purchase price of 1 NFT'} · {holderTier}</span><strong>{money(perNftAtClose.price)}</strong></div>
+            <div><span>{es ? 'Reserva por NFT al finalizar la colección' : 'Reserve per NFT at full collection close'} · {holderTier}</span><strong>{money(perNftAtClose.modeledRedemption)}</strong></div>
+            <div><span>{es ? 'Por NFT tras la inversión simulada' : 'Per NFT after simulated investment'} · {holderTier}</span><strong>{money(perNftAfterInvestment.modeledRedemption)}</strong></div>
           </div>
+          <p className="ox-economy-small" aria-live="polite">{es
+            ? 'Para 1 NFT ' + holderTier + ': ' + money(perNftAtClose.price) + ' de compra → ' + money(perNftAtClose.modeledRedemption) + ' según reserva al cierre → ' + money(perNftAfterInvestment.modeledRedemption) + ' tras ' + years + (years === 1 ? ' año' : ' años') + ' con una variación anual del ' + (annualRateBps / 100) + '%.'
+            : 'For 1 ' + holderTier + ' NFT: ' + money(perNftAtClose.price) + ' purchase → ' + money(perNftAtClose.modeledRedemption) + ' modeled reserve at close → ' + money(perNftAfterInvestment.modeledRedemption) + ' after ' + years + (years === 1 ? ' year' : ' years') + ' at ' + (annualRateBps / 100) + '% annual change.'}</p>
+          <div className="ox-economy-sale" aria-live="polite"><span>{es ? 'Ganancia / pérdida de 1 NFT frente al precio de compra, antes de costes' : 'Gain / loss on 1 NFT versus purchase price, before costs'}</span><strong>{perNftAfterInvestment.differenceBeforeFees > 0n ? '+' : ''}{money(perNftAfterInvestment.differenceBeforeFees)}</strong></div>
+          <p className="ox-economy-small">{es ? 'El cuadro celeste corresponde siempre al cierre completo: 5.999 ventas y #0001 reservado. El verde supone invertir el 100% de la subreserva de esa categoría después del cierre, sin rescates intermedios y con capitalización anual. Una tasa del 0% mantiene el importe; una tasa negativa lo reduce. Las comisiones e impuestos del rescate están pendientes: el beneficio neto después de esos costes todavía no se puede calcular.' : 'The blue card always uses full collection close: 5,999 sales and reserved #0001. The green card assumes investing 100% of that category reserve after closing, without interim redemptions and with annual compounding. A 0% rate leaves the amount unchanged; a negative rate reduces it. Redemption fees and taxes remain undefined: net profit after those costs cannot yet be calculated.'}</p>
           <div className="ox-economy-rules-scroll" role="region" aria-label={es ? 'Evolución por categoría' : 'Evolution by category'} tabIndex={0}>
             <table className="ox-economy-table"><caption>{es ? 'Reserva media por unidad de categoría, calculada sobre el suministro máximo (1.000 / 2.000 / 3.000). No es una cotización de reventa ni una ganancia personal confirmada.' : 'Average reserve per category unit, based on maximum supply (1,000 / 2,000 / 3,000). Not a resale quote or confirmed personal profit.'}</caption>
-              <thead><tr><th scope="col">{es ? 'Categoría' : 'Category'}</th><th scope="col">{es ? 'Tras las ventas' : 'After sales'}</th><th scope="col">{es ? 'Tras el escenario de inversión' : 'After the investment scenario'}</th></tr></thead>
-              <tbody>{closing.units.map(unit => <tr key={unit.tier}><th scope="row">{unit.tier}</th><td>{money(unit.averageReserve)}</td><td>{money(simulateInvestmentScenario(unit.reserve,annualRateBps,years).closingReserve / BigInt(unit.denominator))}</td></tr>)}</tbody>
+              <thead><tr><th scope="col">{es ? '1 NFT de categoría' : '1 NFT in category'}</th><th scope="col">{es ? 'Precio de compra' : 'Purchase price'}</th><th scope="col">{es ? 'Reserva por NFT al cierre completo' : 'Reserve per NFT at full close'}</th><th scope="col">{es ? 'Por NFT tras inversión' : 'Per NFT after investment'}</th></tr></thead>
+              <tbody>{SIMULATION_TIERS.map(value => {
+                const atClose = simulateHolderExit(value, 0, 1);
+                const afterInvestment = simulateHolderExit(value, annualRateBps, years);
+                return <tr key={value}><th scope="row">{value}</th><td>{money(atClose.price)}</td><td>{money(atClose.modeledRedemption)}</td><td>{money(afterInvestment.modeledRedemption)}</td></tr>;
+              })}</tbody>
             </table>
           </div>
         </div>
