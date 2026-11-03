@@ -503,3 +503,12 @@
 #phases.ox-collection .ox-tier-benefits-brief { margin: 12px 0; padding-left: 18px; }
 #phases.ox-collection .ox-tier-benefits-brief li { margin: 0 0 10px; font-size: 14px; line-height: 1.5; }
 #phases.ox-collection .ox-tier-details > a { display: inline-block; margin-block: 6px; font-weight: 700; color: #185526; }
+
+#phases .ox-tier-facts .ox-tier-gain .ox-tier-gain-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.45;
+  white-space: normal;
+}

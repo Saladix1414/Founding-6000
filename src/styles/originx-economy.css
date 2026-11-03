@@ -908,3 +908,14 @@
  #economia .ox-economy-projection-metrics > div { grid-template-columns: minmax(0,1fr) auto; align-items: center; }
  #economia .ox-economy-projection-metrics strong { text-align: right; }
 }
+
+#economia .ox-economy-reserve-lead {
+  color: #185526;
+  font-weight: 700;
+}
+
+#economia .ox-economy-marked,
+#economia .ox-economy-marked :is(h3, p, legend, label span, th, td, caption) {
+  color: #000;
+  font-weight: 700;
+}

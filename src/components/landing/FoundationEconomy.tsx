@@ -60,11 +60,14 @@ export default function FoundationEconomy({
             <span>{es ? "una reserva y un futuro rescate." : "a reserve and a future redemption."}</span>
           </h2>
           <p>
+            <strong className="ox-economy-reserve-lead">{es
+              ? "El modelo destina el 50% de cada venta inicial verificada a la reserva comunitaria."
+              : "The model allocates 50% of each verified initial sale to community reserves."}</strong>{" "}
             {es
-              ? "El modelo destina el 50% de cada venta inicial verificada a la reserva comunitaria. El objetivo del modelo es permitirte rescatar tu NFT desde la web, quemándolo a cambio del importe que le corresponda según la política de su categoría, una vez completada la venta y habilitado el mecanismo."
-              : "The model allocates 50% of each verified initial sale to community reserves. The model aims to let you redeem your NFT on this website, burning it in exchange for the amount assigned by its category policy, once sales close and the mechanism is enabled."}
+              ? "El objetivo del modelo es permitirte rescatar tu NFT desde la web, quemándolo a cambio del importe que le corresponda según la política de su categoría, una vez completada la venta y habilitado el mecanismo."
+              : "The model aims to let you redeem your NFT on this website, burning it in exchange for the amount assigned by its category policy, once sales close and the mechanism is enabled."}
           </p>
-          <p className="ox-economy-small">{es
+          <p className="ox-economy-small ox-economy-marked">{es
             ? 'Política prevista: acumular y preservar los aportes de reserva durante la venta, sin rescates ni retiros de ese capital hasta la habilitación de la quema. La aplicación operativa del nuevo porcentaje, la protección efectiva de los fondos y el rescate requieren implementación y verificación.'
             : 'Planned policy: accumulate and preserve reserve contributions during sales, with no redemptions or withdrawals of that principal before burn activation. Operational activation of the new percentage, effective fund protection and redemption require implementation and verification.'}</p>
         </header>
@@ -165,7 +168,7 @@ export default function FoundationEconomy({
           </div>
         </div>
 
-        <div className="ox-economy-data">
+        <div className="ox-economy-data ox-economy-marked">
           <h3>{es ? 'Tu NFT: acceso, libertad y crecimiento potencial' : 'An NFT, a transferable subscription and a reserve model'}</h3>
           <p>{es ? 'Tu compra reúne una pieza única y 12 meses de acceso a la web de tiendas y desarrollo desde la activación válida. Si transferís el NFT, el nuevo titular válido recibe el tiempo restante, con el mismo vencimiento. El 50% de cada venta inicial verificada se destina a reserva; los escenarios siguientes explican su posible evolución.' : 'Your purchase brings together a unique collectible and 12 months of access to the stores and development website from valid activation. If you transfer the NFT, its new valid holder receives the remaining term with the same expiry. The model allocates 50% of each verified initial sale to community reserves; the following scenarios explain their possible evolution.'}</p>
           <a className="ox-economy-transparency-link" href="#benefits">{es ? 'Conocer los beneficios de la suscripción' : 'Explore subscription benefits'}<span aria-hidden="true">↓</span></a>
@@ -187,7 +190,7 @@ export default function FoundationEconomy({
               <option value={3}>{es ? 'Al finalizar toda la colección' : 'After the full collection'}</option>
             </select>
           </label>
-          <div className="ox-economy-rules-scroll" role="region" aria-label={es ? 'Resultados por tanda' : 'Batch results'} tabIndex={0}>
+          <div className="ox-economy-rules-scroll ox-economy-marked" role="region" aria-label={es ? 'Resultados por tanda' : 'Batch results'} tabIndex={0}>
             <table className="ox-economy-table">
               <caption>{es ? 'Importes calculados si se completan las ventas indicadas; no son cobros ya verificados.' : 'Calculated amounts if the selected sales complete; not already verified receipts.'}</caption>
               <thead><tr><th scope="col">{es ? 'Tanda' : 'Batch'}</th><th scope="col">{es ? 'Ventas' : 'Sales'}</th><th scope="col">{es ? 'Ingreso' : 'Revenue'}</th><th scope="col">50% → {es ? 'reserva' : 'reserve'}</th><th scope="col">{es ? 'Reserva acumulada' : 'Cumulative reserve'}</th></tr></thead>
@@ -211,16 +214,18 @@ export default function FoundationEconomy({
         </div>
 
         <div className="ox-economy-scheme ox-economy-projection">
-          <div className="ox-economy-scheme-heading">
-            <h3>{es ? 'Estimado del resultado de inversiones tras finalizar la venta' : 'Estimated investment results after the sale closes'}</h3>
-            <span>{es ? 'ESCENARIO SELECCIONADO' : 'SELECTED SCENARIO'}</span>
+          <div className="ox-economy-marked">
+            <div className="ox-economy-scheme-heading">
+              <h3>{es ? 'Estimado del resultado de inversiones tras finalizar la venta' : 'Estimated investment results after the sale closes'}</h3>
+              <span>{es ? 'ESCENARIO SELECCIONADO' : 'SELECTED SCENARIO'}</span>
+            </div>
+            <p className="ox-economy-small">{es ? 'El aporte proyectado a la reserva por cada NFT es de 25 USDT para RARE, 35 para EPIC y 45 para LEGENDARY.' : 'Projected reserve contributions per NFT are 25 USDT for RARE, 35 for EPIC and 45 for LEGENDARY.'}</p>
+            <p className="ox-economy-small">{es ? 'Elegí tu categoría y compará cuánto pagás por un NFT, la reserva que representa una unidad al finalizar toda la colección y cómo cambiaría ese importe con la inversión seleccionada. Todos los importes destacados de este bloque son por un NFT, no por toda la reserva.' : 'Choose your category and compare the price of one NFT, its modeled reserve amount at full collection close, and how that amount would change under your selected investment scenario. Every highlighted amount in this section is per NFT, not the total reserve.'}</p>
+            <fieldset className="ox-economy-selector">
+              <legend>{es ? '¿Qué NFT querés comparar?' : 'Which NFT would you like to compare?'}</legend>
+              <div>{SIMULATION_TIERS.map(value => <label key={value}><input type="radio" name="ox-holder-tier" value={value} checked={holderTier === value} onChange={() => setHolderTier(value)} /><span>{value}</span></label>)}</div>
+            </fieldset>
           </div>
-          <p className="ox-economy-small">{es ? 'El aporte proyectado a la reserva por cada NFT es de 25 USDT para RARE, 35 para EPIC y 45 para LEGENDARY.' : 'Projected reserve contributions per NFT are 25 USDT for RARE, 35 for EPIC and 45 for LEGENDARY.'}</p>
-          <p className="ox-economy-small">{es ? 'Elegí tu categoría y compará cuánto pagás por un NFT, la reserva que representa una unidad al finalizar toda la colección y cómo cambiaría ese importe con la inversión seleccionada. Todos los importes destacados de este bloque son por un NFT, no por toda la reserva.' : 'Choose your category and compare the price of one NFT, its modeled reserve amount at full collection close, and how that amount would change under your selected investment scenario. Every highlighted amount in this section is per NFT, not the total reserve.'}</p>
-          <fieldset className="ox-economy-selector">
-            <legend>{es ? '¿Qué NFT querés comparar?' : 'Which NFT would you like to compare?'}</legend>
-            <div>{SIMULATION_TIERS.map(value => <label key={value}><input type="radio" name="ox-holder-tier" value={value} checked={holderTier === value} onChange={() => setHolderTier(value)} /><span>{value}</span></label>)}</div>
-          </fieldset>
           <div className="ox-economy-projection-controls">
             <label className="ox-economy-field" htmlFor="ox-investment-rate"><span>{es ? 'Rendimiento neto anual supuesto de la parte invertida (10%)' : 'Assumed annual net return on invested portion (10%)'}</span><select id="ox-investment-rate" value={annualRateBps} onChange={event => setAnnualRateBps(Number(event.target.value))}>{[-2000,0,200,400,800].map(rate => <option key={rate} value={rate}>{rate > 0 ? '+' : ''}{rate / 100}%</option>)}</select></label>
             <p id="ox-investment-years" className="ox-economy-small">{es ? "Plazo del análisis: 1 año desde el cierre y la habilitación de la estrategia." : "Analysis term: 1 year after closing and strategy activation."}</p>
@@ -294,9 +299,12 @@ export default function FoundationEconomy({
             <h3>{es ? 'El negocio crece. Tu reserva puede crecer también.' : 'As the business grows, your reserve could grow too.'}</h3>
             <span>{es ? 'SUPUESTOS · 1 AÑO' : 'ASSUMPTIONS · 1 YEAR'}</span>
           </div>
-          <p className="ox-economy-small">{es ? '50% de cada venta inicial a reserva. Una vez lanzada la web principal de OriginX, el modelo propone sumar a la reserva el 15% del beneficio neto realizado por suscripciones y servicios. Si hay beneficios, el fondo puede crecer. Son escenarios hipotéticos: no beneficios actuales ni aportes ya activados.' : 'Each initial sale allocates 50% to reserves. After the main OriginX website launches, the model proposes adding 15% of realized net profit from subscriptions and services. If the business earns profits, the fund receives additional contributions. These are hypothetical scenarios, not current profits or active contributions.'}</p>
-          <p className="ox-economy-small">{es ? 'Un NFT único. 12 meses de acceso desde la activación válida. El tiempo restante es transferible con tu NFT. Explorá el crecimiento potencial de su reserva en 1 año.' : 'A unique NFT. 12 months of access from valid activation. Remaining access transfers with your NFT. Explore its reserve’s potential growth over 1 year.'}</p>
-          <details className="ox-economy-explanation"><summary>{es ? 'De dónde salen los aportes del negocio' : 'Where business contributions come from'}</summary>          <p className="ox-economy-small">{es ? 'El 85% restante del beneficio neto queda en el negocio. La renovación y los gastos operativos aún no están definidos: elegís un beneficio neto supuesto, no una facturación. Los 12 meses incluidos con Founding no se cuentan como nuevos cobros mensuales.' : 'The other 85% of net profit stays with the business. Renewal pricing and operating costs are not yet defined: you select assumed net profit, not revenue. The 12 months included with Founding are not counted as new monthly payments.'}</p></details>
+          <details className="ox-economy-explanation">
+            <summary>{es ? 'De dónde salen los aportes del negocio' : 'Where business contributions come from'}</summary>
+            <p className="ox-economy-small">{es ? '50% de cada venta inicial a reserva. Una vez lanzada la web principal de OriginX, el modelo propone sumar a la reserva el 15% del beneficio neto realizado por suscripciones y servicios. Si hay beneficios, el fondo puede crecer. Son escenarios hipotéticos: no beneficios actuales ni aportes ya activados.' : 'Each initial sale allocates 50% to reserves. After the main OriginX website launches, the model proposes adding 15% of realized net profit from subscriptions and services. If the business earns profits, the fund receives additional contributions. These are hypothetical scenarios, not current profits or active contributions.'}</p>
+            <p className="ox-economy-small">{es ? 'Un NFT único. 12 meses de acceso desde la activación válida. El tiempo restante es transferible con tu NFT. Explorá el crecimiento potencial de su reserva en 1 año.' : 'A unique NFT. 12 months of access from valid activation. Remaining access transfers with your NFT. Explore its reserve’s potential growth over 1 year.'}</p>
+            <p className="ox-economy-small">{es ? 'El 85% restante del beneficio neto queda en el negocio. La renovación y los gastos operativos aún no están definidos: elegís un beneficio neto supuesto, no una facturación. Los 12 meses incluidos con Founding no se cuentan como nuevos cobros mensuales.' : 'The other 85% of net profit stays with the business. Renewal pricing and operating costs are not yet defined: you select assumed net profit, not revenue. The 12 months included with Founding are not counted as new monthly payments.'}</p>
+          </details>
           <label className="ox-economy-field" htmlFor="ox-business-profit"><span>{es ? 'Beneficio neto mensual supuesto del negocio' : 'Assumed monthly net business profit'}</span>
             <select id="ox-business-profit" value={businessMonthlyProfit} onChange={event => setBusinessMonthlyProfit(Number(event.target.value))}>
               {[1000,5000,10000].map(value => <option key={value} value={value}>{money(BigInt(value)*1_000_000n)} / {es ? 'mes (supuesto)' : 'month (assumption)'}</option>)}

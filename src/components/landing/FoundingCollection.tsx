@@ -119,8 +119,11 @@ export default function FoundingCollection({
                       <dd>{es ? "12 meses" : "12 months"}</dd>
                     </div>
                     <div className="ox-tier-gain">
-                      <dt>{es ? "Aporte proyectado por NFT" : "Projected contribution per NFT"}</dt>
+                      <dt>{es ? "Aporte proyectado por NFT al habilitar la quema" : "Projected contribution per NFT when burn redemption opens"}</dt>
                       <dd>{modeledReserve === null ? (es ? "No disponible" : "Unavailable") : money(modeledReserve)}</dd>
+                      <dd className="ox-tier-gain-note">{es
+                        ? "El resultado de las inversiones podría sumarse al importe proyectado. Se propone invertir hasta el 10% del fondo en opciones presentadas por OriginX y votadas por los suscriptores."
+                        : "Investment results could add to the projected amount. The proposal would invest up to 10% of the fund in options put forward by OriginX and voted on by subscribers."}</dd>
                     </div>
                     <div>
                       <dt>{es ? "Se puede transferir" : "Transferable"}</dt>
@@ -128,7 +131,7 @@ export default function FoundingCollection({
                     </div>
                   </dl>
 
-                  <p className="ox-tier-gain-note">{es ? 'Aporte ilustrativo al fondo por NFT según el modelo de campaña. El rescate sigue pendiente de habilitación.' : 'Illustrative reserve contribution per NFT under the campaign model. Redemption is pending activation.'}</p>
+
                   <div className="ox-tier-details ox-tier-popover-trigger">
                     <button type="button" popoverTarget={"ox-tier-details-" + phase.number} aria-label={(es ? "Ver detalles de " : "View details for ") + tier} onClick={event => {
                       const panel = document.getElementById("ox-tier-details-" + phase.number);
