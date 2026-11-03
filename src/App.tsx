@@ -89,6 +89,7 @@ const phases: CampaignPhase[] = [
 
 
 function App() {
+  const [faqOpen, setFaqOpen] = useState(false);
   const [
     publicCheckoutEnabled,
     setPublicCheckoutEnabled,
@@ -830,25 +831,151 @@ function App() {
 
 
         <section
-          className="ox-landing ox-allocation-status"
-          aria-labelledby="ox-allocation-title"
+          className="db-section faq-section ox-landing ox-faq"
+          id="faq"
+          aria-labelledby="faq-title"
         >
-          <div className="ox-allocation-inner">
-            <div>
-              <h2 id="ox-allocation-title">
+          <div className="db-container faq-layout">
+            <div className="faq-heading">
+              <div className="db-eyebrow">
+                FAQ
+              </div>
+
+              <h2 id="faq-title" className="db-title">
                 {language === "es"
-                  ? "Asignación de membresías Founding"
-                  : "Founding membership allocation"}
+                  ? "Todo claro antes de avanzar."
+                  : "Clear before you commit."}
               </h2>
-              <p>
+
+              <p className="db-copy">
                 {language === "es"
-                  ? "Los datos verificados de asignación todavía no están disponibles en esta sección."
-                  : "Verified allocation data is not yet available in this section."}
+                  ? "Qué incluye la propuesta, cuándo empieza el acceso y cuáles son las condiciones."
+                  : "What the offer includes, when access starts and which terms apply."}
               </p>
+              <button
+                type="button"
+                className="db-button db-button--secondary faq-toggle"
+                aria-expanded={faqOpen}
+                aria-controls="faq-questions"
+                onClick={() => setFaqOpen(!faqOpen)}
+              >
+                {language === "es"
+                  ? (faqOpen ? "Ocultar preguntas frecuentes" : "Ver preguntas frecuentes")
+                  : (faqOpen ? "Hide frequently asked questions" : "View frequently asked questions")}
+              </button>
             </div>
-            <span className="ox-allocation-label">
-              {language === "es" ? "Datos no disponibles" : "Data unavailable"}
-            </span>
+
+            <div id="faq-questions" hidden={!faqOpen}>
+              <div className="faq-list">
+                <details>
+                  <summary>
+                    {language === "es"
+                      ? "¿Qué estoy comprando exactamente?"
+                      : "What exactly am I purchasing?"}
+                  </summary>
+
+                  <p>
+                    {language === "es"
+                      ? "Una preorden o reserva de Founding 6000, diseñada para incluir 12 meses de Focus Founding Access desde la activación válida de la cuenta. El acceso está pensado para usar herramientas de tiendas virtuales, desarrollo web y comercio descentralizado, crear bots de trading e IA y jugar en Brain Boost. Todo en un solo lugar, OriginX. Se aplican los términos publicados y los límites técnicos. Registrarte para recibir novedades no equivale a comprar."
+                      : "A Founding 6000 product pre-order or reservation, designed to include 12 months of Focus Founding Access from valid account activation. Access is designed for online stores, web development and decentralized commerce, building trading and AI bots, and playing Brain Boost games. It is all in one place, OriginX. Published terms and technical limits apply. Signing up for updates is not a purchase."}
+                  </p>
+                </details>
+
+                <details>
+                  <summary>
+                    {language === "es"
+                      ? "¿Founding 6000 es una inversión?"
+                      : "Is Founding 6000 an investment?"}
+                  </summary>
+
+                  <p>
+                    {language === "es"
+                      ? "Sí, visto a mediano plazo, puede constituirse como una inversión genuina y sólida gracias al método desarrollado de reservas e inversiones y el cobro del valor reservado por NFT tras habilitar la quema."
+                      : "Yes. Over the medium term, it could become a genuine, solid investment thanks to the reserve and investment model developed for the project and the ability to claim the amount reserved per NFT once burning is enabled."}
+                  </p>
+                </details>
+
+                <details>
+                  <summary>
+                    {language === "es"
+                      ? "¿Cuándo comienzan mis 12 meses?"
+                      : "When do my 12 months begin?"}
+                  </summary>
+
+                  <p>
+                    {language === "es"
+                      ? "Con la activación válida de tu cuenta Founding Access. Comprar o registrarte para recibir novedades no inicia los 12 meses."
+                      : "Upon valid activation of your Founding Access account. Purchasing or signing up for updates does not start the 12 months."}
+                  </p>
+                </details>
+
+                <details>
+                  <summary>
+                    {language === "es"
+                      ? "¿El 5 de enero de 2027 está garantizado?"
+                      : "Is January 5, 2027 guaranteed?"}
+                  </summary>
+
+                  <p>
+                    {language === "es"
+                      ? "No. El 5 de enero de 2027 es una fecha objetivo de lanzamiento, sujeta a cambios. No es una fecha de entrega garantizada."
+                      : "No. January 5, 2027 is a target launch date, subject to change. It is not a guaranteed delivery date."}
+                  </p>
+                </details>
+
+                <details>
+                  <summary>
+                    {language === "es"
+                      ? "¿Focus incluye uso ilimitado?"
+                      : "Does Focus include unlimited usage?"}
+                  </summary>
+
+                  <p>
+                    {language === "es"
+                      ? "No. Pueden aplicar límites de DBX, uso razonable, cómputo, infraestructura, inferencia de IA, almacenamiento, hosting, bot/runtime y otras restricciones técnicas o legales."
+                      : "No. DBX allowance, fair-use, compute, infrastructure, AI inference, storage, hosting, bot/runtime and other technical or legal limits may apply."}
+                  </p>
+                </details>
+
+                <details>
+                  <summary>
+                    {language === "es"
+                      ? "¿Cómo voy a poder pagar?"
+                      : "How will I be able to pay?"}
+                  </summary>
+
+                  <p>
+                    {publicCheckoutEnabled
+                      ? language === "es"
+                        ? "El formulario de compra permite elegir USDT en Ethereum Mainnet. Revisá allí la red, el importe y la dirección de destino antes de transferir. Los métodos en pesos todavía no están habilitados."
+                        : "Checkout offers USDT on Ethereum Mainnet. Review the network, amount and destination address there before transferring. Peso payment methods are not enabled yet."
+                      : language === "es"
+                        ? "Las reservas y los pagos todavía no están habilitados en esta página. Podés dejar tu email para recibir novedades de la apertura."
+                        : "Reservations and payments are not yet enabled on this page. You can leave your email for updates about opening."}
+                  </p>
+
+                  <p>
+                    {language === "es"
+                      ? "El plan contempla Mercado Pago para pagos en pesos argentinos. Naranja X depende de que se verifique una integración oficial adecuada. No hay una fecha de disponibilidad confirmada para estos métodos."
+                      : "The plan includes Mercado Pago for Argentine peso payments. Naranja X depends on verification of a suitable official integration. Availability dates for these methods are not confirmed."}
+                  </p>
+                </details>
+
+                <details>
+                  <summary>
+                    {language === "es"
+                      ? "¿Qué sucede si el producto se retrasa?"
+                      : "What happens if the product is delayed?"}
+                  </summary>
+
+                  <p>
+                    {language === "es"
+                      ? "El producto se encuentra en un 70% desarrollado y auditado, constantemente en desarrollo. En caso de retrasos, estará todo detallado en los posteos de las redes de la comunidad. No serían de un lapso muy largo en consideración de lo que ya tenemos entre manos."
+                      : "The product is 70% developed and audited, and development is ongoing. If there are any delays, we will share all the details in posts on the community’s social channels. Given what we already have in place, we do not expect any delays to be long."}
+                  </p>
+                </details>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -945,142 +1072,6 @@ function App() {
         </section>
 
         <FoundingProjectDialog language={language} checkoutEnabled={publicCheckoutEnabled} />
-
-        <section
-          className="db-section faq-section ox-landing ox-faq"
-          id="faq"
-        >
-          <div className="db-container faq-layout">
-            <div className="faq-heading">
-              <div className="db-eyebrow">
-                FAQ
-              </div>
-
-              <h2 className="db-title">
-                {language === "es"
-                  ? "Todo claro antes de avanzar."
-                  : "Clear before you commit."}
-              </h2>
-
-              <p className="db-copy">
-                {language === "es"
-                  ? "Qué incluye la propuesta, cuándo empieza el acceso y cuáles son las condiciones."
-                  : "What the offer includes, when access starts and which terms apply."}
-              </p>
-            </div>
-
-            <div className="faq-list">
-              <details>
-                <summary>
-                  {language === "es"
-                    ? "¿Qué estoy comprando exactamente?"
-                    : "What exactly am I purchasing?"}
-                </summary>
-
-                <p>
-                  {language === "es"
-                    ? "Una preorden o reserva de Founding 6000, diseñada para incluir 12 meses de Focus Founding Access desde la activación válida de la cuenta. El acceso está pensado para usar herramientas de tiendas virtuales, desarrollo web y comercio descentralizado, crear bots de trading e IA y jugar en Brain Boost. Todo en un solo lugar, OriginX. Se aplican los términos publicados y los límites técnicos. Registrarte para recibir novedades no equivale a comprar."
-                    : "A Founding 6000 product pre-order or reservation, designed to include 12 months of Focus Founding Access from valid account activation. Access is designed for online stores, web development and decentralized commerce, building trading and AI bots, and playing Brain Boost games. It is all in one place, OriginX. Published terms and technical limits apply. Signing up for updates is not a purchase."}
-                </p>
-              </details>
-
-              <details>
-                <summary>
-                  {language === "es"
-                    ? "¿Founding 6000 es una inversión?"
-                    : "Is Founding 6000 an investment?"}
-                </summary>
-
-                <p>
-                  {language === "es"
-                    ? "Sí, visto a mediano plazo, puede constituirse como una inversión genuina y sólida gracias al método desarrollado de reservas e inversiones y el cobro del valor reservado por NFT tras habilitar la quema."
-                    : "Yes. Over the medium term, it could become a genuine, solid investment thanks to the reserve and investment model developed for the project and the ability to claim the amount reserved per NFT once burning is enabled."}
-                </p>
-              </details>
-
-              <details>
-                <summary>
-                  {language === "es"
-                    ? "¿Cuándo comienzan mis 12 meses?"
-                    : "When do my 12 months begin?"}
-                </summary>
-
-                <p>
-                  {language === "es"
-                    ? "Con la activación válida de tu cuenta Founding Access. Comprar o registrarte para recibir novedades no inicia los 12 meses."
-                    : "Upon valid activation of your Founding Access account. Purchasing or signing up for updates does not start the 12 months."}
-                </p>
-              </details>
-
-              <details>
-                <summary>
-                  {language === "es"
-                    ? "¿El 5 de enero de 2027 está garantizado?"
-                    : "Is January 5, 2027 guaranteed?"}
-                </summary>
-
-                <p>
-                  {language === "es"
-                    ? "No. El 5 de enero de 2027 es una fecha objetivo de lanzamiento, sujeta a cambios. No es una fecha de entrega garantizada."
-                    : "No. January 5, 2027 is a target launch date, subject to change. It is not a guaranteed delivery date."}
-                </p>
-              </details>
-
-              <details>
-                <summary>
-                  {language === "es"
-                    ? "¿Focus incluye uso ilimitado?"
-                    : "Does Focus include unlimited usage?"}
-                </summary>
-
-                <p>
-                  {language === "es"
-                    ? "No. Pueden aplicar límites de DBX, uso razonable, cómputo, infraestructura, inferencia de IA, almacenamiento, hosting, bot/runtime y otras restricciones técnicas o legales."
-                    : "No. DBX allowance, fair-use, compute, infrastructure, AI inference, storage, hosting, bot/runtime and other technical or legal limits may apply."}
-                </p>
-              </details>
-
-              <details>
-                <summary>
-                  {language === "es"
-                    ? "¿Cómo voy a poder pagar?"
-                    : "How will I be able to pay?"}
-                </summary>
-
-                <p>
-                  {publicCheckoutEnabled
-                    ? language === "es"
-                      ? "El formulario de compra permite elegir USDT en Ethereum Mainnet. Revisá allí la red, el importe y la dirección de destino antes de transferir. Los métodos en pesos todavía no están habilitados."
-                      : "Checkout offers USDT on Ethereum Mainnet. Review the network, amount and destination address there before transferring. Peso payment methods are not enabled yet."
-                    : language === "es"
-                      ? "Las reservas y los pagos todavía no están habilitados en esta página. Podés dejar tu email para recibir novedades de la apertura."
-                      : "Reservations and payments are not yet enabled on this page. You can leave your email for updates about opening."}
-                </p>
-
-                <p>
-                  {language === "es"
-                    ? "El plan contempla Mercado Pago para pagos en pesos argentinos. Naranja X depende de que se verifique una integración oficial adecuada. No hay una fecha de disponibilidad confirmada para estos métodos."
-                    : "The plan includes Mercado Pago for Argentine peso payments. Naranja X depends on verification of a suitable official integration. Availability dates for these methods are not confirmed."}
-                </p>
-              </details>
-
-              <details>
-                <summary>
-                  {language === "es"
-                    ? "¿Qué sucede si el producto se retrasa?"
-                    : "What happens if the product is delayed?"}
-                </summary>
-
-                <p>
-                  {language === "es"
-                    ? "El producto se encuentra en un 70% desarrollado y auditado, constantemente en desarrollo. En caso de retrasos, estará todo detallado en los posteos de las redes de la comunidad. No serían de un lapso muy largo en consideración de lo que ya tenemos entre manos."
-                    : "The product is 70% developed and audited, and development is ongoing. If there are any delays, we will share all the details in posts on the community’s social channels. Given what we already have in place, we do not expect any delays to be long."}
-                </p>
-              </details>
-            </div>
-          </div>
-        </section>
-
 
       </main>
 
