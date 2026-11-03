@@ -993,8 +993,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "Founding 6000 se ofrece como una preorden de acceso. A mediano plazo, el modelo prevé una reserva por NFT y contempla invertir parte del fondo comunitario. Si se habilita la quema, el rescate dependerá de las condiciones del programa y de los fondos disponibles. El importe y el rendimiento no están garantizados."
-                    : "Founding 6000 is offered as an access pre-order. Over the medium term, the model proposes a reserve per NFT and considers investing part of the community fund. If burning is enabled, redemption will depend on the program terms and available funds. Payouts and returns are not guaranteed."}
+                    ? "Sí, visto a mediano plazo, puede constituirse como una inversión genuina y sólida gracias al método desarrollado de reservas e inversiones y el cobro del valor reservado por NFT tras habilitar la quema."
+                    : "Yes. Over the medium term, it could become a genuine, solid investment thanks to the reserve and investment model developed for the project and the ability to claim the amount reserved per NFT once burning is enabled."}
                 </p>
               </details>
 
