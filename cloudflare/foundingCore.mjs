@@ -77,6 +77,11 @@ export class FoundingCore extends DurableObject {
         updated_at TEXT NOT NULL
       );
 
+      CREATE TABLE IF NOT EXISTS landing_visit_count (
+        id INTEGER PRIMARY KEY CHECK (id = 1),
+        total INTEGER NOT NULL
+      );
+
       CREATE TABLE IF NOT EXISTS email_registrations (
         id TEXT PRIMARY KEY,
         email TEXT NOT NULL,
@@ -549,6 +554,23 @@ export class FoundingCore extends DurableObject {
   async fetch(request) {
     const url =
       new URL(request.url);
+
+    if (url.pathname === "/internal/landing-visits") {
+      if (request.method === "POST") {
+        this.sql.exec(`
+          INSERT INTO landing_visit_count (id, total) VALUES (1, 1)
+          ON CONFLICT(id) DO UPDATE SET total = total + 1
+        `);
+        return new Response(null, { status: 204 });
+      }
+      if (request.method === "GET") {
+        const [row] = this.sql.exec(
+          "SELECT total FROM landing_visit_count WHERE id = 1",
+        ).toArray();
+        return json({ total: row?.total ?? 0 });
+      }
+      return json({ error: "METHOD_NOT_ALLOWED" }, 405);
+    }
 
     if (
       request.method === "POST" &&

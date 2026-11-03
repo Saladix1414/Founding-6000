@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import "../../styles/originx-navbar.css";
+import LandingVisitCount from "./LandingVisitCount";
 import { activateNavbarDialog } from "./navbarDialogActions";
 
 type Language = "es" | "en";
@@ -179,6 +180,8 @@ export default function OriginXNavbar({
           </button>
         </div>
       </div>
+
+      <LandingVisitCount language={language} />
 
       <nav
         id="mobile-navigation"

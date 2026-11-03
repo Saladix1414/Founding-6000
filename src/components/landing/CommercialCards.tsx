@@ -68,8 +68,8 @@ export default function CommercialCards({ language, onEconomy }: Props) {
       number: "02",
       title: es ? "REGLAS CLARAS" : "CLEAR RULES",
       description: es
-        ? "25% de cada venta inicial a reserva. Explorá los importes por NFT y los escenarios de crecimiento."
-        : "25% of each initial sale to reserves. Explore per-NFT amounts and growth scenarios.",
+        ? "50% de cada venta inicial a reserva. Explorá los importes por NFT y los escenarios de crecimiento."
+        : "50% of each initial sale to reserves. Explore per-NFT amounts and growth scenarios.",
       image: "economy-emblem.png",
       href: null,
       action: es ? "Ver economía" : "View economy",

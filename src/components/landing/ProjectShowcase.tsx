@@ -16,6 +16,7 @@ export default function ProjectShowcase({language}: {language: 'es' | 'en'}) {
       <header>
         <p className="ox-showcase-eyebrow">{es ? 'CONOCÉ LOS ESPACIOS' : 'EXPLORE THE WORKSPACES'}</p>
         <h3>{es ? 'De la idea a tu próximo proyecto.' : 'From an idea to your next project.'}</h3>
+        <p>{es ? 'OriginX estima un 70% de avance en el desarrollo de la web principal y sus herramientas.' : 'OriginX estimates that its main website and tools are 70% developed.'}</p>
         <p>{es ? 'Creación web, comercio, IA y experiencias de juego en un mismo ecosistema. Tocá una imagen para verla completa.' : 'Website creation, commerce, AI and games in one ecosystem. Select an image to see it in full.'}</p>
       </header>
       <div className="ox-project-screens">

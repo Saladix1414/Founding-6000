@@ -35,6 +35,7 @@ npx wrangler@latest deploy
 ## Public prelaunch API
 
 - GET /api/health
+- GET /api/visits
 - GET /api/health/ready
 - POST /api/email-registrations
 
@@ -49,6 +50,9 @@ Current persisted scope:
 - audit events
 - rate-limit buckets
 - runtime metadata
+- cumulative landing document loads
+
+The visit badge refreshes every 15 seconds while the landing is visible. The counter starts at deployment and counts successful document loads of `/`, including reloads. It skips prefetches and stores a single aggregate total without cookies or visitor identifiers. `GET /api/visits` is read-only and responds with an uncached `{ "total": number }`.
 
 ## Commerce safety
 

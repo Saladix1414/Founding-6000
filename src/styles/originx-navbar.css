@@ -334,3 +334,31 @@
     animation: none;
   }
 }
+
+.ox-navbar:has(.ox-visit-count) {
+  padding-bottom: 0.55rem;
+}
+
+.ox-visit-count {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  max-width: calc(100% - 2rem);
+  margin: 0 auto;
+  padding: 0.28rem 0.7rem;
+  border: 1px solid #e6af6e;
+  border-radius: 999px;
+  background: #fff0dc;
+  color: #202f45;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+}
+
+.ox-visit-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #367849;
+}

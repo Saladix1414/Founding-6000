@@ -146,7 +146,7 @@ export function DigitalBoostWhitepaper({
             <div className="project-whitepaper__highlights">
               <div><strong>6.000</strong><span>{language === 'es' ? 'piezas · suministro máximo' : 'collectibles · maximum supply'}</span></div>
               <div><strong>12 {language === 'es' ? 'meses' : 'months'}</strong><span>{language === 'es' ? 'desde la activación válida' : 'from valid activation'}</span></div>
-              <div><strong>25%</strong><span>{language === 'es' ? 'de cada venta inicial a reserva' : 'of each initial sale to reserves'}</span></div>
+              <div><strong>50%</strong><span>{language === 'es' ? 'de cada venta inicial a reserva en el modelo' : 'of each initial sale to reserves in the model'}</span></div>
             </div>
             <p className="project-whitepaper__cover-note">{language === 'es' ? 'Prelanzamiento · Desarrollo activo · Estimaciones identificadas' : 'Pre-launch · Active development · Estimates identified'}</p>
           </section>

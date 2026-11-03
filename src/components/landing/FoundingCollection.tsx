@@ -1,7 +1,7 @@
 import "../../styles/originx-collection.css";
 import "../../styles/originx-tier-popover.css";
 import { positionTierPopover } from "./tierPopoverPosition";
-import {fullCloseV3} from "../../../shared/foundingReservePolicyV3.mjs";
+import { simulateBatchClose } from "./economySimulation";
 
 type CollectionPhase = {
   number: string;
@@ -42,7 +42,7 @@ export default function FoundingCollection({
 }: Props) {
   const es = language === "es";
   const locale = es ? "es-AR" : "en-US";
-  const closingReserves = fullCloseV3();
+  const closingReserves = simulateBatchClose().units;
   const money = (minor: bigint) => new Intl.NumberFormat(locale, {minimumFractionDigits: 2, maximumFractionDigits: 2}).format(Number(minor)/1_000_000) + ' USDT';
 
   return (
@@ -78,7 +78,7 @@ export default function FoundingCollection({
           {phases.map(phase => {
             const tier = publicTier(phase.name);
             const closing = closingReserves.find(unit => unit.tier === tier);
-            const plannedPayout = closing?.perNft ?? null;
+            const modeledReserve = closing?.perNft ?? null;
             const theme = tier === "RARE"
               ? "rare"
               : tier === "EPIC" ? "epic" : "legendary";
@@ -119,8 +119,8 @@ export default function FoundingCollection({
                       <dd>{es ? "12 meses" : "12 months"}</dd>
                     </div>
                     <div className="ox-tier-gain">
-                      <dt>{es ? "Ganancias de cobro previsto" : "Expected payout benefit"}</dt>
-                      <dd>{plannedPayout === null ? (es ? "No disponible" : "Unavailable") : money(plannedPayout)}</dd>
+                      <dt>{es ? "Aporte proyectado por NFT" : "Projected contribution per NFT"}</dt>
+                      <dd>{modeledReserve === null ? (es ? "No disponible" : "Unavailable") : money(modeledReserve)}</dd>
                     </div>
                     <div>
                       <dt>{es ? "Se puede transferir" : "Transferable"}</dt>
@@ -128,7 +128,7 @@ export default function FoundingCollection({
                     </div>
                   </dl>
 
-                  <p className="ox-tier-gain-note">{es ? 'Cobro previsto de tu reserva al cerrar las ventas y habilitar la quema. No es beneficio neto frente a la compra; costes e impuestos personales no incluidos.' : 'Share of the reserve expected to be paid through burning after sales close and redemption is enabled. Not net profit versus purchase price; personal costs and taxes excluded.'}</p>
+                  <p className="ox-tier-gain-note">{es ? 'Aporte ilustrativo al fondo por NFT según el modelo de campaña. El rescate sigue pendiente de habilitación.' : 'Illustrative reserve contribution per NFT under the campaign model. Redemption is pending activation.'}</p>
                   <div className="ox-tier-details ox-tier-popover-trigger">
                     <button type="button" popoverTarget={"ox-tier-details-" + phase.number} aria-label={(es ? "Ver detalles de " : "View details for ") + tier} onClick={event => {
                       const panel = document.getElementById("ox-tier-details-" + phase.number);
@@ -139,7 +139,7 @@ export default function FoundingCollection({
                     <ul className="ox-tier-benefits-brief">
                       <li><strong>{es ? 'Creá tu próximo proyecto.' : 'Build your next project.'}</strong> {es ? 'Una pieza única y 12 meses de acceso a la web de tiendas y desarrollo desde la activación válida.' : 'A unique collectible and 12 months of access to the stores and development website from valid activation.'}</li>
                       <li><strong>{es ? 'Acceso transferible.' : 'Transferable access.'}</strong> {es ? 'Si transferís el NFT, pasa el tiempo restante; no reinicia el plazo.' : 'Transferring the NFT passes on the remaining access without restarting the term.'}</li>
-                      <li><strong>{es ? 'Una reserva para tu NFT.' : 'A reserve for your NFT.'}</strong> {es ? 'El 25% de cada venta inicial se destina a reserva. Tu cobro previsto al cierre: ' : '25% of each initial sale is allocated to reserves. Your expected payout at closing: '}{plannedPayout === null ? (es ? 'por verificar' : 'to be verified') : money(plannedPayout)}{es ? ', sin sumar inversiones ni aportes futuros. La quema se prevé tras finalizar las ventas y habilitar el rescate.' : ', excluding future investment returns and contributions. Burning is planned after sales close and redemption is enabled.'}</li>
+                      <li><strong>{es ? 'Una reserva para tu NFT.' : 'A reserve for your NFT.'}</strong> {es ? 'El modelo destina el 50% de cada venta inicial a la reserva comunitaria. Aporte proyectado por NFT: ' : 'The model allocates 50% of each initial sale to community reserves. Projected contribution per NFT: '}{modeledReserve === null ? (es ? 'por verificar' : 'to be verified') : money(modeledReserve)}{es ? ', sin sumar inversiones ni aportes futuros. La quema se prevé tras finalizar las ventas y habilitar el rescate.' : ', excluding future investment returns and contributions. Burning is planned after sales close and redemption is enabled.'}</li>
                       <li><strong>{es ? 'El negocio puede impulsar la reserva.' : 'The business could grow the reserve.'}</strong> {es ? 'El plan propone aportar el 15% del beneficio neto futuro de suscripciones y servicios e invertir hasta el 10% de la reserva tras el cierre. Su objetivo es ampliar el fondo; depende de resultados reales y de habilitar el plan.' : 'The plan proposes adding 15% of future net profit from subscriptions and services and investing up to 10% of reserves after closing. It aims to grow the fund, subject to actual results and plan activation.'}</li>
                     </ul>
                     <a href="#ox-business-reserve-scenario">{es ? 'Conocé el plan y explorá sus escenarios →' : 'Explore the plan and its scenarios →'}</a>

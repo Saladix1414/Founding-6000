@@ -125,6 +125,21 @@ function canonicalCore(env) {
     .get(id);
 }
 
+function isLandingVisit(request, response) {
+  if (!response.ok || !response.headers.get("Content-Type")?.includes("text/html")) {
+    return false;
+  }
+
+  const destination = request.headers.get("Sec-Fetch-Dest");
+  const purpose = [request.headers.get("Sec-Purpose"), request.headers.get("Purpose")].join(" ");
+  return !/prefetch|prerender/i.test(purpose) &&
+    (destination === "document" || (!destination && request.headers.get("Accept")?.includes("text/html")));
+}
+
+async function landingVisitStore(env, method) {
+  return canonicalCore(env).fetch("https://founding-core.internal/internal/landing-visits", { method });
+}
+
 async function actorHash(
   request,
 ) {
@@ -995,6 +1010,7 @@ export default {
   async fetch(
     request,
     env,
+    ctx,
   ) {
     const url =
       new URL(request.url);
@@ -1655,6 +1671,21 @@ export default {
       );
     }
 
+    if (url.pathname === "/api/visits") {
+      if (request.method !== "GET") {
+        return json({ error: "METHOD_NOT_ALLOWED" }, 405, requestId);
+      }
+
+      try {
+        const response = await landingVisitStore(env, "GET");
+        if (response.ok) return json(await response.json(), 200, requestId);
+      } catch {
+        // An unavailable counter should never be presented as zero visits.
+      }
+
+      return json({ error: "VISIT_COUNT_UNAVAILABLE" }, 503, requestId);
+    }
+
     if (
       url.pathname.startsWith(
         "/api/",
@@ -1674,6 +1705,10 @@ export default {
       await env.ASSETS.fetch(
         request,
       );
+
+    if (url.pathname === "/" && request.method === "GET" && isLandingVisit(request, assetResponse)) {
+      ctx?.waitUntil(landingVisitStore(env, "POST").catch(() => {}));
+    }
 
     return secureResponse(
       request,

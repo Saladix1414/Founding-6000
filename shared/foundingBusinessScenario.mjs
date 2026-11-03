@@ -1,9 +1,9 @@
 import {fullCloseV3 as fullCloseV2,simulateManagedReserveScenario} from './foundingReservePolicyV3.mjs';
 // Scenario assumptions only. No real profits, subscriptions or deposits are read.
-export function simulateBusinessReserveYear(monthlyProfitMinor,strategyRateBps=400,years=1) {
+export function simulateBusinessReserveYear(monthlyProfitMinor,strategyRateBps=400,years=1,units=fullCloseV2()) {
   if(typeof monthlyProfitMinor!=='bigint'||monthlyProfitMinor < 0n||monthlyProfitMinor>1_000_000_000_000_000n)
     throw new Error('INVALID_MONTHLY_PROFIT');
-  const units=fullCloseV2();const opening=units.reduce((s,u)=>s+u.reserve,0n);
+  const opening=units.reduce((s,u)=>s+u.reserve,0n);
   if(!Number.isInteger(years)||years<1||years>2) throw new Error('INVALID_BUSINESS_TERM');
   const financial=simulateManagedReserveScenario(opening,strategyRateBps,years);
   const annualBusinessContribution=monthlyProfitMinor*12n*1500n/10000n;
@@ -20,7 +20,7 @@ export function simulateBusinessReserveYear(monthlyProfitMinor,strategyRateBps=4
     openingReserve:opening,closingReserve,increase,executionAuthorized:false,
     units:units.map((u,i)=>{
       const businessShare=totalBusinessContribution*BigInt(u.supply)*perNftWeights[i]/totalWeight;
-      const categoryFinal=financial.closingReserve*u.reserve/opening+businessShare;
+      const categoryFinal=(opening === 0n ? 0n : financial.closingReserve*u.reserve/opening)+businessShare;
       const perNft=categoryFinal/BigInt(u.supply);
       return {tier:u.tier,openingPerNft:u.perNft,closingPerNft:perNft,increasePerNft:perNft-u.perNft};
     })};

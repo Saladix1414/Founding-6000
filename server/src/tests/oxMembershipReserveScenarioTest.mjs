@@ -29,8 +29,8 @@ assert.match(membership,/transferir no genera otros 12 meses ni duplica el acces
 assert.match(membership,/aproximadamente 8 meses restantes/);
 assert.match(membership,/activación válida/);
 const ui=readFileSync(new URL('../../../src/components/landing/FoundationEconomy.tsx',import.meta.url),'utf8');
-assert.match(ui,/25% de cada venta inicial verificada/);
-assert.match(ui,/15% del beneficio neto futuro/);
+assert.match(ui,/50% de cada venta inicial verificada/);
+assert.match(ui,/15% del beneficio neto realizado/);
 assert.match(ui,/no beneficios actuales/);
 assert.match(ui,/ox-business-reserve-scenario/);
 for(const name of ['NET_PROFIT_15_PERCENT_SCENARIOS_EXACT','INITIAL_25_PERCENT_NOT_DOUBLE_COUNTED','BUSINESS_15_PERCENT_SEPARATE_FROM_INITIAL_RESERVE','NEW_CONTRIBUTIONS_LIQUID_NO_INVENTED_INTEREST','PER_NFT_PROPORTIONAL_ALLOCATION_AND_ROUNDING','NO_PROFIT_AND_STRESS_SCENARIOS','TRANSFER_REMAINDER_WITHOUT_TERM_RESET','NO_SUBSCRIPTION_OR_RESERVE_EXECUTION_AUTHORITY']) console.log(name+'=PASS');
