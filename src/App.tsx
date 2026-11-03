@@ -979,8 +979,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "Una preorden o reserva de Founding 6000, diseñada para incluir 12 meses de Focus Founding Access desde la activación válida de la cuenta. Está sujeta a los términos finales publicados y a límites técnicos. Registrarte para recibir novedades no equivale a comprar."
-                    : "A Founding 6000 product pre-order or reservation, designed to include 12 months of Focus Founding Access from valid account activation. Final published terms and technical limits apply. Signing up for updates is not a purchase."}
+                    ? "Una preorden o reserva de Founding 6000, diseñada para incluir 12 meses de Focus Founding Access desde la activación válida de la cuenta. El acceso está pensado para usar herramientas de tiendas virtuales, desarrollo web y comercio descentralizado, crear bots de trading e IA y jugar en Brain Boost. Todo en un solo lugar, OriginX. Se aplican los términos publicados y los límites técnicos. Registrarte para recibir novedades no equivale a comprar."
+                    : "A Founding 6000 product pre-order or reservation, designed to include 12 months of Focus Founding Access from valid account activation. Access is designed for online stores, web development and decentralized commerce, building trading and AI bots, and playing Brain Boost games. It is all in one place, OriginX. Published terms and technical limits apply. Signing up for updates is not a purchase."}
                 </p>
               </details>
 
@@ -993,8 +993,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "No. No representa acciones, valores financieros, propiedad de la empresa, participación en ingresos, retorno financiero ni gobernanza corporativa."
-                    : "No. It is not equity, a security, company ownership, revenue sharing, financial return or corporate governance."}
+                    ? "Founding 6000 se ofrece como una preorden de acceso. A mediano plazo, el modelo prevé una reserva por NFT y contempla invertir parte del fondo comunitario. Si se habilita la quema, el rescate dependerá de las condiciones del programa y de los fondos disponibles. El importe y el rendimiento no están garantizados."
+                    : "Founding 6000 is offered as an access pre-order. Over the medium term, the model proposes a reserve per NFT and considers investing part of the community fund. If burning is enabled, redemption will depend on the program terms and available funds. Payouts and returns are not guaranteed."}
                 </p>
               </details>
 
@@ -1073,8 +1073,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "Las condiciones de retrasos, reembolsos, cancelaciones y entrega deberán estar finalizadas y publicadas antes de habilitar pagos reales."
-                    : "Delay handling, refund, cancellation and delivery terms must be finalized and published before real payments are enabled."}
+                    ? "Estimamos que el producto tiene un 70% de avance y seguimos desarrollándolo. Si hay retrasos, publicaremos los detalles y las fechas actualizadas en los canales oficiales de la comunidad. La duración de un eventual retraso dependerá del trabajo pendiente."
+                    : "We estimate the product is 70% complete and development is ongoing. If delays occur, we will post details and updated dates in our official community channels. The length of any delay will depend on the remaining work."}
                 </p>
               </details>
             </div>
