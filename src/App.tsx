@@ -1073,8 +1073,8 @@ function App() {
 
                 <p>
                   {language === "es"
-                    ? "Estimamos que el producto tiene un 70% de avance y seguimos desarrollándolo. Si hay retrasos, publicaremos los detalles y las fechas actualizadas en los canales oficiales de la comunidad. La duración de un eventual retraso dependerá del trabajo pendiente."
-                    : "We estimate the product is 70% complete and development is ongoing. If delays occur, we will post details and updated dates in our official community channels. The length of any delay will depend on the remaining work."}
+                    ? "El producto se encuentra en un 70% desarrollado y auditado, constantemente en desarrollo. En caso de retrasos, estará todo detallado en los posteos de las redes de la comunidad. No serían de un lapso muy largo en consideración de lo que ya tenemos entre manos."
+                    : "The product is 70% developed and audited, and development is ongoing. If there are any delays, we will share all the details in posts on the community’s social channels. Given what we already have in place, we do not expect any delays to be long."}
                 </p>
               </details>
             </div>
