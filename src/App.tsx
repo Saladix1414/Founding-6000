@@ -112,9 +112,6 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] =
     useState(false);
 
-  const [galleryOpen, setGalleryOpen] =
-    useState(false);
-
   const [whitepaperOpen, setWhitepaperOpen] =
     useState(false);
 
@@ -323,7 +320,7 @@ function App() {
   }, [checkoutOpen]);
 
   useEffect(() => {
-    if (!galleryOpen) {
+    if (!galleryPreview) {
       return;
     }
 
@@ -331,12 +328,7 @@ function App() {
       event: KeyboardEvent,
     ) => {
       if (event.key === "Escape") {
-        if (galleryPreview) {
-          setGalleryPreview(null);
-          return;
-        }
-
-        setGalleryOpen(false);
+        setGalleryPreview(null);
       }
     };
 
@@ -351,7 +343,7 @@ function App() {
         handleGalleryKeyDown,
       );
     };
-  }, [galleryOpen, galleryPreview]);
+  }, [galleryPreview]);
 
   useEffect(() => {
     if (!whitepaperOpen) return;
@@ -651,42 +643,6 @@ function App() {
                 <button
                   type="button"
                   className={
-                    galleryOpen
-                      ? "project-dock__button is-active"
-                      : "project-dock__button"
-                  }
-                  aria-expanded={galleryOpen}
-                  aria-controls="project-gallery-panel"
-                  onClick={() => {
-                    setGalleryPreview(null);
-                    setWhitepaperOpen(false);
-                    setGalleryOpen(current => !current);
-                  }}
-                >
-                  <span
-                    className="project-dock__icon"
-                    aria-hidden="true"
-                  >
-                    ▦
-                  </span>
-
-                  <span>
-                    {language === "es"
-                      ? "Ver galería"
-                      : "View gallery"}
-                  </span>
-
-                  <span
-                    className="project-dock__arrow"
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
-                </button>
-
-                <button
-                  type="button"
-                  className={
                     whitepaperOpen
                       ? "project-dock__button is-active"
                       : "project-dock__button"
@@ -694,8 +650,6 @@ function App() {
                   aria-expanded={whitepaperOpen}
                   aria-controls="project-whitepaper-panel"
                   onClick={() => {
-                    setGalleryPreview(null);
-                    setGalleryOpen(false);
                     setWhitepaperOpen(
                       (current) => !current,
                     );
@@ -722,105 +676,6 @@ function App() {
                 </button>
               </div>
 
-              {galleryOpen && (
-                <aside
-                  id="project-gallery-panel"
-                  className="project-gallery-panel"
-                  aria-label={
-                    language === "es"
-                      ? "Galería de la colección"
-                      : "Collection gallery"
-                  }
-                >
-                  <header className="project-gallery-panel__header">
-                    <div>
-                      <span>
-                        ORIGINX FOUNDATION
-                      </span>
-
-                      <strong>
-                        {language === "es"
-                          ? "Galería de la colección"
-                          : "Collection gallery"}
-                      </strong>
-                    </div>
-
-                    <button
-                      type="button"
-                      className="project-gallery-panel__close"
-                      aria-label={
-                        language === "es"
-                          ? "Cerrar galería"
-                          : "Close gallery"
-                      }
-                      onClick={() => {
-                        setGalleryPreview(null);
-                        setGalleryOpen(false);
-                      }}
-                    >
-                      ×
-                    </button>
-                  </header>
-
-                  <p className="project-gallery-panel__intro">
-  {language === "es"
-    ? "Seis representaciones conceptuales de nuestra colección. Tocá una imagen para ampliarla. Arte promocional; no acredita emisión onchain."
-    : "Six concept representations of our collection. Select an image to enlarge it. Promotional artwork; not proof of onchain issuance."}
-</p>
-
-                  <div className="project-gallery-grid">
-                    {[
-[
-  language === "es" ? "RARE · Guardián del océano" : "RARE · Ocean guardian",
-  "/nft-gallery/rare-ocean.png",
-],
-[
-  language === "es" ? "RARE · Guardián del bosque" : "RARE · Forest guardian",
-  "/nft-gallery/rare-forest.png",
-],
-[
-  language === "es" ? "EPIC · Tormenta amatista" : "EPIC · Amethyst storm",
-  "/nft-gallery/epic-amethyst.png",
-],
-[
-  language === "es" ? "EPIC · Brasa carmesí" : "EPIC · Crimson ember",
-  "/nft-gallery/epic-ember.png",
-],
-[
-  language === "es" ? "LEGENDARY · Soberano solar" : "LEGENDARY · Solar sovereign",
-  "/nft-gallery/legendary-solar.png",
-],
-[
-  language === "es" ? "LEGENDARY · Soberano astral" : "LEGENDARY · Astral sovereign",
-  "/nft-gallery/legendary-astral.png",
-]
-].map(([name, src]) => (
-                      <button
-                        className="project-gallery-card"
-                        key={name}
-                        type="button"
-                        onClick={() =>
-                          setGalleryPreview({
-                            name,
-                            src,
-                          })
-                        }
-                      >
-                        <img
-                          src={src}
-                          alt={name}
-                          loading="lazy"
-                        />
-
-                        <span className="project-gallery-card__caption">
-                          {name}
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-
-                </aside>
-              )}
             </div>
           </div>
         </section>
@@ -984,7 +839,105 @@ function App() {
           phases={phases}
           ctaLabel={primaryCtaLabel}
           onCheckout={openCheckout}
-        />
+        >
+            <section
+            id="project-gallery-panel"
+            className="project-gallery-panel"
+            aria-label={
+              language === "es"
+                ? "Galería de la colección"
+                : "Collection gallery"
+            }
+          >
+            <header className="project-gallery-panel__header">
+              <div>
+                <span>
+                  ORIGINX FOUNDATION
+                </span>
+
+                <strong>
+                  {language === "es"
+                    ? "Galería de la colección"
+                    : "Collection gallery"}
+                </strong>
+              </div>
+
+            </header>
+
+            <p className="project-gallery-panel__intro">
+              {language === "es"
+                ? "Seis representaciones conceptuales de nuestra colección. Tocá una imagen para ampliarla. Arte promocional; no acredita emisión onchain."
+                : "Six concept representations of our collection. Select an image to enlarge it. Promotional artwork; not proof of onchain issuance."}
+            </p>
+
+            <dl className="project-gallery-metadata">
+              <div>
+                <dt>{language === "es" ? "Registro akáshico" : "Akashic record"}</dt>
+                <dd>{language === "es" ? "Historial digital de eventos de la pieza, desde su origen. Cada evento se enlaza por hash para detectar modificaciones." : "A digital history of the collectible’s events, starting with its origin. Events are linked by hashes to detect changes."}</dd>
+              </div>
+              <div>
+                <dt>{language === "es" ? "Metadata y ADN visual" : "Metadata and visual DNA"}</dt>
+                <dd>{language === "es" ? "El número de token, la categoría, los rasgos y la versión de generación documentan la identidad de la pieza. Las huellas digitales permiten verificar sus archivos." : "Token number, category, traits and generation version document the collectible’s identity. Digital fingerprints allow its files to be verified."}</dd>
+              </div>
+              <div>
+                <dt>{language === "es" ? "Glifo de resonancia" : "Resonance glyph"}</dt>
+                <dd>{language === "es" ? "Un símbolo visual generado a partir del ADN de la pieza y vinculado a su registro." : "A visual symbol derived from the collectible’s DNA and linked to its record."}</dd>
+              </div>
+            </dl>
+
+            <div className="project-gallery-grid">
+              {[
+                [
+                  language === "es" ? "RARE · Guardián del océano" : "RARE · Ocean guardian",
+                  "/nft-gallery/rare-ocean.png",
+                ],
+                [
+                  language === "es" ? "RARE · Guardián del bosque" : "RARE · Forest guardian",
+                  "/nft-gallery/rare-forest.png",
+                ],
+                [
+                  language === "es" ? "EPIC · Tormenta amatista" : "EPIC · Amethyst storm",
+                  "/nft-gallery/epic-amethyst.png",
+                ],
+                [
+                  language === "es" ? "EPIC · Brasa carmesí" : "EPIC · Crimson ember",
+                  "/nft-gallery/epic-ember.png",
+                ],
+                [
+                  language === "es" ? "LEGENDARY · Soberano solar" : "LEGENDARY · Solar sovereign",
+                  "/nft-gallery/legendary-solar.png",
+                ],
+                [
+                  language === "es" ? "LEGENDARY · Soberano astral" : "LEGENDARY · Astral sovereign",
+                  "/nft-gallery/legendary-astral.png",
+                ]
+              ].map(([name, src]) => (
+                <button
+                  className="project-gallery-card"
+                  key={name}
+                  type="button"
+                  onClick={() =>
+                    setGalleryPreview({
+                      name,
+                      src,
+                    })
+                  }
+                >
+                  <img
+                    src={src}
+                    alt={name}
+                    loading="lazy"
+                  />
+
+                  <span className="project-gallery-card__caption">
+                    {name}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+          </section>
+        </FoundingCollection>
         <FoundationEconomyDialog language={language} />
 
         <FoundingMembershipDialog language={language} />

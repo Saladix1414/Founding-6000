@@ -297,3 +297,18 @@ footer.founding-footer.ox-public-footer {
     line-height: 1.45;
   }
 }
+
+#faq.ox-faq .faq-toggle {
+  background: #6036a9;
+  border-color: #6036a9;
+  color: #fff;
+}
+
+#faq.ox-faq .faq-toggle:hover {
+  background: #4d288f;
+}
+
+#faq.ox-faq .faq-toggle:focus-visible {
+  outline: 3px solid #6036a9;
+  outline-offset: 3px;
+}

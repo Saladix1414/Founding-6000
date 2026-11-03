@@ -470,7 +470,7 @@
   overflow: visible;
 }
 
-#campaign #project-gallery-panel {
+#phases #project-gallery-panel {
   box-sizing: border-box;
   position: static;
   inset: auto;
@@ -496,12 +496,12 @@
   backdrop-filter: none;
 }
 
-#campaign #project-gallery-panel::before,
-#campaign #project-gallery-panel::after {
+#phases #project-gallery-panel::before,
+#phases #project-gallery-panel::after {
   display: none;
 }
 
-#campaign .project-gallery-panel__header {
+#phases .project-gallery-panel__header {
   position: static;
   display: flex;
   align-items: flex-start;
@@ -509,11 +509,11 @@
   gap: 12px;
 }
 
-#campaign .project-gallery-panel__header > div {
+#phases .project-gallery-panel__header > div {
   min-width: 0;
 }
 
-#campaign .project-gallery-panel__header span {
+#phases .project-gallery-panel__header span {
   color: var(--ox-purple-text);
   font-family: inherit;
   font-size: 10px;
@@ -521,28 +521,13 @@
   letter-spacing: .08em;
 }
 
-#campaign .project-gallery-panel__header strong {
+#phases .project-gallery-panel__header strong {
   color: var(--ox-ink);
   font-size: 22px;
   line-height: 1.2;
 }
 
-#campaign .project-gallery-panel__close {
-  position: static;
-  display: grid;
-  place-items: center;
-  flex: 0 0 44px;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 1px solid var(--ox-border);
-  border-radius: 12px;
-  color: var(--ox-ink);
-  background: #eee3fc;
-  font-size: 26px;
-}
-
-#campaign .project-gallery-panel__intro {
+#phases .project-gallery-panel__intro {
   max-width: 720px;
   margin: 12px 0 16px;
   color: var(--ox-text-muted);
@@ -550,13 +535,13 @@
   line-height: 1.45;
 }
 
-#campaign .project-gallery-grid {
+#phases .project-gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
-#campaign .project-gallery-card {
+#phases .project-gallery-card {
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -573,7 +558,7 @@
   cursor: pointer;
 }
 
-#campaign .project-gallery-card img {
+#phases .project-gallery-card img {
   display: block;
   width: 100%;
   height: auto;
@@ -582,7 +567,7 @@
   object-position: center top;
 }
 
-#campaign .project-gallery-card__caption {
+#phases .project-gallery-card__caption {
   display: flex;
   align-items: center;
   min-height: 44px;
@@ -593,38 +578,37 @@
   line-height: 1.35;
 }
 
-#campaign .project-gallery-card:focus-visible,
-#campaign .project-gallery-panel__close:focus-visible {
+#phases .project-gallery-card:focus-visible {
   outline: 3px solid var(--ox-purple-text);
   outline-offset: 3px;
 }
 
 @media (max-width: 700px) {
-  #campaign #project-gallery-panel {
+  #phases #project-gallery-panel {
     padding: 14px;
     margin-top: 12px;
     border-radius: 16px;
   }
 
-  #campaign .project-gallery-panel__header strong {
+  #phases .project-gallery-panel__header strong {
     font-size: 20px;
   }
 
-  #campaign .project-gallery-grid {
+  #phases .project-gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #campaign .project-gallery-card img {
+  #phases .project-gallery-card img {
     transition: none;
     transform: none;
   }
 }
 
 /* OX NFT concept gallery */
-#campaign #project-gallery-panel .project-gallery-card img {
+#phases #project-gallery-panel .project-gallery-card img {
   width: 100% !important;
   height: auto !important;
   aspect-ratio: 1 / 1 !important;
@@ -633,9 +617,36 @@
   background: #fff9f0;
 }
 
-#campaign #project-gallery-panel .project-gallery-card__caption {
+#phases #project-gallery-panel .project-gallery-card__caption {
   min-height: 48px;
   padding: 10px;
   font-size: 12px;
   line-height: 1.4;
+}
+
+#phases .project-gallery-panel {
+  margin-bottom: 24px;
+}
+
+#phases .project-gallery-metadata {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+#phases .project-gallery-metadata div {
+  padding: 12px;
+  border: 1px solid var(--ox-border);
+  border-radius: 12px;
+}
+
+#phases .project-gallery-metadata dt {
+  font-weight: 800;
+}
+
+#phases .project-gallery-metadata dd {
+  margin: 6px 0 0;
+  color: var(--ox-text-muted);
+  line-height: 1.5;
 }

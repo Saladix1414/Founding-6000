@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import "../../styles/originx-collection.css";
 import "../../styles/originx-tier-popover.css";
 import { positionTierPopover } from "./tierPopoverPosition";
@@ -16,6 +17,7 @@ type Props = {
   phases: readonly CollectionPhase[];
   ctaLabel: string;
   onCheckout: () => void;
+  children: ReactNode;
 };
 
 function publicTier(name: string) {
@@ -39,6 +41,7 @@ export default function FoundingCollection({
   phases,
   ctaLabel,
   onCheckout,
+  children,
 }: Props) {
   const es = language === "es";
   const locale = es ? "es-AR" : "en-US";
@@ -73,6 +76,8 @@ export default function FoundingCollection({
             <span>{es ? "NFT · suministro máximo" : "NFTs · maximum supply"}</span>
           </div>
         </header>
+
+        {children}
 
         <div className="ox-collection-grid">
           {phases.map(phase => {
