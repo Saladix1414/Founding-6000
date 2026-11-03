@@ -119,7 +119,7 @@ export default function FoundingCollection({
                       <dd>{es ? "12 meses" : "12 months"}</dd>
                     </div>
                     <div className="ox-tier-gain">
-                      <dt>{es ? "Aporte proyectado por NFT al habilitar la quema" : "Projected contribution per NFT when burn redemption opens"}</dt>
+                      <dt>{es ? <>Aporte proyectado por NFT al habilitar<br />la quema</> : "Projected contribution per NFT when burn redemption opens"}</dt>
                       <dd>{modeledReserve === null ? (es ? "No disponible" : "Unavailable") : money(modeledReserve)}</dd>
                       <dd className="ox-tier-gain-note">{es
                         ? "El resultado de las inversiones podría sumarse al importe proyectado. Se propone invertir hasta el 10% del fondo en opciones presentadas por OriginX y votadas por los suscriptores."

@@ -7,7 +7,7 @@ const collection=read('src/components/landing/FoundingCollection.tsx');
 const membership=read('src/components/landing/FoundingMembership.tsx');
 const economy=read('src/components/landing/FoundationEconomy.tsx');
 for(const copy of [hero,membership,economy]) assert.match(copy,/12 meses de acceso a la web de tiendas y desarrollo/);
-assert.match(collection,/"Aporte proyectado por NFT al habilitar la quema" : "Projected contribution per NFT when burn redemption opens"/);
+assert.match(collection,/Aporte proyectado por NFT al habilitar<br \/>la quema/);
 assert.doesNotMatch(collection,/0,4%|0.4%/);
 assert.match(collection,/money\(modeledReserve\)/);
 assert.match(collection,/Se propone invertir hasta el 10%/);

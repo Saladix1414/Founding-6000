@@ -505,6 +505,7 @@
 #phases.ox-collection .ox-tier-details > a { display: inline-block; margin-block: 6px; font-weight: 700; color: #185526; }
 
 #phases .ox-tier-facts .ox-tier-gain .ox-tier-gain-note {
+  text-align: start;
   grid-column: 1 / -1;
   margin: 0;
   font-size: 0.75rem;
