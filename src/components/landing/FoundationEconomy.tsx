@@ -72,27 +72,7 @@ export default function FoundationEconomy({
             : 'Planned policy: accumulate and preserve reserve contributions during sales, with no redemptions or withdrawals of that principal before burn activation. Operational activation of the new percentage, effective fund protection and redemption require implementation and verification.'}</p>
         </header>
 
-        <section className="ox-economy-map" aria-labelledby="ox-economy-map-title">
-          <h3 id="ox-economy-map-title">{es ? "Cómo se conecta todo" : "How it fits together"}</h3>
-          <ol className="ox-economy-steps">
-            <li><strong>{es ? "NFT y acceso" : "NFT and access"}</strong><span>{es ? "Pieza única y 12 meses desde la activación válida." : "A unique collectible and 12 months from valid activation."}</span></li>
-            <li><strong>{es ? "Reparto de la venta" : "Sale allocation"}</strong><span>{es ? "50% a reserva y 50% fuera de reserva." : "50% to reserves and 50% outside reserves."}</span></li>
-            <li><strong>{es ? "Proyección por tandas" : "Batch projection"}</strong><span>{es ? "Ventas, reserva, minteo y financiación de la web." : "Sales, reserves, minting and website funding."}</span></li>
-            <li><strong>{es ? "Escenarios de reserva" : "Reserve scenarios"}</strong><span>{es ? "Inversión simulada y posibles aportes del negocio." : "Modeled investment and potential business contributions."}</span></li>
-            <li><strong>{es ? "Futuro rescate" : "Future redemption"}</strong><span>{es ? "Simulación. El rescate todavía no está habilitado." : "Simulation. Redemption is not enabled yet."}</span></li>
-          </ol>
-        </section>
-
-        <div id="ox-economy-access" className="ox-economy-data ox-economy-marked">
-          <h3>{es ? 'Qué incluye tu NFT' : 'What your NFT includes'}</h3>
-          <ul className="ox-economy-access-list">
-            <li>{es ? "Una pieza única y 12 meses de acceso a la web de tiendas y desarrollo desde la activación válida." : "A unique collectible and 12 months of access to the stores and development website from valid activation."}</li>
-            <li>{es ? "Si transferís el NFT, el nuevo titular válido recibe el tiempo restante con el mismo vencimiento." : "If you transfer the NFT, the new valid holder receives the remaining access with the same expiry date."}</li>
-          </ul>
-          <a className="ox-economy-transparency-link" href="#benefits">{es ? 'Conocer los beneficios de la suscripción' : 'Explore subscription benefits'}<span aria-hidden="true">↓</span></a>
-        </div>
-
-        <div className="ox-economy-scheme">
+        <div className="ox-economy-scheme ox-economy-financial-split">
           <div id="ox-economy-split" className="ox-economy-scheme-heading">
             <h3>{es ? "Cómo se reparte cada venta" : "How each sale is split"}</h3>
             <span>{es ? "EJEMPLO TEÓRICO" : "THEORETICAL EXAMPLE"}</span>
@@ -126,12 +106,14 @@ export default function FoundationEconomy({
               <strong>{money(result.price)}</strong>
             </div>
 
-            <div className="ox-economy-direction" aria-hidden="true">↓</div>
+            <div className="ox-economy-allocation-bar" aria-hidden="true">
+              <span>50%</span>
+              <span>50%</span>
+            </div>
 
             <div className="ox-economy-branches">
               <div className="ox-economy-branch ox-economy-branch--reserve">
-                <span className="ox-economy-branch-percent">50%</span>
-                <h4>{es ? "A reserva" : "To reserve"}</h4>
+                <h4><span className="ox-economy-visually-hidden">50% </span>{es ? "A reserva" : "To reserve"}</h4>
                 <strong>{money(result.reserve)}</strong>
                 <p>
                   {es
@@ -141,8 +123,7 @@ export default function FoundationEconomy({
               </div>
 
               <div className="ox-economy-branch ox-economy-branch--outside">
-                <span className="ox-economy-branch-percent">50%</span>
-                <h4>{es ? "Fuera de reserva" : "Outside reserve"}</h4>
+                <h4><span className="ox-economy-visually-hidden">50% </span>{es ? "Fuera de reserva" : "Outside reserve"}</h4>
                 <strong>{money(result.outsideReserve)}</strong>
                 <p>
                   {es
@@ -188,7 +169,7 @@ export default function FoundationEconomy({
           </div>
         </div>
 
-        <div className="ox-economy-scheme ox-economy-projection">
+        <div className="ox-economy-scheme ox-economy-projection ox-economy-financial-projection">
           <div id="ox-economy-sales" className="ox-economy-scheme-heading">
             <h3>{es ? 'Proyección de ventas por tanda' : 'Sales projection by batch'}</h3>
             <span>{es ? 'MODELO AL 50% · CIERRE PROYECTADO' : '50% MODEL · PROJECTED CLOSE'}</span>
@@ -234,6 +215,26 @@ export default function FoundationEconomy({
               : (es ? 'Sin costes definidos, el beneficio neto operativo queda pendiente. El 50% corresponde al aporte a reserva.' : 'Without defined costs, operating net profit remains pending. The 50% is the reserve contribution.')}</p>
             <div className="ox-economy-sale" aria-live="polite"><span>{es ? 'Neto operativo estimado tras la reserva y los costes ingresados' : 'Estimated operating net after reserves and entered costs'}</span><strong>{!costInvalid && closing.operatingNet !== null ? money(closing.operatingNet) : (es ? 'Pendiente' : 'Pending')}</strong></div>
           </details>
+        </div>
+
+        <section className="ox-economy-map" aria-labelledby="ox-economy-map-title">
+          <h3 id="ox-economy-map-title">{es ? "Cómo se conecta todo" : "How it fits together"}</h3>
+          <ol className="ox-economy-steps">
+            <li><strong>{es ? "NFT y acceso" : "NFT and access"}</strong><span>{es ? "Pieza única y 12 meses desde la activación válida." : "A unique collectible and 12 months from valid activation."}</span></li>
+            <li><strong>{es ? "Reparto de la venta" : "Sale allocation"}</strong><span>{es ? "50% a reserva y 50% fuera de reserva." : "50% to reserves and 50% outside reserves."}</span></li>
+            <li><strong>{es ? "Proyección por tandas" : "Batch projection"}</strong><span>{es ? "Ventas, reserva, minteo y financiación de la web." : "Sales, reserves, minting and website funding."}</span></li>
+            <li><strong>{es ? "Escenarios de reserva" : "Reserve scenarios"}</strong><span>{es ? "Inversión simulada y posibles aportes del negocio." : "Modeled investment and potential business contributions."}</span></li>
+            <li><strong>{es ? "Futuro rescate" : "Future redemption"}</strong><span>{es ? "Simulación. El rescate todavía no está habilitado." : "Simulation. Redemption is not enabled yet."}</span></li>
+          </ol>
+        </section>
+
+        <div id="ox-economy-access" className="ox-economy-data ox-economy-marked">
+          <h3>{es ? 'Qué incluye tu NFT' : 'What your NFT includes'}</h3>
+          <ul className="ox-economy-access-list">
+            <li>{es ? "Una pieza única y 12 meses de acceso a la web de tiendas y desarrollo desde la activación válida." : "A unique collectible and 12 months of access to the stores and development website from valid activation."}</li>
+            <li>{es ? "Si transferís el NFT, el nuevo titular válido recibe el tiempo restante con el mismo vencimiento." : "If you transfer the NFT, the new valid holder receives the remaining access with the same expiry date."}</li>
+          </ul>
+          <a className="ox-economy-transparency-link" href="#benefits">{es ? 'Conocer los beneficios de la suscripción' : 'Explore subscription benefits'}<span aria-hidden="true">↓</span></a>
         </div>
 
         <div className="ox-economy-scheme ox-economy-projection">

@@ -978,3 +978,92 @@
 #economia .ox-economy-access-list li + li {
   margin-top: 6px;
 }
+
+/* Financial panel: split and projected totals. */
+#economia .ox-economy-financial-split,
+#economia .ox-economy-financial-projection {
+  background: #102c35;
+  border-color: #45636a;
+  color: #f4fffc;
+}
+
+#economia :is(.ox-economy-financial-split, .ox-economy-financial-projection)
+  :is(.ox-economy-scheme-heading h3, .ox-economy-selector legend),
+#economia .ox-economy-financial-projection > .ox-economy-field > span,
+#economia .ox-economy-financial-projection > .ox-economy-small {
+  color: #e0eff0;
+}
+
+#economia .ox-economy-financial-split .ox-economy-sale {
+  background: #20434c;
+  color: #f4fffc;
+}
+
+#economia .ox-economy-financial-split .ox-economy-sale :is(span, strong) {
+  color: inherit;
+}
+
+#economia .ox-economy-allocation-bar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-block: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 800;
+}
+
+#economia .ox-economy-allocation-bar span {
+  padding: 8px;
+  color: #122f26;
+  background: #b5efd1;
+}
+
+#economia .ox-economy-allocation-bar span + span {
+  color: #182f41;
+  background: #e1ecf4;
+}
+
+#economia .ox-economy-financial-split .ox-economy-branch--reserve {
+  background: #d8f6e6;
+  color: #122f26;
+}
+
+#economia .ox-economy-financial-split .ox-economy-branch--outside {
+  background: #e1ecf4;
+  color: #182f41;
+}
+
+#economia .ox-economy-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+#economia .ox-economy-financial-projection .ox-economy-projection-metrics {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#economia .ox-economy-financial-projection .ox-economy-projection-metrics > div {
+  background: #20434c;
+  color: #f4fffc;
+}
+
+#economia .ox-economy-financial-projection .ox-economy-projection-metrics > div:nth-child(2) {
+  background: #b5efd1;
+  color: #122f26;
+}
+
+#economia .ox-economy-financial-projection .ox-economy-explanation {
+  color: #172c36;
+  background: #edf6f6;
+}
+
+@media (max-width: 390px) {
+  #economia .ox-economy-financial-projection .ox-economy-projection-metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
