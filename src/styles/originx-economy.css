@@ -953,13 +953,12 @@
   font-size: .8rem;
 }
 
-#economia .ox-economy-steps a {
+#economia .ox-economy-map .ox-economy-steps strong {
   display: block;
   color: #482681;
-  text-decoration: underline;
 }
 
-#economia .ox-economy-steps a span {
+#economia .ox-economy-map .ox-economy-steps span {
   display: block;
   margin-top: 4px;
   color: #3d3550;
@@ -969,4 +968,13 @@
 
 #economia :is(#ox-economy-access, #ox-economy-split, #ox-economy-sales, #ox-economy-investment, #ox-economy-redemption) {
   scroll-margin-top: 16px;
+}
+
+#economia .ox-economy-access-list {
+  padding-inline-start: 1.25rem;
+  line-height: 1.55;
+}
+
+#economia .ox-economy-access-list li + li {
+  margin-top: 6px;
 }

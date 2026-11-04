@@ -72,26 +72,29 @@ export default function FoundationEconomy({
             : 'Planned policy: accumulate and preserve reserve contributions during sales, with no redemptions or withdrawals of that principal before burn activation. Operational activation of the new percentage, effective fund protection and redemption require implementation and verification.'}</p>
         </header>
 
-        <nav className="ox-economy-map" aria-labelledby="ox-economy-map-title">
+        <section className="ox-economy-map" aria-labelledby="ox-economy-map-title">
           <h3 id="ox-economy-map-title">{es ? "Cómo se conecta todo" : "How it fits together"}</h3>
           <ol className="ox-economy-steps">
-            <li><a href="#ox-economy-access">{es ? "NFT y acceso" : "NFT and access"}<span>{es ? "Pieza única y 12 meses desde la activación válida." : "A unique collectible and 12 months from valid activation."}</span></a></li>
-            <li><a href="#ox-economy-split">{es ? "Reparto de la venta" : "Sale allocation"}<span>{es ? "50% a reserva y 50% fuera de reserva." : "50% to reserves and 50% outside reserves."}</span></a></li>
-            <li><a href="#ox-economy-sales">{es ? "Proyección por tandas" : "Batch projection"}<span>{es ? "Ventas, reserva, minteo y financiación de la web." : "Sales, reserves, minting and website funding."}</span></a></li>
-            <li><a href="#ox-economy-investment">{es ? "Escenarios de reserva" : "Reserve scenarios"}<span>{es ? "Inversión simulada y posibles aportes del negocio." : "Modeled investment and potential business contributions."}</span></a></li>
-            <li><a href="#ox-economy-redemption">{es ? "Futuro rescate" : "Future redemption"}<span>{es ? "Simulación. El rescate todavía no está habilitado." : "Simulation. Redemption is not enabled yet."}</span></a></li>
+            <li><strong>{es ? "NFT y acceso" : "NFT and access"}</strong><span>{es ? "Pieza única y 12 meses desde la activación válida." : "A unique collectible and 12 months from valid activation."}</span></li>
+            <li><strong>{es ? "Reparto de la venta" : "Sale allocation"}</strong><span>{es ? "50% a reserva y 50% fuera de reserva." : "50% to reserves and 50% outside reserves."}</span></li>
+            <li><strong>{es ? "Proyección por tandas" : "Batch projection"}</strong><span>{es ? "Ventas, reserva, minteo y financiación de la web." : "Sales, reserves, minting and website funding."}</span></li>
+            <li><strong>{es ? "Escenarios de reserva" : "Reserve scenarios"}</strong><span>{es ? "Inversión simulada y posibles aportes del negocio." : "Modeled investment and potential business contributions."}</span></li>
+            <li><strong>{es ? "Futuro rescate" : "Future redemption"}</strong><span>{es ? "Simulación. El rescate todavía no está habilitado." : "Simulation. Redemption is not enabled yet."}</span></li>
           </ol>
-        </nav>
+        </section>
 
         <div id="ox-economy-access" className="ox-economy-data ox-economy-marked">
-          <h3>{es ? 'Tu NFT: acceso, libertad y crecimiento potencial' : 'An NFT, a transferable subscription and a reserve model'}</h3>
-          <p>{es ? 'Tu compra reúne una pieza única y 12 meses de acceso a la web de tiendas y desarrollo desde la activación válida. Si transferís el NFT, el nuevo titular válido recibe el tiempo restante, con el mismo vencimiento. El 50% de cada venta inicial verificada se destina a reserva; los escenarios siguientes explican su posible evolución.' : 'Your purchase brings together a unique collectible and 12 months of access to the stores and development website from valid activation. If you transfer the NFT, its new valid holder receives the remaining term with the same expiry. The model allocates 50% of each verified initial sale to community reserves; the following scenarios explain their possible evolution.'}</p>
+          <h3>{es ? 'Qué incluye tu NFT' : 'What your NFT includes'}</h3>
+          <ul className="ox-economy-access-list">
+            <li>{es ? "Una pieza única y 12 meses de acceso a la web de tiendas y desarrollo desde la activación válida." : "A unique collectible and 12 months of access to the stores and development website from valid activation."}</li>
+            <li>{es ? "Si transferís el NFT, el nuevo titular válido recibe el tiempo restante con el mismo vencimiento." : "If you transfer the NFT, the new valid holder receives the remaining access with the same expiry date."}</li>
+          </ul>
           <a className="ox-economy-transparency-link" href="#benefits">{es ? 'Conocer los beneficios de la suscripción' : 'Explore subscription benefits'}<span aria-hidden="true">↓</span></a>
         </div>
 
         <div className="ox-economy-scheme">
           <div id="ox-economy-split" className="ox-economy-scheme-heading">
-            <h3>{es ? "Seguí el reparto" : "Follow the allocation"}</h3>
+            <h3>{es ? "Cómo se reparte cada venta" : "How each sale is split"}</h3>
             <span>{es ? "EJEMPLO TEÓRICO" : "THEORETICAL EXAMPLE"}</span>
           </div>
 
@@ -157,7 +160,7 @@ export default function FoundationEconomy({
 
             <div className="ox-economy-reserve-detail">
               <h4>
-                {es ? "Dentro del 50% de reserva" : "Inside the 50% reserve"}
+                {es ? "A qué categoría va la reserva" : "Which category receives the reserve"}
               </h4>
               <p className="ox-economy-small">
                 {es
@@ -201,27 +204,36 @@ export default function FoundationEconomy({
               <option value={3}>{es ? 'Al finalizar toda la colección' : 'After the full collection'}</option>
             </select>
           </label>
-          <div className="ox-economy-rules-scroll ox-economy-marked" role="region" aria-label={es ? 'Resultados por tanda' : 'Batch results'} tabIndex={0}>
-            <table className="ox-economy-table">
-              <caption>{es ? 'Importes calculados si se completan las ventas indicadas; no son cobros ya verificados.' : 'Calculated amounts if the selected sales complete; not already verified receipts.'}</caption>
-              <thead><tr><th scope="col">{es ? 'Tanda' : 'Batch'}</th><th scope="col">{es ? 'Ventas' : 'Sales'}</th><th scope="col">{es ? 'Ingreso' : 'Revenue'}</th><th scope="col">50% → {es ? 'reserva' : 'reserve'}</th><th scope="col">{es ? 'Reserva acumulada' : 'Cumulative reserve'}</th></tr></thead>
-              <tbody>{closing.stages.map(stage => <tr key={stage.tier}><th scope="row">{stage.tier}</th><td>{stage.quantity}</td><td>{money(stage.revenue)}</td><td>{money(stage.contribution)}</td><td>{money(stage.cumulativeReserve)}</td></tr>)}</tbody>
-            </table>
-          </div>
           <div className="ox-economy-projection-metrics" aria-live="polite" aria-atomic="true">
             <div><span>{es ? 'Ingresos del escenario' : 'Scenario revenue'}</span><strong>{money(closing.sales)}</strong></div>
             <div><span>{es ? 'Aporte fijo a reserva' : 'Fixed reserve contribution'}</span><strong>{money(closing.reserve)}</strong></div>
             <div><span>{es ? 'Minteo estimado' : 'Estimated minting'}</span><strong>{money(closing.minting)}</strong></div>
             <div><span>{es ? 'Para financiar la web, antes de otros gastos' : 'For the website, before other expenses'}</span><strong>{money(closing.forWebsite)}</strong></div>
           </div>
-          <label className="ox-economy-field" htmlFor="ox-scenario-costs">
-            <span>{es ? 'Costes totales del escenario (USDT, opcional)' : 'Total scenario costs (USDT, optional)'}</span>
-            <input id="ox-scenario-costs" type="text" inputMode="decimal" maxLength={12} value={costInput} onChange={event => setCostInput(event.target.value)} placeholder={es ? 'Pendientes de definir' : 'Not defined yet'} aria-invalid={costInvalid} aria-describedby="ox-cost-explanation" />
-          </label>
-          <p id="ox-cost-explanation" className="ox-economy-small">{costInvalid
-            ? (es ? 'Ingresá un importe positivo con hasta dos decimales.' : 'Enter a positive amount with up to two decimal places.')
-            : (es ? 'Sin costes definidos, el beneficio neto operativo queda pendiente. El 50% corresponde al aporte a reserva.' : 'Without defined costs, operating net profit remains pending. The 50% is the reserve contribution.')}</p>
-          <div className="ox-economy-sale" aria-live="polite"><span>{es ? 'Neto operativo estimado tras la reserva y los costes ingresados' : 'Estimated operating net after reserves and entered costs'}</span><strong>{!costInvalid && closing.operatingNet !== null ? money(closing.operatingNet) : (es ? 'Pendiente' : 'Pending')}</strong></div>
+          <p className="ox-economy-small">{es
+            ? "Para financiar la web: ingresos menos la reserva y el coste estimado de minteo. Todos los importes de este bloque son proyecciones."
+            : "Website funding: revenue minus reserves and estimated minting costs. All figures in this section are projections."}</p>
+          <details className="ox-economy-explanation">
+            <summary>{es ? "Ver detalle por tanda" : "View batch breakdown"}</summary>
+            <div className="ox-economy-rules-scroll ox-economy-marked" role="region" aria-label={es ? 'Resultados por tanda' : 'Batch results'} tabIndex={0}>
+              <table className="ox-economy-table">
+                <caption>{es ? 'Importes calculados si se completan las ventas indicadas; no son cobros ya verificados.' : 'Calculated amounts if the selected sales complete; not already verified receipts.'}</caption>
+                <thead><tr><th scope="col">{es ? 'Tanda' : 'Batch'}</th><th scope="col">{es ? 'Ventas' : 'Sales'}</th><th scope="col">{es ? 'Ingreso' : 'Revenue'}</th><th scope="col">50% → {es ? 'reserva' : 'reserve'}</th><th scope="col">{es ? 'Reserva acumulada' : 'Cumulative reserve'}</th></tr></thead>
+                <tbody>{closing.stages.map(stage => <tr key={stage.tier}><th scope="row">{stage.tier}</th><td>{stage.quantity}</td><td>{money(stage.revenue)}</td><td>{money(stage.contribution)}</td><td>{money(stage.cumulativeReserve)}</td></tr>)}</tbody>
+              </table>
+            </div>
+          </details>
+          <details className="ox-economy-explanation">
+            <summary>{es ? "Calcular el neto con tus propios costes" : "Calculate net proceeds with your own costs"}</summary>
+            <label className="ox-economy-field" htmlFor="ox-scenario-costs">
+              <span>{es ? 'Costes totales del escenario (USDT, opcional)' : 'Total scenario costs (USDT, optional)'}</span>
+              <input id="ox-scenario-costs" type="text" inputMode="decimal" maxLength={12} value={costInput} onChange={event => setCostInput(event.target.value)} placeholder={es ? 'Pendientes de definir' : 'Not defined yet'} aria-invalid={costInvalid} aria-describedby="ox-cost-explanation" />
+            </label>
+            <p id="ox-cost-explanation" className="ox-economy-small">{costInvalid
+              ? (es ? 'Ingresá un importe positivo con hasta dos decimales.' : 'Enter a positive amount with up to two decimal places.')
+              : (es ? 'Sin costes definidos, el beneficio neto operativo queda pendiente. El 50% corresponde al aporte a reserva.' : 'Without defined costs, operating net profit remains pending. The 50% is the reserve contribution.')}</p>
+            <div className="ox-economy-sale" aria-live="polite"><span>{es ? 'Neto operativo estimado tras la reserva y los costes ingresados' : 'Estimated operating net after reserves and entered costs'}</span><strong>{!costInvalid && closing.operatingNet !== null ? money(closing.operatingNet) : (es ? 'Pendiente' : 'Pending')}</strong></div>
+          </details>
         </div>
 
         <div className="ox-economy-scheme ox-economy-projection">
