@@ -8,7 +8,7 @@ export default function FoundationEconomyDialog({language}: {language: 'es' | 'e
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     if (!dialog.current) return;
-    return mountMembershipDialog(dialog.current, document, {rootId: 'economia', eventName: 'ox:open-economy'});
+    return mountMembershipDialog(dialog.current, document, {rootId: 'economia', eventName: 'ox:open-economy', openOnInitialHash: false});
   }, []);
   const es = language === 'es';
   return (

@@ -1,6 +1,6 @@
 const activeContentDialogs = new Map<HTMLDialogElement, () => void>();
 
-export function mountMembershipDialog(dialog: HTMLDialogElement, doc: Document = document, options: {rootId?: string; eventName?: string} = {}) {
+export function mountMembershipDialog(dialog: HTMLDialogElement, doc: Document = document, options: {rootId?: string; eventName?: string; openOnInitialHash?: boolean} = {}) {
   const rootId = options.rootId ?? 'benefits';
   let trigger: HTMLElement | null = null;
   let previousOverflow: string | null = null;
@@ -45,7 +45,7 @@ export function mountMembershipDialog(dialog: HTMLDialogElement, doc: Document =
   if (options.eventName) doc.addEventListener(options.eventName, onCommand);
   doc.addEventListener('click', onClick);
   dialog.addEventListener('close', restore);
-  const initialId = doc.location.hash.slice(1);
+  const initialId = options.openOnInitialHash === false ? '' : doc.location.hash.slice(1);
   const initialTarget = initialId ? doc.getElementById(initialId) : null;
   if (initialId === rootId || (rootId !== 'benefits' && initialTarget && dialog.contains(initialTarget))) {
     open(null);
