@@ -12,3 +12,42 @@
   .ox-project-dialog .ox-journey { padding: 22px 14px; }
   .ox-project-dialog .product-grid { grid-template-columns: minmax(0, 1fr); }
 }
+
+.ox-project-dialog #product.ox-ecosystem { background: #f8f9fc; }
+
+.ox-project-dialog .ox-project-showcase > header {
+  padding: clamp(16px, 4vw, 28px);
+  border-radius: 18px;
+  background: #e8f4f1;
+  color: #153f40;
+}
+
+.ox-project-dialog .ox-project-module-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block: 16px;
+}
+
+.ox-project-dialog .ox-project-module-index button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid #d6cce9;
+  border-radius: 12px;
+  background: #f5efff;
+  color: #39246a;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.ox-project-dialog .ox-project-module-index button[aria-pressed="true"] {
+  border-color: #165658;
+  background: #165658;
+  color: #fff;
+}
+
+.ox-project-dialog .ox-project-module-index button:focus-visible {
+  outline: 2px solid #6544a1;
+  outline-offset: 2px;
+}
