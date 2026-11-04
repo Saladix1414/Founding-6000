@@ -650,3 +650,48 @@
   color: var(--ox-text-muted);
   line-height: 1.5;
 }
+
+#phases dialog#project-gallery-panel {
+  position: fixed;
+  inset: 0;
+  display: none;
+  width: min(960px, calc(100% - 24px));
+  max-height: calc(100dvh - 24px);
+  margin: auto;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+#phases dialog#project-gallery-panel[open] {
+  display: block;
+}
+
+#project-gallery-panel::backdrop,
+.collection-image-dialog::backdrop {
+  background: rgb(14 12 25 / 65%);
+}
+
+#phases .project-gallery-panel__close {
+  flex-shrink: 0;
+  width: auto;
+  min-height: 44px;
+  padding-inline: 12px;
+  color: var(--ox-ink);
+  background: #eee3fc;
+  border: 1px solid var(--ox-border);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+dialog.collection-image-dialog {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: 0;
+}
+
+dialog.collection-image-dialog:not([open]) {
+  display: none;
+}

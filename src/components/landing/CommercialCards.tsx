@@ -3,6 +3,7 @@ import "../../styles/originx-commercial-cards.css";
 type Props = {
   language: "es" | "en";
   onEconomy: () => void;
+  onCollection: () => void;
 };
 
 type IconKind = "nft" | "economy" | "ecosystem";
@@ -48,7 +49,7 @@ const imageSizes = {
   }
 };
 
-export default function CommercialCards({ language, onEconomy }: Props) {
+export default function CommercialCards({ language, onEconomy, onCollection }: Props) {
   const es = language === "es";
 
   const cards = [
@@ -60,7 +61,8 @@ export default function CommercialCards({ language, onEconomy }: Props) {
         ? "Arte generativo, número único y un NFT que acompaña el acceso restante de tu suscripción transferible."
         : "Generative art, a unique number and an NFT carrying the remaining access of your transferable subscription.",
       image: "epic-dragon.png",
-      href: "#phases",
+      href: null,
+
       action: es ? "Ver colección" : "View collection",
     },
     {
@@ -120,7 +122,8 @@ export default function CommercialCards({ language, onEconomy }: Props) {
                 <button
                   className="ox-commercial-action"
                   type="button"
-                  onClick={onEconomy}
+                  onClick={card.key === "nft" ? onCollection : onEconomy}
+                  aria-haspopup={card.key === "nft" ? "dialog" : undefined}
                   aria-label={card.action}
                 >
                   <span>{card.action}</span>

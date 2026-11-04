@@ -115,6 +115,9 @@ function App() {
   const [whitepaperOpen, setWhitepaperOpen] =
     useState(false);
 
+  const collectionDialog = useRef<HTMLDialogElement>(null);
+  const galleryImageDialog = useRef<HTMLDialogElement>(null);
+
   const [galleryPreview, setGalleryPreview] =
     useState<{
       name: string;
@@ -320,29 +323,9 @@ function App() {
   }, [checkoutOpen]);
 
   useEffect(() => {
-    if (!galleryPreview) {
-      return;
+    if (galleryPreview && !galleryImageDialog.current?.open) {
+      galleryImageDialog.current?.showModal();
     }
-
-    const handleGalleryKeyDown = (
-      event: KeyboardEvent,
-    ) => {
-      if (event.key === "Escape") {
-        setGalleryPreview(null);
-      }
-    };
-
-    document.addEventListener(
-      "keydown",
-      handleGalleryKeyDown,
-    );
-
-    return () => {
-      document.removeEventListener(
-        "keydown",
-        handleGalleryKeyDown,
-      );
-    };
   }, [galleryPreview]);
 
   useEffect(() => {
@@ -549,23 +532,22 @@ function App() {
       />
 
       {galleryPreview && (
-        <div
-          className="project-gallery-preview"
-          role="presentation"
+        <dialog
+          ref={galleryImageDialog}
+          className="project-gallery-preview collection-image-dialog"
+          aria-label={galleryPreview.name}
+          onClose={() => setGalleryPreview(null)}
           onMouseDown={(event) => {
             if (
               event.target ===
               event.currentTarget
             ) {
-              setGalleryPreview(null);
+              event.currentTarget.close();
             }
           }}
         >
           <div
             className="project-gallery-preview__dialog"
-            role="dialog"
-            aria-modal="true"
-            aria-label={galleryPreview.name}
           >
             <button
               type="button"
@@ -576,7 +558,7 @@ function App() {
                   : "Close image"
               }
               onClick={() =>
-                setGalleryPreview(null)
+                galleryImageDialog.current?.close()
               }
             >
               ×
@@ -591,7 +573,7 @@ function App() {
               {galleryPreview.name}
             </strong>
           </div>
-        </div>
+        </dialog>
       )}
 
       {whitepaperOpen && (
@@ -682,6 +664,7 @@ function App() {
         <CommercialCards
           language={language}
           onEconomy={scrollToEconomy}
+          onCollection={() => collectionDialog.current?.showModal()}
         />
 
 
@@ -840,7 +823,8 @@ function App() {
           ctaLabel={primaryCtaLabel}
           onCheckout={openCheckout}
         >
-            <section
+          <dialog
+            ref={collectionDialog}
             id="project-gallery-panel"
             className="project-gallery-panel"
             aria-label={
@@ -862,6 +846,13 @@ function App() {
                 </strong>
               </div>
 
+              <button
+                className="project-gallery-panel__close"
+                type="button"
+                onClick={() => collectionDialog.current?.close()}
+              >
+                {language === "es" ? "Cerrar galería" : "Close gallery"}
+              </button>
             </header>
 
             <p className="project-gallery-panel__intro">
@@ -936,7 +927,7 @@ function App() {
               ))}
             </div>
 
-          </section>
+          </dialog>
         </FoundingCollection>
         <FoundationEconomyDialog language={language} />
 
