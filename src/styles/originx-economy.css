@@ -1067,3 +1067,19 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+#economia .ox-economy-financial-split .ox-economy-selector label > span {
+  color: #182f41;
+}
+
+#economia .ox-economy-financial-split .ox-economy-selector input:checked + span {
+  color: #482681;
+}
+
+#economia .ox-economy-financial-split .ox-economy-separation {
+  color: #e0eff0;
+}
+
+#economia .ox-economy-financial-split .ox-economy-reserve-detail {
+  color: #182f41;
+}
