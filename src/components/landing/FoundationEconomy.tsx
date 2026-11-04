@@ -72,8 +72,25 @@ export default function FoundationEconomy({
             : 'Planned policy: accumulate and preserve reserve contributions during sales, with no redemptions or withdrawals of that principal before burn activation. Operational activation of the new percentage, effective fund protection and redemption require implementation and verification.'}</p>
         </header>
 
+        <nav className="ox-economy-map" aria-labelledby="ox-economy-map-title">
+          <h3 id="ox-economy-map-title">{es ? "Cómo se conecta todo" : "How it fits together"}</h3>
+          <ol className="ox-economy-steps">
+            <li><a href="#ox-economy-access">{es ? "NFT y acceso" : "NFT and access"}<span>{es ? "Pieza única y 12 meses desde la activación válida." : "A unique collectible and 12 months from valid activation."}</span></a></li>
+            <li><a href="#ox-economy-split">{es ? "Reparto de la venta" : "Sale allocation"}<span>{es ? "50% a reserva y 50% fuera de reserva." : "50% to reserves and 50% outside reserves."}</span></a></li>
+            <li><a href="#ox-economy-sales">{es ? "Proyección por tandas" : "Batch projection"}<span>{es ? "Ventas, reserva, minteo y financiación de la web." : "Sales, reserves, minting and website funding."}</span></a></li>
+            <li><a href="#ox-economy-investment">{es ? "Escenarios de reserva" : "Reserve scenarios"}<span>{es ? "Inversión simulada y posibles aportes del negocio." : "Modeled investment and potential business contributions."}</span></a></li>
+            <li><a href="#ox-economy-redemption">{es ? "Futuro rescate" : "Future redemption"}<span>{es ? "Simulación. El rescate todavía no está habilitado." : "Simulation. Redemption is not enabled yet."}</span></a></li>
+          </ol>
+        </nav>
+
+        <div id="ox-economy-access" className="ox-economy-data ox-economy-marked">
+          <h3>{es ? 'Tu NFT: acceso, libertad y crecimiento potencial' : 'An NFT, a transferable subscription and a reserve model'}</h3>
+          <p>{es ? 'Tu compra reúne una pieza única y 12 meses de acceso a la web de tiendas y desarrollo desde la activación válida. Si transferís el NFT, el nuevo titular válido recibe el tiempo restante, con el mismo vencimiento. El 50% de cada venta inicial verificada se destina a reserva; los escenarios siguientes explican su posible evolución.' : 'Your purchase brings together a unique collectible and 12 months of access to the stores and development website from valid activation. If you transfer the NFT, its new valid holder receives the remaining term with the same expiry. The model allocates 50% of each verified initial sale to community reserves; the following scenarios explain their possible evolution.'}</p>
+          <a className="ox-economy-transparency-link" href="#benefits">{es ? 'Conocer los beneficios de la suscripción' : 'Explore subscription benefits'}<span aria-hidden="true">↓</span></a>
+        </div>
+
         <div className="ox-economy-scheme">
-          <div className="ox-economy-scheme-heading">
+          <div id="ox-economy-split" className="ox-economy-scheme-heading">
             <h3>{es ? "Seguí el reparto" : "Follow the allocation"}</h3>
             <span>{es ? "EJEMPLO TEÓRICO" : "THEORETICAL EXAMPLE"}</span>
           </div>
@@ -168,14 +185,8 @@ export default function FoundationEconomy({
           </div>
         </div>
 
-        <div className="ox-economy-data ox-economy-marked">
-          <h3>{es ? 'Tu NFT: acceso, libertad y crecimiento potencial' : 'An NFT, a transferable subscription and a reserve model'}</h3>
-          <p>{es ? 'Tu compra reúne una pieza única y 12 meses de acceso a la web de tiendas y desarrollo desde la activación válida. Si transferís el NFT, el nuevo titular válido recibe el tiempo restante, con el mismo vencimiento. El 50% de cada venta inicial verificada se destina a reserva; los escenarios siguientes explican su posible evolución.' : 'Your purchase brings together a unique collectible and 12 months of access to the stores and development website from valid activation. If you transfer the NFT, its new valid holder receives the remaining term with the same expiry. The model allocates 50% of each verified initial sale to community reserves; the following scenarios explain their possible evolution.'}</p>
-          <a className="ox-economy-transparency-link" href="#benefits">{es ? 'Conocer los beneficios de la suscripción' : 'Explore subscription benefits'}<span aria-hidden="true">↓</span></a>
-        </div>
-
         <div className="ox-economy-scheme ox-economy-projection">
-          <div className="ox-economy-scheme-heading">
+          <div id="ox-economy-sales" className="ox-economy-scheme-heading">
             <h3>{es ? 'Proyección de ventas por tanda' : 'Sales projection by batch'}</h3>
             <span>{es ? 'MODELO AL 50% · CIERRE PROYECTADO' : '50% MODEL · PROJECTED CLOSE'}</span>
           </div>
@@ -215,7 +226,7 @@ export default function FoundationEconomy({
 
         <div className="ox-economy-scheme ox-economy-projection">
           <div className="ox-economy-marked">
-            <div className="ox-economy-scheme-heading">
+            <div id="ox-economy-investment" className="ox-economy-scheme-heading">
               <h3>{es ? 'Estimado del resultado de inversiones tras finalizar la venta' : 'Estimated investment results after the sale closes'}</h3>
               <span>{es ? 'ESCENARIO SELECCIONADO' : 'SELECTED SCENARIO'}</span>
             </div>
@@ -335,13 +346,20 @@ export default function FoundationEconomy({
         </div>
 
         <div className="ox-economy-scheme ox-economy-projection">
-          <div className="ox-economy-scheme-heading">
+          <div id="ox-economy-redemption" className="ox-economy-scheme-heading">
             <h3>{es ? 'Qué recibirías al rescatar tu NFT' : 'What you would receive by redeeming your NFT'}</h3>
             <span>{es ? 'SIMULACIÓN · RESCATE NO HABILITADO' : 'SIMULATION · REDEMPTION DISABLED'}</span>
           </div>
+          <ol className="ox-economy-steps ox-economy-redemption-steps" aria-label={es ? "Etapas previstas del rescate" : "Planned redemption steps"}>
+            <li>{es ? "Finalizar las ventas" : "Complete sales"}</li>
+            <li>{es ? "Verificar las reservas disponibles" : "Verify available reserves"}</li>
+            <li>{es ? "Habilitar el rescate" : "Enable redemption"}</li>
+            <li>{es ? "Solicitar el rescate desde tu wallet" : "Request redemption from your wallet"}</li>
+            <li>{es ? "Cobrar y quemar el NFT en una misma operación" : "Receive payment and burn the NFT in one operation"}</li>
+          </ol>
           <p className="ox-economy-small">{es
-            ? 'El recorrido previsto es: finalizar la venta de la colección → verificar las reservas disponibles → habilitar el rescate → solicitarlo desde tu wallet → cobrar y quemar el NFT en una misma operación, o revertir todo si falla. No se debe quemar primero y esperar un pago posterior.'
-            : 'Planned flow: complete collection sales → verify available reserves → enable redemption → request from your wallet → receive payment and burn the NFT in one operation, or revert everything on failure. Burning first and waiting for later payment is not the intended flow.'}</p>
+            ? "Si la operación falla, se revierte completa. Evitá quemar el NFT por separado."
+            : "If the transaction fails, it reverts in full. Avoid burning the NFT separately."}</p>
           <p className="ox-economy-small">{es
             ? 'Esta simulación usa la proyección de campaña de 6.000 ventas y los mismos controles de inversión de arriba. Las condiciones efectivas de elegibilidad y rescate siguen pendientes.'
             : 'This simulation uses the 6,000-sale campaign projection and the same investment controls as above. Actual eligibility and redemption terms remain pending.'}</p>

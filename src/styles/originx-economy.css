@@ -919,3 +919,54 @@
   color: #000;
   font-weight: 700;
 }
+
+#economia .ox-economy-map {
+  padding: 16px;
+  border: 1px solid #d9c9ef;
+  border-radius: 16px;
+  background: #f6efff;
+}
+
+#economia .ox-economy-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
+  gap: 10px;
+  margin: 12px 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: economy-step;
+}
+
+#economia .ox-economy-steps li {
+  counter-increment: economy-step;
+  padding: 12px;
+  border-radius: 12px;
+  background: #fffaf1;
+  color: #191335;
+  font-weight: 700;
+}
+
+#economia .ox-economy-steps li::before {
+  content: counter(economy-step, decimal-leading-zero);
+  display: block;
+  color: #6036a9;
+  font-size: .8rem;
+}
+
+#economia .ox-economy-steps a {
+  display: block;
+  color: #482681;
+  text-decoration: underline;
+}
+
+#economia .ox-economy-steps a span {
+  display: block;
+  margin-top: 4px;
+  color: #3d3550;
+  font-size: .85rem;
+  font-weight: 400;
+}
+
+#economia :is(#ox-economy-access, #ox-economy-split, #ox-economy-sales, #ox-economy-investment, #ox-economy-redemption) {
+  scroll-margin-top: 16px;
+}
