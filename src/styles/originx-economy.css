@@ -1083,3 +1083,66 @@
 #economia .ox-economy-financial-split .ox-economy-reserve-detail {
   color: #182f41;
 }
+
+/* Supporting sections share the financial panel palette on light surfaces. */
+#economia .ox-economy-map {
+  margin-block: 18px 12px;
+  background: #edf6f6;
+  border-color: #bfd8d6;
+}
+
+#economia .ox-economy-map .ox-economy-steps strong,
+#economia .ox-economy-map .ox-economy-steps li::before {
+  color: #205451;
+}
+
+#economia #ox-economy-access,
+#economia .ox-economy-lower-card {
+  color: #182f41;
+  border-color: #bfd8d6;
+}
+
+#economia .ox-economy-lower-card {
+  border-inline-start: 4px solid #477d76;
+}
+
+#economia #ox-economy-access li,
+#economia .ox-economy-lower-card .ox-economy-marked p {
+  font-weight: 400;
+}
+
+#economia .ox-economy-lower-card .ox-economy-scheme-heading > span {
+  color: #16443d;
+  background: #d8f6e6;
+}
+
+#economia #ox-economy-redemption > span {
+  color: #663d16;
+  background: #ffebce;
+}
+
+#economia .ox-economy-lower-card :is(.ox-economy-reserve-detail, .ox-economy-explanation, .ox-economy-rules) {
+  color: #182f41;
+  border-color: #bfd8d6;
+  background: #edf6f6;
+}
+
+#economia .ox-economy-lower-card .ox-economy-projection-metrics > div {
+  background: #dfeaf3;
+  color: #182f41;
+}
+
+#economia .ox-economy-lower-card .ox-economy-projection-metrics > div:last-child {
+  background: #d8f6e6;
+  color: #122f26;
+}
+
+@media (max-width: 480px) {
+  #economia .ox-economy-map .ox-economy-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #economia .ox-economy-map .ox-economy-steps li:last-child {
+    grid-column: 1 / -1;
+  }
+}
