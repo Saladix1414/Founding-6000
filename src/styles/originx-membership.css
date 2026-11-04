@@ -651,3 +651,28 @@
     line-height: 1.4;
   }
 }
+
+.ox-membership .ox-main-web-benefits .ox-membership-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.ox-membership .ox-membership-tools li {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #17486626;
+  border-radius: 12px;
+  background: #f3faff;
+}
+
+.ox-membership .ox-membership-tools strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.ox-membership .ox-membership-feature .ox-membership-collectible {
+  margin-top: 16px;
+}

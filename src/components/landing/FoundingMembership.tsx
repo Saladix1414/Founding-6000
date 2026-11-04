@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "../../styles/originx-membership.css";
 import "../../styles/originx-tier-popover.css";
 
@@ -6,20 +5,6 @@ type Props = { language: "es" | "en" };
 
 export default function FoundingMembership({ language }: Props) {
   const es = language === "es";
-  const [compactBenefits, setCompactBenefits] = useState(() =>
-    typeof window !== "undefined" &&
-    window.matchMedia("(max-width: 599px)").matches
-  );
-
-  useEffect(() => {
-    const media = window.matchMedia("(max-width: 599px)");
-    const update = () => setCompactBenefits(media.matches);
-    update();
-    media.addEventListener("change", update);
-    return () => media.removeEventListener("change", update);
-  }, []);
-
-
   const benefits = [
     {
       number: "02",
@@ -37,8 +22,8 @@ export default function FoundingMembership({ language }: Props) {
       theme: "lavender",
       title: "Founding Member",
       description: es
-        ? "Reconocimiento permanente como uno de los primeros 6.000 miembros verificados de OriginX Foundation."
-        : "Permanent recognition as one of the first 6,000 verified members of OriginX Foundation.",
+        ? "Reconocimiento permanente para las primeras 6.000 membresías verificadas. Las primeras 1.000 reciben además la distinción Genesis Member."
+        : "Permanent recognition for the first 6,000 verified memberships. The first 1,000 also receive the Genesis Member distinction.",
       note: es
         ? "El reconocimiento no equivale a acceso perpetuo."
         : "Recognition does not mean perpetual access.",
@@ -57,22 +42,11 @@ export default function FoundingMembership({ language }: Props) {
     {
       number: "05",
       theme: "peach",
-      title: es ? "Tu opinión cuenta" : "Your feedback matters",
+      title: es ? "Participación y comunidad" : "Participation and community",
       description: es
-        ? "Oportunidades para compartir ideas y sugerencias en los programas de participación Founding."
-        : "Opportunities to share ideas and suggestions through Founding feedback programs.",
-      note: null,
-    },
-    {
-      number: "06",
-      theme: "green",
-      title: es ? "Ecosistema conectado" : "Connected ecosystem",
-      description: es
-        ? "En el futuro, tu reconocimiento Founding podría aparecer en determinadas experiencias y espacios de la comunidad."
-        : "In the future, your Founding recognition could appear in selected experiences and community spaces.",
-      note: es
-        ? "Una posibilidad futura, no una función ya entregada."
-        : "A future possibility, not an already delivered feature.",
+        ? "Podés compartir ideas en los programas Founding. Más adelante, tu distinción podría aparecer en perfiles, Nexus y otros espacios de la comunidad."
+        : "Share ideas through Founding programs. Your distinction could later appear on profiles, Nexus and other community spaces.",
+      note: es ? "Las integraciones de reconocimiento siguen previstas." : "Recognition integrations are planned.",
     },
   ];
 
@@ -117,8 +91,8 @@ export default function FoundingMembership({ language }: Props) {
           </h2>
           <p>
             {es
-              ? "12 meses de acceso a la web de tiendas y desarrollo desde la activación válida, reconocimiento Founding y oportunidades de acceso beta y participación. El tiempo restante de la suscripción es transferible junto con el NFT."
-              : "12 months of access to the stores and development website from valid activation, Founding recognition, and opportunities for beta access and participation. The remaining subscription term is transferable with the NFT."}
+              ? "Una pieza de colección, 12 meses de acceso desde la activación y reconocimiento en la comunidad Founding."
+              : "A collectible, 12 months of access from activation, and recognition in the Founding community."}
           </p>
         </header>
 
@@ -129,11 +103,6 @@ export default function FoundingMembership({ language }: Props) {
               <span>{es ? "ACCESO PRINCIPAL" : "CORE ACCESS"}</span>
             </div>
 
-            <div className="ox-membership-duration" aria-hidden="true">
-              <strong>12</strong>
-              <span>{es ? "MESES" : "MONTHS"}</span>
-            </div>
-
             <h3>{es ? "12 meses de acceso a la web de tiendas y desarrollo" : "12 months of access to the stores and development website"}</h3>
             <p>
               {es
@@ -141,18 +110,21 @@ export default function FoundingMembership({ language }: Props) {
                 : "Verified membership is designed to include this access. The 12 months start upon valid activation of your Founding Access account, not at purchase."}
             </p>
 
-            <p>{es ? "El NFT reúne tu pieza de colección y el acceso previsto. La reserva y el rescate futuro tienen reglas propias: no sustituyen la suscripción ni se activan automáticamente con la compra." : "The NFT brings together your collectible and planned access. Reserves and future redemption have separate rules: they do not replace the subscription or activate automatically at purchase."}</p>
 
             <div className="ox-main-web-benefits">
-              <h4>{es ? "Impulsá tu proyecto con OriginX Foundation" : "Build your project with OriginX Foundation"}</h4>
-              <ul>
-                <li><strong>{es ? "Tiendas online:" : "Online stores:"}</strong> {es ? "creá tu tienda y organizá productos y ventas con Commerce OS." : "build your store and organize products and sales with Commerce OS."}</li>
-                <li><strong>{es ? "Creación web:" : "Website creation:"}</strong> {es ? "diseñá páginas y desarrollá tu presencia digital con Web Builder." : "design pages and develop your digital presence with Web Builder."}</li>
-                <li><strong>{es ? "IA y automatización:" : "AI and automation:"}</strong> {es ? "explorá asistentes y flujos de trabajo con IA Forge y PULSE." : "explore assistants and workflows with AI Forge and PULSE."}</li>
-                <li><strong>{es ? "Crecimiento del negocio:" : "Business growth:"}</strong> {es ? "herramientas de marketing, SEO y analítica para acompañar tus decisiones." : "marketing, SEO and analytics tools to support your decisions."}</li>
+              <h4>{es ? "Qué podés usar cuando esté disponible" : "What you can use as it becomes available"}</h4>
+              <ul className="ox-membership-tools">
+                <li><strong>Commerce OS</strong> {es ? "Tiendas online, gestión de productos y ventas, y herramientas de comercio descentralizado." : "Online stores, product and sales management, and decentralized commerce tools."}</li>
+                <li><strong>Web Builder</strong> {es ? "Diseño y desarrollo de páginas web." : "Website design and development."}</li>
+                <li><strong>IA Forge · PULSE</strong> {es ? "Creá asistentes y bots de IA con IA Forge. Usá PULSE para flujos de Commerce OS." : "Build AI assistants and bots with IA Forge. Use PULSE for Commerce OS workflows."}</li>
+                <li><strong>Trading Islands</strong> {es ? "Herramientas previstas para desarrollar bots de trading." : "Planned tools for building trading bots."}</li>
+                <li><strong>Brain Boost</strong> {es ? "Acceso a juegos del ecosistema." : "Access to games in the ecosystem."}</li>
+                <li><strong>{es ? "Marketing y crecimiento" : "Marketing and growth"}</strong> {es ? "Herramientas de marketing, SEO y analítica." : "Marketing, SEO and analytics tools."}</li>
               </ul>
               <small>{es ? "Herramientas previstas para el ecosistema; el acceso depende de su disponibilidad, habilitación y límites del plan." : "Planned ecosystem tools; access depends on availability, activation and plan limits."}</small>
             </div>
+
+            <p className="ox-membership-collectible">{es ? "Tu NFT incluye una pieza única con metadata, ADN visual, glifo de resonancia y registro akáshico." : "Your NFT includes a unique collectible with metadata, visual DNA, a resonance glyph and an Akashic record."}</p>
 
             <a className="ox-membership-feature-link" href="#ox-membership-lifecycle">
               {es ? "Cómo comienza tu acceso" : "How your access begins"}
@@ -164,7 +136,6 @@ export default function FoundingMembership({ language }: Props) {
             {benefits.map(benefit => (
               <details
                 key={benefit.number}
-                open={!compactBenefits}
                 className={"ox-membership-benefit ox-membership-benefit--" + benefit.theme}
               >
                 <summary className="ox-membership-benefit-summary">
@@ -229,8 +200,8 @@ export default function FoundingMembership({ language }: Props) {
         </aside>
         <div className="ox-membership-example">
           <div style={{paddingTop:18}}>
-            <h3>{es ? "Tu acceso y la reserva, conectados con reglas claras" : "Your access and reserves, connected by clear rules"}</h3>
-            <p>{es ? "El modelo destina el 50% de las ventas iniciales verificadas a la reserva comunitaria. El análisis contempla además aportar un 15% del beneficio neto futuro del negocio, si se obtiene y se aprueba esa política. Ese aporte adicional no es un cargo extra a tu suscripción ni una distribución automática al titular." : "The model allocates 50% of verified initial sales to community reserves. The analysis also considers contributing 15% of future net business profit, if earned and that policy is approved. This additional contribution is not an extra subscription charge or an automatic distribution to holders."}</p>
+            <h3>{es ? "Cómo funciona la reserva comunitaria" : "How community reserves work"}</h3>
+            <p>{es ? "El modelo destina el 50% de las ventas iniciales verificadas a la reserva comunitaria. El análisis contempla además aportar un 15% del beneficio neto futuro del negocio, si se obtiene y se aprueba esa política. El rescate futuro tiene reglas propias y la compra no lo activa. Ese aporte adicional no es un cargo extra ni una distribución automática." : "The model allocates 50% of verified initial sales to community reserves. The analysis also considers contributing 15% of future net business profit, if earned and that policy is approved. Future redemption has separate rules and purchase does not activate it. This additional contribution is neither an extra charge nor an automatic distribution."}</p>
             <a className="ox-membership-feature-link" href="#ox-business-reserve-scenario">{es ? "Explorar los escenarios de crecimiento de reservas" : "Explore reserve growth scenarios"}<span aria-hidden="true">↑</span></a>
           </div>
         </div>
