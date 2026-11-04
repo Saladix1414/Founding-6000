@@ -939,7 +939,7 @@ function App() {
         }
       />
 
-        <section className="genesis-section ox-landing ox-genesis">
+        <section className="genesis-section ox-landing ox-genesis" aria-labelledby="genesis-title">
           <div className="db-container genesis-layout">
             <div className="genesis-visual">
               <span className="genesis-visual__eyebrow">
@@ -968,7 +968,7 @@ function App() {
                 Genesis Member
               </div>
 
-              <h2 className="db-title">
+              <h2 id="genesis-title" className="db-title">
                 {language === "es"
                   ? "Los primeros mil llevan una distinción única."
                   : "The first thousand carry a distinct mark."}
@@ -982,9 +982,10 @@ function App() {
 
               <div className="genesis-points">
                 <div>
-                  <span>01</span>
+                  <span aria-hidden="true">01</span>
 
                   <p>
+                    <strong>{language === "es" ? "Distinción permanente" : "Permanent distinction"}</strong>
                     {language === "es"
                       ? "Distinción Genesis permanente asociada al registro de membresía Founding."
                       : "Permanent Genesis distinction attached to the founding membership record."}
@@ -992,9 +993,10 @@ function App() {
                 </div>
 
                 <div>
-                  <span>02</span>
+                  <span aria-hidden="true">02</span>
 
                   <p>
+                    <strong>{language === "es" ? "Reconocimiento futuro" : "Future recognition"}</strong>
                     {language === "es"
                       ? "Posible reconocimiento futuro en perfiles, Nexus y espacios de comunidad."
                       : "Potential future recognition across profile, Nexus and community surfaces."}
@@ -1002,9 +1004,10 @@ function App() {
                 </div>
 
                 <div>
-                  <span>03</span>
+                  <span aria-hidden="true">03</span>
 
                   <p>
+                    <strong>{language === "es" ? "Alcance de la distinción" : "Scope of the distinction"}</strong>
                     {language === "es"
                       ? "El estatus Genesis no implica participación accionaria, condición de fundador de la empresa, gobernanza ni derechos financieros."
                       : "Genesis status does not imply equity, company founder status, governance or financial rights."}

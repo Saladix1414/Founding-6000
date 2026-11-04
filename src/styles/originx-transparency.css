@@ -700,3 +700,31 @@
     border-radius: 14px;
   }
 }
+
+.ox-transparency .economic-operations__header {
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  padding: clamp(16px, 3vw, 32px);
+  border: 1px solid #d9cbea;
+  border-radius: 20px;
+  background: linear-gradient(120deg, #fffaf1, #f0e8fc);
+}
+
+.ox-transparency .economic-operations__refresh {
+  color: #fff;
+  background: #573b99;
+  border-color: #573b99;
+}
+
+.ox-transparency .economic-operations__refresh:hover:not(:disabled) {
+  background: #482b83;
+  border-color: #482b83;
+}
+
+.ox-transparency .economic-operations__notice {
+  border-inline-start: 4px solid #ac6b24;
+}
+
+.ox-transparency .economic-operations__notice p {
+  margin: 4px 0 0;
+}

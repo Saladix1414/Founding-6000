@@ -469,7 +469,7 @@ export function EconomicOperationsPanel({
         <header className="economic-operations__header">
           <div>
             <span className="economic-operations__eyebrow">
-              ORIGINX · ECONOMIC TRANSPARENCY
+              {language === "es" ? "ORIGINX · TRANSPARENCIA ECONÓMICA" : "ORIGINX · ECONOMIC TRANSPARENCY"}
             </span>
 
             <h2
@@ -514,7 +514,9 @@ export function EconomicOperationsPanel({
             className="economic-operations__notice"
             role="status"
           >
-            {error}
+            <strong>{language === "es" ? "No pudimos cargar los datos" : "We couldn’t load the data"}</strong>
+            <p>{error}</p>
+            <p>{language === "es" ? "Usá «Actualizar» para volver a consultar." : "Select Refresh to try again."}</p>
           </div>
         )}
 

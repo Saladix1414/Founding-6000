@@ -434,3 +434,42 @@
     line-height: 1.45;
   }
 }
+
+.ox-genesis .genesis-visual {
+  background: radial-gradient(ellipse at top right, #f7edff, transparent 65%),
+    linear-gradient(145deg, #e8dcff, #c5adf4);
+}
+
+.ox-genesis .genesis-visual__number {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  font-size: clamp(26px, 3.3vw, 52px);
+}
+
+.ox-genesis .genesis-points {
+  display: grid;
+  gap: 8px;
+}
+
+.ox-genesis .genesis-points > div {
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--ox-border);
+  border-radius: 14px;
+  background: #fffaf1;
+}
+
+.ox-genesis .genesis-points > div > span {
+  padding: 3px 6px;
+  border-radius: 6px;
+  background: #eee3fc;
+}
+
+.ox-genesis .genesis-points strong {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--ox-ink);
+}
