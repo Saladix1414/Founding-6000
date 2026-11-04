@@ -8,6 +8,11 @@ export default function ProjectShowcase({language}: {language: 'es' | 'en'}) {
   const [selectedId, setSelectedId] = useState<string>(projectScreens[0].id);
   const screen = projectScreens.find(item => item.id === selectedId);
   const [preview, setPreview] = useState<Preview | null>(null);
+  const moduleControls = useRef<HTMLDivElement>(null);
+  const selectFromIndex = (id: string) => {
+    setSelectedId(id);
+    moduleControls.current?.querySelector<HTMLButtonElement>('button[data-module="' + id + '"]')?.focus();
+  };
   const viewer = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     if (preview && viewer.current && !viewer.current.open) viewer.current.showModal();
@@ -16,28 +21,27 @@ export default function ProjectShowcase({language}: {language: 'es' | 'en'}) {
   return (
     <div className="ox-project-showcase">
       <header>
-        <p className="ox-showcase-eyebrow">{es ? 'CONOCÉ LOS ESPACIOS' : 'EXPLORE THE WORKSPACES'}</p>
-        <h3>{es ? 'De la idea a tu próximo proyecto.' : 'From an idea to your next project.'}</h3>
-        <p>{es ? 'OriginX estima un 70% de avance en el desarrollo de la web principal y sus herramientas.' : 'OriginX estimates that its main website and tools are 70% developed.'}</p>
-        <p>{es ? 'Creación web, comercio, IA y experiencias de juego en un mismo ecosistema. Tocá una imagen para verla completa.' : 'Website creation, commerce, AI and games in one ecosystem. Select an image to see it in full.'}</p>
+        <p className="ox-showcase-eyebrow">{es ? 'EXPLORADOR DE HERRAMIENTAS' : 'TOOL EXPLORER'}</p>
+        <h2>{es ? 'Conocé el ecosistema' : 'Explore the'} <span>{es ? 'OriginX.' : 'OriginX ecosystem.'}</span></h2>
+        <p>{es ? 'Creación web, comercio, IA y juegos en un mismo ecosistema.' : 'Web creation, commerce, AI and games in one ecosystem.'}</p>
       </header>
-      <div className="ox-project-module-index" role="group" aria-label={es ? 'Explorar módulos' : 'Explore modules'}>
+      <div className="ox-project-module-index" ref={moduleControls} role="group" aria-label={es ? 'Explorar módulos' : 'Explore modules'}>
         {projectScreens.map(item => (
-          <button key={item.id} type="button" aria-pressed={selectedId === item.id} onClick={() => setSelectedId(item.id)}>
+          <button key={item.id} type="button" data-module={item.id} aria-pressed={selectedId === item.id} onClick={() => setSelectedId(item.id)}>
             {item.title}
           </button>
         ))}
-        <button type="button" aria-pressed={selectedId === 'brain-boost'} onClick={() => setSelectedId('brain-boost')}>
+        <button type="button" data-module="brain-boost" aria-pressed={selectedId === 'brain-boost'} onClick={() => setSelectedId('brain-boost')}>
           Brain Boost
         </button>
       </div>
       {screen && <div className="ox-project-screens" aria-live="polite">
           <figure key={screen.id} className="ox-project-screen-featured">
+            <figcaption><h4>{screen.title}</h4><p>{es ? screen.es : screen.en}</p></figcaption>
             <button type="button" onClick={() => setPreview(screen)} aria-label={(es ? 'Ampliar ' : 'Enlarge ') + screen.title} aria-haspopup="dialog">
               <img src={screen.image} alt={screen.title + (es ? ' · vista de la interfaz' : ' · interface preview')} loading="lazy" decoding="async" width={screen.width} height={screen.height} />
               <span>{es ? 'Ampliar imagen ↗' : 'Enlarge image ↗'}</span>
             </button>
-            <figcaption><h4>{screen.title}</h4><p>{es ? screen.es : screen.en}</p></figcaption>
           </figure>
       </div>}
       {screen && <p className="ox-project-preview-note">{es ? 'Imágenes de presentación aportadas por el proyecto. Muestran interfaces y dirección visual; las funciones, conexiones y publicación dependen del estado de cada herramienta. Trading Islands muestra una simulación; IA Forge requiere configurar su runtime.' : 'Presentation images supplied by the project show interfaces and visual direction. Features, integrations and publishing depend on each tool’s status. Trading Islands shows a simulation; IA Forge requires runtime configuration.'}</p>}
@@ -49,6 +53,18 @@ export default function ProjectShowcase({language}: {language: 'es' | 'en'}) {
         <ul className="ox-project-game-list">{brainGames.map(game => <li key={game.title}><strong>{game.title}</strong><span>{es ? game.es : game.en}</span></li>)}</ul>
         <p className="ox-project-preview-note">{es ? 'Juegos presentes en la versión de desarrollo. Disponibilidad y acceso según la versión habilitada. Daily Neural Run y Neural Boss permanecen en el roadmap.' : 'Games present in the development version. Availability and access depend on the enabled version. Daily Neural Run and Neural Boss remain on the roadmap.'}</p>
       </section>}
+      <section className="ox-project-compact-index" aria-labelledby="ox-project-index-title">
+        <h3 id="ox-project-index-title">{es ? 'Índice de herramientas' : 'Tool index'}</h3>
+        {projectScreens.map(item => (
+          <button key={item.id} type="button" aria-pressed={selectedId === item.id} onClick={() => selectFromIndex(item.id)}>
+            <strong>{item.title}</strong><span>{es ? item.es : item.en}</span>
+          </button>
+        ))}
+        <button type="button" aria-pressed={!screen} onClick={() => selectFromIndex('brain-boost')}>
+          <strong>Brain Boost</strong><span>{es ? 'Juegos de Neural Arcade.' : 'Neural Arcade games.'}</span>
+        </button>
+      </section>
+      <p className="ox-project-preview-note">{es ? 'OriginX estima un 70% de avance en el desarrollo de la web principal y sus herramientas.' : 'OriginX estimates that its main website and tools are 70% developed.'}</p>
       <dialog ref={viewer} className="ox-membership-dialog ox-project-image-viewer" aria-labelledby="ox-project-image-title" onClose={() => setPreview(null)} onClick={event => {if (event.target === event.currentTarget) closePreview();}}>
         <div className="ox-membership-dialog-bar"><span id="ox-project-image-title">{preview?.title}</span><button type="button" autoFocus onClick={closePreview}>{es ? 'Cerrar' : 'Close'} ×</button></div>
         {preview && <img src={preview.image} alt={preview.title} />}

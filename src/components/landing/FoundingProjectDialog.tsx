@@ -26,37 +26,10 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
           id="product"
         >
           <div className="db-container">
-            <div className="section-heading">
-              <div>
-                <div className="db-eyebrow">
-                  {language === "es"
-                    ? "CREÁ · VENDÉ · EXPLORÁ"
-                    : "BUILD · SELL · EXPLORE"}
-                </div>
-
-                <h2 className="db-title">
-                  {language === "es"
-                    ? "Tu próximo proyecto empieza en OriginX Foundation."
-                    : "Your next project starts at OriginX Foundation."}
-                </h2>
-
-                <p className="db-copy">
-                  {language === "es"
-                    ? "Un ecosistema para emprendedores, desarrolladores y creadores: tiendas online, diseño web, inteligencia artificial y juegos de Brain Boost. Conocé sus espacios y el estado de cada herramienta."
-                    : "An ecosystem for entrepreneurs, developers and creators: online stores, web design, artificial intelligence and Brain Boost games. Explore its workspaces and each tool’s status."}
-                </p>
-              </div>
-
-              <span className="truth-badge">
-                {language === "es"
-                  ? "ESTADO ACTUAL"
-                  : "CURRENT STATE"}
-              </span>
-            </div>
-
             <ProjectShowcase language={language} />
 
-            <h3 className="ox-project-status-heading">{es ? "Herramientas y estado de desarrollo" : "Tools and development status"}</h3>
+            <details className="ox-project-status">
+              <summary>{es ? "Herramientas y estado de desarrollo" : "Tools and development status"}</summary>
             <div className="product-grid">
               <article className="product-card">
                 <div className="product-card__top">
@@ -106,8 +79,8 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
 
                 <p>
                   {language === "es"
-                    ? "Orquestación transversal de tareas y automatizaciones, con verificación y aprobación antes de ejecutar cambios. Incluye flujos del área comercial."
-                    : "Cross-platform task and automation orchestration, with verification and approval before executing changes. Includes commerce workflows."}
+                    ? "Orquestación de tareas y automatizaciones en Commerce OS, con verificación y aprobación antes de ejecutar cambios."
+                    : "Task and automation orchestration in Commerce OS, with verification and approval before executing changes."}
                 </p>
               </article>
 
@@ -188,6 +161,7 @@ export default function FoundingProjectDialog({language, checkoutEnabled}: Props
                 <p>{es ? 'Juegos de memoria, lógica, atención y orientación, más Neon Arena: Virus Survivor. Una propuesta recreativa con identidad visual propia por experiencia.' : 'Memory, logic, attention and spatial games, plus Neon Arena: Virus Survivor. Recreational experiences with their own visual identities.'}</p>
               </article>
             </div>
+            </details>
           </div>
         </section>
 

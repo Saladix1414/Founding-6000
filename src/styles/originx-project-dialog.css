@@ -51,3 +51,81 @@
   outline: 2px solid #6544a1;
   outline-offset: 2px;
 }
+
+.ox-project-dialog #product.ox-ecosystem {
+  background: radial-gradient(ellipse at top right, #e3defa, transparent 44%),
+    linear-gradient(135deg, #e8f8f8, #fbf9ff 58%);
+}
+
+.ox-project-dialog > .ox-membership-dialog-bar {
+  background: #f6f3ff;
+}
+
+.ox-project-dialog .ox-project-showcase > header {
+  padding: 0;
+  background: transparent;
+}
+
+.ox-project-dialog .ox-project-showcase > header h2 {
+  margin-block: 6px;
+  font-size: clamp(26px, 5vw, 44px);
+  line-height: 1.1;
+}
+
+.ox-project-dialog .ox-project-showcase > header h2 span { color: #087670; }
+
+.ox-project-dialog .ox-project-module-index {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 4px;
+}
+
+.ox-project-dialog .ox-project-module-index button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.ox-project-dialog .ox-project-module-index button[aria-pressed="true"] {
+  background: linear-gradient(115deg, #087670, #6443a8);
+}
+
+.ox-project-dialog .ox-project-screens figure {
+  padding: clamp(8px, 2vw, 16px);
+  background: #f8f6ff;
+  border-color: #d6cce9;
+}
+
+.ox-project-dialog .ox-project-screens figcaption { padding: 4px 0 12px; }
+.ox-project-dialog .ox-project-screens figure > button { border-radius: 12px; overflow: hidden; }
+.ox-project-dialog .ox-project-compact-index { margin-block: 16px; }
+
+.ox-project-dialog .ox-project-compact-index button {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  margin-block: 6px;
+  padding: 10px 14px;
+  text-align: start;
+  font: inherit;
+  color: #24214d;
+  background: #faf9ff;
+  border: 1px solid #d6cce9;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.ox-project-dialog .ox-project-compact-index button[aria-pressed="true"] {
+  background: #e1f5f4;
+  border-color: #087670;
+}
+
+.ox-project-dialog .ox-project-status {
+  margin-top: 18px;
+  padding: 12px;
+  border: 1px solid #d6cce9;
+  border-radius: 12px;
+  background: #faf9ff;
+}
+
+.ox-project-dialog .ox-project-status summary { cursor: pointer; font-weight: 700; }
+.ox-project-dialog .ox-project-status:not([open]) .product-grid { display: none; }
