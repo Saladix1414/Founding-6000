@@ -1,0 +1,12 @@
+{
+  "name": "founding-6000-admin-monitor-v9",
+  "main": "cloudflare/oxPurchaseAdminV9.mjs",
+  "compatibility_date": "2026-10-06",
+  "compatibility_flags": ["nodejs_compat"],
+  "durable_objects": {
+    "bindings": [
+      {"name":"FOUNDING_CORE", "class_name":"FoundingCore", "script_name":"founding-6000-prelaunch"}
+    ]
+  },
+  "vars": {"OX_ADMIN_V9_ENABLED":"false"}
+}
