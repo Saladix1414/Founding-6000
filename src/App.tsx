@@ -1258,8 +1258,8 @@ function App() {
 
                     <p>
                       {language === "es"
-                        ? "Founding 6000 es una preorden o reserva de producto. No es una inversión, no otorga acciones ni propiedad de la empresa, no es un valor financiero ni un programa de participación en ingresos. El 5 de enero de 2027 es una fecha objetivo de lanzamiento, no una fecha de entrega garantizada."
-                        : "Founding 6000 is a product pre-order or reservation. It is not an investment, equity, company ownership, a security or a revenue-sharing program. January 5, 2027 is a target launch date, not a guaranteed delivery date."}
+                        ? "Founding 6000 es una preorden del producto OriginXF y la adquisición de 1 de nuestros nft por cuenta. No otorga acciones ni propiedad de la empresa. El 5 de enero de 2027 es una fecha objetivo de lanzamiento de la Landing principal, y se prevee llegar a tiempo, sin embargo la fecha puede aplazarse."
+                        : "Founding 6000 is a pre-order of the OriginXF product and the acquisition of 1 of our NFTs per account. It does not grant shares or ownership of the company. January 5, 2027 is a target launch date for the main landing page, and we expect to meet it; however, the date may be postponed."}
                     </p>
                   </div>
 
