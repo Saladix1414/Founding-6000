@@ -1,0 +1,109 @@
+/* Founding checkout: presentation only; payment data and state remain authoritative. */
+.ox-checkout .usdt-payment-panel {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  margin: 22px 0 0;
+  padding: 22px;
+  border: 1px solid #d7dcd4;
+  border-radius: 20px;
+  color: #192f3c;
+  color-scheme: light;
+  background: #fffdf8;
+  box-shadow: 0 6px 24px #223a4406;
+}
+.ox-checkout .usdt-panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-bottom: 2px;
+}
+.ox-checkout .usdt-panel-head > div { min-width: 0; }
+.ox-checkout .usdt-panel-head h4 { margin: 8px 0 0; color: #192f3c; font-size: 20px; line-height: 1.35; letter-spacing: -.025em; }
+.ox-checkout .usdt-kicker { display: inline-flex; align-items: center; gap: 7px; color: #226862; font-size: 10px; font-weight: 850; letter-spacing: .12em; }
+.ox-checkout .usdt-kicker::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #448a77; }
+.ox-checkout .usdt-status { display: inline-flex; align-items: center; gap: 7px; max-width: 100%; padding: 8px 10px; border: 1px solid #e2d6b5; border-radius: 8px; color: #775319; background: #fff4d9; font-size: 9px; font-weight: 800; line-height: 1.5; letter-spacing: .045em; white-space: normal; }
+.ox-checkout .usdt-status::before { content: ""; flex: 0 0 auto; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.ox-checkout .usdt-status.is-submitted { border-color: #b8d8d5; color: #175f65; background: #e7f4f3; }
+.ox-checkout .usdt-status.is-verified { border-color: #bcd7bf; color: #245f33; background: #eaf5e9; }
+.ox-checkout .usdt-status.is-rejected { border-color: #e4c6c1; color: #982d32; background: #fff1ee; }
+.ox-checkout .usdt-amount-card { display: grid; gap: 8px; min-width: 0; padding: 22px; border: 1px solid #c8dcd4; border-radius: 15px; color: #163f43; background: #edf5ed; }
+.ox-checkout .usdt-amount-card > span { color: #44655e; font-size: 12px; font-weight: 700; }
+.ox-checkout .usdt-amount-card strong { display: block; color: #163f43; font-size: clamp(24px, 4.5vw, 36px); line-height: 1.2; font-weight: 850; font-variant-numeric: tabular-nums; letter-spacing: -.035em; overflow-wrap: anywhere; }
+.ox-checkout .usdt-amount-card small { color: #4c665f; font-size: 12px; line-height: 1.5; }
+.ox-checkout .usdt-payment-grid { display: grid; grid-template-columns: 1.6fr .7fr .8fr .8fr; gap: 8px; }
+.ox-checkout .usdt-field { display: grid; gap: 6px; min-width: 0; padding: 12px; border: 1px solid #e0e3d9; border-radius: 11px; background: #fafaf4; }
+.ox-checkout .usdt-field > span { color: #62716e; font-size: 11px; line-height: 1.45; }
+.ox-checkout .usdt-field strong { color: #223e46; font-size: 12px; font-weight: 750; line-height: 1.5; overflow-wrap: anywhere; }
+.ox-checkout .usdt-field code { color: #294a52; font-size: 12px; overflow-wrap: anywhere; }
+.ox-checkout .usdt-address-block { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px 14px; align-items: center; padding: 18px; border: 1px solid #a9c9c5; border-left: 3px solid #3c827c; border-radius: 13px; background: #f1f8f5; }
+.ox-checkout .usdt-address-block > span { grid-column: 1 / -1; color: #2e5b5c; font-size: 12px; font-weight: 750; line-height: 1.6; }
+.ox-checkout .usdt-address-block code,
+.ox-checkout .usdt-token-contract code,
+.ox-checkout .usdt-submitted-card code { display: block; min-width: 0; color: #223e46; font-family: var(--db-font-mono, monospace); font-size: 12px; line-height: 1.8; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; word-break: break-all; }
+.ox-checkout .usdt-copy-button { width: auto; min-height: 44px; justify-self: end; padding: 10px 14px; border: 1px solid #b5ceca; border-radius: 9px; color: #195d60; background: #fffefa; font-size: 12px; line-height: 1.5; font-weight: 800; cursor: pointer; }
+.ox-checkout .usdt-copy-button:hover { border-color: #397b76; background: #e4f1ed; }
+.ox-checkout .usdt-token-contract { display: grid; gap: 7px; min-width: 0; padding: 14px 16px; border: 1px solid #e0e3d9; border-radius: 11px; background: #fafaf4; }
+.ox-checkout .usdt-token-contract > span { color: #62716e; font-size: 11px; line-height: 1.5; }
+.ox-checkout .usdt-token-contract code { color: #526763; font-size: 11px; }
+.ox-checkout .usdt-notice { padding: 14px 16px; border: 1px solid #dbe1d6; border-radius: 12px; color: #29444b; background: #f6f7f0; }
+.ox-checkout .usdt-notice strong { display: block; margin-bottom: 6px; color: #29444b; font-size: 12px; font-weight: 800; line-height: 1.5; }
+.ox-checkout .usdt-notice p { margin: 0; color: #526663; font-size: 12px; line-height: 1.7; }
+.ox-checkout .usdt-notice p + p { margin-top: 9px; }
+.ox-checkout .usdt-notice-warning { border-color: #e8c98e; border-left: 3px solid #bb7d22; background: #fff3dd; }
+.ox-checkout .usdt-notice-warning strong { color: #7b4e16; }
+.ox-checkout .usdt-notice-warning p { color: #795a32; }
+.ox-checkout .usdt-notice-error { border-color: #e4c6c1; border-left: 3px solid #b64b45; background: #fff1ee; }
+.ox-checkout .usdt-notice-error strong,
+.ox-checkout .usdt-notice-error p { color: #982d32; }
+.ox-checkout .usdt-tx-section { display: grid; gap: 11px; padding-top: 18px; margin-top: 2px; border-top: 1px solid #dfe3d9; }
+.ox-checkout .usdt-tx-section label { color: #223e46; font-size: 14px; font-weight: 800; line-height: 1.5; }
+.ox-checkout .usdt-tx-section p { margin: 0; color: #586a68; font-size: 12px; line-height: 1.7; }
+.ox-checkout .usdt-tx-section input { width: 100%; min-width: 0; min-height: 52px; box-sizing: border-box; padding: 13px 14px; border: 1px solid #a7bcb7; border-radius: 11px; color: #223e46; background: white; font-size: 16px; line-height: 1.5; font-family: var(--db-font-mono, monospace); box-shadow: none; }
+.ox-checkout .usdt-tx-section input::placeholder { color: #687d77; opacity: 1; }
+.ox-checkout .usdt-tx-section input:focus { outline: 2px solid #2e7773; outline-offset: 2px; border-color: #2e7773; box-shadow: none; }
+.ox-checkout .usdt-inline-error { padding: 10px 12px; border: 1px solid #e4c6c1; border-radius: 9px; color: #982d32; background: #fff1ee; font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.ox-checkout .usdt-submit-button { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 50px; padding: 13px 18px; border: 1px solid #cc411b; border-radius: 12px; color: white; background: #d94720; font-size: 14px; font-weight: 800; line-height: 1.5; box-shadow: 0 4px 12px #b74d1612; }
+.ox-checkout .usdt-submit-button:hover:not(:disabled) { color: white; background: #b93b19; border-color: #b93b19; }
+.ox-checkout .usdt-copy-button:focus-visible,
+.ox-checkout .usdt-submit-button:focus-visible,
+.ox-checkout .usdt-legal-link-row a:focus-visible { outline: 3px solid #2e7773; outline-offset: 3px; }
+.ox-checkout .usdt-submitted-card { display: flex; align-items: flex-start; gap: 13px; padding: 16px; border: 1px solid #b8d8d5; border-radius: 13px; color: #175f65; background: #e7f4f3; }
+.ox-checkout .usdt-submitted-card > div { min-width: 0; }
+.ox-checkout .usdt-submitted-card strong { color: #175f65; font-size: 14px; line-height: 1.5; }
+.ox-checkout .usdt-submitted-card p { margin: 6px 0 9px; color: #3b6366; font-size: 12px; line-height: 1.7; }
+.ox-checkout .usdt-submitted-mark { background: #cee7e3; color: #175f65; }
+.ox-checkout .usdt-legal-links { display: grid; gap: 10px; padding-top: 16px; border-top: 1px solid #dfe3d9; }
+.ox-checkout .usdt-legal-links > span { color: #66746e; font-size: 11px; line-height: 1.5; }
+.ox-checkout .usdt-legal-link-row { display: flex; flex-wrap: wrap; gap: 7px 18px; }
+.ox-checkout .usdt-legal-link-row a { display: inline-flex; align-items: center; min-height: 30px; color: #195d60; font-size: 12px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #afc6bf; }
+.ox-checkout .usdt-legal-link-row a:hover { text-decoration-color: currentColor; }
+.ox-checkout .usdt-authority-note { padding: 14px 16px; border: 1px solid #dfe3d9; border-radius: 11px; color: #415c58; background: #f6f7f0; }
+.ox-checkout .usdt-authority-note strong { display: block; margin-bottom: 6px; color: #29444b; font-size: 12px; line-height: 1.5; }
+.ox-checkout .usdt-authority-note p { margin: 0; color: #526663; font-size: 11px; line-height: 1.8; }
+.ox-checkout .usdt-loading { color: #29444b; padding: 10px 0; }
+.ox-checkout .usdt-loading strong { color: #29444b; font-size: 14px; }
+.ox-checkout .usdt-loading p { color: #526663; font-size: 12px; line-height: 1.6; }
+.ox-checkout .usdt-spinner { border-color: #c6d9d0; border-top-color: #2e7773; }
+@media (max-width: 600px) {
+  .ox-checkout .usdt-payment-panel { margin: 18px 0 0; padding: 16px; gap: 14px; border-radius: 16px; }
+  .ox-checkout .usdt-panel-head { display: grid; gap: 12px; }
+  .ox-checkout .usdt-panel-head h4 { font-size: 18px; }
+  .ox-checkout .usdt-status { justify-self: start; font-size: 9px; }
+  .ox-checkout .usdt-amount-card { padding: 18px 16px; }
+  .ox-checkout .usdt-amount-card strong { font-size: clamp(23px, 6vw, 32px); }
+  .ox-checkout .usdt-payment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ox-checkout .usdt-field { padding: 11px; }
+  .ox-checkout .usdt-address-block { grid-template-columns: minmax(0, 1fr); padding: 15px; }
+  .ox-checkout .usdt-address-block > span { grid-column: auto; }
+  .ox-checkout .usdt-address-block code { font-size: 12px; line-height: 1.9; }
+  .ox-checkout .usdt-copy-button { width: 100%; justify-self: stretch; }
+  .ox-checkout .usdt-token-contract,
+  .ox-checkout .usdt-notice,
+  .ox-checkout .usdt-authority-note { padding: 13px 14px; }
+  .ox-checkout .usdt-legal-link-row { gap: 5px 18px; }
+  .ox-checkout .usdt-legal-link-row a { min-height: 40px; }
+}
+@media (max-width: 340px) { .ox-checkout .usdt-payment-grid { grid-template-columns: 1fr; } }

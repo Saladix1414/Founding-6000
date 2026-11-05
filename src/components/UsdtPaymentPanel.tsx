@@ -5,6 +5,8 @@ import {
   useState,
 } from "react";
 
+import "../styles/originx-usdt-payment.css";
+
 import {
   createFoundingOrder,
   createUsdtAttempt,
