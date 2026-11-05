@@ -564,6 +564,12 @@ export class FoundingCore extends DurableObject {
   }
 
   async fetch(request) {
+    // V8 internal-only, explicit access credential; no public Worker route.
+    // Monitoring has no effect on checkout, payments, Gmail, mint or treasury.
+    if (new URL(request.url).pathname === "/internal/ops/purchase-status-v8") {
+      const { handlePurchaseMonitorV8 } = await import("./oxPurchaseMonitorV8.mjs");
+      return handlePurchaseMonitorV8({ request, env: this.env, storage: this.state.storage });
+    }
     const url =
       new URL(request.url);
 
