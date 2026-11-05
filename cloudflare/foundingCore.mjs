@@ -1,4 +1,5 @@
 import { rareArcadeRelease } from "./rareArcadeRelease.mjs";
+import { initializeFoundingProductRegistries } from "./oxProductRegistries.mjs";
 import { DurableObject } from "cloudflare:workers";
 
 import {
@@ -67,6 +68,7 @@ export class FoundingCore extends DurableObject {
     this.commerce
       .initializeSchema();
     this.commerce.initializeRareRelease();
+    initializeFoundingProductRegistries(state.storage);
   }
 
   initializeSchema() {
