@@ -1,3 +1,4 @@
+import { initializePurchaseMail, enqueuePurchaseMail } from "./purchaseMail.mjs";
 import { initializeRareRelease, reserveRareAsset, reservedRareSerial, completeRareAllocation } from "./rareReleaseInventory.mjs";
 const USDT_NETWORK =
   "ethereum-mainnet";
@@ -165,6 +166,7 @@ export class CommerceCore {
   }
 
   initializeSchema() {
+    initializePurchaseMail(this.storage);
     this.sql.exec(`
       CREATE TABLE IF NOT EXISTS campaign_phases (
         id TEXT PRIMARY KEY,
@@ -2635,6 +2637,8 @@ export class CommerceCore {
           },
         );
 
+        enqueuePurchaseMail(this.storage, context.orderId);
+
         return {
           idempotentReplay:
             false,
@@ -2682,3 +2686,4 @@ export class CommerceCore {
   }
 
 }
+

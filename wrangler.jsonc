@@ -20,12 +20,19 @@
     "PUBLIC_CHECKOUT_ENABLED": "true",
     "PAYMENT_READINESS": "true",
     "REAL_PAYMENTS_ENABLED": "true",
-    "CLOUDFLARE_USDT_API_ENABLED": "true"
+    "CLOUDFLARE_USDT_API_ENABLED": "true",
+    "PURCHASE_EMAIL_ENABLED": "false",
+    "PURCHASE_EMAIL_MODE": "test"
   },
   "exports": {
     "FoundingCore": {
       "type": "durable-object",
       "storage": "sqlite"
     }
+  },
+  "triggers": {
+    "crons": [
+      "*/5 * * * *"
+    ]
   }
 }

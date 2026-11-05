@@ -1,3 +1,4 @@
+import { deliverPurchaseMail, enqueuePurchaseMailSelfTest, purchaseMailSummary } from "./purchaseMail.mjs";
 import { rareArcadeRelease } from "./rareArcadeRelease.mjs";
 import { DurableObject } from "cloudflare:workers";
 
@@ -551,9 +552,27 @@ export class FoundingCore extends DurableObject {
       });
   }
 
+  // One drain per live object; persistent leases cover crashes/restarts.
+  async processPurchaseMail() {
+    if (!this.purchaseMailDrain) {
+      this.purchaseMailDrain = deliverPurchaseMail(this.state.storage, this.env)
+        .finally(() => { this.purchaseMailDrain = null; });
+    }
+    return this.purchaseMailDrain;
+  }
+
   async fetch(request) {
     const url =
       new URL(request.url);
+
+    // Only reachable via the Durable Object binding; no public Worker route.
+    if (request.method === "POST" && url.pathname === "/internal/purchase-mail/drain") {
+      if (this.env.PURCHASE_EMAIL_ENABLED === "true") {
+        enqueuePurchaseMailSelfTest(this.state.storage, this.env);
+      }
+      const result = await this.processPurchaseMail();
+      return json({ ...result, counts: purchaseMailSummary(this.state.storage) });
+    }
 
     if (url.pathname === "/internal/landing-visits") {
       if (request.method === "POST") {
@@ -997,3 +1016,4 @@ export class FoundingCore extends DurableObject {
     );
   }
 }
+

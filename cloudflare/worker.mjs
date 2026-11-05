@@ -1007,6 +1007,20 @@ async function coreHealth(env) {
 }
 
 export default {
+  async scheduled(_controller, env, ctx) {
+    if (env.PURCHASE_EMAIL_ENABLED !== "true") return;
+    ctx.waitUntil((async () => {
+      const response = await canonicalCore(env).fetch(
+        "https://founding-core.internal/internal/purchase-mail/drain",
+        { method: "POST" },
+      );
+      if (!response.ok) throw new Error("PURCHASE_MAIL_DRAIN_FAILED");
+      const report = await response.json();
+      console.log("PURCHASE_MAIL_STATUS", JSON.stringify({
+        configured: report.configured, counts: report.counts,
+      }));
+    })());
+  },
   async fetch(
     request,
     env,
@@ -1716,3 +1730,4 @@ export default {
     );
   },
 };
+
