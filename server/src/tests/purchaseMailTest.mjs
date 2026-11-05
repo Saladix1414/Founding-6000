@@ -149,6 +149,7 @@ const clock = () => Date.now() + 1000;
   coreSource = coreSource.replace('import { rareArcadeRelease } from "./rareArcadeRelease.mjs";', 'const rareArcadeRelease = null;');
   coreSource = coreSource.replaceAll('"./purchaseMail.mjs"', JSON.stringify(new URL('purchaseMail.mjs', base).href));
   coreSource = coreSource.replaceAll('"./commerceCore.mjs"', JSON.stringify(new URL('commerceCore.mjs', base).href));
+  coreSource = coreSource.replace(/from "\.\/([^"\n]+)"/g, (_match, name) => "from " + JSON.stringify(new URL(name, base).href));
   const { FoundingCore } = await import('data:text/javascript;base64,' + Buffer.from(coreSource).toString('base64'));
   let workerSource = await readFile(new URL('worker.mjs', base), 'utf8');
   workerSource = workerSource.replace(/import\s*\{\s*FoundingCore,?\s*\}\s*from "\.\/foundingCore.mjs";/, 'const FoundingCore = class {};');

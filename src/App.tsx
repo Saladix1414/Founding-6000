@@ -1,3 +1,4 @@
+import CollectionGalleryContent from "./components/landing/CollectionGalleryContent";
 import FoundationEconomyDialog from "./components/landing/FoundationEconomyDialog";
 import FoundingProjectDialog from "./components/landing/FoundingProjectDialog";
 import FoundingMembershipDialog from "./components/landing/FoundingMembershipDialog";
@@ -23,6 +24,7 @@ import "./styles/originx-faq-footer.css";
 import "./styles/originx-continuity.css";
 import "./styles/originx-hero-background.css";
 import "./styles/originx-hero-artwork.css";
+import "./styles/originx-collection-gallery.css";
 import { DigitalBoostWhitepaper } from "./whitepaper/DigitalBoostWhitepaper";
 
 
@@ -712,9 +714,9 @@ function App() {
                       : "What exactly am I purchasing?"}
                   </summary>
 
-                  <p>
+                  <p style={{ whiteSpace: "pre-wrap" }}>
                     {language === "es"
-                      ? "Una preorden o reserva de Founding 6000, diseñada para incluir 12 meses de Focus Founding Access desde la activación válida de la cuenta. El acceso está pensado para usar herramientas de tiendas virtuales, desarrollo web y comercio descentralizado, crear bots de trading e IA y jugar en Brain Boost. Todo en un solo lugar, OriginX. Se aplican los términos publicados y los límites técnicos. Registrarte para recibir novedades no equivale a comprar."
+                      ? "Una preorden o reserva del producto OriginX Foundation y el acceso a sus herramientas de diseño web, tiendas virtuales, trading, incluidos diseño IA y bots (pensado para emprendedores o pequeñas empresas)\n\nAdemás te brindamos 1 NFT diseñado para incluir:\n1_La membresía transferible de 12 meses (Focus Founding Access) desde la activación válida de la cuenta.\n2_reserva del 50% que vas a poder cobrar  cuando completemos la venta y habilitemos la quema.\n3_La metadata que diseñamos para los 6.000 NFT de Founding 6000 — OriginX es bastante más completa que la de un NFT convencional.\nNo solamente identifica al dragón y sus características visuales: incorpora ADN generativo, resonancia, glifo criptográfico y registros akáshicos de procedencia verificable."
                       : "A Founding 6000 product pre-order or reservation, designed to include 12 months of Focus Founding Access from valid account activation. Access is designed for online stores, web development and decentralized commerce, building trading and AI bots, and playing Brain Boost games. It is all in one place, OriginX. Published terms and technical limits apply. Signing up for updates is not a purchase."}
                   </p>
                 </details>
@@ -833,100 +835,11 @@ function App() {
                 : "Collection gallery"
             }
           >
-            <header className="project-gallery-panel__header">
-              <div>
-                <span>
-                  ORIGINX FOUNDATION
-                </span>
-
-                <strong>
-                  {language === "es"
-                    ? "Galería de la colección"
-                    : "Collection gallery"}
-                </strong>
-              </div>
-
-              <button
-                className="project-gallery-panel__close"
-                type="button"
-                onClick={() => collectionDialog.current?.close()}
-              >
-                {language === "es" ? "Cerrar galería" : "Close gallery"}
-              </button>
-            </header>
-
-            <p className="project-gallery-panel__intro">
-              {language === "es"
-                ? "Seis representaciones conceptuales de nuestra colección. Tocá una imagen para ampliarla. Arte promocional; no acredita emisión onchain."
-                : "Six concept representations of our collection. Select an image to enlarge it. Promotional artwork; not proof of onchain issuance."}
-            </p>
-
-            <dl className="project-gallery-metadata">
-              <div>
-                <dt>{language === "es" ? "Registro akáshico" : "Akashic record"}</dt>
-                <dd>{language === "es" ? "Historial digital de eventos de la pieza, desde su origen. Cada evento se enlaza por hash para detectar modificaciones." : "A digital history of the collectible’s events, starting with its origin. Events are linked by hashes to detect changes."}</dd>
-              </div>
-              <div>
-                <dt>{language === "es" ? "Metadata y ADN visual" : "Metadata and visual DNA"}</dt>
-                <dd>{language === "es" ? "El número de token, la categoría, los rasgos y la versión de generación documentan la identidad de la pieza. Las huellas digitales permiten verificar sus archivos." : "Token number, category, traits and generation version document the collectible’s identity. Digital fingerprints allow its files to be verified."}</dd>
-              </div>
-              <div>
-                <dt>{language === "es" ? "Glifo de resonancia" : "Resonance glyph"}</dt>
-                <dd>{language === "es" ? "Un símbolo visual generado a partir del ADN de la pieza y vinculado a su registro." : "A visual symbol derived from the collectible’s DNA and linked to its record."}</dd>
-              </div>
-            </dl>
-
-            <div className="project-gallery-grid">
-              {[
-                [
-                  language === "es" ? "RARE · Guardián del océano" : "RARE · Ocean guardian",
-                  "/nft-gallery/rare-ocean.png",
-                ],
-                [
-                  language === "es" ? "RARE · Guardián del bosque" : "RARE · Forest guardian",
-                  "/nft-gallery/rare-forest.png",
-                ],
-                [
-                  language === "es" ? "EPIC · Tormenta amatista" : "EPIC · Amethyst storm",
-                  "/nft-gallery/epic-amethyst.png",
-                ],
-                [
-                  language === "es" ? "EPIC · Brasa carmesí" : "EPIC · Crimson ember",
-                  "/nft-gallery/epic-ember.png",
-                ],
-                [
-                  language === "es" ? "LEGENDARY · Soberano solar" : "LEGENDARY · Solar sovereign",
-                  "/nft-gallery/legendary-solar.png",
-                ],
-                [
-                  language === "es" ? "LEGENDARY · Soberano astral" : "LEGENDARY · Astral sovereign",
-                  "/nft-gallery/legendary-astral.png",
-                ]
-              ].map(([name, src]) => (
-                <button
-                  className="project-gallery-card"
-                  key={name}
-                  type="button"
-                  onClick={() =>
-                    setGalleryPreview({
-                      name,
-                      src,
-                    })
-                  }
-                >
-                  <img
-                    src={src}
-                    alt={name}
-                    loading="lazy"
-                  />
-
-                  <span className="project-gallery-card__caption">
-                    {name}
-                  </span>
-                </button>
-              ))}
-            </div>
-
+            <CollectionGalleryContent
+              language={language}
+              onClose={() => collectionDialog.current?.close()}
+              onPreview={setGalleryPreview}
+            />
           </dialog>
         </FoundingCollection>
         <FoundationEconomyDialog language={language} />
@@ -1345,8 +1258,8 @@ function App() {
 
                     <p>
                       {language === "es"
-                        ? "Founding 6000 es una preorden o reserva de producto. No es una inversión, no otorga acciones ni propiedad de la empresa, no es un valor financiero ni un programa de participación en ingresos. El 5 de enero de 2027 es una fecha objetivo de lanzamiento, no una fecha de entrega garantizada."
-                        : "Founding 6000 is a product pre-order or reservation. It is not an investment, equity, company ownership, a security or a revenue-sharing program. January 5, 2027 is a target launch date, not a guaranteed delivery date."}
+                        ? "Founding 6000 es una preorden del producto OriginXF y la adquisición de 1 de nuestros nft por cuenta. No otorga acciones ni propiedad de la empresa. El 5 de enero de 2027 es una fecha objetivo de lanzamiento de la Landing principal, y se prevee llegar a tiempo, sin embargo la fecha puede aplazarse."
+                        : "Founding 6000 is a pre-order of the OriginXF product and the acquisition of 1 of our NFTs per account. It does not grant shares or ownership of the company. January 5, 2027 is a target launch date for the main landing page, and we expect to meet it; however, the date may be postponed."}
                     </p>
                   </div>
 
