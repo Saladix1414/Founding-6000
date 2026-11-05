@@ -44,3 +44,113 @@
   #project-whitepaper-panel .project-whitepaper__highlights span { font-size: 11px; }
   #project-whitepaper-panel .project-whitepaper__cards { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Atlas del ecosistema. Scoped to the whitepaper dialog. */
+#project-whitepaper-panel {
+  --atlas-ink: #102638;
+  --atlas-teal: #007d80;
+  --atlas-line: #bddcdd;
+  color: var(--atlas-ink);
+  background: #f5fbfa;
+  border-color: var(--atlas-line);
+}
+#project-whitepaper-panel .project-whitepaper__header {
+  min-height: 76px;
+  background: #f7fcfb;
+  border-bottom: 1px solid var(--atlas-line);
+}
+#project-whitepaper-panel .project-whitepaper__identity strong,
+#project-whitepaper-panel .project-whitepaper__section-header h3,
+#project-whitepaper-panel .project-whitepaper__card strong { color: var(--atlas-ink); }
+#project-whitepaper-panel .project-whitepaper__eyebrow { color: var(--atlas-teal); }
+#project-whitepaper-panel .project-whitepaper__close {
+  color: var(--atlas-ink); background: #e2f3f2; border-color: var(--atlas-line); min-width: 44px; min-height: 44px;
+}
+#project-whitepaper-panel .project-whitepaper__nav { background: #edf7f6; border-color: var(--atlas-line); }
+#project-whitepaper-panel .project-whitepaper__nav-title { color: #46616c; }
+#project-whitepaper-panel .project-whitepaper__nav button { color: var(--atlas-ink); border-color: transparent; border-radius: 8px; }
+#project-whitepaper-panel .project-whitepaper__nav button:hover { background: #d9eeec; }
+#project-whitepaper-panel .project-whitepaper__nav button span { color: var(--atlas-teal); }
+#project-whitepaper-panel .project-whitepaper__document { background: #f5fbfa; color: var(--atlas-ink); min-width: 0; }
+#project-whitepaper-panel .project-whitepaper__chapter-picker { background: #edf7f6; border-color: var(--atlas-line); }
+#project-whitepaper-panel .project-whitepaper__chapter-picker select { border-color: #9cbfc1; background: #fff; color: var(--atlas-ink); }
+#project-whitepaper-panel :focus-visible { outline: 3px solid #008c93; outline-offset: 3px; }
+#project-whitepaper-panel .atlas-intro { font-family: inherit; font-size: 16px; line-height: 1.65; }
+#project-whitepaper-panel .atlas-intro p { margin: 0 0 16px; color: #385461; }
+#project-whitepaper-panel .atlas-intro h2,
+#project-whitepaper-panel .atlas-intro h3,
+#project-whitepaper-panel .atlas-intro h4 { color: var(--atlas-ink); letter-spacing: -.025em; }
+#project-whitepaper-panel .atlas-intro h3 { font-size: clamp(25px, 3vw, 34px); line-height: 1.15; margin: 0 0 20px; }
+#project-whitepaper-panel .atlas-intro h4 { font-size: 18px; line-height: 1.3; margin: 0 0 8px; }
+#project-whitepaper-panel .atlas-intro .atlas-kicker { color: #986c22; font-size: 11px; letter-spacing: .12em; font-weight: 800; margin-bottom: 14px; }
+#project-whitepaper-panel .atlas-hero {
+  display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 16px; padding: 36px 28px;
+  background: linear-gradient(90deg, #f6fbf9, #e7f6f7);
+  border-bottom: 1px solid var(--atlas-line);
+}
+#project-whitepaper-panel .atlas-hero h2 { font-size: clamp(32px, 4vw, 49px); line-height: 1.06; margin: 0 0 20px; }
+#project-whitepaper-panel .atlas-hero figure { margin: 0; min-width: 0; }
+#project-whitepaper-panel .atlas-hero img { display: block; width: 100%; height: auto; aspect-ratio: 3/2; object-fit: cover; border-radius: 22px; }
+#project-whitepaper-panel .atlas-hero figcaption { color: #536e79; font-size: 10px; text-align: center; margin-top: 6px; }
+#project-whitepaper-panel .atlas-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+#project-whitepaper-panel .atlas-tags span { background: #fff; border: 1px solid #b6d8d9; border-radius: 6px; padding: 5px 9px; font-size: 11px; font-weight: 700; color: #126368; }
+#project-whitepaper-panel .atlas-benefits,
+#project-whitepaper-panel .atlas-reserves,
+#project-whitepaper-panel .atlas-universe { padding: 32px 28px; border-bottom: 1px solid var(--atlas-line); scroll-margin-top: 16px; }
+#project-whitepaper-panel .atlas-benefits__grid { border: 1px solid var(--atlas-line); border-radius: 18px; padding: 0 20px; background: #fffefa; }
+#project-whitepaper-panel .atlas-benefits article { display: flex; gap: 16px; padding: 20px 0; align-items: flex-start; }
+#project-whitepaper-panel .atlas-benefits article + article { border-top: 1px solid #d8e8e7; }
+#project-whitepaper-panel .atlas-benefits article p { margin: 0; font-size: 14px; }
+#project-whitepaper-panel .atlas-number { display: grid; place-items: center; flex: 0 0 40px; height: 40px; background: #e0f3f0; color: #007478; border-radius: 10px; font-size: 14px; font-weight: 800; }
+#project-whitepaper-panel .atlas-intro .atlas-note { font-size: 12px; line-height: 1.6; margin: 14px 0 0; color: #526d77; }
+#project-whitepaper-panel .atlas-table-scroll { width: 100%; overflow-x: auto; border: 1px solid var(--atlas-line); border-radius: 12px; margin: 16px 0; background: #fff; }
+#project-whitepaper-panel .atlas-table-scroll table { width: 100%; min-width: 710px; border-collapse: collapse; font-size: 12px; line-height: 1.5; color: var(--atlas-ink); }
+#project-whitepaper-panel .atlas-table-scroll caption { padding: 12px; text-align: left; color: #3d6069; font-size: 11px; background: #f2f9f7; }
+#project-whitepaper-panel .atlas-table-scroll th,
+#project-whitepaper-panel .atlas-table-scroll td { padding: 14px 12px; text-align: right; border-bottom: 1px solid #d8e8e7; white-space: nowrap; }
+#project-whitepaper-panel .atlas-table-scroll th:first-child { text-align: left; white-space: normal; }
+#project-whitepaper-panel .atlas-table-scroll thead { background: #143b48; color: #fff; }
+#project-whitepaper-panel .atlas-table-scroll tbody tr:last-child { background: #e6f7f1; font-weight: 800; }
+#project-whitepaper-panel .atlas-reserves > p:last-child { margin-top: 20px; }
+#project-whitepaper-panel .atlas-modules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+#project-whitepaper-panel .atlas-modules figure { margin: 0; overflow: hidden; background: #fff; border: 1px solid var(--atlas-line); border-radius: 12px; }
+#project-whitepaper-panel .atlas-modules img { width: 100%; height: auto; aspect-ratio: 8/5; object-fit: cover; display: block; }
+#project-whitepaper-panel .atlas-modules figcaption { padding: 12px 6px; text-align: center; font-size: 12px; font-weight: 800; }
+#project-whitepaper-panel .atlas-progress { margin: 28px; padding: 28px; border-radius: 20px; background: #123545; color: white; }
+#project-whitepaper-panel .atlas-progress h3 { color: #fff; }
+#project-whitepaper-panel .atlas-progress__value { display: flex; align-items: center; gap: 24px; margin: 16px 0; }
+#project-whitepaper-panel .atlas-progress__value strong { font-size: clamp(56px, 7vw, 88px); line-height: 1; color: #fff; }
+#project-whitepaper-panel .atlas-progress__value p { color: #e0efee; margin: 0; font-size: 17px; }
+#project-whitepaper-panel .atlas-progress .atlas-kicker { color: #eed295; }
+#project-whitepaper-panel .atlas-progress .atlas-note { color: #c8dfdf; }
+#project-whitepaper-panel .atlas-progress progress { width: 100%; height: 14px; border: 0; border-radius: 30px; overflow: hidden; background: #426472; accent-color: #33ded4; }
+#project-whitepaper-panel .atlas-progress progress::-webkit-progress-bar { background: #426472; }
+#project-whitepaper-panel .atlas-progress progress::-webkit-progress-value { background: #33ded4; border-radius: 30px; }
+#project-whitepaper-panel .atlas-progress progress::-moz-progress-bar { background: #33ded4; }
+#project-whitepaper-panel .project-whitepaper__section { border-color: var(--atlas-line); background: #f9fcfa; }
+#project-whitepaper-panel .project-whitepaper__section-header small,
+#project-whitepaper-panel .project-whitepaper__section-header > span { color: var(--atlas-teal); }
+#project-whitepaper-panel .project-whitepaper__lead { color: #2a4859; }
+#project-whitepaper-panel .project-whitepaper__card,
+#project-whitepaper-panel .project-whitepaper__card:nth-child(n) { background: #e7f3f1; border-color: var(--atlas-line); }
+#project-whitepaper-panel .project-whitepaper__paragraph,
+#project-whitepaper-panel .project-whitepaper__bullets,
+#project-whitepaper-panel .project-whitepaper__card p { color: #3b5664; }
+#project-whitepaper-panel .project-whitepaper__closing { background: #123545; }
+#project-whitepaper-panel .project-whitepaper__closing h3 { color: white; }
+#project-whitepaper-panel .project-whitepaper__footer { background: #e5f1f0; color: #34515e; }
+@media (max-width: 599px) {
+  #project-whitepaper-panel .atlas-hero { grid-template-columns: 1fr; padding: 26px 18px; gap: 20px; }
+  #project-whitepaper-panel .atlas-hero img { max-height: 240px; }
+  #project-whitepaper-panel .atlas-benefits,
+  #project-whitepaper-panel .atlas-reserves,
+  #project-whitepaper-panel .atlas-universe { padding: 26px 18px; }
+  #project-whitepaper-panel .atlas-benefits__grid { padding: 0 14px; }
+  #project-whitepaper-panel .atlas-benefits article { gap: 12px; }
+  #project-whitepaper-panel .atlas-modules { gap: 6px; }
+  #project-whitepaper-panel .atlas-modules figcaption { font-size: 11px; }
+  #project-whitepaper-panel .atlas-progress { margin: 20px 18px; padding: 22px 18px; }
+  #project-whitepaper-panel .atlas-progress__value { gap: 16px; }
+  #project-whitepaper-panel .project-whitepaper__chapter-picker > span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { #project-whitepaper-panel { animation: none; } }

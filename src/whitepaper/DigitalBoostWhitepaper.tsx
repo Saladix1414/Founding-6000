@@ -1,3 +1,4 @@
+import { WhitepaperFounderIntro } from "./WhitepaperFounderIntro";
 import {
   WHITEPAPER_BRAND,
   WHITEPAPER_ORIGIN_LAYER,
@@ -90,6 +91,8 @@ export function DigitalBoostWhitepaper({
             <option value="" disabled>
               {language === "es" ? "Elegí un capítulo" : "Choose a chapter"}
             </option>
+            <option value="founder-benefits">{language === "es" ? "Beneficios fundadores" : "Founder benefits"}</option>
+            <option value="founder-reserves">{language === "es" ? "Reservas por tanda" : "Reserves by batch"}</option>
             {whitepaperSections.map((section) => (
               <option key={section.id} value={section.id}>
                 {section.number} · {text(section.title)}
@@ -111,6 +114,8 @@ export function DigitalBoostWhitepaper({
               : "CONTENTS"}
           </div>
 
+          <button type="button" onClick={() => scrollToSection("founder-benefits")}><span>+</span><strong>{language === "es" ? "Tus beneficios" : "Your benefits"}</strong></button>
+          <button type="button" onClick={() => scrollToSection("founder-reserves")}><span>%</span><strong>{language === "es" ? "Reservas por tanda" : "Reserves by batch"}</strong></button>
           {whitepaperSections.map(
             (section) => (
               <button
@@ -135,21 +140,7 @@ export function DigitalBoostWhitepaper({
         </nav>
 
         <div className="project-whitepaper__document">
-          <section className="project-whitepaper__cover">
-            <p className="project-whitepaper__edition">ORIGINX FOUNDATION · {WHITEPAPER_VERSION}</p>
-            <h2>{language === "es" ? "Creá tu negocio. Conectá tu futuro." : "Build your business. Connect your future."}</h2>
-            <p className="project-whitepaper__cover-description">
-              {language === "es"
-                ? "Una membresía NFT para acompañar tus proyectos. Conocé el acceso, las herramientas y el modelo de reservas de Founding 6000."
-                : "An NFT membership to support your projects. Explore Founding 6000 access, tools and reserve model."}
-            </p>
-            <div className="project-whitepaper__highlights">
-              <div><strong>6.000</strong><span>{language === 'es' ? 'piezas · suministro máximo' : 'collectibles · maximum supply'}</span></div>
-              <div><strong>12 {language === 'es' ? 'meses' : 'months'}</strong><span>{language === 'es' ? 'desde la activación válida' : 'from valid activation'}</span></div>
-              <div><strong>50%</strong><span>{language === 'es' ? 'de cada venta inicial a reserva en el modelo' : 'of each initial sale to reserves in the model'}</span></div>
-            </div>
-            <p className="project-whitepaper__cover-note">{language === 'es' ? 'Prelanzamiento · Desarrollo activo · Estimaciones identificadas' : 'Pre-launch · Active development · Estimates identified'}</p>
-          </section>
+          <WhitepaperFounderIntro language={language} />
 
           {whitepaperSections.map(
             (section) => (

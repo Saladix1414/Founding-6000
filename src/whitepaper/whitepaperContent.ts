@@ -7,7 +7,7 @@ export type WhitepaperSection = {
 };
 export const WHITEPAPER_BRAND = 'OriginX Foundation';
 export const WHITEPAPER_ORIGIN_LAYER = 'Founding 6000';
-export const WHITEPAPER_VERSION = '02.11.2026';
+export const WHITEPAPER_VERSION = '05.11.2026';
 const t = (es: string, en: string): LocalizedText => ({es, en});
 
 export const whitepaperSections: WhitepaperSection[] = [
@@ -15,7 +15,7 @@ export const whitepaperSections: WhitepaperSection[] = [
     id:'manifesto', number:'00', label:t('VISIÓN', 'VISION'),
     title:t('Tu idea merece un ecosistema.', 'Your idea deserves an ecosystem.'),
     summary:t('OriginX Foundation conecta creación web, comercio, inteligencia artificial y experiencias interactivas. Su objetivo: ayudarte a crear, operar y desarrollar tu próximo proyecto desde espacios especializados que trabajan sobre una base común.', 'OriginX Foundation connects website creation, commerce, artificial intelligence and interactive experiences. Its goal: help you build, operate and develop your next project through specialized workspaces sharing a common foundation.'),
-    paragraphs:[t('DigitalBoost Studio es el entorno de desarrollo de estas herramientas. Founding 6000 es la colección de membresías que acompaña su etapa fundadora: una pieza digital, acceso previsto y un modelo de reservas definido.', 'DigitalBoost Studio is the development environment for these tools. Founding 6000 is the membership collection accompanying the founding stage: a digital collectible, planned access and a defined reserve model.')],
+    paragraphs:[t('Founding 6000 acompaña la etapa fundadora de OriginX. La web principal tiene un 70% de su desarrollo preparado, según el avance informado por el equipo. Seguimos integrando módulos y validando funciones para su lanzamiento completo.', 'Founding 6000 supports the founding stage of OriginX. The team reports 70% development progress on the main website. Module integration and feature validation continue ahead of the full launch.')],
   },
   {
     id:'membership', number:'01', label:t('MEMBRESÍA', 'MEMBERSHIP'),
@@ -75,7 +75,7 @@ export const whitepaperSections: WhitepaperSection[] = [
       {title:'Al menos 90% líquido · hasta 10% para inversiones',text:t('Tras el cierre, la comunidad votaría las inversiones en Nexus, el foro de OriginX en desarrollo. La propuesta excluye préstamos, apalancamiento y puentes.', 'After closing, the community would vote on investments in Nexus, the OriginX forum in development. The proposal excludes borrowing, leverage and bridges.')},
       {title:'15% del beneficio neto del negocio',text:t('Aporte propuesto sobre el beneficio neto realizado por suscripciones y servicios de la web principal de OriginX una vez lanzada. El 85% permanece en el negocio; no es un cobro adicional al miembro.', 'Proposed contribution from realized net profit from subscriptions and services after the main OriginX website launches. 85% remains with the business; this is not an additional member charge.')},
     ],
-    paragraphs:[t('Ejemplo, no previsión: un 4% neto anual supuesto sobre el 10% de 230.000 USDT añadiría 920 USDT al fondo en un año. No es un 4% sobre toda la reserva. No hay proveedor aprobado ni rendimiento confirmado; la inversión puede perder valor.', 'Example, not a forecast: an assumed 4% net annual return on 10% of 230,000 USDT would add 920 USDT to the fund over one year. This is not 4% on the entire reserve. No provider is approved and no return is confirmed; investments can lose value.'),t('Los aportes del negocio dependen de beneficios reales y de aprobar la política. Los 12 meses incluidos no se cuentan como nuevas renovaciones. No se han definido precios de renovación ni un presupuesto que confirme rentabilidad.', 'Business contributions depend on actual profit and policy approval. The included 12 months are not counted as new renewals. Neither renewal pricing nor a budget confirming profitability has been defined.')],
+    paragraphs:[t('Ejemplo, no previsión: un 4% neto anual supuesto sobre el 10% de 230.000 USDT añadiría 920 USDT al fondo en un año. No es un 4% sobre toda la reserva. No hay proveedor aprobado ni rendimiento confirmado; la inversión puede perder valor.', 'Example, not a forecast: an assumed 4% net annual return on 10% of 230,000 USDT would add 920 USDT to the fund over one year. This is not 4% on the entire reserve. No provider is approved and no return is confirmed; investments can lose value.'),t('Planeamos aumentar progresivamente el porcentaje destinado a invertir a medida que el fondo reciba aportes de la web principal y resultados de inversión. Cada cambio requerirá una propuesta comunitaria y reglas publicadas. Los aportes del negocio dependen de beneficios reales y de aprobar la política. Los 12 meses incluidos no se cuentan como nuevas renovaciones. No se han definido precios de renovación ni un presupuesto que confirme rentabilidad.', 'We plan to progressively increase the investment allocation as the fund receives website contributions and investment results. Each change will require a community proposal and published rules. Business contributions depend on actual profit and policy approval. The included 12 months are not counted as new renewals. Neither renewal pricing nor a budget confirming profitability has been defined.')],
   },
   {
     id:'redemption', number:'06', label:t('RESCATE', 'REDEMPTION'),
@@ -94,7 +94,7 @@ export const whitepaperSections: WhitepaperSection[] = [
     id:'pulse', number:'08', label:t('CONFIANZA', 'TRUST'),
     title:t('Una visión ambiciosa. Reglas claras.', 'An ambitious vision. Clear rules.'),
     summary:t('PULSE coordina el trabajo; las políticas y aprobaciones controlan la ejecución. Los datos reales, las demos y las estimaciones se identifican por separado.', 'PULSE coordinates work; policies and approvals control execution. Real data, demos and estimates are identified separately.'),
-    paragraphs:[t('El NFT no otorga acciones de la empresa, gobernanza ni rentabilidad garantizada. La disponibilidad de herramientas, fondos y rescates se confirma con evidencia, no con una imagen o un cálculo del simulador.', 'The NFT grants no company equity, governance or guaranteed return. Tool availability, funds and redemption are confirmed through evidence, not an image or simulator calculation.')],
+    paragraphs:[t('Se prevén votaciones comunitarias sobre propuestas de inversión en Nexus, con reglas por publicar. El NFT no otorga acciones de la empresa ni rentabilidad garantizada. La disponibilidad de herramientas, fondos y rescates se confirma con evidencia, no con una imagen o un cálculo del simulador.', 'Community votes on investment proposals are planned in Nexus, with rules to be published. The NFT grants no company equity or guaranteed return. Tool availability, funds and redemption are confirmed through evidence, not an image or simulator calculation.')],
     flow:['USER','PULSE','POLICY','APPROVAL','EXECUTOR','VERIFY','AUDIT'],
   },
 ];
