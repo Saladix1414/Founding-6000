@@ -1,4 +1,10 @@
 import { initializeRareRelease, reserveRareAsset, reservedRareSerial, completeRareAllocation } from "./rareReleaseInventory.mjs";
+import {
+  initializeGenesisCheckoutV6,
+  simulateGenesisReservationV6,
+  readReservedGenesisV6,
+  simulateGenesisAllocationV6,
+} from "./oxGenesisCheckoutV6.mjs";
 const USDT_NETWORK =
   "ethereum-mainnet";
 
@@ -157,6 +163,7 @@ export function commerceErrorStatus(
 export class CommerceCore {
   constructor(storage, options = {}) {
     this.rareRelease = options.rareRelease ?? null;
+    this.genesisCheckout = options.genesisCheckout ?? null;
     this.storage =
       storage;
 
@@ -658,6 +665,8 @@ export class CommerceCore {
 
   initializeRareRelease() {
     if (this.rareRelease) initializeRareRelease(this.storage, this.rareRelease);
+    // Optional simulation path. FoundingCore does NOT pass genesisCheckout.
+    if (this.genesisCheckout) initializeGenesisCheckoutV6(this.storage, this.genesisCheckout, this.rareRelease);
   }
 
   audit(
@@ -896,7 +905,11 @@ export class CommerceCore {
         );
 
         if (this.rareRelease) {
-          reserveRareAsset(this.storage, this.rareRelease, id, phase);
+          // Genesis V6 is internal-only and cannot be activated from a public request.
+          const genesisSimulated = this.genesisCheckout
+            ? simulateGenesisReservationV6(this.storage, this.genesisCheckout, this.rareRelease, id, phase)
+            : false;
+          if (!genesisSimulated) reserveRareAsset(this.storage, this.rareRelease, id, phase);
         }
 
         this.audit(
@@ -2270,7 +2283,9 @@ export class CommerceCore {
               );
 
         const serialNumber = this.rareRelease
-          ? reservedRareSerial(this.storage, this.rareRelease, context.orderId)
+          ? ((this.genesisCheckout
+              ? readReservedGenesisV6(this.storage, this.genesisCheckout, this.rareRelease, context.orderId)
+              : null) ?? reservedRareSerial(this.storage, this.rareRelease, context.orderId))
           : (highestSerial === null ? Number(context.serialStart) : highestSerial + 1);
 
         if (
@@ -2420,7 +2435,12 @@ export class CommerceCore {
         );
 
         if (this.rareRelease) {
-          completeRareAllocation(this.storage, this.rareRelease, context.orderId, serialNumber);
+          if (this.genesisCheckout && serialNumber === 1) {
+            simulateGenesisAllocationV6(this.storage, this.genesisCheckout, this.rareRelease,
+              context.orderId, serialNumber, txHash);
+          } else {
+            completeRareAllocation(this.storage, this.rareRelease, context.orderId, serialNumber);
+          }
         }
 
         /*
