@@ -714,9 +714,9 @@ function App() {
                       : "What exactly am I purchasing?"}
                   </summary>
 
-                  <p>
+                  <p style={{ whiteSpace: "pre-wrap" }}>
                     {language === "es"
-                      ? "Una preorden o reserva de Founding 6000, diseñada para incluir 12 meses de Focus Founding Access desde la activación válida de la cuenta. El acceso está pensado para usar herramientas de tiendas virtuales, desarrollo web y comercio descentralizado, crear bots de trading e IA y jugar en Brain Boost. Todo en un solo lugar, OriginX. Se aplican los términos publicados y los límites técnicos. Registrarte para recibir novedades no equivale a comprar."
+                      ? "Una preorden o reserva del producto OriginX Foundation y el acceso a sus herramientas de diseño web, tiendas virtuales, trading, incluidos diseño IA y bots (pensado para emprendedores o pequeñas empresas)\n\nAdemás te brindamos 1 NFT diseñado para incluir:\n1_La membresía transferible de 12 meses (Focus Founding Access) desde la activación válida de la cuenta.\n2_reserva del 50% que vas a poder cobrar  cuando completemos la venta y habilitemos la quema.\n3_La metadata que diseñamos para los 6.000 NFT de Founding 6000 — OriginX es bastante más completa que la de un NFT convencional.\nNo solamente identifica al dragón y sus características visuales: incorpora ADN generativo, resonancia, glifo criptográfico y registros akáshicos de procedencia verificable."
                       : "A Founding 6000 product pre-order or reservation, designed to include 12 months of Focus Founding Access from valid account activation. Access is designed for online stores, web development and decentralized commerce, building trading and AI bots, and playing Brain Boost games. It is all in one place, OriginX. Published terms and technical limits apply. Signing up for updates is not a purchase."}
                   </p>
                 </details>
