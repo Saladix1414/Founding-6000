@@ -21,8 +21,9 @@
     "PAYMENT_READINESS": "true",
     "REAL_PAYMENTS_ENABLED": "true",
     "CLOUDFLARE_USDT_API_ENABLED": "true",
-    "PURCHASE_EMAIL_ENABLED": "false",
-    "PURCHASE_EMAIL_MODE": "test"
+    "PURCHASE_EMAIL_ENABLED": "true",
+    "PURCHASE_EMAIL_MODE": "test",
+    "PURCHASE_EMAIL_TEST_ID": "originx-mail-test-002"
   },
   "exports": {
     "FoundingCore": {
@@ -34,5 +35,13 @@
     "crons": [
       "*/5 * * * *"
     ]
+  },
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true,
+      "head_sampling_rate": 1
+    }
   }
 }
